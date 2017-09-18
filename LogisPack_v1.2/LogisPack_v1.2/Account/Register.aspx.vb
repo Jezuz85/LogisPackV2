@@ -9,6 +9,7 @@ Partial Public Class Register
 
         If IsPostBack = False Then
             Listas.Rol(ddlRol)
+            Listas.Cliente(ddlCliente)
         End If
     End Sub
 
@@ -22,7 +23,8 @@ Partial Public Class Register
 
         Dim user = New ApplicationUser() With {
             .UserName = userName,
-            .Email = userName
+            .Email = userName,
+            .id_cliente = Convert.ToInt32(ddlCliente.SelectedValue)
         }
 
         Dim result = manager.Create(user, Password.Text)

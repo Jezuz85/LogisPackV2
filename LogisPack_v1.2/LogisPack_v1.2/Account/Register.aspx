@@ -45,12 +45,23 @@
         </div>
 
         <div class="form-group">
-            <asp:Label runat="server" CssClass="col-md-2 control-label">Rol</asp:Label>            
+            <asp:Label runat="server" CssClass="col-md-2 control-label">Rol</asp:Label>
             <div class="col-md-3">
                 <asp:DropDownList ID="ddlRol" runat="server" data-toggle="tooltip" data-placement="bottom" title="Seleccione el rol"></asp:DropDownList>
 
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ddlRol" CssClass="text-danger" Display="Dynamic" 
                     ErrorMessage="Debe Seleccionar un Rol." />
+                
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <asp:Label runat="server" CssClass="col-md-2 control-label">Cliente</asp:Label>
+            <div class="col-md-3">
+                <asp:DropDownList ID="ddlCliente" runat="server" data-toggle="tooltip" data-placement="bottom" title="Seleccione el rol"></asp:DropDownList>
+
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="ddlCliente" CssClass="text-danger" Display="Dynamic" 
+                    ErrorMessage="Debe Seleccionar una empresa." />
                 
             </div>
         </div>

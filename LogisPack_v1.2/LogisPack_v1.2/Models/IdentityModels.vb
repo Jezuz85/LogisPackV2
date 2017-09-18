@@ -6,9 +6,25 @@ Imports Microsoft.AspNet.Identity.EntityFramework
 Imports Microsoft.AspNet.Identity.Owin
 Imports Microsoft.Owin.Security
 
-' Para agregar datos de perfil del usuario, agregue más propiedades a su clase de usuario. Visite https://go.microsoft.com/fwlink/?LinkID=317594 para obtener más información.
 Public Class ApplicationUser
     Inherits IdentityUser
+
+    Private idCliente As Integer
+    Public Property id_cliente() As Integer
+        Get
+            Return idCliente
+        End Get
+        Set(ByVal value As Integer)
+            idCliente = value
+        End Set
+    End Property
+
+    Public Function addCliente(manager As ApplicationUserManager) As ClaimsIdentity
+        ' Tenga en cuenta que authenticationType debe coincidir con el valor definido en CookieAuthenticationOptions.AuthenticationType
+        Dim userIdentity = manager.CreateIdentity(Me, DefaultAuthenticationTypes.ApplicationCookie)
+        ' Agregar reclamaciones de usuario personalizadas aquí
+        Return userIdentity
+    End Function
 
     Public Function GenerateUserIdentity(manager As ApplicationUserManager) As ClaimsIdentity
         ' Tenga en cuenta que authenticationType debe coincidir con el valor definido en CookieAuthenticationOptions.AuthenticationType
@@ -27,10 +43,15 @@ Public Class ApplicationDbContext
     Public Sub New()
         MyBase.New("DefaultConnection", throwIfV1Schema:=False)
     End Sub
-    
-    Public Shared Function Create As ApplicationDbContext
+
+    Public Shared Function Create() As ApplicationDbContext
         Return New ApplicationDbContext()
-    End Function    
+    End Function
+
+
+    Public Shared Function AddCliente() As ApplicationDbContext
+        Return New ApplicationDbContext()
+    End Function
 End Class
 
 #Region "Helpers"
