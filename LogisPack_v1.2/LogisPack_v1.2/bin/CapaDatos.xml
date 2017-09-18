@@ -320,6 +320,12 @@ CapaDatos
  todos los tipo de unidad existentes en la base de datos
  </summary>
 </member>
+<member name="M:CapaDatos.Listas.Rol(System.Web.UI.WebControls.DropDownList@)">
+ <summary>
+ Metodo que recibe un objeto DropDownlist vacio  y lo devuelve con los datos de 
+ todos los roles existentes en la base de datos
+ </summary>
+</member>
 <member name="M:CapaDatos.Manager_Articulo.Reset_ArticuloLista(System.Web.UI.WebControls.Button,System.Web.UI.WebControls.DropDownList,System.Web.UI.WebControls.DropDownList,System.Web.UI.WebControls.TextBox,System.Web.UI.WebControls.TextBox)">
  <summary>
  Metodo que se ejecuta cuando se oprime el boton de Resetear, elimina los aritculos y reestablece la 

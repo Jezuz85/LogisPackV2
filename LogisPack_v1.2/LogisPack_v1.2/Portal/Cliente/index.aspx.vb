@@ -6,10 +6,19 @@ Public Class index5
     Private contexto As LogisPackEntities = New LogisPackEntities()
     Private bError As Boolean
 
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
-        LlenarGridView()
-        Modal.OcultarAlerta(updatePanelPrinicpal)
+        If Manager_Usuario.ValidarAutenticado(User) Then
+
+            If Manager_Usuario.ValidarRol(User, Rol.Admin.ToString) Then
+                LlenarGridView()
+                Modal.OcultarAlerta(updatePanelPrinicpal)
+            Else
+                Response.Redirect(Paginas.Login.ToString)
+            End If
+        Else
+            Response.Redirect(Paginas.Login.ToString)
+        End If
 
     End Sub
 

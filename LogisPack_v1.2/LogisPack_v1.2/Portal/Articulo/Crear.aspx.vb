@@ -1,5 +1,7 @@
 ﻿Imports System.Globalization
 Imports CapaDatos
+Imports Microsoft.AspNet.Identity
+Imports Microsoft.AspNet.Identity.EntityFramework
 
 Public Class Crear
     Inherits Page
@@ -10,34 +12,39 @@ Public Class Crear
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         Page.Form.Attributes.Add("enctype", "multipart/form-data")
 
-        If Not IsPostBack Then
-            ViewState("contadorUbi") = "0"
-            CargarListas()
-        Else
-            ObtenerControl_Postback(Me)
+        If Manager_Usuario.ValidarAutenticado(User) Then
 
-            For Each ctlID In Page.Request.Form.AllKeys
-                If ctlID IsNot Nothing Then
+            If Not IsPostBack Then
+                ViewState("contadorUbi") = "0"
+                CargarListas()
+            Else
+                ObtenerControl_Postback(Me)
 
-                    Dim c As Control = Page.FindControl(ctlID)
+                For Each ctlID In Page.Request.Form.AllKeys
+                    If ctlID IsNot Nothing Then
 
-                    If c IsNot Nothing Then
-                        If c.GetType() Is GetType(Button) Then
+                        Dim c As Control = Page.FindControl(ctlID)
 
-                            If c.ClientID.Contains("btnAddFilaUbicacion") Then
-                                crearCamposListaUbicacion(Convert.ToInt32(ViewState("contadorUbi") + 1))
-                            ElseIf c.ClientID.Contains("btnEliminarFila") Then
-                                crearCamposListaUbicacion(Convert.ToInt32(ViewState("contadorUbi") - 1))
-                            Else
-                                crearCamposListaUbicacion(Convert.ToInt32(ViewState("contadorUbi")))
+                        If c IsNot Nothing Then
+                            If c.GetType() Is GetType(Button) Then
+
+                                If c.ClientID.Contains("btnAddFilaUbicacion") Then
+                                    crearCamposListaUbicacion(Convert.ToInt32(ViewState("contadorUbi") + 1))
+                                ElseIf c.ClientID.Contains("btnEliminarFila") Then
+                                    crearCamposListaUbicacion(Convert.ToInt32(ViewState("contadorUbi") - 1))
+                                Else
+                                    crearCamposListaUbicacion(Convert.ToInt32(ViewState("contadorUbi")))
+                                End If
+
                             End If
-
                         End If
+
                     End If
+                Next
 
-                End If
-            Next
-
+            End If
+        Else
+                Response.Redirect(Paginas.Login.ToString)
         End If
 
     End Sub

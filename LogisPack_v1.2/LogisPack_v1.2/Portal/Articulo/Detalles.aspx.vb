@@ -7,9 +7,12 @@ Public Class Detalles
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
-        Dim IdArticulo = Cifrar.descifrarCadena_Num(Request.QueryString("id"))
-
-        CargarArticulo(IdArticulo)
+        If Manager_Usuario.ValidarAutenticado(User) Then
+            Dim IdArticulo = Cifrar.descifrarCadena_Num(Request.QueryString("id"))
+            CargarArticulo(IdArticulo)
+        Else
+            Response.Redirect(Paginas.Login.ToString)
+        End If
 
     End Sub
 

@@ -11,7 +11,7 @@ Public Class index
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
-        If (User.Identity.IsAuthenticated) Then
+        If Manager_Usuario.ValidarAutenticado(User) Then
 
             If IsPostBack = False Then
                 MyTreeView.Nodes.Clear()
@@ -22,11 +22,10 @@ Public Class index
             End If
 
             Modal.OcultarAlerta(updatePanelPrinicpal)
+
         Else
             Response.Redirect(Paginas.Login.ToString)
         End If
-
-
 
     End Sub
 

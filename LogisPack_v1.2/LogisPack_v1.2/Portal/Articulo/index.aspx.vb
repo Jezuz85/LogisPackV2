@@ -5,10 +5,15 @@ Public Class index3
 
     Private bError As Boolean
 
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
-        LlenarGridView()
-        Modal.OcultarAlerta(updatePanelPrinicpal)
+        If Manager_Usuario.ValidarAutenticado(User) Then
+            LlenarGridView()
+            Modal.OcultarAlerta(updatePanelPrinicpal)
+        Else
+            Response.Redirect(Paginas.Login.ToString)
+        End If
+
 
     End Sub
 

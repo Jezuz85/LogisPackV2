@@ -148,4 +148,23 @@ Public Class Listas
         DropDownList1.DataBind()
     End Sub
 
+    ''' <summary>
+    ''' Metodo que recibe un objeto DropDownlist vacio  y lo devuelve con los datos de 
+    ''' todos los roles existentes en la base de datos
+    ''' </summary>
+    Public Shared Sub Rol(ByRef DropDownList1 As DropDownList)
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Dim query = (From AL In contexto.AspNetRoles
+                     Select
+                         AL.Id,
+                         AL.Name
+                    ).ToList()
+
+        DropDownList1.DataValueField = "Name"
+        DropDownList1.DataTextField = "Name"
+        DropDownList1.DataSource = query
+        DropDownList1.DataBind()
+    End Sub
 End Class

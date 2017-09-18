@@ -8,8 +8,12 @@ Public Class index4
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         Page.Form.Attributes.Add("enctype", "multipart/form-data")
-        CargarListas()
 
+        If Manager_Usuario.ValidarAutenticado(User) Then
+            CargarListas()
+        Else
+            Response.Redirect(Paginas.Login.ToString)
+        End If
     End Sub
 
     ''' <summary>

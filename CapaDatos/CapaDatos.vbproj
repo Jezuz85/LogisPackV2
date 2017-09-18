@@ -151,6 +151,7 @@
     <Compile Include="Picking_Articulo.vb">
       <DependentUpon>ModeloLogisPack.tt</DependentUpon>
     </Compile>
+    <Compile Include="Rol.vb" />
     <Compile Include="sysdiagrams.vb">
       <DependentUpon>ModeloLogisPack.tt</DependentUpon>
     </Compile>
