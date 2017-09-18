@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LogisPackModelStoreContainer" CdmEntityContainer="LogisPackEntities">
+    <EntitySetMapping Name="Almacen">
+      <EntityTypeMapping TypeName="LogisPackModel.Almacen">
+        <MappingFragment StoreEntitySet="Almacen">
+          <ScalarProperty Name="id_almacen" ColumnName="id_almacen" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="coeficiente_volumetrico" ColumnName="coeficiente_volumetrico" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Articulo">
+      <EntityTypeMapping TypeName="LogisPackModel.Articulo">
+        <MappingFragment StoreEntitySet="Articulo">
+          <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="referencia_picking" ColumnName="referencia_picking" />
+          <ScalarProperty Name="referencia1" ColumnName="referencia1" />
+          <ScalarProperty Name="referencia2" ColumnName="referencia2" />
+          <ScalarProperty Name="referencia3" ColumnName="referencia3" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="valor_articulo" ColumnName="valor_articulo" />
+          <ScalarProperty Name="valoracion_stock" ColumnName="valoracion_stock" />
+          <ScalarProperty Name="valoracion_seguro" ColumnName="valoracion_seguro" />
+          <ScalarProperty Name="valor_asegurado" ColumnName="valor_asegurado" />
+          <ScalarProperty Name="peso" ColumnName="peso" />
+          <ScalarProperty Name="alto" ColumnName="alto" />
+          <ScalarProperty Name="largo" ColumnName="largo" />
+          <ScalarProperty Name="ancho" ColumnName="ancho" />
+          <ScalarProperty Name="coeficiente_volumetrico" ColumnName="coeficiente_volumetrico" />
+          <ScalarProperty Name="cubicaje" ColumnName="cubicaje" />
+          <ScalarProperty Name="peso_volumen" ColumnName="peso_volumen" />
+          <ScalarProperty Name="observaciones_articulo" ColumnName="observaciones_articulo" />
+          <ScalarProperty Name="observaciones_generales" ColumnName="observaciones_generales" />
+          <ScalarProperty Name="stock_fisico" ColumnName="stock_fisico" />
+          <ScalarProperty Name="stock_minimo" ColumnName="stock_minimo" />
+          <ScalarProperty Name="id_almacen" ColumnName="id_almacen" />
+          <ScalarProperty Name="id_tipo_facturacion" ColumnName="id_tipo_facturacion" />
+          <ScalarProperty Name="id_tipo_unidad" ColumnName="id_tipo_unidad" />
+          <ScalarProperty Name="tipoArticulo" ColumnName="tipoArticulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="LogisPackModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Historico">
+      <EntityTypeMapping TypeName="LogisPackModel.Historico">
+        <MappingFragment StoreEntitySet="Historico">
+          <ScalarProperty Name="id_historico" ColumnName="id_historico" />
+          <ScalarProperty Name="fecha_transaccion" ColumnName="fecha_transaccion" />
+          <ScalarProperty Name="tipo_transaccion" ColumnName="tipo_transaccion" />
+          <ScalarProperty Name="referencia_ubicacion" ColumnName="referencia_ubicacion" />
+          <ScalarProperty Name="documento_transaccion" ColumnName="documento_transaccion" />
+          <ScalarProperty Name="cantidad_transaccion" ColumnName="cantidad_transaccion" />
+          <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Imagen">
+      <EntityTypeMapping TypeName="LogisPackModel.Imagen">
+        <MappingFragment StoreEntitySet="Imagen">
+          <ScalarProperty Name="id_imagen" ColumnName="id_imagen" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="url_imagen" ColumnName="url_imagen" />
+          <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Picking_Articulo">
+      <EntityTypeMapping TypeName="LogisPackModel.Picking_Articulo">
+        <MappingFragment StoreEntitySet="Picking_Articulo">
+          <ScalarProperty Name="id_picking_articulo" ColumnName="id_picking_articulo" />
+          <ScalarProperty Name="unidades" ColumnName="unidades" />
+          <ScalarProperty Name="id_picking" ColumnName="id_picking" />
+          <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="LogisPackModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_Facturacion">
+      <EntityTypeMapping TypeName="LogisPackModel.Tipo_Facturacion">
+        <MappingFragment StoreEntitySet="Tipo_Facturacion">
+          <ScalarProperty Name="id_tipo_facturacion" ColumnName="id_tipo_facturacion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_Unidad">
+      <EntityTypeMapping TypeName="LogisPackModel.Tipo_Unidad">
+        <MappingFragment StoreEntitySet="Tipo_Unidad">
+          <ScalarProperty Name="id_tipo_unidad" ColumnName="id_tipo_unidad" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ubicacion">
+      <EntityTypeMapping TypeName="LogisPackModel.Ubicacion">
+        <MappingFragment StoreEntitySet="Ubicacion">
+          <ScalarProperty Name="id_ubicacion" ColumnName="id_ubicacion" />
+          <ScalarProperty Name="zona" ColumnName="zona" />
+          <ScalarProperty Name="estante" ColumnName="estante" />
+          <ScalarProperty Name="fila" ColumnName="fila" />
+          <ScalarProperty Name="columna" ColumnName="columna" />
+          <ScalarProperty Name="panel" ColumnName="panel" />
+          <ScalarProperty Name="referencia_ubicacion" ColumnName="referencia_ubicacion" />
+          <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,52 @@
+c:\users\jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\bin\Debug\CapaDatos.dll.config
+c:\users\jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\bin\Debug\CapaDatos.dll
+c:\users\jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\bin\Debug\CapaDatos.pdb
+c:\users\jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\bin\Debug\CapaDatos.xml
+c:\users\jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\bin\Debug\EntityFramework.dll
+c:\users\jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\bin\Debug\EntityFramework.xml
+c:\users\jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\obj\Debug\CapaDatos.Resources.resources
+c:\users\jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\obj\Debug\CapaDatos.vbproj.GenerateResource.Cache
+c:\users\jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\obj\Debug\CapaDatos.dll
+c:\users\jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\obj\Debug\CapaDatos.xml
+c:\users\jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\obj\Debug\CapaDatos.pdb
+C:\Users\Jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\obj\Debug\CapaDatos.vbprojResolveAssemblyReference.cache
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Debug\CapaDatos.dll.config
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Debug\CapaDatos.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Debug\CapaDatos.pdb
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Debug\CapaDatos.xml
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Debug\EntityFramework.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Debug\EntityFramework.xml
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Debug\CapaDatos.Resources.resources
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Debug\CapaDatos.vbproj.GenerateResource.Cache
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Debug\CapaDatos.dll
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Debug\CapaDatos.xml
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Debug\CapaDatos.pdb
+C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Debug\CapaDatos.vbprojResolveAssemblyReference.cache
+C:\Users\Jezuz\Desktop\Repository\LogisPack\CapaDatos\bin\Debug\CapaDatos.dll.config
+C:\Users\Jezuz\Desktop\Repository\LogisPack\CapaDatos\bin\Debug\CapaDatos.dll
+C:\Users\Jezuz\Desktop\Repository\LogisPack\CapaDatos\bin\Debug\CapaDatos.pdb
+C:\Users\Jezuz\Desktop\Repository\LogisPack\CapaDatos\bin\Debug\CapaDatos.xml
+C:\Users\Jezuz\Desktop\Repository\LogisPack\CapaDatos\bin\Debug\EntityFramework.dll
+C:\Users\Jezuz\Desktop\Repository\LogisPack\CapaDatos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Jezuz\Desktop\Repository\LogisPack\CapaDatos\bin\Debug\EntityFramework.xml
+C:\Users\Jezuz\Desktop\Repository\LogisPack\CapaDatos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Jezuz\Desktop\Repository\LogisPack\CapaDatos\obj\Debug\CapaDatos.vbprojResolveAssemblyReference.cache
+C:\Users\Jezuz\Desktop\Repository\LogisPack\CapaDatos\obj\Debug\CapaDatos.Resources.resources
+C:\Users\Jezuz\Desktop\Repository\LogisPack\CapaDatos\obj\Debug\CapaDatos.vbproj.GenerateResource.Cache
+C:\Users\Jezuz\Desktop\Repository\LogisPack\CapaDatos\obj\Debug\CapaDatos.dll
+C:\Users\Jezuz\Desktop\Repository\LogisPack\CapaDatos\obj\Debug\CapaDatos.xml
+C:\Users\Jezuz\Desktop\Repository\LogisPack\CapaDatos\obj\Debug\CapaDatos.pdb
+C:\Users\Jezuz\Desktop\Repository\LogisPack_v1.2\CapaDatos\bin\Debug\CapaDatos.dll.config
+C:\Users\Jezuz\Desktop\Repository\LogisPack_v1.2\CapaDatos\bin\Debug\CapaDatos.dll
+C:\Users\Jezuz\Desktop\Repository\LogisPack_v1.2\CapaDatos\bin\Debug\CapaDatos.pdb
+C:\Users\Jezuz\Desktop\Repository\LogisPack_v1.2\CapaDatos\bin\Debug\CapaDatos.xml
+C:\Users\Jezuz\Desktop\Repository\LogisPack_v1.2\CapaDatos\obj\Debug\CapaDatos.Resources.resources
+C:\Users\Jezuz\Desktop\Repository\LogisPack_v1.2\CapaDatos\obj\Debug\CapaDatos.vbproj.GenerateResource.Cache
+C:\Users\Jezuz\Desktop\Repository\LogisPack_v1.2\CapaDatos\obj\Debug\CapaDatos.dll
+C:\Users\Jezuz\Desktop\Repository\LogisPack_v1.2\CapaDatos\obj\Debug\CapaDatos.xml
+C:\Users\Jezuz\Desktop\Repository\LogisPack_v1.2\CapaDatos\obj\Debug\CapaDatos.pdb
+C:\Users\Jezuz\Desktop\Repository\LogisPack_v1.2\CapaDatos\obj\Debug\CapaDatos.vbprojResolveAssemblyReference.cache

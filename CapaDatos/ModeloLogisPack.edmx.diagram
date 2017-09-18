@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="91ebd9a046b04cf6bdf44d65781c49ba" Name="Diagram1">
+        <EntityTypeShape EntityType="LogisPack_v1Model.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPack_v1Model.Almacen" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPack_v1Model.Articulo" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPack_v1Model.AspNetRoles" Width="1.5" PointX="9.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPack_v1Model.AspNetUserClaims" Width="1.5" PointX="14.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPack_v1Model.AspNetUserLogins" Width="1.5" PointX="14.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPack_v1Model.AspNetUsers" Width="1.5" PointX="12" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPack_v1Model.Cliente" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPack_v1Model.Historico" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPack_v1Model.Imagen" Width="1.5" PointX="7.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPack_v1Model.Picking_Articulo" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPack_v1Model.sysdiagrams" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPack_v1Model.Tipo_Facturacion" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPack_v1Model.Tipo_Unidad" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogisPack_v1Model.Ubicacion" Width="1.5" PointX="7.5" PointY="10.375" IsExpanded="true" />
+        <AssociationConnector Association="LogisPack_v1Model.FK_Almacen_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisPack_v1Model.FK_dbo_Articulo_dbo_Almacen_id_almacen" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisPack_v1Model.FK_dbo_Articulo_dbo_Tipo_Facturacion_id_tipo_facturacion" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisPack_v1Model.FK_dbo_Articulo_dbo_Tipo_Unidad_id_tipo_unidad" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisPack_v1Model.FK_dbo_Historico_dbo_Articulo_id_articulo" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisPack_v1Model.FK_dbo_Imagen_dbo_Articulo_id_articulo" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisPack_v1Model.FK_dbo_Picking_Articulo_dbo_Articulo_id_articulo" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisPack_v1Model.FK_dbo_Ubicacion_dbo_Articulo_id_articulo" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisPack_v1Model.FK_Picking_Articulo_Articulo" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisPack_v1Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisPack_v1Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="LogisPack_v1Model.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

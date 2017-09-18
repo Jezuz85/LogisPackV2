@@ -1,0 +1,1075 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LogisPack_v1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Almacen">
+          <Key>
+            <PropertyRef Name="id_almacen" />
+          </Key>
+          <Property Name="id_almacen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="coeficiente_volumetrico" Type="float" Nullable="false" />
+          <Property Name="id_cliente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Articulo">
+          <Key>
+            <PropertyRef Name="id_articulo" />
+          </Key>
+          <Property Name="id_articulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo" Type="varchar" MaxLength="25" />
+          <Property Name="nombre" Type="varchar" MaxLength="40" />
+          <Property Name="referencia_picking" Type="varchar" MaxLength="25" />
+          <Property Name="referencia1" Type="varchar" MaxLength="25" />
+          <Property Name="referencia2" Type="varchar" MaxLength="25" />
+          <Property Name="referencia3" Type="varchar" MaxLength="25" />
+          <Property Name="identificacion" Type="varchar" MaxLength="2" />
+          <Property Name="valor_articulo" Type="float" />
+          <Property Name="valoracion_stock" Type="float" />
+          <Property Name="valoracion_seguro" Type="float" />
+          <Property Name="valor_asegurado" Type="float" />
+          <Property Name="peso" Type="float" />
+          <Property Name="alto" Type="float" />
+          <Property Name="largo" Type="float" />
+          <Property Name="ancho" Type="float" />
+          <Property Name="coeficiente_volumetrico" Type="float" />
+          <Property Name="cubicaje" Type="float" />
+          <Property Name="peso_volumen" Type="float" />
+          <Property Name="observaciones_articulo" Type="varchar" MaxLength="300" />
+          <Property Name="observaciones_generales" Type="varchar" MaxLength="300" />
+          <Property Name="stock_fisico" Type="float" />
+          <Property Name="stock_minimo" Type="float" />
+          <Property Name="id_almacen" Type="int" />
+          <Property Name="id_tipo_facturacion" Type="int" />
+          <Property Name="id_tipo_unidad" Type="int" />
+          <Property Name="tipoArticulo" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="codigo" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Historico">
+          <Key>
+            <PropertyRef Name="id_historico" />
+          </Key>
+          <Property Name="id_historico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha_transaccion" Type="datetime" Nullable="false" />
+          <Property Name="tipo_transaccion" Type="nvarchar" MaxLength="3" />
+          <Property Name="referencia_ubicacion" Type="nvarchar" MaxLength="25" />
+          <Property Name="documento_transaccion" Type="nvarchar" MaxLength="100" />
+          <Property Name="cantidad_transaccion" Type="float" Nullable="false" />
+          <Property Name="id_articulo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Imagen">
+          <Key>
+            <PropertyRef Name="id_imagen" />
+          </Key>
+          <Property Name="id_imagen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="url_imagen" Type="nvarchar" MaxLength="200" />
+          <Property Name="id_articulo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Picking_Articulo">
+          <Key>
+            <PropertyRef Name="id_picking_articulo" />
+          </Key>
+          <Property Name="id_picking_articulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="unidades" Type="float" Nullable="false" />
+          <Property Name="id_picking" Type="int" Nullable="false" />
+          <Property Name="id_articulo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tipo_Facturacion">
+          <Key>
+            <PropertyRef Name="id_tipo_facturacion" />
+          </Key>
+          <Property Name="id_tipo_facturacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tipo_Unidad">
+          <Key>
+            <PropertyRef Name="id_tipo_unidad" />
+          </Key>
+          <Property Name="id_tipo_unidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Ubicacion">
+          <Key>
+            <PropertyRef Name="id_ubicacion" />
+          </Key>
+          <Property Name="id_ubicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="zona" Type="varchar" MaxLength="4" />
+          <Property Name="estante" Type="varchar" MaxLength="4" />
+          <Property Name="fila" Type="varchar" MaxLength="4" />
+          <Property Name="columna" Type="varchar" MaxLength="4" />
+          <Property Name="panel" Type="varchar" MaxLength="4" />
+          <Property Name="referencia_ubicacion" Type="varchar" MaxLength="40" />
+          <Property Name="id_articulo" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Almacen_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Almacen" Type="Self.Almacen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="Almacen">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Articulo_dbo_Almacen_id_almacen">
+          <End Role="Almacen" Type="Self.Almacen" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Almacen">
+              <PropertyRef Name="id_almacen" />
+            </Principal>
+            <Dependent Role="Articulo">
+              <PropertyRef Name="id_almacen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Articulo_dbo_Tipo_Facturacion_id_tipo_facturacion">
+          <End Role="Tipo_Facturacion" Type="Self.Tipo_Facturacion" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Facturacion">
+              <PropertyRef Name="id_tipo_facturacion" />
+            </Principal>
+            <Dependent Role="Articulo">
+              <PropertyRef Name="id_tipo_facturacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Articulo_dbo_Tipo_Unidad_id_tipo_unidad">
+          <End Role="Tipo_Unidad" Type="Self.Tipo_Unidad" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Unidad">
+              <PropertyRef Name="id_tipo_unidad" />
+            </Principal>
+            <Dependent Role="Articulo">
+              <PropertyRef Name="id_tipo_unidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Historico_dbo_Articulo_id_articulo">
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Historico" Type="Self.Historico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulo">
+              <PropertyRef Name="id_articulo" />
+            </Principal>
+            <Dependent Role="Historico">
+              <PropertyRef Name="id_articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Imagen_dbo_Articulo_id_articulo">
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Imagen" Type="Self.Imagen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulo">
+              <PropertyRef Name="id_articulo" />
+            </Principal>
+            <Dependent Role="Imagen">
+              <PropertyRef Name="id_articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Picking_Articulo_dbo_Articulo_id_articulo">
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="1" />
+          <End Role="Picking_Articulo" Type="Self.Picking_Articulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulo">
+              <PropertyRef Name="id_articulo" />
+            </Principal>
+            <Dependent Role="Picking_Articulo">
+              <PropertyRef Name="id_articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Ubicacion_dbo_Articulo_id_articulo">
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulo">
+              <PropertyRef Name="id_articulo" />
+            </Principal>
+            <Dependent Role="Ubicacion">
+              <PropertyRef Name="id_articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Picking_Articulo_Articulo">
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Picking_Articulo" Type="Self.Picking_Articulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulo">
+              <PropertyRef Name="id_articulo" />
+            </Principal>
+            <Dependent Role="Picking_Articulo">
+              <PropertyRef Name="id_picking" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LogisPack_v1ModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Almacen" EntityType="Self.Almacen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Articulo" EntityType="Self.Articulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Historico" EntityType="Self.Historico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Imagen" EntityType="Self.Imagen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Picking_Articulo" EntityType="Self.Picking_Articulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Facturacion" EntityType="Self.Tipo_Facturacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Unidad" EntityType="Self.Tipo_Unidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ubicacion" EntityType="Self.Ubicacion" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Almacen_Cliente" Association="Self.FK_Almacen_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Almacen" EntitySet="Almacen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Articulo_dbo_Almacen_id_almacen" Association="Self.FK_dbo_Articulo_dbo_Almacen_id_almacen">
+            <End Role="Almacen" EntitySet="Almacen" />
+            <End Role="Articulo" EntitySet="Articulo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Articulo_dbo_Tipo_Facturacion_id_tipo_facturacion" Association="Self.FK_dbo_Articulo_dbo_Tipo_Facturacion_id_tipo_facturacion">
+            <End Role="Tipo_Facturacion" EntitySet="Tipo_Facturacion" />
+            <End Role="Articulo" EntitySet="Articulo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Articulo_dbo_Tipo_Unidad_id_tipo_unidad" Association="Self.FK_dbo_Articulo_dbo_Tipo_Unidad_id_tipo_unidad">
+            <End Role="Tipo_Unidad" EntitySet="Tipo_Unidad" />
+            <End Role="Articulo" EntitySet="Articulo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Historico_dbo_Articulo_id_articulo" Association="Self.FK_dbo_Historico_dbo_Articulo_id_articulo">
+            <End Role="Articulo" EntitySet="Articulo" />
+            <End Role="Historico" EntitySet="Historico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Imagen_dbo_Articulo_id_articulo" Association="Self.FK_dbo_Imagen_dbo_Articulo_id_articulo">
+            <End Role="Articulo" EntitySet="Articulo" />
+            <End Role="Imagen" EntitySet="Imagen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Picking_Articulo_dbo_Articulo_id_articulo" Association="Self.FK_dbo_Picking_Articulo_dbo_Articulo_id_articulo">
+            <End Role="Articulo" EntitySet="Articulo" />
+            <End Role="Picking_Articulo" EntitySet="Picking_Articulo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Ubicacion_dbo_Articulo_id_articulo" Association="Self.FK_dbo_Ubicacion_dbo_Articulo_id_articulo">
+            <End Role="Articulo" EntitySet="Articulo" />
+            <End Role="Ubicacion" EntitySet="Ubicacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Picking_Articulo_Articulo" Association="Self.FK_Picking_Articulo_Articulo">
+            <End Role="Articulo" EntitySet="Articulo" />
+            <End Role="Picking_Articulo" EntitySet="Picking_Articulo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LogisPack_v1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Almacen">
+          <Key>
+            <PropertyRef Name="id_almacen" />
+          </Key>
+          <Property Name="id_almacen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="coeficiente_volumetrico" Type="Double" Nullable="false" />
+          <Property Name="id_cliente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Almacen_Cliente" FromRole="Almacen" ToRole="Cliente" />
+          <NavigationProperty Name="Articulo" Relationship="Self.FK_dbo_Articulo_dbo_Almacen_id_almacen" FromRole="Almacen" ToRole="Articulo" />
+        </EntityType>
+        <EntityType Name="Articulo">
+          <Key>
+            <PropertyRef Name="id_articulo" />
+          </Key>
+          <Property Name="id_articulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="referencia_picking" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="referencia1" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="referencia2" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="referencia3" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="identificacion" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="valor_articulo" Type="Double" />
+          <Property Name="valoracion_stock" Type="Double" />
+          <Property Name="valoracion_seguro" Type="Double" />
+          <Property Name="valor_asegurado" Type="Double" />
+          <Property Name="peso" Type="Double" />
+          <Property Name="alto" Type="Double" />
+          <Property Name="largo" Type="Double" />
+          <Property Name="ancho" Type="Double" />
+          <Property Name="coeficiente_volumetrico" Type="Double" />
+          <Property Name="cubicaje" Type="Double" />
+          <Property Name="peso_volumen" Type="Double" />
+          <Property Name="observaciones_articulo" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="observaciones_generales" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="stock_fisico" Type="Double" />
+          <Property Name="stock_minimo" Type="Double" />
+          <Property Name="id_almacen" Type="Int32" />
+          <Property Name="id_tipo_facturacion" Type="Int32" />
+          <Property Name="id_tipo_unidad" Type="Int32" />
+          <Property Name="tipoArticulo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Almacen" Relationship="Self.FK_dbo_Articulo_dbo_Almacen_id_almacen" FromRole="Articulo" ToRole="Almacen" />
+          <NavigationProperty Name="Tipo_Facturacion" Relationship="Self.FK_dbo_Articulo_dbo_Tipo_Facturacion_id_tipo_facturacion" FromRole="Articulo" ToRole="Tipo_Facturacion" />
+          <NavigationProperty Name="Tipo_Unidad" Relationship="Self.FK_dbo_Articulo_dbo_Tipo_Unidad_id_tipo_unidad" FromRole="Articulo" ToRole="Tipo_Unidad" />
+          <NavigationProperty Name="Historico" Relationship="Self.FK_dbo_Historico_dbo_Articulo_id_articulo" FromRole="Articulo" ToRole="Historico" />
+          <NavigationProperty Name="Imagen" Relationship="Self.FK_dbo_Imagen_dbo_Articulo_id_articulo" FromRole="Articulo" ToRole="Imagen" />
+          <NavigationProperty Name="Picking_Articulo" Relationship="Self.FK_dbo_Picking_Articulo_dbo_Articulo_id_articulo" FromRole="Articulo" ToRole="Picking_Articulo" />
+          <NavigationProperty Name="Ubicacion" Relationship="Self.FK_dbo_Ubicacion_dbo_Articulo_id_articulo" FromRole="Articulo" ToRole="Ubicacion" />
+          <NavigationProperty Name="Picking_Articulo1" Relationship="Self.FK_Picking_Articulo_Articulo" FromRole="Articulo" ToRole="Picking_Articulo" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Almacen" Relationship="Self.FK_Almacen_Cliente" FromRole="Cliente" ToRole="Almacen" />
+        </EntityType>
+        <EntityType Name="Historico">
+          <Key>
+            <PropertyRef Name="id_historico" />
+          </Key>
+          <Property Name="id_historico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha_transaccion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tipo_transaccion" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="referencia_ubicacion" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="documento_transaccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="cantidad_transaccion" Type="Double" Nullable="false" />
+          <Property Name="id_articulo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Articulo" Relationship="Self.FK_dbo_Historico_dbo_Articulo_id_articulo" FromRole="Historico" ToRole="Articulo" />
+        </EntityType>
+        <EntityType Name="Imagen">
+          <Key>
+            <PropertyRef Name="id_imagen" />
+          </Key>
+          <Property Name="id_imagen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="url_imagen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="id_articulo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Articulo" Relationship="Self.FK_dbo_Imagen_dbo_Articulo_id_articulo" FromRole="Imagen" ToRole="Articulo" />
+        </EntityType>
+        <EntityType Name="Picking_Articulo">
+          <Key>
+            <PropertyRef Name="id_picking_articulo" />
+          </Key>
+          <Property Name="id_picking_articulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="unidades" Type="Double" Nullable="false" />
+          <Property Name="id_picking" Type="Int32" Nullable="false" />
+          <Property Name="id_articulo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Articulo" Relationship="Self.FK_dbo_Picking_Articulo_dbo_Articulo_id_articulo" FromRole="Picking_Articulo" ToRole="Articulo" />
+          <NavigationProperty Name="Articulo1" Relationship="Self.FK_Picking_Articulo_Articulo" FromRole="Picking_Articulo" ToRole="Articulo" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tipo_Facturacion">
+          <Key>
+            <PropertyRef Name="id_tipo_facturacion" />
+          </Key>
+          <Property Name="id_tipo_facturacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Articulo" Relationship="Self.FK_dbo_Articulo_dbo_Tipo_Facturacion_id_tipo_facturacion" FromRole="Tipo_Facturacion" ToRole="Articulo" />
+        </EntityType>
+        <EntityType Name="Tipo_Unidad">
+          <Key>
+            <PropertyRef Name="id_tipo_unidad" />
+          </Key>
+          <Property Name="id_tipo_unidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Articulo" Relationship="Self.FK_dbo_Articulo_dbo_Tipo_Unidad_id_tipo_unidad" FromRole="Tipo_Unidad" ToRole="Articulo" />
+        </EntityType>
+        <EntityType Name="Ubicacion">
+          <Key>
+            <PropertyRef Name="id_ubicacion" />
+          </Key>
+          <Property Name="id_ubicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="zona" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="estante" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="fila" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="columna" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="panel" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="referencia_ubicacion" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="id_articulo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Articulo" Relationship="Self.FK_dbo_Ubicacion_dbo_Articulo_id_articulo" FromRole="Ubicacion" ToRole="Articulo" />
+        </EntityType>
+        <Association Name="FK_Almacen_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Almacen" Type="Self.Almacen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="Almacen">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Articulo_dbo_Almacen_id_almacen">
+          <End Role="Almacen" Type="Self.Almacen" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Almacen">
+              <PropertyRef Name="id_almacen" />
+            </Principal>
+            <Dependent Role="Articulo">
+              <PropertyRef Name="id_almacen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Articulo_dbo_Tipo_Facturacion_id_tipo_facturacion">
+          <End Role="Tipo_Facturacion" Type="Self.Tipo_Facturacion" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Facturacion">
+              <PropertyRef Name="id_tipo_facturacion" />
+            </Principal>
+            <Dependent Role="Articulo">
+              <PropertyRef Name="id_tipo_facturacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Articulo_dbo_Tipo_Unidad_id_tipo_unidad">
+          <End Role="Tipo_Unidad" Type="Self.Tipo_Unidad" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Unidad">
+              <PropertyRef Name="id_tipo_unidad" />
+            </Principal>
+            <Dependent Role="Articulo">
+              <PropertyRef Name="id_tipo_unidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Historico_dbo_Articulo_id_articulo">
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Historico" Type="Self.Historico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulo">
+              <PropertyRef Name="id_articulo" />
+            </Principal>
+            <Dependent Role="Historico">
+              <PropertyRef Name="id_articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Imagen_dbo_Articulo_id_articulo">
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Imagen" Type="Self.Imagen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulo">
+              <PropertyRef Name="id_articulo" />
+            </Principal>
+            <Dependent Role="Imagen">
+              <PropertyRef Name="id_articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Picking_Articulo_dbo_Articulo_id_articulo">
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="1" />
+          <End Role="Picking_Articulo" Type="Self.Picking_Articulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulo">
+              <PropertyRef Name="id_articulo" />
+            </Principal>
+            <Dependent Role="Picking_Articulo">
+              <PropertyRef Name="id_articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Ubicacion_dbo_Articulo_id_articulo">
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulo">
+              <PropertyRef Name="id_articulo" />
+            </Principal>
+            <Dependent Role="Ubicacion">
+              <PropertyRef Name="id_articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Picking_Articulo_Articulo">
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Picking_Articulo" Type="Self.Picking_Articulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulo">
+              <PropertyRef Name="id_articulo" />
+            </Principal>
+            <Dependent Role="Picking_Articulo">
+              <PropertyRef Name="id_picking" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="LogisPackEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="Almacen" EntityType="Self.Almacen" />
+          <EntitySet Name="Articulo" EntityType="Self.Articulo" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Historico" EntityType="Self.Historico" />
+          <EntitySet Name="Imagen" EntityType="Self.Imagen" />
+          <EntitySet Name="Picking_Articulo" EntityType="Self.Picking_Articulo" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tipo_Facturacion" EntityType="Self.Tipo_Facturacion" />
+          <EntitySet Name="Tipo_Unidad" EntityType="Self.Tipo_Unidad" />
+          <EntitySet Name="Ubicacion" EntityType="Self.Ubicacion" />
+          <AssociationSet Name="FK_Almacen_Cliente" Association="Self.FK_Almacen_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Almacen" EntitySet="Almacen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Articulo_dbo_Almacen_id_almacen" Association="Self.FK_dbo_Articulo_dbo_Almacen_id_almacen">
+            <End Role="Almacen" EntitySet="Almacen" />
+            <End Role="Articulo" EntitySet="Articulo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Articulo_dbo_Tipo_Facturacion_id_tipo_facturacion" Association="Self.FK_dbo_Articulo_dbo_Tipo_Facturacion_id_tipo_facturacion">
+            <End Role="Tipo_Facturacion" EntitySet="Tipo_Facturacion" />
+            <End Role="Articulo" EntitySet="Articulo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Articulo_dbo_Tipo_Unidad_id_tipo_unidad" Association="Self.FK_dbo_Articulo_dbo_Tipo_Unidad_id_tipo_unidad">
+            <End Role="Tipo_Unidad" EntitySet="Tipo_Unidad" />
+            <End Role="Articulo" EntitySet="Articulo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Historico_dbo_Articulo_id_articulo" Association="Self.FK_dbo_Historico_dbo_Articulo_id_articulo">
+            <End Role="Articulo" EntitySet="Articulo" />
+            <End Role="Historico" EntitySet="Historico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Imagen_dbo_Articulo_id_articulo" Association="Self.FK_dbo_Imagen_dbo_Articulo_id_articulo">
+            <End Role="Articulo" EntitySet="Articulo" />
+            <End Role="Imagen" EntitySet="Imagen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Picking_Articulo_dbo_Articulo_id_articulo" Association="Self.FK_dbo_Picking_Articulo_dbo_Articulo_id_articulo">
+            <End Role="Articulo" EntitySet="Articulo" />
+            <End Role="Picking_Articulo" EntitySet="Picking_Articulo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Ubicacion_dbo_Articulo_id_articulo" Association="Self.FK_dbo_Ubicacion_dbo_Articulo_id_articulo">
+            <End Role="Articulo" EntitySet="Articulo" />
+            <End Role="Ubicacion" EntitySet="Ubicacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Picking_Articulo_Articulo" Association="Self.FK_Picking_Articulo_Articulo">
+            <End Role="Articulo" EntitySet="Articulo" />
+            <End Role="Picking_Articulo" EntitySet="Picking_Articulo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LogisPack_v1ModelStoreContainer" CdmEntityContainer="LogisPackEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="LogisPack_v1Model.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Almacen">
+            <EntityTypeMapping TypeName="LogisPack_v1Model.Almacen">
+              <MappingFragment StoreEntitySet="Almacen">
+                <ScalarProperty Name="id_almacen" ColumnName="id_almacen" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="coeficiente_volumetrico" ColumnName="coeficiente_volumetrico" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Articulo">
+            <EntityTypeMapping TypeName="LogisPack_v1Model.Articulo">
+              <MappingFragment StoreEntitySet="Articulo">
+                <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="referencia_picking" ColumnName="referencia_picking" />
+                <ScalarProperty Name="referencia1" ColumnName="referencia1" />
+                <ScalarProperty Name="referencia2" ColumnName="referencia2" />
+                <ScalarProperty Name="referencia3" ColumnName="referencia3" />
+                <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+                <ScalarProperty Name="valor_articulo" ColumnName="valor_articulo" />
+                <ScalarProperty Name="valoracion_stock" ColumnName="valoracion_stock" />
+                <ScalarProperty Name="valoracion_seguro" ColumnName="valoracion_seguro" />
+                <ScalarProperty Name="valor_asegurado" ColumnName="valor_asegurado" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="alto" ColumnName="alto" />
+                <ScalarProperty Name="largo" ColumnName="largo" />
+                <ScalarProperty Name="ancho" ColumnName="ancho" />
+                <ScalarProperty Name="coeficiente_volumetrico" ColumnName="coeficiente_volumetrico" />
+                <ScalarProperty Name="cubicaje" ColumnName="cubicaje" />
+                <ScalarProperty Name="peso_volumen" ColumnName="peso_volumen" />
+                <ScalarProperty Name="observaciones_articulo" ColumnName="observaciones_articulo" />
+                <ScalarProperty Name="observaciones_generales" ColumnName="observaciones_generales" />
+                <ScalarProperty Name="stock_fisico" ColumnName="stock_fisico" />
+                <ScalarProperty Name="stock_minimo" ColumnName="stock_minimo" />
+                <ScalarProperty Name="id_almacen" ColumnName="id_almacen" />
+                <ScalarProperty Name="id_tipo_facturacion" ColumnName="id_tipo_facturacion" />
+                <ScalarProperty Name="id_tipo_unidad" ColumnName="id_tipo_unidad" />
+                <ScalarProperty Name="tipoArticulo" ColumnName="tipoArticulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="LogisPack_v1Model.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="LogisPack_v1Model.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="LogisPack_v1Model.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="LogisPack_v1Model.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="LogisPack_v1Model.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Historico">
+            <EntityTypeMapping TypeName="LogisPack_v1Model.Historico">
+              <MappingFragment StoreEntitySet="Historico">
+                <ScalarProperty Name="id_historico" ColumnName="id_historico" />
+                <ScalarProperty Name="fecha_transaccion" ColumnName="fecha_transaccion" />
+                <ScalarProperty Name="tipo_transaccion" ColumnName="tipo_transaccion" />
+                <ScalarProperty Name="referencia_ubicacion" ColumnName="referencia_ubicacion" />
+                <ScalarProperty Name="documento_transaccion" ColumnName="documento_transaccion" />
+                <ScalarProperty Name="cantidad_transaccion" ColumnName="cantidad_transaccion" />
+                <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Imagen">
+            <EntityTypeMapping TypeName="LogisPack_v1Model.Imagen">
+              <MappingFragment StoreEntitySet="Imagen">
+                <ScalarProperty Name="id_imagen" ColumnName="id_imagen" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="url_imagen" ColumnName="url_imagen" />
+                <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Picking_Articulo">
+            <EntityTypeMapping TypeName="LogisPack_v1Model.Picking_Articulo">
+              <MappingFragment StoreEntitySet="Picking_Articulo">
+                <ScalarProperty Name="id_picking_articulo" ColumnName="id_picking_articulo" />
+                <ScalarProperty Name="unidades" ColumnName="unidades" />
+                <ScalarProperty Name="id_picking" ColumnName="id_picking" />
+                <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="LogisPack_v1Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Facturacion">
+            <EntityTypeMapping TypeName="LogisPack_v1Model.Tipo_Facturacion">
+              <MappingFragment StoreEntitySet="Tipo_Facturacion">
+                <ScalarProperty Name="id_tipo_facturacion" ColumnName="id_tipo_facturacion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Unidad">
+            <EntityTypeMapping TypeName="LogisPack_v1Model.Tipo_Unidad">
+              <MappingFragment StoreEntitySet="Tipo_Unidad">
+                <ScalarProperty Name="id_tipo_unidad" ColumnName="id_tipo_unidad" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ubicacion">
+            <EntityTypeMapping TypeName="LogisPack_v1Model.Ubicacion">
+              <MappingFragment StoreEntitySet="Ubicacion">
+                <ScalarProperty Name="id_ubicacion" ColumnName="id_ubicacion" />
+                <ScalarProperty Name="zona" ColumnName="zona" />
+                <ScalarProperty Name="estante" ColumnName="estante" />
+                <ScalarProperty Name="fila" ColumnName="fila" />
+                <ScalarProperty Name="columna" ColumnName="columna" />
+                <ScalarProperty Name="panel" ColumnName="panel" />
+                <ScalarProperty Name="referencia_ubicacion" ColumnName="referencia_ubicacion" />
+                <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="LogisPack_v1Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

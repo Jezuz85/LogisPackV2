@@ -1,0 +1,196 @@
+﻿<%@ Master Language="VB" AutoEventWireup="true" CodeBehind="Site.master.vb" Inherits="LogisPack_v1._2.SiteMaster" %>
+
+<%@ Register Src="~/Portal/WebUserControl/MsjModal.ascx" TagPrefix="ucm" TagName="ucMsjModal" %>
+
+<%@ Import Namespace="LogisPack_v1._2" %>
+<%@ Import Namespace="Microsoft.AspNet.Identity" %>
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - LogisPack</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/Direcline" />
+
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--Para obtener más información sobre la unión de scripts en ScriptManager, consulte https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Scripts de marco--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Scripts del sitio--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <%: Scripts.Render("~/bundles/MisScripts") %>
+
+        <div id="masterHeaderContainer">
+            <table id="masterHeader">
+                <tbody>
+                    <tr>
+                        <td id="masterCompanyLogo">
+                            <a href="Default.aspx" id="lnkMasterCompanyLogo" title="Ir a la página de menú"></a>
+                        </td>
+                        <td id="masterSessionCompanyMenuContainer">
+                            <table class="maxSize">
+                                <tbody>
+                                    <tr>
+                                        <td id="masterSession">
+                                            
+                                            <asp:LoginView runat="server" ViewStateMode="Disabled">
+												<anonymoustemplate>
+													<div>
+														<a runat="server" href="~/Account/Register">Registrarse</a>|
+														<a runat="server" href="~/Account/Login">Iniciar sesión</a>
+													</div>
+												</anonymoustemplate>
+                                                <LoggedInTemplate>
+                                                    <div>
+                                                        Usuario:
+                                                        <a id="lnkUsuario" runat="server" href="~/Account/Manage" title="Perfil">
+                                                            <%: Context.User.Identity.GetUserName()  %>
+                                                        </a>
+                                                    </div>
+                                                    <div id="divSesionDepartamento">
+                                                        Departamento:<span id="lblSesionDepartamento">-</span>
+                                                    </div>
+
+                                                    <div id="divSesionCliente">
+                                                        Cliente:<span id="lblSesionCliente">-</span>
+                                                    </div>
+
+                                                    <%--<a id="lnkCloseSession" tabindex="-1" href="javascript:__doPostBack('ctl00$lnkCloseSession','')">Cerrar sesión</a>--%>
+
+                                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+
+                                                </LoggedInTemplate>
+                                            </asp:LoginView>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td id="masterCompany"><span id="masterCompanySlogan">LogisPack</span></td>
+                                    </tr>
+                                    <tr>
+
+                                        <td id="masterMainMenu">
+
+                                            <div class="navbar">
+                                                <div class="container">
+                                                    <div class="navbar-collapse collapse">
+                                                        <ul class="nav navbar-nav">
+                                                            <li><a runat="server" href="~/">Inicio</a></li>
+                                                            <li class="dropdown">
+                                                                <a class="dropbtn" runat="server" href="~/Portal/Cliente/index">Cliente</a>
+
+                                                                <%--<div class="dropdown-content">
+																	<a href="#">Nuevo Cliente</a>
+																</div>--%>
+                                                            </li>
+                                                            <li class="dropdown">
+                                                                <a runat="server" href="~/Portal/Almacen/index">Almacen</a>
+
+                                                                <%--<div class="dropdown-content">
+																	<a href="#">Nuevo Almacén</a>
+																</div>--%>
+                                                            </li>
+                                                            <li class="dropdown">
+                                                                <a class="dropbtn" runat="server" href="~/Portal/Articulo/index">Articulo</a>
+
+                                                                <div class="dropdown-content">
+                                                                    <a href="../../Portal/Articulo/Crear">Nuevo Articulo</a>
+                                                                </div>
+                                                            </li>
+                                                            <li class="dropdown">
+                                                                <a runat="server" href="~/Portal/Operacion/index">Operacion</a>
+
+                                                                <%--<div class="dropdown-content">
+																	<a href="#">Nueva Entrada</a>
+																	<a href="#">Nueva Salida</a>
+																</div>--%>
+                                                            </li>
+                                                            <li class="dropdown">
+                                                                <a runat="server" href="~/Portal/TipoFacturacion/index">Tipo de Facturación</a>
+
+                                                                <%--<div class="dropdown-content">
+																	<a href="#">Nuevo Tipo de Facturación</a>
+																</div>--%>
+                                                            </li>
+                                                            <li class="dropdown">
+                                                                <a runat="server" href="~/Portal/TipoUnidad/index">Tipo de Unidad</a>
+
+                                                                <%--<div class="dropdown-content">
+																	<a href="#">Nuevo Tipo de Unidad</a>
+																</div>--%>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - Logis Pack</p>
+            </footer>
+        </div>
+
+        <!-- Msj Modal -->
+        <ucm:ucMsjModal runat="server" ID="ucMsjModal" />
+    </form>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            load();
+        };
+        var prm = Sys.WebForms.PageRequestManager.getInstance();
+        if (prm != null) {
+            prm.add_endRequest(function (sender, e) {
+                if (sender._postBackSettings.panelsToUpdate != null) {
+                    load();
+                }
+            });
+        };
+    </script>
+
+</body>
+</html>
