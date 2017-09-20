@@ -5,7 +5,7 @@ Public Class Tabla
     ''' <summary>
     ''' Metodo que recibe el gridview para llenar con los datos del almacen en la base de datos
     ''' </summary>
-    Public Shared Sub Almacen(ByRef GridView1 As GridView)
+    Public Shared Sub Almacen(ByRef GridView1 As GridView, idCliente As Integer, columna As String, tipoOrdenacion As String)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
@@ -14,8 +14,33 @@ Public Class Tabla
                          AL.id_almacen,
                          AL.nombre,
                          AL.id_cliente,
+                         cliente = AL.Cliente.nombre,
                          AL.coeficiente_volumetrico
                     ).ToList()
+
+        If idCliente <> 1 Then
+
+            query = (From AL In contexto.Almacen
+                     Where AL.id_cliente = idCliente
+                     Select
+                         AL.id_almacen,
+                         AL.nombre,
+                         AL.id_cliente,
+                         cliente = AL.Cliente.nombre,
+                         AL.coeficiente_volumetrico
+                    ).ToList()
+        End If
+
+        If columna = "Nombre" Then
+
+            If tipoOrdenacion = "1" Then
+                query = query.OrderBy(Function(x) x.nombre).ToList()
+            Else
+                query = query.OrderByDescending(Function(x) x.nombre).ToList()
+            End If
+
+        End If
+
 
         GridView1.DataSource = query
         GridView1.DataBind()

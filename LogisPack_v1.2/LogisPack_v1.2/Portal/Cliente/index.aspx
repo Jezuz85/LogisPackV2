@@ -34,7 +34,6 @@
 					<!-- SECCIÓN FILTROS -->
 					<div id="sectionContentFiltrosCabecera" class="section_Content collapse in">
 						<div class="row_Content">
-
 							<div class="row">								
 								<div class="col-md-6">
 									<asp:TextBox ID="txtSearch" runat="server" placeholder="Ingrese el texto a buscar" maxlength="200" autocomplete="off"></asp:TextBox>
@@ -62,7 +61,7 @@
 							<asp:GridView ID="GridView1" class="grid gridSelectable gridSortable noPadding noMargin"
 								runat="server"
 								AutoGenerateColumns="false"
-								AllowPaging="true" PageSize="10"
+								AllowPaging="true" PageSize="30"
 								OnRowDeleting="GridView1_RowDeleting"
 								OnRowEditing="GridView1_onRowEditing"
 								OnPageIndexChanging="GridView1_PageIndexChanging" EmptyDataText="No existen Registros">
@@ -85,13 +84,16 @@
 											<asp:Label ID="nombre" runat="server" Text='<%# Eval("nombre") %>' />
 										</ItemTemplate>
 									</asp:TemplateField>
+									
+									<asp:ButtonField HeaderText="Editar" CommandName="Edit" 
+										ButtonType="Image" ImageUrl="~/Content/images/edit.png" 
+										HeaderStyle-CssClass="text-center" 
+										ItemStyle-HorizontalAlign="Center"></asp:ButtonField>
 
-									<asp:ButtonField HeaderText="Editar" CommandName="Edit" ButtonType="Image" Text="Editar"
-										HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default"></asp:ButtonField>
-
-									<asp:ButtonField HeaderText="Eliminar" CommandName="Delete" ButtonType="Image" Text="Eliminar"
-										HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default"></asp:ButtonField>
-
+									<asp:ButtonField HeaderText="Eliminar" CommandName="Delete" 
+										ButtonType="Image" ImageUrl="~/Content/images/baja.png" 
+										HeaderStyle-CssClass="text-center" 
+										ItemStyle-HorizontalAlign="Center"></asp:ButtonField>
 								</Columns>
 							</asp:GridView>
 						</div>

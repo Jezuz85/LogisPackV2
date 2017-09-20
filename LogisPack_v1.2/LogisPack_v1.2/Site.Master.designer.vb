@@ -77,6 +77,15 @@ Partial Public Class SiteMaster
     Protected WithEvents dropbtn_TipoUnidad As Global.System.Web.UI.HtmlControls.HtmlAnchor
     
     '''<summary>
+    '''Control ScriptManager1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
+    
+    '''<summary>
     '''Control MainContent.
     '''</summary>
     '''<remarks>

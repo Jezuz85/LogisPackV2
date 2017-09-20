@@ -386,7 +386,7 @@ CapaDatos
  Metodo que oculta el updatepanel de Alerta
  </summary>
 </member>
-<member name="M:CapaDatos.Tabla.Almacen(System.Web.UI.WebControls.GridView@)">
+<member name="M:CapaDatos.Tabla.Almacen(System.Web.UI.WebControls.GridView@,System.Int32,System.String,System.String)">
  <summary>
  Metodo que recibe el gridview para llenar con los datos del almacen en la base de datos
  </summary>

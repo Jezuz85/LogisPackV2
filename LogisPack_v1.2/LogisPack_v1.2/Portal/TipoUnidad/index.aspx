@@ -57,7 +57,7 @@
 					<div class="sectionContent sectionGrid noPadding noMargin">
 						<div id="updGrid">
 							<asp:GridView ID="GridView1" class="grid gridSelectable gridSortable noPadding noMargin" 
-								runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="10"                                 
+								runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="30"                                 
 								OnRowDeleting="GridView1_RowDeleting"
 								OnRowEditing="GridView1_onRowEditing"
 								OnPageIndexChanging="GridView1_PageIndexChanging" 
@@ -76,11 +76,16 @@
 										</ItemTemplate>
 									</asp:TemplateField>
 
-									<asp:ButtonField CommandName="Edit" ButtonType="Image" Text="Editar"
-										HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default"></asp:ButtonField>
-
-									<asp:ButtonField CommandName="Delete" ButtonType="Image" Text="Eliminar"
-										HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-default"></asp:ButtonField>
+                                    
+									<asp:ButtonField HeaderText="Editar" CommandName="Edit" 
+										ButtonType="Image" ImageUrl="~/Content/images/edit.png" 
+										HeaderStyle-CssClass="text-center" 
+										ItemStyle-HorizontalAlign="Center"></asp:ButtonField>
+                                    
+									<asp:ButtonField HeaderText="Eliminar" CommandName="Delete" 
+										ButtonType="Image" ImageUrl="~/Content/images/baja.png" 
+										HeaderStyle-CssClass="text-center" 
+										ItemStyle-HorizontalAlign="Center"></asp:ButtonField>
 
 								</Columns>
 							</asp:GridView>
@@ -91,7 +96,7 @@
 
 				<div class="row">
 					<div class="col-md-12">
-						<asp:ImageButton AlternateText="Registrar" ID="btnCrear" runat="server" CssClass="btn btn-default" data-toggle="modal" data-target="#AddModal" />
+						<asp:ImageButton AlternateText="Nuevo" align="right" ID="btnCrear" runat="server" CssClass="btn btn-default" data-toggle="modal" data-target="#AddModal" />
 					</div>
 				</div>
 			</div>

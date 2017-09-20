@@ -46,7 +46,7 @@ Public Class index
     ''' Metodo que llena El Gridview con datos de la Base de Datos
     ''' </summary>
     Private Sub LlenarGridView()
-        Tabla.Almacen(GridView1)
+        Tabla.Almacen(GridView1, idCliente, "", "")
     End Sub
 
     ''' <summary>
@@ -101,6 +101,88 @@ Public Class index
         Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
 
     End Sub
+    Protected Sub GridView1_OnSorting(ByVal sender As Object, ByVal e As GridViewSortEventArgs)
+
+        Dim sortField = e.SortExpression
+        Dim SortDirection = e.SortDirection
+
+        If GridView1.Attributes("CurrentSortField") IsNot Nothing AndAlso
+            GridView1.Attributes("CurrentSortDirection") IsNot Nothing Then
+
+            If sortField = GridView1.Attributes("CurrentSortField") Then
+                If GridView1.Attributes("CurrentSortDirection") = "ASC" Then
+                    SortDirection = SortDirection.Descending
+                Else
+                    SortDirection = SortDirection.Ascending
+                End If
+            End If
+
+            GridView1.Attributes("CurrentSortField") = sortField
+            ViewState("SortExpression") = sortField
+
+            If SortDirection = SortDirection.Ascending Then
+                GridView1.Attributes("CurrentSortDirection") = "ASC"
+                ViewState("GridViewSortDirection") = SortDirection.Ascending
+            Else
+                GridView1.Attributes("CurrentSortDirection") = "DESC"
+                ViewState("GridViewSortDirection") = SortDirection.Descending
+            End If
+
+
+        End If
+        'If e.SortExpression <> ViewState("SortExpression") Then
+        '    e.SortDirection = SortDirection.Descending
+        '    ViewState("GridViewSortDirection") = e.SortDirection
+
+        'ElseIf ViewState("GridViewSortDirection") = SortDirection.Ascending Then
+        '    ViewState("GridViewSortDirection") = SortDirection.Descending
+        '    e.SortDirection = SortDirection.Descending
+
+        'ElseIf ViewState("GridViewSortDirection") = SortDirection.Descending Then
+        '    ViewState("GridViewSortDirection") = SortDirection.Ascending
+        '    e.SortDirection = SortDirection.Ascending
+        'End If
+        'ViewState("SortExpression") = e.SortExpression
+
+        Tabla.Almacen(GridView1, idCliente, "" & ViewState("SortExpression"), "" & ViewState("GridViewSortDirection"))
+
+    End Sub
+    Protected Sub GridView1_RowCreated(sender As Object, e As GridViewRowEventArgs)
+        If e.Row.RowType = DataControlRowType.Header Then
+            For Each tc As TableCell In e.Row.Cells
+                If tc.HasControls() Then
+
+                    Dim lnk As LinkButton = Nothing
+
+                    If TypeOf tc.Controls(0) Is LinkButton Then
+                        lnk = CType(tc.Controls(0), LinkButton)
+                    End If
+
+                    If lnk IsNot Nothing AndAlso GridView1.Attributes("CurrentSortField") = lnk.CommandArgument Then
+                        Dim image As New Image()
+
+                        If GridView1.Attributes("CurrentSortDirection") = "ASC" Then
+                            image.ImageUrl = "~/Content/images/arrow-orderasc.png"
+                        Else
+                            image.ImageUrl = "~/Content/images/arrow-orderdesc.png"
+                        End If
+
+                        tc.Controls.Add(New LiteralControl("&nbsp;"))
+                        tc.Controls.Add(image)
+
+                    End If
+
+
+
+                End If
+
+            Next
+
+        End If
+
+    End Sub
+
+
 
     ''' <summary>
     ''' Metodo que crea un objeto Almacen y lo guarda en la base de datos

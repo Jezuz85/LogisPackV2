@@ -553,7 +553,7 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="M:LogisPack_v1._2.Manager_Usuario.GetNombreCliente(System.String)">
  <summary>
  Metodo que recibe un id del usuario y lo consulta desde la Base de datos, 
- devuelve el id del cliente asociado al usuario si fue exitoso, de lo contrario no devuelve nothing
+ devuelve el nombre del cliente asociado al usuario si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
 <member name="F:LogisPack_v1._2.index._updatePanelPrinicpal">
@@ -3024,6 +3024,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:LogisPack_v1._2.SiteMaster._dropbtn_TipoUnidad">
 <summary>
 Control dropbtn_TipoUnidad.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.SiteMaster._ScriptManager1">
+<summary>
+Control ScriptManager1.
 </summary>
 <remarks>
 Campo generado automáticamente.

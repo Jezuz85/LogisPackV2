@@ -334,7 +334,7 @@
 							<div class="box-body">
 								<div class="dataTables_wrapper form-inline dt-bootstrap">
 									<asp:GridView ID="GridView1" class="grid gridSelectable gridSortable noPadding noMargin" runat="server"
-										AutoGenerateColumns="false" AllowPaging="true" PageSize="10" OnRowCommand="GridView1_RowCommand"
+										AutoGenerateColumns="false" AllowPaging="true" PageSize="30" OnRowCommand="GridView1_RowCommand"
 										OnPageIndexChanging="GridView1_PageIndexChanging" EmptyDataText="No existen Registros">
 
 										<Columns>

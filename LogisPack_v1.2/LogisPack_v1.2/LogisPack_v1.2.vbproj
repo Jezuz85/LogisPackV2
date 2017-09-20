@@ -303,8 +303,15 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CustomCss.css" />
     <Content Include="Content\dlweb.css" />
+    <Content Include="Content\images\arrow-orderasc.png" />
+    <Content Include="Content\images\arrow-orderdesc.png" />
+    <Content Include="Content\images\baja.png" />
+    <Content Include="Content\images\edit.png" />
+    <Content Include="Content\images\loader_48x48.gif" />
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\maximize_16x16.png" />
     <Content Include="Content\images\minimize_16x16.png" />
+    <Content Include="Content\images\vermas.png" />
     <Content Include="Content\jQueryUiCss.css" />
     <Content Include="Content\MainMasterCss.css" />
     <Content Include="Content\NormalizeCss.css" />
@@ -344,6 +351,7 @@
     <Content Include="Portal\WebUserControl\MsjModal.ascx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Custom.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />

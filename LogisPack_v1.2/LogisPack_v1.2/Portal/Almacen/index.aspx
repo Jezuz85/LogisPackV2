@@ -27,8 +27,8 @@
 						<div class="sectionHeaderTitle">
 							Detalles Almacén
 						</div>
-						<div class="sectionHeaderButtons" data-toggle="collapse" data-target="#CabeceraTree">
-							<img class="sectionHeaderButton" src="../../Content/images/minimize_16x16.png">
+						<div id="sectionHeaderButtons1" class="sectionHeaderButtons" data-toggle="collapse" data-target="#CabeceraTree">
+							<img id="sectionHeaderButton1" class="sectionHeaderButton" src="../../Content/images/minimize_16x16.png">
 						</div>
 					</div>
 
@@ -80,8 +80,8 @@
 						<div class="sectionHeaderTitle">
 							Búsqueda
 						</div>
-						<div class="sectionHeaderButtons" data-toggle="collapse" data-target="#sectionContentFiltrosCabecera">
-							<img class="sectionHeaderButton" src="../../Content/images/minimize_16x16.png">
+						<div id="sectionHeaderButtons2" class="sectionHeaderButtons" data-toggle="collapse" data-target="#sectionContentFiltrosCabecera">
+							<img id="sectionHeaderButton2" class="sectionHeaderButton" src="../../Content/images/minimize_16x16.png">
 						</div>
 					</div>
 
@@ -113,49 +113,61 @@
 					<div class="sectionContent sectionGrid noPadding noMargin">
 						<div id="updGrid">
 							<asp:GridView ID="GridView1" class="grid gridSelectable gridSortable noPadding noMargin" runat="server"
-								AutoGenerateColumns="false" AllowPaging="true" PageSize="10"
-								OnRowCommand="GridView1_RowCommand"
-								OnRowDeleting="GridView1_RowDeleting"
-								OnRowEditing="GridView1_onRowEditing"
-								OnPageIndexChanging="GridView1_PageIndexChanging"
-								EmptyDataText="No existen Registros">
+								AutoGenerateColumns="false" AllowPaging="true" PageSize="30"
+								OnRowCommand = "GridView1_RowCommand"
+                                OnSorting = "GridView1_OnSorting"
+								OnRowDeleting = "GridView1_RowDeleting"
+								OnRowEditing = "GridView1_onRowEditing"
+                                OnRowCreated = "GridView1_RowCreated"
+								OnPageIndexChanging = "GridView1_PageIndexChanging"
+                                allowsorting = "true" 
+								EmptyDataText = "No existen Registros"
+                                Autopostback ="true"
+                                CurrentSortField = "id_almacen" 
+                                CurrentSortDirection = "ASC">
 
 								<Columns>
-									<asp:TemplateField HeaderText="Id Categoria" Visible="false" HeaderStyle-CssClass="text-center">
+                                    
+									<asp:TemplateField Visible="false" HeaderStyle-CssClass="text-center">
 										<ItemTemplate>
 											<asp:Label ID="id" runat="server" Text='<%# Eval("id_almacen") %>' />
 										</ItemTemplate>
 									</asp:TemplateField>
 
-									<asp:TemplateField HeaderText="Nombre" HeaderStyle-CssClass="text-center">
-										<ItemTemplate>
-											<asp:Label ID="nombre" runat="server" Text='<%# Eval("nombre") %>' />
-										</ItemTemplate>
-									</asp:TemplateField>
+                                    <asp:boundfield datafield="nombre"
+                                        headertext="Nombre"
+                                        sortexpression="Nombre">
+                                    </asp:boundfield>
 
-									<asp:TemplateField HeaderText="Id Cliente" HeaderStyle-CssClass="text-center">
-										<ItemTemplate>
-											<asp:Label ID="id_cliente" runat="server" Text='<%# Eval("id_cliente") %>' />
-										</ItemTemplate>
-									</asp:TemplateField>
+                                    <asp:boundfield datafield="cliente"
+                                        headertext="Cliente"
+                                        HeaderStyle-CssClass="text-center"
+                                        sortexpression="Cliente">
+                                    </asp:boundfield>
+                                    
+                                    <asp:boundfield datafield="coeficiente_volumetrico"
+                                        headertext="Coeficiente Volumétrico"
+                                        HeaderStyle-CssClass="text-center"
+                                        sortexpression="Coeficiente">
+                                    </asp:boundfield>
 
-									<asp:TemplateField HeaderText="coeficiente_volumetrico" HeaderStyle-CssClass="text-center">
-										<ItemTemplate>
-											<asp:Label ID="coeficiente_volumetrico" runat="server" Text='<%# Eval("coeficiente_volumetrico") %>' />
-										</ItemTemplate>
-									</asp:TemplateField>
+									<asp:ButtonField HeaderText="Editar" CommandName="Edit" 
+										ButtonType="Image" ImageUrl="~/Content/images/edit.png" 
+										HeaderStyle-CssClass="text-center" 
+										ItemStyle-HorizontalAlign="Center">
+                                    </asp:ButtonField>
 
-									<asp:ButtonField CommandName="Edit" ButtonType="Image" Text="Editar"
-										HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center"
-										ControlStyle-CssClass="btn btn-default"></asp:ButtonField>
+                                    <asp:ButtonField HeaderText="Detalles" CommandName="View" 
+										ButtonType="Image" ImageUrl="~/Content/images/vermas.png" 
+										HeaderStyle-CssClass="text-center" 
+										ItemStyle-HorizontalAlign="Center">
+                                    </asp:ButtonField>
 
-									<asp:ButtonField CommandName="View" ButtonType="Image" Text="Detalles"
-										HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center"
-										ControlStyle-CssClass="btn btn-default"></asp:ButtonField>
-
-									<asp:ButtonField CommandName="Delete" ButtonType="Image" Text="Eliminar"
-										HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center"
-										ControlStyle-CssClass="btn btn-default"></asp:ButtonField>
+                                    <asp:ButtonField HeaderText="Eliminar" CommandName="Delete" 
+										ButtonType="Image" ImageUrl="~/Content/images/baja.png" 
+										HeaderStyle-CssClass="text-center" 
+										ItemStyle-HorizontalAlign="Center">
+                                    </asp:ButtonField>
 
 								</Columns>
 							</asp:GridView>
@@ -165,7 +177,7 @@
 
 				<div class="row">
 					<div class="col-md-12">
-						<asp:ImageButton AlternateText="Registrar" ID="btnCrear" runat="server" CssClass="btn btn-default" data-toggle="modal" data-target="#AddModal" />
+						<asp:ImageButton AlternateText="Nuevo" align="right"  ID="btnCrear" runat="server" CssClass="btn btn-default" data-toggle="modal" data-target="#AddModal" />
 					</div>
 				</div>
 			</div>
@@ -173,7 +185,6 @@
 		</ContentTemplate>
 		<Triggers></Triggers>
 	</asp:UpdatePanel>
-
 
 	<!-- Add Modal -->
 	<div id="AddModal"class="modal fade">
@@ -365,56 +376,74 @@
 		</div>
 	</div>
 
-	<!-- View Modal -->
-	<div id="ViewModal"class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
+    <!-- View Modal -->
+    <div id="ViewModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-				<div class="modal-header">
-					<button id="btnViewCerrar" type="button" class="close" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-					<h3><strong>Ver Registro</strong></h3>
-				</div>
+                <div class="modal-header">
+                    <button id="btnViewCerrar" type="button" class="close" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+                    <h3><strong>Ver Registro</strong></h3>
+                </div>
 
-				<asp:UpdatePanel ID="UpdatePanel2" runat="server">
-					<ContentTemplate>
-						<div class="modal-body form-group">
-							<asp:HiddenField ID="hdfView" runat="server" />
+                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                    <ContentTemplate>
+                        <div class="modal-body form-group">
+                            <asp:HiddenField ID="hdfView" runat="server" />
 
-							<div class="row">
-								<div class="col-md-8 col-md-offset-2">
-									<h4><strong>Código</strong></h4>
-									<asp:Label ID="lbViewCodigo" runat="server" ClientIDMode="Static"></asp:Label>
-								</div>
-							</div>
+                            <div class="row">
+                                <div class="col-md-2 col-md-offset-2">
+                                    <h3><strong>Código</strong></h3>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>
+                                        <asp:Label ID="lbViewCodigo" runat="server" ClientIDMode="Static"></asp:Label>
+                                    </h4>
+							
+                                </div>
+                            </div>
 
-							<div class="row">
-								<div class="col-md-8 col-md-offset-2">
-									<h4><strong>Nombre</strong></h4>
-									<asp:Label ID="lbViewNombre" runat="server" ClientIDMode="Static"></asp:Label>
-								</div>
-							</div>
+                            <div class="row">
+                                <div class="col-md-2 col-md-offset-2">
+                                    <h3><strong>Nombre</strong></h3>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>
+                                        <asp:Label ID="lbViewNombre" runat="server" ClientIDMode="Static"></asp:Label>
+                                    </h4>
+                                </div>
+                            </div>
 
-							<div class="row">
-								<div class="col-md-8 col-md-offset-2">
-									<h4><strong>Coeficiente volumétrico</strong></h4>
-									<asp:Label ID="lbViewCoefVol" runat="server" ClientIDMode="Static"></asp:Label>
-								</div>
-							</div>
+                            <div class="row">
+                                <div class="col-md-5 col-md-offset-2">
+                                    <h3><strong>Coeficiente volumétrico</strong></h3>
+                                </div>
+                                <div class="col-md-3">
+                                    <h4>
+                                        <asp:Label ID="lbViewCoefVol" runat="server" ClientIDMode="Static"></asp:Label>
+                                    </h4>
+                                </div>
+                            </div>
 
-							<div class="row">
-								<div class="col-md-8 col-md-offset-2">
-									<h4><strong>Cliente</strong></h4>
-									<asp:Label ID="lbViewCliente" runat="server" ClientIDMode="Static"></asp:Label>
-								</div>
-							</div>
-						</div>
+                            <div class="row">
+                                <div class="col-md-2 col-md-offset-2">
+                                    <h3><strong>Cliente</strong></h3>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>
+                                    <asp:Label ID="lbViewCliente" runat="server" ClientIDMode="Static"></asp:Label>
 
-					</ContentTemplate>
-					<Triggers></Triggers>
-				</asp:UpdatePanel>
-			</div>
-		</div>
-	</div>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+
+                    </ContentTemplate>
+                    <Triggers></Triggers>
+                </asp:UpdatePanel>
+            </div>
+        </div>
+    </div>
 
 	<!-- Delete Modal -->
 	<div id="DeleteModal"class="modal fade">

@@ -43,7 +43,7 @@ Public Class Manager_Usuario
 
     ''' <summary>
     ''' Metodo que recibe un id del usuario y lo consulta desde la Base de datos, 
-    ''' devuelve el id del cliente asociado al usuario si fue exitoso, de lo contrario no devuelve nothing
+    ''' devuelve el nombre del cliente asociado al usuario si fue exitoso, de lo contrario no devuelve nothing
     ''' </summary>
     Public Shared Function GetNombreCliente(_id As String) As String
 

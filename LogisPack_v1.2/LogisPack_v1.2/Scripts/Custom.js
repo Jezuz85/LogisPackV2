@@ -8,9 +8,7 @@ function MostrarMsjModal(message, title, ccsclas) {
 }
 
 function load() {
-
-    console.log("entro");
-
+    
     var URLActual = "" + window.location;
 
     if (URLActual.includes("Portal/Articulo/Crear") || URLActual.includes("Portal/Articulo/Editar")) {
@@ -107,5 +105,43 @@ function load() {
         $('#lblMsjTitle').html(title);
         $('#lblMsjModal').html(message);
         $('#Msjmodal').modal('show');
+    }
+
+
+    if (URLActual.includes("Portal/Almacen/index")) {
+        $("#sectionHeaderButtons1").click(function () {
+
+            if ($('#CabeceraTree').css('display') == "none") {
+                $("#sectionHeaderButton1").attr("src", "../../Content/images/minimize_16x16.png");
+            }
+            else {
+                $("#sectionHeaderButton1").attr("src", "../../Content/images/maximize_16x16.png");
+            }
+
+        });
+
+        $("#sectionHeaderButtons2").click(function () {
+
+            if ($('#sectionContentFiltrosCabecera').css('display') == "none") {
+                $("#sectionHeaderButton2").attr("src", "../../Content/images/minimize_16x16.png");
+            }
+            else {
+                $("#sectionHeaderButton2").attr("src", "../../Content/images/maximize_16x16.png");
+            }
+
+        });
+    }
+    else
+    {
+        $(".sectionHeaderButtons").click(function () {
+
+            if ($('#sectionContentFiltrosCabecera').css('display') == "none") {
+                $("#sectionHeaderFiltros img").attr("src", "../../Content/images/minimize_16x16.png");
+            }
+            else {
+                $("#sectionHeaderFiltros img").attr("src", "../../Content/images/maximize_16x16.png");
+            }
+
+        });
     }
 }
