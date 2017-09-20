@@ -5,12 +5,24 @@ Imports Microsoft.AspNet.Identity.Owin
 Partial Public Class Register
     Inherits Page
 
+    Private idCliente As Integer
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
-        If IsPostBack = False Then
-            Listas.Rol(ddlRol)
-            Listas.Cliente(ddlCliente)
+        If Manager_Usuario.ValidarAutenticado(User) Then
+
+            idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
+
+            If IsPostBack = False Then
+                Listas.Rol(ddlRol)
+                Listas.Cliente(ddlCliente, idCliente)
+            End If
+
+        Else
+            Response.Redirect(Paginas.Login.ToString)
         End If
+
+
     End Sub
 
     Protected Sub CreateUser_Click(sender As Object, e As EventArgs)

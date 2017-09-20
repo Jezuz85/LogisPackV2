@@ -90,18 +90,19 @@ Public Class Listas
     ''' Metodo que recibe un objeto DropDownlist vacio  y lo devuelve con los datos de 
     ''' todos los clientes existentes en la base de datos
     ''' </summary>
-    Public Shared Sub Cliente(ByRef DropDownList1 As DropDownList)
+    Public Shared Sub Cliente(ByRef DropDownList1 As DropDownList, idCliente As Integer)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
-        Dim query = (From AL In contexto.Cliente
-                     Select
-                         AL.id_cliente,
-                         AL.nombre
-                    ).ToList()
-
         DropDownList1.DataValueField = "id_cliente"
         DropDownList1.DataTextField = "nombre"
+
+        Dim query = (From CL In contexto.Cliente Select CL.id_cliente, CL.nombre).ToList()
+
+        If idCliente <> 1 Then
+            query = (From CL In contexto.Cliente Where CL.id_cliente = idCliente Select CL.id_cliente, CL.nombre).ToList()
+        End If
+
         DropDownList1.DataSource = query
         DropDownList1.DataBind()
 
@@ -157,6 +158,7 @@ Public Class Listas
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
         Dim query = (From AL In contexto.AspNetRoles
+                     Where AL.Id <> 1
                      Select
                          AL.Id,
                          AL.Name

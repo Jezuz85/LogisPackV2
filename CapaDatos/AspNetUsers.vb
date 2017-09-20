@@ -23,9 +23,11 @@ Partial Public Class AspNetUsers
     Public Property LockoutEnabled As Boolean
     Public Property AccessFailedCount As Integer
     Public Property UserName As String
+    Public Property id_cliente As Nullable(Of Integer)
 
     Public Overridable Property AspNetUserClaims As ICollection(Of AspNetUserClaims) = New HashSet(Of AspNetUserClaims)
     Public Overridable Property AspNetUserLogins As ICollection(Of AspNetUserLogins) = New HashSet(Of AspNetUserLogins)
+    Public Overridable Property Cliente As Cliente
     Public Overridable Property AspNetRoles As ICollection(Of AspNetRoles) = New HashSet(Of AspNetRoles)
 
 End Class

@@ -278,6 +278,12 @@ CapaDatos
  devuelve un objeto tipo ubicacion si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
+<member name="M:CapaDatos.Getter.Cliente_Usuario(System.String)">
+ <summary>
+ Metodo que recibe un id del usuario y lo consulta desde la Base de datos, 
+ devuelve el id del cliente asociado al usuario si fue exitoso, de lo contrario no devuelve nothing
+ </summary>
+</member>
 <member name="M:CapaDatos.Listas.Almacen(System.Web.UI.WebControls.DropDownList@)">
  <summary>
  Metodo que recibe un objeto DropDownlist vacio y lo devuelve con los datos de todos los alamcenes
@@ -302,7 +308,7 @@ CapaDatos
  todos los articulos existentes en la base de datos
  </summary>
 </member>
-<member name="M:CapaDatos.Listas.Cliente(System.Web.UI.WebControls.DropDownList@)">
+<member name="M:CapaDatos.Listas.Cliente(System.Web.UI.WebControls.DropDownList@,System.Int32)">
  <summary>
  Metodo que recibe un objeto DropDownlist vacio  y lo devuelve con los datos de 
  todos los clientes existentes en la base de datos

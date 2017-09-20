@@ -16,5 +16,6 @@ Partial Public Class Cliente
     Public Property codigo As String
 
     Public Overridable Property Almacen As ICollection(Of Almacen) = New HashSet(Of Almacen)
+    Public Overridable Property AspNetUsers As ICollection(Of AspNetUsers) = New HashSet(Of AspNetUsers)
 
 End Class

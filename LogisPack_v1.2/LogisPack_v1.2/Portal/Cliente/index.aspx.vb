@@ -14,7 +14,7 @@ Public Class index5
                 LlenarGridView()
                 Modal.OcultarAlerta(updatePanelPrinicpal)
             Else
-                Response.Redirect(Paginas.Login.ToString)
+                Response.Redirect(Paginas.Inicio.ToString)
             End If
         Else
             Response.Redirect(Paginas.Login.ToString)

@@ -1,18 +1,20 @@
 ﻿Imports System.Globalization
 Imports CapaDatos
 Imports Microsoft.AspNet.Identity
-Imports Microsoft.AspNet.Identity.EntityFramework
 
 Public Class Crear
     Inherits Page
 
     Private contexto As LogisPackEntities = New LogisPackEntities()
     Private bError As Boolean
+    Private idCliente As Integer
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         Page.Form.Attributes.Add("enctype", "multipart/form-data")
 
         If Manager_Usuario.ValidarAutenticado(User) Then
+
+            idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
 
             If Not IsPostBack Then
                 ViewState("contadorUbi") = "0"
@@ -44,7 +46,7 @@ Public Class Crear
 
             End If
         Else
-                Response.Redirect(Paginas.Login.ToString)
+            Response.Redirect(Paginas.Login.ToString)
         End If
 
     End Sub
@@ -70,7 +72,7 @@ Public Class Crear
     Private Sub CargarListas()
         Listas.TipoFacturacion(ddlTipoFacturacion)
         Listas.TipoUnidad(ddlTipoUnidad)
-        Listas.Cliente(ddlCliente)
+        Listas.Cliente(ddlCliente, idCliente)
     End Sub
 
     ''' <summary>

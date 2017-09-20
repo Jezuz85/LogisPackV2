@@ -58,6 +58,10 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LogisPack_v1.2\LogisPack_v1.2\bin\System.Web.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -168,6 +172,7 @@
     <Compile Include="Update.vb" />
     <Compile Include="Utilidades_Fileupload.vb" />
     <Compile Include="Utilidades_Grid.vb" />
+    <Compile Include="Utilidades_Menu.vb" />
     <Compile Include="Utilidades_UpdatePanel.vb" />
   </ItemGroup>
   <ItemGroup>

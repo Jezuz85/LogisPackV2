@@ -223,4 +223,16 @@ Public Class Getter
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que recibe un id del usuario y lo consulta desde la Base de datos, 
+    ''' devuelve el id del cliente asociado al usuario si fue exitoso, de lo contrario no devuelve nothing
+    ''' </summary>
+    Public Shared Function Cliente_Usuario(_id As String) As Integer
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+        Dim _usuario = contexto.AspNetUsers.Where(Function(model) model.Id = _id).SingleOrDefault()
+
+        Return _usuario.id_cliente
+
+    End Function
 End Class

@@ -1,5 +1,6 @@
 ﻿Imports System.Web
 Imports System.Web.UI
+Imports CapaDatos
 Imports Microsoft.AspNet.Identity
 Imports Microsoft.AspNet.Identity.EntityFramework
 Imports Microsoft.AspNet.Identity.Owin
@@ -17,6 +18,15 @@ Partial Public Class Login
         If Not [String].IsNullOrEmpty(returnUrl) Then
             RegisterHyperLink.NavigateUrl += "?ReturnUrl=" & returnUrl
         End If
+
+        If Manager_Usuario.ValidarAutenticado(User) Then
+
+            Response.Redirect(Paginas.Inicio.ToString)
+
+        Else
+            Utilidades_Menu.OcultarMenu(Master)
+        End If
+
     End Sub
 
     Protected Sub LogIn(sender As Object, e As EventArgs)
@@ -27,7 +37,7 @@ Partial Public Class Login
 
             ' Esto no cuenta los errores de inicio de sesión hacia el bloqueo de cuenta
             ' Para habilitar los errores de contraseña para desencadenar el bloqueo, cambie a shouldLockout := True
-            Dim result = signinManager.PasswordSignIn(Email.Text, Password.Text, RememberMe.Checked, shouldLockout := False)
+            Dim result = signinManager.PasswordSignIn(Email.Text, Password.Text, RememberMe.Checked, shouldLockout:=False)
 
             Select Case result
                 Case SignInStatus.Success

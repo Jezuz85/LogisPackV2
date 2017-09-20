@@ -9,8 +9,13 @@ Public Class index1
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
         If Manager_Usuario.ValidarAutenticado(User) Then
-            LlenarGridView()
-            Modal.OcultarAlerta(updatePanelPrinicpal)
+
+            If Manager_Usuario.ValidarRol(User, Rol.Admin.ToString) Then
+                LlenarGridView()
+                Modal.OcultarAlerta(updatePanelPrinicpal)
+            Else
+                Response.Redirect(Paginas.Inicio.ToString)
+            End If
         Else
             Response.Redirect(Paginas.Login.ToString)
         End If

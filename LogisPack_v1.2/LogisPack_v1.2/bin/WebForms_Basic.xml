@@ -550,6 +550,12 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="M:LogisPack_v1._2.Manager_Usuario.GetNombreCliente(System.String)">
+ <summary>
+ Metodo que recibe un id del usuario y lo consulta desde la Base de datos, 
+ devuelve el id del cliente asociado al usuario si fue exitoso, de lo contrario no devuelve nothing
+ </summary>
+</member>
 <member name="F:LogisPack_v1._2.index._updatePanelPrinicpal">
 <summary>
 Control updatePanelPrinicpal.
@@ -2955,6 +2961,69 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:LogisPack_v1._2.LogisPack.Alert._lbAlertMsjFalla">
 <summary>
 Control lbAlertMsjFalla.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.SiteMaster._dropbtn_Inicio">
+<summary>
+Control dropbtn_Inicio.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.SiteMaster._dropbtn_Cliente">
+<summary>
+Control dropbtn_Cliente.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.SiteMaster._dropbtn_Almacen">
+<summary>
+Control dropbtn_Almacen.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.SiteMaster._dropbtn_Articulo">
+<summary>
+Control dropbtn_Articulo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.SiteMaster._dropbtn_Operacion">
+<summary>
+Control dropbtn_Operacion.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.SiteMaster._dropbtn_TipoFacturacion">
+<summary>
+Control dropbtn_TipoFacturacion.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.SiteMaster._dropbtn_TipoUnidad">
+<summary>
+Control dropbtn_TipoUnidad.
 </summary>
 <remarks>
 Campo generado automáticamente.

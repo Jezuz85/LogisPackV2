@@ -7,11 +7,14 @@ Public Class Editar
     Private contexto As LogisPackEntities = New LogisPackEntities()
     Private bError As Boolean
     Private IdArticulo As Integer = 0
+    Private idCliente As Integer
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         Page.Form.Attributes.Add("enctype", "multipart/form-data")
 
         If Manager_Usuario.ValidarAutenticado(User) Then
+
+            idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
             IdArticulo = Cifrar.descifrarCadena_Num(Request.QueryString("id"))
 
             If Not IsPostBack Then
@@ -69,7 +72,7 @@ Public Class Editar
     Private Sub CargarListas()
         Listas.TipoFacturacion(ddlTipoFacturacion)
         Listas.TipoUnidad(ddlTipoUnidad)
-        Listas.Cliente(ddlCliente)
+        Listas.Cliente(ddlCliente, idCliente)
     End Sub
 
     ''' <summary>
@@ -388,7 +391,7 @@ Public Class Editar
 
                 miTextbox = CType(pTabla.FindControl("txtPanel" & contadorControl), TextBox)
                 If miTextbox IsNot Nothing Then
-                    Panel = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
+                    panel = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
                 End If
 
                 miTextbox = CType(pTabla.FindControl("txtRefUbi" & contadorControl), TextBox)
@@ -401,7 +404,7 @@ Public Class Editar
                     If (zona <> String.Empty) Or
                                 (estante <> String.Empty) Or
                                 (columna <> String.Empty) Or
-                                (Panel <> String.Empty) Or
+                                (panel <> String.Empty) Or
                                 (referencia_ubicacion <> String.Empty) Then
 
                         _NuevoUbicaion = New Ubicacion With {
@@ -409,7 +412,7 @@ Public Class Editar
                                     .estante = estante,
                                     .fila = fila,
                                     .columna = columna,
-                                    .panel = Panel,
+                                    .panel = panel,
                                     .referencia_ubicacion = referencia_ubicacion,
                                     .id_articulo = Edit.id_articulo
                                 }

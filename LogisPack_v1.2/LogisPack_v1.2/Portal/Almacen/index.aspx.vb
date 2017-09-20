@@ -7,15 +7,28 @@ Public Class index
 
     Private contexto As LogisPackEntities = New LogisPackEntities()
     Private bError As Boolean
+    Private idCliente As Integer
 
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
         If Manager_Usuario.ValidarAutenticado(User) Then
 
+            idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
+
             If IsPostBack = False Then
                 MyTreeView.Nodes.Clear()
-                Dim dt As DataTable = GetData(Comandos.Arbol_Almacen_Nivel0.ToString)
+
+                Dim dt As DataTable
+
+                If Manager_Usuario.ValidarRol(User, Rol.Admin.ToString) Then
+                    dt = GetData(Comandos.Arbol_Almacen_Nivel0.ToString)
+                Else
+                    Dim objComando As Comandos
+                    objComando = New Comandos("", "" & idCliente)
+                    dt = GetData(objComando.GetComando())
+                End If
+
                 LlenarTreeView(dt, 0, Nothing)
                 LlenarGridView()
                 CargarListas()
@@ -40,7 +53,7 @@ Public Class index
     ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
     ''' </summary>
     Private Sub CargarListas()
-        Listas.Cliente(ddlClienteAdd)
+        Listas.Cliente(ddlClienteAdd, idCliente)
     End Sub
 
     ''' <summary>
@@ -70,7 +83,7 @@ Public Class index
 
         hdfEdit.Value = Utilidades_Grid.Get_IdRow_Editing(GridView1, e)
         Dim _Almacen = Getter.Almacen(Convert.ToInt32(hdfEdit.Value))
-        Listas.Cliente(ddlClienteEdit)
+        Listas.Cliente(ddlClienteEdit, idCliente)
 
         Dim CoefVolumetrico As String = Convert.ToDouble(_Almacen.coeficiente_volumetrico).ToString("##,##0.00").Replace(",", ".")
 
@@ -176,7 +189,7 @@ Public Class index
 
             If parentId = 0 Then
                 MyTreeView.Nodes.Add(child)
-                Dim dtChild As DataTable = Me.GetData(Comandos.Arbol_Almacen_Nivel1.ToString + child.Value)
+                Dim dtChild As DataTable = GetData(Comandos.Arbol_Almacen_Nivel1.ToString + child.Value)
                 LlenarTreeView(dtChild, 1, child)
             ElseIf parentId = 1 Then
                 treeNode.ChildNodes.Add(child)
