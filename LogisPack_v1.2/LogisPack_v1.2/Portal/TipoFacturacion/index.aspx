@@ -42,7 +42,6 @@
 
 								<div class="col-md-2">
 									<asp:DropDownList runat="server" ID="ddlBuscar">
-										<asp:ListItem Text="Codigo" Value="Codigo"></asp:ListItem>
 										<asp:ListItem Text="Nombre" Value="Nombre"></asp:ListItem>
 									</asp:DropDownList>
 								</div>

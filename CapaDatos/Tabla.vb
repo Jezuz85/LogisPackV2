@@ -63,15 +63,13 @@ Public Class Tabla
 
         If textoBusqueda <> String.Empty Then
             If filtroBusqueda = "Nombre" Then
-                query = query.Where(Function(x) x.nombre.Contains(textoBusqueda)).ToList()
+                query = query.Where(Function(x) x.nombre.ToLower.Contains(textoBusqueda.ToLower)).ToList()
             ElseIf filtroBusqueda = "Cliente" Then
-                query = query.Where(Function(x) x.cliente.Contains(textoBusqueda)).ToList()
+                query = query.Where(Function(x) x.cliente.ToLower.Contains(textoBusqueda.ToLower)).ToList()
             ElseIf filtroBusqueda = "codigo" Then
-                query = query.Where(Function(x) x.codigo.Contains(textoBusqueda)).ToList()
+                query = query.Where(Function(x) x.codigo.ToLower.Contains(textoBusqueda.ToLower)).ToList()
             End If
         End If
-
-
 
         GridView1.DataSource = query
         GridView1.DataBind()
@@ -80,7 +78,8 @@ Public Class Tabla
     ''' <summary>
     ''' Metodo que recibe el gridview para llenar con los datos del articulo en la base de datos
     ''' </summary>
-    Public Shared Sub Articulo(ByRef GridView1 As GridView, idCliente As Integer, columna As String, tipoOrdenacion As String)
+    Public Shared Sub Articulo(ByRef GridView1 As GridView, idCliente As Integer, columna As String, tipoOrdenacion As String,
+                              filtroBusqueda As String, textoBusqueda As String)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
@@ -88,22 +87,38 @@ Public Class Tabla
                      Select
                          AL.id_articulo,
                          AL.Almacen.id_cliente,
-                         AL.nombre
+                         AL.nombre,
+                         AL.codigo
                     ).ToList()
 
         If idCliente <> 1 Then
             query = query.Where(Function(x) x.id_cliente = idCliente).ToList()
         End If
 
-        If columna = "nombre" Then
+        If columna = "Nombre" Then
 
             If tipoOrdenacion = "1" Then
                 query = query.OrderBy(Function(x) x.nombre).ToList()
             Else
                 query = query.OrderByDescending(Function(x) x.nombre).ToList()
             End If
+        ElseIf columna = "Codigo" Then
+
+            If tipoOrdenacion = "1" Then
+                query = query.OrderBy(Function(x) x.codigo).ToList()
+            Else
+                query = query.OrderByDescending(Function(x) x.codigo).ToList()
+            End If
+
         End If
 
+        If textoBusqueda <> String.Empty Then
+            If filtroBusqueda = "Nombre" Then
+                query = query.Where(Function(x) x.nombre.ToLower.Contains(textoBusqueda.ToLower)).ToList()
+            ElseIf filtroBusqueda = "Codigo" Then
+                query = query.Where(Function(x) x.codigo.ToLower.Contains(textoBusqueda.ToLower)).ToList()
+            End If
+        End If
 
         GridView1.DataSource = query
         GridView1.DataBind()
@@ -112,7 +127,8 @@ Public Class Tabla
     ''' <summary>
     ''' Metodo que recibe el gridview para llenar con los datos del cliente en la base de datos
     ''' </summary>
-    Public Shared Sub Cliente(ByRef GridView1 As GridView, idCliente As Integer, columna As String, tipoOrdenacion As String)
+    Public Shared Sub Cliente(ByRef GridView1 As GridView, idCliente As Integer, columna As String, tipoOrdenacion As String,
+                              filtroBusqueda As String, textoBusqueda As String)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
@@ -145,6 +161,14 @@ Public Class Tabla
 
         End If
 
+        If textoBusqueda <> String.Empty Then
+            If filtroBusqueda = "Nombre" Then
+                query = query.Where(Function(x) x.nombre.ToLower.Contains(textoBusqueda.ToLower)).ToList()
+            ElseIf filtroBusqueda = "Codigo" Then
+                query = query.Where(Function(x) x.codigo.ToLower.Contains(textoBusqueda.ToLower)).ToList()
+            End If
+        End If
+
         GridView1.DataSource = query
         GridView1.DataBind()
     End Sub
@@ -152,7 +176,8 @@ Public Class Tabla
     ''' <summary>
     ''' Metodo que recibe el gridview para llenar con los datos del tipo de facturacion en la base de datos
     ''' </summary>
-    Public Shared Sub TipoFacturacion(ByRef GridView1 As GridView, columna As String, tipoOrdenacion As String)
+    Public Shared Sub TipoFacturacion(ByRef GridView1 As GridView, columna As String, tipoOrdenacion As String,
+                              filtroBusqueda As String, textoBusqueda As String)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
@@ -163,11 +188,16 @@ Public Class Tabla
                     ).ToList()
 
         If columna = "nombre" Then
-
             If tipoOrdenacion = "1" Then
                 query = query.OrderBy(Function(x) x.nombre).ToList()
             Else
                 query = query.OrderByDescending(Function(x) x.nombre).ToList()
+            End If
+        End If
+
+        If textoBusqueda <> String.Empty Then
+            If filtroBusqueda = "Nombre" Then
+                query = query.Where(Function(x) x.nombre.ToLower.Contains(textoBusqueda.ToLower)).ToList()
             End If
         End If
 
@@ -178,7 +208,8 @@ Public Class Tabla
     ''' <summary>
     ''' Metodo que recibe el gridview para llenar con los datos del tipo de unidad en la base de datos
     ''' </summary>
-    Public Shared Sub TipoUnidad(ByRef GridView1 As GridView, columna As String, tipoOrdenacion As String)
+    Public Shared Sub TipoUnidad(ByRef GridView1 As GridView, columna As String, tipoOrdenacion As String,
+                              filtroBusqueda As String, textoBusqueda As String)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
@@ -193,6 +224,12 @@ Public Class Tabla
                 query = query.OrderBy(Function(x) x.nombre).ToList()
             Else
                 query = query.OrderByDescending(Function(x) x.nombre).ToList()
+            End If
+        End If
+
+        If textoBusqueda <> String.Empty Then
+            If filtroBusqueda = "Nombre" Then
+                query = query.Where(Function(x) x.nombre.ToLower.Contains(textoBusqueda.ToLower)).ToList()
             End If
         End If
 

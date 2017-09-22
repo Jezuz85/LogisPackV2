@@ -49,7 +49,13 @@ Public Class index
     ''' Metodo que llena El Gridview con datos de la Base de Datos
     ''' </summary>
     Private Sub LlenarGridView()
-        Tabla.Almacen(GridView1, idCliente, String.Empty, String.Empty, String.Empty & ViewState("filtroBusqueda"), String.Empty & ViewState("textoBusqueda"))
+
+        Tabla.Almacen(GridView1,
+                      idCliente,
+                      String.Empty & ViewState("SortExpression"),
+                      String.Empty & ViewState("GridViewSortDirection"),
+                      String.Empty & ViewState("filtroBusqueda"),
+                      String.Empty & ViewState("textoBusqueda"))
     End Sub
 
     ''' <summary>
@@ -106,7 +112,12 @@ Public Class index
 
         Utilidades_Grid.sortGridView(GridView1, e, ViewState("SortExpression"), ViewState("GridViewSortDirection"))
 
-        Tabla.Almacen(GridView1, idCliente, "" & ViewState("SortExpression"), "" & ViewState("GridViewSortDirection"), String.Empty & ViewState("filtroBusqueda"), String.Empty & ViewState("textoBusqueda"))
+        Tabla.Almacen(GridView1,
+                       idCliente,
+                       String.Empty & ViewState("SortExpression"),
+                       String.Empty & ViewState("GridViewSortDirection"),
+                       String.Empty & ViewState("filtroBusqueda"),
+                       String.Empty & ViewState("textoBusqueda"))
 
     End Sub
     Protected Sub GridView1_RowCreated(sender As Object, e As GridViewRowEventArgs)

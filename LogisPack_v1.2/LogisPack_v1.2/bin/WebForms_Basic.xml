@@ -2330,6 +2330,16 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
  Metodo que se invoca cuando se presiona el boton "guardar" y redirecciona la pagina a "Crear"
  </summary>
 </member>
+<member name="M:LogisPack_v1._2.index3.Buscar(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que realiza una busqueda en el grid
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index3.Reset(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que realiza una resetea la busqueda en el grid
+ </summary>
+</member>
 <member name="F:LogisPack_v1._2.index5._updatePanelPrinicpal">
 <summary>
 Control updatePanelPrinicpal.
@@ -2533,6 +2543,16 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="M:LogisPack_v1._2.index5.EliminarRegistro(System.Object,System.EventArgs)">
  <summary>
  Metodo que elimina un cliente en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index5.Buscar(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que realiza una busqueda en el grid
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index5.Reset(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que realiza una resetea la busqueda en el grid
  </summary>
 </member>
 <member name="F:LogisPack_v1._2.index4._updatePanelPrinicpal">
@@ -2804,6 +2824,16 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
  Metodo que Elimina un tipo de facturación en la base de datos
  </summary>
 </member>
+<member name="M:LogisPack_v1._2.index1.Buscar(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que realiza una busqueda en el grid
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index1.Reset(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que realiza una resetea la busqueda en el grid
+ </summary>
+</member>
 <member name="F:LogisPack_v1._2.index2._updatePanelPrinicpal">
 <summary>
 Control updatePanelPrinicpal.
@@ -2984,6 +3014,16 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="M:LogisPack_v1._2.index2.EliminarRegistro(System.Object,System.EventArgs)">
  <summary>
  Metodo que Elimina un tipo de unidad en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index2.Buscar(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que realiza una busqueda en el grid
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index2.Reset(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que realiza una resetea la busqueda en el grid
  </summary>
 </member>
 <member name="F:LogisPack_v1._2.LogisPack.Alert._AlertExito">

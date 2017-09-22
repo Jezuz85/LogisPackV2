@@ -87,10 +87,14 @@
 											<asp:Label ID="id" runat="server" Text='<%# Eval("id_articulo") %>' />
 										</ItemTemplate>
 									</asp:TemplateField>
+									
+									<asp:BoundField DataField="Codigo"
+										HeaderText="Código"
+										SortExpression="Codigo"></asp:BoundField>
 
-									<asp:BoundField DataField="nombre"
+									<asp:BoundField DataField="Nombre"
 										HeaderText="Nombre"
-										SortExpression="nombre"></asp:BoundField>
+										SortExpression="Nombre"></asp:BoundField>
 
 									<asp:ButtonField HeaderText="Editar" CommandName="Editar"
 										ButtonType="Image" ImageUrl="~/Content/images/edit.png"

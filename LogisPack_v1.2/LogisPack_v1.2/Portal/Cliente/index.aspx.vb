@@ -32,7 +32,12 @@ Public Class index5
     ''' </summary>
     Private Sub LlenarGridView()
 
-        Tabla.Cliente(GridView1, idCliente, String.Empty, String.Empty)
+        Tabla.Cliente(GridView1,
+                      idCliente,
+                      String.Empty & ViewState("SortExpression"),
+                      String.Empty & ViewState("GridViewSortDirection"),
+                      String.Empty & ViewState("filtroBusqueda"),
+                      String.Empty & ViewState("textoBusqueda"))
 
     End Sub
 
@@ -47,7 +52,12 @@ Public Class index5
 
         Utilidades_Grid.sortGridView(GridView1, e, ViewState("SortExpression"), ViewState("GridViewSortDirection"))
 
-        Tabla.Cliente(GridView1, idCliente, "" & ViewState("SortExpression"), "" & ViewState("GridViewSortDirection"))
+        Tabla.Cliente(GridView1,
+                      idCliente,
+                       String.Empty & ViewState("SortExpression"),
+                       String.Empty & ViewState("GridViewSortDirection"),
+                       String.Empty & ViewState("filtroBusqueda"),
+                       String.Empty & ViewState("textoBusqueda"))
 
     End Sub
     Protected Sub GridView1_RowCreated(sender As Object, e As GridViewRowEventArgs)
@@ -124,4 +134,25 @@ Public Class index5
 
     End Sub
 
+    ''' <summary>
+    ''' Metodo que realiza una busqueda en el grid
+    ''' </summary>
+    Protected Sub Buscar(sender As Object, e As EventArgs) Handles btnBuscar.Click
+
+        ViewState("filtroBusqueda") = ddlBuscar.SelectedValue
+        ViewState("textoBusqueda") = txtSearch.Text
+        LlenarGridView()
+
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que realiza una resetea la busqueda en el grid
+    ''' </summary>
+    Protected Sub Reset(sender As Object, e As EventArgs) Handles btnReset.Click
+        txtSearch.Text = String.Empty
+        ViewState("filtroBusqueda") = String.Empty
+        ViewState("textoBusqueda") = String.Empty
+
+        LlenarGridView()
+    End Sub
 End Class

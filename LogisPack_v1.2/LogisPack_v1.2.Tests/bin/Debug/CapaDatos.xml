@@ -386,27 +386,27 @@ CapaDatos
  Metodo que oculta el updatepanel de Alerta
  </summary>
 </member>
-<member name="M:CapaDatos.Tabla.Almacen(System.Web.UI.WebControls.GridView@,System.Int32,System.String,System.String)">
+<member name="M:CapaDatos.Tabla.Almacen(System.Web.UI.WebControls.GridView@,System.Int32,System.String,System.String,System.String,System.String)">
  <summary>
  Metodo que recibe el gridview para llenar con los datos del almacen en la base de datos
  </summary>
 </member>
-<member name="M:CapaDatos.Tabla.Articulo(System.Web.UI.WebControls.GridView@)">
+<member name="M:CapaDatos.Tabla.Articulo(System.Web.UI.WebControls.GridView@,System.Int32,System.String,System.String,System.String,System.String)">
  <summary>
  Metodo que recibe el gridview para llenar con los datos del articulo en la base de datos
  </summary>
 </member>
-<member name="M:CapaDatos.Tabla.Cliente(System.Web.UI.WebControls.GridView@)">
+<member name="M:CapaDatos.Tabla.Cliente(System.Web.UI.WebControls.GridView@,System.Int32,System.String,System.String,System.String,System.String)">
  <summary>
  Metodo que recibe el gridview para llenar con los datos del cliente en la base de datos
  </summary>
 </member>
-<member name="M:CapaDatos.Tabla.TipoFacturacion(System.Web.UI.WebControls.GridView@)">
+<member name="M:CapaDatos.Tabla.TipoFacturacion(System.Web.UI.WebControls.GridView@,System.String,System.String,System.String,System.String)">
  <summary>
  Metodo que recibe el gridview para llenar con los datos del tipo de facturacion en la base de datos
  </summary>
 </member>
-<member name="M:CapaDatos.Tabla.TipoUnidad(System.Web.UI.WebControls.GridView@)">
+<member name="M:CapaDatos.Tabla.TipoUnidad(System.Web.UI.WebControls.GridView@,System.String,System.String,System.String,System.String)">
  <summary>
  Metodo que recibe el gridview para llenar con los datos del tipo de unidad en la base de datos
  </summary>

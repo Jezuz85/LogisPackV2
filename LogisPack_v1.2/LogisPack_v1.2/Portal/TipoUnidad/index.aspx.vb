@@ -26,7 +26,11 @@ Public Class index2
     End Sub
     Private Sub LlenarGridView()
 
-        Tabla.TipoUnidad(GridView1, String.Empty, String.Empty)
+        Tabla.TipoUnidad(GridView1,
+                      String.Empty & ViewState("SortExpression"),
+                      String.Empty & ViewState("GridViewSortDirection"),
+                      String.Empty & ViewState("filtroBusqueda"),
+                      String.Empty & ViewState("textoBusqueda"))
 
     End Sub
 
@@ -42,7 +46,11 @@ Public Class index2
 
         Utilidades_Grid.sortGridView(GridView1, e, ViewState("SortExpression"), ViewState("GridViewSortDirection"))
 
-        Tabla.TipoUnidad(GridView1, "" & ViewState("SortExpression"), "" & ViewState("GridViewSortDirection"))
+        Tabla.TipoUnidad(GridView1,
+                       String.Empty & ViewState("SortExpression"),
+                       String.Empty & ViewState("GridViewSortDirection"),
+                       String.Empty & ViewState("filtroBusqueda"),
+                       String.Empty & ViewState("textoBusqueda"))
 
     End Sub
     Protected Sub GridView1_RowCreated(sender As Object, e As GridViewRowEventArgs)
@@ -114,4 +122,25 @@ Public Class index2
         LlenarGridView()
     End Sub
 
+    ''' <summary>
+    ''' Metodo que realiza una busqueda en el grid
+    ''' </summary>
+    Protected Sub Buscar(sender As Object, e As EventArgs) Handles btnBuscar.Click
+
+        ViewState("filtroBusqueda") = ddlBuscar.SelectedValue
+        ViewState("textoBusqueda") = txtSearch.Text
+        LlenarGridView()
+
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que realiza una resetea la busqueda en el grid
+    ''' </summary>
+    Protected Sub Reset(sender As Object, e As EventArgs) Handles btnReset.Click
+        txtSearch.Text = String.Empty
+        ViewState("filtroBusqueda") = String.Empty
+        ViewState("textoBusqueda") = String.Empty
+
+        LlenarGridView()
+    End Sub
 End Class
