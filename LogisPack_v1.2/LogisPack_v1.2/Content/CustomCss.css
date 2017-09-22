@@ -21,3 +21,6 @@
     background: url('../Content/images/logo.png') no-repeat center;
 }
 
+.section_Content .row_Content {
+    width: 100%;
+}

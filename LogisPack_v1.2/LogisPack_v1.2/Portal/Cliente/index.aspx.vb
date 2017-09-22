@@ -5,14 +5,19 @@ Public Class index5
 
     Private contexto As LogisPackEntities = New LogisPackEntities()
     Private bError As Boolean
+    Private idCliente As Integer
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
         If Manager_Usuario.ValidarAutenticado(User) Then
 
+            idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
+
             If Manager_Usuario.ValidarRol(User, Rol.Admin.ToString) Then
-                LlenarGridView()
-                Modal.OcultarAlerta(updatePanelPrinicpal)
+                If IsPostBack = False Then
+                    LlenarGridView()
+                    Modal.OcultarAlerta(updatePanelPrinicpal)
+                End If
             Else
                 Response.Redirect(Paginas.Inicio.ToString)
             End If
@@ -27,7 +32,7 @@ Public Class index5
     ''' </summary>
     Private Sub LlenarGridView()
 
-        Tabla.Cliente(GridView1)
+        Tabla.Cliente(GridView1, idCliente, String.Empty, String.Empty)
 
     End Sub
 
@@ -38,22 +43,35 @@ Public Class index5
         GridView1.PageIndex = e.NewPageIndex
         LlenarGridView()
     End Sub
-    Protected Sub GridView1_onRowEditing(sender As Object, e As GridViewEditEventArgs)
+    Protected Sub GridView1_OnSorting(ByVal sender As Object, ByVal e As GridViewSortEventArgs)
 
-        hdfEdit.Value = Utilidades_Grid.Get_IdRow_Editing(GridView1, e)
-        Dim _Cliente = Getter.Cliente(Convert.ToInt32(hdfEdit.Value))
+        Utilidades_Grid.sortGridView(GridView1, e, ViewState("SortExpression"), ViewState("GridViewSortDirection"))
 
-        txtCodigo_Edit.Text = _Cliente.codigo
-        txtNombre_Edit.Text = _Cliente.nombre
-
-        Modal.AbrirModal("EditModal", "EditModalScript", Me)
+        Tabla.Cliente(GridView1, idCliente, "" & ViewState("SortExpression"), "" & ViewState("GridViewSortDirection"))
 
     End Sub
-    Protected Sub GridView1_RowDeleting(sender As Object, e As GridViewDeleteEventArgs)
+    Protected Sub GridView1_RowCreated(sender As Object, e As GridViewRowEventArgs)
+        Utilidades_Grid.SetArrowsGrid(GridView1, e)
+    End Sub
+    Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
-        hdfIDDel.Value = Utilidades_Grid.Get_IdRow_Deleting(GridView1, e)
-        Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
+        If e.CommandName.Equals(Mensajes.Editar.ToString) Then
 
+            hdfEdit.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
+            Dim _Cliente = Getter.Cliente(Convert.ToInt32(hdfEdit.Value))
+
+            txtCodigo_Edit.Text = _Cliente.codigo
+            txtNombre_Edit.Text = _Cliente.nombre
+
+            Modal.AbrirModal("EditModal", "EditModalScript", Me)
+
+        End If
+        If e.CommandName.Equals(Mensajes.Eliminar.ToString) Then
+
+            hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
+            Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
+
+        End If
 
     End Sub
 

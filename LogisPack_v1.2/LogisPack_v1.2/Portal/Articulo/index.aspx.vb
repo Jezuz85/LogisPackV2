@@ -4,12 +4,18 @@ Public Class index3
     Inherits Page
 
     Private bError As Boolean
+    Private idCliente As Integer
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
         If Manager_Usuario.ValidarAutenticado(User) Then
-            LlenarGridView()
-            Modal.OcultarAlerta(updatePanelPrinicpal)
+
+            idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
+            If IsPostBack = False Then
+                LlenarGridView()
+                Modal.OcultarAlerta(updatePanelPrinicpal)
+            End If
+
         Else
             Response.Redirect(Paginas.Login.ToString)
         End If
@@ -22,7 +28,7 @@ Public Class index3
     ''' </summary>
     Private Sub LlenarGridView()
 
-        Tabla.Articulo(GridView1)
+        Tabla.Articulo(GridView1, idCliente, String.Empty, String.Empty)
 
     End Sub
 
@@ -35,24 +41,36 @@ Public Class index3
     End Sub
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
-        If e.CommandName.Equals("Detalle") Then
+        If e.CommandName.Equals(Mensajes.Detalles.ToString) Then
             Dim id As String = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Response.Redirect("Detalles.aspx?id=" & Cifrar.cifrarCadena(id))
 
         End If
 
+        If e.CommandName.Equals(Mensajes.Editar.ToString) Then
+
+            Dim id As String = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
+            Response.Redirect("Editar.aspx?id=" & Cifrar.cifrarCadena(id))
+
+        End If
+
+        If e.CommandName.Equals(Mensajes.Eliminar.ToString) Then
+
+            hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
+            Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
+
+        End If
+
     End Sub
-    Protected Sub GridView1_onRowEditing(sender As Object, e As GridViewEditEventArgs)
+    Protected Sub GridView1_OnSorting(ByVal sender As Object, ByVal e As GridViewSortEventArgs)
 
-        Dim id As String = Utilidades_Grid.Get_IdRow_Editing(GridView1, e, "id")
-        Response.Redirect("Editar.aspx?id=" & Cifrar.cifrarCadena(id))
+        Utilidades_Grid.sortGridView(GridView1, e, ViewState("SortExpression"), ViewState("GridViewSortDirection"))
+
+        Tabla.Articulo(GridView1, idCliente, "" & ViewState("SortExpression"), "" & ViewState("GridViewSortDirection"))
 
     End Sub
-    Protected Sub GridView1_RowDeleting(sender As Object, e As GridViewDeleteEventArgs)
-
-        hdfIDDel.Value = Utilidades_Grid.Get_IdRow_Deleting(GridView1, e, "id")
-        Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
-
+    Protected Sub GridView1_RowCreated(sender As Object, e As GridViewRowEventArgs)
+        Utilidades_Grid.SetArrowsGrid(GridView1, e)
     End Sub
 
     ''' <summary>

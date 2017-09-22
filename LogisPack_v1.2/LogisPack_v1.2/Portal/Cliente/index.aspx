@@ -7,7 +7,7 @@
 	<asp:UpdatePanel ID="updatePanelPrinicpal" runat="server">
 		<ContentTemplate>
 
-			<div id="titleContainer">				
+			<div id="titleContainer">
 				<div class="MainContentTitle">
 					<div class="MainContentTitleText">
 						<ol class="breadcrumb">
@@ -25,6 +25,7 @@
 					<div id="sectionHeaderFiltros" class="sectionHeader">
 						<div class="sectionHeaderTitle">
 							Búsqueda
+					
 						</div>
 						<div class="sectionHeaderButtons" data-toggle="collapse" data-target="#sectionContentFiltrosCabecera">
 							<img class="sectionHeaderButton" src="../../Content/images/minimize_16x16.png">
@@ -34,16 +35,29 @@
 					<!-- SECCIÓN FILTROS -->
 					<div id="sectionContentFiltrosCabecera" class="section_Content collapse in">
 						<div class="row_Content">
-							<div class="row">								
-								<div class="col-md-6">
-									<asp:TextBox ID="txtSearch" runat="server" placeholder="Ingrese el texto a buscar" maxlength="200" autocomplete="off"></asp:TextBox>
+							<div class="row">
+								<div class="col-md-1">
+									<br />
+									<label>Buscar</label>
 								</div>
-								<div class="col-md-3">
-									<asp:Button ID="btnBuscar" runat="server" Text="Buscar" class="btn btn-block btn-default"/>
 
+								<div class="col-md-2">
+									<asp:DropDownList runat="server" ID="ddlBuscar">
+										<asp:ListItem Text="Codigo" Value="Codigo"></asp:ListItem>
+										<asp:ListItem Text="Nombre" Value="Nombre"></asp:ListItem>
+									</asp:DropDownList>
 								</div>
-								<div class="col-md-3">
-									<asp:Button ID="btnReset" runat="server" Text="Reset" class="btn btn-block btn-default"/>
+
+								<div class="col-md-7">
+
+									<asp:TextBox ID="txtSearch" runat="server" placeholder="Ingrese el texto a buscar"
+										MaxLength="200" autocomplete="off"></asp:TextBox>
+								</div>
+
+								<div class="col-md-2">
+									<asp:Button ID="btnBuscar" runat="server" Text="Buscar" />
+
+									<asp:Button ID="btnReset" runat="server" Text="Reset" />
 								</div>
 							</div>
 						</div>
@@ -51,20 +65,22 @@
 				</div>
 
 				<div class="section">
-					
+
 					<!-- Alert -->
 					<uca:ucAlert runat="server" ID="ucAlerta" />
 
 					<div class="sectionContent sectionGrid noPadding noMargin">
 						<div id="updGrid">
-
 							<asp:GridView ID="GridView1" class="grid gridSelectable gridSortable noPadding noMargin"
-								runat="server"
-								AutoGenerateColumns="false"
-								AllowPaging="true" PageSize="30"
-								OnRowDeleting="GridView1_RowDeleting"
-								OnRowEditing="GridView1_onRowEditing"
-								OnPageIndexChanging="GridView1_PageIndexChanging" EmptyDataText="No existen Registros">
+								runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="30"
+								OnPageIndexChanging="GridView1_PageIndexChanging"
+								EmptyDataText="No existen Registros"
+								OnRowCreated="GridView1_RowCreated"
+								OnRowCommand="GridView1_RowCommand"
+								OnSorting="GridView1_OnSorting"
+								AllowSorting="true"
+								CurrentSortField="id"
+								CurrentSortDirection="ASC">
 
 								<Columns>
 									<asp:TemplateField HeaderText="Id Categoria" Visible="false" HeaderStyle-CssClass="text-center">
@@ -73,28 +89,26 @@
 										</ItemTemplate>
 									</asp:TemplateField>
 
-									<asp:TemplateField HeaderText="Código" HeaderStyle-CssClass="text-center">
-										<ItemTemplate>
-											<asp:Label ID="codigo" runat="server" Text='<%# Eval("codigo") %>' />
-										</ItemTemplate>
-									</asp:TemplateField>
+									<asp:BoundField DataField="codigo"
+										HeaderText="Código"
+										SortExpression="codigo"></asp:BoundField>
 
-									<asp:TemplateField HeaderText="Nombre" HeaderStyle-CssClass="text-center">
-										<ItemTemplate>
-											<asp:Label ID="nombre" runat="server" Text='<%# Eval("nombre") %>' />
-										</ItemTemplate>
-									</asp:TemplateField>
-									
-									<asp:ButtonField HeaderText="Editar" CommandName="Edit" 
-										ButtonType="Image" ImageUrl="~/Content/images/edit.png" 
-										HeaderStyle-CssClass="text-center" 
+									<asp:BoundField DataField="nombre"
+										HeaderText="Nombre"
+										SortExpression="nombre"></asp:BoundField>
+
+
+									<asp:ButtonField HeaderText="Editar" CommandName="Editar"
+										ButtonType="Image" ImageUrl="~/Content/images/edit.png"
+										HeaderStyle-CssClass="text-center"
 										ItemStyle-HorizontalAlign="Center"></asp:ButtonField>
 
-									<asp:ButtonField HeaderText="Eliminar" CommandName="Delete" 
-										ButtonType="Image" ImageUrl="~/Content/images/baja.png" 
-										HeaderStyle-CssClass="text-center" 
+									<asp:ButtonField HeaderText="Eliminar" CommandName="Eliminar"
+										ButtonType="Image" ImageUrl="~/Content/images/baja.png"
+										HeaderStyle-CssClass="text-center"
 										ItemStyle-HorizontalAlign="Center"></asp:ButtonField>
 								</Columns>
+
 							</asp:GridView>
 						</div>
 					</div>
@@ -104,13 +118,13 @@
 
 				<div class="row">
 					<div class="col-md-12">
-						<asp:button  ID="btnRegistrar" runat="server" CssClass="btn btn-default" data-toggle="modal" 
-							data-target="#AddModal" text="Crear Nuevo"/>
+						<asp:Button ID="btnRegistrar" runat="server" CssClass="btn btn-default" data-toggle="modal"
+							data-target="#AddModal" Text="Crear Nuevo" />
 					</div>
 				</div>
 
 			</div>
-			
+
 		</ContentTemplate>
 		<Triggers></Triggers>
 	</asp:UpdatePanel>
@@ -134,7 +148,7 @@
 									<h4><strong>Código</strong></h4>
 
 									<asp:TextBox ID="txtCodigo_Add" MaxLength="10" runat="server" ClientIDMode="Static"
-										 data-toggle="tooltip" data-placement="bottom"
+										data-toggle="tooltip" data-placement="bottom"
 										title="Ingrese el nombre del Almacén"></asp:TextBox>
 
 									<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
@@ -148,7 +162,7 @@
 									<h4><strong>Nombre</strong></h4>
 
 									<asp:TextBox ID="txtNombre_Add" MaxLength="50" runat="server" ClientIDMode="Static"
-										 data-toggle="tooltip" data-placement="bottom"
+										data-toggle="tooltip" data-placement="bottom"
 										title="Ingrese el nombre del Almacén"></asp:TextBox>
 
 									<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
@@ -177,7 +191,7 @@
 	</div>
 
 	<!-- Edit Modal -->
-	<div id="EditModal"class="modal fade">
+	<div id="EditModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 
@@ -198,7 +212,7 @@
 									<h4><strong>Código</strong></h4>
 
 									<asp:TextBox ID="txtCodigo_Edit" MaxLength="40" runat="server" ClientIDMode="Static"
-										 data-toggle="tooltip" data-placement="bottom"
+										data-toggle="tooltip" data-placement="bottom"
 										title="Ingrese el nombre del Almacén"></asp:TextBox>
 
 									<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
@@ -213,7 +227,7 @@
 									<h4><strong>Nombre</strong></h4>
 
 									<asp:TextBox ID="txtNombre_Edit" MaxLength="40" runat="server" ClientIDMode="Static"
-										 data-toggle="tooltip" data-placement="bottom"
+										data-toggle="tooltip" data-placement="bottom"
 										title="Ingrese el nombre del Almacén"></asp:TextBox>
 
 									<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
@@ -243,7 +257,7 @@
 	</div>
 
 	<!-- Delete Modal -->
-	<div id="DeleteModal"class="modal fade">
+	<div id="DeleteModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 

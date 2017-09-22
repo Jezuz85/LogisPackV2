@@ -77,6 +77,15 @@ Partial Public Class index
     Protected WithEvents MyTreeView As Global.System.Web.UI.WebControls.TreeView
     
     '''<summary>
+    '''Control ddlBuscar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlBuscar As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
     '''Control txtSearch.
     '''</summary>
     '''<remarks>
@@ -102,7 +111,7 @@ Partial Public Class index
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents btnReset As Global.System.Web.UI.WebControls.Button
-
+    
     '''<summary>
     '''Control ucAlerta.
     '''</summary>
@@ -111,7 +120,7 @@ Partial Public Class index
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents ucAlerta As Global.LogisPack_v1._2.Alert
-
+    
     '''<summary>
     '''Control GridView1.
     '''</summary>

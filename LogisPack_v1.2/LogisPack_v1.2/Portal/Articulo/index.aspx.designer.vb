@@ -23,6 +23,15 @@ Partial Public Class index3
     Protected WithEvents updatePanelPrinicpal As Global.System.Web.UI.UpdatePanel
     
     '''<summary>
+    '''Control ddlBuscar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlBuscar As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
     '''Control txtSearch.
     '''</summary>
     '''<remarks>

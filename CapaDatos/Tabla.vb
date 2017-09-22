@@ -40,6 +40,24 @@ Public Class Tabla
             End If
 
         End If
+        If columna = "Cliente" Then
+
+            If tipoOrdenacion = "1" Then
+                query = query.OrderBy(Function(x) x.cliente).ToList()
+            Else
+                query = query.OrderByDescending(Function(x) x.cliente).ToList()
+            End If
+
+        End If
+        If columna = "Coeficiente" Then
+
+            If tipoOrdenacion = "1" Then
+                query = query.OrderBy(Function(x) x.coeficiente_volumetrico).ToList()
+            Else
+                query = query.OrderByDescending(Function(x) x.coeficiente_volumetrico).ToList()
+            End If
+
+        End If
 
 
         GridView1.DataSource = query
@@ -49,7 +67,7 @@ Public Class Tabla
     ''' <summary>
     ''' Metodo que recibe el gridview para llenar con los datos del articulo en la base de datos
     ''' </summary>
-    Public Shared Sub Articulo(ByRef GridView1 As GridView)
+    Public Shared Sub Articulo(ByRef GridView1 As GridView, idCliente As Integer, columna As String, tipoOrdenacion As String)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
@@ -59,6 +77,26 @@ Public Class Tabla
                          AL.nombre
                     ).ToList()
 
+        If idCliente <> 1 Then
+
+            query = (From AL In contexto.Articulo
+                     Where AL.Almacen.id_cliente = idCliente
+                     Select
+                         AL.id_articulo,
+                         AL.nombre
+                    ).ToList()
+        End If
+
+        If columna = "nombre" Then
+
+            If tipoOrdenacion = "1" Then
+                query = query.OrderBy(Function(x) x.nombre).ToList()
+            Else
+                query = query.OrderByDescending(Function(x) x.nombre).ToList()
+            End If
+        End If
+
+
         GridView1.DataSource = query
         GridView1.DataBind()
     End Sub
@@ -66,7 +104,7 @@ Public Class Tabla
     ''' <summary>
     ''' Metodo que recibe el gridview para llenar con los datos del cliente en la base de datos
     ''' </summary>
-    Public Shared Sub Cliente(ByRef GridView1 As GridView)
+    Public Shared Sub Cliente(ByRef GridView1 As GridView, idCliente As Integer, columna As String, tipoOrdenacion As String)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
@@ -77,6 +115,35 @@ Public Class Tabla
                          AL.nombre
                     ).ToList()
 
+        If idCliente <> 1 Then
+
+            query = (From AL In contexto.Cliente
+                     Where AL.id_cliente = idCliente
+                     Select
+                         AL.id_cliente,
+                         AL.codigo,
+                         AL.nombre
+                    ).ToList()
+        End If
+
+        If columna = "nombre" Then
+
+            If tipoOrdenacion = "1" Then
+                query = query.OrderBy(Function(x) x.nombre).ToList()
+            Else
+                query = query.OrderByDescending(Function(x) x.nombre).ToList()
+            End If
+
+        ElseIf columna = "codigo" Then
+
+            If tipoOrdenacion = "1" Then
+                query = query.OrderBy(Function(x) x.codigo).ToList()
+            Else
+                query = query.OrderByDescending(Function(x) x.codigo).ToList()
+            End If
+
+        End If
+
         GridView1.DataSource = query
         GridView1.DataBind()
     End Sub
@@ -84,7 +151,7 @@ Public Class Tabla
     ''' <summary>
     ''' Metodo que recibe el gridview para llenar con los datos del tipo de facturacion en la base de datos
     ''' </summary>
-    Public Shared Sub TipoFacturacion(ByRef GridView1 As GridView)
+    Public Shared Sub TipoFacturacion(ByRef GridView1 As GridView, columna As String, tipoOrdenacion As String)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
@@ -94,6 +161,15 @@ Public Class Tabla
                          AL.nombre
                     ).ToList()
 
+        If columna = "nombre" Then
+
+            If tipoOrdenacion = "1" Then
+                query = query.OrderBy(Function(x) x.nombre).ToList()
+            Else
+                query = query.OrderByDescending(Function(x) x.nombre).ToList()
+            End If
+        End If
+
         GridView1.DataSource = query
         GridView1.DataBind()
     End Sub
@@ -101,7 +177,7 @@ Public Class Tabla
     ''' <summary>
     ''' Metodo que recibe el gridview para llenar con los datos del tipo de unidad en la base de datos
     ''' </summary>
-    Public Shared Sub TipoUnidad(ByRef GridView1 As GridView)
+    Public Shared Sub TipoUnidad(ByRef GridView1 As GridView, columna As String, tipoOrdenacion As String)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
@@ -110,6 +186,14 @@ Public Class Tabla
                          AL.id_tipo_unidad,
                          AL.nombre
                     ).ToList()
+        If columna = "nombre" Then
+
+            If tipoOrdenacion = "1" Then
+                query = query.OrderBy(Function(x) x.nombre).ToList()
+            Else
+                query = query.OrderByDescending(Function(x) x.nombre).ToList()
+            End If
+        End If
 
         GridView1.DataSource = query
         GridView1.DataBind()

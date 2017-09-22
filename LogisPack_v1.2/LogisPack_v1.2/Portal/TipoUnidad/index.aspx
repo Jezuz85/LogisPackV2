@@ -3,7 +3,7 @@
 <%@ Register Src="~/Portal/WebUserControl/Alert.ascx" TagPrefix="uca" TagName="ucAlert" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-	<asp:updatepanel id="updatePanelPrinicpal" runat="server">
+	<asp:UpdatePanel ID="updatePanelPrinicpal" runat="server">
 		<ContentTemplate>
 
 			<div id="titleContainer">
@@ -16,13 +16,14 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div id="pageBodyContainer" class="MainContentWrapper" style="width: 96%;">
-				
+
 				<div class="section">
 					<div id="sectionHeaderFiltros" class="sectionHeader">
 						<div class="sectionHeaderTitle">
 							Búsqueda
+					
 						</div>
 						<div class="sectionHeaderButtons" data-toggle="collapse" data-target="#sectionContentFiltrosCabecera">
 							<img class="sectionHeaderButton" src="../../Content/images/minimize_16x16.png">
@@ -32,17 +33,29 @@
 					<!-- SECCIÓN FILTROS -->
 					<div id="sectionContentFiltrosCabecera" class="section_Content collapse in">
 						<div class="row_Content">
-
 							<div class="row">
-								<div class="col-md-6">
-									<asp:TextBox ID="txtSearch" runat="server" placeholder="Ingrese el texto a buscar" MaxLength="200" autocomplete="off"></asp:TextBox>
+								<div class="col-md-1">
+									<br />
+									<label>Buscar</label>
 								</div>
-								<div class="col-md-3">
-									<asp:Button ID="btnBuscar" runat="server" Text="Buscar" class="btn btn-block btn-default" />
 
+								<div class="col-md-2">
+									<asp:DropDownList runat="server" ID="ddlBuscar">
+										<asp:ListItem Text="Codigo" Value="Codigo"></asp:ListItem>
+										<asp:ListItem Text="Nombre" Value="Nombre"></asp:ListItem>
+									</asp:DropDownList>
 								</div>
-								<div class="col-md-3">
-									<asp:Button ID="btnReset" runat="server" Text="Reset" class="btn btn-block btn-default" />
+
+								<div class="col-md-7">
+
+									<asp:TextBox ID="txtSearch" runat="server" placeholder="Ingrese el texto a buscar"
+										MaxLength="200" autocomplete="off"></asp:TextBox>
+								</div>
+
+								<div class="col-md-2">
+									<asp:Button ID="btnBuscar" runat="server" Text="Buscar" />
+
+									<asp:Button ID="btnReset" runat="server" Text="Reset" />
 								</div>
 							</div>
 						</div>
@@ -56,12 +69,16 @@
 
 					<div class="sectionContent sectionGrid noPadding noMargin">
 						<div id="updGrid">
-							<asp:GridView ID="GridView1" class="grid gridSelectable gridSortable noPadding noMargin" 
-								runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="30"                                 
-								OnRowDeleting="GridView1_RowDeleting"
-								OnRowEditing="GridView1_onRowEditing"
-								OnPageIndexChanging="GridView1_PageIndexChanging" 
-								EmptyDataText="No existen Registros">
+							<asp:GridView ID="GridView1" class="grid gridSelectable gridSortable noPadding noMargin"
+								runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="30"
+								OnPageIndexChanging="GridView1_PageIndexChanging"
+								EmptyDataText="No existen Registros"
+								OnRowCreated="GridView1_RowCreated"
+								OnRowCommand="GridView1_RowCommand"
+								OnSorting="GridView1_OnSorting"
+								AllowSorting="true"
+								CurrentSortField="id"
+								CurrentSortDirection="ASC">
 
 								<Columns>
 									<asp:TemplateField HeaderText="Id Categoria" Visible="false" HeaderStyle-CssClass="text-center">
@@ -70,21 +87,18 @@
 										</ItemTemplate>
 									</asp:TemplateField>
 
-									<asp:TemplateField HeaderText="Nombre" HeaderStyle-CssClass="text-center">
-										<ItemTemplate>
-											<asp:Label ID="nombre" runat="server" Text='<%# Eval("nombre") %>' />
-										</ItemTemplate>
-									</asp:TemplateField>
+									<asp:BoundField DataField="nombre"
+										HeaderText="Nombre"
+										SortExpression="nombre"></asp:BoundField>
 
-                                    
-									<asp:ButtonField HeaderText="Editar" CommandName="Edit" 
-										ButtonType="Image" ImageUrl="~/Content/images/edit.png" 
-										HeaderStyle-CssClass="text-center" 
+									<asp:ButtonField HeaderText="Editar" CommandName="Editar"
+										ButtonType="Image" ImageUrl="~/Content/images/edit.png"
+										HeaderStyle-CssClass="text-center"
 										ItemStyle-HorizontalAlign="Center"></asp:ButtonField>
-                                    
-									<asp:ButtonField HeaderText="Eliminar" CommandName="Delete" 
-										ButtonType="Image" ImageUrl="~/Content/images/baja.png" 
-										HeaderStyle-CssClass="text-center" 
+
+									<asp:ButtonField HeaderText="Eliminar" CommandName="Eliminar"
+										ButtonType="Image" ImageUrl="~/Content/images/baja.png"
+										HeaderStyle-CssClass="text-center"
 										ItemStyle-HorizontalAlign="Center"></asp:ButtonField>
 
 								</Columns>
@@ -103,19 +117,19 @@
 
 		</ContentTemplate>
 		<Triggers></Triggers>
-	</asp:updatepanel>
+	</asp:UpdatePanel>
 
 	<!-- Add Modal -->
-	<div id="AddModal"class="modal fade">
+	<div id="AddModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				
+
 				<div class="modal-header">
 					<button id="btnAddCerrar" type="button" class="close" data-dismiss="modal" aria-hidden="true">Cerrar</button>
 					<h3><strong>Agregar Registro</strong></h3>
 				</div>
 
-				<asp:updatepanel id="up_Add" runat="server">
+				<asp:UpdatePanel ID="up_Add" runat="server">
 					<ContentTemplate>
 						<div class="modal-body form-group">
 
@@ -123,84 +137,86 @@
 								<div class="col-md-8 col-md-offset-2">
 									<h4><strong>Nombre</strong></h4>
 
-									<asp:TextBox id="txtNombre" MaxLength="40" runat="server" ClientIDMode="Static" 
-										 data-toggle="tooltip" data-placement="bottom" 
+									<asp:TextBox ID="txtNombre" MaxLength="40" runat="server" ClientIDMode="Static"
+										data-toggle="tooltip" data-placement="bottom"
 										title="Ingrese el nombre del Almacén"></asp:TextBox>
-									
-									<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" setfocusonerror="true" 
-										Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true" 
-										ControlToValidate="txtNombre" runat="server" ValidationGroup="ValidationAdd"/>
+
+									<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+										Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+										ControlToValidate="txtNombre" runat="server" ValidationGroup="ValidationAdd" />
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="modal-footer">
 							<div class="row">
 
 								<div class="col-md-4 col-md-offset-4">
-									<asp:Button id="btnAdd" runat="server" Text="Registrar" class="btn btn-block btn-default" ValidationGroup="ValidationAdd"/>
+									<asp:Button ID="btnAdd" runat="server" Text="Registrar" class="btn btn-block btn-default" ValidationGroup="ValidationAdd" />
 								</div>
 							</div>
 						</div>
 					</ContentTemplate>
 					<Triggers>
-						<asp:AsyncPostBackTrigger Controlid="btnAdd" EventName="Click"/></Triggers>
-				</asp:updatepanel>
+						<asp:AsyncPostBackTrigger ControlID="btnAdd" EventName="Click" />
+					</Triggers>
+				</asp:UpdatePanel>
 			</div>
 		</div>
-	</div>    
-	
+	</div>
+
 	<!-- Edit Modal -->
-	<div id="EditModal"class="modal fade">
+	<div id="EditModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				
+
 				<div class="modal-header">
 					<button id="btnEditCerrar" type="button" class="close" data-dismiss="modal" aria-hidden="true">Cerrar</button>
 					<h3><strong>Editar Registro</strong></h3>
 				</div>
 
-				<asp:updatepanel id="up_Edit" runat="server">
+				<asp:UpdatePanel ID="up_Edit" runat="server">
 					<ContentTemplate>
 
 						<div class="modal-body form-group">
-							
-							<asp:HiddenField id="hdfEdit" runat="server"/>
+
+							<asp:HiddenField ID="hdfEdit" runat="server" />
 
 							<div class="row">
 								<div class="col-md-8 col-md-offset-2">
 									<h4><strong>Nombre</strong></h4>
 
-									<asp:TextBox id="txtNombre_Edit" MaxLength="40" runat="server" ClientIDMode="Static" 
-										 data-toggle="tooltip" data-placement="bottom" 
+									<asp:TextBox ID="txtNombre_Edit" MaxLength="40" runat="server" ClientIDMode="Static"
+										data-toggle="tooltip" data-placement="bottom"
 										title="Ingrese el nombre del Almacén"></asp:TextBox>
-									
-									<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" setfocusonerror="true" 
-										Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true" 
-										ControlToValidate="txtNombre_Edit" runat="server" ValidationGroup="VG_Edit"/>
+
+									<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
+										Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
+										ControlToValidate="txtNombre_Edit" runat="server" ValidationGroup="VG_Edit" />
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="modal-footer">
 							<div class="row">
 
 								<div class="col-md-4 col-md-offset-4">
-									<asp:Button id="btnEdit" runat="server" Text="Editar" class="btn btn-block btn-default" ValidationGroup="VG_Edit"/>
+									<asp:Button ID="btnEdit" runat="server" Text="Editar" class="btn btn-block btn-default" ValidationGroup="VG_Edit" />
 								</div>
 							</div>
 						</div>
 
 					</ContentTemplate>
 					<Triggers>
-						<asp:AsyncPostBackTrigger Controlid="btnEdit" EventName="Click"/></Triggers>
-				</asp:updatepanel>
+						<asp:AsyncPostBackTrigger ControlID="btnEdit" EventName="Click" />
+					</Triggers>
+				</asp:UpdatePanel>
 			</div>
 		</div>
-	</div>  
+	</div>
 
 	<!-- Delete Modal -->
-	<div id="DeleteModal"class="modal fade">
+	<div id="DeleteModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 
@@ -209,24 +225,24 @@
 					<h3><strong>Eliminar Registro</strong></h3>
 				</div>
 
-				<asp:updatepanel id="upDel" runat="server">
+				<asp:UpdatePanel ID="upDel" runat="server">
 					<ContentTemplate>
-						
+
 						<div class="modal-body form-group">
-							<asp:HiddenField id="hdfIDDel" runat="server"/>
-							
+							<asp:HiddenField ID="hdfIDDel" runat="server" />
+
 							<div class="row">
 								<h4 class="text-center">¿Seguro desea eliminar este registro?</h4>
 							</div>
 						</div>
-						
+
 						<div class="modal-footer">
-							<div class="row">                                
+							<div class="row">
 								<div class="col-md-4 col-md-offset-2">
-									<asp:Button id="btnDelete" runat="server" Text="Eliminar" class="btn btn-block btn-info" 
-										OnClick="EliminarRegistro"/>
+									<asp:Button ID="btnDelete" runat="server" Text="Eliminar" class="btn btn-block btn-info"
+										OnClick="EliminarRegistro" />
 								</div>
-								
+
 								<div class="col-md-4">
 									<button class="btn btn-block btn-default" data-dismiss="modal" aria-hidden="true">Cerrar</button>
 								</div>
@@ -234,9 +250,9 @@
 						</div>
 					</ContentTemplate>
 					<Triggers>
-						<asp:AsyncPostBackTrigger Controlid="btnDelete" EventName="Click"/>
+						<asp:AsyncPostBackTrigger ControlID="btnDelete" EventName="Click" />
 					</Triggers>
-				</asp:updatepanel>
+				</asp:UpdatePanel>
 
 			</div>
 		</div>

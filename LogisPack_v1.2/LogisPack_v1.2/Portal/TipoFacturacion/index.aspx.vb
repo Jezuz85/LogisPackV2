@@ -11,8 +11,12 @@ Public Class index1
         If Manager_Usuario.ValidarAutenticado(User) Then
 
             If Manager_Usuario.ValidarRol(User, Rol.Admin.ToString) Then
-                LlenarGridView()
-                Modal.OcultarAlerta(updatePanelPrinicpal)
+
+                If IsPostBack = False Then
+                    LlenarGridView()
+                    Modal.OcultarAlerta(updatePanelPrinicpal)
+                End If
+
             Else
                 Response.Redirect(Paginas.Inicio.ToString)
             End If
@@ -27,7 +31,7 @@ Public Class index1
     ''' </summary>
     Private Sub LlenarGridView()
 
-        Tabla.TipoFacturacion(GridView1)
+        Tabla.TipoFacturacion(GridView1, String.Empty, String.Empty)
 
     End Sub
 
@@ -39,18 +43,32 @@ Public Class index1
         LlenarGridView()
 
     End Sub
-    Protected Sub GridView1_onRowEditing(sender As Object, e As GridViewEditEventArgs)
+    Protected Sub GridView1_OnSorting(ByVal sender As Object, ByVal e As GridViewSortEventArgs)
 
-        hdfEdit.Value = Utilidades_Grid.Get_IdRow_Editing(GridView1, e, "id")
-        Dim _TipoFacturacion = Getter.Tipo_Facturacion(Convert.ToInt32(hdfEdit.Value))
-        txtNombre_Edit.Text = _TipoFacturacion.nombre
-        Modal.AbrirModal("EditModal", "EditModalScript", Me)
+        Utilidades_Grid.sortGridView(GridView1, e, ViewState("SortExpression"), ViewState("GridViewSortDirection"))
+
+        Tabla.TipoFacturacion(GridView1, "" & ViewState("SortExpression"), "" & ViewState("GridViewSortDirection"))
 
     End Sub
-    Protected Sub GridView1_RowDeleting(sender As Object, e As GridViewDeleteEventArgs)
+    Protected Sub GridView1_RowCreated(sender As Object, e As GridViewRowEventArgs)
+        Utilidades_Grid.SetArrowsGrid(GridView1, e)
+    End Sub
+    Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
-        hdfIDDel.Value = Utilidades_Grid.Get_IdRow_Deleting(GridView1, e, "id")
-        Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
+        If e.CommandName.Equals(Mensajes.Editar.ToString) Then
+
+            hdfEdit.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
+            Dim _TipoFacturacion = Getter.Tipo_Facturacion(Convert.ToInt32(hdfEdit.Value))
+            txtNombre_Edit.Text = _TipoFacturacion.nombre
+            Modal.AbrirModal("EditModal", "EditModalScript", Me)
+
+        End If
+        If e.CommandName.Equals(Mensajes.Eliminar.ToString) Then
+
+            hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
+            Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
+
+        End If
 
     End Sub
 

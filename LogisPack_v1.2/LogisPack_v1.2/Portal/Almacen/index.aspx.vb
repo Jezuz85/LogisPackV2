@@ -46,7 +46,7 @@ Public Class index
     ''' Metodo que llena El Gridview con datos de la Base de Datos
     ''' </summary>
     Private Sub LlenarGridView()
-        Tabla.Almacen(GridView1, idCliente, "", "")
+        Tabla.Almacen(GridView1, idCliente, String.Empty, String.Empty)
     End Sub
 
     ''' <summary>
@@ -76,110 +76,38 @@ Public Class index
             lbViewCoefVol.Text = _Almacen.coeficiente_volumetrico
 
             Modal.AbrirModal("ViewModal", "ViewModalScript", Me)
+
+        ElseIf e.CommandName.Equals(Mensajes.Editar.ToString) Then
+
+            hdfEdit.Value = Utilidades_Grid.Get_IdRow(GridView1, e)
+            Dim _Almacen = Getter.Almacen(Convert.ToInt32(hdfEdit.Value))
+            Listas.Cliente(ddlClienteEdit, idCliente)
+
+            Dim CoefVolumetrico As String = Convert.ToDouble(_Almacen.coeficiente_volumetrico).ToString("##,##0.00").Replace(",", ".")
+
+            ddlClienteEdit.SelectedValue = _Almacen.id_cliente
+            txtEditCodigo.Text = _Almacen.codigo
+            txtEditNombre.Text = _Almacen.nombre
+            txtEditCoefVol.Text = CoefVolumetrico
+
+            Modal.AbrirModal("EditModal", "EditModalScript", Me)
+
+        ElseIf e.CommandName.Equals(Mensajes.Eliminar.ToString) Then
+
+            hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e)
+            Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
         End If
-
-    End Sub
-    Protected Sub GridView1_onRowEditing(sender As Object, e As GridViewEditEventArgs)
-
-        hdfEdit.Value = Utilidades_Grid.Get_IdRow_Editing(GridView1, e)
-        Dim _Almacen = Getter.Almacen(Convert.ToInt32(hdfEdit.Value))
-        Listas.Cliente(ddlClienteEdit, idCliente)
-
-        Dim CoefVolumetrico As String = Convert.ToDouble(_Almacen.coeficiente_volumetrico).ToString("##,##0.00").Replace(",", ".")
-
-        ddlClienteEdit.SelectedValue = _Almacen.id_cliente
-        txtEditCodigo.Text = _Almacen.codigo
-        txtEditNombre.Text = _Almacen.nombre
-        txtEditCoefVol.Text = CoefVolumetrico
-
-        Modal.AbrirModal("EditModal", "EditModalScript", Me)
-
-    End Sub
-    Protected Sub GridView1_RowDeleting(sender As Object, e As GridViewDeleteEventArgs)
-
-        hdfIDDel.Value = Utilidades_Grid.Get_IdRow_Deleting(GridView1, e)
-        Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
 
     End Sub
     Protected Sub GridView1_OnSorting(ByVal sender As Object, ByVal e As GridViewSortEventArgs)
 
-        Dim sortField = e.SortExpression
-        Dim SortDirection = e.SortDirection
-
-        If GridView1.Attributes("CurrentSortField") IsNot Nothing AndAlso
-            GridView1.Attributes("CurrentSortDirection") IsNot Nothing Then
-
-            If sortField = GridView1.Attributes("CurrentSortField") Then
-                If GridView1.Attributes("CurrentSortDirection") = "ASC" Then
-                    SortDirection = SortDirection.Descending
-                Else
-                    SortDirection = SortDirection.Ascending
-                End If
-            End If
-
-            GridView1.Attributes("CurrentSortField") = sortField
-            ViewState("SortExpression") = sortField
-
-            If SortDirection = SortDirection.Ascending Then
-                GridView1.Attributes("CurrentSortDirection") = "ASC"
-                ViewState("GridViewSortDirection") = SortDirection.Ascending
-            Else
-                GridView1.Attributes("CurrentSortDirection") = "DESC"
-                ViewState("GridViewSortDirection") = SortDirection.Descending
-            End If
-
-
-        End If
-        'If e.SortExpression <> ViewState("SortExpression") Then
-        '    e.SortDirection = SortDirection.Descending
-        '    ViewState("GridViewSortDirection") = e.SortDirection
-
-        'ElseIf ViewState("GridViewSortDirection") = SortDirection.Ascending Then
-        '    ViewState("GridViewSortDirection") = SortDirection.Descending
-        '    e.SortDirection = SortDirection.Descending
-
-        'ElseIf ViewState("GridViewSortDirection") = SortDirection.Descending Then
-        '    ViewState("GridViewSortDirection") = SortDirection.Ascending
-        '    e.SortDirection = SortDirection.Ascending
-        'End If
-        'ViewState("SortExpression") = e.SortExpression
+        Utilidades_Grid.sortGridView(GridView1, e, ViewState("SortExpression"), ViewState("GridViewSortDirection"))
 
         Tabla.Almacen(GridView1, idCliente, "" & ViewState("SortExpression"), "" & ViewState("GridViewSortDirection"))
 
     End Sub
     Protected Sub GridView1_RowCreated(sender As Object, e As GridViewRowEventArgs)
-        If e.Row.RowType = DataControlRowType.Header Then
-            For Each tc As TableCell In e.Row.Cells
-                If tc.HasControls() Then
-
-                    Dim lnk As LinkButton = Nothing
-
-                    If TypeOf tc.Controls(0) Is LinkButton Then
-                        lnk = CType(tc.Controls(0), LinkButton)
-                    End If
-
-                    If lnk IsNot Nothing AndAlso GridView1.Attributes("CurrentSortField") = lnk.CommandArgument Then
-                        Dim image As New Image()
-
-                        If GridView1.Attributes("CurrentSortDirection") = "ASC" Then
-                            image.ImageUrl = "~/Content/images/arrow-orderasc.png"
-                        Else
-                            image.ImageUrl = "~/Content/images/arrow-orderdesc.png"
-                        End If
-
-                        tc.Controls.Add(New LiteralControl("&nbsp;"))
-                        tc.Controls.Add(image)
-
-                    End If
-
-
-
-                End If
-
-            Next
-
-        End If
-
+        Utilidades_Grid.SetArrowsGrid(GridView1, e)
     End Sub
 
 
@@ -198,6 +126,7 @@ Public Class index
 
         bError = Create.Almacen(_Nuevo)
 
+        Modal.CerrarModal("AddModal", "AddModalScript", Me)
         Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Registrar.ToString, bError, Me, updatePanelPrinicpal, up_Add)
 
         LlenarGridView()
@@ -220,6 +149,7 @@ Public Class index
 
         bError = Update.Almacen(Edit, contexto)
 
+        Modal.CerrarModal("EditModal", "EditModallScript", Me)
         Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
 
         LlenarGridView()
@@ -231,12 +161,12 @@ Public Class index
     ''' </summary>
     Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
         bError = Delete.Almacen(Convert.ToInt32(hdfIDDel.Value))
+        Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
 
         Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
 
         LlenarGridView()
     End Sub
-
 
     ''' <summary>
     ''' Metodo que se invoca al darle click al nodo de almacen y asi consultar los datos del almacen

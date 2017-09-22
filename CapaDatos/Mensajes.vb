@@ -2,10 +2,10 @@
 
     Private Key As String
 
-    Public Shared ReadOnly Registrar As Mensajes = New Mensajes("Add")
-    Public Shared ReadOnly Editar As Mensajes = New Mensajes("Edit")
-    Public Shared ReadOnly Eliminar As Mensajes = New Mensajes("Delete")
-    Public Shared ReadOnly Detalles As Mensajes = New Mensajes("View")
+    Public Shared ReadOnly Registrar As Mensajes = New Mensajes("Registrar")
+    Public Shared ReadOnly Editar As Mensajes = New Mensajes("Editar")
+    Public Shared ReadOnly Eliminar As Mensajes = New Mensajes("Eliminar")
+    Public Shared ReadOnly Detalles As Mensajes = New Mensajes("Detalles")
 
 
     Public Shared ReadOnly RutaArticulos As Mensajes = New Mensajes("../../Archivos/Articulos/")
