@@ -59,9 +59,9 @@
 
 													<div id="divSesionCliente">
 														Cliente:
-                                                        <span runat="server" id="lblSesionCliente">
+														<span runat="server" id="lblSesionCliente">
 															<%: Manager_Usuario.GetNombreCliente(Context.User.Identity.GetUserId)  %>
-                                                        </span>
+														</span>
 													</div>
 												   
 													<a runat="server" href="~/Account/Register">Registrarse</a>|
@@ -142,7 +142,7 @@
 			</table>
 		</div>
 
-        <asp:ScriptManager ID="ScriptManager1" runat="server" />
+		<asp:ScriptManager ID="ScriptManager1" runat="server" />
 
 		<%: Scripts.Render("~/bundles/MisScripts") %>
 

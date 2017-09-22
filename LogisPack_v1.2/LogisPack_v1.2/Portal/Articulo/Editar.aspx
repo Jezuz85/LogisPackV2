@@ -96,9 +96,9 @@
 
 								<div class="col-md-12">
 									<br />
-									<asp:Button ID="btnAddArticuloRow" runat="server" CssClass="btn btn-default" Text="Añadir Articulo"
+									<asp:Button ID="btnAddArticuloRow" runat="server"  Text="Añadir Articulo"
 										ValidationGroup="Val_AddArticulo" CausesValidation="true" />
-									<asp:Button ID="btnReset" runat="server" CssClass="btn btn-default" Text="Eliminar Articulos" />
+									<asp:Button ID="btnReset" runat="server"  Text="Eliminar Articulos" />
 								</div>
 							</div>
 
@@ -208,8 +208,8 @@
 						</table>
 
 						<div class="col-md-6">
-							<asp:Button ID="btnAddFilaUbicacion" runat="server" CssClass="btn btn-default" Text="Agregar Otra Ubicación" />
-							<asp:Button ID="btnEliminarFila" runat="server" CssClass="btn btn-default" Text="Eliminar Ubicación"
+							<asp:Button ID="btnAddFilaUbicacion" runat="server"  Text="Agregar Otra Ubicación" />
+							<asp:Button ID="btnEliminarFila" runat="server"  Text="Eliminar Ubicación"
 								ValidationGroup="ValidationAddRow" />
 						</div>
 					</div>
@@ -333,9 +333,12 @@
 						<div class="row">
 							<div class="box-body">
 								<div class="dataTables_wrapper form-inline dt-bootstrap">
-									<asp:GridView ID="GridView1" class="grid gridSelectable gridSortable noPadding noMargin" runat="server"
-										AutoGenerateColumns="false" AllowPaging="true" PageSize="30" OnRowCommand="GridView1_RowCommand"
-										OnPageIndexChanging="GridView1_PageIndexChanging" EmptyDataText="No existen Registros">
+									<asp:GridView ID="GridView1" class="grid gridSelectable gridSortable noPadding noMargin" 
+										runat="server"
+										AutoGenerateColumns="false" AllowPaging="true" PageSize="30" 
+										OnRowCommand="GridView1_RowCommand"
+										OnPageIndexChanging="GridView1_PageIndexChanging" 
+										EmptyDataText="No existen Registros">
 
 										<Columns>
 											<asp:TemplateField HeaderText="Id Categoria" Visible="false" HeaderStyle-CssClass="text-center">
@@ -352,14 +355,15 @@
 
 											<asp:TemplateField HeaderText="Ver" HeaderStyle-CssClass="text-center">
 												<ItemTemplate>
-													<asp:HyperLink runat="server" NavigateUrl='<%# Eval("url_imagen") %>' Target="_blank">Ver</asp:HyperLink>
-
+													<asp:HyperLink runat="server" NavigateUrl='<%# Eval("url_imagen") %>' 
+														Target="_blank"><img alt="X" src="../../Content/images/vermas.png" /></asp:HyperLink>
 												</ItemTemplate>
 											</asp:TemplateField>
 
-											<asp:ButtonField HeaderText="Eliminar" CommandName="Delete" ButtonType="Image" Text="Eliminar"
-												HeaderStyle-CssClass="text-center" ItemStyle-HorizontalAlign="Center"
-												ControlStyle-CssClass="btn btn-default"></asp:ButtonField>
+											<asp:ButtonField HeaderText="Eliminar" CommandName="Eliminar"
+												ButtonType="Image" ImageUrl="~/Content/images/baja.png"
+												HeaderStyle-CssClass="text-center"
+												ItemStyle-HorizontalAlign="Center"></asp:ButtonField>
 
 										</Columns>
 									</asp:GridView>
@@ -373,7 +377,7 @@
 
 				<div class="row">
 					<div class="col-md-3">
-						<asp:Button ID="btnGuardar" runat="server" CssClass="btn btn-default" Text="Guardar"
+						<asp:Button ID="btnGuardar" runat="server"  Text="Guardar"
 							ValidationGroup="ValidationAdd" />
 					</div>
 				</div>
@@ -391,7 +395,7 @@
 			<div class="modal-content">
 
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><img alt="X" src="../../Content/images/baja.png" /></button>
 					<h3>¿Eliminar Imagen?</h3>
 				</div>
 
@@ -408,15 +412,8 @@
 
 						<div class="modal-footer">
 							<div class="row">
-								<div class="col-md-4 col-md-offset-2">
-									<asp:Button ID="btnDelete" runat="server" Text="Eliminar"
-										class="btn btn-block btn-info" OnClick="EliminarImagen" />
-								</div>
-
-								<div class="col-md-4">
-									<button class="btn btn-block btn-default" data-dismiss="modal"
-										aria-hidden="true">
-										Cerrar</button>
+								<div class="col-md-2 col-md-offset-5">
+									<asp:Button ID="btnDelete" runat="server" Text="Eliminar" OnClick="EliminarImagen" />
 								</div>
 							</div>
 						</div>

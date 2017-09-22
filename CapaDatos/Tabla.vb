@@ -5,7 +5,8 @@ Public Class Tabla
     ''' <summary>
     ''' Metodo que recibe el gridview para llenar con los datos del almacen en la base de datos
     ''' </summary>
-    Public Shared Sub Almacen(ByRef GridView1 As GridView, idCliente As Integer, columna As String, tipoOrdenacion As String)
+    Public Shared Sub Almacen(ByRef GridView1 As GridView, idCliente As Integer, columna As String, tipoOrdenacion As String,
+                              filtroBusqueda As String, textoBusqueda As String)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
@@ -14,23 +15,24 @@ Public Class Tabla
                          AL.id_almacen,
                          AL.nombre,
                          AL.id_cliente,
+                         AL.codigo,
                          cliente = AL.Cliente.nombre,
                          AL.coeficiente_volumetrico
                     ).ToList()
 
         If idCliente <> 1 Then
-
-            query = (From AL In contexto.Almacen
-                     Where AL.id_cliente = idCliente
-                     Select
-                         AL.id_almacen,
-                         AL.nombre,
-                         AL.id_cliente,
-                         cliente = AL.Cliente.nombre,
-                         AL.coeficiente_volumetrico
-                    ).ToList()
+            query = query.Where(Function(x) x.id_cliente = idCliente).ToList()
         End If
 
+        If columna = "codigo" Then
+
+            If tipoOrdenacion = "1" Then
+                query = query.OrderBy(Function(x) x.codigo).ToList()
+            Else
+                query = query.OrderByDescending(Function(x) x.codigo).ToList()
+            End If
+
+        End If
         If columna = "Nombre" Then
 
             If tipoOrdenacion = "1" Then
@@ -59,6 +61,17 @@ Public Class Tabla
 
         End If
 
+        If textoBusqueda <> String.Empty Then
+            If filtroBusqueda = "Nombre" Then
+                query = query.Where(Function(x) x.nombre.Contains(textoBusqueda)).ToList()
+            ElseIf filtroBusqueda = "Cliente" Then
+                query = query.Where(Function(x) x.cliente.Contains(textoBusqueda)).ToList()
+            ElseIf filtroBusqueda = "codigo" Then
+                query = query.Where(Function(x) x.codigo.Contains(textoBusqueda)).ToList()
+            End If
+        End If
+
+
 
         GridView1.DataSource = query
         GridView1.DataBind()
@@ -74,17 +87,12 @@ Public Class Tabla
         Dim query = (From AL In contexto.Articulo
                      Select
                          AL.id_articulo,
+                         AL.Almacen.id_cliente,
                          AL.nombre
                     ).ToList()
 
         If idCliente <> 1 Then
-
-            query = (From AL In contexto.Articulo
-                     Where AL.Almacen.id_cliente = idCliente
-                     Select
-                         AL.id_articulo,
-                         AL.nombre
-                    ).ToList()
+            query = query.Where(Function(x) x.id_cliente = idCliente).ToList()
         End If
 
         If columna = "nombre" Then
@@ -116,14 +124,7 @@ Public Class Tabla
                     ).ToList()
 
         If idCliente <> 1 Then
-
-            query = (From AL In contexto.Cliente
-                     Where AL.id_cliente = idCliente
-                     Select
-                         AL.id_cliente,
-                         AL.codigo,
-                         AL.nombre
-                    ).ToList()
+            query = query.Where(Function(x) x.id_cliente = idCliente).ToList()
         End If
 
         If columna = "nombre" Then

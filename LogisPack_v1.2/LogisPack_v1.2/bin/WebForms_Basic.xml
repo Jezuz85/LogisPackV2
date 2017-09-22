@@ -619,6 +619,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:LogisPack_v1._2.index._ddlBuscar">
+<summary>
+Control ddlBuscar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:LogisPack_v1._2.index._txtSearch">
 <summary>
 Control txtSearch.
@@ -664,9 +673,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.index._btnCrear">
+<member name="F:LogisPack_v1._2.index._btnRegistrar">
 <summary>
-Control btnCrear.
+Control btnRegistrar.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -914,6 +923,16 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="M:LogisPack_v1._2.index.GetData(System.String)">
  <summary>
  Metodo que obtiene la data a pasarle al arbol
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index.Buscar(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que realiza una busqueda en el grid
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index.Reset(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que realiza una resetea la busqueda en el grid
  </summary>
 </member>
 <member name="F:LogisPack_v1._2.Crear._upAdd_Articulo">
@@ -2201,6 +2220,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:LogisPack_v1._2.index3._ddlBuscar">
+<summary>
+Control ddlBuscar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:LogisPack_v1._2.index3._txtSearch">
 <summary>
 Control txtSearch.
@@ -2305,6 +2333,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:LogisPack_v1._2.index5._updatePanelPrinicpal">
 <summary>
 Control updatePanelPrinicpal.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.index5._ddlBuscar">
+<summary>
+Control ddlBuscar.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -2589,6 +2626,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:LogisPack_v1._2.index1._ddlBuscar">
+<summary>
+Control ddlBuscar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:LogisPack_v1._2.index1._txtSearch">
 <summary>
 Control txtSearch.
@@ -2634,9 +2680,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.index1._btnCrear">
+<member name="F:LogisPack_v1._2.index1._btnRegistrar">
 <summary>
-Control btnCrear.
+Control btnRegistrar.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -2767,6 +2813,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:LogisPack_v1._2.index2._ddlBuscar">
+<summary>
+Control ddlBuscar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:LogisPack_v1._2.index2._txtSearch">
 <summary>
 Control txtSearch.
@@ -2812,9 +2867,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.index2._btnCrear">
+<member name="F:LogisPack_v1._2.index2._btnRegistrar">
 <summary>
-Control btnCrear.
+Control btnRegistrar.
 </summary>
 <remarks>
 Campo generado automáticamente.

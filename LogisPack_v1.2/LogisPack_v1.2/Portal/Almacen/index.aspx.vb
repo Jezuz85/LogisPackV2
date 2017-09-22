@@ -9,7 +9,6 @@ Public Class index
     Private bError As Boolean
     Private idCliente As Integer
 
-
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
         If Manager_Usuario.ValidarAutenticado(User) Then
@@ -17,6 +16,10 @@ Public Class index
             idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
 
             If IsPostBack = False Then
+
+                ViewState("filtroBusqueda") = String.Empty
+                ViewState("textoBusqueda") = String.Empty
+
                 MyTreeView.Nodes.Clear()
 
                 Dim dt As DataTable
@@ -46,7 +49,7 @@ Public Class index
     ''' Metodo que llena El Gridview con datos de la Base de Datos
     ''' </summary>
     Private Sub LlenarGridView()
-        Tabla.Almacen(GridView1, idCliente, String.Empty, String.Empty)
+        Tabla.Almacen(GridView1, idCliente, String.Empty, String.Empty, String.Empty & ViewState("filtroBusqueda"), String.Empty & ViewState("textoBusqueda"))
     End Sub
 
     ''' <summary>
@@ -103,14 +106,12 @@ Public Class index
 
         Utilidades_Grid.sortGridView(GridView1, e, ViewState("SortExpression"), ViewState("GridViewSortDirection"))
 
-        Tabla.Almacen(GridView1, idCliente, "" & ViewState("SortExpression"), "" & ViewState("GridViewSortDirection"))
+        Tabla.Almacen(GridView1, idCliente, "" & ViewState("SortExpression"), "" & ViewState("GridViewSortDirection"), String.Empty & ViewState("filtroBusqueda"), String.Empty & ViewState("textoBusqueda"))
 
     End Sub
     Protected Sub GridView1_RowCreated(sender As Object, e As GridViewRowEventArgs)
         Utilidades_Grid.SetArrowsGrid(GridView1, e)
     End Sub
-
-
 
     ''' <summary>
     ''' Metodo que crea un objeto Almacen y lo guarda en la base de datos
@@ -234,5 +235,27 @@ Public Class index
             Return dt
         End Using
     End Function
+
+    ''' <summary>
+    ''' Metodo que realiza una busqueda en el grid
+    ''' </summary>
+    Protected Sub Buscar(sender As Object, e As EventArgs) Handles btnBuscar.Click
+
+        ViewState("filtroBusqueda") = ddlBuscar.SelectedValue
+        ViewState("textoBusqueda") = txtSearch.Text
+        LlenarGridView()
+
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que realiza una resetea la busqueda en el grid
+    ''' </summary>
+    Protected Sub Reset(sender As Object, e As EventArgs) Handles btnReset.Click
+        txtSearch.Text = String.Empty
+        ViewState("filtroBusqueda") = String.Empty
+        ViewState("textoBusqueda") = String.Empty
+
+        LlenarGridView()
+    End Sub
 
 End Class

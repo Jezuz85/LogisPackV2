@@ -100,8 +100,8 @@
 				<hr />
 
 				<div class="row">
-					<div class="col-md-3">
-						<asp:Button ID="btnGuardar" runat="server" CssClass="btn btn-default" Text="Guardar"
+					<div class="col-md-12" align="right">
+						<asp:Button ID="btnGuardar" runat="server"  Text="Guardar"
 							ValidationGroup="ValidationAdd" />
 					</div>
 				</div>

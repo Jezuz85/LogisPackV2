@@ -94,9 +94,9 @@
 
                                 <div class="col-md-12">
                                     <br />
-                                    <asp:Button ID="btnAddArticuloRow" runat="server" CssClass="btn btn-default" Text="Añadir Articulo"
+                                    <asp:Button ID="btnAddArticuloRow" runat="server"  Text="Añadir Articulo"
                                         ValidationGroup="Val_AddArticulo" CausesValidation="true" />
-                                    <asp:Button ID="btnReset" runat="server" CssClass="btn btn-default" Text="Eliminar Articulos" />
+                                    <asp:Button ID="btnReset" runat="server"  Text="Eliminar Articulos" />
                                 </div>
                             </div>
 
@@ -209,8 +209,8 @@
                         </table>
 
                         <div class="col-md-6">
-                            <asp:Button ID="btnAddFilaUbicacion" runat="server" CssClass="btn btn-default" Text="Agregar Otra Ubicación" />
-                            <asp:Button ID="btnEliminarFila" runat="server" CssClass="btn btn-default" Text="Eliminar Ubicación"
+                            <asp:Button ID="btnAddFilaUbicacion" runat="server"  Text="Agregar Otra Ubicación" />
+                            <asp:Button ID="btnEliminarFila" runat="server"  Text="Eliminar Ubicación"
                                 ValidationGroup="ValidationAddRow" />
                         </div>
                     </div>
@@ -338,8 +338,8 @@
                 <hr />
 
                 <div class="row">
-                    <div class="col-md-3">
-                        <asp:Button ID="btnGuardar" runat="server" CssClass="btn btn-default" Text="Guardar" ValidationGroup="ValidationAdd" />
+                    <div class="col-md-12" align="right">
+                        <asp:Button ID="btnGuardar" runat="server"  Text="Guardar" ValidationGroup="ValidationAdd" />
                     </div>
                 </div>
 

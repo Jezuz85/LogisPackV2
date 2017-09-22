@@ -28,7 +28,7 @@
             </div>
 
             <div class="modal-footer">
-                <button id="btnRedirect" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button id="btnRedirect" type="button" class="btn btn-default" data-dismiss="modal"><img alt="X" src="../../Content/images/baja.png" /></button>
             </div>
 
         </div>

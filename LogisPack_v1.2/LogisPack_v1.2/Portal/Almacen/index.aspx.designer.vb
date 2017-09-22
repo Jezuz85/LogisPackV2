@@ -131,13 +131,13 @@ Partial Public Class index
     Protected WithEvents GridView1 As Global.System.Web.UI.WebControls.GridView
     
     '''<summary>
-    '''Control btnCrear.
+    '''Control btnRegistrar.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents btnCrear As Global.System.Web.UI.WebControls.ImageButton
+    Protected WithEvents btnRegistrar As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
     '''Control up_Add.
