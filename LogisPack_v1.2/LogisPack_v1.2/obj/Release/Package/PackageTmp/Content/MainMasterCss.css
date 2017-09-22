@@ -1,0 +1,435 @@
+#masterHeaderContainer {
+    min-height: 20px;
+    padding-top: 5px;
+    padding-bottom: 0;
+    background-color: #fff;
+    border-bottom: 1px solid #c2c2c2
+}
+
+#masterHeader {
+    margin: 0 auto;
+    width: 100%
+}
+
+#masterCompanyLogo a {
+    background: url('images/logo.png') no-repeat;
+    width: 72px;
+    height: 96px;
+    display: block;
+    position: relative;
+    padding-right: 10px;
+    margin-left: 10px
+}
+
+#masterSessionCompanyMenuContainer {
+    width: 100%;
+    height: 96px;
+    color: #333
+}
+
+    #masterSessionCompanyMenuContainer a {
+        color: #333
+    }
+
+#masterSession {
+    text-align: right;
+    padding-right: 25px;
+    vertical-align: top;
+    font-size: 80%
+}
+
+    #masterSession div {
+        display: inline;
+        padding-left: 5px;
+        border-right: 1px solid #000
+    }
+
+    #masterSession span, #masterSession a {
+        padding-left: 5px;
+        padding-right: 5px
+    }
+
+#masterCompany {
+    font-size: 150%;
+    padding-left: 10px;
+    padding-bottom: 10px
+}
+
+    #masterCompany:before {
+        content: "Direcline software"
+    }
+
+#masterMainMenu {
+    vertical-align: bottom;
+    text-align: left;
+    font-size: 90%
+}
+
+.MainContentTitle {
+    box-shadow: 2px 2px 5px 1px #c2c2c2;
+    background-color: silver;
+    margin: 15px auto;
+    padding: 10px;
+    overflow: hidden;
+    width: 980px;
+    display: table
+}
+
+.MainContentWrapper {
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 5px 1px #c2c2c2;
+    background-color: #fff;
+    text-align: left;
+    margin: 15px auto;
+    padding: 10px;
+    overflow: auto;
+    width: 980px
+}
+
+.MainContentWrapperNoMainFrame {
+    border: 0;
+    box-shadow: none;
+    padding: 2px;
+    margin: 0 auto;
+    width: auto
+}
+
+.MainContentTitleText {
+    display: table-cell;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    vertical-align: middle
+}
+
+.MainContentTitleButtons {
+    display: table-cell;
+    float: right
+}
+
+    .MainContentTitleButtons button, .MainContentTitleButtons input[type="button"], .MainContentTitleButtons input[type="submit"] {
+    }
+
+#MainMenu {
+}
+
+    #MainMenu ul {
+        cursor: default
+    }
+
+        #MainMenu ul a {
+            outline: 0
+        }
+
+        #MainMenu ul li.static {
+            margin-bottom: 0;
+            background-color: #fff;
+            border: 1px solid #c2c2c2;
+            border-bottom: 0;
+            border-left: 0
+        }
+
+            #MainMenu ul li.static:first-child {
+                border-left: 1px solid #c2c2c2
+            }
+
+            #MainMenu ul li.static a {
+                padding: 6px 16px
+            }
+
+        #MainMenu ul li.dynamic {
+            margin-bottom: 0;
+            border: 1px solid #c2c2c2;
+            border-top: 0;
+            background-color: #fff
+        }
+
+        #MainMenu ul.dynamic {
+            margin-top: 0
+        }
+
+        #MainMenu ul li.dynamic:first-child {
+            border-top: 1px solid #c2c2c2
+        }
+
+        #MainMenu ul li.dynamic a {
+            padding: 6px 16px
+        }
+
+            #MainMenu ul li.dynamic a:hover {
+                background-color: #ddd
+            }
+
+input.campoFecha {
+    width: 70px
+}
+
+input.campoHora {
+    width: 35px
+}
+
+input.campoCodOficinaCargo {
+    width: 70px
+}
+
+input.campoDescOficinaCargo {
+    width: 210px
+}
+
+input.campoCodOficinaOrigen, input.campoCodOficinaDestino {
+    width: 40px
+}
+
+input.campoDescOficinaOrigen, input.campoDescOficinaDestino {
+    width: 110px
+}
+
+input.campoCodCliente {
+    width: 130px
+}
+
+input.campoCodClientePVenta {
+    width: 178px
+}
+
+input.campoDepCliente {
+    width: 200px
+}
+
+input.campoNombreCliente {
+    width: 300px
+}
+
+input.campoReferencia {
+    width: 284px
+}
+
+input.campoCodPrioridad {
+    width: 40px
+}
+
+input.campoDescPrioridad {
+    width: 110px
+}
+
+input.campoKms {
+    width: 164px
+}
+
+input.campoLibre {
+    width: 485px
+}
+
+input.campoTipoServicio {
+    width: 485px
+}
+
+th.cellDomicilio {
+    min-width: 280px
+}
+
+th.cellDestinatario {
+    min-width: 150px
+}
+
+.lstChecks {
+    display: none;
+    position: absolute;
+    background-color: #ddd;
+    border: 1px solid #000;
+    margin: 5px
+}
+
+    .lstChecks td {
+        padding: 0 2px
+    }
+
+        .lstChecks td input {
+            margin: 2px 0
+        }
+
+#sectionContentOS .rowContent label:first-child {
+    width: 100px
+}
+
+#sectionContentRecogida .rowContent label:first-child {
+    width: 100px
+}
+
+#sectionInfoExpedicion .rowContent label:first-child {
+    width: 125px
+}
+
+#sectionContentDestinatario .rowContent label:first-child {
+    width: 100px
+}
+
+#divJudicialOS .rowContent label:first-child {
+    width: 150px
+}
+
+#sectionContentDatosExpedicion .rowContent label:first-child, #sectionContentDestino .rowContent label:first-child {
+    width: 150px
+}
+
+.rowContent #dlcDomicilio label:first-child {
+    width: 65px
+}
+
+input.campoImporte {
+    width: 60px
+}
+
+.campoDemandado {
+    width: 640px;
+    height: 50px
+}
+
+.campoDemandante {
+    width: 640px;
+    height: 50px
+}
+
+input.campoTipoDespJudicial {
+    width: 658px
+}
+
+input.campoTipoNaturaleza {
+    width: 658px
+}
+
+#gvBultos .campoBultosInput {
+    width: 90%
+}
+
+#gvBultos .campoBultosContenido {
+    width: 70%
+}
+
+#gvReferencias .campoReferenciasReferenciaExp {
+    width: 98%
+}
+
+#gvReferencias .colReferenciasTipoReferencia {
+    width: 150px
+}
+
+#sectionDomicilio .sectionContent .rowContent label:first-child {
+    width: 65px
+}
+
+#sectionClienteContado .sectionContent .rowContent label:first-child {
+    width: 65px
+}
+
+#sectionClienteContado .sectionContent #divDatosFacturacion .rowContent label:first-child {
+    width: 150px
+}
+
+#lblClaseExpedicion {
+    width: 120px
+}
+
+#growls {
+    z-index: 50000;
+    position: fixed
+}
+
+    #growls.default {
+        top: 10px;
+        right: 10px
+    }
+
+    #growls.tl {
+        top: 10px;
+        left: 10px
+    }
+
+    #growls.tr {
+        top: 10px;
+        right: 10px
+    }
+
+    #growls.bl {
+        bottom: 10px;
+        left: 10px
+    }
+
+    #growls.br {
+        bottom: 10px;
+        right: 10px
+    }
+
+.growl {
+    opacity: .8;
+    position: relative;
+    border-radius: 4px;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out
+}
+
+    .growl.growl-incoming {
+        opacity: 0
+    }
+
+    .growl.growl-outgoing {
+        opacity: 0
+    }
+
+    .growl.growl-small {
+        width: 200px;
+        padding: 5px;
+        margin: 5px
+    }
+
+    .growl.growl-medium {
+        width: 250px;
+        padding: 10px;
+        margin: 10px
+    }
+
+    .growl.growl-large {
+        width: 300px;
+        padding: 15px;
+        margin: 15px
+    }
+
+    .growl.growl-default {
+        color: #fff;
+        background: #7f8c8d
+    }
+
+    .growl.growl-error {
+        color: #fff;
+        background: #c0392b
+    }
+
+    .growl.growl-notice {
+        color: #fff;
+        background: #2ecc71
+    }
+
+    .growl.growl-warning {
+        color: #fff;
+        background: #f39c12
+    }
+
+    .growl .growl-close {
+        cursor: pointer;
+        float: right;
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: normal;
+        font-family: helvetica,verdana,sans-serif
+    }
+
+    .growl .growl-title {
+        font-size: 18px;
+        line-height: 24px
+    }
+
+    .growl .growl-message {
+        font-size: 14px;
+        line-height: 18px
+    }

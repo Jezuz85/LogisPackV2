@@ -1,0 +1,258 @@
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    color: #fff;
+    background-color: #fff;
+}
+
+.titulos {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    color: #fff;
+}
+
+.tabla_espaciado {
+    border-spacing: 2px;
+}
+
+.tabla_espaciado_padding {
+    border-spacing: 2px;
+    padding-top: 5;
+    padding-bottom: 5;
+}
+
+.titleMsgAndHelp {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.volver {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFFF00;
+}
+
+input {
+    font-size: 12px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+}
+
+textarea {
+    font-size: 12px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+}
+
+select {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    border: 0px;
+}
+
+.inputs {
+    font-size: 12px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    background-image: url(../imagenes/input2.gif);
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+}
+
+.inputsNo {
+    font-size: 10px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+}
+
+.input {
+    font-size: 12px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    background-image: url(../imagenes/input.gif);
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+}
+
+a:link {
+}
+
+a:visited {
+}
+
+a:hover {
+}
+
+.curpon {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    color: #000;
+}
+
+.titulon {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.fondo2 {
+    background-color: #DE3A3A;
+}
+
+.titulon2 {
+    font-size: 16px;
+    color: #FFFF00;
+    font-weight: bold;
+}
+
+.aviso {
+    background-color: #E00000;
+    color: #FFF;
+}
+
+.avisoRemark {
+    color: #FFFF00;
+}
+
+/* Centrado de la pagina */
+.pageWrapper {
+    border: 0px;
+    width: 100%;
+    height: 100%;
+}
+/* Customs */
+td, td fieldset legend { /* #20150415-01 */
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    /* Color por defecto de los labels de los campos */
+    color: #FFF;
+}
+
+/* Login */
+.welcomeLogin {
+    color: #FFF;
+}
+
+.footerLoginText {
+    color: #56595C;
+}
+
+a.footerLoginWebLink {
+    background-color: transparent;
+    color: #FFF;
+}
+/**/
+
+/* Titulos */
+/* Subtitulo de las paginas que tienen titulo con clase "titulos" */
+.subTitulos {
+    font-weight: bold;
+    color: #FFF;
+}
+
+.titulon {
+    color: #447bad;
+}
+/* Subtitulo de las paginas que tienen titulo con clase "titulon" (normalmente titulos de tabla) */
+.subTitulon {
+    color: #FFF;
+}
+/* Titulo de mensajes, avisos y las ayudas */
+.titleMsgAndHelp {
+    color: #FFF;
+}
+
+/* Tablas */
+/* Fondo del titulo de las tablas (p.ej: libreta.asp) */
+.fondo3 {
+    background-color: #447bad;
+}
+/* Fondo del cuerpo de las tablas (p.ej: libreta.asp) */
+.fondo {
+    background-color: #7F7F7F;
+}
+
+/* Botones del menu principal */
+#mainMenu input {
+    text-transform: none;
+    background-image: none;
+    background-color: #FFF;
+}
+
+/* Celdas de tablas con listados */
+.rowOrderby td {
+    text-align: left;
+    padding-right: 8px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.rowHeader td {
+    text-align: left;
+    padding-right: 8px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.rowItem td {
+    text-align: left;
+    padding-right: 8px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+
+/* Para ayudas en pantalla */
+.ayudaContainer {
+    font-size: 12px;
+    text-align: center;
+    color: #000;
+    border: 2px solid #CD0A0A;
+    background-color: #FEF6F3;
+    padding: 5px;
+}
+
+/* Al tener el body el tamaño, si queremos que el titulo de los dialog sea diferente lo debemos especificar */
+.ui-dialog-title {
+    font-size: 14px;
+}
+
+/* Mensaje de error de validacion */
+.validationErrorTxt {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    color: #000;
+}
+
+/* Pagina de exception error */
+.exErrorWrapper {
+    width: 800px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.exErrorBody {
+    color: black;
+    display: block;
+    background-color: white;
+    font-family: Arial, Tahoma;
+    font-size: 10pt;
+    padding: 12px;
+    text-align: left;
+    border: 6px solid red;
+}

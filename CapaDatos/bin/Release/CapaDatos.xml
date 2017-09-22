@@ -178,6 +178,20 @@ CapaDatos
  si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
+<member name="M:CapaDatos.Getter.Picking_Articulo(System.Int32)">
+ <summary>
+ Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
+ devuelve un  objeto de tipo Articulo que estan asociados a un articulo picking 
+ si fue exitoso, de lo contrario no devuelve nothing
+ </summary>
+</member>
+<member name="M:CapaDatos.Getter.Picking_Articulo(System.Int32,CapaDatos.LogisPackEntities@)">
+ <summary>
+ Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, recibe un objeto contexto
+ para devolver el ArticuloPicking a editar con su respectivo contexto usado
+ devuelve un objeto tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
+ </summary>
+</member>
 <member name="M:CapaDatos.Getter.Articulo(System.Int32)">
  <summary>
  Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
@@ -230,14 +244,44 @@ CapaDatos
  devuelve un objeto tipo Tipo_Unidad si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
-<member name="M:CapaDatos.Getter.Imagen_list(System.String)">
+<member name="M:CapaDatos.Getter.Imagen_list(System.Int32)">
  <summary>
  Metodo que recibe un id del Artiuclo, y devuelve una lista de las imagenes asociadas al articulo
  </summary>
 </member>
-<member name="M:CapaDatos.Getter.Ubicacion_list(System.String)">
+<member name="M:CapaDatos.Getter.Imagen(System.Int32)">
+ <summary>
+ Metodo que recibe un id de la imagen, y devuelve la imagene asociadas al articulo
+ </summary>
+</member>
+<member name="M:CapaDatos.Getter.Imagen(System.Int32,CapaDatos.LogisPackEntities@)">
+ <summary>
+ Metodo que recibe un id de la Imagen y lo consulta desde la Base de datos, recibe un objeto contexto
+ para devolver la Imagen a editar con su respectivo contexto usado
+ devuelve un objeto tipo Imagen si fue exitoso, de lo contrario no devuelve nothing
+ </summary>
+</member>
+<member name="M:CapaDatos.Getter.Ubicacion_list(System.Int32)">
  <summary>
  Metodo que recibe un id del Artiuclo, y devuelve una lista de las ubicaciones asociadas al articulo
+ </summary>
+</member>
+<member name="M:CapaDatos.Getter.Ubicacion(System.Int32)">
+ <summary>
+ Metodo que recibe un id del Artiuclo, y devuelve una la ubicaciones asociadas al articulo
+ </summary>
+</member>
+<member name="M:CapaDatos.Getter.Ubicacion(System.Int32,CapaDatos.LogisPackEntities@)">
+ <summary>
+ Metodo que recibe un id de la ubicacion y lo consulta desde la Base de datos, recibe un objeto contexto
+ para devolver la ubicacion a editar con su respectivo contexto usado
+ devuelve un objeto tipo ubicacion si fue exitoso, de lo contrario no devuelve nothing
+ </summary>
+</member>
+<member name="M:CapaDatos.Getter.Cliente_Usuario(System.String)">
+ <summary>
+ Metodo que recibe un id del usuario y lo consulta desde la Base de datos, 
+ devuelve el id del cliente asociado al usuario si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
 <member name="M:CapaDatos.Listas.Almacen(System.Web.UI.WebControls.DropDownList@)">
@@ -264,7 +308,7 @@ CapaDatos
  todos los articulos existentes en la base de datos
  </summary>
 </member>
-<member name="M:CapaDatos.Listas.Cliente(System.Web.UI.WebControls.DropDownList@)">
+<member name="M:CapaDatos.Listas.Cliente(System.Web.UI.WebControls.DropDownList@,System.Int32)">
  <summary>
  Metodo que recibe un objeto DropDownlist vacio  y lo devuelve con los datos de 
  todos los clientes existentes en la base de datos
@@ -282,19 +326,25 @@ CapaDatos
  todos los tipo de unidad existentes en la base de datos
  </summary>
 </member>
+<member name="M:CapaDatos.Listas.Rol(System.Web.UI.WebControls.DropDownList@)">
+ <summary>
+ Metodo que recibe un objeto DropDownlist vacio  y lo devuelve con los datos de 
+ todos los roles existentes en la base de datos
+ </summary>
+</member>
 <member name="M:CapaDatos.Manager_Articulo.Reset_ArticuloLista(System.Web.UI.WebControls.Button,System.Web.UI.WebControls.DropDownList,System.Web.UI.WebControls.DropDownList,System.Web.UI.WebControls.TextBox,System.Web.UI.WebControls.TextBox)">
  <summary>
  Metodo que se ejecuta cuando se oprime el boton de Resetear, elimina los aritculos y reestablece la 
  lista de Articulo
  </summary>
 </member>
-<member name="M:CapaDatos.Manager_Articulo.SetCoefVolumétrico(System.Web.UI.WebControls.DropDownList,System.Web.UI.WebControls.TextBox,System.Web.UI.WebControls.PlaceHolder,System.Web.UI.WebControls.DropDownList,System.Web.UI.WebControls.DropDownList)">
+<member name="M:CapaDatos.Manager_Articulo.SetCoefVolumétrico(System.Web.UI.WebControls.DropDownList@,System.Web.UI.WebControls.TextBox@,System.Web.UI.WebControls.PlaceHolder@,System.Web.UI.WebControls.DropDownList@,System.Web.UI.WebControls.DropDownList@)">
  <summary>
  Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
  al articulo dependiendo del valor que tenga el coeficiente del almacen
  </summary>
 </member>
-<member name="M:CapaDatos.Manager_Articulo.CargarCoefVol(System.Int32,System.Web.UI.WebControls.TextBox)">
+<member name="M:CapaDatos.Manager_Articulo.CargarCoefVol(System.Int32,System.Web.UI.WebControls.TextBox@)">
  <summary>
  Metodo que consulta el Coeficiente Volumetrico del almacen y lo asigna al articulo a crear al 
  cargar la pagina
@@ -336,27 +386,27 @@ CapaDatos
  Metodo que oculta el updatepanel de Alerta
  </summary>
 </member>
-<member name="M:CapaDatos.Tabla.Almacen(System.Web.UI.WebControls.GridView@)">
+<member name="M:CapaDatos.Tabla.Almacen(System.Web.UI.WebControls.GridView@,System.Int32,System.String,System.String,System.String,System.String)">
  <summary>
  Metodo que recibe el gridview para llenar con los datos del almacen en la base de datos
  </summary>
 </member>
-<member name="M:CapaDatos.Tabla.Articulo(System.Web.UI.WebControls.GridView@)">
+<member name="M:CapaDatos.Tabla.Articulo(System.Web.UI.WebControls.GridView@,System.Int32,System.String,System.String,System.String,System.String)">
  <summary>
  Metodo que recibe el gridview para llenar con los datos del articulo en la base de datos
  </summary>
 </member>
-<member name="M:CapaDatos.Tabla.Cliente(System.Web.UI.WebControls.GridView@)">
+<member name="M:CapaDatos.Tabla.Cliente(System.Web.UI.WebControls.GridView@,System.Int32,System.String,System.String,System.String,System.String)">
  <summary>
  Metodo que recibe el gridview para llenar con los datos del cliente en la base de datos
  </summary>
 </member>
-<member name="M:CapaDatos.Tabla.TipoFacturacion(System.Web.UI.WebControls.GridView@)">
+<member name="M:CapaDatos.Tabla.TipoFacturacion(System.Web.UI.WebControls.GridView@,System.String,System.String,System.String,System.String)">
  <summary>
  Metodo que recibe el gridview para llenar con los datos del tipo de facturacion en la base de datos
  </summary>
 </member>
-<member name="M:CapaDatos.Tabla.TipoUnidad(System.Web.UI.WebControls.GridView@)">
+<member name="M:CapaDatos.Tabla.TipoUnidad(System.Web.UI.WebControls.GridView@,System.String,System.String,System.String,System.String)">
  <summary>
  Metodo que recibe el gridview para llenar con los datos del tipo de unidad en la base de datos
  </summary>
@@ -393,6 +443,18 @@ CapaDatos
 <member name="M:CapaDatos.Update.Tipo_Unidad(CapaDatos.Tipo_Unidad,CapaDatos.LogisPackEntities@)">
  <summary>
  Metodo que recibe el objeto Tipo de Unidad a Actualizar y el contexto en que fue creado, devuelve true si fue
+ exitosa la actualización, en caso contrario devuelve false
+ </summary>
+</member>
+<member name="M:CapaDatos.Update.Ubicacion(CapaDatos.Ubicacion,CapaDatos.LogisPackEntities@)">
+ <summary>
+ Metodo que recibe el objeto Tipo de Ubicacion a Actualizar y el contexto en que fue creado, devuelve true si fue
+ exitosa la actualización, en caso contrario devuelve false
+ </summary>
+</member>
+<member name="M:CapaDatos.Update.Imagen(CapaDatos.Imagen,CapaDatos.LogisPackEntities@)">
+ <summary>
+ Metodo que recibe el objeto Tipo de Imagen a Actualizar y el contexto en que fue creado, devuelve true si fue
  exitosa la actualización, en caso contrario devuelve false
  </summary>
 </member>

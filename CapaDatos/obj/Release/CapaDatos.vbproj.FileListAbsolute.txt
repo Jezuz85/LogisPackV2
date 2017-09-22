@@ -1,28 +1,13 @@
-C:\Users\Jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\bin\Release\CapaDatos.dll.config
-C:\Users\Jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\bin\Release\CapaDatos.dll
-C:\Users\Jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\bin\Release\CapaDatos.pdb
-C:\Users\Jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\bin\Release\CapaDatos.xml
-C:\Users\Jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\bin\Release\EntityFramework.dll
-C:\Users\Jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\bin\Release\EntityFramework.SqlServer.dll
-C:\Users\Jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\bin\Release\EntityFramework.xml
-C:\Users\Jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\bin\Release\EntityFramework.SqlServer.xml
-C:\Users\Jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\obj\Release\CapaDatos.Resources.resources
-C:\Users\Jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\obj\Release\CapaDatos.vbproj.GenerateResource.Cache
-C:\Users\Jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\obj\Release\CapaDatos.dll
-C:\Users\Jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\obj\Release\CapaDatos.xml
-C:\Users\Jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\obj\Release\CapaDatos.pdb
-C:\Users\Jezuz\documents\visual studio 2017\Projects\LogisPack\CapaDatos\obj\Release\CapaDatos.vbprojResolveAssemblyReference.cache
-C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Release\CapaDatos.dll.config
-C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Release\CapaDatos.dll
-C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Release\CapaDatos.pdb
-C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Release\CapaDatos.xml
-C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Release\EntityFramework.dll
-C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Release\EntityFramework.SqlServer.dll
-C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Release\EntityFramework.xml
-C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\bin\Release\EntityFramework.SqlServer.xml
-C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Release\CapaDatos.vbprojResolveAssemblyReference.cache
-C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Release\CapaDatos.Resources.resources
-C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Release\CapaDatos.vbproj.GenerateResource.Cache
-C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Release\CapaDatos.dll
-C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Release\CapaDatos.xml
-C:\Users\Jezuz\.Nimi Places\Containers\Repositorio\LogisPack\CapaDatos\obj\Release\CapaDatos.pdb
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\bin\Release\CapaDatos.dll.config
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\bin\Release\CapaDatos.dll
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\bin\Release\CapaDatos.pdb
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\bin\Release\CapaDatos.xml
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\bin\Release\System.Web.Razor.dll
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\bin\Release\EntityFramework.xml
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Release\CapaDatos.vbprojResolveAssemblyReference.cache
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Release\CapaDatos.Resources.resources
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Release\CapaDatos.vbproj.GenerateResource.Cache
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Release\CapaDatos.dll
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Release\CapaDatos.xml
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Release\CapaDatos.pdb

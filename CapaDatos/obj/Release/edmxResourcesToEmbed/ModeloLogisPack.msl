@@ -1,8 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="LogisPackModelStoreContainer" CdmEntityContainer="LogisPackEntities">
+  <EntityContainerMapping StorageEntityContainer="LogisPack_v1ModelStoreContainer" CdmEntityContainer="LogisPackEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="LogisPack_v1Model.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Almacen">
-      <EntityTypeMapping TypeName="LogisPackModel.Almacen">
+      <EntityTypeMapping TypeName="LogisPack_v1Model.Almacen">
         <MappingFragment StoreEntitySet="Almacen">
           <ScalarProperty Name="id_almacen" ColumnName="id_almacen" />
           <ScalarProperty Name="codigo" ColumnName="codigo" />
@@ -13,7 +23,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Articulo">
-      <EntityTypeMapping TypeName="LogisPackModel.Articulo">
+      <EntityTypeMapping TypeName="LogisPack_v1Model.Articulo">
         <MappingFragment StoreEntitySet="Articulo">
           <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
           <ScalarProperty Name="codigo" ColumnName="codigo" />
@@ -45,8 +55,54 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="LogisPack_v1Model.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="LogisPack_v1Model.AspNetUserClaims">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="LogisPack_v1Model.AspNetUserLogins">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="LogisPack_v1Model.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Cliente">
-      <EntityTypeMapping TypeName="LogisPackModel.Cliente">
+      <EntityTypeMapping TypeName="LogisPack_v1Model.Cliente">
         <MappingFragment StoreEntitySet="Cliente">
           <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -55,7 +111,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Historico">
-      <EntityTypeMapping TypeName="LogisPackModel.Historico">
+      <EntityTypeMapping TypeName="LogisPack_v1Model.Historico">
         <MappingFragment StoreEntitySet="Historico">
           <ScalarProperty Name="id_historico" ColumnName="id_historico" />
           <ScalarProperty Name="fecha_transaccion" ColumnName="fecha_transaccion" />
@@ -68,7 +124,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Imagen">
-      <EntityTypeMapping TypeName="LogisPackModel.Imagen">
+      <EntityTypeMapping TypeName="LogisPack_v1Model.Imagen">
         <MappingFragment StoreEntitySet="Imagen">
           <ScalarProperty Name="id_imagen" ColumnName="id_imagen" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -78,7 +134,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Picking_Articulo">
-      <EntityTypeMapping TypeName="LogisPackModel.Picking_Articulo">
+      <EntityTypeMapping TypeName="LogisPack_v1Model.Picking_Articulo">
         <MappingFragment StoreEntitySet="Picking_Articulo">
           <ScalarProperty Name="id_picking_articulo" ColumnName="id_picking_articulo" />
           <ScalarProperty Name="unidades" ColumnName="unidades" />
@@ -88,7 +144,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="LogisPackModel.sysdiagrams">
+      <EntityTypeMapping TypeName="LogisPack_v1Model.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -99,7 +155,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Tipo_Facturacion">
-      <EntityTypeMapping TypeName="LogisPackModel.Tipo_Facturacion">
+      <EntityTypeMapping TypeName="LogisPack_v1Model.Tipo_Facturacion">
         <MappingFragment StoreEntitySet="Tipo_Facturacion">
           <ScalarProperty Name="id_tipo_facturacion" ColumnName="id_tipo_facturacion" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -107,7 +163,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Tipo_Unidad">
-      <EntityTypeMapping TypeName="LogisPackModel.Tipo_Unidad">
+      <EntityTypeMapping TypeName="LogisPack_v1Model.Tipo_Unidad">
         <MappingFragment StoreEntitySet="Tipo_Unidad">
           <ScalarProperty Name="id_tipo_unidad" ColumnName="id_tipo_unidad" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -115,7 +171,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Ubicacion">
-      <EntityTypeMapping TypeName="LogisPackModel.Ubicacion">
+      <EntityTypeMapping TypeName="LogisPack_v1Model.Ubicacion">
         <MappingFragment StoreEntitySet="Ubicacion">
           <ScalarProperty Name="id_ubicacion" ColumnName="id_ubicacion" />
           <ScalarProperty Name="zona" ColumnName="zona" />
@@ -128,5 +184,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="LogisPack_v1Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>
