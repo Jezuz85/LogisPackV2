@@ -10,13 +10,15 @@ Imports Owin
 Partial Public Class Login
     Inherits Page
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
-        RegisterHyperLink.NavigateUrl = "Register"
+        'RegisterHyperLink.NavigateUrl = "Register"
+
         ' Habilite esta opción una vez tenga la confirmación de la cuenta habilitada para la funcionalidad de restablecimiento de contraseña
-        ' ForgotPasswordHyperLink.NavigateUrl = "Forgot"
-        OpenAuthLogin.ReturnUrl = Request.QueryString("ReturnUrl")
+        'ForgotPasswordHyperLink.NavigateUrl = "Forgot"
+
+        'OpenAuthLogin.ReturnUrl = Request.QueryString("ReturnUrl")
         Dim returnUrl = HttpUtility.UrlEncode(Request.QueryString("ReturnUrl"))
         If Not [String].IsNullOrEmpty(returnUrl) Then
-            RegisterHyperLink.NavigateUrl += "?ReturnUrl=" & returnUrl
+            'RegisterHyperLink.NavigateUrl += "?ReturnUrl=" & returnUrl
         End If
 
         If Manager_Usuario.ValidarAutenticado(User) Then
