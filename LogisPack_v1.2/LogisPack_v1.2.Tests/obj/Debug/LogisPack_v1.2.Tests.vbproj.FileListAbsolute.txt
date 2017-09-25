@@ -159,3 +159,4 @@ C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2.Test
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2.Tests\obj\Debug\LogisPack_v1.2.Tests.dll
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2.Tests\obj\Debug\LogisPack_v1.2.Tests.xml
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2.Tests\obj\Debug\LogisPack_v1.2.Tests.pdb
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2.Tests\bin\Debug\AjaxControlToolkit.dll

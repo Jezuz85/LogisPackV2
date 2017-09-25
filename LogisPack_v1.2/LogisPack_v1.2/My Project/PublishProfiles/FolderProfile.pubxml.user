@@ -7,7 +7,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_NewBackgroundProfile>True</_NewBackgroundProfile>
-    <_PublishTargetUrl>C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\bin\Release\PublishOutput</_PublishTargetUrl>
+    <_PublishTargetUrl>bin\Release\PublishOutput</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Account/AddPhoneNumber.aspx">

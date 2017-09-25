@@ -2537,6 +2537,121 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
  Metodo que realiza una resetea la busqueda en el grid
  </summary>
 </member>
+<member name="F:LogisPack_v1._2.Crear1._updatePanelPrinicpal">
+<summary>
+Control updatePanelPrinicpal.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.Crear1._ucAlerta">
+<summary>
+Control ucAlerta.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.Crear1._ddlListaArticulos">
+<summary>
+Control ddlListaArticulos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.Crear1._lbStockFisico">
+<summary>
+Control lbStockFisico.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.Crear1._ddlTipoOperacion">
+<summary>
+Control ddlTipoOperacion.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.Crear1._txtCantidad">
+<summary>
+Control txtCantidad.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.Crear1._txtFechaOperacion">
+<summary>
+Control txtFechaOperacion.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.Crear1._txtRef">
+<summary>
+Control txtRef.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.Crear1._fuDocumento">
+<summary>
+Control fuDocumento.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.Crear1._btnGuardar">
+<summary>
+Control btnGuardar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="M:LogisPack_v1._2.Crear1.CargarListas">
+ <summary>
+ Metodo que llena los Dropdownlits con datos de la Base de Datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Crear1.Get_StockArticulo(System.Int32)">
+ <summary>
+ Metodo que muestra por pantalla el valor del stock fisico de un articulo seleccionado
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Crear1.Guardar(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que registra una operacion de Entrada/Salida de un articulo en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Crear1.ddlListaArticulos_SelectedIndexChanged(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se ejecuta cuando se elige un articulo de la lista
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Crear1.ValidarStock(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que registra una operacion de Entrada/Salida de un articulo en la base de datos
+ </summary>
+</member>
 <member name="F:LogisPack_v1._2.index4._updatePanelPrinicpal">
 <summary>
 Control updatePanelPrinicpal.
@@ -2546,54 +2661,72 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.index4._ddlTipoOperacion">
+<member name="F:LogisPack_v1._2.index4._ddlBuscar">
 <summary>
-Control ddlTipoOperacion.
+Control ddlBuscar.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.index4._txtFechaOperacion">
+<member name="F:LogisPack_v1._2.index4._txtSearch">
 <summary>
-Control txtFechaOperacion.
+Control txtSearch.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.index4._txtRef">
+<member name="F:LogisPack_v1._2.index4._AutoCompleteExtender1">
 <summary>
-Control txtRef.
+Control AutoCompleteExtender1.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.index4._txtCantidad">
+<member name="F:LogisPack_v1._2.index4._TextBox5">
 <summary>
-Control txtCantidad.
+Control TextBox5.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.index4._ddlListaArticulos">
+<member name="F:LogisPack_v1._2.index4._autoCompleteStates">
 <summary>
-Control ddlListaArticulos.
+Control autoCompleteStates.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.index4._fuDocumento">
+<member name="F:LogisPack_v1._2.index4._btnBuscar">
 <summary>
-Control fuDocumento.
+Control btnBuscar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.index4._btnReset">
+<summary>
+Control btnReset.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.index4._GridView1">
+<summary>
+Control GridView1.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -2609,14 +2742,65 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="M:LogisPack_v1._2.index4.CargarListas">
+<member name="F:LogisPack_v1._2.index4._TextBox1">
+<summary>
+Control TextBox1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.index4._TextBox2">
+<summary>
+Control TextBox2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.index4._TextBox3">
+<summary>
+Control TextBox3.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.index4._TextBox4">
+<summary>
+Control TextBox4.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="M:LogisPack_v1._2.index4.LlenarGridView">
  <summary>
- Metodo que llena los Dropdownlits con datos de la Base de Datos
+ Metodo que llena El Gridview con datos de la Base de Datos
  </summary>
 </member>
-<member name="M:LogisPack_v1._2.index4.Guardar(System.Object,System.EventArgs)">
+<member name="M:LogisPack_v1._2.index4.GridView1_PageIndexChanging(System.Object,System.Web.UI.WebControls.GridViewPageEventArgs)">
  <summary>
- Metodo que registra una operacion de Entrada/Salida de un articulo en la base de datos
+ Metodos del Gridview
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index4.btnGuardar_Click(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se invoca cuando se presiona el boton "guardar" y redirecciona la pagina a "Crear"
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index4.Buscar(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que realiza una busqueda en el grid
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index4.Reset(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que realiza una resetea la busqueda en el grid
  </summary>
 </member>
 <member name="F:LogisPack_v1._2.index1._updatePanelPrinicpal">

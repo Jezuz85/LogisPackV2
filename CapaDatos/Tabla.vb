@@ -255,4 +255,66 @@ Public Class Tabla
         GridView1.DataSource = query
         GridView1.DataBind()
     End Sub
+
+    ''' <summary>
+    ''' Metodo que recibe el gridview para llenar con los datos de el historico en la base de datos
+    ''' </summary>
+    Public Shared Sub Historico(ByRef GridView1 As GridView, idCliente As Integer, columna As String, tipoOrdenacion As String,
+                              filtroBusqueda As String, textoBusqueda As String)
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Dim query = (From AL In contexto.Historico
+                     Select
+                         AL.id_historico,
+                         AL.fecha_transaccion,
+                         articulo = AL.Articulo.nombre,
+                         AL.documento_transaccion,
+                         AL.cantidad_transaccion,
+                         AL.tipo_transaccion,
+                         AL.referencia_ubicacion,
+                         AL.Articulo.Almacen.id_cliente
+                    ).ToList()
+
+        If idCliente <> 1 Then
+            query = query.Where(Function(x) x.id_cliente = idCliente).ToList()
+        End If
+
+        If columna = "fecha_transaccion" Then
+            If tipoOrdenacion = "1" Then
+                query = query.OrderBy(Function(x) x.fecha_transaccion).ToList()
+            Else
+                query = query.OrderByDescending(Function(x) x.fecha_transaccion).ToList()
+            End If
+        ElseIf columna = "articulo" Then
+            If tipoOrdenacion = "1" Then
+                query = query.OrderBy(Function(x) x.articulo).ToList()
+            Else
+                query = query.OrderByDescending(Function(x) x.articulo).ToList()
+            End If
+        ElseIf columna = "tipo_transaccion" Then
+            If tipoOrdenacion = "1" Then
+                query = query.OrderBy(Function(x) x.tipo_transaccion).ToList()
+            Else
+                query = query.OrderByDescending(Function(x) x.tipo_transaccion).ToList()
+            End If
+        ElseIf columna = "cantidad_transaccion" Then
+            If tipoOrdenacion = "1" Then
+                query = query.OrderBy(Function(x) x.cantidad_transaccion).ToList()
+            Else
+                query = query.OrderByDescending(Function(x) x.cantidad_transaccion).ToList()
+            End If
+        End If
+
+        If textoBusqueda <> String.Empty Then
+            If filtroBusqueda = "articulo" Then
+                query = query.Where(Function(x) x.articulo.ToLower.Contains(textoBusqueda.ToLower)).ToList()
+            End If
+        End If
+
+        GridView1.DataSource = query
+        GridView1.DataBind()
+    End Sub
+
+
 End Class

@@ -1,116 +1,161 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="index.aspx.vb" Inherits="LogisPack_v1._2.index4" %>
-
-<%@ Register Src="~/Portal/WebUserControl/Alert.ascx" TagPrefix="uca" TagName="ucAlert" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-	<asp:updatepanel id="updatePanelPrinicpal" runat="server">
-		<ContentTemplate>
 
-			<div id="titleContainer">
-				<div class="MainContentTitle">
-					<div class="MainContentTitleText">
-						<ol class="breadcrumb">
-							<li><a href="../../Default.aspx">Menu Principal</a></li>
-							<li><a href="#">Entrada/Salida de Artículos</a></li>
-						</ol>
-					</div>
-				</div>
-			</div>
+    <asp:UpdatePanel ID="updatePanelPrinicpal" runat="server">
 
-			<div id="pageBodyContainer" class="MainContentWrapper" style="width: 96%;">
+        <ContentTemplate>
 
-				<div class="row">
+            <div id="titleContainer">
+                <div class="MainContentTitle">
+                    <div class="MainContentTitleText">
+                        <ol class="breadcrumb">
+                            <li><a href="../../Default.aspx">Menu Principal</a></li>
+                            <li><a href="#">Histórico de Transacciones</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
 
-					<div class="col-md-3">
-						<h4>Tipo de Operación</h4>
+            <div id="pageBodyContainer" class="MainContentWrapper" style="width: 96%;">
 
-						<asp:DropDownList runat="server" ID="ddlTipoOperacion" data-toggle="tooltip"
-							data-placement="bottom" title="Seleccione el tipo de Operación">
-							<asp:ListItem Text="Entrada" Value="Ent"></asp:ListItem>
-							<asp:ListItem Text="Salida" Value="Sal"></asp:ListItem>
-						</asp:DropDownList>
+                <div class="section">
+                    <div id="sectionHeaderFiltros" class="sectionHeader">
+                        <div class="sectionHeaderTitle">
+                            Búsqueda
+                        </div>
+                        <div id="sectionHeaderButtons2" class="sectionHeaderButtons" data-toggle="collapse" data-target="#sectionContentFiltrosCabecera">
+                            <img id="sectionHeaderButton2" class="sectionHeaderButton" src="../../Content/images/minimize_16x16.png">
+                        </div>
+                    </div>
 
-						<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
-							ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="ddlTipoOperacion" runat="server"
-							ValidationGroup="ValidationAdd" />
-					</div>
+                    <!-- SECCIÓN FILTROS -->
+                    <div id="sectionContentFiltrosCabecera" class="section_Content collapse in">
+                        <div class="row_Content">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <br />
+                                    <label>Buscar</label>
+                                </div>
 
-					<div class="col-md-3">
-						<h4>Fecha de Operación</h4>
+                                <div class="col-md-2">
+                                    <asp:DropDownList runat="server" ID="ddlBuscar">
+                                        <asp:ListItem Text="articulo" Value="articulo"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
 
-						<asp:TextBox runat="server" type="date" ID="txtFechaOperacion" data-toggle="tooltip"
-							data-placement="bottom" title="Ingrese la fecha de la operación"></asp:TextBox>
-
-						<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
-							ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="txtFechaOperacion" runat="server"
-							ValidationGroup="ValidationAdd" />
-					</div>
-
-					<div class="col-md-3">
-						<h4>Referencia</h4>
-						<asp:TextBox runat="server" MaxLength="25" ID="txtRef" data-toggle="tooltip"
-							data-placement="bottom" title="Ingrese la referencia de la operacion"></asp:TextBox>
-
-						<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
-							ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="txtRef" runat="server"
-							ValidationGroup="ValidationAdd" />
-					</div>
-
-					<div class="col-md-3">
-						<h4>Cantidad de la operacion</h4>
-
-						<asp:TextBox runat="server" type="number" min="0" ID="txtCantidad" data-toggle="tooltip"
-							data-placement="bottom" title="Ingrese la cantidad del articulo"></asp:TextBox>
-
-						<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
-							ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="txtCantidad" runat="server"
-							ValidationGroup="ValidationAdd" />
-
-					</div>
-
-				</div>
-
-				<div class="row">
-
-					<div class="col-md-3">
-						<h4>Lista de Articulos</h4>
-						<asp:DropDownList ID="ddlListaArticulos" runat="server" data-toggle="tooltip"
-							data-placement="bottom" title="Seleccione el Artículo">
-						</asp:DropDownList>
-
-						<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
-							ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="ddlListaArticulos" runat="server"
-							ValidationGroup="ValidationAdd" />
-					</div>
-
-					<div class="col-md-3">
-						<h4>Documento Transacción</h4>
-
-						<asp:FileUpload runat="server" ID="fuDocumento" data-toggle="tooltip" data-placement="bottom"
-							title="Seleccione el documento de la transaccion" />
-
-						<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
-							ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="fuDocumento" runat="server"
-							ValidationGroup="ValidationAdd" />
-					</div>
+                                <div class="col-md-7">
+                                    <asp:TextBox ID="txtSearch" runat="server" placeholder="Ingrese el texto a buscar"
+                                        MaxLength="200" autocomplete="off"></asp:TextBox>
 
 
-				</div>
+                                    <cc1:AutoCompleteExtender ServiceMethod="Autocomplete" MinimumPrefixLength="1"
+                                        CompletionInterval="100" EnableCaching="false" CompletionSetCount="10"
+                                        TargetControlID="txtSearch" ID="AutoCompleteExtender1" runat="server"
+                                        FirstRowSelected="false" CompletionListCssClass="completionList"
+                                        ServicePath="~/Service/WebService1.asmx"
+                                        CompletionListItemCssClass="listItem" CompletionListHighlightedItemCssClass="itemHighlighted">
+                                    </cc1:AutoCompleteExtender>
 
-				<hr />
+                                </div>
+
+                                <div class="col-md-2">
+                                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" />
+
+                                    <asp:Button ID="btnReset" runat="server" Text="Reset" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="sectionContent sectionGrid noPadding noMargin">
+                        <div id="updGrid">
+                            <asp:GridView ID="GridView1" class="grid gridSelectable gridSortable noPadding noMargin"
+                                runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="30"
+                                OnPageIndexChanging="GridView1_PageIndexChanging"
+                                EmptyDataText="No existen Registros"
+                                OnRowCreated="GridView1_RowCreated"
+                                OnSorting="GridView1_OnSorting"
+                                AllowSorting="true"
+                                CurrentSortField="id"
+                                CurrentSortDirection="ASC">
+
+                                <Columns>
+                                    <asp:TemplateField HeaderText="Id" Visible="false" HeaderStyle-CssClass="text-center">
+                                        <ItemTemplate>
+                                            <asp:Label ID="id" runat="server" Text='<%# Eval("id_historico") %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:BoundField DataField="fecha_transaccion"
+                                        HeaderText="Fecha Transaccion"
+                                        SortExpression="fecha_transaccion"
+                                        DataFormatString="{0:dd-M-yyyy}"></asp:BoundField>
+
+                                    <asp:BoundField DataField="articulo"
+                                        HeaderText="Artículo"
+                                        SortExpression="articulo"></asp:BoundField>
+
+                                    <asp:BoundField DataField="tipo_transaccion"
+                                        HeaderText="Tipo Transaccion"
+                                        SortExpression="tipo_transaccion"></asp:BoundField>
+
+                                    <asp:BoundField DataField="cantidad_transaccion"
+                                        HeaderText="Cantidad"
+                                        SortExpression="cantidad_transaccion"></asp:BoundField>
+                                    
+                                    <asp:BoundField DataField="referencia_ubicacion"
+                                        HeaderText="Referencia Ubicación"
+                                        SortExpression="referencia_ubicacion"></asp:BoundField>
+
+                                    <asp:TemplateField HeaderText="Ver" HeaderStyle-CssClass="text-center">
+                                        <ItemTemplate>
+                                            <asp:HyperLink runat="server" NavigateUrl='<%# Eval("documento_transaccion") %>' Target="_blank">
+                                                <img alt="X" src="../../Content/images/vermas.png" />
+                                            </asp:HyperLink>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                </Columns>
+                            </asp:GridView>
+                        </div>
+                    </div>
+                </div>                
 
 				<div class="row">
 					<div class="col-md-12" align="right">
-						<asp:Button ID="btnGuardar" runat="server"  Text="Guardar"
-							ValidationGroup="ValidationAdd" />
+						<asp:Button ID="btnGuardar" runat="server" Text="Nuevo" />
 					</div>
 				</div>
-			</div>
 
-		
-		</ContentTemplate>
-		<Triggers>
-			<asp:PostBackTrigger Controlid="btnGuardar"/></Triggers>
-	</asp:updatepanel>
-	
+                <hr />
+
+                <div class="row">
+					<div class="col-md-3">
+                        <div class="col-md-6"><br /><strong>Total Entrada</strong></div>
+                        <div class="col-md-6"><asp:TextBox ID="TextBox1" runat="server" ReadOnly="true"></asp:TextBox></div>
+					</div>
+					<div class="col-md-3">
+                        <div class="col-md-6"><br /><strong>Total Salida</strong></div>
+                        <div class="col-md-6"><asp:TextBox ID="TextBox2" runat="server" ReadOnly="true"></asp:TextBox></div>
+					</div>
+					<div class="col-md-3">
+                        <div class="col-md-6"><br /><strong>Stock Físico</strong></div>
+                        <div class="col-md-6"><asp:TextBox ID="TextBox3" runat="server" ReadOnly="true"></asp:TextBox></div>
+					</div>
+					<div class="col-md-3">
+                        <div class="col-md-6"><br /><strong>Stock Mínimo</strong></div>
+                        <div class="col-md-6"><asp:TextBox ID="TextBox4" runat="server" ReadOnly="true"></asp:TextBox></div>
+					</div>
+				</div>
+
+            </div>
+
+        </ContentTemplate>
+        <Triggers></Triggers>
+    </asp:UpdatePanel>
+
 </asp:Content>

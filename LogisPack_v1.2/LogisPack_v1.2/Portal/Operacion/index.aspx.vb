@@ -1,100 +1,95 @@
-﻿Imports CapaDatos
+﻿
+Imports System.IO
+Imports System.Runtime.Serialization.Json
+Imports System.Web.Mvc
+Imports System.Web.Script.Services
+Imports System.Web.Services
+Imports CapaDatos
+Imports Newtonsoft.Json
 
 Public Class index4
     Inherits Page
 
     Private contexto As LogisPackEntities = New LogisPackEntities()
     Private bError As Boolean
+    Private idCliente As Integer
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
-        Page.Form.Attributes.Add("enctype", "multipart/form-data")
 
         If Manager_Usuario.ValidarAutenticado(User) Then
-            CargarListas()
+
+            idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
+
+            If IsPostBack = False Then
+                LlenarGridView()
+            End If
         Else
             Response.Redirect(Paginas.Login.ToString)
         End If
     End Sub
 
     ''' <summary>
-    ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
+    ''' Metodo que llena El Gridview con datos de la Base de Datos
     ''' </summary>
-    Private Sub CargarListas()
+    Public Sub LlenarGridView()
 
-        Listas.ArticuloTodos(ddlListaArticulos)
+        Tabla.Historico(GridView1, idCliente,
+                      String.Empty & ViewState("SortExpression"),
+                      String.Empty & ViewState("GridViewSortDirection"),
+                      String.Empty & ViewState("filtroBusqueda"),
+                      String.Empty & ViewState("textoBusqueda"))
+    End Sub
+
+    ''' <summary>
+    ''' Metodos del Gridview
+    ''' </summary>
+    Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
+        GridView1.PageIndex = e.NewPageIndex
+        LlenarGridView()
+    End Sub
+    Protected Sub GridView1_OnSorting(ByVal sender As Object, ByVal e As GridViewSortEventArgs)
+
+        Utilidades_Grid.sortGridView(GridView1, e, ViewState("SortExpression"), ViewState("GridViewSortDirection"))
+
+        Tabla.Historico(GridView1,
+                       idCliente,
+                       String.Empty & ViewState("SortExpression"),
+                       String.Empty & ViewState("GridViewSortDirection"),
+                       String.Empty & ViewState("filtroBusqueda"),
+                       String.Empty & ViewState("textoBusqueda"))
+
+    End Sub
+    Protected Sub GridView1_RowCreated(sender As Object, e As GridViewRowEventArgs)
+        Utilidades_Grid.SetArrowsGrid(GridView1, e)
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que se invoca cuando se presiona el boton "guardar" y redirecciona la pagina a "Crear"
+    ''' </summary>
+    Protected Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
+        Response.Redirect("Crear.aspx")
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que realiza una busqueda en el grid
+    ''' </summary>
+    Protected Sub Buscar(sender As Object, e As EventArgs) Handles btnBuscar.Click
+
+        ViewState("filtroBusqueda") = ddlBuscar.SelectedValue
+        ViewState("textoBusqueda") = txtSearch.Text
+        LlenarGridView()
 
     End Sub
 
     ''' <summary>
-    ''' Metodo que registra una operacion de Entrada/Salida de un articulo en la base de datos
+    ''' Metodo que realiza una resetea la busqueda en el grid
     ''' </summary>
-    Protected Sub Guardar(sender As Object, e As EventArgs) Handles btnGuardar.Click
+    Protected Sub Reset(sender As Object, e As EventArgs) Handles btnReset.Click
+        txtSearch.Text = String.Empty
+        ViewState("filtroBusqueda") = String.Empty
+        ViewState("textoBusqueda") = String.Empty
 
-        If Page.IsValid Then
-
-            Dim _articulo = Getter.Articulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
-            Dim Stock_Picking As Double = Convert.ToDouble(_articulo.stock_fisico)
-            Dim unidadesSolicitadas As Double = Convert.ToDouble(txtCantidad.Text)
-
-            If (Stock_Picking > unidadesSolicitadas And ddlTipoOperacion.SelectedValue = "Sal") Or ddlTipoOperacion.SelectedValue = "Ent" Then
-
-#Region "Guardar documento"
-
-                If fuDocumento.FileName IsNot "" Then
-
-                    Dim urlDoc As String = Utilidades_Fileupload.Subir_Archivo(fuDocumento, "../../Archivos/Operacion/", "Doc_" & ddlTipoOperacion.SelectedValue & "_" & _articulo.id_articulo & "_" & Convert.ToDateTime(txtFechaOperacion.Text).ToString("yyyy-MM-dd") & "_")
-
-#Region "Guardar operacion nuevo"
-                    Dim _Nuevo As New Historico With
-                    {
-                    .fecha_transaccion = txtFechaOperacion.Text,
-                    .tipo_transaccion = ddlTipoOperacion.SelectedValue,
-                    .referencia_ubicacion = txtRef.Text,
-                    .cantidad_transaccion = Convert.ToDouble(txtCantidad.Text),
-                    .id_articulo = Convert.ToInt32(ddlListaArticulos.SelectedValue),
-                    .documento_transaccion = urlDoc
-                }
-                    bError = Create.Historico(_Nuevo)
-#End Region
-
-                    If bError Then
-
-                        If ddlTipoOperacion.SelectedValue = "Ent" Then
-                            _articulo.stock_fisico = _articulo.stock_fisico + Convert.ToDouble(txtCantidad.Text)
-                        Else
-                            _articulo.stock_fisico = _articulo.stock_fisico - Convert.ToDouble(txtCantidad.Text)
-
-                        End If
-
-                        Try
-                            contexto.SaveChanges()
-                            'Modal.MostrarMsjModal("Se Registro la operación satisfactoriamente", "EXI", Me)
-                        Catch ex As Exception
-                            'Modal.MostrarMsjModal("Error al registrar operación", "ERR", Me)
-                            Return
-                        End Try
-
-
-                    Else
-                        'Modal.MostrarMsjModal("Error al registrar operación", "ERR", Me)
-                        Return
-                    End If
-
-                Else
-                    'Modal.MostrarMsjModal("Tiene que subir un documento", "ERR", Me)
-                    Return
-                End If
-#End Region
-
-            Else
-
-                'Modal.MostrarMsjModal("Las unidades del Articulo no Deben superar al stock actual y deben ser mayor a cero", "ERR", Me)
-
-            End If
-
-        End If
-
-        CargarListas()
+        LlenarGridView()
     End Sub
 
 End Class

@@ -172,7 +172,7 @@ Public Class Crear
 
             If _imagen.ContentLength > 0 And _imagen IsNot Nothing Then
 
-                Dim urlImagen As String = Utilidades_Fileupload.Subir_Archivos(_imagen, Mensajes.RutaArticulos.ToString, "Img_" & articuloView.id_articulo & "_" & contadorControl)
+                Dim urlImagen As String = Utilidades_Fileupload.Subir_Archivos(_imagen, Paginas.URL_Articulos.ToString, "Img_" & articuloView.id_articulo & "_" & contadorControl)
 
                 Dim _imagenes As New Imagen With
                             {

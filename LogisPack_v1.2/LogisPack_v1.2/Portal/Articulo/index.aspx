@@ -119,7 +119,7 @@
 
 				<div class="row">
 					<div class="col-md-12" align="right">
-						<asp:Button ID="btnGuardar" runat="server"  Text="Crear Nuevo" />
+						<asp:Button ID="btnGuardar" runat="server"  Text="Nuevo" />
 					</div>
 				</div>
 			</div>

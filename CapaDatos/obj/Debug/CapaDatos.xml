@@ -386,6 +386,12 @@ CapaDatos
  Metodo que oculta el updatepanel de Alerta
  </summary>
 </member>
+<member name="M:CapaDatos.Modal.MostrarMensajeAlerta(System.Web.UI.UpdatePanel,System.Boolean,System.String)">
+ <summary>
+ Metodo que recibe el updatepanel donde esta el Alert, el valor booleano de la operacion, 
+ y el mensaje para mostrar en el alerta
+ </summary>
+</member>
 <member name="M:CapaDatos.Tabla.Almacen(System.Web.UI.WebControls.GridView@,System.Int32,System.String,System.String,System.String,System.String)">
  <summary>
  Metodo que recibe el gridview para llenar con los datos del almacen en la base de datos
@@ -414,6 +420,11 @@ CapaDatos
 <member name="M:CapaDatos.Tabla.Imagen(System.Web.UI.WebControls.GridView@,System.Int32)">
  <summary>
  Metodo que recibe el gridview para llenar con los datos de la imagen en la base de datos
+ </summary>
+</member>
+<member name="M:CapaDatos.Tabla.Historico(System.Web.UI.WebControls.GridView@,System.Int32,System.String,System.String,System.String,System.String)">
+ <summary>
+ Metodo que recibe el gridview para llenar con los datos de el historico en la base de datos
  </summary>
 </member>
 <member name="M:CapaDatos.Update.Almacen(CapaDatos.Almacen,CapaDatos.LogisPackEntities@)">

@@ -65,7 +65,6 @@ Public Class Modal
 
     End Sub
 
-
     ''' <summary>
     ''' Metodo que oculta el updatepanel de Alerta
     ''' </summary>
@@ -84,4 +83,36 @@ Public Class Modal
         End If
 
     End Sub
+
+    ''' <summary>
+    ''' Metodo que recibe el updatepanel donde esta el Alert, el valor booleano de la operacion, 
+    ''' y el mensaje para mostrar en el alerta
+    ''' </summary>
+    Public Shared Sub MostrarMensajeAlerta(_Master As UpdatePanel, bError As Boolean, Mensaje As String)
+
+        Dim _UserControl As UserControl = CType(_Master.FindControl("ucAlerta"), UserControl)
+        If _UserControl IsNot Nothing Then
+
+            Dim _PlaceHolder As PlaceHolder
+            Dim _LabelExito As Label
+            Dim _LabelFalla As Label
+
+            If bError Then
+
+                _PlaceHolder = CType(_UserControl.FindControl("AlertExito"), PlaceHolder)
+                _LabelExito = CType(_UserControl.FindControl("lbAlertMsjExito"), Label)
+                _LabelExito.Text = Mensaje
+            Else
+                _PlaceHolder = CType(_UserControl.FindControl("AlertFalla"), PlaceHolder)
+                _LabelFalla = CType(_UserControl.FindControl("lbAlertMsjFalla"), Label)
+                _LabelFalla.Text = Mensaje
+            End If
+
+            _PlaceHolder.Visible = True
+            _PlaceHolder.Focus()
+
+        End If
+
+    End Sub
+
 End Class
