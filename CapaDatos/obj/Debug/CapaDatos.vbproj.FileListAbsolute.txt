@@ -8,3 +8,4 @@ C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Debug\CapaDatos.vbpr
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Debug\CapaDatos.dll
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Debug\CapaDatos.xml
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Debug\CapaDatos.pdb
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Debug\CapaDatos.vbprojResolveAssemblyReference.cache

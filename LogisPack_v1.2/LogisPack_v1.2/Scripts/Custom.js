@@ -1,14 +1,6 @@
 ﻿
-function MostrarMsjModal(message, title, ccsclas) {
-    var vIcoModal = document.getElementById("icoModal");
-    vIcoModal.className = ccsclas;
-    $('#lblMsjTitle').html(title);
-    $('#lblMsjModal').html(message);
-    $('#Msjmodal').modal('show');
-}
-
 function load() {
-    
+
     var URLActual = "" + window.location;
 
     if (URLActual.includes("Portal/Articulo/Crear") || URLActual.includes("Portal/Articulo/Editar")) {
@@ -71,7 +63,7 @@ function load() {
         $.each(Columnas, function () {
             $(this).focusout(function () {
                 var _valor = $(this).val();
-                if (_valor.length>0) {
+                if (_valor.length > 0) {
                     $(this).val(_valor.padStart(4, "0"));
                 }
 
@@ -107,7 +99,6 @@ function load() {
         $('#Msjmodal').modal('show');
     }
 
-
     if (URLActual.includes("Portal/Almacen/index")) {
         $("#sectionHeaderButtons1").click(function () {
 
@@ -131,8 +122,7 @@ function load() {
 
         });
     }
-    else
-    {
+    else {
         $(".sectionHeaderButtons").click(function () {
 
             if ($('#sectionContentFiltrosCabecera').css('display') == "none") {
@@ -144,4 +134,6 @@ function load() {
 
         });
     }
+    
 }
+

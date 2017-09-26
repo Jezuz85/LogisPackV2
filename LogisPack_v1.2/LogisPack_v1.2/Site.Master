@@ -25,6 +25,7 @@
 
 </head>
 <body id="masterBody">
+
 	<form runat="server">
 
 		<div id="masterHeaderContainer">
@@ -144,24 +145,25 @@
 
 		<asp:ScriptManager ID="ScriptManager1" runat="server" />
 
+		<asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+		
 		<%: Scripts.Render("~/bundles/MisScripts") %>
 
-			<asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
-
-			<hr />
-			<footer>
-				<p>&copy; <%: DateTime.Now.Year %> - Logis Pack - Direcline.com</p>
-			</footer>
-
+		<hr />
+		<footer>
+			<p>&copy; <%: DateTime.Now.Year %> - Logis Pack - Direcline.com</p>
+		</footer>
 
 		<!-- Msj Modal -->
 		<ucm:ucMsjModal runat="server" ID="ucMsjModal" />
 	</form>
-
+	
+	
 	<script type="text/javascript">
 		window.onload = function () {
-			load();
+			load(); 
 		};
+
 		var prm = Sys.WebForms.PageRequestManager.getInstance();
 		if (prm != null) {
 			prm.add_endRequest(function (sender, e) {
@@ -170,6 +172,8 @@
 				}
 			});
 		};
+
+		
 	</script>
 
 </body>

@@ -2661,6 +2661,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:LogisPack_v1._2.index4._hdfCliente">
+<summary>
+Control hdfCliente.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:LogisPack_v1._2.index4._ddlBuscar">
 <summary>
 Control ddlBuscar.
@@ -2682,24 +2691,6 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:LogisPack_v1._2.index4._AutoCompleteExtender1">
 <summary>
 Control AutoCompleteExtender1.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:LogisPack_v1._2.index4._TextBox5">
-<summary>
-Control TextBox5.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:LogisPack_v1._2.index4._autoCompleteStates">
-<summary>
-Control autoCompleteStates.
 </summary>
 <remarks>
 Campo generado automáticamente.
