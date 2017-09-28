@@ -8,6 +8,7 @@ Public Class Editar
     Private bError As Boolean
     Private IdArticulo As Integer = 0
     Private idCliente As Integer
+    Private _DataTable As DataTable
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         Page.Form.Attributes.Add("enctype", "multipart/form-data")
@@ -22,6 +23,9 @@ Public Class Editar
                 CargarListas()
                 CargarArticulo()
             Else
+                Update_GridView_CurrentDatatable()
+                Update_ViewState_Datatable()
+
                 ObtenerControl_Postback(Me)
                 For Each ctlID In Page.Request.Form.AllKeys
                     If ctlID IsNot Nothing Then
@@ -136,28 +140,12 @@ Public Class Editar
         If itemArticulos.tipoArticulo = "Picking" Then
 
             phListaArticulos.Visible = True
-            Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
 
-            For Each itemPickArticulos In itemArticulos.Picking_Articulo1
+            LlenarGridview(itemArticulos.id_articulo)
+            Update_ViewState_Datatable()
 
-                ddlListaArticulos.Items.Remove(ddlListaArticulos.Items.FindByValue(itemPickArticulos.id_articulo))
+            Listas.ArticuloPickingEdit(ddlListaArticulos, GridView2, Convert.ToInt32(ddlAlmacen.SelectedValue))
 
-
-                Dim _ArticuloPick = contexto.Articulo.Where(Function(model) model.id_articulo = itemPickArticulos.id_articulo).SingleOrDefault()
-
-                Dim textoArt1 = txtArticulos1.Text
-                Dim textoArt2 = txtArticulos2.Text
-
-                Dim textArea1 As New StringBuilder
-                textArea1.AppendLine("Articulo: " & _ArticuloPick.nombre & " Unidades=" & Convert.ToDouble(itemPickArticulos.unidades))
-                txtArticulos1.Text = textoArt1 & textArea1.ToString()
-
-
-                Dim textArea2 As New StringBuilder
-                textArea2.AppendLine(itemPickArticulos.id_articulo & "-" & itemPickArticulos.unidades)
-                txtArticulos2.Text = textoArt2 & textArea2.ToString()
-
-            Next
 
         End If
 
@@ -244,7 +232,6 @@ Public Class Editar
                                 Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
                                 phListaArticulos.Visible = False
                                 txtUnidad.Text = Nothing
-                                txtArticulos1.Text = Nothing
                             End If
                             ddlAlmacen.SelectedValue = ""
                             ddlCliente.SelectedValue = ""
@@ -458,27 +445,17 @@ Public Class Editar
             End If
 
             If bError Then
-                contadorControl = 0
-                Dim lineaArt As String() = txtArticulos2.Text.Split("" & vbLf & "")
+                For Each row As GridViewRow In GridView2.Rows
 
-                For i As Integer = 1 To (lineaArt.Length - 1)
-
-                    Dim lineas As String() = lineaArt(i - 1).Split(New Char() {"-"c})
-                    Dim itemArt As Integer = Convert.ToInt32(lineas(0))
-                    Dim itemUni As Double = Double.Parse(lineas(1), CultureInfo.InvariantCulture)
-
-                    Dim Listarticulo = contexto.Articulo.Where(Function(model) model.id_articulo = itemArt).SingleOrDefault()
+                    Dim _id_articulo As String = GridView2.DataKeys(row.RowIndex).Values(0).ToString
+                    Dim _unidades As String = row.Cells(2).Text
 
                     Dim _NuevoPic_Art As New Picking_Articulo With {
-                        .unidades = itemUni,
-                        .id_articulo = itemArt,
-                        .id_picking = Edit.id_articulo
-                    }
+                            .unidades = _unidades,
+                            .id_articulo = _id_articulo,
+                            .id_picking = Edit.id_articulo
+                        }
                     bError = Create.Picking_Articulo(_NuevoPic_Art)
-
-                    If bError = False Then
-                        Return bError
-                    End If
 
                 Next
             End If
@@ -533,7 +510,15 @@ Public Class Editar
     Protected Sub Añadir_ArticuloLista(sender As Object, e As EventArgs) Handles btnAddArticuloRow.Click
 
         If Page.IsValid Then
-            Manager_Articulo.Añadir_ArticuloLista(txtUnidad, ddlListaArticulos, txtArticulos1, txtArticulos2, btnAddArticuloRow)
+            AddRowGridview()
+
+            ddlListaArticulos.Items.Remove(ddlListaArticulos.Items.FindByValue(ddlListaArticulos.SelectedValue))
+
+            txtUnidad.Text = String.Empty
+            If ddlListaArticulos.Items.Count = 0 Then
+                btnAddArticuloRow.Visible = False
+            End If
+
         End If
 
     End Sub
@@ -544,16 +529,116 @@ Public Class Editar
     ''' </summary>
     Protected Sub SetCoefVolumétrico(sender As Object, e As EventArgs) Handles ddlAlmacen.SelectedIndexChanged
 
-        Manager_Articulo.SetCoefVolumétrico(ddlAlmacen, txtCoefVol, phListaArticulos, ddlTipoArticulo, ddlListaArticulos)
+        Manager_Articulo.SetCoefVolumétrico(ddlAlmacen, txtCoefVol, phListaArticulos, ddlTipoArticulo)
+
+        Listas.ArticuloPickingEdit(ddlListaArticulos, GridView2, Convert.ToInt32(ddlAlmacen.SelectedValue))
 
     End Sub
 
-    ''' <summary>
-    ''' Metodo que se ejecuta cuando se oprime el boton de Resetear, elimina los aritculos y reestablece la 
-    ''' lista de Articulo
-    ''' </summary>
-    Protected Sub Reset_ArticuloLista(sender As Object, e As EventArgs) Handles btnReset.Click
-        Manager_Articulo.Reset_ArticuloLista(btnAddArticuloRow, ddlListaArticulos, ddlAlmacen, txtArticulos1, txtArticulos2)
+    Protected Sub GridView2_RowCommand(sender As Object, e As GridViewCommandEventArgs)
+
+        If e.CommandName.Equals("DelRow") Then
+
+            Dim RowIndex As Integer = Convert.ToInt32((e.CommandArgument))
+            Dim gvrow As GridViewRow = GridView2.Rows(RowIndex)
+
+            _DataTable = CType(ViewState("CurrentTable"), DataTable)
+            _DataTable.Rows(RowIndex).Delete()
+
+            Update_ViewState_Datatable()
+
+            Update_GridView_CurrentDatatable()
+
+
+            Update_ViewState_Datatable()
+            btnAddArticuloRow.Visible = True
+            ddlListaArticulos.Items.Insert(0, New ListItem("" + gvrow.Cells(1).Text, "" + gvrow.Cells(0).Text))
+
+        End If
+
+    End Sub
+    Protected Sub GridView2_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
+        GridView2.PageIndex = e.NewPageIndex
+        Update_GridView_CurrentDatatable()
+    End Sub
+
+    Private Sub AddRowGridview()
+        Dim rowIndex As Integer = 0
+
+        _DataTable = CType(ViewState("CurrentTable"), DataTable)
+
+        Dim drCurrentRow As DataRow = Nothing
+        drCurrentRow = _DataTable.NewRow()
+        drCurrentRow("id_articulo") = ddlListaArticulos.SelectedValue
+        drCurrentRow("Articulo") = ddlListaArticulos.SelectedItem
+        drCurrentRow("Cantidad") = txtUnidad.Text
+        _DataTable.Rows.Add(drCurrentRow)
+
+        Update_ViewState_Datatable()
+        Update_GridView_CurrentDatatable()
+
+    End Sub
+
+    Private Sub LlenarGridview(_id_articulo As Integer)
+
+        Tabla.ArticuloPicking(GridView2, _id_articulo)
+
+        If GridView2.Rows.Count > 0 Then
+            GridtoDataTable()
+            Update_ViewState_Datatable()
+        Else
+            InicializarGridView()
+            Update_ViewState_Datatable()
+            Update_GridView_CurrentDatatable()
+        End If
+
+
+    End Sub
+
+    Private Sub InicializarGridView()
+        _DataTable = New DataTable()
+        _DataTable.Columns.Add(New DataColumn("id_articulo", GetType(String)))
+        _DataTable.Columns.Add(New DataColumn("Articulo", GetType(String)))
+        _DataTable.Columns.Add(New DataColumn("Cantidad", GetType(String)))
+    End Sub
+
+    Private Sub GridtoDataTable()
+
+        _DataTable = New DataTable()
+        ' add the columns to the datatable
+        If GridView2.HeaderRow IsNot Nothing Then
+            For i As Integer = 0 To GridView2.HeaderRow.Cells.Count - 1
+                _DataTable.Columns.Add(GridView2.HeaderRow.Cells(i).Text)
+            Next
+        End If
+
+        ' add each of the data rows to the table
+        For Each row As GridViewRow In GridView2.Rows
+            Dim dr As DataRow
+            dr = _DataTable.NewRow()
+
+            For i As Integer = 0 To row.Cells.Count - 1
+                dr(i) = row.Cells(i).Text.Replace(" ", "")
+
+            Next
+            _DataTable.Rows.Add(dr)
+
+        Next
+
+
+    End Sub
+
+    Private Sub Update_GridView_CurrentDatatable()
+
+        _DataTable = CType(ViewState("CurrentTable"), DataTable)
+        GridView2.DataSource = _DataTable
+        GridView2.DataBind()
+    End Sub
+
+    Private Sub Update_ViewState_Datatable()
+
+        ViewState("CurrentTable") = _DataTable
+
     End Sub
 
 End Class

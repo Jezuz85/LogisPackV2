@@ -998,36 +998,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.Crear._btnReset">
-<summary>
-Control btnReset.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:LogisPack_v1._2.Crear._GridView1">
 <summary>
 Control GridView1.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:LogisPack_v1._2.Crear._txtArticulos1">
-<summary>
-Control txtArticulos1.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:LogisPack_v1._2.Crear._txtArticulos2">
-<summary>
-Control txtArticulos2.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -1370,14 +1343,7 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 </member>
 <member name="M:LogisPack_v1._2.Crear.ddlTipoArticulo_SelectedIndexChanged(System.Object,System.EventArgs)">
  <summary>
- Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
- al articulo dependiendo del valor que tenga el coeficiente del almacen
- </summary>
-</member>
-<member name="M:LogisPack_v1._2.Crear.Reset_ArticuloLista(System.Object,System.EventArgs)">
- <summary>
- Metodo que se ejecuta cuando se oprime el boton de Resetear, elimina los aritculos y reestablece la 
- lista de Articulo
+ Metodo que se ejecuta cuando se selecciona un tipo de articulo, y sirve para mostrar los articulos a agregar
  </summary>
 </member>
 <member name="M:LogisPack_v1._2.Crear.SetCoefVolumétrico(System.Object,System.EventArgs)">
@@ -1735,24 +1701,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.Editar._txtArticulos1">
-<summary>
-Control txtArticulos1.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:LogisPack_v1._2.Editar._txtArticulos2">
-<summary>
-Control txtArticulos2.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:LogisPack_v1._2.Editar._ddlListaArticulos">
 <summary>
 Control ddlListaArticulos.
@@ -1780,9 +1728,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.Editar._btnReset">
+<member name="F:LogisPack_v1._2.Editar._GridView2">
 <summary>
-Control btnReset.
+Control GridView2.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -2200,12 +2148,6 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
  <summary>
  Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
  al articulo dependiendo del valor que tenga el coeficiente del almacen
- </summary>
-</member>
-<member name="M:LogisPack_v1._2.Editar.Reset_ArticuloLista(System.Object,System.EventArgs)">
- <summary>
- Metodo que se ejecuta cuando se oprime el boton de Resetear, elimina los aritculos y reestablece la 
- lista de Articulo
  </summary>
 </member>
 <member name="F:LogisPack_v1._2.index3._updatePanelPrinicpal">

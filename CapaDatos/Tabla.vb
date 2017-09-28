@@ -316,5 +316,26 @@ Public Class Tabla
         GridView1.DataBind()
     End Sub
 
+    ''' <summary>
+    ''' Metodo que recibe el gridview para llenar con los datos del articulo picking en la base de datos
+    ''' </summary>
+    Public Shared Sub ArticuloPicking(ByRef GridView1 As GridView, idPicking As Integer)
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Dim query = (From AL In contexto.Picking_Articulo
+                     Where AL.id_picking = idPicking
+                     Select
+                         AL.id_articulo,
+                         Cantidad = AL.unidades,
+                         Articulo = AL.Articulo.nombre,
+                         AL.Articulo.tipoArticulo
+                    ).ToList()
+
+        query = query.Where(Function(x) x.tipoArticulo = "Normal").ToList()
+
+        GridView1.DataSource = query
+        GridView1.DataBind()
+    End Sub
 
 End Class

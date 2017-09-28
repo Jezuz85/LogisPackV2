@@ -4,11 +4,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 	
-			
 	<asp:UpdatePanel ID="upAdd_Articulo" runat="server">
 		<ContentTemplate>
-
-
 
 			<div id="titleContainer">
 				<div class="MainContentTitle">
@@ -21,7 +18,6 @@
 					</div>
 				</div>
 			</div>
-
 
 			<div id="pageBodyContainer" class="MainContentWrapper" style="width: 96%;">
 				<!-- Alert -->
@@ -87,9 +83,8 @@
 
 								<div class="col-md-12">
 									<br />
-									<asp:Button ID="btnAddArticuloRow" runat="server" Text="Añadir Articulo"
+									<asp:Button ID="btnAddArticuloRow" runat="server" Text="Añadir Articulo" 
 										ValidationGroup="Val_AddArticulo" CausesValidation="true" />
-									<asp:Button ID="btnReset" runat="server" Text="Eliminar Articulos" />
 								</div>
 							</div>
 
@@ -99,14 +94,22 @@
 								<div class="sectionContent sectionGrid noPadding noMargin">
 									<div id="updGrid">
 										<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false"
-											OnRowCommand="GridView1_RowCommand"
-											class="grid gridSelectable gridSortable noPadding noMargin">
+											OnRowCommand="GridView1_RowCommand" PageSize="5"
+											OnPageIndexChanging="GridView1_PageIndexChanging"
+											class="grid gridSelectable gridSortable noPadding noMargin"
+											EmptyDataText="No se han agregado articulos"
+											DataKeyNames="id_articulo">
 											<Columns>
 
-                                                <asp:BoundField DataField="id_articulo" HeaderText="id_articulo"></asp:BoundField>
+												<asp:BoundField DataField="id_articulo" HeaderText="id_articulo" HeaderStyle-CssClass="hiddenGrid">
+													<ItemStyle CssClass="hiddenGrid"/>
+												</asp:BoundField>
+
 												<asp:BoundField DataField="Articulo" HeaderText="Articulo"></asp:BoundField>
 
 												<asp:BoundField DataField="Cantidad" HeaderText="Cantidad"></asp:BoundField>
+
+												
 
 												<asp:ButtonField HeaderText="Eliminar" CommandName="DelRow"
 													ButtonType="Image" ImageUrl="~/Content/images/baja.png"
@@ -117,13 +120,6 @@
 										</asp:GridView>
 									</div>
 								</div>
-
-								<asp:TextBox ID="txtArticulos1" runat="server" Rows="5" TextMode="multiline" ReadOnly="true"></asp:TextBox>
-								<asp:TextBox ID="txtArticulos2" runat="server" Rows="5" TextMode="multiline" Visible="false"></asp:TextBox>
-
-								<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
-									ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="txtArticulos1" runat="server"
-									ValidationGroup="ValidationAdd" />
 
 							</div>
 

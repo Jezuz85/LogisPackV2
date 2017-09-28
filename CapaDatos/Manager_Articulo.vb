@@ -23,7 +23,7 @@ Public Class Manager_Articulo
     ''' al articulo dependiendo del valor que tenga el coeficiente del almacen
     ''' </summary>
     Public Shared Sub SetCoefVolumétrico(ByRef ddl1 As DropDownList, ByRef txt1 As TextBox, ByRef ph1 As PlaceHolder,
-        ByRef ddl2 As DropDownList, ByRef ddl3 As DropDownList)
+        ByRef ddl2 As DropDownList)
 
         If ddl1.SelectedValue = "" Then
             txt1.Text = String.Empty
@@ -31,7 +31,6 @@ Public Class Manager_Articulo
         Else
 
             If ddl2.SelectedValue = "Picking" Then
-                Listas.Articulo(ddl3, Convert.ToInt32(ddl1.SelectedValue))
                 ph1.Visible = True
             Else
                 ph1.Visible = False

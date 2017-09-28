@@ -95,15 +95,6 @@ Partial Public Class Crear
     Protected WithEvents btnAddArticuloRow As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
-    '''Control btnReset.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnReset As Global.System.Web.UI.WebControls.Button
-    
-    '''<summary>
     '''Control GridView1.
     '''</summary>
     '''<remarks>
@@ -111,24 +102,6 @@ Partial Public Class Crear
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents GridView1 As Global.System.Web.UI.WebControls.GridView
-    
-    '''<summary>
-    '''Control txtArticulos1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtArticulos1 As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control txtArticulos2.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtArticulos2 As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
     '''Control txtCodigo.

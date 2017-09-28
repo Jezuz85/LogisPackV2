@@ -71,20 +71,34 @@ Public Class Listas
     ''' Metodo que recibe un objeto DropDownlist vacio  y lo devuelve con los datos de 
     ''' todos los articulos existentes en la base de datos
     ''' </summary>
-    Public Shared Sub ArticuloTodos(ByRef DropDownList1 As DropDownList)
+    Public Shared Sub ArticuloPickingEdit(ByRef DropDownList1 As DropDownList, ByRef GridView1 As GridView, idAlmacen As Integer)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
         Dim query = (From AL In contexto.Articulo
+                     Where (AL.tipoArticulo = "Normal" And AL.id_almacen = idAlmacen) Or
+                         (AL.tipoArticulo = "Normal" And AL.Almacen.id_cliente = 1)
                      Select
                          AL.id_articulo,
-                         NombreStock = AL.nombre
+                         AL.nombre
                     ).ToList()
 
+
+
+        For Each row As GridViewRow In GridView1.Rows
+
+            Dim _id_articulo As String = GridView1.DataKeys(row.RowIndex).Values(0).ToString
+            Dim IdArticulo As Integer = Convert.ToInt32(_id_articulo)
+
+            query = query.Where(Function(x) x.id_articulo <> IdArticulo).ToList()
+        Next
+
+
         DropDownList1.DataValueField = "id_articulo"
-        DropDownList1.DataTextField = "NombreStock"
+        DropDownList1.DataTextField = "nombre"
         DropDownList1.DataSource = query
         DropDownList1.DataBind()
+
     End Sub
 
     ''' <summary>

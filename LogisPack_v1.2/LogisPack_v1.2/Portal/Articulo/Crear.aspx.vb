@@ -20,16 +20,7 @@ Public Class Crear
                 ViewState("contadorUbi") = "0"
                 CargarListas()
 
-                Dim dt As New DataTable()
-                Dim dr As DataRow = Nothing
-
-                dt.Columns.Add(New DataColumn("Articulo", GetType(String)))
-                dt.Columns.Add(New DataColumn("Cantidad", GetType(String)))
-
-
-                ViewState("CurrentTable") = dt
-                GridView1.DataSource = dt
-                GridView1.DataBind()
+                InicializarGridView()
 
             Else
                 ObtenerControl_Postback(Me)
@@ -62,6 +53,49 @@ Public Class Crear
         End If
 
     End Sub
+
+    Private Sub InicializarGridView()
+        Dim dt As New DataTable()
+        Dim dr As DataRow = Nothing
+
+        dt.Columns.Add(New DataColumn("id_articulo", GetType(String)))
+        dt.Columns.Add(New DataColumn("Articulo", GetType(String)))
+        dt.Columns.Add(New DataColumn("Cantidad", GetType(String)))
+
+
+        ViewState("CurrentTable") = dt
+        GridView1.DataSource = dt
+        GridView1.DataBind()
+    End Sub
+
+    Private Sub CargarGridView()
+        Dim rowIndex As Integer = 0
+        Dim dtCurrentTable As DataTable = CType(ViewState("CurrentTable"), DataTable)
+        Dim drCurrentRow As DataRow = Nothing
+
+        ViewState("CurrentTable") = dtCurrentTable
+        GridView1.DataSource = dtCurrentTable
+        GridView1.DataBind()
+    End Sub
+
+    Private Sub AddRowGridview()
+        Dim rowIndex As Integer = 0
+        Dim dtCurrentTable As DataTable = CType(ViewState("CurrentTable"), DataTable)
+        Dim drCurrentRow As DataRow = Nothing
+
+
+        drCurrentRow = dtCurrentTable.NewRow()
+        drCurrentRow("id_articulo") = ddlListaArticulos.SelectedValue
+        drCurrentRow("Articulo") = ddlListaArticulos.SelectedItem
+        drCurrentRow("Cantidad") = txtUnidad.Text
+        dtCurrentTable.Rows.Add(drCurrentRow)
+
+        ViewState("CurrentTable") = dtCurrentTable
+        GridView1.DataSource = dtCurrentTable
+        GridView1.DataBind()
+    End Sub
+
+
 
     ''' <summary>
     ''' Metodo para obtener que lista hace el postback si Tipo de Articulo o Cliente y asi pintar las ubicaciones
@@ -283,23 +317,20 @@ Public Class Crear
 
         If ddlTipoArticulo.SelectedValue = "Picking" Then
 
-            Dim lineaArt As String() = txtArticulos2.Text.Split("" & vbLf & "")
+            For Each row As GridViewRow In GridView1.Rows
 
-            For i As Integer = 1 To (lineaArt.Length - 1)
-
-                Dim lineas As String() = lineaArt(i - 1).Split(New Char() {"-"c})
-                Dim itemArt As Integer = Convert.ToInt32(lineas(0))
-                Dim itemUni As Double = Double.Parse(lineas(1), CultureInfo.InvariantCulture)
-
-                Dim Listarticulo = contexto.Articulo.Where(Function(model) model.id_articulo = itemArt).SingleOrDefault()
+                Dim _id_articulo As String = GridView1.DataKeys(row.RowIndex).Values(0).ToString
+                Dim _unidades As String = row.Cells(2).Text
 
                 Dim _NuevoPic_Art As New Picking_Articulo With {
-                            .unidades = itemUni,
-                            .id_articulo = itemArt,
+                            .unidades = _unidades,
+                            .id_articulo = _id_articulo,
                             .id_picking = articuloView.id_articulo
                         }
                 bError = Create.Picking_Articulo(_NuevoPic_Art)
+
             Next
+
         End If
 
     End Sub
@@ -316,7 +347,6 @@ Public Class Crear
                 Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
                 phListaArticulos.Visible = False
                 txtUnidad.Text = Nothing
-                txtArticulos1.Text = Nothing
             End If
             ddlAlmacen.SelectedValue = ""
             ddlCliente.SelectedValue = ""
@@ -335,32 +365,21 @@ Public Class Crear
     ''' </summary>
     Protected Sub Añadir_ArticuloLista(sender As Object, e As EventArgs) Handles btnAddArticuloRow.Click
         If Page.IsValid Then
+            AddRowGridview()
 
-            Dim rowIndex As Integer = 0
-            Dim dtCurrentTable As DataTable = CType(ViewState("CurrentTable"), DataTable)
-            Dim drCurrentRow As DataRow = Nothing
+            ddlListaArticulos.Items.Remove(ddlListaArticulos.Items.FindByValue(ddlListaArticulos.SelectedValue))
 
+            txtUnidad.Text = String.Empty
+            If ddlListaArticulos.Items.Count = 0 Then
+                btnAddArticuloRow.Visible = False
+            End If
 
-            drCurrentRow = dtCurrentTable.NewRow()
-            drCurrentRow("id_articulo") = ddlListaArticulos.SelectedValue
-            drCurrentRow("Articulo") = ddlListaArticulos.SelectedItem
-            drCurrentRow("Cantidad") = txtUnidad.text
-            dtCurrentTable.Rows.Add(drCurrentRow)
-
-            ViewState("CurrentTable") = dtCurrentTable
-            GridView1.DataSource = dtCurrentTable
-            GridView1.DataBind()
-
-
-            Manager_Articulo.Añadir_ArticuloLista(txtUnidad, ddlListaArticulos, txtArticulos1, txtArticulos2, btnAddArticuloRow)
         End If
     End Sub
 
     ''' <summary>
-    ''' Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
-    ''' al articulo dependiendo del valor que tenga el coeficiente del almacen
+    ''' Metodo que se ejecuta cuando se selecciona un tipo de articulo, y sirve para mostrar los articulos a agregar
     ''' </summary>
-
     Protected Sub ddlTipoArticulo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlTipoArticulo.SelectedIndexChanged
 
         If ddlTipoArticulo.SelectedValue = "Picking" And ddlAlmacen.SelectedValue <> String.Empty Then
@@ -370,16 +389,8 @@ Public Class Crear
             phListaArticulos.Visible = False
         End If
 
-    End Sub
 
-    ''' <summary>
-    ''' Metodo que se ejecuta cuando se oprime el boton de Resetear, elimina los aritculos y reestablece la 
-    ''' lista de Articulo
-    ''' </summary>
-    Protected Sub Reset_ArticuloLista(sender As Object, e As EventArgs) Handles btnReset.Click
-        Manager_Articulo.Reset_ArticuloLista(btnAddArticuloRow, ddlListaArticulos, ddlAlmacen, txtArticulos1, txtArticulos2)
     End Sub
-
 
     ''' <summary>
     ''' Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
@@ -387,20 +398,20 @@ Public Class Crear
     ''' </summary>
     Protected Sub SetCoefVolumétrico(sender As Object, e As EventArgs) Handles ddlAlmacen.SelectedIndexChanged
 
-        Manager_Articulo.SetCoefVolumétrico(ddlAlmacen, txtCoefVol, phListaArticulos, ddlTipoArticulo, ddlListaArticulos)
+        Manager_Articulo.SetCoefVolumétrico(ddlAlmacen, txtCoefVol, phListaArticulos, ddlTipoArticulo)
+        Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
 
     End Sub
 
-
-
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
-
 
         If e.CommandName.Equals("DelRow") Then
 
             Dim RowIndex As Integer = Convert.ToInt32((e.CommandArgument))
             Dim gvrow As GridViewRow = GridView1.Rows(RowIndex)
-            Dim valor As String = TryCast(gvrow.FindControl(Control), Label).Text
+
+            Dim idArticulo As String = gvrow.Cells(0).Text
+            Dim Articulo As String = gvrow.Cells(1).Text
 
             Dim index As Integer = Convert.ToInt32(e.CommandArgument)
             Dim dt As DataTable = TryCast(ViewState("CurrentTable"), DataTable)
@@ -411,11 +422,18 @@ Public Class Crear
             GridView1.DataBind()
 
 
-
-            ddlListaArticulos.Items.Insert(0, New ListItem("Seleccione...", ""))
+            btnAddArticuloRow.Visible = True
+            ddlListaArticulos.Items.Insert(0, New ListItem("" + Articulo, "" + idArticulo))
 
         End If
 
     End Sub
+    Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
+        GridView1.PageIndex = e.NewPageIndex
+        CargarGridView()
+    End Sub
+
+
+
 
 End Class

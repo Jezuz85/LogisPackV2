@@ -302,7 +302,7 @@ CapaDatos
  todos los articulos de ese Almacén
  </summary>
 </member>
-<member name="M:CapaDatos.Listas.ArticuloTodos(System.Web.UI.WebControls.DropDownList@)">
+<member name="M:CapaDatos.Listas.ArticuloPickingEdit(System.Web.UI.WebControls.DropDownList@,System.Web.UI.WebControls.GridView@,System.Int32)">
  <summary>
  Metodo que recibe un objeto DropDownlist vacio  y lo devuelve con los datos de 
  todos los articulos existentes en la base de datos
@@ -338,7 +338,7 @@ CapaDatos
  lista de Articulo
  </summary>
 </member>
-<member name="M:CapaDatos.Manager_Articulo.SetCoefVolumétrico(System.Web.UI.WebControls.DropDownList@,System.Web.UI.WebControls.TextBox@,System.Web.UI.WebControls.PlaceHolder@,System.Web.UI.WebControls.DropDownList@,System.Web.UI.WebControls.DropDownList@)">
+<member name="M:CapaDatos.Manager_Articulo.SetCoefVolumétrico(System.Web.UI.WebControls.DropDownList@,System.Web.UI.WebControls.TextBox@,System.Web.UI.WebControls.PlaceHolder@,System.Web.UI.WebControls.DropDownList@)">
  <summary>
  Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
  al articulo dependiendo del valor que tenga el coeficiente del almacen
@@ -425,6 +425,11 @@ CapaDatos
 <member name="M:CapaDatos.Tabla.Historico(System.Web.UI.WebControls.GridView@,System.Int32,System.String,System.String,System.String,System.String)">
  <summary>
  Metodo que recibe el gridview para llenar con los datos de el historico en la base de datos
+ </summary>
+</member>
+<member name="M:CapaDatos.Tabla.ArticuloPicking(System.Web.UI.WebControls.GridView@,System.Int32)">
+ <summary>
+ Metodo que recibe el gridview para llenar con los datos del articulo picking en la base de datos
  </summary>
 </member>
 <member name="M:CapaDatos.Update.Almacen(CapaDatos.Almacen,CapaDatos.LogisPackEntities@)">

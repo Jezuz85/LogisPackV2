@@ -28,7 +28,7 @@ Public Class Crear1
     ''' </summary>
     Private Sub CargarListas()
 
-        Listas.ArticuloTodos(ddlListaArticulos)
+        Listas.Articulo(ddlListaArticulos, idCliente)
         Get_StockArticulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
 
     End Sub

@@ -21,7 +21,7 @@ Partial Public Class Editar
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents updatePanelPrinicpal As Global.System.Web.UI.UpdatePanel
-
+    
     '''<summary>
     '''Control ucAlerta.
     '''</summary>
@@ -30,7 +30,7 @@ Partial Public Class Editar
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents ucAlerta As Global.LogisPack_v1._2.Alert
-
+    
     '''<summary>
     '''Control ddlTipoArticulo.
     '''</summary>
@@ -68,24 +68,6 @@ Partial Public Class Editar
     Protected WithEvents phListaArticulos As Global.System.Web.UI.WebControls.PlaceHolder
     
     '''<summary>
-    '''Control txtArticulos1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtArticulos1 As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control txtArticulos2.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtArticulos2 As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
     '''Control ddlListaArticulos.
     '''</summary>
     '''<remarks>
@@ -113,13 +95,13 @@ Partial Public Class Editar
     Protected WithEvents btnAddArticuloRow As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
-    '''Control btnReset.
+    '''Control GridView2.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents btnReset As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents GridView2 As Global.System.Web.UI.WebControls.GridView
     
     '''<summary>
     '''Control txtCodigo.
