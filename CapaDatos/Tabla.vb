@@ -88,7 +88,9 @@ Public Class Tabla
                          AL.id_articulo,
                          AL.Almacen.id_cliente,
                          AL.nombre,
-                         AL.codigo
+                         AL.codigo,
+                         Cliente = AL.Almacen.Cliente.nombre,
+                         Almacen = AL.Almacen.nombre
                     ).ToList()
 
         If idCliente <> 1 Then
@@ -109,7 +111,20 @@ Public Class Tabla
             Else
                 query = query.OrderByDescending(Function(x) x.codigo).ToList()
             End If
+        ElseIf columna = "Almacen" Then
 
+            If tipoOrdenacion = "1" Then
+                query = query.OrderBy(Function(x) x.Almacen).ToList()
+            Else
+                query = query.OrderByDescending(Function(x) x.Almacen).ToList()
+            End If
+        ElseIf columna = "Cliente" Then
+
+            If tipoOrdenacion = "1" Then
+                query = query.OrderBy(Function(x) x.Cliente).ToList()
+            Else
+                query = query.OrderByDescending(Function(x) x.Cliente).ToList()
+            End If
         End If
 
         If textoBusqueda <> String.Empty Then
@@ -117,6 +132,10 @@ Public Class Tabla
                 query = query.Where(Function(x) x.nombre.ToLower.Contains(textoBusqueda.ToLower)).ToList()
             ElseIf filtroBusqueda = "Codigo" Then
                 query = query.Where(Function(x) x.codigo.ToLower.Contains(textoBusqueda.ToLower)).ToList()
+            ElseIf filtroBusqueda = "Almacen" Then
+                query = query.Where(Function(x) x.Almacen.ToLower.Contains(textoBusqueda.ToLower)).ToList()
+            ElseIf filtroBusqueda = "Cliente" Then
+                query = query.Where(Function(x) x.Cliente.ToLower.Contains(textoBusqueda.ToLower)).ToList()
             End If
         End If
 

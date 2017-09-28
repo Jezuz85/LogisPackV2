@@ -23,15 +23,10 @@ Public Class Crear1
         End If
     End Sub
 
-    ''' <summary>
-    ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
-    ''' </summary>
     Private Sub CargarListas()
-
-        Listas.Articulo(ddlListaArticulos, idCliente)
-        Get_StockArticulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
-
+        Listas.Cliente(ddlCliente, idCliente)
     End Sub
+
 
     ''' <summary>
     ''' Metodo que muestra por pantalla el valor del stock fisico de un articulo seleccionado
@@ -39,7 +34,8 @@ Public Class Crear1
     Public Sub Get_StockArticulo(idArticulo As Integer)
 
         Dim _Articulo = Getter.Articulo(idArticulo)
-        lbStockFisico.Text = _Articulo.stock_fisico.ToString()
+
+        lbStockFisico.Text = If(_Articulo.stock_fisico.ToString() = String.Empty, "-", _Articulo.stock_fisico.ToString())
 
     End Sub
 
@@ -57,8 +53,11 @@ Public Class Crear1
             If (Stock_Picking > unidadesSolicitadas And ddlTipoOperacion.SelectedValue = "Sal") Or ddlTipoOperacion.SelectedValue = "Ent" Then
 
 #Region "Guardar documento"
+                Dim urlDoc As String = String.Empty
 
-                Dim urlDoc As String = Utilidades_Fileupload.Subir_Archivo(fuDocumento, Paginas.URL_Operacion.ToString, "Doc_" & ddlTipoOperacion.SelectedValue & "_" & _articulo.id_articulo & "_" & Convert.ToDateTime(txtFechaOperacion.Text).ToString("yyyy-MM-dd") & "_")
+                If fuDocumento.HasFile Then
+                    urlDoc = Utilidades_Fileupload.Subir_Archivo(fuDocumento, Paginas.URL_Operacion.ToString, "Doc_" & ddlTipoOperacion.SelectedValue & "_" & _articulo.id_articulo & "_" & Convert.ToDateTime(txtFechaOperacion.Text).ToString("yyyy-MM-dd") & "_")
+                End If
 #End Region
 
 #Region "Guardar operacion nuevo"
@@ -85,6 +84,9 @@ Public Class Crear1
                     bError = Update.Articulo(Edit, contexto)
 
                     Modal.MostrarAlerta(updatePanelPrinicpal, bError, Mensajes.Registrar.ToString)
+
+                    Get_StockArticulo(Edit.id_articulo)
+
                 Else
                     Modal.MostrarAlerta(updatePanelPrinicpal, bError, Mensajes.Registrar.ToString)
                     Return
@@ -102,25 +104,77 @@ Public Class Crear1
     ''' Metodo que se ejecuta cuando se elige un articulo de la lista
     ''' </summary>
     Protected Sub ddlListaArticulos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlListaArticulos.SelectedIndexChanged
-        Get_StockArticulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
+        If ddlAlmacen.SelectedValue = String.Empty Then
+            lbStockFisico.Text = String.Empty
+        Else
+            Get_StockArticulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
+        End If
+
     End Sub
 
     ''' <summary>
     ''' Metodo que registra una operacion de Entrada/Salida de un articulo en la base de datos
     ''' </summary>
     Protected Sub ValidarStock(sender As Object, e As EventArgs) Handles txtCantidad.TextChanged
+        ValidarStock()
+    End Sub
 
-        Dim _Articulo = Getter.Articulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
+    Protected Sub ddlTipoOperacion_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlTipoOperacion.SelectedIndexChanged
+        ValidarStock()
+    End Sub
 
-        Dim StockFisico As Double = Double.Parse(_Articulo.stock_fisico, CultureInfo.InvariantCulture)
-        Dim CantidadSolicitada As Double = Double.Parse(txtCantidad.Text, CultureInfo.InvariantCulture)
 
-        If CantidadSolicitada > StockFisico Then
-            Modal.MostrarMensajeAlerta(updatePanelPrinicpal, False, Mensajes.Unidades_Stock.ToString)
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se selecciona un cliente de la lista
+    ''' </summary>
+    Protected Sub CambiarCliente(sender As Object, e As EventArgs) Handles ddlCliente.SelectedIndexChanged
+
+        ddlListaArticulos.Items.Clear()
+
+        If ddlCliente.SelectedValue = "" Then
+            ddlAlmacen.SelectedValue = ""
         Else
-            Modal.OcultarAlerta(updatePanelPrinicpal)
+            Listas.Almacen(ddlAlmacen, Convert.ToInt32(ddlCliente.SelectedValue))
+        End If
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
+    ''' al articulo dependiendo del valor que tenga el coeficiente del almacen
+    ''' </summary>
+    Protected Sub ddlAlmacen_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlAlmacen.SelectedIndexChanged
+
+        If ddlAlmacen.SelectedValue = String.Empty Then
+            ddlListaArticulos.Items.Clear()
+        Else
+            Listas.Articulo_Almacen(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
+
+            Get_StockArticulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
+
+
         End If
 
     End Sub
+
+
+    Private Sub ValidarStock()
+
+        If txtCantidad.Text <> String.Empty Then
+
+            Dim _Articulo = Getter.Articulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
+
+            Dim StockFisico As Double = Double.Parse(_Articulo.stock_fisico, CultureInfo.InvariantCulture)
+            Dim CantidadSolicitada As Double = Double.Parse(txtCantidad.Text, CultureInfo.InvariantCulture)
+
+            If (CantidadSolicitada > StockFisico) And (ddlTipoOperacion.SelectedValue = "Sal") Then
+                Modal.MostrarMensajeAlerta(updatePanelPrinicpal, False, Mensajes.Unidades_Stock.ToString)
+                txtCantidad.Text = "0"
+            Else
+                Modal.OcultarAlerta(updatePanelPrinicpal)
+            End If
+        End If
+
+    End Sub
+
 
 End Class

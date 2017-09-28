@@ -73,7 +73,7 @@
 										MaxLength="200" autocomplete="off" OnTextChanged="txtSearch_TextChanged" AutoPostBack="true"></asp:TextBox>
 
 
-									<cc1:AutoCompleteExtender ServiceMethod="Autocomplete" MinimumPrefixLength="1"
+									<cc1:AutoCompleteExtender ServiceMethod="AutocompleteOperacion" MinimumPrefixLength="1"
 										CompletionInterval="100" EnableCaching="false" CompletionSetCount="10"
 										TargetControlID="txtSearch" ID="AutoCompleteExtender1" runat="server"
 										FirstRowSelected="false" CompletionListCssClass="completionList"
@@ -190,6 +190,7 @@
 			</div>
 
 		</ContentTemplate>
+
 		<Triggers></Triggers>
 	</asp:UpdatePanel>
 

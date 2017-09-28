@@ -99,16 +99,15 @@
 																<a id="dropbtn_Articulo" class="dropbtn" runat="server" href="~/Portal/Articulo/index">Articulo</a>
 
 																<div class="dropdown-content">
-																	<a href="../../Portal/Articulo/Crear">Nuevo Articulo</a>
+																	<a href="../../Portal/Articulo/Crear">Nuevo</a>
 																</div>
 															</li>
 															<li class="dropdown">
 																<a id="dropbtn_Operacion" runat="server" href="~/Portal/Operacion/index">Operacion</a>
 
-																<%--<div class="dropdown-content">
-																	<a href="#">Nueva Entrada</a>
-																	<a href="#">Nueva Salida</a>
-																</div>--%>
+																<div class="dropdown-content">
+																	<a href="../../Portal/Operacion/Crear">Nuevo</a>
+																</div>
 															</li>
 															<li class="dropdown">
 																<a id="dropbtn_TipoFacturacion" runat="server" href="~/Portal/TipoFacturacion/index">Tipo de Facturación</a>

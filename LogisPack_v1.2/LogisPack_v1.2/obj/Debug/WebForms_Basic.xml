@@ -547,6 +547,24 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:LogisPack_v1._2.index._hdfCliente">
+<summary>
+Control hdfCliente.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.index._hdfFiltro">
+<summary>
+Control hdfFiltro.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:LogisPack_v1._2.index._CodCliente">
 <summary>
 Control CodCliente.
@@ -613,6 +631,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:LogisPack_v1._2.index._txtSearch">
 <summary>
 Control txtSearch.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.index._AutoCompleteExtender1">
+<summary>
+Control AutoCompleteExtender1.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -2512,6 +2539,24 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:LogisPack_v1._2.Crear1._ddlCliente">
+<summary>
+Control ddlCliente.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.Crear1._ddlAlmacen">
+<summary>
+Control ddlAlmacen.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:LogisPack_v1._2.Crear1._ddlListaArticulos">
 <summary>
 Control ddlListaArticulos.
@@ -2584,11 +2629,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="M:LogisPack_v1._2.Crear1.CargarListas">
- <summary>
- Metodo que llena los Dropdownlits con datos de la Base de Datos
- </summary>
-</member>
 <member name="M:LogisPack_v1._2.Crear1.Get_StockArticulo(System.Int32)">
  <summary>
  Metodo que muestra por pantalla el valor del stock fisico de un articulo seleccionado
@@ -2607,6 +2647,17 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="M:LogisPack_v1._2.Crear1.ValidarStock(System.Object,System.EventArgs)">
  <summary>
  Metodo que registra una operacion de Entrada/Salida de un articulo en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Crear1.CambiarCliente(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se ejecuta cuando se selecciona un cliente de la lista
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Crear1.ddlAlmacen_SelectedIndexChanged(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
+ al articulo dependiendo del valor que tenga el coeficiente del almacen
  </summary>
 </member>
 <member name="F:LogisPack_v1._2.index4._updatePanelPrinicpal">

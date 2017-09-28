@@ -44,6 +44,8 @@
 									<asp:DropDownList runat="server" ID="ddlBuscar">
 										<asp:ListItem Text="Codigo" Value="Codigo"></asp:ListItem>
 										<asp:ListItem Text="Nombre" Value="Nombre"></asp:ListItem>
+										<asp:ListItem Text="Almacén" Value="Almacen"></asp:ListItem>
+										<asp:ListItem Text="Cliente" Value="Cliente"></asp:ListItem>
 									</asp:DropDownList>
 								</div>
 
@@ -88,13 +90,13 @@
 										</ItemTemplate>
 									</asp:TemplateField>
 									
-									<asp:BoundField DataField="Codigo"
-										HeaderText="Código"
-										SortExpression="Codigo"></asp:BoundField>
+									<asp:BoundField DataField="Almacen" HeaderText="Almacén" SortExpression="Almacen"></asp:BoundField>
+									
+									<asp:BoundField DataField="Cliente" HeaderText="Cliente" SortExpression="Cliente"></asp:BoundField>
 
-									<asp:BoundField DataField="Nombre"
-										HeaderText="Nombre"
-										SortExpression="Nombre"></asp:BoundField>
+									<asp:BoundField DataField="Codigo" HeaderText="Código" SortExpression="Codigo"></asp:BoundField>
+
+									<asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre"></asp:BoundField>
 
 									<asp:ButtonField HeaderText="Editar" CommandName="Editar"
 										ButtonType="Image" ImageUrl="~/Content/images/edit.png"

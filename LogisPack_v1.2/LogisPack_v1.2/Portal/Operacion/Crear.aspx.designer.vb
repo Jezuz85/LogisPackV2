@@ -32,6 +32,51 @@ Partial Public Class Crear1
     Protected WithEvents ucAlerta As Global.LogisPack_v1._2.Alert
     
     '''<summary>
+    '''Control ddlCliente.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlCliente As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''Control ddlAlmacen.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlAlmacen As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''Control ddlTipoOperacion.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlTipoOperacion As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''Control txtFechaOperacion.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtFechaOperacion As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control fuDocumento.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents fuDocumento As Global.System.Web.UI.WebControls.FileUpload
+    
+    '''<summary>
     '''Control ddlListaArticulos.
     '''</summary>
     '''<remarks>
@@ -50,33 +95,6 @@ Partial Public Class Crear1
     Protected WithEvents lbStockFisico As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control ddlTipoOperacion.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents ddlTipoOperacion As Global.System.Web.UI.WebControls.DropDownList
-    
-    '''<summary>
-    '''Control txtCantidad.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtCantidad As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control txtFechaOperacion.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtFechaOperacion As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
     '''Control txtRef.
     '''</summary>
     '''<remarks>
@@ -86,13 +104,13 @@ Partial Public Class Crear1
     Protected WithEvents txtRef As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control fuDocumento.
+    '''Control txtCantidad.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents fuDocumento As Global.System.Web.UI.WebControls.FileUpload
+    Protected WithEvents txtCantidad As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
     '''Control btnGuardar.

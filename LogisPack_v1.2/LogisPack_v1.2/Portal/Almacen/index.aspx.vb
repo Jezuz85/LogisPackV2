@@ -14,9 +14,11 @@ Public Class index
         If Manager_Usuario.ValidarAutenticado(User) Then
 
             idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
+            hdfCliente.Value = idCliente
 
             If IsPostBack = False Then
 
+                hdfFiltro.Value = ddlBuscar.SelectedValue
                 ViewState("filtroBusqueda") = String.Empty
                 ViewState("textoBusqueda") = String.Empty
 
@@ -267,6 +269,20 @@ Public Class index
         ViewState("textoBusqueda") = String.Empty
 
         LlenarGridView()
+    End Sub
+
+    Protected Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
+
+        ViewState("filtroBusqueda") = ddlBuscar.SelectedValue
+        ViewState("textoBusqueda") = txtSearch.Text
+        LlenarGridView()
+    End Sub
+
+
+    Protected Sub ddlBuscar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlBuscar.SelectedIndexChanged
+
+        hdfFiltro.Value = ddlBuscar.SelectedValue
+
     End Sub
 
 End Class

@@ -67,6 +67,25 @@ Public Class Listas
         DropDownList1.DataBind()
     End Sub
 
+
+    Public Shared Sub Articulo_Almacen(ByRef DropDownList1 As DropDownList, idAlmacen As Integer)
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Dim query = (From AL In contexto.Articulo
+                     Where AL.id_almacen = idAlmacen
+                     Select
+                         AL.id_articulo,
+                         AL.nombre
+                    ).ToList()
+
+        DropDownList1.DataValueField = "id_articulo"
+        DropDownList1.DataTextField = "nombre"
+        DropDownList1.DataSource = query
+        DropDownList1.DataBind()
+
+    End Sub
+
     ''' <summary>
     ''' Metodo que recibe un objeto DropDownlist vacio  y lo devuelve con los datos de 
     ''' todos los articulos existentes en la base de datos
