@@ -41,6 +41,8 @@ Public Class Detalles
         Dim M3 As String = Convert.ToDouble(itemArticulos.cubicaje).ToString("##,##0.00")
         Dim ValorArticulo As String = Convert.ToDouble(itemArticulos.valor_articulo).ToString("##,##0.00")
         Dim ValorAsegurado As String = Convert.ToDouble(itemArticulos.valor_asegurado).ToString("##,##0.00")
+        Dim ValoraciónStock As String = Convert.ToDouble(itemArticulos.valoracion_stock).ToString("##,##0.00")
+        Dim ValoraciónSeguro As String = Convert.ToDouble(itemArticulos.valoracion_seguro).ToString("##,##0.00")
         Dim Peso As String = Convert.ToDouble(itemArticulos.peso).ToString("##,##0.00")
 
 
@@ -53,19 +55,19 @@ Public Class Detalles
         lbRef2.Text = itemArticulos.referencia2
         lbRef3.Text = itemArticulos.referencia3
         lbTipoUnidad.Text = itemArticulos.Tipo_Unidad.nombre
-        lbPeso.Text = If(itemArticulos.peso > 999, Peso & " Kgs", Peso & " Grs")
+        lbPeso.Text = Peso & " Kgs"
         lbAlto.Text = itemArticulos.alto
         lbLargo.Text = itemArticulos.largo
         lbAncho.Text = itemArticulos.ancho
-        lbCoefVol.Text = If(itemArticulos.coeficiente_volumetrico > 999, CoefVolumetrico & " Kgs", CoefVolumetrico & " Grs")
+        lbCoefVol.Text = CoefVolumetrico & " Kgs"
         lbCubicaje.Text = M3
-        txtPesoVol.Text = If(itemArticulos.peso_volumen > 999, PesoVolumen & " Kgs", PesoVolumen & " Grs")
+        txtPesoVol.Text = PesoVolumen & " Kgs"
         lbTipoFacturacion.Text = itemArticulos.Tipo_Facturacion.nombre
         lbIdentificacion.Text = itemArticulos.identificacion
         lbValArticulo.Text = ValorArticulo
         txtValAsegurado.Text = ValorAsegurado
-        lbValSotck.Text = itemArticulos.valoracion_stock
-        txtValSeguro.Text = itemArticulos.valoracion_seguro
+        lbValSotck.Text = ValoraciónStock
+        txtValSeguro.Text = ValoraciónSeguro
         txtObsGen.Text = itemArticulos.observaciones_generales
         txtObsArt.Text = itemArticulos.observaciones_articulo
         lbStockMinimo.Text = itemArticulos.stock_minimo
@@ -98,7 +100,7 @@ Public Class Detalles
 
         If itemArticulos.Imagen.Count > 0 Then
             ControlesDinamicos.CrearLiteral("
-                <div id='ImagenesArticulo' class='carousel slide' data-ride='carousel'>
+                <div id='ImagenesArticulo' class='carousel slide' data-ride='carousel' style='width:50%;height:50%;'>
                     <div class='carousel-inner'>", pImagenes)
             Dim contadorImagenes As Integer = 0
 

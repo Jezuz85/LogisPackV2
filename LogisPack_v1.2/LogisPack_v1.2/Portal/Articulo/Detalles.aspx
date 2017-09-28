@@ -49,7 +49,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6" align="center">
                 <h4><strong>Imágenes</strong></h4>
                 <asp:Panel ID="pImagenes" runat="server"></asp:Panel>
             </div>

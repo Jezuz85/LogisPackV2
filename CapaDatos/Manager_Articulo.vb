@@ -156,7 +156,7 @@ Public Class Manager_Articulo
             Largo = Double.Parse(txtAncho, CultureInfo.InvariantCulture)
             Ancho = Double.Parse(txtLargo, CultureInfo.InvariantCulture)
 
-            m3 = ((Alto * Ancho * Largo) / 1000).ToString("#.000")
+            m3 = ((Alto * Ancho * Largo) / 1000000).ToString("#.000")
         End If
 
         Return m3
@@ -177,7 +177,7 @@ Public Class Manager_Articulo
             Ancho = Double.Parse(txtLargo, CultureInfo.InvariantCulture)
             CoefVol = Double.Parse(txtCoefVol, CultureInfo.InvariantCulture)
 
-            PesoVol = ((Alto * Ancho * Largo * CoefVol) / 1000).ToString("#.000")
+            PesoVol = ((Alto * Ancho * Largo * CoefVol) / 1000000).ToString("#.000")
         End If
 
 

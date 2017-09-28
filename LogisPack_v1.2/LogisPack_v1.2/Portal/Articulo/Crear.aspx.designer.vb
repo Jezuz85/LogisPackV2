@@ -21,7 +21,7 @@ Partial Public Class Crear
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents upAdd_Articulo As Global.System.Web.UI.UpdatePanel
-
+    
     '''<summary>
     '''Control ucAlerta.
     '''</summary>
@@ -30,15 +30,6 @@ Partial Public Class Crear
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents ucAlerta As Global.LogisPack_v1._2.Alert
-
-    '''<summary>
-    '''Control ddlTipoArticulo.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents ddlTipoArticulo As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
     '''Control ddlCliente.
@@ -59,6 +50,15 @@ Partial Public Class Crear
     Protected WithEvents ddlAlmacen As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
+    '''Control ddlTipoArticulo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlTipoArticulo As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
     '''Control phListaArticulos.
     '''</summary>
     '''<remarks>
@@ -66,24 +66,6 @@ Partial Public Class Crear
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents phListaArticulos As Global.System.Web.UI.WebControls.PlaceHolder
-    
-    '''<summary>
-    '''Control txtArticulos1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtArticulos1 As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control txtArticulos2.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtArticulos2 As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
     '''Control ddlListaArticulos.
@@ -120,6 +102,33 @@ Partial Public Class Crear
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents btnReset As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control GridView1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents GridView1 As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''Control txtArticulos1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtArticulos1 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control txtArticulos2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtArticulos2 As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
     '''Control txtCodigo.

@@ -3,24 +3,24 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    
-    <%: Scripts.Render("~/bundles/MisScripts") %>
-    
-    <script>
-        var prm = Sys.WebForms.PageRequestManager.getInstance();
-        if (prm != null) {
-            prm.add_endRequest(function (sender, e) {
-                if (sender._postBackSettings.panelsToUpdate != null) {
-                    $(document).ready(function () {
-                        $find('<%=AutoCompleteExtender1.ClientID%>').set_contextKey($get("<%=hdfCliente.ClientID %>").value);
-                    });
-                }
-            });
-        };
+	
+	<%: Scripts.Render("~/bundles/MisScripts") %>
+	
+	<script>
+		var prm = Sys.WebForms.PageRequestManager.getInstance();
+		if (prm != null) {
+			prm.add_endRequest(function (sender, e) {
+				if (sender._postBackSettings.panelsToUpdate != null) {
+					$(document).ready(function () {
+						$find('<%=AutoCompleteExtender1.ClientID%>').set_contextKey($get("<%=hdfCliente.ClientID %>").value);
+					});
+				}
+			});
+		};
 
-        $(document).ready(function () {
-            $find('<%=AutoCompleteExtender1.ClientID%>').set_contextKey($get("<%=hdfCliente.ClientID %>").value);
-        });
+		$(document).ready(function () {
+			$find('<%=AutoCompleteExtender1.ClientID%>').set_contextKey($get("<%=hdfCliente.ClientID %>").value);
+		});
 
 	</script>
 

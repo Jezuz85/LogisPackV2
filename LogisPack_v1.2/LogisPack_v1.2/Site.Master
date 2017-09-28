@@ -33,7 +33,7 @@
 				<tbody>
 					<tr>
 						<td id="masterCompanyLogo">
-							<a href="Default.aspx" id="lnkMasterCompanyLogo" title="Ir a la página de menú"></a>
+							<a href="../../Default.aspx" id="lnkMasterCompanyLogo" title="Ir a la página de menú"></a>
 						</td>
 						<td id="masterSessionCompanyMenuContainer">
 							<table class="maxSize">
@@ -75,14 +75,9 @@
 										</td>
 									</tr>
 									<tr>
-										<td id="masterCompany"><span id="masterCompanySlogan">LogisPack</span></td>
-									</tr>
-									<tr>
-
 										<td id="masterMainMenu">
 
 											<div class="navbar">
-												<div class="container">
 													<div class="navbar-collapse collapse">
 														<ul class="nav navbar-nav">
 															<li><a id="dropbtn_Inicio" runat="server" href="~/">Inicio</a></li>
@@ -131,7 +126,7 @@
 															</li>
 														</ul>
 													</div>
-												</div>
+												
 											</div>
 										</td>
 									</tr>

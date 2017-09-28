@@ -362,7 +362,7 @@
     <Content Include="Content\images\baja.png" />
     <Content Include="Content\images\edit.png" />
     <Content Include="Content\images\loader_48x48.gif" />
-    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\Logo.png" />
     <Content Include="Content\images\maximize_16x16.png" />
     <Content Include="Content\images\minimize_16x16.png" />
     <Content Include="Content\images\vermas.png" />
@@ -392,6 +392,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\Microsoft_JhengHei.ttf" />
     <None Include="My Project\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="obj\Debug\TempPE\My Project.Resources.Designer.vb.dll" />
     <Content Include="Portal\Almacen\index.aspx" />

@@ -935,15 +935,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.Crear._ddlTipoArticulo">
-<summary>
-Control ddlTipoArticulo.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:LogisPack_v1._2.Crear._ddlCliente">
 <summary>
 Control ddlCliente.
@@ -962,27 +953,18 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:LogisPack_v1._2.Crear._ddlTipoArticulo">
+<summary>
+Control ddlTipoArticulo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:LogisPack_v1._2.Crear._phListaArticulos">
 <summary>
 Control phListaArticulos.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:LogisPack_v1._2.Crear._txtArticulos1">
-<summary>
-Control txtArticulos1.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:LogisPack_v1._2.Crear._txtArticulos2">
-<summary>
-Control txtArticulos2.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -1019,6 +1001,33 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:LogisPack_v1._2.Crear._btnReset">
 <summary>
 Control btnReset.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.Crear._GridView1">
+<summary>
+Control GridView1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.Crear._txtArticulos1">
+<summary>
+Control txtArticulos1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.Crear._txtArticulos2">
+<summary>
+Control txtArticulos2.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -1359,7 +1368,7 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
  Metodo que se ejecuta cuando se oprime el boton de añadir articulo al artiulo picking
  </summary>
 </member>
-<member name="M:LogisPack_v1._2.Crear.SetCoefVolumétrico(System.Object,System.EventArgs)">
+<member name="M:LogisPack_v1._2.Crear.ddlTipoArticulo_SelectedIndexChanged(System.Object,System.EventArgs)">
  <summary>
  Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
  al articulo dependiendo del valor que tenga el coeficiente del almacen
@@ -1369,6 +1378,12 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
  <summary>
  Metodo que se ejecuta cuando se oprime el boton de Resetear, elimina los aritculos y reestablece la 
  lista de Articulo
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Crear.SetCoefVolumétrico(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
+ al articulo dependiendo del valor que tenga el coeficiente del almacen
  </summary>
 </member>
 <member name="F:LogisPack_v1._2.Detalles._lbTipoArticulo">

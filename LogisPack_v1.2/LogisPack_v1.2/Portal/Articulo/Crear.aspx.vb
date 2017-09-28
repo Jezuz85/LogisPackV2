@@ -19,6 +19,18 @@ Public Class Crear
             If Not IsPostBack Then
                 ViewState("contadorUbi") = "0"
                 CargarListas()
+
+                Dim dt As New DataTable()
+                Dim dr As DataRow = Nothing
+
+                dt.Columns.Add(New DataColumn("Articulo", GetType(String)))
+                dt.Columns.Add(New DataColumn("Cantidad", GetType(String)))
+
+
+                ViewState("CurrentTable") = dt
+                GridView1.DataSource = dt
+                GridView1.DataBind()
+
             Else
                 ObtenerControl_Postback(Me)
 
@@ -323,9 +335,51 @@ Public Class Crear
     ''' </summary>
     Protected Sub Añadir_ArticuloLista(sender As Object, e As EventArgs) Handles btnAddArticuloRow.Click
         If Page.IsValid Then
+
+            Dim rowIndex As Integer = 0
+            Dim dtCurrentTable As DataTable = CType(ViewState("CurrentTable"), DataTable)
+            Dim drCurrentRow As DataRow = Nothing
+
+
+            drCurrentRow = dtCurrentTable.NewRow()
+            drCurrentRow("id_articulo") = ddlListaArticulos.SelectedValue
+            drCurrentRow("Articulo") = ddlListaArticulos.SelectedItem
+            drCurrentRow("Cantidad") = txtUnidad.text
+            dtCurrentTable.Rows.Add(drCurrentRow)
+
+            ViewState("CurrentTable") = dtCurrentTable
+            GridView1.DataSource = dtCurrentTable
+            GridView1.DataBind()
+
+
             Manager_Articulo.Añadir_ArticuloLista(txtUnidad, ddlListaArticulos, txtArticulos1, txtArticulos2, btnAddArticuloRow)
         End If
     End Sub
+
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
+    ''' al articulo dependiendo del valor que tenga el coeficiente del almacen
+    ''' </summary>
+
+    Protected Sub ddlTipoArticulo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlTipoArticulo.SelectedIndexChanged
+
+        If ddlTipoArticulo.SelectedValue = "Picking" And ddlAlmacen.SelectedValue <> String.Empty Then
+            Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
+            phListaArticulos.Visible = True
+        Else
+            phListaArticulos.Visible = False
+        End If
+
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se oprime el boton de Resetear, elimina los aritculos y reestablece la 
+    ''' lista de Articulo
+    ''' </summary>
+    Protected Sub Reset_ArticuloLista(sender As Object, e As EventArgs) Handles btnReset.Click
+        Manager_Articulo.Reset_ArticuloLista(btnAddArticuloRow, ddlListaArticulos, ddlAlmacen, txtArticulos1, txtArticulos2)
+    End Sub
+
 
     ''' <summary>
     ''' Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
@@ -337,11 +391,31 @@ Public Class Crear
 
     End Sub
 
-    ''' <summary>
-    ''' Metodo que se ejecuta cuando se oprime el boton de Resetear, elimina los aritculos y reestablece la 
-    ''' lista de Articulo
-    ''' </summary>
-    Protected Sub Reset_ArticuloLista(sender As Object, e As EventArgs) Handles btnReset.Click
-        Manager_Articulo.Reset_ArticuloLista(btnAddArticuloRow, ddlListaArticulos, ddlAlmacen, txtArticulos1, txtArticulos2)
+
+
+    Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
+
+
+        If e.CommandName.Equals("DelRow") Then
+
+            Dim RowIndex As Integer = Convert.ToInt32((e.CommandArgument))
+            Dim gvrow As GridViewRow = GridView1.Rows(RowIndex)
+            Dim valor As String = TryCast(gvrow.FindControl(Control), Label).Text
+
+            Dim index As Integer = Convert.ToInt32(e.CommandArgument)
+            Dim dt As DataTable = TryCast(ViewState("CurrentTable"), DataTable)
+            dt.Rows(index).Delete()
+
+            ViewState("CurrentTable") = dt
+            GridView1.DataSource = dt
+            GridView1.DataBind()
+
+
+
+            ddlListaArticulos.Items.Insert(0, New ListItem("Seleccione...", ""))
+
+        End If
+
     End Sub
+
 End Class

@@ -54,7 +54,8 @@ Public Class Listas
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
         Dim query = (From AL In contexto.Articulo
-                     Where AL.tipoArticulo = "Normal" And AL.id_almacen = idAlmacen
+                     Where (AL.tipoArticulo = "Normal" And AL.id_almacen = idAlmacen) Or
+                         (AL.tipoArticulo = "Normal" And AL.Almacen.id_cliente = 1)
                      Select
                          AL.id_articulo,
                          AL.nombre

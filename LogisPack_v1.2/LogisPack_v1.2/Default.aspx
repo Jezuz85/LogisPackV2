@@ -17,7 +17,7 @@
             <div class="jumbotron">
                 <h1>Logis Pack</h1>
                 <p>
-                    Software para la gestión de Artículos.
+                    Stocks & Picking / Packing
                 </p>
             </div>
         </div>

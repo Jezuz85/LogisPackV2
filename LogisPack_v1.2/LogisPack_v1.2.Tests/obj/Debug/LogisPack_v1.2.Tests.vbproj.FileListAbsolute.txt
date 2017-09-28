@@ -160,3 +160,7 @@ C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2.Test
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2.Tests\obj\Debug\LogisPack_v1.2.Tests.xml
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2.Tests\obj\Debug\LogisPack_v1.2.Tests.pdb
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2.Tests\bin\Debug\AjaxControlToolkit.dll
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2.Tests\bin\Debug\es\Microsoft.AspNet.Identity.Core.resources.dll
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2.Tests\bin\Debug\es\Microsoft.AspNet.Identity.EntityFramework.resources.dll

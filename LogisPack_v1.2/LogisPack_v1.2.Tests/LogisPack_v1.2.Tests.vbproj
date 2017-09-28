@@ -48,6 +48,12 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -80,7 +86,7 @@
     <Import Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.vb" />
+    <Compile Include="DataAccess.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -96,6 +102,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Test_Almacen.vb" />
+    <Compile Include="Test_Articulo.vb" />
+    <Compile Include="Test_ArticuloPicking.vb" />
+    <Compile Include="Test_Cifrar.vb" />
+    <Compile Include="Test_Cliente.vb" />
+    <Compile Include="Test_Comandos.vb" />
+    <Compile Include="Test_Imagen.vb" />
+    <Compile Include="Test_ManagerArticulo.vb" />
+    <Compile Include="Test_TipoFacturacion.vb" />
+    <Compile Include="Test_TipoUnidad.vb" />
+    <Compile Include="Test_Ubicacion.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -116,8 +133,13 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CapaDatos\CapaDatos.vbproj">
+      <Project>{cda7a603-e1f7-4807-8064-907048030111}</Project>
+      <Name>CapaDatos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LogisPack_v1.2\LogisPack_v1.2.vbproj">
       <Project>{CD8E53D2-B177-494B-AE08-1CEEF98E43D7}</Project>
       <Name>LogisPack_v1.2</Name>
