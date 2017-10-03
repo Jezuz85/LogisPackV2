@@ -3,6 +3,7 @@ C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\bin\
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\bin\LogisPack_v1.2.dll
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\bin\LogisPack_v1.2.pdb
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\bin\WebForms_Basic.xml
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\bin\AjaxControlToolkit.dll
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\bin\CapaDatos.dll
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\bin\Microsoft.AspNet.TelemetryCorrelation.dll
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\bin\System.Diagnostics.DiagnosticSource.dll
@@ -17,4 +18,3 @@ C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\obj\
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\obj\Debug\LogisPack_v1.2.dll
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\obj\Debug\WebForms_Basic.xml
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\obj\Debug\LogisPack_v1.2.pdb
-C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\bin\AjaxControlToolkit.dll

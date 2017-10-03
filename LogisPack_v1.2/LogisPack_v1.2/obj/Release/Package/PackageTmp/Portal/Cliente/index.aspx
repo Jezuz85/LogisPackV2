@@ -118,8 +118,7 @@
 
 				<div class="row">
 					<div class="col-md-12" align="right">
-						<asp:Button ID="btnRegistrar" runat="server" data-toggle="modal"
-							data-target="#AddModal" Text="Crear Nuevo"/>
+						<asp:Button ID="btnRegistrar" runat="server" data-toggle="modal" data-target="#AddModal" Text="Nuevo"/>
 					</div>
 				</div>
 

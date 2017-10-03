@@ -4,6 +4,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+
     <asp:UpdatePanel ID="updatePanelPrinicpal" runat="server">
 
         <ContentTemplate>
@@ -44,9 +45,9 @@
                             data-placement="bottom" title="Seleccione el almacén" AutoPostBack="true">
                         </asp:DropDownList>
 
-                        <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
-                            ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="ddlAlmacen" runat="server"
-                            ValidationGroup="ValidationAdd" />
+                        <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" 
+                            Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true" 
+                            ControlToValidate="ddlAlmacen" runat="server" ValidationGroup="ValidationAdd" />
                     </div>
 
                     <div class="col-md-3">
@@ -65,20 +66,27 @@
 
                     <div class="col-md-3">
                         <strong>Fecha de Transacción</strong><br />
+                        <div class="input-group">
+                            <asp:TextBox runat="server" ID="txtFechaOperacion" data-toggle="tooltip" CssClass="date-picker"
+                                data-placement="bottom" title="Ingrese la fecha de la operación"></asp:TextBox>
 
-                        <asp:TextBox runat="server" type="date" ID="txtFechaOperacion" data-toggle="tooltip"
-                            data-placement="bottom" title="Ingrese la fecha de la operación"></asp:TextBox>
+                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
+                                ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="txtFechaOperacion" runat="server"
+                                ValidationGroup="ValidationAdd" />
 
-                        <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
-                            ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="txtFechaOperacion" runat="server"
-                            ValidationGroup="ValidationAdd" />
+                            <span class="input-group-addon" id="btn" style="cursor: pointer;">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
                     </div>
                 </div>
+
+                <br />
 
                 <div class="row">
 
                     <div class="col-md-3">
-                        <h4><strong>Documento Transacción</strong></h4>
+                        <strong>Documento Transacción</strong>
 
                         <asp:FileUpload runat="server" ID="fuDocumento" data-toggle="tooltip" data-placement="bottom"
                             title="Seleccione el documento de la transaccion" />
@@ -86,13 +94,13 @@
                     </div>
 
                     <div class="col-md-3">
-                        <h4><strong>Lista de Articulos</strong></h4>
-
+                        <strong>Código del Articulos</strong>
+                        <asp:TextBox runat="server" MaxLength="10" ID="txtCodArticulo" AutoPostBack="true" Visible="false"></asp:TextBox>
                     </div>
 
                     <div class="col-md-3">
-                        <h4><strong>Lista de Articulos</strong></h4>
-                        <asp:DropDownList ID="ddlListaArticulos" runat="server" AutoPostBack="true"></asp:DropDownList>
+                        <strong>Lista de Articulos</strong>
+                        <asp:DropDownList ID="ddlListaArticulos" runat="server" AutoPostBack="true" Visible="false"></asp:DropDownList>
 
                         <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
                             ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="ddlListaArticulos" runat="server"
@@ -100,15 +108,17 @@
                     </div>
 
                     <div class="col-md-3">
-                        <h4><strong>Stock Fisico del Articulo</strong></h4>
+                        <strong>Stock Fisico del Articulo</strong>
 
                         <asp:Label ID="lbStockFisico" runat="server" Text="-"></asp:Label>
                     </div>
                 </div>
+                
+                <br />
 
                 <div class="row">
                     <div class="col-md-3">
-                        <h4><strong>Referencia</strong></h4>
+                        <strong>Referencia</strong>
                         <asp:TextBox runat="server" MaxLength="25" ID="txtRef" data-toggle="tooltip"
                             data-placement="bottom" title="Ingrese la referencia de la operacion"></asp:TextBox>
 
@@ -118,7 +128,7 @@
                     </div>
 
                     <div class="col-md-3">
-                        <h4><strong>Cantidad de la Transacción</strong></h4>
+                        <strong>Cantidad de la Transacción</strong>
 
                         <asp:TextBox runat="server" type="number" min="0" ID="txtCantidad" data-toggle="tooltip"
                             data-placement="bottom" title="Ingrese la cantidad del articulo" AutoPostBack="true"></asp:TextBox>
@@ -129,7 +139,8 @@
 
                     </div>
                 </div>
-
+                
+                <br />
 
                 <div class="row">
                     <div class="col-md-12" align="right">
@@ -144,6 +155,7 @@
         <Triggers>
             <asp:PostBackTrigger ControlID="btnGuardar" />
         </Triggers>
+
     </asp:UpdatePanel>
 
 </asp:Content>

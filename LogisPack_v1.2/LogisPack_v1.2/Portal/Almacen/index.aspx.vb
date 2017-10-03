@@ -130,44 +130,47 @@ Public Class index
     ''' Metodo que crea un objeto Almacen y lo guarda en la base de datos
     ''' </summary>
     Protected Sub Guardar(sender As Object, e As EventArgs) Handles btnAdd.Click
+        If (Page.IsValid) Then
 
-        Dim _Nuevo As New Almacen With {
+            Dim _Nuevo As New Almacen With {
             .nombre = txtNombre.Text,
             .codigo = txtCodigo.Text,
             .coeficiente_volumetrico = Double.Parse(txtCoefVol.Text, CultureInfo.InvariantCulture),
             .id_cliente = Convert.ToInt32(ddlClienteAdd.SelectedValue)
         }
 
-        bError = Create.Almacen(_Nuevo)
+            bError = Create.Almacen(_Nuevo)
 
-        Modal.CerrarModal("AddModal", "AddModalScript", Me)
-        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Registrar.ToString, bError, Me, updatePanelPrinicpal, up_Add)
+            Modal.CerrarModal("AddModal", "AddModalScript", Me)
+            Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Registrar.ToString, bError, Me, updatePanelPrinicpal, up_Add)
 
-        LlenarGridView()
-
+            LlenarGridView()
+        End If
     End Sub
 
     ''' <summary>
     ''' Metodo que Edita un objeto Almacen y actualiza el registro en la base de datos
     ''' </summary>
     Protected Sub Editar(sender As Object, e As EventArgs) Handles btnEdit.Click
+        If (Page.IsValid) Then
 
-        Dim Edit = Getter.Almacen(Convert.ToInt32(hdfEdit.Value), contexto)
+            Dim Edit = Getter.Almacen(Convert.ToInt32(hdfEdit.Value), contexto)
 
-        If Edit IsNot Nothing Then
-            Edit.id_cliente = Convert.ToInt32(ddlClienteEdit.SelectedValue)
-            Edit.codigo = txtEditCodigo.Text
-            Edit.nombre = txtEditNombre.Text
-            Edit.coeficiente_volumetrico = Double.Parse(txtEditCoefVol.Text, CultureInfo.InvariantCulture)
+            If Edit IsNot Nothing Then
+                Edit.id_cliente = Convert.ToInt32(ddlClienteEdit.SelectedValue)
+                Edit.codigo = txtEditCodigo.Text
+                Edit.nombre = txtEditNombre.Text
+                Edit.coeficiente_volumetrico = Double.Parse(txtEditCoefVol.Text, CultureInfo.InvariantCulture)
+            End If
+
+            bError = Update.Almacen(Edit, contexto)
+
+            Modal.CerrarModal("EditModal", "EditModallScript", Me)
+            Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
+
+            LlenarGridView()
+
         End If
-
-        bError = Update.Almacen(Edit, contexto)
-
-        Modal.CerrarModal("EditModal", "EditModallScript", Me)
-        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
-
-        LlenarGridView()
-
     End Sub
 
     ''' <summary>

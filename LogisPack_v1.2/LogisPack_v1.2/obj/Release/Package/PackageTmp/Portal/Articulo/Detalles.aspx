@@ -42,14 +42,14 @@
                 <div class="col-md-12">
                     <asp:PlaceHolder runat="server" ID="phListaArticulos" Visible="false">
                         <h4><strong>Lista de Artículos</strong></h4>
-                        <div class="col-md-12" style="overflow: auto; height: 300px;">
+                        <div class="col-md-12" style="overflow: auto; height: 100%;">
                             <asp:Panel ID="pArticulos" runat="server"></asp:Panel>
                         </div>
                     </asp:PlaceHolder>
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6" align="center">
                 <h4><strong>Imágenes</strong></h4>
                 <asp:Panel ID="pImagenes" runat="server"></asp:Panel>
             </div>

@@ -80,15 +80,19 @@ Public Class index2
     ''' </summary>
     Protected Sub Guardar(sender As Object, e As EventArgs) Handles btnAdd.Click
 
-        Dim _Nuevo As New Tipo_Unidad With {
+        If (Page.IsValid) Then
+
+            Dim _Nuevo As New Tipo_Unidad With {
             .nombre = txtNombre.Text
         }
 
-        bError = Create.TipoUnidad(_Nuevo)
+            bError = Create.TipoUnidad(_Nuevo)
 
-        Modal.CerrarModal("AddModal", "AddModalScript", Me)
-        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Registrar.ToString, bError, Me, updatePanelPrinicpal, up_Add)
-        LlenarGridView()
+            Modal.CerrarModal("AddModal", "AddModalScript", Me)
+            Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Registrar.ToString, bError, Me, updatePanelPrinicpal, up_Add)
+            LlenarGridView()
+        End If
+
     End Sub
 
     ''' <summary>
@@ -96,17 +100,19 @@ Public Class index2
     ''' </summary>
     Protected Sub Editar(sender As Object, e As EventArgs) Handles btnEdit.Click
 
-        Dim Edit = Getter.Tipo_Unidad(Convert.ToInt32(hdfEdit.Value), contexto)
+        If (Page.IsValid) Then
+            Dim Edit = Getter.Tipo_Unidad(Convert.ToInt32(hdfEdit.Value), contexto)
 
-        If Edit IsNot Nothing Then
-            Edit.nombre = txtNombre_Edit.Text
+            If Edit IsNot Nothing Then
+                Edit.nombre = txtNombre_Edit.Text
+            End If
+
+            bError = Update.Tipo_Unidad(Edit, contexto)
+
+            Modal.CerrarModal("EditModal", "EditModallScript", Me)
+            Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
+            LlenarGridView()
         End If
-
-        bError = Update.Tipo_Unidad(Edit, contexto)
-
-        Modal.CerrarModal("EditModal", "EditModallScript", Me)
-        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
-        LlenarGridView()
     End Sub
 
     ''' <summary>

@@ -17,3 +17,4 @@ C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\obj\
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\obj\Release\LogisPack_v1.2.dll
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\obj\Release\WebForms_Basic.xml
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\obj\Release\LogisPack_v1.2.pdb
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\bin\AjaxControlToolkit.dll

@@ -27,7 +27,6 @@ Public Class Crear1
         Listas.Cliente(ddlCliente, idCliente)
     End Sub
 
-
     ''' <summary>
     ''' Metodo que muestra por pantalla el valor del stock fisico de un articulo seleccionado
     ''' </summary>
@@ -104,10 +103,16 @@ Public Class Crear1
     ''' Metodo que se ejecuta cuando se elige un articulo de la lista
     ''' </summary>
     Protected Sub ddlListaArticulos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlListaArticulos.SelectedIndexChanged
-        If ddlAlmacen.SelectedValue = String.Empty Then
+
+        If ddlListaArticulos.SelectedValue = String.Empty Then
             lbStockFisico.Text = String.Empty
+            txtCodArticulo.Text = String.Empty
         Else
             Get_StockArticulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
+
+            Dim _articulo = Getter.Articulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
+            txtCodArticulo.Text = _articulo.codigo
+
         End If
 
     End Sub
@@ -123,7 +128,6 @@ Public Class Crear1
         ValidarStock()
     End Sub
 
-
     ''' <summary>
     ''' Metodo que se ejecuta cuando se selecciona un cliente de la lista
     ''' </summary>
@@ -131,10 +135,13 @@ Public Class Crear1
 
         ddlListaArticulos.Items.Clear()
 
-        If ddlCliente.SelectedValue = "" Then
-            ddlAlmacen.SelectedValue = ""
+        If ddlCliente.SelectedValue = String.Empty Then
+            ddlAlmacen.Items.Clear()
+            ddlListaArticulos.Visible = False
+            txtCodArticulo.Visible = False
         Else
             Listas.Almacen(ddlAlmacen, Convert.ToInt32(ddlCliente.SelectedValue))
+            txtCodArticulo.Text = String.Empty
         End If
     End Sub
 
@@ -146,16 +153,24 @@ Public Class Crear1
 
         If ddlAlmacen.SelectedValue = String.Empty Then
             ddlListaArticulos.Items.Clear()
+            txtCodArticulo.Text = String.Empty
+            ddlListaArticulos.Visible = False
+            txtCodArticulo.Visible = False
         Else
+            ddlListaArticulos.Visible = True
+            txtCodArticulo.Visible = True
             Listas.Articulo_Almacen(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
 
-            Get_StockArticulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
+            If ddlListaArticulos.SelectedValue <> String.Empty Then
+                Get_StockArticulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
+                Dim _articulo = Getter.Articulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
+                txtCodArticulo.Text = _articulo.codigo
+            End If
 
 
         End If
 
     End Sub
-
 
     Private Sub ValidarStock()
 
@@ -176,5 +191,22 @@ Public Class Crear1
 
     End Sub
 
+    Protected Sub txtCodArticulo_TextChanged(sender As Object, e As EventArgs) Handles txtCodArticulo.TextChanged
 
+        Dim _articulo = Getter.Articulo_Codigo(txtCodArticulo.Text)
+
+        If _articulo IsNot Nothing Then
+            If ddlListaArticulos.Items.Contains(ddlListaArticulos.Items.FindByValue(_articulo.id_articulo)) Then
+                ddlListaArticulos.SelectedValue = _articulo.id_articulo
+            Else
+                txtCodArticulo.Text = String.Empty
+                ddlListaArticulos.SelectedValue = String.Empty
+            End If
+        Else
+            txtCodArticulo.Text = String.Empty
+            ddlListaArticulos.SelectedValue = String.Empty
+        End If
+
+
+    End Sub
 End Class

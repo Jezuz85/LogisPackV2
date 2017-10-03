@@ -32,6 +32,7 @@ Public Class BundleConfig
                         "~/Scripts/jquery-3.1.1.slim.js",
                         "~/Scripts/jquery-3.1.1.min.js",
                         "~/Scripts/bootstrap.min.js",
+                        "~/Scripts/jquery-ui-1.12.1.min.js",
                         "~/Scripts/Custom.js"))
 
         bundles.Add(New StyleBundle("~/Content/Direcline").Include(

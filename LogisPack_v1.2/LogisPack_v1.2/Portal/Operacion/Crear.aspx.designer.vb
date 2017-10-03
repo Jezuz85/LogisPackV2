@@ -77,6 +77,15 @@ Partial Public Class Crear1
     Protected WithEvents fuDocumento As Global.System.Web.UI.WebControls.FileUpload
     
     '''<summary>
+    '''Control txtCodArticulo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtCodArticulo As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
     '''Control ddlListaArticulos.
     '''</summary>
     '''<remarks>

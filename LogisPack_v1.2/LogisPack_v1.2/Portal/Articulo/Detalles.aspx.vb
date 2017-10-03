@@ -59,9 +59,9 @@ Public Class Detalles
         lbAlto.Text = itemArticulos.alto
         lbLargo.Text = itemArticulos.largo
         lbAncho.Text = itemArticulos.ancho
-        lbCoefVol.Text = CoefVolumetrico & " Kgs"
+        lbCoefVol.Text = CoefVolumetrico & " Kgs(m³)"
         lbCubicaje.Text = M3
-        txtPesoVol.Text = PesoVolumen & " Kgs"
+        txtPesoVol.Text = PesoVolumen & " Kgs(m³)"
         lbTipoFacturacion.Text = itemArticulos.Tipo_Facturacion.nombre
         lbIdentificacion.Text = itemArticulos.identificacion
         lbValArticulo.Text = ValorArticulo
@@ -147,7 +147,7 @@ Public Class Detalles
             ControlesDinamicos.CrearLiteral("<table class='table table-bordered table-hover'>
                     <tbody>
                         <tr class='bg-aqua color-palette'>
-                            <th class='col-md-1 text-center'> Zona</th>
+                            <th class='col-md-1 text-center'>Zona</th>
                             <th Class='col-md-1 text-center'>Estante</th>
                             <th Class='col-md-1 text-center'>Fila</th>
                             <th Class='col-md-2 text-center'>Columna</th>

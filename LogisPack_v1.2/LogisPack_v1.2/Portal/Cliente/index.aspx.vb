@@ -88,18 +88,20 @@ Public Class index5
     ''' <summary>
     ''' Metodo que registra un cliente en la base de datos
     ''' </summary>
-    Protected Sub Guardar(sender As Object, e As EventArgs) Handles btnAdd.Click
+    Protected Sub Guardar(sender As Object, e As EventArgs)
 
-        Dim _Nuevo As New Cliente With {
-            .codigo = txtCodigo_Add.Text,
-            .nombre = txtNombre_Add.Text
-        }
+        If (Page.IsValid) Then
+            Dim _Nuevo As New Cliente With {
+           .codigo = txtCodigo_Add.Text,
+           .nombre = txtNombre_Add.Text
+       }
 
-        bError = Create.Cliente(_Nuevo)
+            bError = Create.Cliente(_Nuevo)
 
-        Modal.CerrarModal("AddModal", "AddModalScript", Me)
-        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Registrar.ToString, bError, Me, updatePanelPrinicpal, up_Add)
-        LlenarGridView()
+            Modal.CerrarModal("AddModal", "AddModalScript", Me)
+            Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Registrar.ToString, bError, Me, updatePanelPrinicpal, up_Add)
+            LlenarGridView()
+        End If
 
     End Sub
 
@@ -108,18 +110,21 @@ Public Class index5
     ''' </summary>
     Protected Sub Editar(sender As Object, e As EventArgs) Handles btnEdit.Click
 
-        Dim Edit = Getter.Cliente(Convert.ToInt32(hdfEdit.Value), contexto)
+        If (Page.IsValid) Then
 
-        If Edit IsNot Nothing Then
-            Edit.codigo = txtCodigo_Edit.Text
-            Edit.nombre = txtNombre_Edit.Text
+            Dim Edit = Getter.Cliente(Convert.ToInt32(hdfEdit.Value), contexto)
+
+            If Edit IsNot Nothing Then
+                Edit.codigo = txtCodigo_Edit.Text
+                Edit.nombre = txtNombre_Edit.Text
+            End If
+
+            bError = Update.Cliente(Edit, contexto)
+
+            Modal.CerrarModal("EditModal", "EditModallScript", Me)
+            Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
+            LlenarGridView()
         End If
-
-        bError = Update.Cliente(Edit, contexto)
-
-        Modal.CerrarModal("EditModal", "EditModallScript", Me)
-        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
-        LlenarGridView()
     End Sub
 
     ''' <summary>

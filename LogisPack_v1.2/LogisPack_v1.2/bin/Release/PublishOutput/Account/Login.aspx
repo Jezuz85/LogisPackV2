@@ -54,7 +54,7 @@
                         <hr />
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10" align="right">
-                                <asp:Button runat="server" OnClick="LogIn" Text="Iniciar sesión" CssClass="btn btn-default" />
+                                <asp:Button runat="server" OnClick="LogIn" Text="Iniciar sesión" />
                             </div>
                         </div>
                     </div>

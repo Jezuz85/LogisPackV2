@@ -1,11 +1,11 @@
 #masterCompanyLogo a {
-    background: url('../Content/images/Logo.png') no-repeat;
+    background: url('../Content/images/logo.png') no-repeat;
     width: 558px;
     height: 135px;
 }
 
 #masterSessionCompanyMenuContainer {
-    height: 135px
+    height: 110px
 }
 
 #masterCompany {

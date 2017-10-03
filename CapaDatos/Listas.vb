@@ -84,6 +84,7 @@ Public Class Listas
         DropDownList1.DataSource = query
         DropDownList1.DataBind()
 
+        DropDownList1.Items.Insert(0, New ListItem("Seleccione...", ""))
     End Sub
 
     ''' <summary>

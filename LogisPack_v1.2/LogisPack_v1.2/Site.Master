@@ -20,6 +20,8 @@
 
 	<webopt:BundleReference runat="server" Path="~/Content/css" />
 	<webopt:BundleReference runat="server" Path="~/Content/Direcline" />
+    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 	<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 

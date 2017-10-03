@@ -147,14 +147,15 @@ function load() {
         $('#Msjmodal').modal('show');
     }
 
-    if (URLActual.includes("Portal/Almacen/index")) {
+    if (URLActual.includes("Portal/Almacen/index"))
+    {
         $("#sectionHeaderButtons1").click(function () {
 
             if ($('#CabeceraTree').css('display') == "none") {
                 $("#sectionHeaderButton1").attr("src", "../../Content/images/minimize_16x16.png");
             }
             else {
-                $("#sectionHeaderButton1").attr("src", "../../Content/images/maximize_16x16.png");
+                $("#sectionHeaderButton1").attr("src", "../../Content/images/maximize_16x16.png"); 
             }
 
         });
@@ -182,6 +183,15 @@ function load() {
 
         });
     }
+    
+    $(function () {
+        $(".date-picker").datepicker({
+            dateFormat: 'dd/mm/yy'
+        });
+
+    });
+    $('#btn').click(function () {
+        $("#MainContent_txtFechaOperacion").focus();
+    });
 
 }
-

@@ -45,6 +45,13 @@ Public Class Getter
 
     End Function
 
+    Public Shared Function Articulo_Codigo(_codigo As String) As Articulo
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+        Return contexto.Articulo.Where(Function(model) model.codigo = _codigo).SingleOrDefault()
+
+    End Function
+
     ''' <summary>
     ''' Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
     ''' devuelve una lista de objetos de tipo Articulo que estan asociados a un articulo picking 

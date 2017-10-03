@@ -3,9 +3,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-	
-	<%: Scripts.Render("~/bundles/MisScripts") %>
-	
+		
 	<script>
 		var prm = Sys.WebForms.PageRequestManager.getInstance();
 		if (prm != null) {
@@ -47,9 +45,10 @@
 					<div id="sectionHeaderFiltros" class="sectionHeader">
 						<div class="sectionHeaderTitle">
 							Búsqueda
+					
 						</div>
-						<div id="sectionHeaderButtons2" class="sectionHeaderButtons" data-toggle="collapse" data-target="#sectionContentFiltrosCabecera">
-							<img id="sectionHeaderButton2" class="sectionHeaderButton" src="../../Content/images/minimize_16x16.png">
+						<div class="sectionHeaderButtons" data-toggle="collapse" data-target="#sectionContentFiltrosCabecera">
+							<img class="sectionHeaderButton" src="../../Content/images/minimize_16x16.png">
 						</div>
 					</div>
 

@@ -147,7 +147,7 @@
 							<asp:HiddenField ID="hdfIDDel" runat="server" />
 
 							<div class="row">
-								<h4 class="text-center">¿Seguro desea eliminar este registro?</h4>
+								<h4 class="text-center">¿Desea eliminar este registro?</h4>
 							</div>
 						</div>
 
