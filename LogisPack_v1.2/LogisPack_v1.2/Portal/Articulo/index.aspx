@@ -20,6 +20,19 @@
 
 			<div id="pageBodyContainer" class="MainContentWrapper" style="width: 96%;">
 
+				<div class="row">
+					<div class="col-md-2">
+						<strong>Cliente</strong>
+						<asp:DropDownList runat="server" ID="ddlCliente"  AutoPostBack="true"/>
+					</div>
+					<div class="col-md-2">
+						<strong>Almacén</strong>
+						<asp:DropDownList runat="server" ID="ddlAlmacen"  AutoPostBack="true"/>
+					</div>
+				</div>
+				
+				<br />
+
 				<div class="section">
 					<div id="sectionHeaderFiltros" class="sectionHeader">
 						<div class="sectionHeaderTitle">

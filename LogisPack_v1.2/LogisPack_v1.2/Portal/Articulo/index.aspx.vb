@@ -15,6 +15,7 @@ Public Class index3
             idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
             If IsPostBack = False Then
                 LlenarGridView()
+                CargarListas()
                 Modal.OcultarAlerta(updatePanelPrinicpal)
             End If
 
@@ -31,6 +32,13 @@ Public Class index3
 
         Tabla.Articulo(GridView1, idCliente, String.Empty, String.Empty, String.Empty & ViewState("filtroBusqueda"), String.Empty & ViewState("textoBusqueda"))
 
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
+    ''' </summary>
+    Private Sub CargarListas()
+        Listas.Cliente(ddlCliente, idCliente)
     End Sub
 
     ''' <summary>
@@ -114,6 +122,45 @@ Public Class index3
 
         ViewState("filtroBusqueda") = ddlBuscar.SelectedValue
         ViewState("textoBusqueda") = txtSearch.Text
+        LlenarGridView()
+
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se selecciona un cliente de la lista
+    ''' </summary>
+    Protected Sub ddlCliente_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlCliente.SelectedIndexChanged
+        Manager_Articulo.CambiarCliente(ddlCliente, New TextBox(), ddlAlmacen)
+
+        If ddlCliente.SelectedValue <> String.Empty Then
+
+            ViewState("filtroBusqueda") = "Cliente"
+            ViewState("textoBusqueda") = Convert.ToString(ddlCliente.SelectedItem)
+        Else
+            txtSearch.Text = String.Empty
+            ViewState("filtroBusqueda") = String.Empty
+            ViewState("textoBusqueda") = String.Empty
+        End If
+
+        LlenarGridView()
+
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se selecciona un almacen de la lista
+    ''' </summary>
+    Protected Sub ddlAlmacen_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlAlmacen.SelectedIndexChanged
+
+        If ddlAlmacen.SelectedValue <> String.Empty Then
+
+            ViewState("filtroBusqueda") = "Almacen"
+            ViewState("textoBusqueda") = Convert.ToString(ddlAlmacen.SelectedItem)
+        Else
+            txtSearch.Text = String.Empty
+            ViewState("filtroBusqueda") = String.Empty
+            ViewState("textoBusqueda") = String.Empty
+        End If
+
         LlenarGridView()
 
     End Sub

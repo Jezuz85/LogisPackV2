@@ -23,6 +23,24 @@ Partial Public Class index3
     Protected WithEvents updatePanelPrinicpal As Global.System.Web.UI.UpdatePanel
     
     '''<summary>
+    '''Control ddlCliente.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlCliente As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''Control ddlAlmacen.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlAlmacen As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
     '''Control ddlBuscar.
     '''</summary>
     '''<remarks>

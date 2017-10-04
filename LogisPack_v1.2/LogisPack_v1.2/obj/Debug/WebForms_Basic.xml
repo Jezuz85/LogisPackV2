@@ -2208,6 +2208,24 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:LogisPack_v1._2.index3._ddlCliente">
+<summary>
+Control ddlCliente.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.index3._ddlAlmacen">
+<summary>
+Control ddlAlmacen.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:LogisPack_v1._2.index3._ddlBuscar">
 <summary>
 Control ddlBuscar.
@@ -2303,6 +2321,11 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
  Metodo que llena El Gridview con datos de la Base de Datos
  </summary>
 </member>
+<member name="M:LogisPack_v1._2.index3.CargarListas">
+ <summary>
+ Metodo que llena los Dropdownlits con datos de la Base de Datos
+ </summary>
+</member>
 <member name="M:LogisPack_v1._2.index3.EliminarRegistro(System.Object,System.EventArgs)">
  <summary>
  Metodo que elimina un articulo de la base de datos
@@ -2321,6 +2344,16 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="M:LogisPack_v1._2.index3.btnBuscar_Click(System.Object,System.EventArgs)">
  <summary>
  Metodo que realiza una busqueda en el grid
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index3.ddlCliente_SelectedIndexChanged(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se ejecuta cuando se selecciona un cliente de la lista
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index3.ddlAlmacen_SelectedIndexChanged(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se ejecuta cuando se selecciona un almacen de la lista
  </summary>
 </member>
 <member name="F:LogisPack_v1._2.index5._updatePanelPrinicpal">

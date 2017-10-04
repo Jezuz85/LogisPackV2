@@ -50,7 +50,7 @@ Public Class Manager_Articulo
     Public Shared Sub CambiarCliente(ddl1 As DropDownList, txt1 As TextBox, ddl2 As DropDownList)
         If ddl1.SelectedValue = "" Then
             txt1.Text = String.Empty
-            ddl2.SelectedValue = ""
+            ddl2.Items.Clear()
         Else
             Listas.Almacen(ddl2, Convert.ToInt32(ddl1.SelectedValue))
         End If
