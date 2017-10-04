@@ -1,54 +1,8 @@
-﻿
-Imports System.Globalization
+﻿Imports System.Globalization
 Imports System.Text
 Imports System.Web.UI.WebControls
 
 Public Class Manager_Articulo
-
-    ''' <summary>
-    ''' Metodo que se ejecuta cuando se oprime el boton de Resetear, elimina los aritculos y reestablece la 
-    ''' lista de Articulo
-    ''' </summary>
-    Public Shared Sub Reset_ArticuloLista(btn1 As Button, ddl1 As DropDownList, ddl2 As DropDownList,
-        txt1 As TextBox, txt2 As TextBox)
-
-        btn1.Visible = True
-        Listas.Articulo(ddl1, Convert.ToInt32(ddl2.SelectedValue))
-        txt1.Text = String.Empty
-        txt2.Text = String.Empty
-    End Sub
-
-    ''' <summary>
-    ''' Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
-    ''' al articulo dependiendo del valor que tenga el coeficiente del almacen
-    ''' </summary>
-    Public Shared Sub SetCoefVolumétrico(ByRef ddl1 As DropDownList, ByRef txt1 As TextBox, ByRef ph1 As PlaceHolder,
-        ByRef ddl2 As DropDownList)
-
-        If ddl1.SelectedValue = "" Then
-            txt1.Text = String.Empty
-            ph1.Visible = False
-        Else
-
-            If ddl2.SelectedValue = "Picking" Then
-                ph1.Visible = True
-            Else
-                ph1.Visible = False
-            End If
-
-            CargarCoefVol(Convert.ToInt32(ddl1.SelectedValue), txt1)
-        End If
-
-    End Sub
-
-    ''' <summary>
-    ''' Metodo que consulta el Coeficiente Volumetrico del almacen y lo asigna al articulo a crear al 
-    ''' cargar la pagina
-    ''' </summary>
-    Public Shared Sub CargarCoefVol(idAlmacen As Integer, ByRef txt1 As TextBox)
-        Dim _Almacen = Getter.Almacen(idAlmacen)
-        txt1.Text = _Almacen.coeficiente_volumetrico.ToString().Replace(",", ".")
-    End Sub
 
     ''' <summary>
     ''' Metodo que se ejecuta cuando se oprime el boton de añadir articulo al artiulo picking
@@ -79,6 +33,15 @@ Public Class Manager_Articulo
             btn1.Visible = False
         End If
 
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que consulta el Coeficiente Volumetrico del almacen y lo asigna al articulo a crear al 
+    ''' cargar la pagina
+    ''' </summary>
+    Public Shared Sub CargarCoefVol(idAlmacen As Integer, ByRef txt1 As TextBox)
+        Dim _Almacen = Getter.Almacen(idAlmacen)
+        txt1.Text = _Almacen.coeficiente_volumetrico.ToString().Replace(",", ".")
     End Sub
 
     ''' <summary>
@@ -142,6 +105,9 @@ Public Class Manager_Articulo
         Return Convert.ToString(ContFilas)
     End Function
 
+    ''' <summary>
+    ''' Metodo que calcula M3
+    ''' </summary>
     Public Shared Function CalcularM3(txtAlto As String, txtAncho As String, txtLargo As String) As Double
         Dim m3 As Double = 0
         Dim Alto As Double = 0
@@ -155,13 +121,16 @@ Public Class Manager_Articulo
             Largo = Double.Parse(txtAncho, CultureInfo.InvariantCulture)
             Ancho = Double.Parse(txtLargo, CultureInfo.InvariantCulture)
 
-            m3 = ((Alto * Ancho * Largo) / 1000000).ToString("#.000")
+            m3 = ((Alto * Ancho * Largo) / 1000000).ToString("#.00000")
         End If
 
         Return m3
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que calcula Peso Volumetrico
+    ''' </summary>
     Public Shared Function CalcularPesoVolumetrico(txtAlto As String, txtAncho As String, txtLargo As String, txtCoefVol As String) As Double
         Dim PesoVol As Double = 0
         Dim Alto As Double = 0
@@ -176,7 +145,7 @@ Public Class Manager_Articulo
             Ancho = Double.Parse(txtLargo, CultureInfo.InvariantCulture)
             CoefVol = Double.Parse(txtCoefVol, CultureInfo.InvariantCulture)
 
-            PesoVol = ((Alto * Ancho * Largo * CoefVol) / 1000000).ToString("#.000")
+            PesoVol = ((Alto * Ancho * Largo * CoefVol) / 1000000).ToString("#.00000")
         End If
 
 
@@ -184,6 +153,9 @@ Public Class Manager_Articulo
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que calcula Valoracion Stock
+    ''' </summary>
     Public Shared Function CalcularValoracionStock(txtStockFisico As String, txtValArticulo As String) As Double
 
         Dim valoracionStock As Double = 0
@@ -202,6 +174,9 @@ Public Class Manager_Articulo
         Return valoracionStock
     End Function
 
+    ''' <summary>
+    ''' Metodo que calcula Valoracion Seguro
+    ''' </summary>
     Public Shared Function CalcularValoracionSeguro(txtValAsegurado As String, txtStockFisico As String) As Double
 
         Dim valoracionSeguro As Double = 0
@@ -219,4 +194,41 @@ Public Class Manager_Articulo
         Return valoracionSeguro
 
     End Function
+
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se oprime el boton de Resetear, elimina los aritculos y reestablece la 
+    ''' lista de Articulo
+    ''' </summary>
+    Public Shared Sub Reset_ArticuloLista(btn1 As Button, ddl1 As DropDownList, ddl2 As DropDownList,
+        txt1 As TextBox, txt2 As TextBox)
+
+        btn1.Visible = True
+        Listas.Articulo(ddl1, Convert.ToInt32(ddl2.SelectedValue))
+        txt1.Text = String.Empty
+        txt2.Text = String.Empty
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
+    ''' al articulo dependiendo del valor que tenga el coeficiente del almacen
+    ''' </summary>
+    Public Shared Sub SetCoefVolumétrico(ByRef ddl1 As DropDownList, ByRef txt1 As TextBox, ByRef ph1 As PlaceHolder,
+        ByRef ddl2 As DropDownList)
+
+        If ddl1.SelectedValue = "" Then
+            txt1.Text = String.Empty
+            ph1.Visible = False
+        Else
+
+            If ddl2.SelectedValue = "Picking" Then
+                ph1.Visible = True
+            Else
+                ph1.Visible = False
+            End If
+
+            CargarCoefVol(Convert.ToInt32(ddl1.SelectedValue), txt1)
+        End If
+
+    End Sub
+
 End Class

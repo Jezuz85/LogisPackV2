@@ -1,4 +1,6 @@
-﻿Imports Microsoft.AspNet.Identity
+﻿Imports CapaDatos
+Imports Microsoft.AspNet.Identity
+Imports Microsoft.AspNet.Identity.EntityFramework
 
 Public Class SiteMaster
     Inherits MasterPage

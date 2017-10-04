@@ -11,6 +11,8 @@ Public Class Crear1
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Page.Form.Attributes.Add("enctype", "multipart/form-data")
 
+        Manager_Usuario.ValidarMenu(Me, Master)
+
         If Manager_Usuario.ValidarAutenticado(User) Then
 
             idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
@@ -21,8 +23,12 @@ Public Class Crear1
         Else
             Response.Redirect(Paginas.Login.ToString)
         End If
+
     End Sub
 
+    ''' <summary>
+    ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
+    ''' </summary>
     Private Sub CargarListas()
         Listas.Cliente(ddlCliente, idCliente)
     End Sub
@@ -39,9 +45,53 @@ Public Class Crear1
     End Sub
 
     ''' <summary>
+    ''' Metodo que valida que el valor de salida introducido no exceda al stock fisico existente
+    ''' </summary>
+    Private Sub ValidarStock()
+
+        If txtCantidad.Text <> String.Empty Then
+
+            Dim _Articulo = Getter.Articulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
+
+            Dim StockFisico As Double = Double.Parse(_Articulo.stock_fisico, CultureInfo.InvariantCulture)
+            Dim CantidadSolicitada As Double = Double.Parse(txtCantidad.Text, CultureInfo.InvariantCulture)
+
+            If (CantidadSolicitada > StockFisico) And (ddlTipoOperacion.SelectedValue = "Sal") Then
+                Modal.MostrarMensajeAlerta(updatePanelPrinicpal, False, Mensajes.Unidades_Stock.ToString)
+                txtCantidad.Text = "0"
+            Else
+                Modal.OcultarAlerta(updatePanelPrinicpal)
+            End If
+        End If
+
+    End Sub
+
+    '--------------------------------------------------EVENTOS---------------------------------------------
+
+    ''' <summary>
+    ''' Evento que se lanza al ingresar un codigo y valida que exista en la lista de articulos disponibles
+    ''' </summary>
+    Protected Sub txtCodArticulo_TextChanged(sender As Object, e As EventArgs) Handles txtCodArticulo.TextChanged
+
+        Dim _articulo = Getter.Articulo_Codigo(txtCodArticulo.Text)
+
+        If _articulo IsNot Nothing Then
+            If ddlListaArticulos.Items.Contains(ddlListaArticulos.Items.FindByValue(_articulo.id_articulo)) Then
+                ddlListaArticulos.SelectedValue = _articulo.id_articulo
+            Else
+                txtCodArticulo.Text = String.Empty
+                ddlListaArticulos.SelectedValue = String.Empty
+            End If
+        Else
+            txtCodArticulo.Text = String.Empty
+            ddlListaArticulos.SelectedValue = String.Empty
+        End If
+    End Sub
+
+    ''' <summary>
     ''' Metodo que registra una operacion de Entrada/Salida de un articulo en la base de datos
     ''' </summary>
-    Protected Sub Guardar(sender As Object, e As EventArgs) Handles btnGuardar.Click
+    Protected Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
 
         If Page.IsValid Then
 
@@ -120,10 +170,14 @@ Public Class Crear1
     ''' <summary>
     ''' Metodo que registra una operacion de Entrada/Salida de un articulo en la base de datos
     ''' </summary>
-    Protected Sub ValidarStock(sender As Object, e As EventArgs) Handles txtCantidad.TextChanged
+    Protected Sub txtCantidad_TextChanged(sender As Object, e As EventArgs) Handles txtCantidad.TextChanged
         ValidarStock()
     End Sub
 
+    ''' <summary>
+    ''' Evento que se dispara para validar que cuando se cambia el tipo de operacion, de entrada a salida,
+    ''' el stock fisico sea menor o igual a la unidades ingresadas
+    ''' </summary>
     Protected Sub ddlTipoOperacion_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlTipoOperacion.SelectedIndexChanged
         ValidarStock()
     End Sub
@@ -131,7 +185,7 @@ Public Class Crear1
     ''' <summary>
     ''' Metodo que se ejecuta cuando se selecciona un cliente de la lista
     ''' </summary>
-    Protected Sub CambiarCliente(sender As Object, e As EventArgs) Handles ddlCliente.SelectedIndexChanged
+    Protected Sub ddlCliente_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlCliente.SelectedIndexChanged
 
         ddlListaArticulos.Items.Clear()
 
@@ -172,41 +226,4 @@ Public Class Crear1
 
     End Sub
 
-    Private Sub ValidarStock()
-
-        If txtCantidad.Text <> String.Empty Then
-
-            Dim _Articulo = Getter.Articulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
-
-            Dim StockFisico As Double = Double.Parse(_Articulo.stock_fisico, CultureInfo.InvariantCulture)
-            Dim CantidadSolicitada As Double = Double.Parse(txtCantidad.Text, CultureInfo.InvariantCulture)
-
-            If (CantidadSolicitada > StockFisico) And (ddlTipoOperacion.SelectedValue = "Sal") Then
-                Modal.MostrarMensajeAlerta(updatePanelPrinicpal, False, Mensajes.Unidades_Stock.ToString)
-                txtCantidad.Text = "0"
-            Else
-                Modal.OcultarAlerta(updatePanelPrinicpal)
-            End If
-        End If
-
-    End Sub
-
-    Protected Sub txtCodArticulo_TextChanged(sender As Object, e As EventArgs) Handles txtCodArticulo.TextChanged
-
-        Dim _articulo = Getter.Articulo_Codigo(txtCodArticulo.Text)
-
-        If _articulo IsNot Nothing Then
-            If ddlListaArticulos.Items.Contains(ddlListaArticulos.Items.FindByValue(_articulo.id_articulo)) Then
-                ddlListaArticulos.SelectedValue = _articulo.id_articulo
-            Else
-                txtCodArticulo.Text = String.Empty
-                ddlListaArticulos.SelectedValue = String.Empty
-            End If
-        Else
-            txtCodArticulo.Text = String.Empty
-            ddlListaArticulos.SelectedValue = String.Empty
-        End If
-
-
-    End Sub
 End Class

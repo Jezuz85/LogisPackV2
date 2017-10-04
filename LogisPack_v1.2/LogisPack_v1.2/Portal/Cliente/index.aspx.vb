@@ -9,6 +9,8 @@ Public Class index5
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
+        Manager_Usuario.ValidarMenu(Me, Master)
+
         If Manager_Usuario.ValidarAutenticado(User) Then
 
             idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
@@ -41,9 +43,7 @@ Public Class index5
 
     End Sub
 
-    ''' <summary>
-    ''' Metodos del Gridview
-    ''' </summary>
+    '--------------------------------------------------Metodos del Gridview---------------------------------------------
     Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
         GridView1.PageIndex = e.NewPageIndex
         LlenarGridView()
@@ -85,6 +85,18 @@ Public Class index5
 
     End Sub
 
+    '--------------------------------------------------EVENTOS---------------------------------------------
+    ''' <summary>
+    ''' Metodo que realiza una resetea la busqueda en el grid
+    ''' </summary>
+    Protected Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
+        txtSearch.Text = String.Empty
+        ViewState("filtroBusqueda") = String.Empty
+        ViewState("textoBusqueda") = String.Empty
+
+        LlenarGridView()
+    End Sub
+
     ''' <summary>
     ''' Metodo que registra un cliente en la base de datos
     ''' </summary>
@@ -108,7 +120,7 @@ Public Class index5
     ''' <summary>
     ''' Metodo que actualiza un cliente en la base de datos
     ''' </summary>
-    Protected Sub Editar(sender As Object, e As EventArgs) Handles btnEdit.Click
+    Protected Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
 
         If (Page.IsValid) Then
 
@@ -142,22 +154,11 @@ Public Class index5
     ''' <summary>
     ''' Metodo que realiza una busqueda en el grid
     ''' </summary>
-    Protected Sub Buscar(sender As Object, e As EventArgs) Handles btnBuscar.Click
+    Protected Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
 
         ViewState("filtroBusqueda") = ddlBuscar.SelectedValue
         ViewState("textoBusqueda") = txtSearch.Text
         LlenarGridView()
 
-    End Sub
-
-    ''' <summary>
-    ''' Metodo que realiza una resetea la busqueda en el grid
-    ''' </summary>
-    Protected Sub Reset(sender As Object, e As EventArgs) Handles btnReset.Click
-        txtSearch.Text = String.Empty
-        ViewState("filtroBusqueda") = String.Empty
-        ViewState("textoBusqueda") = String.Empty
-
-        LlenarGridView()
     End Sub
 End Class

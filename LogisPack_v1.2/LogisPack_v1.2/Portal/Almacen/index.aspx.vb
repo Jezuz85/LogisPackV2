@@ -11,6 +11,8 @@ Public Class index
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
+        Manager_Usuario.ValidarMenu(Me, Master)
+
         If Manager_Usuario.ValidarAutenticado(User) Then
 
             idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
@@ -48,6 +50,73 @@ Public Class index
     End Sub
 
     ''' <summary>
+    ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
+    ''' </summary>
+    Private Sub CargarListas()
+        Listas.Cliente(ddlClienteAdd, idCliente)
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que obtiene la data a pasarle al arbol
+    ''' </summary>
+    Private Function GetData(query As String) As DataTable
+        Dim dt As New DataTable()
+        Dim constr As String = ConfigurationManager.ConnectionStrings("DLAlmacen").ConnectionString
+        Using con As New SqlConnection(constr)
+            Using cmd As New SqlCommand(query)
+                Using sda As New SqlDataAdapter()
+                    cmd.CommandType = CommandType.Text
+                    cmd.Connection = con
+                    sda.SelectCommand = cmd
+                    sda.Fill(dt)
+                End Using
+            End Using
+            Return dt
+        End Using
+    End Function
+
+    ''' <summary>
+    ''' Metodo que Elimina un registro de Almacen de la base de datos
+    ''' </summary>
+    Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
+        bError = Delete.Almacen(Convert.ToInt32(hdfIDDel.Value))
+        Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
+
+        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
+
+        LlenarGridView()
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que llena el arbol de almacenes
+    ''' </summary>
+    Private Sub LlenarTreeView(dtParent As DataTable, parentId As Integer, treeNode As TreeNode)
+
+        For Each row As DataRow In dtParent.Rows
+
+            Dim child As New TreeNode() With {
+                .Text = row("Name").ToString(),
+                .Value = row("ID").ToString()
+                }
+
+            If parentId = 0 Then
+                MyTreeView.Nodes.Add(child)
+                Dim dtChild As DataTable = GetData(Comandos.Arbol_Almacen_Nivel1.ToString + child.Value)
+                LlenarTreeView(dtChild, 1, child)
+            ElseIf parentId = 1 Then
+                treeNode.ChildNodes.Add(child)
+                Dim dtChild As DataTable = Me.GetData(Comandos.Arbol_Almacen_Nivel2.ToString + child.Value)
+                LlenarTreeView(dtChild, 2, child)
+            Else
+                treeNode.ChildNodes.Add(child)
+            End If
+        Next
+
+        MyTreeView.CollapseAll()
+
+    End Sub
+
+    ''' <summary>
     ''' Metodo que llena El Gridview con datos de la Base de Datos
     ''' </summary>
     Private Sub LlenarGridView()
@@ -60,16 +129,7 @@ Public Class index
                       String.Empty & ViewState("textoBusqueda"))
     End Sub
 
-    ''' <summary>
-    ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
-    ''' </summary>
-    Private Sub CargarListas()
-        Listas.Cliente(ddlClienteAdd, idCliente)
-    End Sub
-
-    ''' <summary>
-    ''' Metodos del Gridview
-    ''' </summary>
+    '-----------------------------------Metodos del Gridview de articulos picking--------------------------------------------------------
     Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
         GridView1.PageIndex = e.NewPageIndex
         LlenarGridView()
@@ -126,10 +186,11 @@ Public Class index
         Utilidades_Grid.SetArrowsGrid(GridView1, e)
     End Sub
 
+    '--------------------------------------------------EVENTOS---------------------------------------------
     ''' <summary>
     ''' Metodo que crea un objeto Almacen y lo guarda en la base de datos
     ''' </summary>
-    Protected Sub Guardar(sender As Object, e As EventArgs) Handles btnAdd.Click
+    Protected Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         If (Page.IsValid) Then
 
             Dim _Nuevo As New Almacen With {
@@ -151,7 +212,7 @@ Public Class index
     ''' <summary>
     ''' Metodo que Edita un objeto Almacen y actualiza el registro en la base de datos
     ''' </summary>
-    Protected Sub Editar(sender As Object, e As EventArgs) Handles btnEdit.Click
+    Protected Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
         If (Page.IsValid) Then
 
             Dim Edit = Getter.Almacen(Convert.ToInt32(hdfEdit.Value), contexto)
@@ -174,15 +235,35 @@ Public Class index
     End Sub
 
     ''' <summary>
-    ''' Metodo que Elimina un registro de Almacen de la base de datos
+    ''' Metodo que realiza una busqueda en el grid
     ''' </summary>
-    Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
-        bError = Delete.Almacen(Convert.ToInt32(hdfIDDel.Value))
-        Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
+    Protected Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
 
-        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
+        ViewState("filtroBusqueda") = ddlBuscar.SelectedValue
+        ViewState("textoBusqueda") = txtSearch.Text
+        LlenarGridView()
+
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que realiza una resetea la busqueda en el grid
+    ''' </summary>
+    Protected Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
+        txtSearch.Text = String.Empty
+        ViewState("filtroBusqueda") = String.Empty
+        ViewState("textoBusqueda") = String.Empty
 
         LlenarGridView()
+    End Sub
+
+    ''' <summary>
+    ''' Evento que agrega al campo oculto filtro el campo a buscar dependiendo de la lista desplegable, para asi
+    ''' poder filtrar el autocomplete
+    ''' </summary>
+    Protected Sub ddlBuscar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlBuscar.SelectedIndexChanged
+
+        hdfFiltro.Value = ddlBuscar.SelectedValue
+
     End Sub
 
     ''' <summary>
@@ -205,87 +286,12 @@ Public Class index
     End Sub
 
     ''' <summary>
-    ''' Metodo que llena el arbol de almacenes
+    ''' Evento que filtra el gridview dependiendo del texto enviado
     ''' </summary>
-    Private Sub LlenarTreeView(dtParent As DataTable, parentId As Integer, treeNode As TreeNode)
-
-        For Each row As DataRow In dtParent.Rows
-
-            Dim child As New TreeNode() With {
-                .Text = row("Name").ToString(),
-                .Value = row("ID").ToString()
-                }
-
-            If parentId = 0 Then
-                MyTreeView.Nodes.Add(child)
-                Dim dtChild As DataTable = GetData(Comandos.Arbol_Almacen_Nivel1.ToString + child.Value)
-                LlenarTreeView(dtChild, 1, child)
-            ElseIf parentId = 1 Then
-                treeNode.ChildNodes.Add(child)
-                Dim dtChild As DataTable = Me.GetData(Comandos.Arbol_Almacen_Nivel2.ToString + child.Value)
-                LlenarTreeView(dtChild, 2, child)
-            Else
-                treeNode.ChildNodes.Add(child)
-            End If
-        Next
-
-        MyTreeView.CollapseAll()
-
-    End Sub
-
-    ''' <summary>
-    ''' Metodo que obtiene la data a pasarle al arbol
-    ''' </summary>
-    Private Function GetData(query As String) As DataTable
-        Dim dt As New DataTable()
-        Dim constr As String = ConfigurationManager.ConnectionStrings("DLAlmacen").ConnectionString
-        Using con As New SqlConnection(constr)
-            Using cmd As New SqlCommand(query)
-                Using sda As New SqlDataAdapter()
-                    cmd.CommandType = CommandType.Text
-                    cmd.Connection = con
-                    sda.SelectCommand = cmd
-                    sda.Fill(dt)
-                End Using
-            End Using
-            Return dt
-        End Using
-    End Function
-
-    ''' <summary>
-    ''' Metodo que realiza una busqueda en el grid
-    ''' </summary>
-    Protected Sub Buscar(sender As Object, e As EventArgs) Handles btnBuscar.Click
-
-        ViewState("filtroBusqueda") = ddlBuscar.SelectedValue
-        ViewState("textoBusqueda") = txtSearch.Text
-        LlenarGridView()
-
-    End Sub
-
-    ''' <summary>
-    ''' Metodo que realiza una resetea la busqueda en el grid
-    ''' </summary>
-    Protected Sub Reset(sender As Object, e As EventArgs) Handles btnReset.Click
-        txtSearch.Text = String.Empty
-        ViewState("filtroBusqueda") = String.Empty
-        ViewState("textoBusqueda") = String.Empty
-
-        LlenarGridView()
-    End Sub
-
     Protected Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
 
         ViewState("filtroBusqueda") = ddlBuscar.SelectedValue
         ViewState("textoBusqueda") = txtSearch.Text
         LlenarGridView()
     End Sub
-
-
-    Protected Sub ddlBuscar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlBuscar.SelectedIndexChanged
-
-        hdfFiltro.Value = ddlBuscar.SelectedValue
-
-    End Sub
-
 End Class

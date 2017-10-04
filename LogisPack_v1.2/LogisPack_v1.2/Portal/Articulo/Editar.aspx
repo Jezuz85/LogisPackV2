@@ -241,32 +241,32 @@
 				<div class="row" onkeydown="return (event.keyCode!=13)">
 					<div class="col-md-2">
 						<strong>Peso (Kgs)</strong>
-						<asp:TextBox runat="server" ID="txtPeso" min="0" max="9999.99"  data-toggle="tooltip" type="number"
-							step="0.01" data-placement="bottom" title="Ingrese el peso del artículo"></asp:TextBox>
+						<asp:TextBox runat="server" ID="txtPeso" min="0" max="9999.99999"  data-toggle="tooltip" type="number"
+							step="0.00001" data-placement="bottom" title="Ingrese el peso del artículo"></asp:TextBox>
 					</div>
 
 					<div class="col-md-2">
 						<strong>Alto(cm)</strong>
-						<asp:TextBox runat="server" min="0" max="9999.99" ID="txtAlto" data-toggle="tooltip" type="number"
-							step="0.01" data-placement="bottom" title="Ingrese la altura del artículo"></asp:TextBox>
+						<asp:TextBox runat="server" min="0" max="9999.99999" ID="txtAlto" data-toggle="tooltip" type="number"
+							step="0.00001" data-placement="bottom" title="Ingrese la altura del artículo"></asp:TextBox>
 					</div>
 
 					<div class="col-md-2">
 						<strong>Largo (cm)</strong>
-						<asp:TextBox runat="server" min="0" max="9999.99" ID="txtLargo" data-toggle="tooltip" type="number"
-							step="0.01" data-placement="bottom" title="Ingrese el largo del artículo"></asp:TextBox>
+						<asp:TextBox runat="server" min="0" max="9999.99999" ID="txtLargo" data-toggle="tooltip" type="number"
+							step="0.00001" data-placement="bottom" title="Ingrese el largo del artículo"></asp:TextBox>
 					</div>
 
 					<div class="col-md-2">
 						<strong>Ancho(cm)</strong>
-						<asp:TextBox runat="server" min="0" max="9999.99" ID="txtAncho" data-toggle="tooltip" type="number"
-							step="0.01" data-placement="bottom" title="Ingrese el ancho del artículo"></asp:TextBox>
+						<asp:TextBox runat="server" min="0" max="9999.99999" ID="txtAncho" data-toggle="tooltip" type="number"
+							step="0.00001" data-placement="bottom" title="Ingrese el ancho del artículo"></asp:TextBox>
 					</div>
 
 					<div class="col-md-2">
 						<strong>Coef. Volumétrico Kgs(m<sup>3</sup>)</strong>
-						<asp:TextBox runat="server" min="0" max="9999.99" ID="txtCoefVol" data-toggle="tooltip" type="number"
-							step="0.01" data-placement="bottom" title="Ingrese el coeficiente volumétrico del artículo"></asp:TextBox>
+						<asp:TextBox runat="server" min="0" max="9999.99999" ID="txtCoefVol" data-toggle="tooltip" type="number"
+							step="0.00001" data-placement="bottom" title="Ingrese el coeficiente volumétrico del artículo"></asp:TextBox>
 					</div>
 				</div>
 

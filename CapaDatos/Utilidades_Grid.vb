@@ -15,22 +15,9 @@ Public Class Utilidades_Grid
 
     End Function
 
-    Public Shared Function Get_IdRow_Editing(ByRef GridView1 As GridView, e As GridViewEditEventArgs, Optional ByVal control As String = "id") As String
-
-        Dim RowIndex As Integer = Convert.ToInt32((e.NewEditIndex))
-        Dim gvrow As GridViewRow = GridView1.Rows(RowIndex)
-        Return TryCast(gvrow.FindControl(control), Label).Text
-
-    End Function
-
-    Public Shared Function Get_IdRow_Deleting(ByRef GridView1 As GridView, e As GridViewDeleteEventArgs, Optional ByVal control As String = "id") As String
-
-        Dim RowIndex As Integer = Convert.ToInt32((e.RowIndex))
-        Dim gvrow As GridViewRow = GridView1.Rows(RowIndex)
-        Return TryCast(gvrow.FindControl(control), Label).Text
-
-    End Function
-
+    ''' <summary>
+    ''' Metodo para colocar las flechas de ordenamiento en el gridview
+    ''' </summary>
     Public Shared Sub SetArrowsGrid(ByRef GridView1 As GridView, e As GridViewRowEventArgs)
 
         If e.Row.RowType = DataControlRowType.Header Then
@@ -66,6 +53,9 @@ Public Class Utilidades_Grid
         End If
     End Sub
 
+    ''' <summary>
+    ''' Metodo para ordenar el gridview
+    ''' </summary>
     Public Shared Sub sortGridView(ByRef GridView1 As GridView, ByVal e As GridViewSortEventArgs, ByRef _SortExpression As String,
                                    ByRef _SortDirection As String)
 
@@ -98,5 +88,46 @@ Public Class Utilidades_Grid
         End If
 
     End Sub
+
+    '--------------------------------------------ARTICULO PICKING---------------------------------------------
+    ''' <summary>
+    ''' Metodo que inicializa el gridview de los articulo que ocnforman el articulo picking,
+    ''' en caso que el cliente quiera registrar un articulo picking
+    ''' </summary>
+    Public Shared Sub InicializarGridView(ByRef _DataTable As DataTable)
+        _DataTable = New DataTable()
+        Dim dr As DataRow = Nothing
+
+        _DataTable.Columns.Add(New DataColumn("id_articulo", GetType(String)))
+        _DataTable.Columns.Add(New DataColumn("Articulo", GetType(String)))
+        _DataTable.Columns.Add(New DataColumn("Cantidad", GetType(String)))
+
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que actualiza el GridView con el DataTable actual
+    ''' </summary>
+    Public Shared Sub Update_GridView_CurrentDatatable(ByRef _DataTable As DataTable, ByRef _GridView As GridView)
+        _GridView.DataSource = _DataTable
+        _GridView.DataBind()
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que aagrega una fila al gridview de lista articulos picking
+    ''' </summary>
+    Public Shared Sub AddRowGridview(ByRef _DataTable As DataTable, id_articulo As String, Articulo As String,
+                                     Cantidad As String)
+
+        Dim rowIndex As Integer = 0
+        Dim drCurrentRow As DataRow = Nothing
+
+        drCurrentRow = _DataTable.NewRow()
+        drCurrentRow("id_articulo") = id_articulo
+        drCurrentRow("Articulo") = Articulo
+        drCurrentRow("Cantidad") = Cantidad
+        _DataTable.Rows.Add(drCurrentRow)
+    End Sub
+
+    '----------------------------------------------------------------------------------------------------------
 
 End Class

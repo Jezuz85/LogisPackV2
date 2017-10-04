@@ -8,6 +8,8 @@ Public Class index2
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
+        Manager_Usuario.ValidarMenu(Me, Master)
+
         If Manager_Usuario.ValidarAutenticado(User) Then
 
             If Manager_Usuario.ValidarRol(User, Rol.Admin.ToString) Then
@@ -24,6 +26,7 @@ Public Class index2
         End If
 
     End Sub
+
     Private Sub LlenarGridView()
 
         Tabla.TipoUnidad(GridView1,
@@ -34,9 +37,7 @@ Public Class index2
 
     End Sub
 
-    ''' <summary>
-    ''' Metodos del Gridview
-    ''' </summary>
+    '-----------------------------------Metodos del Gridview-----------------------------------
     Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
         GridView1.PageIndex = e.NewPageIndex
         LlenarGridView()
@@ -75,10 +76,11 @@ Public Class index2
 
     End Sub
 
+    '--------------------------------------------------EVENTOS---------------------------------------------
     ''' <summary>
     ''' Metodo que registra un tipo de unidad en la base de datos
     ''' </summary>
-    Protected Sub Guardar(sender As Object, e As EventArgs) Handles btnAdd.Click
+    Protected Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
 
         If (Page.IsValid) Then
 
@@ -98,7 +100,7 @@ Public Class index2
     ''' <summary>
     ''' Metodo que Actualiza un tipo de unidad en la base de datos
     ''' </summary>
-    Protected Sub Editar(sender As Object, e As EventArgs) Handles btnEdit.Click
+    Protected Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
 
         If (Page.IsValid) Then
             Dim Edit = Getter.Tipo_Unidad(Convert.ToInt32(hdfEdit.Value), contexto)
@@ -131,7 +133,7 @@ Public Class index2
     ''' <summary>
     ''' Metodo que realiza una busqueda en el grid
     ''' </summary>
-    Protected Sub Buscar(sender As Object, e As EventArgs) Handles btnBuscar.Click
+    Protected Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
 
         ViewState("filtroBusqueda") = ddlBuscar.SelectedValue
         ViewState("textoBusqueda") = txtSearch.Text
@@ -142,7 +144,7 @@ Public Class index2
     ''' <summary>
     ''' Metodo que realiza una resetea la busqueda en el grid
     ''' </summary>
-    Protected Sub Reset(sender As Object, e As EventArgs) Handles btnReset.Click
+    Protected Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
         txtSearch.Text = String.Empty
         ViewState("filtroBusqueda") = String.Empty
         ViewState("textoBusqueda") = String.Empty

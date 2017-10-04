@@ -55,4 +55,24 @@ Public Class Manager_Usuario
 
     End Function
 
+    Public Shared Function GetRol_User(_Page As Page) As String
+
+        Dim contexto As ApplicationDbContext = New ApplicationDbContext()
+        Dim userManager = New UserManager(Of ApplicationUser)(New UserStore(Of ApplicationUser)(contexto))
+        Dim s = userManager.GetRoles(_Page.User.Identity.GetUserId)
+
+        Return s(0).ToString()
+    End Function
+
+    Public Shared Sub ValidarMenu(_Page As Page, _Master As MasterPage)
+
+        If Manager_Usuario.ValidarAutenticado(_Page.User) Then
+
+            Utilidades_Menu.CargarMenu(Manager_Usuario.GetRol_User(_Page), _Master)
+
+        Else
+            Utilidades_Menu.OcultarMenu(_Master)
+        End If
+
+    End Sub
 End Class

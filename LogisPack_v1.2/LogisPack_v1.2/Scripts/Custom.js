@@ -1,4 +1,16 @@
-﻿
+﻿window.onload = function () {
+    load();
+};
+
+var prm = Sys.WebForms.PageRequestManager.getInstance();
+if (prm != null) {
+    prm.add_endRequest(function (sender, e) {
+        if (sender._postBackSettings.panelsToUpdate != null) {
+            load();
+        }
+    });
+};
+
 function load() {
 
     var URLActual = "" + window.location;

@@ -15,8 +15,8 @@
 				if (sender._postBackSettings.panelsToUpdate != null) {
 					$(document).ready(function () {
 						$find('<%=AutoCompleteExtender1.ClientID%>').set_contextKey($get("<%=hdfCliente.ClientID %>").value + "|" +
-                            $get("<%=hdfFiltro.ClientID %>").value);
-                        
+							$get("<%=hdfFiltro.ClientID %>").value);
+						
 					});
 				}
 			});

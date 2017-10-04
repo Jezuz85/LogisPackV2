@@ -22,6 +22,20 @@ Public Class Getter
         Return contexto.Almacen.Where(Function(model) model.id_almacen = id).SingleOrDefault()
     End Function
 
+    '-------------------------------------------------------------------------------------------------'
+
+    ''' <summary>
+    ''' Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
+    ''' devuelve un objeto tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
+    ''' </summary>
+    Public Shared Function Articulo(id As Integer) As Articulo
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Return contexto.Articulo.Where(Function(model) model.id_articulo = id).SingleOrDefault()
+
+    End Function
+
     ''' <summary>
     ''' Metodo que devuelve el ultimo Articulo registrado en la base de datos
     ''' </summary>
@@ -30,6 +44,17 @@ Public Class Getter
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
         Return contexto.Articulo.ToList().LastOrDefault()
+
+    End Function
+
+    ''' <summary>
+    ''' Metodo que recibe un codigo del Articulo y lo consulta desde la Base de datos, 
+    ''' devuelve una objeto de tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
+    ''' </summary>
+    Public Shared Function Articulo_Codigo(_codigo As String) As Articulo
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+        Return contexto.Articulo.Where(Function(model) model.codigo = _codigo).SingleOrDefault()
 
     End Function
 
@@ -45,12 +70,16 @@ Public Class Getter
 
     End Function
 
-    Public Shared Function Articulo_Codigo(_codigo As String) As Articulo
-
-        Dim contexto As LogisPackEntities = New LogisPackEntities()
-        Return contexto.Articulo.Where(Function(model) model.codigo = _codigo).SingleOrDefault()
-
+    ''' <summary>
+    ''' Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, recibe un objeto contexto
+    ''' para devolver el Articulo a editar con su respectivo contexto usado
+    ''' devuelve un objeto tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
+    ''' </summary>
+    Public Shared Function Articulo(id As Integer, ByRef contexto As LogisPackEntities) As Articulo
+        Return contexto.Articulo.Where(Function(model) model.id_articulo = id).SingleOrDefault()
     End Function
+
+    '-------------------------------------------------------------------------------------------------'
 
     ''' <summary>
     ''' Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
@@ -86,26 +115,7 @@ Public Class Getter
         Return contexto.Picking_Articulo.Where(Function(model) model.id_picking_articulo = id).SingleOrDefault()
     End Function
 
-    ''' <summary>
-    ''' Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
-    ''' devuelve un objeto tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
-    ''' </summary>
-    Public Shared Function Articulo(id As Integer) As Articulo
-
-        Dim contexto As LogisPackEntities = New LogisPackEntities()
-
-        Return contexto.Articulo.Where(Function(model) model.id_articulo = id).SingleOrDefault()
-
-    End Function
-
-    ''' <summary>
-    ''' Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, recibe un objeto contexto
-    ''' para devolver el Articulo a editar con su respectivo contexto usado
-    ''' devuelve un objeto tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
-    ''' </summary>
-    Public Shared Function Articulo(id As Integer, ByRef contexto As LogisPackEntities) As Articulo
-        Return contexto.Articulo.Where(Function(model) model.id_articulo = id).SingleOrDefault()
-    End Function
+    '-------------------------------------------------------------------------------------------------'
 
     ''' <summary>
     ''' Metodo que recibe un id del Cliente y lo consulta desde la Base de datos, 
@@ -130,6 +140,8 @@ Public Class Getter
 
     End Function
 
+    '-------------------------------------------------------------------------------------------------'
+
     ''' <summary>
     ''' Metodo que recibe un id del Tipo_Facturacion y lo consulta desde la Base de datos, 
     ''' devuelve un objeto tipo Tipo_Facturacion si fue exitoso, de lo contrario no devuelve nothing
@@ -153,6 +165,8 @@ Public Class Getter
 
     End Function
 
+    '-------------------------------------------------------------------------------------------------'
+
     ''' <summary>
     ''' Metodo que recibe un id del Tipo_Unidad y lo consulta desde la Base de datos, 
     ''' devuelve un objeto tipo Tipo_Unidad si fue exitoso, de lo contrario no devuelve nothing
@@ -175,6 +189,8 @@ Public Class Getter
         Return contexto.Tipo_Unidad.Where(Function(model) model.id_tipo_unidad = id).SingleOrDefault()
 
     End Function
+
+    '-------------------------------------------------------------------------------------------------'
 
     ''' <summary>
     ''' Metodo que recibe un id del Artiuclo, y devuelve una lista de las imagenes asociadas al articulo
@@ -203,6 +219,8 @@ Public Class Getter
 
     End Function
 
+    '-------------------------------------------------------------------------------------------------'
+
     ''' <summary>
     ''' Metodo que recibe un id del Artiuclo, y devuelve una lista de las ubicaciones asociadas al articulo
     ''' </summary>
@@ -229,6 +247,8 @@ Public Class Getter
         Return contexto.Ubicacion.Where(Function(model) model.id_ubicacion = id).SingleOrDefault()
 
     End Function
+
+    '-------------------------------------------------------------------------------------------------'
 
     ''' <summary>
     ''' Metodo que recibe un id del usuario y lo consulta desde la Base de datos, 

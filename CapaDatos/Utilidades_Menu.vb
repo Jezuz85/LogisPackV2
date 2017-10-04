@@ -2,6 +2,9 @@
 
 Public Class Utilidades_Menu
 
+    ''' <summary>
+    ''' Metodo para cargar menu dependiendo del rol
+    ''' </summary>
     Public Shared Sub CargarMenu(_Rol As String, _Master As MasterPage)
 
         If _Rol = Rol.Admin.ToString Then
@@ -39,6 +42,9 @@ Public Class Utilidades_Menu
 
     End Sub
 
+    ''' <summary>
+    ''' Metodo para ocultar menu dependiendo del rol
+    ''' </summary>
     Public Shared Sub OcultarMenu(_Master As MasterPage)
 
         Dim _Control As Control = _Master.FindControl("dropbtn_Cliente")

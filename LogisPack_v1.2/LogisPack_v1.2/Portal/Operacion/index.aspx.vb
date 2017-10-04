@@ -1,5 +1,4 @@
-﻿
-Imports System.IO
+﻿Imports System.IO
 Imports System.Runtime.Serialization.Json
 Imports System.Web.Mvc
 Imports System.Web.Script.Services
@@ -16,6 +15,8 @@ Public Class index4
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
+        Manager_Usuario.ValidarMenu(Me, Master)
+
         If Manager_Usuario.ValidarAutenticado(User) Then
 
             idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
@@ -27,6 +28,7 @@ Public Class index4
         Else
             Response.Redirect(Paginas.Login.ToString)
         End If
+
     End Sub
 
     ''' <summary>
@@ -41,9 +43,7 @@ Public Class index4
                       String.Empty & ViewState("textoBusqueda"))
     End Sub
 
-    ''' <summary>
-    ''' Metodos del Gridview
-    ''' </summary>
+    '--------------------------------------------------Metodos del Gridview---------------------------------------------
     Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
         GridView1.PageIndex = e.NewPageIndex
         LlenarGridView()
@@ -64,6 +64,17 @@ Public Class index4
         Utilidades_Grid.SetArrowsGrid(GridView1, e)
     End Sub
 
+    '--------------------------------------------------EVENTOS---------------------------------------------
+    ''' <summary>
+    ''' Metodo que realiza una busqueda en el grid al darle enter al campo de busqueda
+    ''' </summary>
+    Protected Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
+
+        ViewState("filtroBusqueda") = ddlBuscar.SelectedValue
+        ViewState("textoBusqueda") = txtSearch.Text
+        LlenarGridView()
+    End Sub
+
     ''' <summary>
     ''' Metodo que se invoca cuando se presiona el boton "guardar" y redirecciona la pagina a "Crear"
     ''' </summary>
@@ -74,7 +85,7 @@ Public Class index4
     ''' <summary>
     ''' Metodo que realiza una busqueda en el grid
     ''' </summary>
-    Protected Sub Buscar(sender As Object, e As EventArgs) Handles btnBuscar.Click
+    Protected Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
 
         ViewState("filtroBusqueda") = ddlBuscar.SelectedValue
         ViewState("textoBusqueda") = txtSearch.Text
@@ -85,19 +96,11 @@ Public Class index4
     ''' <summary>
     ''' Metodo que realiza una resetea la busqueda en el grid
     ''' </summary>
-    Protected Sub Reset(sender As Object, e As EventArgs) Handles btnReset.Click
+    Protected Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
         txtSearch.Text = String.Empty
         ViewState("filtroBusqueda") = String.Empty
         ViewState("textoBusqueda") = String.Empty
 
-        LlenarGridView()
-    End Sub
-
-
-    Protected Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
-
-        ViewState("filtroBusqueda") = ddlBuscar.SelectedValue
-        ViewState("textoBusqueda") = txtSearch.Text
         LlenarGridView()
     End Sub
 

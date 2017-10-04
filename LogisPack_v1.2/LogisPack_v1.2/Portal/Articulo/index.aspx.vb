@@ -8,6 +8,8 @@ Public Class index3
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
+        Manager_Usuario.ValidarMenu(Me, Master)
+
         If Manager_Usuario.ValidarAutenticado(User) Then
 
             idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
@@ -19,7 +21,6 @@ Public Class index3
         Else
             Response.Redirect(Paginas.Login.ToString)
         End If
-
 
     End Sub
 
@@ -33,8 +34,17 @@ Public Class index3
     End Sub
 
     ''' <summary>
-    ''' Metodos del gridview
+    ''' Metodo que elimina un articulo de la base de datos
     ''' </summary>
+    Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
+
+        bError = Delete.Articulo(Convert.ToInt32(hdfIDDel.Value))
+        Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
+        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
+        LlenarGridView()
+    End Sub
+
+    '--------------------------------------------------Metodos del gridview-----------------------------------------
     Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
         GridView1.PageIndex = e.NewPageIndex
         LlenarGridView()
@@ -78,14 +88,15 @@ Public Class index3
         Utilidades_Grid.SetArrowsGrid(GridView1, e)
     End Sub
 
+    '--------------------------------------------------EVENTOS---------------------------------------------
     ''' <summary>
-    ''' Metodo que elimina un articulo de la base de datos
+    ''' Metodo que realiza una resetea la busqueda en el grid
     ''' </summary>
-    Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
+    Protected Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
+        txtSearch.Text = String.Empty
+        ViewState("filtroBusqueda") = String.Empty
+        ViewState("textoBusqueda") = String.Empty
 
-        bError = Delete.Articulo(Convert.ToInt32(hdfIDDel.Value))
-        Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
-        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
         LlenarGridView()
     End Sub
 
@@ -99,7 +110,7 @@ Public Class index3
     ''' <summary>
     ''' Metodo que realiza una busqueda en el grid
     ''' </summary>
-    Protected Sub Buscar(sender As Object, e As EventArgs) Handles btnBuscar.Click
+    Protected Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
 
         ViewState("filtroBusqueda") = ddlBuscar.SelectedValue
         ViewState("textoBusqueda") = txtSearch.Text
@@ -107,14 +118,4 @@ Public Class index3
 
     End Sub
 
-    ''' <summary>
-    ''' Metodo que realiza una resetea la busqueda en el grid
-    ''' </summary>
-    Protected Sub Reset(sender As Object, e As EventArgs) Handles btnReset.Click
-        txtSearch.Text = String.Empty
-        ViewState("filtroBusqueda") = String.Empty
-        ViewState("textoBusqueda") = String.Empty
-
-        LlenarGridView()
-    End Sub
 End Class

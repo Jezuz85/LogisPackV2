@@ -45,9 +45,11 @@ Public Class Listas
         DropDownList1.Items.Insert(0, New ListItem("Seleccione...", ""))
     End Sub
 
+    '-------------------------------------------------------------------------------------------------'
+
     ''' <summary>
     ''' Metodo que recibe un objeto DropDownlist vacio y un id del Almacén , y lo devuelve con los datos de 
-    ''' todos los articulos de ese Almacén
+    ''' todos los articulos de tipo "Normal" de ese Almacén
     ''' </summary>
     Public Shared Sub Articulo(ByRef DropDownList1 As DropDownList, idAlmacen As Integer)
 
@@ -67,7 +69,10 @@ Public Class Listas
         DropDownList1.DataBind()
     End Sub
 
-
+    ''' <summary>
+    ''' Metodo que recibe un objeto DropDownlist vacio y un id del Almacén , y lo devuelve con los datos de 
+    ''' todos los articulos de ese Almacén
+    ''' </summary>
     Public Shared Sub Articulo_Almacen(ByRef DropDownList1 As DropDownList, idAlmacen As Integer)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -86,6 +91,8 @@ Public Class Listas
 
         DropDownList1.Items.Insert(0, New ListItem("Seleccione...", ""))
     End Sub
+
+    '-------------------------------------------------------------------------------------------------'
 
     ''' <summary>
     ''' Metodo que recibe un objeto DropDownlist vacio  y lo devuelve con los datos de 
@@ -121,6 +128,8 @@ Public Class Listas
 
     End Sub
 
+    '-------------------------------------------------------------------------------------------------'
+
     ''' <summary>
     ''' Metodo que recibe un objeto DropDownlist vacio  y lo devuelve con los datos de 
     ''' todos los clientes existentes en la base de datos
@@ -144,6 +153,8 @@ Public Class Listas
         DropDownList1.Items.Insert(0, New ListItem("Seleccione...", ""))
     End Sub
 
+    '-------------------------------------------------------------------------------------------------'
+
     ''' <summary>
     ''' Metodo que recibe un objeto DropDownlist vacio  y lo devuelve con los datos de 
     ''' todos los tipo de facturacion existentes en la base de datos
@@ -164,6 +175,8 @@ Public Class Listas
         DropDownList1.DataBind()
     End Sub
 
+    '-------------------------------------------------------------------------------------------------'
+
     ''' <summary>
     ''' Metodo que recibe un objeto DropDownlist vacio  y lo devuelve con los datos de 
     ''' todos los tipo de unidad existentes en la base de datos
@@ -183,6 +196,8 @@ Public Class Listas
         DropDownList1.DataSource = query
         DropDownList1.DataBind()
     End Sub
+
+    '-------------------------------------------------------------------------------------------------'
 
     ''' <summary>
     ''' Metodo que recibe un objeto DropDownlist vacio  y lo devuelve con los datos de 

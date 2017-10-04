@@ -13,6 +13,8 @@ Public Class Editar
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         Page.Form.Attributes.Add("enctype", "multipart/form-data")
 
+        Manager_Usuario.ValidarMenu(Me, Master)
+
         If Manager_Usuario.ValidarAutenticado(User) Then
 
             idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
@@ -79,6 +81,39 @@ Public Class Editar
         Listas.Cliente(ddlCliente, idCliente)
     End Sub
 
+    ''' <summary>
+    ''' Metodo que crea la tabla ubicacion, para añadir o eliminar filas, para agregar ubicaciones al articulo
+    ''' </summary>
+    Private Sub crearCamposListaUbicacion(valor As Integer)
+
+        ViewState("contadorUbi") = Convert.ToString(Manager_Articulo.crearCamposListaUbicacion(valor, pTabla))
+
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que consulta el Coeficiente Volumetrico del almacen y lo asigna al articulo a crear al 
+    ''' cargar la pagina
+    ''' </summary>
+    Private Sub CargarCoefVol(idAlmacen As Integer)
+        Dim _Almacen = Getter.Almacen(idAlmacen)
+        txtCoefVol.Text = _Almacen.coeficiente_volumetrico
+    End Sub
+
+    ''' <summary>
+    ''' Metodo para eliminar la imagen seleccionada por el usario
+    ''' </summary>
+    Protected Sub EliminarImagen(sender As Object, e As EventArgs)
+
+        bError = Delete.Imagen(Convert.ToInt32(hdfIDDel.Value))
+
+        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
+
+        Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
+
+        CargarImagenes(IdArticulo)
+    End Sub
+
+    '-----------------------------------Cargar Datos Articulo a Editar----------------------------------------------
     ''' <summary>
     ''' Metodo que en donde se realiza la carga de los datos del articulo y sus atributos
     ''' </summary>
@@ -196,9 +231,7 @@ Public Class Editar
     End Sub
 
 
-    ''' <summary>
-    ''' Metodos del Gridview
-    ''' </summary>
+    '-----------------------------------Metodos del Gridview de imagenes--------------------------------------------------------
     Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
         GridView1.PageIndex = e.NewPageIndex
         CargarImagenes(IdArticulo)
@@ -212,41 +245,106 @@ Public Class Editar
 
     End Sub
 
-    ''' <summary>
-    ''' Metodos que se llama al presionar el boton editar, e invoca los metodos que hacen la actualizacion de un articulo
-    ''' en la base de datos
-    ''' </summary>
-    Protected Sub Editar(sender As Object, e As EventArgs) Handles btnGuardar.Click
+    '-----------------------------------Metodos del Gridview de Articulos picking--------------------------------------------------------
 
-        If Page.IsValid Then
-            Dim Edit = Getter.Articulo(IdArticulo, contexto)
+    Protected Sub GridView2_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
-            If EditarArticulo(Edit) Then
-                If EditarImagenes(Edit) Then
-                    If EditarUbicaciones(Edit) Then
-                        If EditarPicking(Edit) Then
+        If e.CommandName.Equals(Mensajes.EliminarFila.ToString) Then
 
-                            If ddlTipoArticulo.SelectedValue = "Picking" Then
+            Dim RowIndex As Integer = Convert.ToInt32((e.CommandArgument))
+            Dim gvrow As GridViewRow = GridView2.Rows(RowIndex)
 
-                                Utilidades_UpdatePanel.LimpiarControles(updatePanelPrinicpal)
-                                Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
-                                phListaArticulos.Visible = False
-                                txtUnidad.Text = Nothing
-                            End If
-                            ddlAlmacen.SelectedValue = ""
-                            ddlCliente.SelectedValue = ""
+            _DataTable = CType(ViewState("CurrentTable"), DataTable)
+            _DataTable.Rows(RowIndex).Delete()
 
-                        End If
-                    End If
-                End If
-            End If
+            Update_ViewState_Datatable()
 
-            Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Editar.ToString, bError, Me, updatePanelPrinicpal, updatePanelPrinicpal)
+            Update_GridView_CurrentDatatable()
+
+
+            Update_ViewState_Datatable()
+            btnAddArticuloRow.Visible = True
+            ddlListaArticulos.Items.Insert(0, New ListItem("" + gvrow.Cells(1).Text, "" + gvrow.Cells(0).Text))
 
         End If
 
     End Sub
+    Protected Sub GridView2_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
+        GridView2.PageIndex = e.NewPageIndex
+        Update_GridView_CurrentDatatable()
+    End Sub
 
+    Private Sub AddRowGridview()
+
+        _DataTable = CType(ViewState("CurrentTable"), DataTable)
+
+        Utilidades_Grid.AddRowGridview(_DataTable, ddlListaArticulos.SelectedValue, ddlListaArticulos.SelectedItem.ToString, txtUnidad.Text)
+
+        Update_ViewState_Datatable()
+
+        Utilidades_Grid.Update_GridView_CurrentDatatable(_DataTable, GridView2)
+
+        Update_GridView_CurrentDatatable()
+
+    End Sub
+
+    Private Sub LlenarGridview(_id_articulo As Integer)
+
+        Tabla.ArticuloPicking(GridView2, _id_articulo)
+
+        If GridView2.Rows.Count > 0 Then
+            GridtoDataTable()
+            Update_ViewState_Datatable()
+        Else
+            InicializarGridView()
+            Update_ViewState_Datatable()
+            Update_GridView_CurrentDatatable()
+        End If
+
+
+    End Sub
+
+    Private Sub InicializarGridView()
+        Utilidades_Grid.InicializarGridView(_DataTable)
+        Update_ViewState_Datatable()
+    End Sub
+
+    Private Sub GridtoDataTable()
+
+        _DataTable = New DataTable()
+        ' add the columns to the datatable
+        If GridView2.HeaderRow IsNot Nothing Then
+            For i As Integer = 0 To GridView2.HeaderRow.Cells.Count - 1
+                _DataTable.Columns.Add(GridView2.HeaderRow.Cells(i).Text)
+            Next
+        End If
+
+        ' add each of the data rows to the table
+        For Each row As GridViewRow In GridView2.Rows
+            Dim dr As DataRow
+            dr = _DataTable.NewRow()
+
+            For i As Integer = 0 To row.Cells.Count - 1
+                dr(i) = row.Cells(i).Text.Replace(" ", "")
+
+            Next
+            _DataTable.Rows.Add(dr)
+
+        Next
+
+
+    End Sub
+
+    Private Sub Update_GridView_CurrentDatatable()
+        _DataTable = CType(ViewState("CurrentTable"), DataTable)
+        Utilidades_Grid.Update_GridView_CurrentDatatable(_DataTable, GridView2)
+    End Sub
+
+    Private Sub Update_ViewState_Datatable()
+        ViewState("CurrentTable") = _DataTable
+    End Sub
+
+    '-----------------------------------Editar----------------------------------------------------
     ''' <summary>
     ''' Metodos que edita el articulo y devuelve true si la operacion fue exitosa y caso contrario false
     ''' </summary>
@@ -465,49 +563,58 @@ Public Class Editar
         Return bError
     End Function
 
+    '--------------------------------------------------EVENTOS---------------------------------------------
     ''' <summary>
-    ''' Metodo que crea la tabla ubicacion, para añadir o eliminar filas, para agregar ubicaciones al articulo
+    ''' Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
+    ''' al articulo dependiendo del valor que tenga el coeficiente del almacen
     ''' </summary>
-    Private Sub crearCamposListaUbicacion(valor As Integer)
+    Protected Sub ddlAlmacen_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlAlmacen.SelectedIndexChanged
 
-        ViewState("contadorUbi") = Convert.ToString(Manager_Articulo.crearCamposListaUbicacion(valor, pTabla))
+        Manager_Articulo.SetCoefVolumétrico(ddlAlmacen, txtCoefVol, phListaArticulos, ddlTipoArticulo)
+
+        Listas.ArticuloPickingEdit(ddlListaArticulos, GridView2, Convert.ToInt32(ddlAlmacen.SelectedValue))
 
     End Sub
 
     ''' <summary>
-    ''' Metodo para eliminar la imagen seleccionada por el usario
+    ''' Metodos que se llama al presionar el boton editar, e invoca los metodos que hacen la actualizacion de un articulo
+    ''' en la base de datos
     ''' </summary>
-    Protected Sub EliminarImagen(sender As Object, e As EventArgs)
+    Protected Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
 
-        bError = Delete.Imagen(Convert.ToInt32(hdfIDDel.Value))
+        If Page.IsValid Then
+            Dim Edit = Getter.Articulo(IdArticulo, contexto)
 
-        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
+            If EditarArticulo(Edit) Then
+                If EditarImagenes(Edit) Then
+                    If EditarUbicaciones(Edit) Then
+                        If EditarPicking(Edit) Then
 
-        Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
+                            If ddlTipoArticulo.SelectedValue = "Picking" Then
 
-        CargarImagenes(IdArticulo)
-    End Sub
+                                Utilidades_UpdatePanel.LimpiarControles(updatePanelPrinicpal)
+                                Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
+                                phListaArticulos.Visible = False
+                                txtUnidad.Text = Nothing
+                            End If
+                            ddlAlmacen.SelectedValue = ""
+                            ddlCliente.SelectedValue = ""
 
-    ''' <summary>
-    ''' Metodo que consulta el Coeficiente Volumetrico del almacen y lo asigna al articulo a crear al 
-    ''' cargar la pagina
-    ''' </summary>
-    Private Sub CargarCoefVol(idAlmacen As Integer)
-        Dim _Almacen = Getter.Almacen(idAlmacen)
-        txtCoefVol.Text = _Almacen.coeficiente_volumetrico
-    End Sub
+                        End If
+                    End If
+                End If
+            End If
 
-    ''' <summary>
-    ''' Metodo que se ejecuta cuando se selecciona un cliente de la lista
-    ''' </summary>
-    Protected Sub CambiarCliente(sender As Object, e As EventArgs) Handles ddlCliente.SelectedIndexChanged
-        Manager_Articulo.CambiarCliente(ddlCliente, txtCoefVol, ddlAlmacen)
+            Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Editar.ToString, bError, Me, updatePanelPrinicpal, updatePanelPrinicpal)
+
+        End If
+
     End Sub
 
     ''' <summary>
     ''' Metodo que se ejecuta cuando se oprime el boton de añadir articulo al artiulo picking
     ''' </summary>
-    Protected Sub Añadir_ArticuloLista(sender As Object, e As EventArgs) Handles btnAddArticuloRow.Click
+    Protected Sub btnAddArticuloRow_Click(sender As Object, e As EventArgs) Handles btnAddArticuloRow.Click
 
         If Page.IsValid Then
             AddRowGridview()
@@ -524,121 +631,10 @@ Public Class Editar
     End Sub
 
     ''' <summary>
-    ''' Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
-    ''' al articulo dependiendo del valor que tenga el coeficiente del almacen
+    ''' Metodo que se ejecuta cuando se selecciona un cliente de la lista
     ''' </summary>
-    Protected Sub SetCoefVolumétrico(sender As Object, e As EventArgs) Handles ddlAlmacen.SelectedIndexChanged
-
-        Manager_Articulo.SetCoefVolumétrico(ddlAlmacen, txtCoefVol, phListaArticulos, ddlTipoArticulo)
-
-        Listas.ArticuloPickingEdit(ddlListaArticulos, GridView2, Convert.ToInt32(ddlAlmacen.SelectedValue))
-
-    End Sub
-
-    Protected Sub GridView2_RowCommand(sender As Object, e As GridViewCommandEventArgs)
-
-        If e.CommandName.Equals("DelRow") Then
-
-            Dim RowIndex As Integer = Convert.ToInt32((e.CommandArgument))
-            Dim gvrow As GridViewRow = GridView2.Rows(RowIndex)
-
-            _DataTable = CType(ViewState("CurrentTable"), DataTable)
-            _DataTable.Rows(RowIndex).Delete()
-
-            Update_ViewState_Datatable()
-
-            Update_GridView_CurrentDatatable()
-
-
-            Update_ViewState_Datatable()
-            btnAddArticuloRow.Visible = True
-            ddlListaArticulos.Items.Insert(0, New ListItem("" + gvrow.Cells(1).Text, "" + gvrow.Cells(0).Text))
-
-        End If
-
-    End Sub
-    Protected Sub GridView2_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
-        GridView2.PageIndex = e.NewPageIndex
-        Update_GridView_CurrentDatatable()
-    End Sub
-
-    Private Sub AddRowGridview()
-        Dim rowIndex As Integer = 0
-
-        _DataTable = CType(ViewState("CurrentTable"), DataTable)
-
-        Dim drCurrentRow As DataRow = Nothing
-        drCurrentRow = _DataTable.NewRow()
-        drCurrentRow("id_articulo") = ddlListaArticulos.SelectedValue
-        drCurrentRow("Articulo") = ddlListaArticulos.SelectedItem
-        drCurrentRow("Cantidad") = txtUnidad.Text
-        _DataTable.Rows.Add(drCurrentRow)
-
-        Update_ViewState_Datatable()
-        Update_GridView_CurrentDatatable()
-
-    End Sub
-
-    Private Sub LlenarGridview(_id_articulo As Integer)
-
-        Tabla.ArticuloPicking(GridView2, _id_articulo)
-
-        If GridView2.Rows.Count > 0 Then
-            GridtoDataTable()
-            Update_ViewState_Datatable()
-        Else
-            InicializarGridView()
-            Update_ViewState_Datatable()
-            Update_GridView_CurrentDatatable()
-        End If
-
-
-    End Sub
-
-    Private Sub InicializarGridView()
-        _DataTable = New DataTable()
-        _DataTable.Columns.Add(New DataColumn("id_articulo", GetType(String)))
-        _DataTable.Columns.Add(New DataColumn("Articulo", GetType(String)))
-        _DataTable.Columns.Add(New DataColumn("Cantidad", GetType(String)))
-    End Sub
-
-    Private Sub GridtoDataTable()
-
-        _DataTable = New DataTable()
-        ' add the columns to the datatable
-        If GridView2.HeaderRow IsNot Nothing Then
-            For i As Integer = 0 To GridView2.HeaderRow.Cells.Count - 1
-                _DataTable.Columns.Add(GridView2.HeaderRow.Cells(i).Text)
-            Next
-        End If
-
-        ' add each of the data rows to the table
-        For Each row As GridViewRow In GridView2.Rows
-            Dim dr As DataRow
-            dr = _DataTable.NewRow()
-
-            For i As Integer = 0 To row.Cells.Count - 1
-                dr(i) = row.Cells(i).Text.Replace(" ", "")
-
-            Next
-            _DataTable.Rows.Add(dr)
-
-        Next
-
-
-    End Sub
-
-    Private Sub Update_GridView_CurrentDatatable()
-
-        _DataTable = CType(ViewState("CurrentTable"), DataTable)
-        GridView2.DataSource = _DataTable
-        GridView2.DataBind()
-    End Sub
-
-    Private Sub Update_ViewState_Datatable()
-
-        ViewState("CurrentTable") = _DataTable
-
+    Protected Sub ddlCliente_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlCliente.SelectedIndexChanged
+        Manager_Articulo.CambiarCliente(ddlCliente, txtCoefVol, ddlAlmacen)
     End Sub
 
 End Class

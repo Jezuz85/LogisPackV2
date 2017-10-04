@@ -8,9 +8,13 @@ Public Class Crear
     Private contexto As LogisPackEntities = New LogisPackEntities()
     Private bError As Boolean
     Private idCliente As Integer
+    Private _DataTable As DataTable
+
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         Page.Form.Attributes.Add("enctype", "multipart/form-data")
+
+        Manager_Usuario.ValidarMenu(Me, Master)
 
         If Manager_Usuario.ValidarAutenticado(User) Then
 
@@ -54,49 +58,6 @@ Public Class Crear
 
     End Sub
 
-    Private Sub InicializarGridView()
-        Dim dt As New DataTable()
-        Dim dr As DataRow = Nothing
-
-        dt.Columns.Add(New DataColumn("id_articulo", GetType(String)))
-        dt.Columns.Add(New DataColumn("Articulo", GetType(String)))
-        dt.Columns.Add(New DataColumn("Cantidad", GetType(String)))
-
-
-        ViewState("CurrentTable") = dt
-        GridView1.DataSource = dt
-        GridView1.DataBind()
-    End Sub
-
-    Private Sub CargarGridView()
-        Dim rowIndex As Integer = 0
-        Dim dtCurrentTable As DataTable = CType(ViewState("CurrentTable"), DataTable)
-        Dim drCurrentRow As DataRow = Nothing
-
-        ViewState("CurrentTable") = dtCurrentTable
-        GridView1.DataSource = dtCurrentTable
-        GridView1.DataBind()
-    End Sub
-
-    Private Sub AddRowGridview()
-        Dim rowIndex As Integer = 0
-        Dim dtCurrentTable As DataTable = CType(ViewState("CurrentTable"), DataTable)
-        Dim drCurrentRow As DataRow = Nothing
-
-
-        drCurrentRow = dtCurrentTable.NewRow()
-        drCurrentRow("id_articulo") = ddlListaArticulos.SelectedValue
-        drCurrentRow("Articulo") = ddlListaArticulos.SelectedItem
-        drCurrentRow("Cantidad") = txtUnidad.Text
-        dtCurrentTable.Rows.Add(drCurrentRow)
-
-        ViewState("CurrentTable") = dtCurrentTable
-        GridView1.DataSource = dtCurrentTable
-        GridView1.DataBind()
-    End Sub
-
-
-
     ''' <summary>
     ''' Metodo para obtener que lista hace el postback si Tipo de Articulo o Cliente y asi pintar las ubicaciones
     ''' </summary>
@@ -106,10 +67,28 @@ Public Class Crear
 
         If ctrl IsNot Nothing Then
             If ctrl.ClientID.Contains("ddlTipoArticulo") Or ctrl.ClientID.Contains("ddlCliente") Or ctrl.ClientID.Contains("ddlAlmacen") Then
-                crearCamposListaUbicacion(Convert.ToInt32(ViewState("contadorUbi")))
+                CrearCamposListaUbicacion(Convert.ToInt32(ViewState("contadorUbi")))
             End If
         End If
 
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que se ejecuta para limpiar los valores del updatepanel
+    ''' </summary>
+    Private Sub LimpiarControles()
+
+        If bError Then
+            If ddlTipoArticulo.SelectedValue = "Picking" Then
+
+                Utilidades_UpdatePanel.LimpiarControles(upAdd_Articulo)
+                Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
+                phListaArticulos.Visible = False
+                txtUnidad.Text = Nothing
+            End If
+            ddlAlmacen.SelectedValue = ""
+            ddlCliente.SelectedValue = ""
+        End If
     End Sub
 
     ''' <summary>
@@ -124,36 +103,13 @@ Public Class Crear
     ''' <summary>
     ''' Metodo que crea la tabla ubicacion, para añadir o eliminar filas, para agregar ubicaciones al articulo
     ''' </summary>
-    Private Sub crearCamposListaUbicacion(valor As Integer)
+    Private Sub CrearCamposListaUbicacion(valor As Integer)
 
         ViewState("contadorUbi") = Convert.ToString(Manager_Articulo.crearCamposListaUbicacion(valor, pTabla))
 
     End Sub
 
-    ''' <summary>
-    ''' Metodo que se ejecuta para registrar un articulo en la base de datos
-    ''' </summary>
-    Protected Sub Guardar(sender As Object, e As EventArgs) Handles btnGuardar.Click
-
-        If Page.IsValid Then
-
-            Dim Stock_Picking As Double = If(txtStockFisico.Text = String.Empty, 0, Double.Parse(txtStockFisico.Text, CultureInfo.InvariantCulture))
-
-            If GuardarArticulo() Then
-                Dim articuloView = Getter.Articulo_Ultimo()
-                GuardarImagenes(articuloView)
-                GuardarUbicaciones(articuloView)
-                GuardarPicking(articuloView)
-            End If
-
-            Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Registrar.ToString, bError, Me, upAdd_Articulo, upAdd_Articulo)
-
-            LimpiarControles()
-
-        End If
-
-    End Sub
-
+    '--------------------------------------------GUARDAR------------------------------------------------------------
     ''' <summary>
     ''' Metodo que se ejecuta para crear el articulo y registrarlo en la base de datos
     ''' </summary>
@@ -335,77 +291,10 @@ Public Class Crear
 
     End Sub
 
-    ''' <summary>
-    ''' Metodo que se ejecuta para limpiar los valores del updatepanel
-    ''' </summary>
-    Private Sub LimpiarControles()
-
-        If bError Then
-            If ddlTipoArticulo.SelectedValue = "Picking" Then
-
-                Utilidades_UpdatePanel.LimpiarControles(upAdd_Articulo)
-                Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
-                phListaArticulos.Visible = False
-                txtUnidad.Text = Nothing
-            End If
-            ddlAlmacen.SelectedValue = ""
-            ddlCliente.SelectedValue = ""
-        End If
-    End Sub
-
-    ''' <summary>
-    ''' Metodo que se ejecuta cuando se selecciona un cliente de la lista
-    ''' </summary>
-    Protected Sub CambiarCliente(sender As Object, e As EventArgs) Handles ddlCliente.SelectedIndexChanged
-        Manager_Articulo.CambiarCliente(ddlCliente, txtCoefVol, ddlAlmacen)
-    End Sub
-
-    ''' <summary>
-    ''' Metodo que se ejecuta cuando se oprime el boton de añadir articulo al artiulo picking
-    ''' </summary>
-    Protected Sub Añadir_ArticuloLista(sender As Object, e As EventArgs) Handles btnAddArticuloRow.Click
-        If Page.IsValid Then
-            AddRowGridview()
-
-            ddlListaArticulos.Items.Remove(ddlListaArticulos.Items.FindByValue(ddlListaArticulos.SelectedValue))
-
-            txtUnidad.Text = String.Empty
-            If ddlListaArticulos.Items.Count = 0 Then
-                btnAddArticuloRow.Visible = False
-            End If
-
-        End If
-    End Sub
-
-    ''' <summary>
-    ''' Metodo que se ejecuta cuando se selecciona un tipo de articulo, y sirve para mostrar los articulos a agregar
-    ''' </summary>
-    Protected Sub ddlTipoArticulo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlTipoArticulo.SelectedIndexChanged
-
-        If ddlTipoArticulo.SelectedValue = "Picking" And ddlAlmacen.SelectedValue <> String.Empty Then
-            Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
-            phListaArticulos.Visible = True
-        Else
-            phListaArticulos.Visible = False
-        End If
-
-
-    End Sub
-
-    ''' <summary>
-    ''' Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
-    ''' al articulo dependiendo del valor que tenga el coeficiente del almacen
-    ''' </summary>
-    Protected Sub SetCoefVolumétrico(sender As Object, e As EventArgs) Handles ddlAlmacen.SelectedIndexChanged
-
-        Manager_Articulo.SetCoefVolumétrico(ddlAlmacen, txtCoefVol, phListaArticulos, ddlTipoArticulo)
-        Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
-
-    End Sub
-
+    '-----------------------------------Metodos del Gridview de articulos picking--------------------------------------------------------
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
-        If e.CommandName.Equals("DelRow") Then
+        If e.CommandName.Equals(Mensajes.EliminarFila.ToString) Then
 
             Dim RowIndex As Integer = Convert.ToInt32((e.CommandArgument))
             Dim gvrow As GridViewRow = GridView1.Rows(RowIndex)
@@ -433,7 +322,121 @@ Public Class Crear
         CargarGridView()
     End Sub
 
+    '-----------------------------------Metodos del Gridview de lista articulois picking-----------------------------
+    ''' <summary>
+    ''' Metodo que inicializa el gridview de los articulo que ocnforman el articulo picking,
+    ''' en caso que el cliente quiera registrar un articulo picking
+    ''' </summary>
+    Private Sub InicializarGridView()
+        Utilidades_Grid.InicializarGridView(_DataTable)
+        Update_ViewState_Datatable()
+        Utilidades_Grid.Update_GridView_CurrentDatatable(_DataTable, GridView1)
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que actualiza el gridview y viewstate con el DataTable actual
+    ''' </summary>
+    Private Sub CargarGridView()
+
+        _DataTable = CType(ViewState("CurrentTable"), DataTable)
+        Update_ViewState_Datatable()
+        Utilidades_Grid.Update_GridView_CurrentDatatable(_DataTable, GridView1)
+
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que aagrega una fila al gridview de lista articulos picking
+    ''' </summary>
+    Private Sub AddRowGridview()
+        _DataTable = CType(ViewState("CurrentTable"), DataTable)
+
+        Utilidades_Grid.AddRowGridview(_DataTable, ddlListaArticulos.SelectedValue, ddlListaArticulos.SelectedItem.ToString, txtUnidad.Text)
+
+        Update_ViewState_Datatable()
+
+        Utilidades_Grid.Update_GridView_CurrentDatatable(_DataTable, GridView1)
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que actualiza el viewstate con el DataTable actual
+    ''' </summary>
+    Private Sub Update_ViewState_Datatable()
+        ViewState("CurrentTable") = _DataTable
+    End Sub
+
+    '--------------------------------------------------EVENTOS---------------------------------------------
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se oprime el boton de añadir articulo al artiulo picking
+    ''' </summary>
+    Protected Sub btnAddArticuloRow_Click(sender As Object, e As EventArgs) Handles btnAddArticuloRow.Click
+        If Page.IsValid Then
+            AddRowGridview()
+
+            ddlListaArticulos.Items.Remove(ddlListaArticulos.Items.FindByValue(ddlListaArticulos.SelectedValue))
+
+            txtUnidad.Text = String.Empty
+            If ddlListaArticulos.Items.Count = 0 Then
+                btnAddArticuloRow.Visible = False
+            End If
+
+        End If
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que se ejecuta para registrar un articulo en la base de datos
+    ''' </summary>
+    Protected Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
+
+        If Page.IsValid Then
+
+            Dim Stock_Picking As Double = If(txtStockFisico.Text = String.Empty, 0, Double.Parse(txtStockFisico.Text, CultureInfo.InvariantCulture))
+
+            If GuardarArticulo() Then
+                Dim articuloView = Getter.Articulo_Ultimo()
+                GuardarImagenes(articuloView)
+                GuardarUbicaciones(articuloView)
+                GuardarPicking(articuloView)
+            End If
+
+            Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Registrar.ToString, bError, Me, upAdd_Articulo, upAdd_Articulo)
+
+            LimpiarControles()
+
+        End If
+
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se selecciona un cliente de la lista
+    ''' </summary>
+    Protected Sub ddlCliente_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlCliente.SelectedIndexChanged
+        Manager_Articulo.CambiarCliente(ddlCliente, txtCoefVol, ddlAlmacen)
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se selecciona un tipo de articulo, y sirve para mostrar los articulos a agregar
+    ''' </summary>
+    Protected Sub ddlTipoArticulo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlTipoArticulo.SelectedIndexChanged
+
+        If ddlTipoArticulo.SelectedValue = "Picking" And ddlAlmacen.SelectedValue <> String.Empty Then
+            Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
+            phListaArticulos.Visible = True
+        Else
+            phListaArticulos.Visible = False
+        End If
 
 
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
+    ''' al articulo dependiendo del valor que tenga el coeficiente del almacen
+    ''' </summary>
+    Protected Sub ddlAlmacen_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlAlmacen.SelectedIndexChanged
+
+        Manager_Articulo.SetCoefVolumétrico(ddlAlmacen, txtCoefVol, phListaArticulos, ddlTipoArticulo)
+        Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
+
+    End Sub
 
 End Class
