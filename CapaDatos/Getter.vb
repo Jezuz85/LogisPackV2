@@ -1,6 +1,7 @@
 ﻿
 Public Class Getter
 
+    '-----------------------------------------ALMACEN--------------------------------------------------------'
     ''' <summary>
     ''' Metodo que recibe un id del Almacen y lo consulta desde la Base de datos, 
     ''' devuelve un objeto tipo Almacen si fue exitoso, de lo contrario no devuelve nothing
@@ -22,7 +23,7 @@ Public Class Getter
         Return contexto.Almacen.Where(Function(model) model.id_almacen = id).SingleOrDefault()
     End Function
 
-    '-------------------------------------------------------------------------------------------------'
+    '-----------------------------------------Articulo--------------------------------------------------------'
 
     ''' <summary>
     ''' Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
@@ -79,7 +80,7 @@ Public Class Getter
         Return contexto.Articulo.Where(Function(model) model.id_articulo = id).SingleOrDefault()
     End Function
 
-    '-------------------------------------------------------------------------------------------------'
+    '-----------------------------------------Picking Articulo--------------------------------------------------------'
 
     ''' <summary>
     ''' Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
@@ -115,7 +116,7 @@ Public Class Getter
         Return contexto.Picking_Articulo.Where(Function(model) model.id_picking_articulo = id).SingleOrDefault()
     End Function
 
-    '-------------------------------------------------------------------------------------------------'
+    '-----------------------------------------Cliente--------------------------------------------------------'
 
     ''' <summary>
     ''' Metodo que recibe un id del Cliente y lo consulta desde la Base de datos, 
@@ -140,7 +141,7 @@ Public Class Getter
 
     End Function
 
-    '-------------------------------------------------------------------------------------------------'
+    '-----------------------------------------tipo Facturacion--------------------------------------------------------'
 
     ''' <summary>
     ''' Metodo que recibe un id del Tipo_Facturacion y lo consulta desde la Base de datos, 
@@ -165,7 +166,7 @@ Public Class Getter
 
     End Function
 
-    '-------------------------------------------------------------------------------------------------'
+    '-----------------------------------------Tipo unidad--------------------------------------------------------'
 
     ''' <summary>
     ''' Metodo que recibe un id del Tipo_Unidad y lo consulta desde la Base de datos, 
@@ -190,7 +191,7 @@ Public Class Getter
 
     End Function
 
-    '-------------------------------------------------------------------------------------------------'
+    '-----------------------------------------Imagen--------------------------------------------------------'
 
     ''' <summary>
     ''' Metodo que recibe un id del Artiuclo, y devuelve una lista de las imagenes asociadas al articulo
@@ -219,7 +220,7 @@ Public Class Getter
 
     End Function
 
-    '-------------------------------------------------------------------------------------------------'
+    '-----------------------------------------Ubicacion--------------------------------------------------------'
 
     ''' <summary>
     ''' Metodo que recibe un id del Artiuclo, y devuelve una lista de las ubicaciones asociadas al articulo
@@ -248,7 +249,7 @@ Public Class Getter
 
     End Function
 
-    '-------------------------------------------------------------------------------------------------'
+    '-----------------------------------------Usuario--------------------------------------------------------'
 
     ''' <summary>
     ''' Metodo que recibe un id del usuario y lo consulta desde la Base de datos, 
@@ -260,6 +261,25 @@ Public Class Getter
         Dim _usuario = contexto.AspNetUsers.Where(Function(model) model.Id = _id).SingleOrDefault()
 
         Return _usuario.id_cliente
+
+    End Function
+
+    '-----------------------------------------Histórico--------------------------------------------------------'
+    Public Shared Function Operacion_TotalEntrada(_id_articulo As String) As Double
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+        Dim _usuario = contexto.Historico.Where(Function(model) model.id_articulo = _id_articulo And model.tipo_transaccion = "Ent").ToList()
+
+        Return _usuario.Sum(Function(model) model.cantidad_transaccion)
+
+    End Function
+
+    Public Shared Function Operacion_TotalSalida(_id_articulo As String) As Double
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+        Dim _usuario = contexto.Historico.Where(Function(model) model.id_articulo = _id_articulo And model.tipo_transaccion = "Sal").ToList()
+
+        Return _usuario.Sum(Function(model) model.cantidad_transaccion)
 
     End Function
 End Class

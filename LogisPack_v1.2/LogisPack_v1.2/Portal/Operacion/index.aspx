@@ -40,6 +40,24 @@
 			<asp:HiddenField ID="hdfCliente" runat="server" />
 
 			<div id="pageBodyContainer" class="MainContentWrapper" style="width: 96%;">
+				
+				<div class="row">
+					<div class="col-md-2">
+						<strong>Cliente</strong>
+						<asp:DropDownList runat="server" ID="ddlCliente"  AutoPostBack="true"/>
+					</div>
+					<div class="col-md-2">
+						<strong>Almacén</strong>
+						<asp:DropDownList runat="server" ID="ddlAlmacen"  AutoPostBack="true"/>
+					</div>
+
+					<div class="col-md-2">
+						<strong>Artículo</strong>
+						<asp:DropDownList runat="server" ID="ddlArticulo"  AutoPostBack="true"/>
+					</div>
+				</div>
+
+				<br />
 
 				<div class="section">
 					<div id="sectionHeaderFiltros" class="sectionHeader">
@@ -63,7 +81,9 @@
 
 								<div class="col-md-2">
 									<asp:DropDownList runat="server" ID="ddlBuscar">
-										<asp:ListItem Text="articulo" Value="articulo"></asp:ListItem>
+										<asp:ListItem Text="Artículo" Value="Articulo"></asp:ListItem>
+										<asp:ListItem Text="Cliente" Value="Cliente"></asp:ListItem>
+										<asp:ListItem Text="Almacén" Value="Almacen"></asp:ListItem>
 									</asp:DropDownList>
 								</div>
 
@@ -155,36 +175,47 @@
 
 				<hr />
 
-				<div class="row">
-					<div class="col-md-3">
-						<div class="col-md-6">
-							<br />
-							<strong>Total Entrada</strong></div>
-						<div class="col-md-6">
-							<asp:TextBox ID="TextBox1" runat="server" ReadOnly="true"></asp:TextBox></div>
-					</div>
-					<div class="col-md-3">
-						<div class="col-md-6">
-							<br />
-							<strong>Total Salida</strong></div>
-						<div class="col-md-6">
-							<asp:TextBox ID="TextBox2" runat="server" ReadOnly="true"></asp:TextBox></div>
-					</div>
-					<div class="col-md-3">
-						<div class="col-md-6">
-							<br />
-							<strong>Stock Físico</strong></div>
-						<div class="col-md-6">
-							<asp:TextBox ID="TextBox3" runat="server" ReadOnly="true"></asp:TextBox></div>
-					</div>
-					<div class="col-md-3">
-						<div class="col-md-6">
-							<br />
-							<strong>Stock Mínimo</strong></div>
-						<div class="col-md-6">
-							<asp:TextBox ID="TextBox4" runat="server" ReadOnly="true"></asp:TextBox></div>
-					</div>
-				</div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="col-md-6">
+                            <br />
+                            <strong>Total Entrada</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <asp:TextBox ID="txtTotalEntrada" runat="server" ReadOnly="true"></asp:TextBox>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="col-md-6">
+                            <br />
+                            <strong>Total Salida</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <asp:TextBox ID="txtTotalSalida" runat="server" ReadOnly="true"></asp:TextBox>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="col-md-6">
+                            <br />
+                            <strong>Stock Físico</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <asp:TextBox ID="txtStockFisico" runat="server" ReadOnly="true"></asp:TextBox>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="col-md-6">
+                            <br />
+                            <strong>Stock Mínimo</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <asp:TextBox ID="txtStockMinimo" runat="server" ReadOnly="true"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
 
 			</div>
 
@@ -192,6 +223,5 @@
 
 		<Triggers></Triggers>
 	</asp:UpdatePanel>
-
 
 </asp:Content>

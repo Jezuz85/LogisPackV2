@@ -32,6 +32,33 @@ Partial Public Class index4
     Protected WithEvents hdfCliente As Global.System.Web.UI.WebControls.HiddenField
     
     '''<summary>
+    '''Control ddlCliente.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlCliente As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''Control ddlAlmacen.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlAlmacen As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''Control ddlArticulo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlArticulo As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
     '''Control ddlBuscar.
     '''</summary>
     '''<remarks>
@@ -95,38 +122,38 @@ Partial Public Class index4
     Protected WithEvents btnGuardar As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
-    '''Control TextBox1.
+    '''Control txtTotalEntrada.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtTotalEntrada As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control TextBox2.
+    '''Control txtTotalSalida.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TextBox2 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtTotalSalida As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control TextBox3.
+    '''Control txtStockFisico.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TextBox3 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtStockFisico As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control TextBox4.
+    '''Control txtStockMinimo.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TextBox4 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtStockMinimo As Global.System.Web.UI.WebControls.TextBox
 End Class

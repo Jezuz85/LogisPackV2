@@ -2753,6 +2753,33 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:LogisPack_v1._2.index4._ddlCliente">
+<summary>
+Control ddlCliente.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.index4._ddlAlmacen">
+<summary>
+Control ddlAlmacen.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.index4._ddlArticulo">
+<summary>
+Control ddlArticulo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:LogisPack_v1._2.index4._ddlBuscar">
 <summary>
 Control ddlBuscar.
@@ -2816,36 +2843,36 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.index4._TextBox1">
+<member name="F:LogisPack_v1._2.index4._txtTotalEntrada">
 <summary>
-Control TextBox1.
+Control txtTotalEntrada.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.index4._TextBox2">
+<member name="F:LogisPack_v1._2.index4._txtTotalSalida">
 <summary>
-Control TextBox2.
+Control txtTotalSalida.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.index4._TextBox3">
+<member name="F:LogisPack_v1._2.index4._txtStockFisico">
 <summary>
-Control TextBox3.
+Control txtStockFisico.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.index4._TextBox4">
+<member name="F:LogisPack_v1._2.index4._txtStockMinimo">
 <summary>
-Control TextBox4.
+Control txtStockMinimo.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -2855,6 +2882,11 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="M:LogisPack_v1._2.index4.LlenarGridView">
  <summary>
  Metodo que llena El Gridview con datos de la Base de Datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index4.CargarListas">
+ <summary>
+ Metodo que llena los Dropdownlits con datos de la Base de Datos
  </summary>
 </member>
 <member name="M:LogisPack_v1._2.index4.txtSearch_TextChanged(System.Object,System.EventArgs)">
@@ -2875,6 +2907,21 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="M:LogisPack_v1._2.index4.btnReset_Click(System.Object,System.EventArgs)">
  <summary>
  Metodo que realiza una resetea la busqueda en el grid
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index4.ddlCliente_SelectedIndexChanged(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se ejecuta cuando se selecciona un cliente de la lista
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index4.ddlAlmacen_SelectedIndexChanged(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se ejecuta cuando se selecciona un almacen de la lista
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index4.ddlArticulo_SelectedIndexChanged(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se ejecuta cuando se selecciona un almacen de la lista
  </summary>
 </member>
 <member name="F:LogisPack_v1._2.index1._updatePanelPrinicpal">

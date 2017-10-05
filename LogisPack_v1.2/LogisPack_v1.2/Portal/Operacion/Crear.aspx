@@ -109,7 +109,7 @@
 
                     <div class="col-md-3">
                         <strong>Stock Fisico del Articulo</strong>
-
+                        <br />
                         <asp:Label ID="lbStockFisico" runat="server" Text="-"></asp:Label>
                     </div>
                 </div>

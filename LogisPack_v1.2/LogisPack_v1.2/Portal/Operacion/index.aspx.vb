@@ -23,6 +23,7 @@ Public Class index4
             hdfCliente.Value = idCliente
 
             If IsPostBack = False Then
+                CargarListas()
                 LlenarGridView()
             End If
         Else
@@ -43,6 +44,12 @@ Public Class index4
                       String.Empty & ViewState("textoBusqueda"))
     End Sub
 
+    ''' <summary>
+    ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
+    ''' </summary>
+    Private Sub CargarListas()
+        Listas.Cliente(ddlCliente, idCliente)
+    End Sub
     '--------------------------------------------------Metodos del Gridview---------------------------------------------
     Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
         GridView1.PageIndex = e.NewPageIndex
@@ -104,4 +111,75 @@ Public Class index4
         LlenarGridView()
     End Sub
 
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se selecciona un cliente de la lista
+    ''' </summary>
+    Protected Sub ddlCliente_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlCliente.SelectedIndexChanged
+        Manager_Articulo.CambiarCliente(ddlCliente, New TextBox(), ddlAlmacen)
+
+        If ddlCliente.SelectedValue <> String.Empty Then
+
+            ViewState("filtroBusqueda") = "Cliente"
+            ViewState("textoBusqueda") = Convert.ToString(ddlCliente.SelectedItem)
+        Else
+            txtSearch.Text = String.Empty
+            ViewState("filtroBusqueda") = String.Empty
+            ViewState("textoBusqueda") = String.Empty
+        End If
+
+        LlenarGridView()
+
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se selecciona un almacen de la lista
+    ''' </summary>
+    Protected Sub ddlAlmacen_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlAlmacen.SelectedIndexChanged
+
+        If ddlAlmacen.SelectedValue <> String.Empty Then
+
+            ViewState("filtroBusqueda") = "Almacen"
+            ViewState("textoBusqueda") = Convert.ToString(ddlAlmacen.SelectedItem)
+            Listas.Articulo_Almacen(ddlArticulo, Convert.ToInt32(ddlAlmacen.SelectedValue))
+        Else
+            ddlArticulo.Items.Clear()
+            txtSearch.Text = String.Empty
+            ViewState("filtroBusqueda") = String.Empty
+            ViewState("textoBusqueda") = String.Empty
+        End If
+
+        LlenarGridView()
+
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que se ejecuta cuando se selecciona un almacen de la lista
+    ''' </summary>
+    Protected Sub ddlArticulo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlArticulo.SelectedIndexChanged
+
+        If ddlArticulo.SelectedValue <> String.Empty Then
+
+            ViewState("filtroBusqueda") = "Articulo"
+            ViewState("textoBusqueda") = Convert.ToString(ddlArticulo.SelectedItem)
+
+            Dim _articulo = Getter.Articulo(Convert.ToInt32(ddlArticulo.SelectedValue))
+
+            txtTotalEntrada.Text = Getter.Operacion_TotalEntrada(Convert.ToInt32(ddlArticulo.SelectedValue))
+            txtTotalSalida.Text = Getter.Operacion_TotalSalida(Convert.ToInt32(ddlArticulo.SelectedValue))
+            txtStockFisico.Text = _articulo.stock_fisico
+            txtStockMinimo.Text = _articulo.stock_minimo
+
+        Else
+            txtSearch.Text = String.Empty
+            txtTotalEntrada.Text = String.Empty
+            txtTotalSalida.Text = String.Empty
+            txtStockFisico.Text = String.Empty
+            txtStockMinimo.Text = String.Empty
+            ViewState("filtroBusqueda") = String.Empty
+            ViewState("textoBusqueda") = String.Empty
+        End If
+
+        LlenarGridView()
+
+    End Sub
 End Class

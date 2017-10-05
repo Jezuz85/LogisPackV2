@@ -314,7 +314,9 @@ Public Class Tabla
                          AL.cantidad_transaccion,
                          AL.tipo_transaccion,
                          AL.referencia_ubicacion,
-                         AL.Articulo.Almacen.id_cliente
+                         AL.Articulo.Almacen.id_cliente,
+                         almacen = AL.Articulo.Almacen.nombre,
+                         cliente = AL.Articulo.Almacen.Cliente.nombre
                     ).ToList()
 
         If idCliente <> 1 Then
@@ -348,8 +350,12 @@ Public Class Tabla
         End If
 
         If textoBusqueda <> String.Empty Then
-            If filtroBusqueda = "articulo" Then
+            If filtroBusqueda = "Articulo" Then
                 query = query.Where(Function(x) x.articulo.ToLower.Contains(textoBusqueda.ToLower)).ToList()
+            ElseIf filtroBusqueda = "Almacen" Then
+                query = query.Where(Function(x) x.almacen.ToLower.Contains(textoBusqueda.ToLower)).ToList()
+            ElseIf filtroBusqueda = "Cliente" Then
+                query = query.Where(Function(x) x.cliente.ToLower.Contains(textoBusqueda.ToLower)).ToList()
             End If
         End If
 
