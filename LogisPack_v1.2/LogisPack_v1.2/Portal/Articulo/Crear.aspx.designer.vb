@@ -347,15 +347,6 @@ Partial Public Class Crear
     Protected WithEvents txtObsArt As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control txtStockMinimo.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtStockMinimo As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
     '''Control txtStockFisico.
     '''</summary>
     '''<remarks>
@@ -363,6 +354,15 @@ Partial Public Class Crear
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtStockFisico As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control txtStockMinimo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtStockMinimo As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
     '''Control fuImagenes.

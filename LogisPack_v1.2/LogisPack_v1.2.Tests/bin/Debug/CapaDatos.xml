@@ -235,6 +235,12 @@ CapaDatos
  devuelve un objeto tipo Tipo_Facturacion si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
+<member name="M:CapaDatos.Getter.Tipo_Facturacion(System.String)">
+ <summary>
+ Metodo que recibe un nombre del Tipo_Facturacion y lo consulta desde la Base de datos, 
+ devuelve un objeto tipo Tipo_Facturacion si fue exitoso, de lo contrario no devuelve nothing
+ </summary>
+</member>
 <member name="M:CapaDatos.Getter.Tipo_Facturacion(System.Int32,CapaDatos.LogisPackEntities@)">
  <summary>
  Metodo que recibe un id del Tipo_Facturacion y lo consulta desde la Base de datos, recibe un objeto contexto
@@ -245,6 +251,12 @@ CapaDatos
 <member name="M:CapaDatos.Getter.Tipo_Unidad(System.Int32)">
  <summary>
  Metodo que recibe un id del Tipo_Unidad y lo consulta desde la Base de datos, 
+ devuelve un objeto tipo Tipo_Unidad si fue exitoso, de lo contrario no devuelve nothing
+ </summary>
+</member>
+<member name="M:CapaDatos.Getter.Tipo_Unidad(System.String)">
+ <summary>
+ Metodo que recibe un nombre del Tipo_Unidad y lo consulta desde la Base de datos, 
  devuelve un objeto tipo Tipo_Unidad si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>

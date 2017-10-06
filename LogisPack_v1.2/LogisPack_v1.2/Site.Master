@@ -8,154 +8,142 @@
 <html lang="es">
 <head runat="server">
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - LogisPack</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title><%: Page.Title %> - LogisPack</title>
 
-    <asp:PlaceHolder runat="server">
-        <%: Scripts.Render("~/bundles/modernizr") %>
-    </asp:PlaceHolder>
+	<asp:PlaceHolder runat="server">
+		<%: Scripts.Render("~/bundles/modernizr") %>
+	</asp:PlaceHolder>
 
-    <webopt:BundleReference runat="server" Path="~/Content/css" />
-    <webopt:BundleReference runat="server" Path="~/Content/Direcline" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	<webopt:BundleReference runat="server" Path="~/Content/css" />
+	<webopt:BundleReference runat="server" Path="~/Content/Direcline" />
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
 <body id="masterBody">
 
-    <form runat="server">
+	<form runat="server">
 
-        <div id="masterHeaderContainer">
-            <table id="masterHeader">
-                <tbody>
-                    <tr>
-                        <td id="masterCompanyLogo">
-                            <a href="../../Default.aspx" id="lnkMasterCompanyLogo" title="Ir a la página de menú"></a>
-                        </td>
-                        <td id="masterSessionCompanyMenuContainer">
-                            <table class="maxSize">
-                                <tbody>
-                                    <tr>
-                                        <td id="masterSession">
+		<div id="masterHeaderContainer">
+			<table id="masterHeader">
+				<tbody>
+					<tr>
+						<td id="masterCompanyLogo">
+							<a href="../../Default.aspx" id="lnkMasterCompanyLogo" title="Ir a la página de menú"></a>
+						</td>
+						<td id="masterSessionCompanyMenuContainer">
+							<table class="maxSize">
+								<tbody>
+									<tr>
+										<td id="masterSession">
 
-                                            <asp:LoginView runat="server" ViewStateMode="Disabled">
-                                                <AnonymousTemplate>
-                                                    <div>
-                                                        <a runat="server" href="~/Account/Login">Iniciar sesión</a>
-                                                    </div>
-                                                </AnonymousTemplate>
-                                                <LoggedInTemplate>
-                                                    <div>
-                                                        Usuario:
+											<asp:LoginView runat="server" ViewStateMode="Disabled">
+												<AnonymousTemplate>
+													<div>
+														<a runat="server" href="~/Account/Login">Iniciar sesión</a>
+													</div>
+												</AnonymousTemplate>
+												<LoggedInTemplate>
+													<div>
+														Usuario:
 														<a id="lnkUsuario" runat="server" href="~/Account/Manage" title="Perfil">
-                                                            <%: Context.User.Identity.GetUserName()  %>
-                                                        </a>
-                                                    </div>
-                                                    <div id="divSesionDepartamento">
-                                                        Departamento:<span id="lblSesionDepartamento">-</span>
-                                                    </div>
+															<%: Context.User.Identity.GetUserName()  %>
+														</a>
+													</div>
+													<div id="divSesionDepartamento">
+														Departamento:<span id="lblSesionDepartamento">-</span>
+													</div>
 
-                                                    <div id="divSesionCliente">
-                                                        Cliente:
+													<div id="divSesionCliente">
+														Cliente:
 														<span runat="server" id="lblSesionCliente">
-                                                            <%: Manager_Usuario.GetNombreCliente(Context.User.Identity.GetUserId)  %>
-                                                        </span>
-                                                    </div>
+															<%: Manager_Usuario.GetNombreCliente(Context.User.Identity.GetUserId)  %>
+														</span>
+													</div>
 
-                                                    <a runat="server" href="~/Account/Register">Registrar</a>|
+													<a runat="server" href="~/Account/Register">Registrar</a>|
 
 													<asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
 
-                                                </LoggedInTemplate>
-                                            </asp:LoginView>
+												</LoggedInTemplate>
+											</asp:LoginView>
 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td id="masterMainMenu">
+										</td>
+									</tr>
+									<tr>
+										<td id="masterMainMenu">
 
-                                            <div class="navbar">
-                                                <div class="navbar-collapse collapse">
-                                                    <ul class="nav navbar-nav">
-                                                        <li><a id="dropbtn_Inicio" runat="server" href="~/">Inicio</a></li>
-                                                        <li class="dropdown">
-                                                            <a id="dropbtn_Cliente" class="dropbtn" runat="server" href="~/Portal/Cliente/index">Cliente</a>
+											<div class="navbar">
+												<div class="navbar-collapse collapse">
+													<ul class="nav navbar-nav">
+														<li><a id="dropbtn_Inicio" runat="server" href="~/">Inicio</a></li>
 
-                                                            <%--<div class="dropdown-content">
-																	<a href="#">Nuevo Cliente</a>
-																</div>--%>
-                                                        </li>
-                                                        <li class="dropdown">
-                                                            <a id="dropbtn_Almacen" runat="server" href="~/Portal/Almacen/index">Almacen</a>
+														<li class="dropdown">
+															<a id="dropbtn_Cliente" class="dropbtn" runat="server" href="~/Portal/Cliente/index">Cliente</a>
+														</li>
 
-                                                            <%--<div class="dropdown-content">
-																	<a href="#">Nuevo Almacén</a>
-																</div>--%>
-                                                        </li>
-                                                        <li class="dropdown">
-                                                            <a id="dropbtn_Articulo" class="dropbtn" runat="server" href="~/Portal/Articulo/index">Articulo</a>
+														<li class="dropdown">
+															<a id="dropbtn_Almacen" runat="server" href="~/Portal/Almacen/index">Almacen</a>
+														</li>
 
-                                                            <div class="dropdown-content">
-                                                                <a href="../../Portal/Articulo/Crear">Nuevo</a>
-                                                            </div>
-                                                        </li>
-                                                        <li class="dropdown">
-                                                            <a id="dropbtn_Operacion" runat="server" href="~/Portal/Operacion/index">Operacion</a>
+														<li class="dropdown">
+															<a id="dropbtn_Articulo" class="dropbtn" runat="server" href="~/Portal/Articulo/index">Articulo</a>
 
-                                                            <div class="dropdown-content">
-                                                                <a href="../../Portal/Operacion/Crear">Nuevo</a>
-                                                            </div>
-                                                        </li>
-                                                        <li class="dropdown">
-                                                            <a id="dropbtn_TipoFacturacion" runat="server" href="~/Portal/TipoFacturacion/index">Tipo de Facturación</a>
+															<div class="dropdown-content">
+																<a href="../../Portal/Articulo/Crear">Nuevo</a>
+																<a href="../../Portal/Articulo/CargaMasiva">Carga Masiva</a>
+															</div>
+														</li>
+														<li class="dropdown">
+															<a id="dropbtn_Operacion" runat="server" href="~/Portal/Operacion/index">Operacion</a>
 
-                                                            <%--<div class="dropdown-content">
-																	<a href="#">Nuevo Tipo de Facturación</a>
-																</div>--%>
-                                                        </li>
-                                                        <li class="dropdown">
-                                                            <a id="dropbtn_TipoUnidad" runat="server" href="~/Portal/TipoUnidad/index">Tipo de Unidad</a>
+															<div class="dropdown-content">
+																<a href="../../Portal/Operacion/Crear">Nuevo</a>
+															</div>
+														</li>
+														<li class="dropdown">
+															<a id="dropbtn_TipoFacturacion" runat="server" href="~/Portal/TipoFacturacion/index">Tipo de Facturación</a>
+														</li>
+														<li class="dropdown">
+															<a id="dropbtn_TipoUnidad" runat="server" href="~/Portal/TipoUnidad/index">Tipo de Unidad</a>
+														</li>
+													</ul>
+												</div>
 
-                                                            <%--<div class="dropdown-content">
-																	<a href="#">Nuevo Tipo de Unidad</a>
-																</div>--%>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <asp:ScriptManager ID="ScriptManager1" runat="server">
-            <Scripts>
+		<asp:ScriptManager ID="ScriptManager1" runat="server">
+			<Scripts>
 
 
-            </Scripts>
-        </asp:ScriptManager>
+			</Scripts>
+		</asp:ScriptManager>
 
-        <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+		<asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
 
-        <%: Scripts.Render("~/bundles/MisScripts") %>
+		<%: Scripts.Render("~/bundles/MisScripts") %>
 
-        <hr />
+		<hr />
 
-        <footer>
-            <p>&copy; <%: DateTime.Now.Year %> - Logis Pack - Direcline.com</p>
-        </footer>
+		<footer>
+			<p>&copy; <%: DateTime.Now.Year %> - Logis Pack - Direcline.com</p>
+		</footer>
 
-        <!-- Msj Modal -->
-        <ucm:ucMsjModal runat="server" ID="ucMsjModal" />
+		<!-- Msj Modal -->
+		<ucm:ucMsjModal runat="server" ID="ucMsjModal" />
 
-    </form>
+	</form>
 </body>
 </html>

@@ -348,16 +348,17 @@
 				<hr />
 
 				<div class="row" onkeydown="return (event.keyCode!=13)">
-					<div class="col-md-2">
-						<strong>Stock Mínimo</strong>
-						<asp:TextBox runat="server" min="0" ID="txtStockMinimo" data-toggle="tooltip"
-							type="number" step="0.01" data-placement="bottom" title="Ingrese el stock mínimo del artículo"></asp:TextBox>
-					</div>
 
 					<div class="col-md-2">
 						<strong>Stock Físico</strong>
 						<asp:TextBox runat="server" min="0" ID="txtStockFisico" data-toggle="tooltip" type="number"
 							step="0.01" data-placement="bottom" title="Ingrese el stock fisico del artículo"></asp:TextBox>
+					</div>
+
+					<div class="col-md-2">
+						<strong>Stock Mínimo</strong>
+						<asp:TextBox runat="server" min="0" ID="txtStockMinimo" data-toggle="tooltip"
+							type="number" step="0.01" data-placement="bottom" title="Ingrese el stock mínimo del artículo"></asp:TextBox>
 					</div>
 				</div>
 

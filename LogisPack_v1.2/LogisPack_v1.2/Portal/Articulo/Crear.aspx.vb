@@ -38,11 +38,11 @@ Public Class Crear
                             If c.GetType() Is GetType(Button) Then
 
                                 If c.ClientID.Contains("btnAddFilaUbicacion") Then
-                                    crearCamposListaUbicacion(Convert.ToInt32(ViewState("contadorUbi") + 1))
+                                    CrearCamposListaUbicacion(Convert.ToInt32(ViewState("contadorUbi") + 1))
                                 ElseIf c.ClientID.Contains("btnEliminarFila") Then
-                                    crearCamposListaUbicacion(Convert.ToInt32(ViewState("contadorUbi") - 1))
+                                    CrearCamposListaUbicacion(Convert.ToInt32(ViewState("contadorUbi") - 1))
                                 Else
-                                    crearCamposListaUbicacion(Convert.ToInt32(ViewState("contadorUbi")))
+                                    CrearCamposListaUbicacion(Convert.ToInt32(ViewState("contadorUbi")))
                                 End If
 
                             End If
@@ -115,44 +115,38 @@ Public Class Crear
     ''' </summary>
     Private Function GuardarArticulo() As Boolean
 
-        Dim M3 As Double = 0
-        Dim PesoVol As Double = 0
-        Dim valoracionStock As Double = 0
-        Dim valoracionSeguro As Double = 0
+        Dim M3 As Double = Manager_Articulo.CalcularM3(txtAlto.Text, txtAncho.Text, txtLargo.Text)
+        Dim PesoVol As Double = Manager_Articulo.CalcularPesoVolumetrico(txtAlto.Text, txtAncho.Text, txtLargo.Text, txtCoefVol.Text)
+        Dim valoracionStock As Double = Manager_Articulo.CalcularValoracionStock(txtStockFisico.Text, txtValArticulo.Text)
+        Dim valoracionSeguro As Double = Manager_Articulo.CalcularValoracionSeguro(txtValAsegurado.Text, txtStockFisico.Text)
 
-        M3 = Manager_Articulo.CalcularM3(txtAlto.Text, txtAncho.Text, txtLargo.Text)
-        PesoVol = Manager_Articulo.CalcularPesoVolumetrico(txtAlto.Text, txtAncho.Text, txtLargo.Text, txtCoefVol.Text)
-        valoracionStock = Manager_Articulo.CalcularValoracionStock(txtStockFisico.Text, txtValArticulo.Text)
-        valoracionSeguro = Manager_Articulo.CalcularValoracionSeguro(txtValAsegurado.Text, txtStockFisico.Text)
-
-        Dim _Nuevo As New Articulo With
-            {
-            .codigo = If(txtCodigo.Text = String.Empty, String.Empty, txtCodigo.Text),
-            .nombre = If(txtNombre.Text = String.Empty, String.Empty, txtNombre.Text),
-            .referencia_picking = If(txtRefPick.Text = String.Empty, String.Empty, txtRefPick.Text),
-            .referencia1 = If(txtRef1.Text = String.Empty, String.Empty, txtRef1.Text),
-            .referencia2 = If(txtRef2.Text = String.Empty, String.Empty, txtRef2.Text),
-            .referencia3 = If(txtRef3.Text = String.Empty, String.Empty, txtRef3.Text),
-            .identificacion = If(ddlIdentificacion.SelectedValue = String.Empty, String.Empty, ddlIdentificacion.SelectedValue),
-            .valor_articulo = If(txtValArticulo.Text = String.Empty, Nothing, Double.Parse(txtValArticulo.Text, CultureInfo.InvariantCulture)),
-            .valor_asegurado = If(txtValAsegurado.Text = String.Empty, Nothing, Double.Parse(txtValAsegurado.Text, CultureInfo.InvariantCulture)),
+        Dim _Nuevo As New Articulo With {
+            .codigo = Validaciones.Validar_Campo_Vacio(txtCodigo.Text, String.Empty),
+            .nombre = Validaciones.Validar_Campo_Vacio(txtNombre.Text, String.Empty),
+            .referencia_picking = Validaciones.Validar_Campo_Vacio(txtRefPick.Text, String.Empty),
+            .referencia1 = Validaciones.Validar_Campo_Vacio(txtRef1.Text, String.Empty),
+            .referencia2 = Validaciones.Validar_Campo_Vacio(txtRef2.Text, String.Empty),
+            .referencia3 = Validaciones.Validar_Campo_Vacio(txtRef3.Text, String.Empty),
+            .identificacion = Validaciones.Validar_Campo_Vacio(ddlIdentificacion.SelectedValue, String.Empty),
+            .valor_articulo = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtValArticulo.Text, "0")),
+            .valor_asegurado = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtValAsegurado.Text, "0")),
             .valoracion_stock = valoracionStock,
             .valoracion_seguro = valoracionSeguro,
-            .peso = If(txtPeso.Text = String.Empty, Nothing, Double.Parse(txtPeso.Text, CultureInfo.InvariantCulture)),
-            .alto = If(txtAlto.Text = String.Empty, Nothing, Double.Parse(txtAlto.Text, CultureInfo.InvariantCulture)),
-            .largo = If(txtLargo.Text = String.Empty, Nothing, Double.Parse(txtLargo.Text, CultureInfo.InvariantCulture)),
-            .ancho = If(txtAncho.Text = String.Empty, Nothing, Double.Parse(txtAncho.Text, CultureInfo.InvariantCulture)),
-            .coeficiente_volumetrico = If(txtCoefVol.Text = String.Empty, Nothing, Double.Parse(txtCoefVol.Text, CultureInfo.InvariantCulture)),
+            .peso = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtPeso.Text, "0")),
+            .alto = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtAlto.Text, "0")),
+            .largo = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtLargo.Text, "0")),
+            .ancho = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtAncho.Text, "0")),
+            .coeficiente_volumetrico = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtCoefVol.Text, "0")),
             .cubicaje = M3,
             .peso_volumen = PesoVol,
-            .observaciones_articulo = If(txtObsArt.Text = String.Empty, Nothing, txtObsArt.Text),
-            .observaciones_generales = If(txtObsGen.Text = String.Empty, Nothing, txtObsGen.Text),
-            .stock_fisico = If(txtStockFisico.Text = String.Empty, 0, Double.Parse(txtStockFisico.Text, CultureInfo.InvariantCulture)),
-            .stock_minimo = If(txtStockMinimo.Text = String.Empty, 0, Double.Parse(txtStockMinimo.Text, CultureInfo.InvariantCulture)),
-            .id_almacen = If(ddlAlmacen.SelectedValue = String.Empty, Nothing, Convert.ToInt32(ddlAlmacen.SelectedValue)),
-            .id_tipo_facturacion = If(ddlTipoFacturacion.SelectedValue = String.Empty, 0, Convert.ToInt32(ddlTipoFacturacion.SelectedValue)),
-            .id_tipo_unidad = If(ddlTipoUnidad.SelectedValue = String.Empty, 0, Convert.ToInt32(ddlTipoUnidad.SelectedValue)),
-            .tipoArticulo = If(ddlTipoArticulo.SelectedValue = String.Empty, Nothing, ddlTipoArticulo.SelectedValue)
+            .observaciones_articulo = Validaciones.Validar_Campo_Vacio(txtObsArt.Text, String.Empty),
+            .observaciones_generales = Validaciones.Validar_Campo_Vacio(txtObsGen.Text, String.Empty),
+            .stock_fisico = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtStockFisico.Text, "0")),
+            .stock_minimo = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtStockMinimo.Text, "0")),
+            .id_almacen = Convert.ToInt32(ddlAlmacen.SelectedValue),
+            .id_tipo_facturacion = Validaciones.Validar_Campo_Vacio(ddlTipoFacturacion.SelectedValue, "0"),
+            .id_tipo_unidad = Validaciones.Validar_Campo_Vacio(ddlTipoUnidad.SelectedValue, "0"),
+            .tipoArticulo = Validaciones.Validar_Campo_Vacio(ddlTipoArticulo.SelectedValue, "0")
         }
 
         bError = Create.Articulo(_Nuevo)

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b037a304ffc84631a9e416dc48062f04" Name="Diagram1" ZoomLevel="99">
+      <Diagram DiagramId="dbb1b49b883645f1bf028bcef2e33e2d" Name="Diagram1">
         <EntityTypeShape EntityType="LogisPack_v1Model.C__MigrationHistory" Width="1.5" PointX="7.75" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="LogisPack_v1Model.Almacen" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="LogisPack_v1Model.Articulo" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />

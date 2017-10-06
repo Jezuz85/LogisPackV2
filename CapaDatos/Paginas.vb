@@ -10,6 +10,7 @@ Public Class Paginas
 
     Public Shared ReadOnly URL_Operacion As Paginas = New Paginas("../../Archivos/Operacion/")
     Public Shared ReadOnly URL_Articulos As Paginas = New Paginas("../../Archivos/Articulos/")
+    Public Shared ReadOnly URL_Temp As Paginas = New Paginas("../../Archivos/Temp/")
 
     Private Sub New(key As String)
         Me.Key = key

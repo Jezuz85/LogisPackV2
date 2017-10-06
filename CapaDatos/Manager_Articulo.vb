@@ -167,11 +167,20 @@ Public Class Manager_Articulo
             ValArticulo = Double.Parse(txtValArticulo, CultureInfo.InvariantCulture)
             StockFisico = Double.Parse(txtStockFisico, CultureInfo.InvariantCulture)
 
-            valoracionStock = (ValArticulo * StockFisico).ToString("#.000")
+            valoracionStock = (ValArticulo * StockFisico).ToString("#.00000")
 
         End If
 
         Return valoracionStock
+    End Function
+
+    ''' <summary>
+    ''' Metodo que calcula Valoracion Stock
+    ''' </summary>
+    Public Shared Function CalcularValoracionStock(_StockFisico As Double, _ValArticulo As Double) As Double
+
+        Return (_ValArticulo * _StockFisico).ToString("#.00000")
+
     End Function
 
     ''' <summary>

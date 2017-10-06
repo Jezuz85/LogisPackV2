@@ -950,6 +950,75 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
  Evento que filtra el gridview dependiendo del texto enviado
  </summary>
 </member>
+<member name="F:LogisPack_v1._2.CargaMasiva._upAdd_Articulo">
+<summary>
+Control upAdd_Articulo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.CargaMasiva._ucAlerta">
+<summary>
+Control ucAlerta.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.CargaMasiva._ddlCliente">
+<summary>
+Control ddlCliente.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.CargaMasiva._ddlAlmacen">
+<summary>
+Control ddlAlmacen.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.CargaMasiva._fuExcel">
+<summary>
+Control fuExcel.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.CargaMasiva._btnGuardar">
+<summary>
+Control btnGuardar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="M:LogisPack_v1._2.CargaMasiva.CargarListas">
+ <summary>
+ Metodo que llena los Dropdownlits con datos de la Base de Datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.CargaMasiva.btnGuardar_Click(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se ejecuta para cargar los articulo en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.CargaMasiva.ddlCliente_SelectedIndexChanged(System.Object,System.EventArgs)">
+ <summary>
+ Metodo que se ejecuta cuando se selecciona un cliente de la lista
+ </summary>
+</member>
 <member name="F:LogisPack_v1._2.Crear._upAdd_Articulo">
 <summary>
 Control upAdd_Articulo.
@@ -1283,18 +1352,18 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.Crear._txtStockMinimo">
+<member name="F:LogisPack_v1._2.Crear._txtStockFisico">
 <summary>
-Control txtStockMinimo.
+Control txtStockFisico.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.Crear._txtStockFisico">
+<member name="F:LogisPack_v1._2.Crear._txtStockMinimo">
 <summary>
-Control txtStockFisico.
+Control txtStockMinimo.
 </summary>
 <remarks>
 Campo generado automáticamente.

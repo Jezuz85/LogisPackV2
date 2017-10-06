@@ -421,6 +421,7 @@
     </Content>
     <Content Include="obj\Debug\CoreCompileInputs.cache" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="Portal\Articulo\CargaMasiva.aspx" />
     <Content Include="Portal\Operacion\Crear.aspx" />
     <Content Include="Portal\web.config">
       <SubType>Designer</SubType>
@@ -638,6 +639,13 @@
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Portal\Articulo\CargaMasiva.aspx.designer.vb">
+      <DependentUpon>CargaMasiva.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\Articulo\CargaMasiva.aspx.vb">
+      <DependentUpon>CargaMasiva.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Portal\Articulo\Crear.aspx.designer.vb">
       <DependentUpon>Crear.aspx</DependentUpon>
     </Compile>
@@ -776,6 +784,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Archivos\Operacion\" />
+    <Folder Include="Archivos\Temp\" />
     <Folder Include="Controllers\" />
     <Folder Include="obj\Release\" />
   </ItemGroup>

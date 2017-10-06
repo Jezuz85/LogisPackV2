@@ -1,3 +1,6 @@
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\obj\Debug\LogisPack_v1._2.Resources.resources
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\obj\Debug\LogisPack_v1.2.vbproj.GenerateResource.Cache
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\obj\Debug\LogisPack_v1.2.vbprojResolveAssemblyReference.cache
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\bin\ApplicationInsights.config
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\bin\LogisPack_v1.2.dll.config
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\bin\LogisPack_v1.2.dll
@@ -12,9 +15,6 @@ C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\bin\
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\bin\CapaDatos.dll.config
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\bin\System.Diagnostics.DiagnosticSource.xml
-C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\obj\Debug\LogisPack_v1.2.vbprojResolveAssemblyReference.cache
-C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\obj\Debug\LogisPack_v1._2.Resources.resources
-C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\obj\Debug\LogisPack_v1.2.vbproj.GenerateResource.Cache
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\obj\Debug\LogisPack_v1.2.dll
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\obj\Debug\WebForms_Basic.xml
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\LogisPack_v1.2\obj\Debug\LogisPack_v1.2.pdb
