@@ -351,9 +351,9 @@ Public Class Editar
     Private Function EditarArticulo(Edit As Articulo) As Boolean
 
         Dim M3 As Double = Manager_Articulo.CalcularM3(txtAlto.Text, txtAncho.Text, txtLargo.Text)
-        Dim PesoVol As Double = Manager_Articulo.CalcularPesoVolumetrico(txtAlto.Text, txtAncho.Text, txtLargo.Text, txtCoefVol.Text)
-        Dim valoracionStock As Double = Manager_Articulo.CalcularValoracionStock(txtStockFisico.Text, txtValArticulo.Text)
-        Dim valoracionSeguro As Double = Manager_Articulo.CalcularValoracionSeguro(txtValAsegurado.Text, txtStockFisico.Text)
+        Dim PesoVol As Double = Manager_Articulo.Calcular_PesoVolumetrico(txtAlto.Text, txtAncho.Text, txtLargo.Text, txtCoefVol.Text)
+        Dim valoracionStock As Double = Manager_Articulo.Calcular_ValoracionStock(txtStockFisico.Text, txtValArticulo.Text)
+        Dim valoracionSeguro As Double = Manager_Articulo.Calcular_ValoracionSeguro(txtValAsegurado.Text, txtStockFisico.Text)
 
         bError = True
 

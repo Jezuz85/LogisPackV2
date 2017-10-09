@@ -14,13 +14,13 @@ Option Explicit On
 Partial Public Class CargaMasiva
     
     '''<summary>
-    '''Control upAdd_Articulo.
+    '''Control _updatePpal.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents upAdd_Articulo As Global.System.Web.UI.UpdatePanel
+    Protected WithEvents _updatePpal As Global.System.Web.UI.UpdatePanel
     
     '''<summary>
     '''Control ucAlerta.
@@ -57,6 +57,24 @@ Partial Public Class CargaMasiva
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents fuExcel As Global.System.Web.UI.WebControls.FileUpload
+    
+    '''<summary>
+    '''Control phErrors.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents phErrors As Global.System.Web.UI.WebControls.PlaceHolder
+    
+    '''<summary>
+    '''Control pListaErrores.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pListaErrores As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
     '''Control btnGuardar.

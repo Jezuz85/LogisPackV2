@@ -435,6 +435,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\Microsoft_JhengHei.ttf" />
+    <Content Include="Archivos\Plantilla\PlantillaCargaMasiva.xlsx" />
     <None Include="My Project\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="obj\Debug\TempPE\My Project.Resources.Designer.vb.dll" />
     <Content Include="Portal\Almacen\index.aspx" />

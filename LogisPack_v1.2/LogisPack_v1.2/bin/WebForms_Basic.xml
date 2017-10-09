@@ -950,9 +950,9 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
  Evento que filtra el gridview dependiendo del texto enviado
  </summary>
 </member>
-<member name="F:LogisPack_v1._2.CargaMasiva._upAdd_Articulo">
+<member name="F:LogisPack_v1._2.CargaMasiva.__updatePpal">
 <summary>
-Control upAdd_Articulo.
+Control _updatePpal.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -989,6 +989,24 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:LogisPack_v1._2.CargaMasiva._fuExcel">
 <summary>
 Control fuExcel.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.CargaMasiva._phErrors">
+<summary>
+Control phErrors.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.CargaMasiva._pListaErrores">
+<summary>
+Control pListaErrores.
 </summary>
 <remarks>
 Campo generado automáticamente.

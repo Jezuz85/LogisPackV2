@@ -40,7 +40,23 @@ Public Class CargaMasiva
     Protected Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
 
         If Page.IsValid Then
-            Manager_Excel.CargaMasiva(fuExcel, "Articulos", ddlAlmacen.SelectedValue)
+
+            Dim resultadoCarga = Manager_Excel.CargaMasiva(fuExcel, "Articulos", ddlAlmacen.SelectedValue)
+
+            If resultadoCarga(0).Equals(Mensajes.CargaExito.ToString) Then
+                Modal.MostrarMensajeAlerta(_updatePpal, True, resultadoCarga(0))
+            Else
+                phErrors.Visible = True
+
+                Modal.MostrarMensajeAlerta(_updatePpal, False, Mensajes.CargaFalla.ToString & "" & fuExcel.FileName)
+                ControlesDinamicos.CrearLiteral("<ul class='list-group'>", pListaErrores)
+                For Each itemErrores In resultadoCarga
+                    ControlesDinamicos.CrearLiteral("<li class='list-group-item'>" & itemErrores & "</li>", pListaErrores)
+                Next
+                ControlesDinamicos.CrearLiteral("</ul>", pListaErrores)
+
+            End If
+
         End If
 
     End Sub

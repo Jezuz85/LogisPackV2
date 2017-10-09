@@ -382,26 +382,6 @@ CapaDatos
  Metodo que crea la tabla ubicacion, para añadir o eliminar filas, para agregar ubicaciones al articulo
  </summary>
 </member>
-<member name="M:CapaDatos.Manager_Articulo.CalcularM3(System.String,System.String,System.String)">
- <summary>
- Metodo que calcula M3
- </summary>
-</member>
-<member name="M:CapaDatos.Manager_Articulo.CalcularPesoVolumetrico(System.String,System.String,System.String,System.String)">
- <summary>
- Metodo que calcula Peso Volumetrico
- </summary>
-</member>
-<member name="M:CapaDatos.Manager_Articulo.CalcularValoracionStock(System.String,System.String)">
- <summary>
- Metodo que calcula Valoracion Stock
- </summary>
-</member>
-<member name="M:CapaDatos.Manager_Articulo.CalcularValoracionSeguro(System.String,System.String)">
- <summary>
- Metodo que calcula Valoracion Seguro
- </summary>
-</member>
 <member name="M:CapaDatos.Manager_Articulo.Reset_ArticuloLista(System.Web.UI.WebControls.Button,System.Web.UI.WebControls.DropDownList,System.Web.UI.WebControls.DropDownList,System.Web.UI.WebControls.TextBox,System.Web.UI.WebControls.TextBox)">
  <summary>
  Metodo que se ejecuta cuando se oprime el boton de Resetear, elimina los aritculos y reestablece la 
@@ -412,6 +392,26 @@ CapaDatos
  <summary>
  Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
  al articulo dependiendo del valor que tenga el coeficiente del almacen
+ </summary>
+</member>
+<member name="M:CapaDatos.Manager_Articulo.Calcular_ValoracionStock(System.Double,System.Double)">
+ <summary>
+ Metodo que calcula Valoracion Stock 
+ </summary>
+</member>
+<member name="M:CapaDatos.Manager_Articulo.Calcular_ValoracionSeguro(System.Double,System.Double)">
+ <summary>
+ Metodo que calcula Valoracion Seguro
+ </summary>
+</member>
+<member name="M:CapaDatos.Manager_Articulo.Calcular_PesoVolumetrico(System.Double,System.Double,System.Double,System.Double)">
+ <summary>
+ Metodo que calcula Peso Volumetrico
+ </summary>
+</member>
+<member name="M:CapaDatos.Manager_Articulo.CalcularM3(System.Double,System.Double,System.Double)">
+ <summary>
+ Metodo que calcula M3
  </summary>
 </member>
 <member name="M:CapaDatos.Modal.AbrirModal(System.String,System.String,System.Web.UI.Page)">

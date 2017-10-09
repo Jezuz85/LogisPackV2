@@ -106,105 +106,6 @@ Public Class Manager_Articulo
     End Function
 
     ''' <summary>
-    ''' Metodo que calcula M3
-    ''' </summary>
-    Public Shared Function CalcularM3(txtAlto As String, txtAncho As String, txtLargo As String) As Double
-        Dim m3 As Double = 0
-        Dim Alto As Double = 0
-        Dim Largo As Double = 0
-        Dim Ancho As Double = 0
-
-
-        If (txtAlto IsNot String.Empty And txtAncho IsNot String.Empty And txtLargo IsNot String.Empty) Then
-
-            Alto = Double.Parse(txtAlto, CultureInfo.InvariantCulture)
-            Largo = Double.Parse(txtAncho, CultureInfo.InvariantCulture)
-            Ancho = Double.Parse(txtLargo, CultureInfo.InvariantCulture)
-
-            m3 = ((Alto * Ancho * Largo) / 1000000).ToString("#.00000")
-        End If
-
-        Return m3
-
-    End Function
-
-    ''' <summary>
-    ''' Metodo que calcula Peso Volumetrico
-    ''' </summary>
-    Public Shared Function CalcularPesoVolumetrico(txtAlto As String, txtAncho As String, txtLargo As String, txtCoefVol As String) As Double
-        Dim PesoVol As Double = 0
-        Dim Alto As Double = 0
-        Dim Largo As Double = 0
-        Dim Ancho As Double = 0
-        Dim CoefVol As Double = 0
-
-
-        If (txtAlto IsNot String.Empty And txtAncho IsNot String.Empty And txtLargo IsNot String.Empty And txtCoefVol IsNot String.Empty) Then
-            Alto = Double.Parse(txtAlto, CultureInfo.InvariantCulture)
-            Largo = Double.Parse(txtAncho, CultureInfo.InvariantCulture)
-            Ancho = Double.Parse(txtLargo, CultureInfo.InvariantCulture)
-            CoefVol = Double.Parse(txtCoefVol, CultureInfo.InvariantCulture)
-
-            PesoVol = ((Alto * Ancho * Largo * CoefVol) / 1000000).ToString("#.00000")
-        End If
-
-
-        Return PesoVol
-
-    End Function
-
-    ''' <summary>
-    ''' Metodo que calcula Valoracion Stock
-    ''' </summary>
-    Public Shared Function CalcularValoracionStock(txtStockFisico As String, txtValArticulo As String) As Double
-
-        Dim valoracionStock As Double = 0
-        Dim ValArticulo As Double = 0
-        Dim StockFisico As Double = 0
-
-        If (txtValArticulo <> String.Empty And txtStockFisico <> String.Empty) Then
-
-            ValArticulo = Double.Parse(txtValArticulo, CultureInfo.InvariantCulture)
-            StockFisico = Double.Parse(txtStockFisico, CultureInfo.InvariantCulture)
-
-            valoracionStock = (ValArticulo * StockFisico).ToString("#.00000")
-
-        End If
-
-        Return valoracionStock
-    End Function
-
-    ''' <summary>
-    ''' Metodo que calcula Valoracion Stock
-    ''' </summary>
-    Public Shared Function CalcularValoracionStock(_StockFisico As Double, _ValArticulo As Double) As Double
-
-        Return (_ValArticulo * _StockFisico).ToString("#.00000")
-
-    End Function
-
-    ''' <summary>
-    ''' Metodo que calcula Valoracion Seguro
-    ''' </summary>
-    Public Shared Function CalcularValoracionSeguro(txtValAsegurado As String, txtStockFisico As String) As Double
-
-        Dim valoracionSeguro As Double = 0
-        Dim ValAsegurado As Double = 0
-        Dim StockFisico As Double = 0
-
-        If (txtValAsegurado <> String.Empty And txtStockFisico <> String.Empty) Then
-
-            ValAsegurado = Double.Parse(txtValAsegurado, CultureInfo.InvariantCulture)
-            StockFisico = Double.Parse(txtStockFisico, CultureInfo.InvariantCulture)
-            valoracionSeguro = (ValAsegurado * StockFisico).ToString("#.000")
-
-        End If
-
-        Return valoracionSeguro
-
-    End Function
-
-    ''' <summary>
     ''' Metodo que se ejecuta cuando se oprime el boton de Resetear, elimina los aritculos y reestablece la 
     ''' lista de Articulo
     ''' </summary>
@@ -239,5 +140,49 @@ Public Class Manager_Articulo
         End If
 
     End Sub
+
+    Public Shared Function LlenarCeros(valor As String) As String
+        Return valor.PadLeft(4, "0"c)
+    End Function
+
+
+    '------------------------CALCULOS---------------------------------
+    ''' <summary>
+    ''' Metodo que calcula Valoracion Stock 
+    ''' </summary>
+    Public Shared Function Calcular_ValoracionStock(_StockFisico As Double, _ValArticulo As Double) As Double
+
+        Return (_ValArticulo * _StockFisico).ToString("#.00000")
+
+    End Function
+
+    ''' <summary>
+    ''' Metodo que calcula Valoracion Seguro
+    ''' </summary>
+    Public Shared Function Calcular_ValoracionSeguro(_ValAsegurado As Double, _StockFisico As Double) As Double
+
+        Return (_ValAsegurado * _StockFisico).ToString("#.000")
+
+    End Function
+
+    ''' <summary>
+    ''' Metodo que calcula Peso Volumetrico
+    ''' </summary>
+    Public Shared Function Calcular_PesoVolumetrico(_Alto As Double, _Ancho As Double, _Largo As Double, _CoefVol As Double) As Double
+
+        Return ((_Alto * _Ancho * _Largo * _CoefVol) / 1000000).ToString("#.00000")
+
+    End Function
+
+    ''' <summary>
+    ''' Metodo que calcula M3
+    ''' </summary>
+    Public Shared Function CalcularM3(_Alto As Double, _Ancho As Double, _Largo As Double) As Double
+
+        Return ((_Alto * _Ancho * _Largo) / 1000000).ToString("#.00000")
+
+    End Function
+
+
 
 End Class
