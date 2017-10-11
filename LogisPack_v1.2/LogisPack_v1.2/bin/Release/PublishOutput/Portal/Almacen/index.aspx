@@ -7,7 +7,6 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-	<%: Scripts.Render("~/bundles/MisScripts") %>
 	
 	<script>
 		var prm = Sys.WebForms.PageRequestManager.getInstance();
@@ -17,6 +16,7 @@
 					$(document).ready(function () {
 						$find('<%=AutoCompleteExtender1.ClientID%>').set_contextKey($get("<%=hdfCliente.ClientID %>").value + "|" +
 							$get("<%=hdfFiltro.ClientID %>").value);
+						
 					});
 				}
 			});
@@ -112,7 +112,7 @@
 					</div>
 
 					<!-- SECCIÓN FILTROS -->
-					<div id="sectionContentFiltrosCabecera" class="section_Content collapse in">
+					<div id="sectionContentFiltrosCabecera" class="section_Content collapse">
 						<div class="row_Content">
 							<div class="row">
 								<div class="col-md-1">
@@ -311,7 +311,7 @@
 						<div class="modal-footer">
 							<div class="row">
 								<div class="col-md-4 col-md-offset-4">
-									<asp:Button ID="btnAdd" runat="server" Text="Registrar" class="btn btn-block btn-default"
+									<asp:Button ID="btnAdd" runat="server" Text="Guardar" class="btn btn-block btn-default"
 										ValidationGroup="ValidationAdd" />
 								</div>
 							</div>
@@ -506,7 +506,7 @@
 							<asp:HiddenField ID="hdfIDDel" runat="server" />
 
 							<div class="row">
-								<h4 class="text-center"><strong>¿Seguro desea eliminar este registro?</strong></h4>
+								<h4 class="text-center"><strong>¿Desea eliminar este registro?</strong></h4>
 							</div>
 						</div>
 

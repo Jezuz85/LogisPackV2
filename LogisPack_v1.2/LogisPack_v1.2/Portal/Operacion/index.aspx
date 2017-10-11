@@ -175,47 +175,47 @@
 
 				<hr />
 
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="col-md-6">
-                            <br />
-                            <strong>Total Entrada</strong>
-                        </div>
-                        <div class="col-md-6">
-                            <asp:TextBox ID="txtTotalEntrada" runat="server" ReadOnly="true"></asp:TextBox>
-                        </div>
-                    </div>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="col-md-6">
+							<br />
+							<strong>Total Entrada</strong>
+						</div>
+						<div class="col-md-6">
+							<asp:TextBox ID="txtTotalEntrada" runat="server" ReadOnly="true"></asp:TextBox>
+						</div>
+					</div>
 
-                    <div class="col-md-3">
-                        <div class="col-md-6">
-                            <br />
-                            <strong>Total Salida</strong>
-                        </div>
-                        <div class="col-md-6">
-                            <asp:TextBox ID="txtTotalSalida" runat="server" ReadOnly="true"></asp:TextBox>
-                        </div>
-                    </div>
+					<div class="col-md-3">
+						<div class="col-md-6">
+							<br />
+							<strong>Total Salida</strong>
+						</div>
+						<div class="col-md-6">
+							<asp:TextBox ID="txtTotalSalida" runat="server" ReadOnly="true"></asp:TextBox>
+						</div>
+					</div>
 
-                    <div class="col-md-3">
-                        <div class="col-md-6">
-                            <br />
-                            <strong>Stock Físico</strong>
-                        </div>
-                        <div class="col-md-6">
-                            <asp:TextBox ID="txtStockFisico" runat="server" ReadOnly="true"></asp:TextBox>
-                        </div>
-                    </div>
+					<div class="col-md-3">
+						<div class="col-md-6">
+							<br />
+							<strong>Stock Físico</strong>
+						</div>
+						<div class="col-md-6">
+							<asp:TextBox ID="txtStockFisico" runat="server" ReadOnly="true"></asp:TextBox>
+						</div>
+					</div>
 
-                    <div class="col-md-3">
-                        <div class="col-md-6">
-                            <br />
-                            <strong>Stock Mínimo</strong>
-                        </div>
-                        <div class="col-md-6">
-                            <asp:TextBox ID="txtStockMinimo" runat="server" ReadOnly="true"></asp:TextBox>
-                        </div>
-                    </div>
-                </div>
+					<div class="col-md-3">
+						<div class="col-md-6">
+							<br />
+							<strong>Stock Mínimo</strong>
+						</div>
+						<div class="col-md-6">
+							<asp:TextBox ID="txtStockMinimo" runat="server" ReadOnly="true"></asp:TextBox>
+						</div>
+					</div>
+				</div>
 
 			</div>
 

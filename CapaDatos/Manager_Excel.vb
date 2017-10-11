@@ -161,9 +161,6 @@ Public Class Manager_Excel
 
             If Proceed Then
                 xlWorkSheet.Activate()
-                cerrarExcel(xlApp, xlWorkBooks, xlWorkBook, xlWorkSheet, xlWorkSheets, xlCells, urlDoc)
-                _Errores.Add("File is open, if you close Excel just opened outside of this program we will crash-n-burn.")
-                Return _Errores
             Else
                 cerrarExcel(xlApp, xlWorkBooks, xlWorkBook, xlWorkSheet, xlWorkSheets, xlCells, urlDoc)
                 _Errores.Add(SheetName & " not found.")

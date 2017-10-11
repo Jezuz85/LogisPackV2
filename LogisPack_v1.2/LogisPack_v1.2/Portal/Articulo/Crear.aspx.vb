@@ -14,9 +14,8 @@ Public Class Crear
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         Page.Form.Attributes.Add("enctype", "multipart/form-data")
 
-        Manager_Usuario.ValidarMenu(Me, Master)
-
         If Manager_Usuario.ValidarAutenticado(User) Then
+            Manager_Usuario.ValidarMenu(Me, Master)
 
             idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
 
@@ -55,6 +54,7 @@ Public Class Crear
         Else
             Response.Redirect(Paginas.Login.ToString)
         End If
+
 
     End Sub
 
@@ -137,9 +137,9 @@ Public Class Crear
         Dim _alto As Double = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtAlto.Text, "0"))
         Dim _largo As Double = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtLargo.Text, "0"))
         Dim _ancho As Double = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtAncho.Text, "0"))
-        Dim _stock_fisico As Double = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtStockFisico.Text, "0"))
+        Dim _stock_fisico As Double = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtStockFisico.Text, 0))
         Dim _stock_minimo As Double = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtStockMinimo.Text, "0"))
-        Dim _valor_articulo As Double = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtValArticulo.Text, "0"))
+        Dim _valor_articulo As Double = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtValArticulo.Text, 0))
         Dim _coeficiente_volumetrico As Double = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtCoefVol.Text, "0"))
         Dim _valor_asegurado As Double = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtValAsegurado.Text, "0"))
 

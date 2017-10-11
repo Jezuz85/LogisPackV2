@@ -7,9 +7,8 @@ Public Class Detalles
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
-        Manager_Usuario.ValidarMenu(Me, Master)
-
         If Manager_Usuario.ValidarAutenticado(User) Then
+            Manager_Usuario.ValidarMenu(Me, Master)
             Dim IdArticulo = Cifrar.descifrarCadena_Num(Request.QueryString("id"))
             CargarArticulo(IdArticulo)
         Else
@@ -41,10 +40,10 @@ Public Class Detalles
         Dim PesoVolumen As String = Convert.ToDouble(itemArticulos.peso_volumen).ToString("##,##0.00000")
         Dim CoefVolumetrico As String = Convert.ToDouble(itemArticulos.coeficiente_volumetrico).ToString("##,##0.00000")
         Dim M3 As String = Convert.ToDouble(itemArticulos.cubicaje).ToString("##,##0.00000")
-        Dim ValorArticulo As String = Convert.ToDouble(itemArticulos.valor_articulo).ToString("##,##0.00")
-        Dim ValorAsegurado As String = Convert.ToDouble(itemArticulos.valor_asegurado).ToString("##,##0.00")
-        Dim ValoraciónStock As String = Convert.ToDouble(itemArticulos.valoracion_stock).ToString("##,##0.00")
-        Dim ValoraciónSeguro As String = Convert.ToDouble(itemArticulos.valoracion_seguro).ToString("##,##0.00")
+        Dim ValorArticulo As String = Convert.ToDouble(itemArticulos.valor_articulo).ToString("##,##0.00000")
+        Dim ValorAsegurado As String = Convert.ToDouble(itemArticulos.valor_asegurado).ToString("##,##0.00000")
+        Dim ValoraciónStock As String = Convert.ToDouble(itemArticulos.valoracion_stock).ToString("##,##0.00000")
+        Dim ValoraciónSeguro As String = Convert.ToDouble(itemArticulos.valoracion_seguro).ToString("##,##0.00000")
         Dim Peso As String = Convert.ToDouble(itemArticulos.peso).ToString("##,##0.00000")
 
 

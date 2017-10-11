@@ -37,6 +37,11 @@ CapaDatos
  Metodo que descifra una cadena de texto pasada por url y devuelve un entero
  </summary>
 </member>
+<member name="T:CapaDatos.Comandos">
+ <summary>
+ clase que se usa para enviar comandos sql para llenar el treeview
+ </summary>
+</member>
 <member name="M:CapaDatos.ControlesDinamicos.CrearLiteral(System.String,System.Web.UI.WebControls.Panel)">
  <summary>
  Metodo que crea dinamicamente un literal y lo añade a un panel enviado por parametro
@@ -160,15 +165,34 @@ CapaDatos
  devuelve un objeto tipo Almacen si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
+<member name="M:CapaDatos.Getter.Articulo(System.Int32)">
+ <summary>
+ Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
+ devuelve un objeto tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
+ </summary>
+</member>
 <member name="M:CapaDatos.Getter.Articulo_Ultimo">
  <summary>
  Metodo que devuelve el ultimo Articulo registrado en la base de datos
+ </summary>
+</member>
+<member name="M:CapaDatos.Getter.Articulo_Codigo(System.String)">
+ <summary>
+ Metodo que recibe un codigo del Articulo y lo consulta desde la Base de datos, 
+ devuelve una objeto de tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
 <member name="M:CapaDatos.Getter.Articulo_list(System.Int32)">
  <summary>
  Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
  devuelve una lista de objetos de tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
+ </summary>
+</member>
+<member name="M:CapaDatos.Getter.Articulo(System.Int32,CapaDatos.LogisPackEntities@)">
+ <summary>
+ Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, recibe un objeto contexto
+ para devolver el Articulo a editar con su respectivo contexto usado
+ devuelve un objeto tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
 <member name="M:CapaDatos.Getter.Picking_Articulo_list(System.Int32)">
@@ -192,19 +216,6 @@ CapaDatos
  devuelve un objeto tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
-<member name="M:CapaDatos.Getter.Articulo(System.Int32)">
- <summary>
- Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
- devuelve un objeto tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
- </summary>
-</member>
-<member name="M:CapaDatos.Getter.Articulo(System.Int32,CapaDatos.LogisPackEntities@)">
- <summary>
- Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, recibe un objeto contexto
- para devolver el Articulo a editar con su respectivo contexto usado
- devuelve un objeto tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
- </summary>
-</member>
 <member name="M:CapaDatos.Getter.Cliente(System.Int32)">
  <summary>
  Metodo que recibe un id del Cliente y lo consulta desde la Base de datos, 
@@ -224,6 +235,12 @@ CapaDatos
  devuelve un objeto tipo Tipo_Facturacion si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
+<member name="M:CapaDatos.Getter.Tipo_Facturacion(System.String)">
+ <summary>
+ Metodo que recibe un nombre del Tipo_Facturacion y lo consulta desde la Base de datos, 
+ devuelve un objeto tipo Tipo_Facturacion si fue exitoso, de lo contrario no devuelve nothing
+ </summary>
+</member>
 <member name="M:CapaDatos.Getter.Tipo_Facturacion(System.Int32,CapaDatos.LogisPackEntities@)">
  <summary>
  Metodo que recibe un id del Tipo_Facturacion y lo consulta desde la Base de datos, recibe un objeto contexto
@@ -234,6 +251,12 @@ CapaDatos
 <member name="M:CapaDatos.Getter.Tipo_Unidad(System.Int32)">
  <summary>
  Metodo que recibe un id del Tipo_Unidad y lo consulta desde la Base de datos, 
+ devuelve un objeto tipo Tipo_Unidad si fue exitoso, de lo contrario no devuelve nothing
+ </summary>
+</member>
+<member name="M:CapaDatos.Getter.Tipo_Unidad(System.String)">
+ <summary>
+ Metodo que recibe un nombre del Tipo_Unidad y lo consulta desde la Base de datos, 
  devuelve un objeto tipo Tipo_Unidad si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
@@ -299,6 +322,12 @@ CapaDatos
 <member name="M:CapaDatos.Listas.Articulo(System.Web.UI.WebControls.DropDownList@,System.Int32)">
  <summary>
  Metodo que recibe un objeto DropDownlist vacio y un id del Almacén , y lo devuelve con los datos de 
+ todos los articulos de tipo "Normal" de ese Almacén
+ </summary>
+</member>
+<member name="M:CapaDatos.Listas.Articulo_Almacen(System.Web.UI.WebControls.DropDownList@,System.Int32)">
+ <summary>
+ Metodo que recibe un objeto DropDownlist vacio y un id del Almacén , y lo devuelve con los datos de 
  todos los articulos de ese Almacén
  </summary>
 </member>
@@ -332,6 +361,27 @@ CapaDatos
  todos los roles existentes en la base de datos
  </summary>
 </member>
+<member name="M:CapaDatos.Manager_Articulo.Añadir_ArticuloLista(System.Web.UI.WebControls.TextBox,System.Web.UI.WebControls.DropDownList,System.Web.UI.WebControls.TextBox,System.Web.UI.WebControls.TextBox,System.Web.UI.WebControls.Button)">
+ <summary>
+ Metodo que se ejecuta cuando se oprime el boton de añadir articulo al artiulo picking
+ </summary>
+</member>
+<member name="M:CapaDatos.Manager_Articulo.CargarCoefVol(System.Int32,System.Web.UI.WebControls.TextBox@)">
+ <summary>
+ Metodo que consulta el Coeficiente Volumetrico del almacen y lo asigna al articulo a crear al 
+ cargar la pagina
+ </summary>
+</member>
+<member name="M:CapaDatos.Manager_Articulo.CambiarCliente(System.Web.UI.WebControls.DropDownList,System.Web.UI.WebControls.TextBox,System.Web.UI.WebControls.DropDownList)">
+ <summary>
+ Metodo que se ejecuta cuando se selecciona un cliente de la lista
+ </summary>
+</member>
+<member name="M:CapaDatos.Manager_Articulo.crearCamposListaUbicacion(System.Int32,System.Web.UI.WebControls.Panel)">
+ <summary>
+ Metodo que crea la tabla ubicacion, para añadir o eliminar filas, para agregar ubicaciones al articulo
+ </summary>
+</member>
 <member name="M:CapaDatos.Manager_Articulo.Reset_ArticuloLista(System.Web.UI.WebControls.Button,System.Web.UI.WebControls.DropDownList,System.Web.UI.WebControls.DropDownList,System.Web.UI.WebControls.TextBox,System.Web.UI.WebControls.TextBox)">
  <summary>
  Metodo que se ejecuta cuando se oprime el boton de Resetear, elimina los aritculos y reestablece la 
@@ -344,25 +394,24 @@ CapaDatos
  al articulo dependiendo del valor que tenga el coeficiente del almacen
  </summary>
 </member>
-<member name="M:CapaDatos.Manager_Articulo.CargarCoefVol(System.Int32,System.Web.UI.WebControls.TextBox@)">
+<member name="M:CapaDatos.Manager_Articulo.Calcular_ValoracionStock(System.Double,System.Double)">
  <summary>
- Metodo que consulta el Coeficiente Volumetrico del almacen y lo asigna al articulo a crear al 
- cargar la pagina
+ Metodo que calcula Valoracion Stock 
  </summary>
 </member>
-<member name="M:CapaDatos.Manager_Articulo.Añadir_ArticuloLista(System.Web.UI.WebControls.TextBox,System.Web.UI.WebControls.DropDownList,System.Web.UI.WebControls.TextBox,System.Web.UI.WebControls.TextBox,System.Web.UI.WebControls.Button)">
+<member name="M:CapaDatos.Manager_Articulo.Calcular_ValoracionSeguro(System.Double,System.Double)">
  <summary>
- Metodo que se ejecuta cuando se oprime el boton de añadir articulo al artiulo picking
+ Metodo que calcula Valoracion Seguro
  </summary>
 </member>
-<member name="M:CapaDatos.Manager_Articulo.CambiarCliente(System.Web.UI.WebControls.DropDownList,System.Web.UI.WebControls.TextBox,System.Web.UI.WebControls.DropDownList)">
+<member name="M:CapaDatos.Manager_Articulo.Calcular_PesoVolumetrico(System.Double,System.Double,System.Double,System.Double)">
  <summary>
- Metodo que se ejecuta cuando se selecciona un cliente de la lista
+ Metodo que calcula Peso Volumetrico
  </summary>
 </member>
-<member name="M:CapaDatos.Manager_Articulo.crearCamposListaUbicacion(System.Int32,System.Web.UI.WebControls.Panel)">
+<member name="M:CapaDatos.Manager_Articulo.CalcularM3(System.Double,System.Double,System.Double)">
  <summary>
- Metodo que crea la tabla ubicacion, para añadir o eliminar filas, para agregar ubicaciones al articulo
+ Metodo que calcula M3
  </summary>
 </member>
 <member name="M:CapaDatos.Modal.AbrirModal(System.String,System.String,System.Web.UI.Page)">
@@ -402,6 +451,11 @@ CapaDatos
  Metodo que recibe el gridview para llenar con los datos del articulo en la base de datos
  </summary>
 </member>
+<member name="M:CapaDatos.Tabla.ArticuloPicking(System.Web.UI.WebControls.GridView@,System.Int32)">
+ <summary>
+ Metodo que recibe el gridview para llenar con los datos del articulo picking en la base de datos
+ </summary>
+</member>
 <member name="M:CapaDatos.Tabla.Cliente(System.Web.UI.WebControls.GridView@,System.Int32,System.String,System.String,System.String,System.String)">
  <summary>
  Metodo que recibe el gridview para llenar con los datos del cliente en la base de datos
@@ -425,11 +479,6 @@ CapaDatos
 <member name="M:CapaDatos.Tabla.Historico(System.Web.UI.WebControls.GridView@,System.Int32,System.String,System.String,System.String,System.String)">
  <summary>
  Metodo que recibe el gridview para llenar con los datos de el historico en la base de datos
- </summary>
-</member>
-<member name="M:CapaDatos.Tabla.ArticuloPicking(System.Web.UI.WebControls.GridView@,System.Int32)">
- <summary>
- Metodo que recibe el gridview para llenar con los datos del articulo picking en la base de datos
  </summary>
 </member>
 <member name="M:CapaDatos.Update.Almacen(CapaDatos.Almacen,CapaDatos.LogisPackEntities@)">
@@ -492,6 +541,42 @@ CapaDatos
 <member name="M:CapaDatos.Utilidades_Grid.Get_IdRow(System.Web.UI.WebControls.GridView@,System.Web.UI.WebControls.GridViewCommandEventArgs,System.String)">
  <summary>
  Metodo para obtener el id de la fila de un Gridview
+ </summary>
+</member>
+<member name="M:CapaDatos.Utilidades_Grid.SetArrowsGrid(System.Web.UI.WebControls.GridView@,System.Web.UI.WebControls.GridViewRowEventArgs)">
+ <summary>
+ Metodo para colocar las flechas de ordenamiento en el gridview
+ </summary>
+</member>
+<member name="M:CapaDatos.Utilidades_Grid.sortGridView(System.Web.UI.WebControls.GridView@,System.Web.UI.WebControls.GridViewSortEventArgs,System.String@,System.String@)">
+ <summary>
+ Metodo para ordenar el gridview
+ </summary>
+</member>
+<member name="M:CapaDatos.Utilidades_Grid.InicializarGridView(System.Data.DataTable@)">
+ <summary>
+ Metodo que inicializa el gridview de los articulo que ocnforman el articulo picking,
+ en caso que el cliente quiera registrar un articulo picking
+ </summary>
+</member>
+<member name="M:CapaDatos.Utilidades_Grid.Update_GridView_CurrentDatatable(System.Data.DataTable@,System.Web.UI.WebControls.GridView@)">
+ <summary>
+ Metodo que actualiza el GridView con el DataTable actual
+ </summary>
+</member>
+<member name="M:CapaDatos.Utilidades_Grid.AddRowGridview(System.Data.DataTable@,System.String,System.String,System.String)">
+ <summary>
+ Metodo que aagrega una fila al gridview de lista articulos picking
+ </summary>
+</member>
+<member name="M:CapaDatos.Utilidades_Menu.CargarMenu(System.String,System.Web.UI.MasterPage)">
+ <summary>
+ Metodo para cargar menu dependiendo del rol
+ </summary>
+</member>
+<member name="M:CapaDatos.Utilidades_Menu.OcultarMenu(System.Web.UI.MasterPage)">
+ <summary>
+ Metodo para ocultar menu dependiendo del rol
  </summary>
 </member>
 <member name="M:CapaDatos.Utilidades_UpdatePanel.LimpiarControles(System.Web.UI.UpdatePanel)">

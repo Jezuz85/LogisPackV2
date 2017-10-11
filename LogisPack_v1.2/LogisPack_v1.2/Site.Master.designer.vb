@@ -50,6 +50,15 @@ Partial Public Class SiteMaster
     Protected WithEvents dropbtn_Articulo As Global.System.Web.UI.HtmlControls.HtmlAnchor
     
     '''<summary>
+    '''Control dropbtn_CargaMasiva.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents dropbtn_CargaMasiva As Global.System.Web.UI.HtmlControls.HtmlAnchor
+    
+    '''<summary>
     '''Control dropbtn_Operacion.
     '''</summary>
     '''<remarks>

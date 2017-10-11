@@ -8,9 +8,8 @@ Public Class index2
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        Manager_Usuario.ValidarMenu(Me, Master)
-
         If Manager_Usuario.ValidarAutenticado(User) Then
+            Manager_Usuario.ValidarMenu(Me, Master)
 
             If Manager_Usuario.ValidarRol(User, Rol.Admin.ToString) Then
 

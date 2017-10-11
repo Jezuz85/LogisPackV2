@@ -1,0 +1,190 @@
+﻿@font-face {
+	font-family: Microsoft JhengHei;
+	src: url('../fonts/Microsoft JhengHei.ttf') format('truetype');
+}
+
+html {
+	min-height: 100%;
+	position: relative;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+}
+
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.section_Content .row_Content {
+	display: inline-block;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.section_Content {
+	clear: both;
+	padding: 10px;
+}
+
+.btn-default {
+	background-color: #f0f0f0;
+	background-image: linear-gradient(#f0f0f0,#ddd);
+	padding: 8px 15px;
+	border: 1px solid gray;
+	color: #333;
+	cursor: pointer;
+	border-radius: 0;
+	outline: 0;
+}
+/*barar opciones*/
+.navbar-nav > li > a {
+	position: relative;
+	float: left;
+	border-left: 1px solid #c2c2c2;
+	border-right: 1px solid #c2c2c2;
+	border-top: 1px solid #c2c2c2;
+	color: #333;
+}
+
+.navbar {
+	margin-bottom: 0px;
+}
+
+.navbar-header > a {
+	color: #333;
+}
+
+.MainContentTitle {
+	width: 100%;
+}
+
+.breadcrumb {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	padding-top: 0px;
+	background-color: #c0c0c0;
+	color: #333;
+}
+
+	.breadcrumb > li + li:before {
+		color: #333;
+	}
+
+	.breadcrumb > li > a {
+		color: #333;
+		text-decoration: none;
+	}
+
+.navbar-nav > li {
+	margin-bottom: 0px;
+}
+/*drop menu*/
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	top: 20px;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+	.dropdown-content a {
+		color: black;
+		padding-top: 50%;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+		border: 1px solid #c2c2c2;
+	}
+
+	.dropdown-content a:hover {
+		background-color: #f1f1f1
+	}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+input[type=text], input[type=password], input[type=email], input[type=number], input[type=tel], input[type=url], input[type=search] {
+	width: 100%;
+}
+
+textarea {
+	width: 100%;
+}
+.row {
+	 margin-right: 0px; 
+	 margin-left: 0px; 
+}
+.navbar-nav > li > a {
+	 padding-top: 0px; 
+	 padding-bottom: 0px; 
+}
+.navbar {
+	min-height: 0px; 
+}
+select {
+	width: 100%;
+}
+.modal {
+	background-color: rgba(72, 66, 66, 0.35);
+}
+.MainContentTitle {
+	width: 96%;
+}
+
+.gridSortable a {
+	color: #000;
+	text-decoration: underline;
+}
+
+/*AutoComplete flyout */
+.completionList {
+	border: solid 1px #444444;
+	margin: 0px;
+	padding: 2px;
+	height: 100px;
+	overflow: auto;
+	background-color: #FFFFFF;
+}
+
+.listItem {
+	color: #1C1C1C;
+}
+
+.itemHighlighted {
+	background-color: #c0c0c0;
+}
+
+/*logo*/
+#masterCompanyLogo a {
+	background: url('../Content/images/logo.png') no-repeat;
+	width: 550px;
+	height: 135px;
+}
+.navbar {
+	width: 700px;
+}
+@font-face {
+	font-family: Microsoft_JhengHei;
+}
+/*ocultar grid*/
+.hiddenGrid {
+    display: none;
+}

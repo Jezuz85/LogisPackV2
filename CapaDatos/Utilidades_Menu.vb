@@ -38,6 +38,9 @@ Public Class Utilidades_Menu
 
             _Control = _Master.FindControl("dropbtn_TipoUnidad")
             _Control.Visible = False
+
+            _Control = _Master.FindControl("dropbtn_CargaMasiva")
+            _Control.Visible = False
         End If
 
     End Sub

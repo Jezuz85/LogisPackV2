@@ -73,10 +73,6 @@
                             <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
                                 ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="txtFechaOperacion" runat="server"
                                 ValidationGroup="ValidationAdd" />
-
-                            <span class="input-group-addon" id="btn" style="cursor: pointer;">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
                         </div>
                     </div>
                 </div>
@@ -130,7 +126,7 @@
                     <div class="col-md-3">
                         <strong>Cantidad de la Transacción</strong>
 
-                        <asp:TextBox runat="server" type="number" min="0" ID="txtCantidad" data-toggle="tooltip"
+                        <asp:TextBox runat="server" type="number" min="0" ID="txtCantidad" data-toggle="tooltip" step="0.01"
                             data-placement="bottom" title="Ingrese la cantidad del articulo" AutoPostBack="true"></asp:TextBox>
 
                         <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"

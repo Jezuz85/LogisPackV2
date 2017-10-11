@@ -265,9 +265,8 @@
 								</div>
 								<div class="col-md-6">
 
-									<asp:TextBox ID="txtCodigo" MaxLength="15" runat="server" ClientIDMode="Static"
-										data-toggle="tooltip" data-placement="bottom"
-										title="Ingrese el nombre del Almacén"></asp:TextBox>
+									<asp:TextBox ID="txtCodigo" MaxLength="15" runat="server" ClientIDMode="Static" 
+										data-toggle="tooltip" data-placement="bottom" title="Ingrese el nombre del Almacén"></asp:TextBox>
 
 									<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true"
 										Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true"
@@ -296,7 +295,7 @@
 									<h4><strong>Coeficiente volumétrico</strong></h4>
 								</div>
 								<div class="col-md-4">
-									<asp:TextBox ID="txtCoefVol" runat="server" ClientIDMode="Static" type="number" step="0.1"
+									<asp:TextBox ID="txtCoefVol" runat="server" ClientIDMode="Static" type="number" step="0.01"
 										data-toggle="tooltip" data-placement="bottom"
 										title="Ingrese la descripción de la categoria"></asp:TextBox>
 
@@ -392,7 +391,7 @@
 								</div>
 								<div class="col-md-4">
 
-									<asp:TextBox ID="txtEditCoefVol" runat="server" ClientIDMode="Static" type="number" step="0.1"
+									<asp:TextBox ID="txtEditCoefVol" runat="server" ClientIDMode="Static" type="number" step="0.01"
 										data-toggle="tooltip" data-placement="bottom"
 										title="Ingrese la descripción de la categoria"></asp:TextBox>
 

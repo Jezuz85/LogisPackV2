@@ -9,9 +9,8 @@ Public Class CargaMasiva
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Page.Form.Attributes.Add("enctype", "multipart/form-data")
 
-        Manager_Usuario.ValidarMenu(Me, Master)
-
         If Manager_Usuario.ValidarAutenticado(User) Then
+            Manager_Usuario.ValidarMenu(Me, Master)
 
             idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
 
@@ -23,6 +22,7 @@ Public Class CargaMasiva
         Else
             Response.Redirect(Paginas.Login.ToString)
         End If
+
     End Sub
 
     ''' <summary>

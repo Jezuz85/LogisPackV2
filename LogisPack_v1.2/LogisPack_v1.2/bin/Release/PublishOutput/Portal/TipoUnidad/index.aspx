@@ -3,6 +3,7 @@
 <%@ Register Src="~/Portal/WebUserControl/Alert.ascx" TagPrefix="uca" TagName="ucAlert" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
 	<asp:UpdatePanel ID="updatePanelPrinicpal" runat="server">
 		<ContentTemplate>
 
@@ -154,7 +155,7 @@
 							<div class="row">
 
 								<div class="col-md-4 col-md-offset-4">
-									<asp:Button ID="btnAdd" runat="server" Text="Registrar" class="btn btn-block btn-default" ValidationGroup="ValidationAdd" />
+									<asp:Button ID="btnAdd" runat="server" Text="Guardar" class="btn btn-block btn-default" ValidationGroup="ValidationAdd" />
 								</div>
 							</div>
 						</div>
@@ -234,7 +235,7 @@
 							<asp:HiddenField ID="hdfIDDel" runat="server" />
 
 							<div class="row">
-								<h4 class="text-center">¿Seguro desea eliminar este registro?</h4>
+								<h4 class="text-center">¿Desea eliminar este registro?</h4>
 							</div>
 						</div>
 

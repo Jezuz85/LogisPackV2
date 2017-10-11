@@ -93,15 +93,15 @@
 															<a id="dropbtn_Articulo" class="dropbtn" runat="server" href="~/Portal/Articulo/index">Articulo</a>
 
 															<div class="dropdown-content">
-																<a href="../../Portal/Articulo/Crear">Nuevo</a>
-																<a href="../../Portal/Articulo/CargaMasiva">Carga Masiva</a>
+																<a runat="server" href="~/Portal/Articulo/Crear">Nuevo</a>
+																<a  runat="server" id="dropbtn_CargaMasiva" href="~/Portal/Articulo/CargaMasiva" >Carga Masiva</a>
 															</div>
 														</li>
 														<li class="dropdown">
 															<a id="dropbtn_Operacion" runat="server" href="~/Portal/Operacion/index">Operacion</a>
 
 															<div class="dropdown-content">
-																<a href="../../Portal/Operacion/Crear">Nuevo</a>
+																<a runat="server" href="~/Portal/Operacion/Crear">Nuevo</a>
 															</div>
 														</li>
 														<li class="dropdown">

@@ -144,7 +144,7 @@
 					</div>
 
 					<div class="col-md-3">
-						<strong>Referencia picking</strong><br />
+						<strong>Referencia Picking</strong><br />
 						<asp:TextBox runat="server" MaxLength="25" ID="txtRefPick" data-toggle="tooltip"
 							data-placement="bottom" title="Ingrese la referencia picking del artículo"></asp:TextBox>
 					</div>
@@ -243,32 +243,32 @@
 				<div class="row" onkeydown="return (event.keyCode!=13)">
 					<div class="col-md-2">
 						<strong>Peso (Kgs)</strong>
-						<asp:TextBox runat="server" min="0" max="9999,999" ID="txtPeso" data-toggle="tooltip" type="number"
-							step="0.001" data-placement="bottom" title="Ingrese el peso del artículo"></asp:TextBox>
+						<asp:TextBox runat="server" min="0" max="9999.99999" ID="txtPeso" data-toggle="tooltip" type="number"
+							step="0.00001" data-placement="bottom" title="Ingrese el peso del artículo"></asp:TextBox>
 					</div>
 
 					<div class="col-md-2">
 						<strong>Alto(cm)</strong>
-						<asp:TextBox runat="server" min="0" max="9999,9" ID="txtAlto" data-toggle="tooltip" type="number"
-							step="0.1" data-placement="bottom" title="Ingrese la altura del artículo"></asp:TextBox>
+						<asp:TextBox runat="server" min="0" max="9999.99999" ID="txtAlto" data-toggle="tooltip" type="number"
+							step="0.00001" data-placement="bottom" title="Ingrese la altura del artículo"></asp:TextBox>
 					</div>
 
 					<div class="col-md-2">
 						<strong>Largo (cm)</strong>
-						<asp:TextBox runat="server" min="0" max="9999,9" ID="txtLargo" data-toggle="tooltip" type="number"
-							step="0.1" data-placement="bottom" title="Ingrese el largo del artículo"></asp:TextBox>
+						<asp:TextBox runat="server" min="0" max="9999.99999" ID="txtLargo" data-toggle="tooltip" type="number"
+							step="0.00001" data-placement="bottom" title="Ingrese el largo del artículo"></asp:TextBox>
 					</div>
 
 					<div class="col-md-2">
 						<strong>Ancho(cm)</strong>
-						<asp:TextBox runat="server" min="0" max="9999,9" ID="txtAncho" data-toggle="tooltip" type="number"
-							step="0.1" data-placement="bottom" title="Ingrese el ancho del artículo"></asp:TextBox>
+						<asp:TextBox runat="server" min="0" max="9999.99999" ID="txtAncho" data-toggle="tooltip" type="number"
+							step="0.00001" data-placement="bottom" title="Ingrese el ancho del artículo"></asp:TextBox>
 					</div>
 
 					<div class="col-md-2">
-						<strong>Coef. Volumétrico</strong>
-						<asp:TextBox runat="server" min="0" max="9999,9" ID="txtCoefVol" data-toggle="tooltip" type="number"
-							step="0.1" data-placement="bottom" title="Ingrese el coeficiente volumétrico del artículo"></asp:TextBox>
+						<strong>Coef. Volumétrico Kgs(m<sup>3</sup>)</strong>
+						<asp:TextBox runat="server" min="0" max="9999.99999" ID="txtCoefVol" data-toggle="tooltip" type="number"
+							step="0.00001" data-placement="bottom" title="Ingrese el coeficiente volumétrico del artículo"></asp:TextBox>
 					</div>
 
 				</div>
@@ -294,14 +294,14 @@
 					</div>
 
 					<div class="col-md-2">
-						<strong>Valor artículo</strong><br />
-						<asp:TextBox runat="server" min="0" ID="txtValArticulo" data-toggle="tooltip" type="number"
-							step="0.01" data-placement="bottom" title="Ingrese el valor del artículo"></asp:TextBox>
+						<strong>Valor Artículo</strong><br />
+						<asp:TextBox runat="server" min="0" max="9999.99" ID="txtValArticulo" data-toggle="tooltip" 
+							type="number" step="0.01" data-placement="bottom" title="Ingrese el valor del artículo"></asp:TextBox>
 					</div>
 
 					<div class="col-md-2">
 						<strong>Valor Asegurado</strong><br />
-						<asp:TextBox runat="server" ID="txtValAsegurado" type="number" step="0.01"
+						<asp:TextBox runat="server" ID="txtValAsegurado" type="number" min="0" max="9999.99" step="0.01"
 							data-placement="bottom" title="Ingrese el valor asegurado"></asp:TextBox>
 					</div>
 				</div>
@@ -348,16 +348,17 @@
 				<hr />
 
 				<div class="row" onkeydown="return (event.keyCode!=13)">
+
 					<div class="col-md-2">
-						<strong>Stock mínimo</strong>
-						<asp:TextBox runat="server" min="0" ID="txtStockMinimo" data-toggle="tooltip"
-							type="number" step="0.01" data-placement="bottom" title="Ingrese el stock mínimo del artículo"></asp:TextBox>
+						<strong>Stock Físico</strong>
+						<asp:TextBox runat="server" min="0" ID="txtStockFisico" data-toggle="tooltip" type="number"
+							step="0.01" data-placement="bottom" title="Ingrese el stock fisico del artículo"></asp:TextBox>
 					</div>
 
 					<div class="col-md-2">
-						<strong>Stock físico</strong>
-						<asp:TextBox runat="server" min="0" ID="txtStockFisico" data-toggle="tooltip" type="number"
-							step="0.01" data-placement="bottom" title="Ingrese el stock fisico del artículo"></asp:TextBox>
+						<strong>Stock Mínimo</strong>
+						<asp:TextBox runat="server" min="0" ID="txtStockMinimo" data-toggle="tooltip"
+							type="number" step="0.01" data-placement="bottom" title="Ingrese el stock mínimo del artículo"></asp:TextBox>
 					</div>
 				</div>
 

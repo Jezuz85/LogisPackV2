@@ -169,8 +169,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.0\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Core" />
@@ -294,20 +294,6 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
-    <Content Include="Archivos\Articulos\Img_1110_1%2809-18-17_8-28-07%29.jpg" />
-    <Content Include="Archivos\Articulos\Img_1110_2%2809-18-17_8-28-07%29.jpg" />
-    <Content Include="Archivos\Articulos\Img_1110_3%2809-18-17_8-28-07%29.jpg" />
-    <Content Include="Archivos\Articulos\Img_1110_4%2809-18-17_8-28-07%29.jpg" />
-    <Content Include="Archivos\Articulos\Img_1110_5%2809-18-17_8-28-07%29.jpg" />
-    <Content Include="Archivos\Articulos\Img_1111_1%2809-18-17_8-29-16%29.jpg" />
-    <Content Include="Archivos\Articulos\Img_1111_2%2809-18-17_8-29-16%29.jpg" />
-    <Content Include="Archivos\Articulos\Img_1111_3%2809-18-17_8-29-17%29.jpg" />
-    <Content Include="Archivos\Articulos\Img_1111_4%2809-18-17_8-29-19%29.jpg" />
-    <Content Include="Archivos\Articulos\Img_1111_5%2809-18-17_8-29-20%29.jpg" />
-    <Content Include="Archivos\Articulos\Img_1112_1%2809-18-17_8-30-08%29.jpg" />
-    <Content Include="Archivos\Articulos\Img_1112_2%2809-18-17_8-30-09%29.jpg" />
-    <Content Include="Archivos\Articulos\Img_1112_3%2809-18-17_8-30-09%29.jpg" />
-    <Content Include="Archivos\Articulos\Img_1113_1%2809-18-17_8-31-12%29.jpg" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\AspNet.ScriptManager.bootstrap.dll" />
     <Content Include="bin\AspNet.ScriptManager.jQuery.dll" />
@@ -784,6 +770,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Archivos\Articulos\" />
     <Folder Include="Archivos\Operacion\" />
     <Folder Include="Archivos\Temp\" />
     <Folder Include="Controllers\" />

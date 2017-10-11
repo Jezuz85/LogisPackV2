@@ -1,7 +1,5 @@
 ﻿<%@ Master Language="VB" AutoEventWireup="true" CodeBehind="Site.master.vb" Inherits="LogisPack_v1._2.SiteMaster" %>
-
 <%@ Register Src="~/Portal/WebUserControl/MsjModal.ascx" TagPrefix="ucm" TagName="ucMsjModal" %>
-
 <%@ Import Namespace="LogisPack_v1._2" %>
 <%@ Import Namespace="Microsoft.AspNet.Identity" %>
 
@@ -9,6 +7,7 @@
 
 <html lang="es">
 <head runat="server">
+
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,7 +19,7 @@
 
 	<webopt:BundleReference runat="server" Path="~/Content/css" />
 	<webopt:BundleReference runat="server" Path="~/Content/Direcline" />
-
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
@@ -40,13 +39,13 @@
 								<tbody>
 									<tr>
 										<td id="masterSession">
-											
+
 											<asp:LoginView runat="server" ViewStateMode="Disabled">
-												<anonymoustemplate>
+												<AnonymousTemplate>
 													<div>
 														<a runat="server" href="~/Account/Login">Iniciar sesión</a>
 													</div>
-												</anonymoustemplate>
+												</AnonymousTemplate>
 												<LoggedInTemplate>
 													<div>
 														Usuario:
@@ -64,7 +63,7 @@
 															<%: Manager_Usuario.GetNombreCliente(Context.User.Identity.GetUserId)  %>
 														</span>
 													</div>
-												   
+
 													<a runat="server" href="~/Account/Register">Registrar</a>|
 
 													<asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
@@ -78,54 +77,42 @@
 										<td id="masterMainMenu">
 
 											<div class="navbar">
-													<div class="navbar-collapse collapse">
-														<ul class="nav navbar-nav">
-															<li><a id="dropbtn_Inicio" runat="server" href="~/">Inicio</a></li>
-															<li class="dropdown">
-																<a id="dropbtn_Cliente" class="dropbtn" runat="server" href="~/Portal/Cliente/index">Cliente</a>
+												<div class="navbar-collapse collapse">
+													<ul class="nav navbar-nav">
+														<li><a id="dropbtn_Inicio" runat="server" href="~/">Inicio</a></li>
 
-																<%--<div class="dropdown-content">
-																	<a href="#">Nuevo Cliente</a>
-																</div>--%>
-															</li>
-															<li class="dropdown">
-																<a id="dropbtn_Almacen" runat="server" href="~/Portal/Almacen/index">Almacen</a>
+														<li class="dropdown">
+															<a id="dropbtn_Cliente" class="dropbtn" runat="server" href="~/Portal/Cliente/index">Cliente</a>
+														</li>
 
-																<%--<div class="dropdown-content">
-																	<a href="#">Nuevo Almacén</a>
-																</div>--%>
-															</li>
-															<li class="dropdown">
-																<a id="dropbtn_Articulo" class="dropbtn" runat="server" href="~/Portal/Articulo/index">Articulo</a>
+														<li class="dropdown">
+															<a id="dropbtn_Almacen" runat="server" href="~/Portal/Almacen/index">Almacen</a>
+														</li>
 
-																<div class="dropdown-content">
-																	<a href="../../Portal/Articulo/Crear">Nuevo</a>
-																</div>
-															</li>
-															<li class="dropdown">
-																<a id="dropbtn_Operacion" runat="server" href="~/Portal/Operacion/index">Operacion</a>
+														<li class="dropdown">
+															<a id="dropbtn_Articulo" class="dropbtn" runat="server" href="~/Portal/Articulo/index">Articulo</a>
 
-																<div class="dropdown-content">
-																	<a href="../../Portal/Operacion/Crear">Nuevo</a>
-																</div>
-															</li>
-															<li class="dropdown">
-																<a id="dropbtn_TipoFacturacion" runat="server" href="~/Portal/TipoFacturacion/index">Tipo de Facturación</a>
+															<div class="dropdown-content">
+																<a runat="server" href="~/Portal/Articulo/Crear">Nuevo</a>
+																<a  runat="server" id="dropbtn_CargaMasiva" href="~/Portal/Articulo/CargaMasiva" >Carga Masiva</a>
+															</div>
+														</li>
+														<li class="dropdown">
+															<a id="dropbtn_Operacion" runat="server" href="~/Portal/Operacion/index">Operacion</a>
 
-																<%--<div class="dropdown-content">
-																	<a href="#">Nuevo Tipo de Facturación</a>
-																</div>--%>
-															</li>
-															<li class="dropdown">
-																<a id="dropbtn_TipoUnidad" runat="server" href="~/Portal/TipoUnidad/index">Tipo de Unidad</a>
+															<div class="dropdown-content">
+																<a runat="server" href="~/Portal/Operacion/Crear">Nuevo</a>
+															</div>
+														</li>
+														<li class="dropdown">
+															<a id="dropbtn_TipoFacturacion" runat="server" href="~/Portal/TipoFacturacion/index">Tipo de Facturación</a>
+														</li>
+														<li class="dropdown">
+															<a id="dropbtn_TipoUnidad" runat="server" href="~/Portal/TipoUnidad/index">Tipo de Unidad</a>
+														</li>
+													</ul>
+												</div>
 
-																<%--<div class="dropdown-content">
-																	<a href="#">Nuevo Tipo de Unidad</a>
-																</div>--%>
-															</li>
-														</ul>
-													</div>
-												
 											</div>
 										</td>
 									</tr>
@@ -137,38 +124,26 @@
 			</table>
 		</div>
 
-		<asp:ScriptManager ID="ScriptManager1" runat="server" />
+		<asp:ScriptManager ID="ScriptManager1" runat="server">
+			<Scripts>
+
+
+			</Scripts>
+		</asp:ScriptManager>
 
 		<asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
-		
+
 		<%: Scripts.Render("~/bundles/MisScripts") %>
 
 		<hr />
+
 		<footer>
 			<p>&copy; <%: DateTime.Now.Year %> - Logis Pack - Direcline.com</p>
 		</footer>
 
 		<!-- Msj Modal -->
 		<ucm:ucMsjModal runat="server" ID="ucMsjModal" />
+
 	</form>
-	
-	
-	<script type="text/javascript">
-		window.onload = function () {
-			load(); 
-		};
-
-		var prm = Sys.WebForms.PageRequestManager.getInstance();
-		if (prm != null) {
-			prm.add_endRequest(function (sender, e) {
-				if (sender._postBackSettings.panelsToUpdate != null) {
-					load();
-				}
-			});
-		};
-
-		
-	</script>
-
 </body>
 </html>

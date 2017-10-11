@@ -11,9 +11,8 @@ Public Class Crear1
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Page.Form.Attributes.Add("enctype", "multipart/form-data")
 
-        Manager_Usuario.ValidarMenu(Me, Master)
-
         If Manager_Usuario.ValidarAutenticado(User) Then
+            Manager_Usuario.ValidarMenu(Me, Master)
 
             idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
 
@@ -53,7 +52,7 @@ Public Class Crear1
 
             Dim _Articulo = Getter.Articulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
 
-            Dim StockFisico As Double = Double.Parse(_Articulo.stock_fisico, CultureInfo.InvariantCulture)
+            Dim StockFisico As Double = _Articulo.stock_fisico
             Dim CantidadSolicitada As Double = Double.Parse(txtCantidad.Text, CultureInfo.InvariantCulture)
 
             If (CantidadSolicitada > StockFisico) And (ddlTipoOperacion.SelectedValue = "Sal") Then
@@ -115,7 +114,7 @@ Public Class Crear1
                     .fecha_transaccion = txtFechaOperacion.Text,
                     .tipo_transaccion = ddlTipoOperacion.SelectedValue,
                     .referencia_ubicacion = txtRef.Text,
-                    .cantidad_transaccion = Convert.ToDouble(txtCantidad.Text),
+                    .cantidad_transaccion = unidadesSolicitadas,
                     .id_articulo = Convert.ToInt32(ddlListaArticulos.SelectedValue),
                     .documento_transaccion = urlDoc
                 }
