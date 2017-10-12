@@ -296,12 +296,12 @@
 					<div class="col-md-2">
 						<strong>Valor Artículo</strong><br />
 						<asp:TextBox runat="server" min="0" max="9999.99" ID="txtValArticulo" data-toggle="tooltip" 
-							type="number" step="0.01" data-placement="bottom" title="Ingrese el valor del artículo"></asp:TextBox>
+							type="number" step="0.00001" data-placement="bottom" title="Ingrese el valor del artículo"></asp:TextBox>
 					</div>
 
 					<div class="col-md-2">
 						<strong>Valor Asegurado</strong><br />
-						<asp:TextBox runat="server" ID="txtValAsegurado" type="number" min="0" max="9999.99" step="0.01"
+						<asp:TextBox runat="server" ID="txtValAsegurado" type="number" min="0" max="9999.99" step="0.00001"
 							data-placement="bottom" title="Ingrese el valor asegurado"></asp:TextBox>
 					</div>
 				</div>
@@ -352,13 +352,13 @@
 					<div class="col-md-2">
 						<strong>Stock Físico</strong>
 						<asp:TextBox runat="server" min="0" ID="txtStockFisico" data-toggle="tooltip" type="number"
-							step="0.01" data-placement="bottom" title="Ingrese el stock fisico del artículo"></asp:TextBox>
+							step="0.00001" data-placement="bottom" title="Ingrese el stock fisico del artículo"></asp:TextBox>
 					</div>
 
 					<div class="col-md-2">
 						<strong>Stock Mínimo</strong>
 						<asp:TextBox runat="server" min="0" ID="txtStockMinimo" data-toggle="tooltip"
-							type="number" step="0.01" data-placement="bottom" title="Ingrese el stock mínimo del artículo"></asp:TextBox>
+							type="number" step="0.00001" data-placement="bottom" title="Ingrese el stock mínimo del artículo"></asp:TextBox>
 					</div>
 				</div>
 

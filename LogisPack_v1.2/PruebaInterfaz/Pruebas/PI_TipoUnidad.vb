@@ -1,62 +1,83 @@
 ﻿Imports OpenQA.Selenium
+Imports CapaDatos
 
 <TestClass()>
 Public Class PI_TipoUnidad
 
     Dim driver As IWebDriver
     Dim ListaTD As List(Of IWebElement)
+    Dim _TipoUni1 As Tipo_Unidad
+    Dim _TipoUni2 As Tipo_Unidad
+    Dim viewTipoUnidad As ViewTipoUnidad = New ViewTipoUnidad()
 
     <TestMethod()>
     Public Sub Registrar_TipoUnidad()
 
-        driver = Modulo_Usuario.IniciarSesion(driver)
+        '------inicio sesion
+        Modulo_Usuario.IniciarSesion(driver)
 
-        driver = Modulo_TipoUnidad.Registrar(driver)
+        '------registro un tipo de unidad
+        Modulo_TipoUnidad.RegistrarTipoUnidad(driver, _TipoUni1)
 
-        ListaTD = Funciones.GetListaTD(driver, Valores.ID_GridTipoUnidad.ToString)
+        '------obtengo los valores del grid
+        Funciones.Obtener_FilasGrid(driver, viewTipoUnidad.GridPrinicipal, ListaTD)
 
-        Dim resultado = Funciones.Buscar_Valor_Grid(ListaTD, Valores.Nom_TipoUnidad.ToString)
-        Assert.AreEqual(True, resultado)
+        '------valido que los valores existen en el grid
+        Pruebas.Existencia_Valor_Grid(driver, ListaTD, _TipoUni1.nombre)
 
-        driver = Modulo_TipoUnidad.Eliminar(driver, Valores.Nom_TipoUnidad.ToString)
+        '------elimino el tipo de unidad
+        Modulo_TipoUnidad.Eliminar(driver, _TipoUni1.nombre)
 
+        '------cierro el driver
         Funciones.CerrarDriver(driver)
     End Sub
 
     <TestMethod()>
-    Public Sub EditarTipoUnidad()
+    Public Sub Editar_TipoUnidad()
 
-        driver = Modulo_Usuario.IniciarSesion(driver)
+        '------inicio sesion
+        Modulo_Usuario.IniciarSesion(driver)
 
-        driver = Modulo_TipoUnidad.Registrar(driver)
+        '------registro un tipo de unidad
+        Modulo_TipoUnidad.RegistrarTipoUnidad(driver, _TipoUni1)
 
-        driver = Modulo_TipoUnidad.Editar(driver)
+        '------edito un tipo de unidad
+        Modulo_TipoUnidad.Crear_TipoUni2(_TipoUni2)
+        Modulo_TipoUnidad.Editar(driver, _TipoUni2)
 
-        ListaTD = Funciones.GetListaTD(driver, Valores.ID_GridTipoUnidad.ToString)
+        '------obtengo los valores del grid
+        Funciones.Obtener_FilasGrid(driver, viewTipoUnidad.GridPrinicipal, ListaTD)
 
-        Dim resultado = Funciones.Buscar_Valor_Grid(ListaTD, Valores.Nom_TipoUnidad_Edit.ToString)
-        Assert.AreEqual(True, resultado)
+        '------valido que los valores existen en el grid
+        Pruebas.Existencia_Valor_Grid(driver, ListaTD, _TipoUni2.nombre)
 
-        driver = Modulo_TipoUnidad.Eliminar(driver, Valores.Nom_TipoUnidad_Edit.ToString)
+        '------elimino el tipo de unidad
+        Modulo_TipoUnidad.Eliminar(driver, _TipoUni2.nombre)
 
+        '------cierro el driver
         Funciones.CerrarDriver(driver)
 
     End Sub
 
     <TestMethod()>
-    Public Sub EliminarTipoUnidad()
+    Public Sub Eliminar_TipoUnidad()
 
-        driver = Modulo_Usuario.IniciarSesion(driver)
+        '------inicio sesion
+        Modulo_Usuario.IniciarSesion(driver)
 
-        driver = Modulo_TipoUnidad.Registrar(driver)
+        '------registro un tipo de unidad
+        Modulo_TipoUnidad.RegistrarTipoUnidad(driver, _TipoUni1)
 
-        driver = Modulo_TipoUnidad.Eliminar(driver, Valores.Nom_TipoUnidad.ToString)
+        '------obtengo los valores del grid
+        Funciones.Obtener_FilasGrid(driver, viewTipoUnidad.GridPrinicipal, ListaTD)
 
-        ListaTD = Funciones.GetListaTD(driver, Valores.ID_GridTipoUnidad.ToString)
+        '------valido que los valores existen en el grid
+        Pruebas.Existencia_Valor_Grid(driver, ListaTD, _TipoUni1.nombre)
 
-        Dim resultado = Funciones.Buscar_Valor_Grid(ListaTD, Valores.Nom_TipoUnidad.ToString)
-        Assert.AreEqual(False, resultado)
+        '------elimino el tipo de unidad
+        Modulo_TipoUnidad.Eliminar(driver, _TipoUni1.nombre)
 
+        '------cierro el driver
         Funciones.CerrarDriver(driver)
 
     End Sub
@@ -64,19 +85,25 @@ Public Class PI_TipoUnidad
     <TestMethod()>
     Public Sub Buscar_TipoUnidad_Nombre()
 
-        driver = Modulo_Usuario.IniciarSesion(driver)
+        '------inicio sesion
+        Modulo_Usuario.IniciarSesion(driver)
 
-        driver = Modulo_TipoUnidad.Registrar(driver)
+        '------registro un tipo de unidad
+        Modulo_TipoUnidad.RegistrarTipoUnidad(driver, _TipoUni1)
 
-        driver = Funciones.Buscar_Texto_Grid(driver, Valores.Filtro_Nom.ToString, Valores.Nom_TipoUnidad_Buscar.ToString)
+        '-----Opcion Buscar
+        Funciones.Buscar_Texto_Grid(driver, viewTipoUnidad.Filtro_Nom, Valores.Nom_TipoUnidad_Buscar.ToString)
 
-        ListaTD = Funciones.GetListaTD(driver, Valores.ID_GridTipoUnidad.ToString)
-        Dim resultado = Funciones.Buscar_Valor_Grid(ListaTD, Valores.Nom_TipoUnidad.ToString)
-        Assert.AreEqual(True, resultado)
+        '------obtengo los valores del grid
+        Funciones.Obtener_FilasGrid(driver, viewTipoUnidad.GridPrinicipal, ListaTD)
 
+        '------valido que los valores existen en el grid
+        Pruebas.Existencia_Valor_Grid(driver, ListaTD, Valores.Nom_TipoUnidad.ToString)
 
-        driver = Modulo_TipoUnidad.Eliminar(driver, Valores.Nom_TipoUnidad.ToString)
+        '------elimino el tipo de unidad
+        Modulo_TipoUnidad.Eliminar(driver, _TipoUni1.nombre)
 
+        '------cierro el driver
         Funciones.CerrarDriver(driver)
 
     End Sub
@@ -84,21 +111,22 @@ Public Class PI_TipoUnidad
     <TestMethod()>
     Public Sub ResetearGridTipoUnidad()
 
-        driver = Modulo_Usuario.IniciarSesion(driver)
+        '------inicio sesion
+        Modulo_Usuario.IniciarSesion(driver)
 
-        driver = Modulo_TipoUnidad.Registrar(driver)
+        '------registro un tipo de unidad
+        Modulo_TipoUnidad.RegistrarTipoUnidad(driver, _TipoUni1)
 
-        driver = Funciones.Buscar_Texto_Grid(driver, Valores.Filtro_Nom.ToString, Valores.Nom_TipoUnidad_Buscar.ToString)
-        Dim filasAntes As Integer = Funciones.Obtener_CantidadFilasGrid(driver, Valores.ID_GridTipoUnidad.ToString)
+        '-----Opcion Buscar
+        Funciones.Buscar_Texto_Grid(driver, viewTipoUnidad.Filtro_Nom, Valores.Nom_TipoUnidad_Buscar.ToString)
 
-        driver = Funciones.ResetearGrid(driver)
+        '-----valdia que el boton reset funciona
+        Pruebas.Validar_btnReset(driver)
 
-        Dim filasDespues As Integer = Funciones.Obtener_CantidadFilasGrid(driver, Valores.ID_GridTipoUnidad.ToString)
+        '------elimino el tipo de unidad
+        Modulo_TipoUnidad.Eliminar(driver, _TipoUni1.nombre)
 
-        Assert.AreNotEqual(filasAntes, filasDespues)
-
-        driver = Modulo_TipoUnidad.Eliminar(driver, Valores.Nom_TipoUnidad.ToString)
-
+        '------cierro el driver
         Funciones.CerrarDriver(driver)
 
     End Sub

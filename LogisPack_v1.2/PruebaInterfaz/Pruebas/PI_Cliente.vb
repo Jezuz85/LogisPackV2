@@ -1,131 +1,142 @@
-﻿Imports OpenQA.Selenium
+﻿Imports CapaDatos
+Imports OpenQA.Selenium
 
 <TestClass()>
 Public Class PI_Cliente
 
     Dim driver As IWebDriver
     Dim ListaTD As List(Of IWebElement)
+    Dim _Cliente1 As Cliente
+    Dim _Cliente2 As Cliente
+    Dim viewCliente As ViewCliente = New ViewCliente()
 
     <TestMethod()>
     Public Sub RegistrarCliente()
+        '------inicio sesion
+        Modulo_Usuario.IniciarSesion(driver)
 
-        driver = Modulo_Usuario.IniciarSesion(driver)
+        '------registro un cliente
+        Modulo_Cliente.RegistrarCliente(driver, _Cliente1)
 
-        driver = Modulo_Cliente.Registrar(driver)
+        '------obtengo los valores del grid
+        Funciones.Obtener_FilasGrid(driver, viewCliente.GridPrinicipal, ListaTD)
 
-        ListaTD = Funciones.GetListaTD(driver, Valores.ID_GridEmpresa.ToString)
+        '------valido que los valores existen en el grid
+        Modulo_Cliente.Existencia_Valor_Grid(driver, ListaTD, _Cliente1)
 
-        Dim resultado = Funciones.Buscar_Valor_Grid(ListaTD, Valores.Cod_Empresa.ToString)
-        Assert.AreEqual(True, resultado)
-
-        resultado = Funciones.Buscar_Valor_Grid(ListaTD, Valores.Nom_Empresa.ToString)
-        Assert.AreEqual(True, resultado)
-
-        driver = Modulo_Cliente.Eliminar(driver, Valores.Cod_Empresa.ToString)
-
-        Funciones.CerrarDriver(driver)
+        '------termino prueba
+        Funciones.CerrarPrueba(driver, _Cliente1)
 
     End Sub
 
     <TestMethod()>
     Public Sub EditarCliente()
 
-        driver = Modulo_Usuario.IniciarSesion(driver)
+        '------inicio sesion
+        Modulo_Usuario.IniciarSesion(driver)
 
-        driver = Modulo_Cliente.Registrar(driver)
+        '------registro un cliente
+        Modulo_Cliente.RegistrarCliente(driver, _Cliente1)
 
-        driver = Modulo_Cliente.Editar(driver)
+        '------edito el cliente
+        Modulo_Cliente.Crear_Cliente2(_Cliente2)
+        Modulo_Cliente.Editar(driver, _Cliente1, _Cliente2)
 
-        ListaTD = Funciones.GetListaTD(driver, Valores.ID_GridEmpresa.ToString)
+        '------obtengo los valores del grid
+        Funciones.Obtener_FilasGrid(driver, viewCliente.GridPrinicipal, ListaTD)
 
-        Dim resultado = Funciones.Buscar_Valor_Grid(ListaTD, Valores.Cod_Empresa_Edit.ToString)
-        Assert.AreEqual(True, resultado)
+        '------valido que los valores existen en el grid
+        Modulo_Cliente.Existencia_Valor_Grid(driver, ListaTD, _Cliente2)
 
-        resultado = Funciones.Buscar_Valor_Grid(ListaTD, Valores.Nom_Empresa_Edit.ToString)
-        Assert.AreEqual(True, resultado)
-
-        driver = Modulo_Cliente.Eliminar(driver, Valores.Cod_Empresa_Edit.ToString)
-
-        Funciones.CerrarDriver(driver)
+        '------termino prueba
+        Funciones.CerrarPrueba(driver, _Cliente2)
 
     End Sub
 
     <TestMethod()>
     Public Sub EliminarCliente()
 
-        driver = Modulo_Usuario.IniciarSesion(driver)
+        '------inicio sesion
+        Modulo_Usuario.IniciarSesion(driver)
 
-        driver = Modulo_Cliente.Registrar(driver)
+        '------registro un cliente
+        Modulo_Cliente.RegistrarCliente(driver, _Cliente1)
 
-        driver = Modulo_Cliente.Eliminar(driver, Valores.Cod_Empresa.ToString)
+        '------obtengo los valores del grid
+        Funciones.Obtener_FilasGrid(driver, viewCliente.GridPrinicipal, ListaTD)
 
-        ListaTD = Funciones.GetListaTD(driver, Valores.ID_GridEmpresa.ToString)
+        '------valido que los valores existen en el grid
+        Modulo_Cliente.Existencia_Valor_Grid(driver, ListaTD, _Cliente1)
 
-        Dim resultado = Funciones.Buscar_Valor_Grid(ListaTD, Valores.Cod_Empresa.ToString)
-        Assert.AreEqual(False, resultado)
-
-        Funciones.CerrarDriver(driver)
+        '------termino prueba
+        Funciones.CerrarPrueba(driver, _Cliente1)
 
     End Sub
 
     <TestMethod()>
     Public Sub BuscarClienteCodigo()
 
-        driver = Modulo_Usuario.IniciarSesion(driver)
+        '------inicio sesion
+        Modulo_Usuario.IniciarSesion(driver)
 
-        driver = Modulo_Cliente.Registrar(driver)
+        '------registro un cliente
+        Modulo_Cliente.RegistrarCliente(driver, _Cliente1)
 
-        driver = Funciones.Buscar_Texto_Grid(driver, Valores.Filtro_Cod.ToString, Valores.Cod_Empresa.ToString)
+        '-----Opcion Buscar
+        Funciones.Buscar_Texto_Grid(driver, viewCliente.Filtro_Cod, _Cliente1.codigo)
 
-        ListaTD = Funciones.GetListaTD(driver, Valores.ID_GridEmpresa.ToString)
-        Dim resultado = Funciones.Buscar_Valor_Grid(ListaTD, Valores.Cod_Empresa.ToString)
-        Assert.AreEqual(True, resultado)
+        '------obtengo los valores del grid
+        Funciones.Obtener_FilasGrid(driver, viewCliente.GridPrinicipal, ListaTD)
 
-        driver = Modulo_Cliente.Eliminar(driver, Valores.Cod_Empresa.ToString)
+        '------valido que los valores existen en el grid
+        Modulo_Cliente.Existencia_Valor_Grid(driver, ListaTD, _Cliente1)
 
-        Funciones.CerrarDriver(driver)
+        '------termino prueba
+        Funciones.CerrarPrueba(driver, _Cliente1)
 
     End Sub
 
     <TestMethod()>
     Public Sub BuscarClienteNombre()
 
-        driver = Modulo_Usuario.IniciarSesion(driver)
+        '------inicio sesion
+        Modulo_Usuario.IniciarSesion(driver)
 
-        driver = Modulo_Cliente.Registrar(driver)
+        '------registro un cliente
+        Modulo_Cliente.RegistrarCliente(driver, _Cliente1)
 
-        driver = Funciones.Buscar_Texto_Grid(driver, Valores.Filtro_Nom.ToString, Valores.Nom_Empresa_Buscar.ToString)
+        '-----Opcion Buscar
+        Funciones.Buscar_Texto_Grid(driver, viewCliente.Filtro_Nom, Valores.Nom_Cliente_Buscar.ToString)
 
-        ListaTD = Funciones.GetListaTD(driver, Valores.ID_GridEmpresa.ToString)
-        Dim resultado = Funciones.Buscar_Valor_Grid(ListaTD, Valores.Nom_Empresa.ToString)
-        Assert.AreEqual(True, resultado)
+        '------obtengo los valores del grid
+        Funciones.Obtener_FilasGrid(driver, viewCliente.GridPrinicipal, ListaTD)
 
+        '------valido que los valores existen en el grid
+        Modulo_Cliente.Existencia_Valor_Grid(driver, ListaTD, _Cliente1)
 
-        driver = Modulo_Cliente.Eliminar(driver, Valores.Cod_Empresa.ToString)
-
-        Funciones.CerrarDriver(driver)
+        '------termino prueba
+        Funciones.CerrarPrueba(driver, _Cliente1)
 
     End Sub
 
     <TestMethod()>
     Public Sub ResetearGridCliente()
 
-        driver = Modulo_Usuario.IniciarSesion(driver)
+        '------inicio sesion
+        Modulo_Usuario.IniciarSesion(driver)
 
-        driver = Modulo_Cliente.Registrar(driver)
+        '------registro un cliente
+        Modulo_Cliente.RegistrarCliente(driver, _Cliente1)
 
-        driver = Funciones.Buscar_Texto_Grid(driver, Valores.Filtro_Nom.ToString, Valores.Nom_Empresa_Buscar.ToString)
-        Dim filasAntes As Integer = Funciones.Obtener_CantidadFilasGrid(driver, Valores.ID_GridEmpresa.ToString)
+        '-----Opcion Buscar
+        Funciones.Buscar_Texto_Grid(driver, viewCliente.Filtro_Nom, Valores.Nom_Cliente_Buscar.ToString)
 
-        driver = Funciones.ResetearGrid(driver)
+        '-----valdia que el boton reset funciona
+        Pruebas.Validar_btnReset(driver)
 
-        Dim filasDespues As Integer = Funciones.Obtener_CantidadFilasGrid(driver, Valores.ID_GridEmpresa.ToString)
+        '------termino prueba
+        Funciones.CerrarPrueba(driver, _Cliente1)
 
-        Assert.AreNotEqual(filasAntes, filasDespues)
-
-        driver = Modulo_Cliente.Eliminar(driver, Valores.Cod_Empresa.ToString)
-
-        Funciones.CerrarDriver(driver)
 
     End Sub
 

@@ -112,11 +112,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Modulos\Funciones.vb" />
+    <Compile Include="Modulos\Modulo_Almacen.vb" />
+    <Compile Include="Modulos\Modulo_Articulo.vb" />
+    <Compile Include="Modulos\Pruebas.vb" />
     <Compile Include="Modulos\Valores.vb" />
     <Compile Include="Modulos\Modulo_Cliente.vb" />
     <Compile Include="Modulos\Modulo_TipoFacturacion.vb" />
     <Compile Include="Modulos\Modulo_Usuario.vb" />
     <Compile Include="Modulos\Modulo_TipoUnidad.vb" />
+    <Compile Include="Pruebas\PI_Almacen.vb" />
+    <Compile Include="Pruebas\PI_Articulo.vb" />
     <Compile Include="Pruebas\PI_TipoFacturacion.vb" />
     <Compile Include="Pruebas\PI_TipoUnidad.vb" />
     <Compile Include="Pruebas\PI_Usuario.vb" />
@@ -136,6 +141,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Vistas\ViewAlmacen.vb" />
+    <Compile Include="Vistas\ViewArticulo.vb" />
+    <Compile Include="Vistas\ViewCliente.vb" />
+    <Compile Include="Vistas\ViewTipoFacturacion.vb" />
+    <Compile Include="Vistas\ViewTipoUnidad.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -157,6 +167,13 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CapaDatos\CapaDatos.vbproj">
+      <Project>{cda7a603-e1f7-4807-8064-907048030111}</Project>
+      <Name>CapaDatos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

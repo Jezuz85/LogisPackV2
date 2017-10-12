@@ -8,7 +8,7 @@ Public Class PI_Usuario
     <TestMethod()>
     Public Sub Loguearse()
 
-        driver = Modulo_Usuario.IniciarSesion(driver)
+        Modulo_Usuario.IniciarSesion(driver)
 
         Dim currentURL As String = driver.Url
         Assert.AreEqual(currentURL, "http://www.midemo.es/logispack/")

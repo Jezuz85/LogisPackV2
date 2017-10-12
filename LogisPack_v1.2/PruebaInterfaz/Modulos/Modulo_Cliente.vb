@@ -1,69 +1,92 @@
 ﻿Imports System.Threading
+Imports CapaDatos
 Imports OpenQA.Selenium
 Imports OpenQA.Selenium.Chrome
 
 Public Class Modulo_Cliente
 
-    Public Shared Function Registrar(ByRef driver As ChromeDriver) As ChromeDriver
+    Public Shared ListaTD As List(Of IWebElement)
+    Public Shared viewCliente As ViewCliente = New ViewCliente()
 
-        driver.Navigate().GoToUrl(Valores.URLEmpresa.ToString)
+    Public Shared Sub Crear_Cliente1(ByRef _Cliente As Cliente)
 
-        Funciones.ID_Boton_Click(driver, Valores.ID_btnAddModal.ToString)
+        _Cliente = New Cliente With {
+            .codigo = Valores.Cod_Cliente.ToString,
+            .nombre = Valores.Nom_Cliente.ToString
+        }
 
-        Thread.Sleep(2000)
+    End Sub
+    Public Shared Sub Crear_Cliente2(ByRef _Cliente As Cliente)
 
-        Funciones.ID_Text_Change(driver, Valores.ID_txtCodigo_Add.ToString, Valores.Cod_Empresa.ToString)
+        _Cliente = New Cliente With {
+            .codigo = Valores.Cod_Cliente_Edit.ToString,
+            .nombre = Valores.Nom_Cliente_Edit.ToString
+        }
 
-        Funciones.ID_Text_Change(driver, Valores.ID_txtNombre_Add.ToString, Valores.Nom_Empresa.ToString)
+    End Sub
 
-        Funciones.ID_Boton_Click(driver, Valores.ID_btnAdd.ToString)
 
-        Thread.Sleep(2000)
+    Public Shared Sub Registrar(ByRef driver As ChromeDriver, ByRef _Cliente As Cliente)
 
-        Return driver
+        driver.Navigate().GoToUrl(viewCliente.URL)
 
-    End Function
-
-    Public Shared Function Editar(ByRef driver As ChromeDriver) As ChromeDriver
-
-        Dim ListaTD As List(Of IWebElement)
-
-        ListaTD = Funciones.Obtener_FilasGrid(driver, Valores.ID_GridEmpresa.ToString)
-
-        Funciones.BotonGrid_Click(ListaTD, Valores.Cod_Empresa.ToString, Valores.ColBtn_Edit_Emp.ToString)
-
-        Thread.Sleep(2000)
-
-        Funciones.ID_Clear_Text_Change(driver, Valores.ID_txtCodigo_Edit.ToString, Valores.Cod_Empresa_Edit.ToString)
-
-        Funciones.ID_Clear_Text_Change(driver, Valores.ID_txtNombre_Edit.ToString, Valores.Nom_Empresa_Edit.ToString)
-
-        Funciones.ID_Boton_Click(driver, Valores.ID_btnEditModal.ToString)
+        Funciones.ID_Boton_Click(driver, viewCliente.BotonAddModal.ToString)
 
         Thread.Sleep(2000)
 
-        Return driver
+        Funciones.SendText_ById(driver, viewCliente.txtCodigoAdd, _Cliente.codigo)
+        Funciones.SendText_ById(driver, viewCliente.txtNombreAdd, _Cliente.nombre)
 
-    End Function
-
-    Public Shared Function Eliminar(ByRef driver As ChromeDriver, valorEliminar As String) As ChromeDriver
-
-        Dim ListaTD As List(Of IWebElement)
-
-        ListaTD = Funciones.Obtener_FilasGrid(driver, Valores.ID_GridEmpresa.ToString)
-
-        Funciones.BotonGrid_Click(ListaTD, valorEliminar, Valores.ColBtn_Elim_Emp.ToString)
+        Funciones.ID_Boton_Click(driver, viewCliente.BotonAdd)
 
         Thread.Sleep(2000)
 
-        Funciones.ID_Boton_Click(driver, Valores.ID_btnDelete.ToString)
+    End Sub
+
+    Public Shared Sub Editar(ByRef driver As ChromeDriver, ByRef _Cliente1 As Cliente, ByRef _Cliente2 As Cliente)
+
+        Funciones.Obtener_FilasGrid(driver, viewCliente.GridPrinicipal, ListaTD)
+
+        Funciones.BotonGrid_Click(ListaTD, _Cliente1.codigo, viewCliente.BotonEditModal)
 
         Thread.Sleep(2000)
 
-        Return driver
+        Funciones.Clear_SendText_ById(driver, viewCliente.txtcodigoEdit, _Cliente2.codigo)
+        Funciones.Clear_SendText_ById(driver, viewCliente.txtNombreEdit, _Cliente2.nombre)
 
-    End Function
+        Funciones.ID_Boton_Click(driver, viewCliente.BotonEdit)
 
+        Thread.Sleep(2000)
 
+    End Sub
+
+    Public Shared Sub Eliminar(ByRef driver As ChromeDriver, valorEliminar As String)
+
+        driver.Navigate().GoToUrl(viewCliente.URL)
+
+        Funciones.Obtener_FilasGrid(driver, viewCliente.GridPrinicipal, ListaTD)
+
+        Funciones.BotonGrid_Click(ListaTD, valorEliminar, viewCliente.BotonDeleteModal)
+
+        Thread.Sleep(2000)
+
+        Funciones.ID_Boton_Click(driver, viewCliente.BotonDelete)
+
+        Thread.Sleep(2000)
+
+    End Sub
+
+    Public Shared Sub RegistrarCliente(ByRef driver As ChromeDriver, ByRef _Cliente As Cliente)
+        Crear_Cliente1(_Cliente)
+        Registrar(driver, _Cliente)
+    End Sub
+
+    Public Shared Sub Existencia_Valor_Grid(ByRef driver As ChromeDriver, ByRef _ListaTD As List(Of IWebElement),
+                                            ByRef _Cliente As Cliente)
+
+        '------valido que los valores existen en el grid
+        Pruebas.Existencia_Valor_Grid(driver, _ListaTD, _Cliente.codigo)
+        Pruebas.Existencia_Valor_Grid(driver, _ListaTD, _Cliente.nombre)
+    End Sub
 
 End Class

@@ -134,13 +134,13 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>09/18/2017 14:09:21</publishTime>
     </File>
     <File Include="bin/CapaDatos.dll">
-      <publishTime>10/10/2017 13:17:06</publishTime>
+      <publishTime>10/12/2017 18:04:00</publishTime>
     </File>
     <File Include="bin/CapaDatos.dll.config">
-      <publishTime>10/10/2017 13:11:30</publishTime>
+      <publishTime>10/11/2017 07:54:00</publishTime>
     </File>
     <File Include="bin/CapaDatos.pdb">
-      <publishTime>10/10/2017 13:17:06</publishTime>
+      <publishTime>10/12/2017 18:04:00</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>09/18/2017 14:09:21</publishTime>
@@ -149,10 +149,10 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>09/18/2017 14:09:21</publishTime>
     </File>
     <File Include="bin/LogisPack_v1.2.dll">
-      <publishTime>10/10/2017 13:18:06</publishTime>
+      <publishTime>10/12/2017 18:04:23</publishTime>
     </File>
     <File Include="bin/LogisPack_v1.2.pdb">
-      <publishTime>10/10/2017 13:18:06</publishTime>
+      <publishTime>10/12/2017 18:04:23</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>09/18/2017 14:09:21</publishTime>
@@ -383,7 +383,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>07/28/2017 08:15:02</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.DiagnosticSource.dll">
-      <publishTime>06/27/2017 11:17:34</publishTime>
+      <publishTime>07/19/2017 10:01:30</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>09/18/2017 14:09:21</publishTime>
@@ -410,7 +410,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>09/18/2017 14:09:21</publishTime>
     </File>
     <File Include="bin/WebForms_Basic.xml">
-      <publishTime>10/10/2017 13:18:04</publishTime>
+      <publishTime>10/12/2017 18:04:20</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>09/18/2017 14:09:21</publishTime>
@@ -638,22 +638,22 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>09/18/2017 14:09:21</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>03/10/2017 16:16:21</publishTime>
+      <publishTime>10/10/2017 14:47:26</publishTime>
     </File>
     <File Include="Portal/Almacen/index.aspx">
-      <publishTime>04/10/2017 10:25:03</publishTime>
+      <publishTime>10/11/2017 08:11:12</publishTime>
     </File>
     <File Include="Portal/Articulo/CargaMasiva.aspx">
       <publishTime>09/10/2017 13:44:08</publishTime>
     </File>
     <File Include="Portal/Articulo/Crear.aspx">
-      <publishTime>06/10/2017 11:46:53</publishTime>
+      <publishTime>10/12/2017 18:06:31</publishTime>
     </File>
     <File Include="Portal/Articulo/Detalles.aspx">
       <publishTime>03/10/2017 10:19:20</publishTime>
     </File>
     <File Include="Portal/Articulo/Editar.aspx">
-      <publishTime>04/10/2017 08:28:50</publishTime>
+      <publishTime>10/12/2017 18:03:30</publishTime>
     </File>
     <File Include="Portal/Articulo/index.aspx">
       <publishTime>04/10/2017 11:29:44</publishTime>
@@ -812,7 +812,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>09/18/2017 14:09:21</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/10/2017 13:54:29</publishTime>
+      <publishTime>10/12/2017 18:04:25</publishTime>
     </File>
   </ItemGroup>
 </Project>

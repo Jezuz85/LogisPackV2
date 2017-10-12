@@ -8,72 +8,82 @@
         Return Key
     End Function
 
-#Region "Botones"
-    Public Shared ReadOnly ID_btnAddModal As Valores = New Valores("MainContent_btnRegistrar")
-    Public Shared ReadOnly ID_btnAdd As Valores = New Valores("MainContent_btnAdd")
-    Public Shared ReadOnly ID_btnEditModal As Valores = New Valores("MainContent_btnEdit")
-    Public Shared ReadOnly ID_btnReset As Valores = New Valores("MainContent_btnReset")
-    Public Shared ReadOnly ID_btnDelete As Valores = New Valores("MainContent_btnDelete")
-    Public Shared ReadOnly ID_btnBuscar As Valores = New Valores("MainContent_btnBuscar")
-#End Region
-
-#Region "Textbox"
-    Public Shared ReadOnly ID_txtNombre As Valores = New Valores("txtNombre")
-    Public Shared ReadOnly ID_txtCodigo_Add As Valores = New Valores("txtCodigo_Add")
-    Public Shared ReadOnly ID_txtNombre_Add As Valores = New Valores("txtNombre_Add")
-    Public Shared ReadOnly ID_txtCodigo_Edit As Valores = New Valores("txtCodigo_Edit")
-    Public Shared ReadOnly ID_txtNombre_Edit As Valores = New Valores("txtNombre_Edit")
-    Public Shared ReadOnly ID_txtSearch As Valores = New Valores("MainContent_txtSearch")
-#End Region
-
-#Region "DropDownlist"
-
-    Public Shared ReadOnly ID_ddlBuscar As Valores = New Valores("MainContent_ddlBuscar")
-#End Region
-
-#Region "GridView"
-
-    Public Shared ReadOnly ID_GridEmpresa As Valores = New Valores("MainContent_GridView1")
-    Public Shared ReadOnly ID_GridTipoFact As Valores = New Valores("MainContent_GridView1")
-    Public Shared ReadOnly ID_GridTipoUnidad As Valores = New Valores("MainContent_GridView1")
-#End Region
-
 #Region "Empresa"
-    Public Shared ReadOnly URLEmpresa As Valores = New Valores("http://www.midemo.es/logispack/Portal/Cliente/index")
-    Public Shared ReadOnly Nom_Empresa As Valores = New Valores("NombreSelenium")
-    Public Shared ReadOnly Nom_Empresa_Edit As Valores = New Valores("NombreSelenium_1")
-    Public Shared ReadOnly Nom_Empresa_Buscar As Valores = New Valores("NombreSel")
-    Public Shared ReadOnly Cod_Empresa As Valores = New Valores("CodSel")
-    Public Shared ReadOnly Cod_Empresa_Edit As Valores = New Valores("CodSel_1")
-    Public Shared ReadOnly Filtro_Cod As Valores = New Valores("Codigo")
-    Public Shared ReadOnly Filtro_Nom As Valores = New Valores("Nombre")
-    Public Shared ReadOnly ColBtn_Edit_Emp As Valores = New Valores("4")
-    Public Shared ReadOnly ColBtn_Elim_Emp As Valores = New Valores("5")
+    Public Shared ReadOnly Nom_Cliente As Valores = New Valores("Cli_Selenium")
+    Public Shared ReadOnly Nom_Cliente2 As Valores = New Valores("Cli2_Selenium")
+    Public Shared ReadOnly Nom_Cliente_Edit As Valores = New Valores("Cli_Selenium_1")
+    Public Shared ReadOnly Nom_Cliente_Buscar As Valores = New Valores("Cli_Sel")
+    Public Shared ReadOnly Cod_Cliente As Valores = New Valores("001_Sel")
+    Public Shared ReadOnly Cod_Cliente2 As Valores = New Valores("002_Sel")
+    Public Shared ReadOnly Cod_Cliente_Edit As Valores = New Valores("001_Sel_1")
 #End Region
 
 #Region "Tipo de facturacion"
-
-    Public Shared ReadOnly URLTipoFacturacion As Valores = New Valores("http://www.midemo.es/logispack/Portal/TipoFacturacion/index")
-
     Public Shared ReadOnly Nom_TipoFact As Valores = New Valores("TipoFact_Selenium")
     Public Shared ReadOnly Nom_TipoFact_Edit As Valores = New Valores("TipoFact_Selenium_1")
     Public Shared ReadOnly Nom_TipoFact_Buscar As Valores = New Valores("TipoFact_Sel")
-    Public Shared ReadOnly ColBtn_Edit_TipoFact As Valores = New Valores("3")
-    Public Shared ReadOnly ColBtn_Elim_TipoFact As Valores = New Valores("4")
-
 #End Region
 
 #Region "Tipo de Unidad"
-
-    Public Shared ReadOnly URLTipoUnidad As Valores = New Valores("http://www.midemo.es/logispack/Portal/TipoUnidad/index")
-
     Public Shared ReadOnly Nom_TipoUnidad As Valores = New Valores("TipoUni_Selenium")
     Public Shared ReadOnly Nom_TipoUnidad_Edit As Valores = New Valores("TipoUni_Selenium_1")
     Public Shared ReadOnly Nom_TipoUnidad_Buscar As Valores = New Valores("TipoUni_Sel")
-    Public Shared ReadOnly ColBtn_Edit_TipoUnidad As Valores = New Valores("3")
-    Public Shared ReadOnly ColBtn_Elim_TipoUnidad As Valores = New Valores("4")
+#End Region
+
+#Region "Almacen"
+
+    Public Shared ReadOnly Nom_Almacen As Valores = New Valores("Alm_Selenium")
+    Public Shared ReadOnly Nom_Almacen_Edit As Valores = New Valores("Alm_Selenium_1")
+
+    Public Shared ReadOnly Cod_Almacen As Valores = New Valores("001_Sel")
+    Public Shared ReadOnly Cod_Almacen_Edit As Valores = New Valores("002_Sel")
+
+    Public Shared ReadOnly CoefVol_Almacen As Valores = New Valores("50")
+    Public Shared ReadOnly CoefVol_Almacen_Edit As Valores = New Valores("50,5")
+
 
 #End Region
+
+#Region "Articulo"
+
+    Public Shared ReadOnly _Art_cod As Valores = New Valores("_Art_cod")
+    Public Shared ReadOnly _Art_nom As Valores = New Valores("_Art_nom")
+    Public Shared ReadOnly _Art_ref1 As Valores = New Valores("_Art_ref1")
+    Public Shared ReadOnly _Art_ref2 As Valores = New Valores("_Art_ref2")
+    Public Shared ReadOnly _Art_ref3 As Valores = New Valores("_Art_ref3")
+    Public Shared ReadOnly _Art_ref_pic As Valores = New Valores("_Art_ref_pic")
+    Public Shared ReadOnly _Art_obs_art As Valores = New Valores("_Art_obs_art")
+    Public Shared ReadOnly _Art_obs_gen As Valores = New Valores("_Art_obs_gen")
+    Public Shared ReadOnly _Art_peso As Valores = New Valores("10,1")
+    Public Shared ReadOnly _Art_alto As Valores = New Valores("20.02")
+    Public Shared ReadOnly _Art_largo As Valores = New Valores("30,003")
+    Public Shared ReadOnly _Art_ancho As Valores = New Valores("40,0004")
+    Public Shared ReadOnly _Art_stock_fis As Valores = New Valores("50,5")
+    Public Shared ReadOnly _Art_stock_min As Valores = New Valores("60,06")
+    Public Shared ReadOnly _Art_valor_art As Valores = New Valores("70,007")
+    Public Shared ReadOnly _Art_coef_vol As Valores = New Valores("80,0008")
+    Public Shared ReadOnly _Art_valor_ase As Valores = New Valores("90,9")
+    '------------------------------------------------------------------
+    Public Shared ReadOnly _Art_cod_Edit As Valores = New Valores("_Art_cod_1")
+    Public Shared ReadOnly _Art_nom_Edit As Valores = New Valores("_Art_nom_1")
+    Public Shared ReadOnly _Art_ref1_Edit As Valores = New Valores("_Art_ref1_1")
+    Public Shared ReadOnly _Art_ref2_Edit As Valores = New Valores("_Art_ref2_1")
+    Public Shared ReadOnly _Art_ref3_Edit As Valores = New Valores("_Art_ref3_1")
+    Public Shared ReadOnly _Art_ref_pic_Edit As Valores = New Valores("_Art_ref_pic_1")
+    Public Shared ReadOnly _Art_obs_art_Edit As Valores = New Valores("_Art_obs_art_1")
+    Public Shared ReadOnly _Art_obs_gen_Edit As Valores = New Valores("_Art_obs_gen_1")
+    Public Shared ReadOnly _Art_peso_Edit As Valores = New Valores("20,2")
+    Public Shared ReadOnly _Art_alto_Edit As Valores = New Valores("30.03")
+    Public Shared ReadOnly _Art_largo_Edit As Valores = New Valores("40,004")
+    Public Shared ReadOnly _Art_ancho_Edit As Valores = New Valores("50,0005")
+    Public Shared ReadOnly _Art_stock_fis_Edit As Valores = New Valores("60,6")
+    Public Shared ReadOnly _Art_stock_min_Edit As Valores = New Valores("70,07")
+    Public Shared ReadOnly _Art_valor_art_Edit As Valores = New Valores("80,008")
+    Public Shared ReadOnly _Art_coef_vol_Edit As Valores = New Valores("90,0009")
+    Public Shared ReadOnly _Art_valor_ase_Edit As Valores = New Valores("10,1")
+
+#End Region
+
 
 
 End Class

@@ -4,7 +4,7 @@ Imports OpenQA.Selenium.Chrome
 
 Public Class Modulo_Usuario
 
-    Public Shared Function IniciarSesion(ByRef driver As ChromeDriver) As ChromeDriver
+    Public Shared Sub IniciarSesion(ByRef driver As ChromeDriver)
 
         driver = New ChromeDriver()
 
@@ -19,9 +19,7 @@ Public Class Modulo_Usuario
         Dim btnRegistrar As IWebElement = driver.FindElement(By.Name("ctl00$MainContent$ctl05"))
         btnRegistrar.Click()
 
-        Thread.Sleep(5000)
+        Thread.Sleep(2000)
+    End Sub
 
-        Return driver
-
-    End Function
 End Class

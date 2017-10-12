@@ -102,10 +102,11 @@ Public Class index5
     Protected Sub Guardar(sender As Object, e As EventArgs)
 
         If (Page.IsValid) Then
+
             Dim _Nuevo As New Cliente With {
-           .codigo = txtCodigo_Add.Text,
-           .nombre = txtNombre_Add.Text
-       }
+                .codigo = txtCodigo_Add.Text,
+                .nombre = txtNombre_Add.Text
+            }
 
             bError = Create.Cliente(_Nuevo)
 

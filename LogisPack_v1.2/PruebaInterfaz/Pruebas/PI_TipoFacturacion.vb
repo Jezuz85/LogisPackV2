@@ -1,44 +1,60 @@
 ﻿Imports OpenQA.Selenium
+Imports CapaDatos
 
 <TestClass()>
 Public Class PI_TipoFacturacion
 
     Dim driver As IWebDriver
     Dim ListaTD As List(Of IWebElement)
+    Dim _TipoFact1 As Tipo_Facturacion
+    Dim _TipoFact2 As Tipo_Facturacion
+    Dim viewTipoFacturacion As ViewTipoFacturacion = New ViewTipoFacturacion()
 
     <TestMethod()>
     Public Sub Registrar_TipoFacturacion()
 
-        driver = Modulo_Usuario.IniciarSesion(driver)
+        '------inicio sesion
+        Modulo_Usuario.IniciarSesion(driver)
 
-        driver = Modulo_TipoFacturacion.Registrar(driver)
+        '------registro un tipo de facturacion
+        Modulo_TipoFacturacion.RegistrarTipoFacturacion(driver, _TipoFact1)
 
-        ListaTD = Funciones.GetListaTD(driver, Valores.ID_GridTipoFact.ToString)
+        '------obtengo los valores del grid
+        Funciones.Obtener_FilasGrid(driver, viewTipoFacturacion.GridPrinicipal, ListaTD)
 
-        Dim resultado = Funciones.Buscar_Valor_Grid(ListaTD, Valores.Nom_TipoFact.ToString)
-        Assert.AreEqual(True, resultado)
+        '------valido que los valores existen en el grid
+        Modulo_TipoFacturacion.Existencia_Valor_Grid(driver, ListaTD, _TipoFact1)
 
-        driver = Modulo_TipoFacturacion.Eliminar(driver, Valores.Nom_TipoFact.ToString)
+        '------elimino el tipo de facturacion
+        Modulo_TipoFacturacion.Eliminar(driver, _TipoFact1.nombre)
 
+        '------cierro el driver
         Funciones.CerrarDriver(driver)
     End Sub
 
     <TestMethod()>
     Public Sub EditarTipoFacturacion()
 
-        driver = Modulo_Usuario.IniciarSesion(driver)
+        '------inicio sesion
+        Modulo_Usuario.IniciarSesion(driver)
 
-        driver = Modulo_TipoFacturacion.Registrar(driver)
+        '------registro un tipo de facturacion
+        Modulo_TipoFacturacion.RegistrarTipoFacturacion(driver, _TipoFact1)
 
-        driver = Modulo_TipoFacturacion.Editar(driver)
+        '------edito un tipo de facturacion
+        Modulo_TipoFacturacion.Crear_TipoFact2(_TipoFact2)
+        Modulo_TipoFacturacion.Editar(driver, _TipoFact2)
 
-        ListaTD = Funciones.GetListaTD(driver, Valores.ID_GridTipoFact.ToString)
+        '------obtengo los valores del grid
+        Funciones.Obtener_FilasGrid(driver, viewTipoFacturacion.GridPrinicipal, ListaTD)
 
-        Dim resultado = Funciones.Buscar_Valor_Grid(ListaTD, Valores.Nom_TipoFact_Edit.ToString)
-        Assert.AreEqual(True, resultado)
+        '------valido que los valores existen en el grid
+        Modulo_TipoFacturacion.Existencia_Valor_Grid(driver, ListaTD, _TipoFact2)
 
-        driver = Modulo_TipoFacturacion.Eliminar(driver, Valores.Nom_TipoFact_Edit.ToString)
+        '------elimino el tipo de facturacion
+        Modulo_TipoFacturacion.Eliminar(driver, _TipoFact2.nombre)
 
+        '------cierro el driver
         Funciones.CerrarDriver(driver)
 
     End Sub
@@ -46,17 +62,22 @@ Public Class PI_TipoFacturacion
     <TestMethod()>
     Public Sub EliminarTipoFacturacion()
 
-        driver = Modulo_Usuario.IniciarSesion(driver)
+        '------inicio sesion
+        Modulo_Usuario.IniciarSesion(driver)
 
-        driver = Modulo_TipoFacturacion.Registrar(driver)
+        '------registro un tipo de facturacion
+        Modulo_TipoFacturacion.RegistrarTipoFacturacion(driver, _TipoFact1)
 
-        driver = Modulo_TipoFacturacion.Eliminar(driver, Valores.Nom_TipoFact.ToString)
+        '------obtengo los valores del grid
+        Funciones.Obtener_FilasGrid(driver, viewTipoFacturacion.GridPrinicipal, ListaTD)
 
-        ListaTD = Funciones.GetListaTD(driver, Valores.ID_GridTipoFact.ToString)
+        '------valido que los valores existen en el grid
+        Modulo_TipoFacturacion.Existencia_Valor_Grid(driver, ListaTD, _TipoFact1)
 
-        Dim resultado = Funciones.Buscar_Valor_Grid(ListaTD, Valores.Nom_TipoFact.ToString)
-        Assert.AreEqual(False, resultado)
+        '------elimino el tipo de facturacion
+        Modulo_TipoFacturacion.Eliminar(driver, _TipoFact1.nombre)
 
+        '------cierro el driver
         Funciones.CerrarDriver(driver)
 
     End Sub
@@ -64,19 +85,25 @@ Public Class PI_TipoFacturacion
     <TestMethod()>
     Public Sub Buscar_TipoFacturacion_Nombre()
 
-        driver = Modulo_Usuario.IniciarSesion(driver)
+        '------inicio sesion
+        Modulo_Usuario.IniciarSesion(driver)
 
-        driver = Modulo_TipoFacturacion.Registrar(driver)
+        '------registro un tipo de facturacion
+        Modulo_TipoFacturacion.RegistrarTipoFacturacion(driver, _TipoFact1)
 
-        driver = Funciones.Buscar_Texto_Grid(driver, Valores.Filtro_Nom.ToString, Valores.Nom_TipoFact_Buscar.ToString)
+        '-----Opcion Buscar
+        Funciones.Buscar_Texto_Grid(driver, viewTipoFacturacion.Filtro_Nom, Valores.Nom_TipoFact_Buscar.ToString)
 
-        ListaTD = Funciones.GetListaTD(driver, Valores.ID_GridTipoFact.ToString)
-        Dim resultado = Funciones.Buscar_Valor_Grid(ListaTD, Valores.Nom_TipoFact.ToString)
-        Assert.AreEqual(True, resultado)
+        '------obtengo los valores del grid
+        Funciones.Obtener_FilasGrid(driver, viewTipoFacturacion.GridPrinicipal, ListaTD)
 
+        '------valido que los valores existen en el grid
+        Modulo_TipoFacturacion.Existencia_Valor_Grid(driver, ListaTD, _TipoFact1)
 
-        driver = Modulo_TipoFacturacion.Eliminar(driver, Valores.Nom_TipoFact.ToString)
+        '------elimino el tipo de facturacion
+        Modulo_TipoFacturacion.Eliminar(driver, _TipoFact1.nombre)
 
+        '------cierro el driver
         Funciones.CerrarDriver(driver)
 
     End Sub
@@ -84,23 +111,23 @@ Public Class PI_TipoFacturacion
     <TestMethod()>
     Public Sub ResetearGridTipoFacturacion()
 
-        driver = Modulo_Usuario.IniciarSesion(driver)
+        '------inicio sesion
+        Modulo_Usuario.IniciarSesion(driver)
 
-        driver = Modulo_TipoFacturacion.Registrar(driver)
+        '------registro un tipo de facturacion
+        Modulo_TipoFacturacion.RegistrarTipoFacturacion(driver, _TipoFact1)
 
-        driver = Funciones.Buscar_Texto_Grid(driver, Valores.Filtro_Nom.ToString, Valores.Nom_TipoFact_Buscar.ToString)
-        Dim filasAntes As Integer = Funciones.Obtener_CantidadFilasGrid(driver, Valores.ID_GridTipoFact.ToString)
+        '-----Opcion Buscar
+        Funciones.Buscar_Texto_Grid(driver, viewTipoFacturacion.Filtro_Nom, Valores.Nom_TipoFact_Buscar.ToString)
 
-        driver = Funciones.ResetearGrid(driver)
+        '-----valdia que el boton reset funciona
+        Pruebas.Validar_btnReset(driver)
 
-        Dim filasDespues As Integer = Funciones.Obtener_CantidadFilasGrid(driver, Valores.ID_GridTipoFact.ToString)
+        '------elimino el tipo de facturacion
+        Modulo_TipoFacturacion.Eliminar(driver, _TipoFact1.nombre)
 
-        Assert.AreNotEqual(filasAntes, filasDespues)
-
-        driver = Modulo_TipoFacturacion.Eliminar(driver, Valores.Nom_TipoFact.ToString)
-
+        '------cierro el driver
         Funciones.CerrarDriver(driver)
-
     End Sub
 
 End Class

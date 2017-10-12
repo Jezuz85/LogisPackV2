@@ -1,8 +1,11 @@
 ﻿Imports System.Threading
+Imports CapaDatos
 Imports OpenQA.Selenium
 Imports OpenQA.Selenium.Chrome
 
 Public Class Funciones
+
+    Public Shared viewCliente As ViewCliente = New ViewCliente()
 
     Public Shared Sub CerrarDriver(ByRef driver As ChromeDriver)
         driver.Close()
@@ -17,16 +20,14 @@ Public Class Funciones
 
     End Function
 
-    Public Shared Function Obtener_FilasGrid(ByRef driver As ChromeDriver, idGrid As String) As List(Of IWebElement)
+    Public Shared Sub Obtener_FilasGrid(ByRef driver As ChromeDriver, idGrid As String, ByRef ListaTD As List(Of IWebElement))
 
         Dim GridView1 As IWebElement = driver.FindElement(By.Id(idGrid))
-        Dim cantidadFilas As List(Of IWebElement) = GridView1.FindElements(By.TagName("tr")).ToList()
+        ListaTD = GridView1.FindElements(By.TagName("tr")).ToList()
 
-        Return cantidadFilas
+    End Sub
 
-    End Function
-
-    Public Shared Function Buscar_Valor_Grid(_ListaTR As List(Of IWebElement), valorBuscar As String) As Boolean
+    Public Shared Function Buscar_Valor_Grid(ByRef _ListaTR As List(Of IWebElement), valorBuscar As String) As Boolean
 
         For Each itemTR As IWebElement In _ListaTR
 
@@ -93,12 +94,12 @@ Public Class Funciones
 
     End Sub
 
-    Public Shared Sub ID_Text_Change(ByRef driver As ChromeDriver, idTextbox As String, valorIngresar As String)
+    Public Shared Sub SendText_ById(ByRef driver As ChromeDriver, idTextbox As String, valorIngresar As String)
         Dim _TextBox As IWebElement = driver.FindElement(By.Id(idTextbox))
         _TextBox.SendKeys(valorIngresar)
     End Sub
 
-    Public Shared Sub ID_Clear_Text_Change(ByRef driver As ChromeDriver, idTextbox As String, valorIngresar As String)
+    Public Shared Sub Clear_SendText_ById(ByRef driver As ChromeDriver, idTextbox As String, valorIngresar As String)
         Dim _TextBox As IWebElement = driver.FindElement(By.Id(idTextbox))
         _TextBox.Clear()
         _TextBox.SendKeys(valorIngresar)
@@ -109,32 +110,33 @@ Public Class Funciones
         _DropDownlist.Click()
     End Sub
 
-    Public Shared Function GetListaTD(ByRef driver As ChromeDriver, ID_GridEmpresa As String) As List(Of IWebElement)
-        Return Funciones.Obtener_FilasGrid(driver, ID_GridEmpresa)
-    End Function
+    Public Shared Sub Buscar_Texto_Grid(ByRef driver As ChromeDriver, filtro As String, ValorBuscar As String)
 
-    Public Shared Function Buscar_Texto_Grid(ByRef driver As ChromeDriver, filtro As String, ValorBuscar As String) As ChromeDriver
+        Funciones.ID_DropDownList_SelectedValue(driver, viewCliente.ddlFiltroBuscar, filtro)
 
-        Funciones.ID_DropDownList_SelectedValue(driver, Valores.ID_ddlBuscar.ToString, filtro)
+        Funciones.SendText_ById(driver, viewCliente.txtSearch, ValorBuscar)
 
-        Funciones.ID_Text_Change(driver, Valores.ID_txtSearch.ToString, ValorBuscar)
-
-        Funciones.ID_Boton_Click(driver, Valores.ID_btnBuscar.ToString)
+        Funciones.ID_Boton_Click(driver, viewCliente.BotonBuscar)
 
         Thread.Sleep(2000)
 
-        Return driver
+    End Sub
 
-    End Function
+    Public Shared Sub ResetearGrid(ByRef driver As ChromeDriver)
 
-    Public Shared Function ResetearGrid(ByRef driver As ChromeDriver) As ChromeDriver
-
-        Funciones.ID_Boton_Click(driver, Valores.ID_btnReset.ToString)
+        Funciones.ID_Boton_Click(driver, viewCliente.BotonReset)
 
         Thread.Sleep(2000)
 
-        Return driver
+    End Sub
 
-    End Function
+    Public Shared Sub CerrarPrueba(ByRef driver As ChromeDriver, ByRef _Cliente As Cliente)
+
+        '------elimino el cliente
+        Modulo_Cliente.Eliminar(driver, _Cliente.codigo)
+
+        '------cierro el driver
+        CerrarDriver(driver)
+    End Sub
 
 End Class
