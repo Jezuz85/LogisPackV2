@@ -8,7 +8,7 @@ Public Class Modulo_Almacen
     Public Shared ListaTD As List(Of IWebElement)
     Public Shared viewAlmacen As ViewAlmacen = New ViewAlmacen()
 
-    Public Shared Sub Crear_Almacen1(ByRef _Almacen As Almacen)
+    Public Shared Sub Crear_Obj_Almacen1(ByRef _Almacen As Almacen)
 
         _Almacen = New Almacen With {
             .codigo = Valores.Cod_Almacen.ToString,
@@ -17,7 +17,7 @@ Public Class Modulo_Almacen
         }
 
     End Sub
-    Public Shared Sub Crear_Almacen2(ByRef _Almacen As Almacen)
+    Public Shared Sub Crear_Obj_Almacen2(ByRef _Almacen As Almacen)
 
         _Almacen = New Almacen With {
             .codigo = Valores.Cod_Almacen_Edit.ToString,
@@ -50,7 +50,6 @@ Public Class Modulo_Almacen
                              ByRef _Cliente As Cliente)
 
         Funciones.Obtener_FilasGrid(driver, viewAlmacen.GridPrinicipal, ListaTD)
-
         Funciones.BotonGrid_Click(ListaTD, _Almacen1.codigo, viewAlmacen.BotonEditModal)
 
         Thread.Sleep(2000)
@@ -84,7 +83,7 @@ Public Class Modulo_Almacen
 
 
     Public Shared Sub RegistrarAlmacen(ByRef driver As ChromeDriver, ByRef _Almacen As Almacen, ByRef _Cliente As Cliente)
-        Crear_Almacen1(_Almacen)
+        Crear_Obj_Almacen1(_Almacen)
         Registrar(driver, _Almacen, _Cliente)
     End Sub
 

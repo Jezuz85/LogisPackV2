@@ -8,14 +8,14 @@ Public Class Modulo_TipoFacturacion
     Public Shared ListaTD As List(Of IWebElement)
     Public Shared viewTipoFacturacion As ViewTipoFacturacion = New ViewTipoFacturacion()
 
-    Public Shared Sub Crear_TipoFact1(ByRef _Tipo_Facturacion As Tipo_Facturacion)
+    Public Shared Sub Crear_Obj_TipoFact1(ByRef _Tipo_Facturacion As Tipo_Facturacion)
 
         _Tipo_Facturacion = New Tipo_Facturacion With {
             .nombre = Valores.Nom_TipoFact.ToString
         }
 
     End Sub
-    Public Shared Sub Crear_TipoFact2(ByRef _Tipo_Facturacion As Tipo_Facturacion)
+    Public Shared Sub Crear_Obj_TipoFact2(ByRef _Tipo_Facturacion As Tipo_Facturacion)
 
         _Tipo_Facturacion = New Tipo_Facturacion With {
             .nombre = Valores.Nom_TipoFact_Edit.ToString
@@ -57,6 +57,8 @@ Public Class Modulo_TipoFacturacion
 
     Public Shared Sub Eliminar(ByRef driver As ChromeDriver, valorEliminar As String)
 
+        driver.Navigate().GoToUrl(viewTipoFacturacion.URL)
+
         Funciones.Obtener_FilasGrid(driver, viewTipoFacturacion.GridPrinicipal, ListaTD)
 
         Funciones.BotonGrid_Click(ListaTD, valorEliminar, viewTipoFacturacion.BotonDeleteModal)
@@ -70,7 +72,7 @@ Public Class Modulo_TipoFacturacion
     End Sub
 
     Public Shared Sub RegistrarTipoFacturacion(ByRef driver As ChromeDriver, ByRef _Tipo_Facturacion As Tipo_Facturacion)
-        Crear_TipoFact1(_Tipo_Facturacion)
+        Crear_Obj_TipoFact1(_Tipo_Facturacion)
         Registrar(driver, _Tipo_Facturacion)
     End Sub
 

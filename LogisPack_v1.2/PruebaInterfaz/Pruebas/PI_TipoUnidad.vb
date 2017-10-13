@@ -42,7 +42,7 @@ Public Class PI_TipoUnidad
         Modulo_TipoUnidad.RegistrarTipoUnidad(driver, _TipoUni1)
 
         '------edito un tipo de unidad
-        Modulo_TipoUnidad.Crear_TipoUni2(_TipoUni2)
+        Modulo_TipoUnidad.Crear_Obj_TipoUni2(_TipoUni2)
         Modulo_TipoUnidad.Editar(driver, _TipoUni2)
 
         '------obtengo los valores del grid

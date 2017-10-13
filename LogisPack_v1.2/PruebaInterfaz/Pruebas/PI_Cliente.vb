@@ -39,7 +39,7 @@ Public Class PI_Cliente
         Modulo_Cliente.RegistrarCliente(driver, _Cliente1)
 
         '------edito el cliente
-        Modulo_Cliente.Crear_Cliente2(_Cliente2)
+        Modulo_Cliente.Crear_Obj_Cliente2(_Cliente2)
         Modulo_Cliente.Editar(driver, _Cliente1, _Cliente2)
 
         '------obtengo los valores del grid

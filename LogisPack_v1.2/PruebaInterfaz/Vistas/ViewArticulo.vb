@@ -50,8 +50,68 @@
     Public Property Ide_CB As String
     Public Property Ide_RF As String
 
+    Public Property lbTipoArticulo As String
+    Public Property lbAlmacen As String
+    Public Property lbStockMinimo As String
+    Public Property lbStockFisico As String
+    Public Property lbCodigo As String
+    Public Property lbNombre As String
+    Public Property lbRefPick As String
+    Public Property lbTipoUnidad As String
+    Public Property lbRef1 As String
+    Public Property lbRef2 As String
+    Public Property lbRef3 As String
+    Public Property lbPeso As String
+    Public Property lbAlto As String
+    Public Property lbLargo As String
+    Public Property lbAncho As String
+    Public Property lbCubicaje As String
+    Public Property lbCoefVol As String
+    Public Property lbPesoVol As String
+    Public Property lbTipoFacturacion As String
+    Public Property lbIdentificacion As String
+    Public Property lbValArticulo As String
+    Public Property lbValAsegurado As String
+    Public Property lbValStock As String
+    Public Property lbValSeguro As String
+    Public Property lbObsGen As String
+    Public Property lbObsArt As String
+
+
+
     Public Sub New()
 
+        '------------------detalles articulo
+        lbTipoArticulo = "MainContent_lbTipoArticulo"
+        lbAlmacen = "MainContent_lbAlmacen"
+        lbStockMinimo = "MainContent_lbStockMinimo"
+        lbStockFisico = "MainContent_lbStockFisico"
+        lbCodigo = "MainContent_lbCodigo"
+        lbNombre = "MainContent_lbNombre"
+        lbRefPick = "MainContent_lbRefPick"
+        lbTipoUnidad = "MainContent_lbTipoUnidad"
+        lbRef1 = "MainContent_lbRef1"
+        lbRef2 = "MainContent_lbRef2"
+        lbRef3 = "MainContent_lbRef3"
+        lbPeso = "MainContent_lbPeso"
+        lbAlto = "MainContent_lbAlto"
+        lbLargo = "MainContent_lbLargo"
+        lbAncho = "MainContent_lbAncho"
+        lbCubicaje = "MainContent_lbCubicaje"
+        lbCoefVol = "MainContent_lbCoefVol"
+        lbPesoVol = "MainContent_lbPesoVol"
+        lbTipoFacturacion = "MainContent_lbTipoFacturacion"
+        lbIdentificacion = "MainContent_lbIdentificacion"
+        lbValArticulo = "MainContent_lbValArticulo"
+        lbValAsegurado = "MainContent_lbValAsegurado"
+        lbValStock = "MainContent_lbValStock"
+        lbValSeguro = "MainContent_lbValSeguro"
+        lbObsGen = "MainContent_lbObsGen"
+        lbObsArt = "MainContent_lbObsArt"
+
+
+
+        '-----------------crear aritculo
         ddlCliente = "MainContent_ddlCliente"
         ddlAlmacen = "MainContent_ddlAlmacen"
         ddlTipoArticulo = "MainContent_ddlTipoArticulo"
@@ -80,17 +140,16 @@
         Ide_CB = "CB"
         Ide_RF = "RF"
 
-
-
+        '----------------------index articulo
         URL = "http://www.midemo.es/logispack/Portal/Articulo/index"
         txtSearch = "MainContent_txtSearch"
         GridPrinicipal = "MainContent_GridView1"
         ddlFiltroBuscar = "MainContent_ddlBuscar"
         BotonAddModal = "MainContent_btnGuardar"
         BotonAdd = "MainContent_btnGuardar"
-        BotonEditModal = "5"
+        BotonEditModal = "6"
         BotonEdit = "MainContent_btnEdit"
-        BotonDeleteModal = "7"
+        BotonDeleteModal = "8"
         BotonReset = "MainContent_btnReset"
         BotonBuscar = "MainContent_btnBuscar"
         Filtro_Cod = "Codigo"
@@ -98,6 +157,7 @@
         Filtro_Alm = "Almacén"
         Filtro_Cli = "Cliente"
         BotonDelete = "MainContent_btnDelete"
+        BotonDetallesModal = "7"
 
     End Sub
 End Class

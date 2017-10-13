@@ -37,14 +37,14 @@ Public Class Detalles
     ''' </summary>
     Private Sub CargarArticulo(itemArticulos As Articulo)
 
-        Dim PesoVolumen As String = Convert.ToDouble(itemArticulos.peso_volumen).ToString("##,##0.00000")
-        Dim CoefVolumetrico As String = Convert.ToDouble(itemArticulos.coeficiente_volumetrico).ToString("##,##0.00000")
-        Dim M3 As String = Convert.ToDouble(itemArticulos.cubicaje).ToString("##,##0.00000")
-        Dim ValorArticulo As String = Convert.ToDouble(itemArticulos.valor_articulo).ToString("##,##0.00000")
-        Dim ValorAsegurado As String = Convert.ToDouble(itemArticulos.valor_asegurado).ToString("##,##0.00000")
-        Dim ValoraciónStock As String = Convert.ToDouble(itemArticulos.valoracion_stock).ToString("##,##0.00000")
-        Dim ValoraciónSeguro As String = Convert.ToDouble(itemArticulos.valoracion_seguro).ToString("##,##0.00000")
-        Dim Peso As String = Convert.ToDouble(itemArticulos.peso).ToString("##,##0.00000")
+        Dim PesoVolumen As Double = Convert.ToDouble(itemArticulos.peso_volumen).ToString("##,##0.00000")
+        Dim CoefVolumetrico As Double = Convert.ToDouble(itemArticulos.coeficiente_volumetrico).ToString("##,##0.00000")
+        Dim M3 As Double = Convert.ToDouble(itemArticulos.cubicaje).ToString("##,##0.00000")
+        Dim ValorArticulo As Double = Convert.ToDouble(itemArticulos.valor_articulo).ToString("##,##0.00000")
+        Dim ValorAsegurado As Double = Convert.ToDouble(itemArticulos.valor_asegurado).ToString("##,##0.00000")
+        Dim ValoraciónStock As Double = Convert.ToDouble(itemArticulos.valoracion_stock).ToString("##,##0.00000")
+        Dim ValoraciónSeguro As Double = Convert.ToDouble(itemArticulos.valoracion_seguro).ToString("##,##0.00000")
+        Dim Peso As Double = Convert.ToDouble(itemArticulos.peso).ToString("##,##0.00000")
 
 
         lbTipoArticulo.Text = itemArticulos.tipoArticulo
@@ -62,15 +62,15 @@ Public Class Detalles
         lbAncho.Text = itemArticulos.ancho
         lbCoefVol.Text = CoefVolumetrico & " Kgs(m³)"
         lbCubicaje.Text = M3
-        txtPesoVol.Text = PesoVolumen & " Kgs(m³)"
+        lbPesoVol.Text = PesoVolumen & " Kgs(m³)"
         lbTipoFacturacion.Text = itemArticulos.Tipo_Facturacion.nombre
         lbIdentificacion.Text = itemArticulos.identificacion
         lbValArticulo.Text = ValorArticulo
-        txtValAsegurado.Text = ValorAsegurado
-        lbValSotck.Text = ValoraciónStock
-        txtValSeguro.Text = ValoraciónSeguro
-        txtObsGen.Text = itemArticulos.observaciones_generales
-        txtObsArt.Text = itemArticulos.observaciones_articulo
+        lbValAsegurado.Text = ValorAsegurado
+        lbValStock.Text = ValoraciónStock
+        lbValSeguro.Text = ValoraciónSeguro
+        lbObsGen.Text = itemArticulos.observaciones_generales
+        lbObsArt.Text = itemArticulos.observaciones_articulo
         lbStockMinimo.Text = itemArticulos.stock_minimo
         lbStockFisico.Text = itemArticulos.stock_fisico
     End Sub

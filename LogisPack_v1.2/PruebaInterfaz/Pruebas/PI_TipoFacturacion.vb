@@ -42,7 +42,7 @@ Public Class PI_TipoFacturacion
         Modulo_TipoFacturacion.RegistrarTipoFacturacion(driver, _TipoFact1)
 
         '------edito un tipo de facturacion
-        Modulo_TipoFacturacion.Crear_TipoFact2(_TipoFact2)
+        Modulo_TipoFacturacion.Crear_Obj_TipoFact2(_TipoFact2)
         Modulo_TipoFacturacion.Editar(driver, _TipoFact2)
 
         '------obtengo los valores del grid

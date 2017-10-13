@@ -190,7 +190,7 @@
             <div class="col-md-3">
                 <strong>Peso Volumétrico</strong>
                 <br />
-                <asp:Label runat="server" ID="txtPesoVol"></asp:Label>
+                <asp:Label runat="server" ID="lbPesoVol"></asp:Label>
             </div>
         </div>
 
@@ -222,19 +222,19 @@
             <div class="col-md-3">
                 <strong>Valor Asegurado</strong>
                 <br />
-                <asp:Label runat="server" ID="txtValAsegurado"></asp:Label>
+                <asp:Label runat="server" ID="lbValAsegurado"></asp:Label>
             </div>
 
             <div class="col-md-3">
                 <strong>Valoración Stock</strong>
                 <br />
-                <asp:Label runat="server" ID="lbValSotck"></asp:Label>
+                <asp:Label runat="server" ID="lbValStock"></asp:Label>
             </div>
 
             <div class="col-md-3">
                 <strong>Valoración Seguro</strong>
                 <br />
-                <asp:Label runat="server" ID="txtValSeguro"></asp:Label>
+                <asp:Label runat="server" ID="lbValSeguro"></asp:Label>
             </div>
 
         </div>
@@ -244,12 +244,12 @@
         <div class="row">
             <div class="col-md-6">
                 <strong>Observaciones Generales</strong>
-                <asp:Label runat="server" ID="txtObsGen"></asp:Label>
+                <asp:Label runat="server" ID="lbObsGen"></asp:Label>
             </div>
 
             <div class="col-md-6">
                 <strong>Observaciones Artículo</strong>
-                <asp:Label runat="server" ID="txtObsArt"></asp:Label>
+                <asp:Label runat="server" ID="lbObsArt"></asp:Label>
             </div>
         </div>
 

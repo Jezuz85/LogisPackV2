@@ -1682,9 +1682,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.Detalles._txtPesoVol">
+<member name="F:LogisPack_v1._2.Detalles._lbPesoVol">
 <summary>
-Control txtPesoVol.
+Control lbPesoVol.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -1718,45 +1718,45 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.Detalles._txtValAsegurado">
+<member name="F:LogisPack_v1._2.Detalles._lbValAsegurado">
 <summary>
-Control txtValAsegurado.
+Control lbValAsegurado.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.Detalles._lbValSotck">
+<member name="F:LogisPack_v1._2.Detalles._lbValStock">
 <summary>
-Control lbValSotck.
+Control lbValStock.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.Detalles._txtValSeguro">
+<member name="F:LogisPack_v1._2.Detalles._lbValSeguro">
 <summary>
-Control txtValSeguro.
+Control lbValSeguro.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.Detalles._txtObsGen">
+<member name="F:LogisPack_v1._2.Detalles._lbObsGen">
 <summary>
-Control txtObsGen.
+Control lbObsGen.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.Detalles._txtObsArt">
+<member name="F:LogisPack_v1._2.Detalles._lbObsArt">
 <summary>
-Control txtObsArt.
+Control lbObsArt.
 </summary>
 <remarks>
 Campo generado automáticamente.

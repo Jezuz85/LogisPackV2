@@ -47,7 +47,7 @@ Public Class PI_Almacen
         driver.Navigate().GoToUrl(viewAlmacen.URL)
 
         '------edito un almacen
-        Modulo_Almacen.Crear_Almacen2(_Almacen2)
+        Modulo_Almacen.Crear_Obj_Almacen2(_Almacen2)
         Modulo_Almacen.Editar(driver, _Almacen1, _Almacen2, _Cliente1)
 
         '------obtengo los valores del grid

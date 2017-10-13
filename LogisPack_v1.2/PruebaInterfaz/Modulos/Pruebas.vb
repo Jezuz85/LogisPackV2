@@ -25,4 +25,11 @@ Public Class Pruebas
 
     End Sub
 
+    Public Shared Sub Existencia_Valor_Label(ByRef driver As ChromeDriver, idLabel As String, ValorEsperado As String)
+
+        Dim _label As IWebElement = driver.FindElement(By.Id(idLabel))
+        Assert.AreEqual(ValorEsperado, _label.Text)
+
+    End Sub
+
 End Class

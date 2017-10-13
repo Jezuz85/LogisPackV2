@@ -8,7 +8,7 @@ Public Class Modulo_Cliente
     Public Shared ListaTD As List(Of IWebElement)
     Public Shared viewCliente As ViewCliente = New ViewCliente()
 
-    Public Shared Sub Crear_Cliente1(ByRef _Cliente As Cliente)
+    Public Shared Sub Crear_Obj_Cliente1(ByRef _Cliente As Cliente)
 
         _Cliente = New Cliente With {
             .codigo = Valores.Cod_Cliente.ToString,
@@ -16,7 +16,7 @@ Public Class Modulo_Cliente
         }
 
     End Sub
-    Public Shared Sub Crear_Cliente2(ByRef _Cliente As Cliente)
+    Public Shared Sub Crear_Obj_Cliente2(ByRef _Cliente As Cliente)
 
         _Cliente = New Cliente With {
             .codigo = Valores.Cod_Cliente_Edit.ToString,
@@ -77,7 +77,7 @@ Public Class Modulo_Cliente
     End Sub
 
     Public Shared Sub RegistrarCliente(ByRef driver As ChromeDriver, ByRef _Cliente As Cliente)
-        Crear_Cliente1(_Cliente)
+        Crear_Obj_Cliente1(_Cliente)
         Registrar(driver, _Cliente)
     End Sub
 

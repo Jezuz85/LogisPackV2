@@ -203,13 +203,13 @@ Partial Public Class Detalles
     Protected WithEvents lbCoefVol As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control txtPesoVol.
+    '''Control lbPesoVol.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtPesoVol As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lbPesoVol As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
     '''Control lbTipoFacturacion.
@@ -239,47 +239,47 @@ Partial Public Class Detalles
     Protected WithEvents lbValArticulo As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control txtValAsegurado.
+    '''Control lbValAsegurado.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtValAsegurado As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lbValAsegurado As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control lbValSotck.
+    '''Control lbValStock.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lbValSotck As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lbValStock As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control txtValSeguro.
+    '''Control lbValSeguro.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtValSeguro As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lbValSeguro As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control txtObsGen.
+    '''Control lbObsGen.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtObsGen As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lbObsGen As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control txtObsArt.
+    '''Control lbObsArt.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtObsArt As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lbObsArt As Global.System.Web.UI.WebControls.Label
 End Class
