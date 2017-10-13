@@ -38,6 +38,8 @@ Public Class index
                 LlenarTreeView(dt, 0, Nothing)
                 LlenarGridView()
                 CargarListas()
+            Else
+
             End If
 
             Modal.OcultarAlerta(updatePanelPrinicpal)
