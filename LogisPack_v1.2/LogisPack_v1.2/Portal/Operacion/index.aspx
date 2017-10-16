@@ -23,8 +23,8 @@
 	</script>
 
 	<asp:UpdatePanel ID="updatePanelPrinicpal" runat="server">
-
 		<ContentTemplate>
+			<asp:HiddenField ID="hfaccordion" runat="server" />
 
 			<div id="titleContainer">
 				<div class="MainContentTitle">
@@ -71,7 +71,7 @@
 					</div>
 
 					<!-- SECCIÓN FILTROS -->
-					<div id="sectionContentFiltrosCabecera" class="section_Content collapse in">
+					<div id="sectionContentFiltrosCabecera" class="section_Content collapse">
 						<div class="row_Content">
 							<div class="row">
 								<div class="col-md-1">

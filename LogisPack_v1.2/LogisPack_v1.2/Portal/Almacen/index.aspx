@@ -9,99 +9,31 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 	
 	<script>
+        $(document).ready(function () {
+            $find('<%=AutoCompleteExtender1.ClientID%>')
+                .set_contextKey($get("<%=hdfCliente.ClientID %>")
+                    .value + "|" + $get("<%=hdfFiltro.ClientID %>").value);
+        });
+
 		var prm = Sys.WebForms.PageRequestManager.getInstance();
 		if (prm != null) {
 			prm.add_endRequest(function (sender, e) {
 				if (sender._postBackSettings.panelsToUpdate != null) {
                     $(document).ready(function ()
                     {
-						$find('<%=AutoCompleteExtender1.ClientID%>').set_contextKey($get("<%=hdfCliente.ClientID %>").value + "|" +
-                            $get("<%=hdfFiltro.ClientID %>").value);
-
-                        console.log("postback")
-                        SetstateAcordeonPostback();
-
-                        $("#sectionHeaderFiltros").click(function (event) {
-                            console.log("click")
-                            SetstateAcordeon();
-                        });
+                        $find('<%=AutoCompleteExtender1.ClientID%>')
+                            .set_contextKey($get("<%=hdfCliente.ClientID %>")
+                                .value + "|" +$get("<%=hdfFiltro.ClientID %>").value);
 					});
 				}
 			});
 		};
-
-		$(document).ready(function () {
-			$find('<%=AutoCompleteExtender1.ClientID%>').set_contextKey($get("<%=hdfCliente.ClientID %>").value + "|" +
-                $get("<%=hdfFiltro.ClientID %>").value);
-
-            console.log("load")
-            SetstateAcordeon();
-
-            $("#sectionHeaderFiltros").click(function (event) {
-                console.log("click")
-                SetstateAcordeon();
-            });
-		});
-
-
 	</script>
-	
-
-	<script type="text/javascript">
-
-        function SetstateAcordeon() {
-            var stateActual = $('#MainContent_hfaccordion').val();
-
-            if (stateActual == 'off') {
-                stateActual = 'in';
-                $('#MainContent_hfaccordion').val(stateActual);
-                console.log("stateActual = in")
-            }
-            else if (stateActual == 'in') {
-                stateActual = 'off'; 
-                $('#MainContent_hfaccordion').val(stateActual);
-                console.log("stateActual = off")
-            }
-            else
-            {
-                stateActual = 'in';
-                $('#MainContent_hfaccordion').val(stateActual);
-                console.log("stateActual = nothing")
-            }
-        }
-
-        function SetstateAcordeonPostback() {
-            var stateActual = $('#MainContent_hfaccordion').val();
-
-            if (stateActual == 'off') {
-                $('#sectionContentFiltrosCabecera').removeClass('in');
-                console.log("stateActual = off")
-            }
-            else if (stateActual == 'in') {
-                $('#sectionContentFiltrosCabecera').addClass('in');
-                console.log("stateActual = in")
-            }
-        }
-
-    </script>
 
 	<asp:UpdatePanel ID="updatePanelPrinicpal" runat="server">
 		<ContentTemplate>
 			<asp:HiddenField ID="hfaccordion" runat="server" />
-
-			<div class="accordion" id="accordion2">
-				<div class="accordion-group">
-					<div class="accordion-heading" id="headingcollapseOne">
-						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">Collapsible Group Item #1
-						</a>
-					</div>
-					<div id="collapseOne" class="accordion-body collapse in">
-						<div class="accordion-inner">
-							Link : <a href="http://google.com">google.com</a>
-						</div>
-					</div>
-				</div>
-			</div>
+			<asp:HiddenField ID="hfaccordion2" runat="server" />
 
 			<div id="titleContainer">
 				<div class="MainContentTitle">
@@ -120,7 +52,7 @@
 			<div id="pageBodyContainer" class="MainContentWrapper" style="width: 96%;">
 
 				<div class="section">
-					<div class="sectionHeader">
+					<div class="sectionHeader" id="sectionHeaderArbol">
 						<div class="sectionHeaderTitle">
 							Detalles Almacén
 						</div>

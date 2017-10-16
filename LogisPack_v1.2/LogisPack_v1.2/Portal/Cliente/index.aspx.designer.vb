@@ -23,6 +23,15 @@ Partial Public Class index5
     Protected WithEvents updatePanelPrinicpal As Global.System.Web.UI.UpdatePanel
     
     '''<summary>
+    '''Control hfaccordion.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents hfaccordion As Global.System.Web.UI.WebControls.HiddenField
+    
+    '''<summary>
     '''Control ddlBuscar.
     '''</summary>
     '''<remarks>

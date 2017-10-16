@@ -556,6 +556,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:LogisPack_v1._2.index._hfaccordion2">
+<summary>
+Control hfaccordion2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:LogisPack_v1._2.index._hdfCliente">
 <summary>
 Control hdfCliente.
@@ -2304,6 +2313,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:LogisPack_v1._2.index3._hfaccordion">
+<summary>
+Control hfaccordion.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:LogisPack_v1._2.index3._ddlCliente">
 <summary>
 Control ddlCliente.
@@ -2455,6 +2473,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:LogisPack_v1._2.index5._updatePanelPrinicpal">
 <summary>
 Control updatePanelPrinicpal.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.index5._hfaccordion">
+<summary>
+Control hfaccordion.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -2840,6 +2867,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:LogisPack_v1._2.index4._hfaccordion">
+<summary>
+Control hfaccordion.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:LogisPack_v1._2.index4._hdfCliente">
 <summary>
 Control hdfCliente.
@@ -3023,6 +3059,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:LogisPack_v1._2.index1._updatePanelPrinicpal">
 <summary>
 Control updatePanelPrinicpal.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.index1._hfaccordion">
+<summary>
+Control hfaccordion.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -3215,6 +3260,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:LogisPack_v1._2.index2._updatePanelPrinicpal">
 <summary>
 Control updatePanelPrinicpal.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.index2._hfaccordion">
+<summary>
+Control hfaccordion.
 </summary>
 <remarks>
 Campo generado automáticamente.
