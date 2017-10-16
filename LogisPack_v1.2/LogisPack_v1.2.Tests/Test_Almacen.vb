@@ -8,6 +8,7 @@
     Public Sub inicializar()
         DataAccess.Inicializar_Almacen(_Almacen, _Cliente)
     End Sub
+
     <TestCleanup>
     Public Sub finalizar()
         DataAccess.Finalizar_Cliente(_Cliente)

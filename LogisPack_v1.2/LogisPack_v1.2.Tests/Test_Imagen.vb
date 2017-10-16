@@ -46,7 +46,7 @@
 
     End Sub
 
-    <TestMethod()> Public Sub Eliminar_Ubicacion()
+    <TestMethod()> Public Sub Eliminar_Imagen()
 
         Delete.Imagen(_Imagen.id_imagen)
 

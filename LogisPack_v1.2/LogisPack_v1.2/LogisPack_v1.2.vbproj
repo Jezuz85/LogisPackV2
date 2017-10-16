@@ -346,6 +346,7 @@
     <Content Include="Content\images\arrow-orderasc.png" />
     <Content Include="Content\images\arrow-orderdesc.png" />
     <Content Include="Content\images\baja.png" />
+    <Content Include="Content\images\calendar.png" />
     <Content Include="Content\images\edit.png" />
     <Content Include="Content\images\loader_48x48.gif" />
     <Content Include="Content\images\Logo.png" />

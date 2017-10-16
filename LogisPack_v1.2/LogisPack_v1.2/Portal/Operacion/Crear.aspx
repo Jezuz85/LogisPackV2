@@ -4,7 +4,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-
     <asp:UpdatePanel ID="updatePanelPrinicpal" runat="server">
 
         <ContentTemplate>
@@ -69,7 +68,7 @@
                         <div class="input-group">
                             <asp:TextBox runat="server" ID="txtFechaOperacion" data-toggle="tooltip" CssClass="date-picker"
                                 data-placement="bottom" title="Ingrese la fecha de la operación"></asp:TextBox>
-
+                           
                             <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
                                 ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="txtFechaOperacion" runat="server"
                                 ValidationGroup="ValidationAdd" />
