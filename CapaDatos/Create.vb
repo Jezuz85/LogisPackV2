@@ -1,43 +1,8 @@
 ﻿
 Public Class Create
 
-    ''' <summary>
-    ''' Metodo que recibe un objeto Almacen y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
-    ''' </summary>
-    Public Shared Function Almacen(ByVal _nuevo As Almacen) As Boolean
 
-        Dim contexto As LogisPackEntities = New LogisPackEntities()
-        Dim bError As Boolean = True
 
-        Try
-            contexto.Almacen.Add(_nuevo)
-            contexto.SaveChanges()
-        Catch ex As Exception
-            bError = False
-        End Try
-
-        Return bError
-
-    End Function
-
-    ''' <summary>
-    ''' Metodo que recibe un objeto Articulo y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
-    ''' </summary>
-    Public Shared Function Articulo(ByVal _nuevo As Articulo) As Boolean
-
-        Dim contexto As LogisPackEntities = New LogisPackEntities()
-        Dim bError As Boolean = True
-
-        Try
-            contexto.Articulo.Add(_nuevo)
-            contexto.SaveChanges()
-        Catch ex As Exception
-            bError = False
-        End Try
-
-        Return bError
-
-    End Function
 
     ''' <summary>
     ''' Metodo que recibe un objeto Cliente y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False

@@ -23,7 +23,7 @@
 
     <TestMethod()> Public Sub Registrar_ArticuloPicking()
 
-        Dim miPicking_Articulo = Getter.Picking_Articulo(_Picking_Articulo.id_picking_articulo)
+        Dim miPicking_Articulo = Mgr_Articulo.Get_Picking_Articulo(_Picking_Articulo.id_picking_articulo)
 
         Assert.AreEqual(miPicking_Articulo.id_picking, _Articulo.id_articulo)
         Assert.AreEqual(miPicking_Articulo.id_articulo, _ArticuloP.id_articulo)
@@ -35,7 +35,7 @@
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
-        Dim _Edit = Getter.Picking_Articulo(_Picking_Articulo.id_picking_articulo, contexto)
+        Dim _Edit = Mgr_Articulo.Get_Picking_Articulo(_Picking_Articulo.id_picking_articulo, contexto)
 
         _Edit.unidades = 30
 
@@ -49,9 +49,9 @@
 
     <TestMethod()> Public Sub Eliminar_ArticuloPicking()
 
-        Delete.Picking_Articulo(_Picking_Articulo.id_picking_articulo)
+        Mgr_Articulo.Eliminar_Picking_Articulo(_Picking_Articulo.id_picking_articulo)
 
-        Dim miPicking_Articulo = Getter.Picking_Articulo(_Picking_Articulo.id_picking_articulo)
+        Dim miPicking_Articulo = Mgr_Articulo.Get_Picking_Articulo(_Picking_Articulo.id_picking_articulo)
 
         Assert.AreEqual(miPicking_Articulo, Nothing)
 

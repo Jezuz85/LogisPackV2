@@ -20,8 +20,8 @@ Public Class index
             If IsPostBack = False Then
 
                 hdfFiltro.Value = ddlBuscar.SelectedValue
-                ViewState("filtroBusqueda") = String.Empty
-                ViewState("textoBusqueda") = String.Empty
+                ViewState(Val_General.filtroBusqueda.ToString) = String.Empty
+                ViewState(Val_General.textoBusqueda.ToString) = String.Empty
 
                 MyTreeView.Nodes.Clear()
 
@@ -31,7 +31,7 @@ Public Class index
                     dt = GetData(Comandos.Arbol_Almacen_Nivel0.ToString)
                 Else
                     Dim objComando As Comandos
-                    objComando = New Comandos("", "" & idCliente)
+                    objComando = New Comandos(String.Empty, String.Empty & idCliente)
                     dt = GetData(objComando.GetComando())
                 End If
 
@@ -80,12 +80,15 @@ Public Class index
     ''' Metodo que Elimina un registro de Almacen de la base de datos
     ''' </summary>
     Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
-        bError = Delete.Almacen(Convert.ToInt32(hdfIDDel.Value))
-        Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
 
-        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
+        bError = Mgr_Almacen.Eliminar(Convert.ToInt32(hdfIDDel.Value))
+
+        Modal.CerrarModal(Val_Almacen.DeleteModal.ToString, Val_Almacen.DeleteModalScript.ToString, Me)
+
+        Utilidades_UpdatePanel.CerrarOperacion(Val_General.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
 
         LlenarGridView()
+
     End Sub
 
     ''' <summary>
@@ -122,12 +125,12 @@ Public Class index
     ''' </summary>
     Private Sub LlenarGridView()
 
-        Tabla.Almacen(GridView1,
-                      idCliente,
-                      String.Empty & ViewState("SortExpression"),
-                      String.Empty & ViewState("GridViewSortDirection"),
-                      String.Empty & ViewState("filtroBusqueda"),
-                      String.Empty & ViewState("textoBusqueda"))
+        Mgr_Almacen.Llenar_Grid(GridView1,
+                                idCliente,
+                                String.Empty & ViewState(Val_General.SortExpression.ToString),
+                                String.Empty & ViewState(Val_General.GridViewSortDirection.ToString),
+                                String.Empty & ViewState(Val_General.filtroBusqueda.ToString),
+                                String.Empty & ViewState(Val_General.textoBusqueda.ToString))
     End Sub
 
     '-----------------------------------Metodos del Gridview de articulos picking--------------------------------------------------------
@@ -137,50 +140,44 @@ Public Class index
     End Sub
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
-        If e.CommandName.Equals(Mensajes.Detalles.ToString) Then
+        If e.CommandName.Equals(Val_General.Detalles.ToString) Then
 
             hdfView.Value = Utilidades_Grid.Get_IdRow(GridView1, e)
-            Dim _Almacen = Getter.Almacen(Convert.ToInt32(hdfView.Value))
+            Dim _Almacen = Mgr_Almacen.Consultar(Convert.ToInt32(hdfView.Value))
 
             lbViewCliente.Text = _Almacen.Cliente.nombre
             lbViewCodigo.Text = _Almacen.codigo
             lbViewNombre.Text = _Almacen.nombre
             lbViewCoefVol.Text = _Almacen.coeficiente_volumetrico
 
-            Modal.AbrirModal("ViewModal", "ViewModalScript", Me)
+            Modal.AbrirModal(Val_Almacen.ViewModal.ToString, Val_Almacen.ViewModalScript.ToString, Me)
 
-        ElseIf e.CommandName.Equals(Mensajes.Editar.ToString) Then
+        ElseIf e.CommandName.Equals(Val_General.Editar.ToString) Then
 
             hdfEdit.Value = Utilidades_Grid.Get_IdRow(GridView1, e)
-            Dim _Almacen = Getter.Almacen(Convert.ToInt32(hdfEdit.Value))
+            Dim _Almacen = Mgr_Almacen.Consultar(Convert.ToInt32(hdfEdit.Value))
             Listas.Cliente(ddlClienteEdit, idCliente)
 
-            Dim CoefVolumetrico As String = Convert.ToDouble(_Almacen.coeficiente_volumetrico).ToString("##,##0.00").Replace(",", ".")
+            Dim CoefVolumetrico As String = Convert.ToDouble(_Almacen.coeficiente_volumetrico).ToString("##,##0.00000").Replace(",", ".")
 
             ddlClienteEdit.SelectedValue = _Almacen.id_cliente
             txtEditCodigo.Text = _Almacen.codigo
             txtEditNombre.Text = _Almacen.nombre
             txtEditCoefVol.Text = CoefVolumetrico
 
-            Modal.AbrirModal("EditModal", "EditModalScript", Me)
+            Modal.AbrirModal(Val_Almacen.EditModal.ToString, Val_Almacen.EditModallScript.ToString, Me)
 
-        ElseIf e.CommandName.Equals(Mensajes.Eliminar.ToString) Then
+        ElseIf e.CommandName.Equals(Val_General.Eliminar.ToString) Then
 
             hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e)
-            Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
+            Modal.AbrirModal(Val_Almacen.DeleteModal.ToString, Val_Almacen.DeleteModalScript.ToString, Me)
         End If
 
     End Sub
     Protected Sub GridView1_OnSorting(ByVal sender As Object, ByVal e As GridViewSortEventArgs)
 
-        Utilidades_Grid.sortGridView(GridView1, e, ViewState("SortExpression"), ViewState("GridViewSortDirection"))
-
-        Tabla.Almacen(GridView1,
-                       idCliente,
-                       String.Empty & ViewState("SortExpression"),
-                       String.Empty & ViewState("GridViewSortDirection"),
-                       String.Empty & ViewState("filtroBusqueda"),
-                       String.Empty & ViewState("textoBusqueda"))
+        Utilidades_Grid.sortGridView(GridView1, e, ViewState(Val_General.SortExpression.ToString), ViewState(Val_General.GridViewSortDirection.ToString))
+        LlenarGridView()
 
     End Sub
     Protected Sub GridView1_RowCreated(sender As Object, e As GridViewRowEventArgs)
@@ -192,47 +189,57 @@ Public Class index
     ''' Metodo que crea un objeto Almacen y lo guarda en la base de datos
     ''' </summary>
     Protected Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+
         If (Page.IsValid) Then
 
-            Dim _Nuevo As New Almacen With {
-            .nombre = txtNombre.Text,
-            .codigo = txtCodigo.Text,
-            .coeficiente_volumetrico = Double.Parse(txtCoefVol.Text, CultureInfo.InvariantCulture),
-            .id_cliente = Convert.ToInt32(ddlClienteAdd.SelectedValue)
-        }
+#Region "creo la estructura almacen"
+            Dim _mialmacen = Mgr_Almacen.Get_Struct_Almacen()
+            _mialmacen.nombre = txtNombre.Text
+            _mialmacen.codigo = txtCodigo.Text
+            _mialmacen.coeficiente_volumetrico = txtCoefVol.Text
+            _mialmacen.id_cliente = ddlClienteAdd.SelectedValue
+#End Region
 
-            bError = Create.Almacen(_Nuevo)
+            bError = Mgr_Almacen.Guardar(Mgr_Almacen.Crear_Objeto(_mialmacen))
 
-            Modal.CerrarModal("AddModal", "AddModalScript", Me)
-            Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Registrar.ToString, bError, Me, updatePanelPrinicpal, up_Add)
+            Modal.CerrarModal(Val_Almacen.AddModal.ToString, Val_Almacen.AddModalScript.ToString, Me)
 
+            Utilidades_UpdatePanel.CerrarOperacion(Val_General.Registrar.ToString, bError, Me, updatePanelPrinicpal, up_Add)
             LlenarGridView()
+
         End If
+
     End Sub
 
     ''' <summary>
     ''' Metodo que Edita un objeto Almacen y actualiza el registro en la base de datos
     ''' </summary>
     Protected Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+
         If (Page.IsValid) Then
 
-            Dim Edit = Getter.Almacen(Convert.ToInt32(hdfEdit.Value), contexto)
+            Dim Edit = Mgr_Almacen.Consultar(Convert.ToInt32(hdfEdit.Value), contexto)
 
             If Edit IsNot Nothing Then
-                Edit.id_cliente = Convert.ToInt32(ddlClienteEdit.SelectedValue)
-                Edit.codigo = txtEditCodigo.Text
-                Edit.nombre = txtEditNombre.Text
-                Edit.coeficiente_volumetrico = Double.Parse(txtEditCoefVol.Text, CultureInfo.InvariantCulture)
+
+#Region "creo la estructura almacen"
+                Dim _mialmacen = Mgr_Almacen.Get_Struct_Almacen()
+                _mialmacen.nombre = txtEditNombre.Text
+                _mialmacen.codigo = txtEditCodigo.Text
+                _mialmacen.coeficiente_volumetrico = txtEditCoefVol.Text
+                _mialmacen.id_cliente = ddlClienteEdit.SelectedValue
+#End Region
+
+                bError = Mgr_Almacen.Editar(Mgr_Almacen.Crear_Objeto(_mialmacen), contexto)
+                Modal.CerrarModal(Val_Almacen.EditModal.ToString, Val_Almacen.EditModallScript.ToString, Me)
+                Utilidades_UpdatePanel.CerrarOperacion(Val_General.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
+
             End If
-
-            bError = Update.Almacen(Edit, contexto)
-
-            Modal.CerrarModal("EditModal", "EditModallScript", Me)
-            Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
 
             LlenarGridView()
 
         End If
+
     End Sub
 
     ''' <summary>
@@ -240,8 +247,8 @@ Public Class index
     ''' </summary>
     Protected Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
 
-        ViewState("filtroBusqueda") = ddlBuscar.SelectedValue
-        ViewState("textoBusqueda") = txtSearch.Text
+        ViewState(Val_General.filtroBusqueda.ToString) = ddlBuscar.SelectedValue
+        ViewState(Val_General.textoBusqueda.ToString) = txtSearch.Text
         LlenarGridView()
 
     End Sub
@@ -251,8 +258,8 @@ Public Class index
     ''' </summary>
     Protected Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
         txtSearch.Text = String.Empty
-        ViewState("filtroBusqueda") = String.Empty
-        ViewState("textoBusqueda") = String.Empty
+        ViewState(Val_General.filtroBusqueda.ToString) = String.Empty
+        ViewState(Val_General.textoBusqueda.ToString) = String.Empty
 
         LlenarGridView()
     End Sub
@@ -291,8 +298,8 @@ Public Class index
     ''' </summary>
     Protected Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
 
-        ViewState("filtroBusqueda") = ddlBuscar.SelectedValue
-        ViewState("textoBusqueda") = txtSearch.Text
+        ViewState(Val_General.filtroBusqueda.ToString) = ddlBuscar.SelectedValue
+        ViewState(Val_General.textoBusqueda.ToString) = txtSearch.Text
         LlenarGridView()
     End Sub
 End Class

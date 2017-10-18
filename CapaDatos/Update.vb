@@ -1,21 +1,6 @@
 ﻿
 Public Class Update
 
-    ''' <summary>
-    ''' Metodo que recibe el objeto Almacen a Actualizar y el contexto en que fue creado, devuelve true si fue
-    ''' exitosa la actualización, en caso contrario devuelve false
-    ''' </summary>
-    Public Shared Function Almacen(_Edit As Almacen, ByRef contexto As LogisPackEntities) As Boolean
-
-        Try
-            contexto.SaveChanges()
-        Catch ex As Exception
-            Return False
-        End Try
-
-        Return True
-
-    End Function
 
     ''' <summary>
     ''' Metodo que recibe el objeto Artículo a Actualizar y el contexto en que fue creado, devuelve true si fue

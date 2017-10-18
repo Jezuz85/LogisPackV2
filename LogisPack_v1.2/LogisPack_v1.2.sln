@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LogisPack_v1.2", "LogisPack_v1.2\LogisPack_v1.2.vbproj", "{CD8E53D2-B177-494B-AE08-1CEEF98E43D7}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LogisPack_v1.2.Tests", "LogisPack_v1.2.Tests\LogisPack_v1.2.Tests.vbproj", "{F5890587-AF6E-47F8-84E1-4F1BA50EE026}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PruebaUnitaria.Tests", "LogisPack_v1.2.Tests\PruebaUnitaria.Tests.vbproj", "{F5890587-AF6E-47F8-84E1-4F1BA50EE026}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CapaDatos", "..\CapaDatos\CapaDatos.vbproj", "{CDA7A603-E1F7-4807-8064-907048030111}"
 EndProject

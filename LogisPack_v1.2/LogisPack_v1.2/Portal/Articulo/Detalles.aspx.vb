@@ -21,7 +21,7 @@ Public Class Detalles
     ''' Metodo que se ejecuta para cargar los datos del articulo a consultar
     ''' </summary>
     Private Sub CargarArticulo(IdArticulo As Integer)
-        Dim _Articulo As List(Of Articulo) = Getter.Articulo_list(IdArticulo)
+        Dim _Articulo As List(Of Articulo) = Mgr_Articulo.Get_Articulo_list(IdArticulo)
 
         For Each itemArticulos In _Articulo
 

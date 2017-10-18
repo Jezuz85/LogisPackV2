@@ -29,7 +29,12 @@ Public Class index3
     ''' </summary>
     Private Sub LlenarGridView()
 
-        Tabla.Articulo(GridView1, idCliente, String.Empty, String.Empty, String.Empty & ViewState("filtroBusqueda"), String.Empty & ViewState("textoBusqueda"))
+        Mgr_Articulo.Llenar_Grid(GridView1,
+                                idCliente,
+                                String.Empty & ViewState(Val_General.SortExpression.ToString),
+                                String.Empty & ViewState(Val_General.GridViewSortDirection.ToString),
+                                String.Empty & ViewState(Val_General.filtroBusqueda.ToString),
+                                String.Empty & ViewState(Val_General.textoBusqueda.ToString))
 
     End Sub
 
@@ -45,10 +50,11 @@ Public Class index3
     ''' </summary>
     Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
 
-        bError = Delete.Articulo(Convert.ToInt32(hdfIDDel.Value))
-        Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
-        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
+        bError = Mgr_Articulo.Eliminar(Convert.ToInt32(hdfIDDel.Value))
+        Modal.CerrarModal(Val_Articulo.DeleteModal.ToString, Val_Articulo.DeleteModalScript.ToString, Me)
+        Utilidades_UpdatePanel.CerrarOperacion(Val_General.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
         LlenarGridView()
+
     End Sub
 
     '--------------------------------------------------Metodos del gridview-----------------------------------------
@@ -58,37 +64,28 @@ Public Class index3
     End Sub
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
-        If e.CommandName.Equals(Mensajes.Detalles.ToString) Then
-            Dim id As String = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
-            Response.Redirect("Detalles.aspx?id=" & Cifrar.cifrarCadena(id))
+        If e.CommandName.Equals(Val_General.Detalles.ToString) Then
 
-        End If
+            Dim id As String = Utilidades_Grid.Get_IdRow(GridView1, e)
+            Response.Redirect(Val_Articulo.URL_Detalles.ToString & Cifrar.cifrarCadena(id))
 
-        If e.CommandName.Equals(Mensajes.Editar.ToString) Then
+        ElseIf e.CommandName.Equals(Val_General.Editar.ToString) Then
 
-            Dim id As String = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
-            Response.Redirect("Editar.aspx?id=" & Cifrar.cifrarCadena(id))
+            Dim id As String = Utilidades_Grid.Get_IdRow(GridView1, e)
+            Response.Redirect(Val_Articulo.URL_Editar.ToString & Cifrar.cifrarCadena(id))
 
-        End If
+        ElseIf e.CommandName.Equals(Val_General.Eliminar.ToString) Then
 
-        If e.CommandName.Equals(Mensajes.Eliminar.ToString) Then
-
-            hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
-            Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
+            hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e)
+            Modal.AbrirModal(Val_Articulo.DeleteModal.ToString, Val_Articulo.DeleteModalScript.ToString, Me)
 
         End If
 
     End Sub
     Protected Sub GridView1_OnSorting(ByVal sender As Object, ByVal e As GridViewSortEventArgs)
 
-        Utilidades_Grid.sortGridView(GridView1, e, ViewState("SortExpression"), ViewState("GridViewSortDirection"))
-
-        Tabla.Articulo(GridView1,
-                       idCliente,
-                       String.Empty & ViewState("SortExpression"),
-                       String.Empty & ViewState("GridViewSortDirection"),
-                       String.Empty & ViewState("filtroBusqueda"),
-                       String.Empty & ViewState("textoBusqueda"))
+        Utilidades_Grid.sortGridView(GridView1, e, ViewState(Val_General.SortExpression.ToString), ViewState(Val_General.GridViewSortDirection.ToString))
+        LlenarGridView()
 
     End Sub
     Protected Sub GridView1_RowCreated(sender As Object, e As GridViewRowEventArgs)
@@ -100,18 +97,19 @@ Public Class index3
     ''' Metodo que realiza una resetea la busqueda en el grid
     ''' </summary>
     Protected Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
-        txtSearch.Text = String.Empty
-        ViewState("filtroBusqueda") = String.Empty
-        ViewState("textoBusqueda") = String.Empty
 
+        txtSearch.Text = String.Empty
+        ViewState(Val_General.filtroBusqueda.ToString) = String.Empty
+        ViewState(Val_General.textoBusqueda.ToString) = String.Empty
         LlenarGridView()
+
     End Sub
 
     ''' <summary>
     ''' Metodo que se invoca cuando se presiona el boton "guardar" y redirecciona la pagina a "Crear"
     ''' </summary>
     Protected Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
-        Response.Redirect("Crear.aspx")
+        Response.Redirect(Val_Articulo.URL_Crear.ToString)
     End Sub
 
     ''' <summary>
@@ -119,8 +117,8 @@ Public Class index3
     ''' </summary>
     Protected Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
 
-        ViewState("filtroBusqueda") = ddlBuscar.SelectedValue
-        ViewState("textoBusqueda") = txtSearch.Text
+        ViewState(Val_General.filtroBusqueda.ToString) = ddlBuscar.SelectedValue
+        ViewState(Val_General.textoBusqueda.ToString) = txtSearch.Text
         LlenarGridView()
 
     End Sub
@@ -129,16 +127,16 @@ Public Class index3
     ''' Metodo que se ejecuta cuando se selecciona un cliente de la lista
     ''' </summary>
     Protected Sub ddlCliente_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlCliente.SelectedIndexChanged
-        Manager_Articulo.CambiarCliente(ddlCliente, New TextBox(), ddlAlmacen)
+
+        Mgr_Articulo.CambiarCliente(ddlCliente, New TextBox(), ddlAlmacen)
 
         If ddlCliente.SelectedValue <> String.Empty Then
-
-            ViewState("filtroBusqueda") = "Cliente"
-            ViewState("textoBusqueda") = Convert.ToString(ddlCliente.SelectedItem)
+            ViewState(Val_General.filtroBusqueda.ToString) = Val_Articulo.Filtro_Cliente.ToString
+            ViewState(Val_General.textoBusqueda.ToString) = Convert.ToString(ddlCliente.SelectedItem)
         Else
             txtSearch.Text = String.Empty
-            ViewState("filtroBusqueda") = String.Empty
-            ViewState("textoBusqueda") = String.Empty
+            ViewState(Val_General.filtroBusqueda.ToString) = String.Empty
+            ViewState(Val_General.textoBusqueda.ToString) = String.Empty
         End If
 
         LlenarGridView()
@@ -152,12 +150,12 @@ Public Class index3
 
         If ddlAlmacen.SelectedValue <> String.Empty Then
 
-            ViewState("filtroBusqueda") = "Almacen"
-            ViewState("textoBusqueda") = Convert.ToString(ddlAlmacen.SelectedItem)
+            ViewState(Val_General.filtroBusqueda.ToString) = Val_Articulo.Filtro_Almacen.ToString
+            ViewState(Val_General.textoBusqueda.ToString) = Convert.ToString(ddlAlmacen.SelectedItem)
         Else
             txtSearch.Text = String.Empty
-            ViewState("filtroBusqueda") = String.Empty
-            ViewState("textoBusqueda") = String.Empty
+            ViewState(Val_General.filtroBusqueda.ToString) = String.Empty
+            ViewState(Val_General.textoBusqueda.ToString) = String.Empty
         End If
 
         LlenarGridView()

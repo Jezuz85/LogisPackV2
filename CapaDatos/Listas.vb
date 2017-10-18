@@ -2,131 +2,17 @@
 
 Public Class Listas
 
-    ''' <summary>
-    ''' Metodo que recibe un objeto DropDownlist vacio y lo devuelve con los datos de todos los alamcenes
-    ''' existentes en la base de datos
-    ''' </summary>
-    Public Shared Sub Almacen(ByRef DropDownList1 As DropDownList)
+    Public Shared Sub Set_Text_Value_List(ByRef _DropDownList As DropDownList, _query As Object, _text As String, _value As String)
 
-        Dim contexto As LogisPackEntities = New LogisPackEntities()
-
-        Dim query = (From AL In contexto.Almacen
-                     Select
-                         AL.id_almacen,
-                         AL.nombre
-                    ).ToList()
-
-        DropDownList1.DataValueField = "id_almacen"
-        DropDownList1.DataTextField = "nombre"
-        DropDownList1.DataSource = query
-        DropDownList1.DataBind()
-        DropDownList1.Items.Insert(0, New ListItem("Seleccione...", ""))
-    End Sub
-
-    ''' <summary>
-    ''' Metodo que recibe un objeto DropDownlist vacio y un id del cliente , y lo devuelve con los datos de 
-    ''' todos los alamcenes de ese cliente
-    ''' </summary>
-    Public Shared Sub Almacen(ByRef DropDownList1 As DropDownList, idCliente As Integer)
-
-        Dim contexto As LogisPackEntities = New LogisPackEntities()
-
-        Dim query = (From AL In contexto.Almacen
-                     Where AL.id_cliente = idCliente
-                     Select
-                         AL.id_almacen,
-                         AL.nombre
-                    ).ToList()
-
-        DropDownList1.DataValueField = "id_almacen"
-        DropDownList1.DataTextField = "nombre"
-        DropDownList1.DataSource = query
-        DropDownList1.DataBind()
-        DropDownList1.Items.Insert(0, New ListItem("Seleccione...", ""))
-    End Sub
-
-    '-------------------------------------------------------------------------------------------------'
-
-    ''' <summary>
-    ''' Metodo que recibe un objeto DropDownlist vacio y un id del Almacén , y lo devuelve con los datos de 
-    ''' todos los articulos de tipo "Normal" de ese Almacén
-    ''' </summary>
-    Public Shared Sub Articulo(ByRef DropDownList1 As DropDownList, idAlmacen As Integer)
-
-        Dim contexto As LogisPackEntities = New LogisPackEntities()
-
-        Dim query = (From AL In contexto.Articulo
-                     Where (AL.tipoArticulo = "Normal" And AL.id_almacen = idAlmacen) Or
-                         (AL.tipoArticulo = "Normal" And AL.Almacen.id_cliente = 1)
-                     Select
-                         AL.id_articulo,
-                         AL.nombre
-                    ).ToList()
-
-        DropDownList1.DataValueField = "id_articulo"
-        DropDownList1.DataTextField = "nombre"
-        DropDownList1.DataSource = query
-        DropDownList1.DataBind()
-    End Sub
-
-    ''' <summary>
-    ''' Metodo que recibe un objeto DropDownlist vacio y un id del Almacén , y lo devuelve con los datos de 
-    ''' todos los articulos de ese Almacén
-    ''' </summary>
-    Public Shared Sub Articulo_Almacen(ByRef DropDownList1 As DropDownList, idAlmacen As Integer)
-
-        Dim contexto As LogisPackEntities = New LogisPackEntities()
-
-        Dim query = (From AL In contexto.Articulo
-                     Where AL.id_almacen = idAlmacen
-                     Select
-                         AL.id_articulo,
-                         AL.nombre
-                    ).ToList()
-
-        DropDownList1.DataValueField = "id_articulo"
-        DropDownList1.DataTextField = "nombre"
-        DropDownList1.DataSource = query
-        DropDownList1.DataBind()
-
-        DropDownList1.Items.Insert(0, New ListItem("Seleccione...", ""))
-    End Sub
-
-    '-------------------------------------------------------------------------------------------------'
-
-    ''' <summary>
-    ''' Metodo que recibe un objeto DropDownlist vacio  y lo devuelve con los datos de 
-    ''' todos los articulos existentes en la base de datos
-    ''' </summary>
-    Public Shared Sub ArticuloPickingEdit(ByRef DropDownList1 As DropDownList, ByRef GridView1 As GridView, idAlmacen As Integer)
-
-        Dim contexto As LogisPackEntities = New LogisPackEntities()
-
-        Dim query = (From AL In contexto.Articulo
-                     Where (AL.tipoArticulo = "Normal" And AL.id_almacen = idAlmacen) Or
-                         (AL.tipoArticulo = "Normal" And AL.Almacen.id_cliente = 1)
-                     Select
-                         AL.id_articulo,
-                         AL.nombre
-                    ).ToList()
-
-
-
-        For Each row As GridViewRow In GridView1.Rows
-
-            Dim _id_articulo As String = GridView1.DataKeys(row.RowIndex).Values(0).ToString
-            Dim IdArticulo As Integer = Convert.ToInt32(_id_articulo)
-
-            query = query.Where(Function(x) x.id_articulo <> IdArticulo).ToList()
-        Next
-
-
-        DropDownList1.DataValueField = "id_articulo"
-        DropDownList1.DataTextField = "nombre"
-        DropDownList1.DataSource = query
-        DropDownList1.DataBind()
+        _DropDownList.DataValueField = _value
+        _DropDownList.DataTextField = _text
+        _DropDownList.DataSource = _query
+        _DropDownList.DataBind()
 
     End Sub
+
+
+
 
     '-------------------------------------------------------------------------------------------------'
 
@@ -150,7 +36,7 @@ Public Class Listas
         DropDownList1.DataSource = query
         DropDownList1.DataBind()
 
-        DropDownList1.Items.Insert(0, New ListItem("Seleccione...", ""))
+        DropDownList1.Items.Insert(0, New ListItem(Val_General.Lista_Seleccione.ToString, String.Empty))
     End Sub
 
     '-------------------------------------------------------------------------------------------------'
@@ -173,7 +59,7 @@ Public Class Listas
         DropDownList1.DataTextField = "nombre"
         DropDownList1.DataSource = query
         DropDownList1.DataBind()
-        DropDownList1.Items.Insert(0, New ListItem("Seleccione...", ""))
+        DropDownList1.Items.Insert(0, New ListItem(Val_General.Lista_Seleccione.ToString, String.Empty))
     End Sub
 
     '-------------------------------------------------------------------------------------------------'
@@ -196,7 +82,7 @@ Public Class Listas
         DropDownList1.DataTextField = "nombre"
         DropDownList1.DataSource = query
         DropDownList1.DataBind()
-        DropDownList1.Items.Insert(0, New ListItem("Seleccione...", ""))
+        DropDownList1.Items.Insert(0, New ListItem(Val_General.Lista_Seleccione.ToString, String.Empty))
     End Sub
 
     '-------------------------------------------------------------------------------------------------'

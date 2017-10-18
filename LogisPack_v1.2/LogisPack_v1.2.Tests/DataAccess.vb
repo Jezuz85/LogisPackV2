@@ -24,7 +24,7 @@ Public Class DataAccess
         .coeficiente_volumetrico = "10",
         .id_cliente = _Cliente.id_cliente
         }
-        Create.Almacen(_Nuevo)
+        Mgr_Almacen.Guardar(_Nuevo)
 
     End Sub
 
@@ -88,7 +88,7 @@ Public Class DataAccess
             .id_tipo_unidad = _Tipo_Unidad.id_tipo_unidad,
             .tipoArticulo = "Normal"
         }
-        Create.Articulo(_Articulo)
+        Mgr_Articulo.Guardar(_Articulo)
 
     End Sub
 
@@ -171,7 +171,7 @@ Public Class DataAccess
             .id_tipo_unidad = _Tipo_Unidad.id_tipo_unidad,
             .tipoArticulo = "Picking"
         }
-        Create.Articulo(_Articulo)
+        Mgr_Articulo.Guardar(_Articulo)
 
         _ArticuloP = New Articulo With
             {
@@ -202,7 +202,7 @@ Public Class DataAccess
             .id_tipo_unidad = _Tipo_Unidad.id_tipo_unidad,
             .tipoArticulo = "Normal"
         }
-        Create.Articulo(_ArticuloP)
+        Mgr_Articulo.Guardar(_ArticuloP)
 
         Inicializar_Picking_Articulo(_Picking_Articulo, _Articulo, _ArticuloP)
 

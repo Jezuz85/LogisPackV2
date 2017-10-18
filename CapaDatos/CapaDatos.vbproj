@@ -123,9 +123,10 @@
       <DependentUpon>ModeloLogisPack.tt</DependentUpon>
     </Compile>
     <Compile Include="Listas.vb" />
-    <Compile Include="Manager_Articulo.vb" />
+    <Compile Include="Manager\Mgr_Articulo.vb" />
     <Compile Include="Manager_Excel.vb" />
-    <Compile Include="Mensajes.vb" />
+    <Compile Include="Valores\Val_Articulo.vb" />
+    <Compile Include="Valores\Val_General.vb" />
     <Compile Include="Modal.vb" />
     <Compile Include="ModeloLogisPack.Context.vb">
       <AutoGen>True</AutoGen>
@@ -142,6 +143,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModeloLogisPack.tt</DependentUpon>
     </Compile>
+    <Compile Include="Manager\Mgr_Almacen.vb" />
+    <Compile Include="Valores\Val_Almacen.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

@@ -33,7 +33,7 @@ Public Class BundleConfig
                         "~/Scripts/jquery-3.1.1.min.js",
                         "~/Scripts/bootstrap.min.js",
                         "~/Scripts/jquery-ui-1.12.1.min.js",
-                        "~/Scripts/Custom.js"))
+                        "~/Scripts/Modulos/Rutas_Archivos.js"))
 
         bundles.Add(New StyleBundle("~/Content/Direcline").Include(
                   "~/Content/NormalizeCss.css",
@@ -46,6 +46,20 @@ Public Class BundleConfig
         ScriptManager.ScriptResourceMapping.AddDefinition("respond", New ScriptResourceDefinition() With {
                 .Path = "~/Scripts/respond.min.js",
                 .DebugPath = "~/Scripts/respond.js"})
+
+        bundles.Add(New ScriptBundle("~/bundles/Almacen_Index").Include(
+                    "~/Scripts/Modulos/Almacen/Controles_Almacen.js",
+                    "~/Scripts/Modulos/Acordeon.js",
+                    "~/Scripts/Modulos/Almacen/Almacen_Index.js"))
+
+        bundles.Add(New ScriptBundle("~/bundles/Articulo_Index").Include(
+                    "~/Scripts/Modulos/Almacen/Controles_Articulo.js",
+                    "~/Scripts/Modulos/Acordeon.js",
+                    "~/Scripts/Modulos/Almacen/Articulo_Index.js"))
+
+        bundles.Add(New ScriptBundle("~/bundles/Articulo_Crear").Include(
+                    "~/Scripts/Modulos/Almacen/Controles_Articulo.js",
+                    "~/Scripts/Modulos/Almacen/Articulo_Crear.js"))
 
     End Sub
 End Class

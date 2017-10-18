@@ -448,6 +448,13 @@
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Modulos\Acordeon.js" />
+    <Content Include="Scripts\Modulos\Almacen\Almacen_Index.js" />
+    <Content Include="Scripts\Modulos\Almacen\Controles_Almacen.js" />
+    <Content Include="Scripts\Modulos\Articulo\Articulo_Crear.js" />
+    <Content Include="Scripts\Modulos\Articulo\Articulo_Index.js" />
+    <Content Include="Scripts\Modulos\Articulo\Controles_Articulo.js" />
+    <Content Include="Scripts\Modulos\Rutas_Archivos.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />

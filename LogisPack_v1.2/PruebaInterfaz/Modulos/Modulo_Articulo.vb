@@ -8,13 +8,25 @@ Public Class Modulo_Articulo
     Public Shared ListaTD As List(Of IWebElement)
     Public Shared viewArticulo As ViewArticulo = New ViewArticulo()
 
+    'Public Shared ReadOnly Iterator Property NextArticulo As IEnumerable(Of Articulo)
+    '    Get
+    '        Yield New Articulo With {.nombre = "Tadpole", .codigo = 400}
+    '        Yield New Articulo With {.nombre = "Tadpole", .codigo = 400}
+    '        Yield New Articulo With {.nombre = "Tadpole", .codigo = 400}
+    '        Yield New Articulo With {.nombre = "Tadpole", .codigo = 400}
+    '    End Get
+    'End Property
+
+
     Public Shared Sub Crear_Obj_Articulo1(ByRef _Articulo As Articulo)
 
+
+
         '-----------------Calculos
-        Dim M3 As Double = Manager_Articulo.CalcularM3(Valores._Art_alto.ToString, Valores._Art_ancho.ToString, Valores._Art_largo.ToString)
-        Dim PesoVol As Double = Manager_Articulo.Calcular_PesoVolumetrico(Valores._Art_alto.ToString, Valores._Art_ancho.ToString, Valores._Art_largo.ToString, Valores._Art_coef_vol.ToString)
-        Dim valoracionStock As Double = Manager_Articulo.Calcular_ValoracionStock(Valores._Art_stock_fis.ToString, Valores._Art_valor_art.ToString)
-        Dim valoracionSeguro As Double = Manager_Articulo.Calcular_ValoracionSeguro(Valores._Art_valor_ase.ToString, Valores._Art_stock_fis.ToString)
+        Dim M3 As Double = Mgr_Articulo.CalcularM3(Valores._Art_alto.ToString, Valores._Art_ancho.ToString, Valores._Art_largo.ToString)
+        Dim PesoVol As Double = Mgr_Articulo.Calcular_PesoVolumetrico(Valores._Art_alto.ToString, Valores._Art_ancho.ToString, Valores._Art_largo.ToString, Valores._Art_coef_vol.ToString)
+        Dim valoracionStock As Double = Mgr_Articulo.Calcular_ValoracionStock(Valores._Art_stock_fis.ToString, Valores._Art_valor_art.ToString)
+        Dim valoracionSeguro As Double = Mgr_Articulo.Calcular_ValoracionSeguro(Valores._Art_valor_ase.ToString, Valores._Art_stock_fis.ToString)
 
         _Articulo = New Articulo With {
             .codigo = Valores._Art_cod.ToString,
@@ -44,16 +56,16 @@ Public Class Modulo_Articulo
     Public Shared Sub Crear_Obj_Articulo2(ByRef _Articulo As Articulo)
 
         '-----------------Calculos
-        Dim M3 As Double = Manager_Articulo.CalcularM3(Valores._Art_alto_Edit.ToString, Valores._Art_ancho_Edit.ToString,
+        Dim M3 As Double = Mgr_Articulo.CalcularM3(Valores._Art_alto_Edit.ToString, Valores._Art_ancho_Edit.ToString,
             Valores._Art_largo_Edit.ToString)
 
-        Dim PesoVol As Double = Manager_Articulo.Calcular_PesoVolumetrico(Valores._Art_alto_Edit.ToString,
+        Dim PesoVol As Double = Mgr_Articulo.Calcular_PesoVolumetrico(Valores._Art_alto_Edit.ToString,
             Valores._Art_ancho_Edit.ToString, Valores._Art_largo_Edit.ToString, Valores._Art_coef_vol_Edit.ToString)
 
-        Dim valoracionStock As Double = Manager_Articulo.Calcular_ValoracionStock(Valores._Art_stock_fis_Edit.ToString,
+        Dim valoracionStock As Double = Mgr_Articulo.Calcular_ValoracionStock(Valores._Art_stock_fis_Edit.ToString,
             Valores._Art_valor_art_Edit.ToString)
 
-        Dim valoracionSeguro As Double = Manager_Articulo.Calcular_ValoracionSeguro(Valores._Art_valor_ase_Edit.ToString,
+        Dim valoracionSeguro As Double = Mgr_Articulo.Calcular_ValoracionSeguro(Valores._Art_valor_ase_Edit.ToString,
             Valores._Art_stock_fis_Edit.ToString)
 
         _Articulo = New Articulo With {

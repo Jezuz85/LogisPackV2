@@ -91,10 +91,10 @@ Public Class Manager_Excel
                             _id_tipo_unidad = TipoUnidad.id_tipo_unidad
 
                             '-----------------Calculos------------------------------------
-                            Dim _M3 As Double = Manager_Articulo.CalcularM3(_alto, _ancho, _largo)
-                            Dim _peso_volumen As Double = Manager_Articulo.Calcular_PesoVolumetrico(_alto, _ancho, _largo, _coeficiente_volumetrico)
-                            Dim _valoracion_stock As Double = Manager_Articulo.Calcular_ValoracionStock(_stock_fisico, _valor_articulo)
-                            Dim _valoracion_seguro As Double = Manager_Articulo.Calcular_ValoracionSeguro(_valor_asegurado, _stock_fisico)
+                            Dim _M3 As Double = Mgr_Articulo.CalcularM3(_alto, _ancho, _largo)
+                            Dim _peso_volumen As Double = Mgr_Articulo.Calcular_PesoVolumetrico(_alto, _ancho, _largo, _coeficiente_volumetrico)
+                            Dim _valoracion_stock As Double = Mgr_Articulo.Calcular_ValoracionStock(_stock_fisico, _valor_articulo)
+                            Dim _valoracion_seguro As Double = Mgr_Articulo.Calcular_ValoracionSeguro(_valor_asegurado, _stock_fisico)
 
                             Dim _Nuevo As New Articulo With {
                             .codigo = _codigo,
@@ -127,11 +127,11 @@ Public Class Manager_Excel
 
                             Dim _Ubicacion As New Ubicacion With {
                                 .id_articulo = _Nuevo.id_articulo,
-                                .zona = Manager_Articulo.LlenarCeros(_zona),
-                                .estante = Manager_Articulo.LlenarCeros(_estante),
-                                .fila = Manager_Articulo.LlenarCeros(_fila),
-                                .columna = Manager_Articulo.LlenarCeros(_columna),
-                                .panel = Manager_Articulo.LlenarCeros(_panel),
+                                .zona = Mgr_Articulo.LlenarCeros(_zona),
+                                .estante = Mgr_Articulo.LlenarCeros(_estante),
+                                .fila = Mgr_Articulo.LlenarCeros(_fila),
+                                .columna = Mgr_Articulo.LlenarCeros(_columna),
+                                .panel = Mgr_Articulo.LlenarCeros(_panel),
                                 .referencia_ubicacion = _referencia_ubicacion
                                 }
 
@@ -182,7 +182,7 @@ Public Class Manager_Excel
             'MessageBox.Show("'" & FileName & "' not located. Try one of the write examples first.")
         End If
 
-        _Errores.Add(Mensajes.CargaExito.ToString)
+        _Errores.Add(Val_General.CargaExito.ToString)
         Return _Errores
 
     End Function
@@ -220,88 +220,88 @@ Public Class Manager_Excel
 
         '-----------------Validar Tipo Facturacion y Tipo de Unidad
         If Validaciones.Exist_Tipo_Facturacion(_id_tipo_facturacion) = False Then
-            _Errores.Add(Format_Respuesta_NoExiste(Mensajes.NoExiste_TipoFacturacion.ToString, rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_NoExiste(Val_General.NoExiste_TipoFacturacion.ToString, rowIndex, nombreArchivo))
         End If
 
         If Validaciones.Exist_Tipo_Unidad(_id_tipo_unidad) = False Then
-            _Errores.Add(Format_Respuesta_NoExiste(Mensajes.NoExiste_TipoUnidad.ToString, rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_NoExiste(Val_General.NoExiste_TipoUnidad.ToString, rowIndex, nombreArchivo))
         End If
 
         If Validaciones.Identificacion(_identificacion) = False Then
-            _Errores.Add(Format_Respuesta_Valores_Permitidos(Mensajes.NoExiste_Identificacion.ToString, rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Valores_Permitidos(Val_General.NoExiste_Identificacion.ToString, rowIndex, nombreArchivo))
         End If
 
         '-----------------Validar longitud campos
         If Validaciones.Longitud_Campo(_codigo, 25) Then
-            _Errores.Add(Format_Respuesta_Longitud(Mensajes.Longitud.ToString, "Código", "25", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Longitud(Val_General.Longitud.ToString, "Código", "25", rowIndex, nombreArchivo))
         End If
         If Validaciones.Longitud_Campo(_nombre, 25) Then
-            _Errores.Add(Format_Respuesta_Longitud(Mensajes.Longitud.ToString, "Nombre", "40", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Longitud(Val_General.Longitud.ToString, "Nombre", "40", rowIndex, nombreArchivo))
         End If
         If Validaciones.Longitud_Campo(_referencia_picking, 25) Then
-            _Errores.Add(Format_Respuesta_Longitud(Mensajes.Longitud.ToString, "Referencia Picking", "25", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Longitud(Val_General.Longitud.ToString, "Referencia Picking", "25", rowIndex, nombreArchivo))
         End If
         If Validaciones.Longitud_Campo(_referencia1, 25) Then
-            _Errores.Add(Format_Respuesta_Longitud(Mensajes.Longitud.ToString, "Referencia 1", "25", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Longitud(Val_General.Longitud.ToString, "Referencia 1", "25", rowIndex, nombreArchivo))
         End If
         If Validaciones.Longitud_Campo(_referencia2, 25) Then
-            _Errores.Add(Format_Respuesta_Longitud(Mensajes.Longitud.ToString, "Referencia 2", "25", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Longitud(Val_General.Longitud.ToString, "Referencia 2", "25", rowIndex, nombreArchivo))
         End If
         If Validaciones.Longitud_Campo(_referencia3, 25) Then
-            _Errores.Add(Format_Respuesta_Longitud(Mensajes.Longitud.ToString, "Referencia 3", "25", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Longitud(Val_General.Longitud.ToString, "Referencia 3", "25", rowIndex, nombreArchivo))
         End If
         If Validaciones.Longitud_Campo(_observaciones_articulo, 300) Then
-            _Errores.Add(Format_Respuesta_Longitud(Mensajes.Longitud.ToString, "Observaciones Articulo", "300", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Longitud(Val_General.Longitud.ToString, "Observaciones Articulo", "300", rowIndex, nombreArchivo))
         End If
         If Validaciones.Longitud_Campo(_observaciones_generales, 300) Then
-            _Errores.Add(Format_Respuesta_Longitud(Mensajes.Longitud.ToString, "Observaciones Generales", "300", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Longitud(Val_General.Longitud.ToString, "Observaciones Generales", "300", rowIndex, nombreArchivo))
         End If
         If Validaciones.Longitud_Campo(_zona, 4) Then
-            _Errores.Add(Format_Respuesta_Longitud(Mensajes.Longitud.ToString, "zona", "4", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Longitud(Val_General.Longitud.ToString, "zona", "4", rowIndex, nombreArchivo))
         End If
         If Validaciones.Longitud_Campo(_estante, 4) Then
-            _Errores.Add(Format_Respuesta_Longitud(Mensajes.Longitud.ToString, "estante", "4", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Longitud(Val_General.Longitud.ToString, "estante", "4", rowIndex, nombreArchivo))
         End If
         If Validaciones.Longitud_Campo(_fila, 4) Then
-            _Errores.Add(Format_Respuesta_Longitud(Mensajes.Longitud.ToString, "fila", "4", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Longitud(Val_General.Longitud.ToString, "fila", "4", rowIndex, nombreArchivo))
         End If
         If Validaciones.Longitud_Campo(_columna, 4) Then
-            _Errores.Add(Format_Respuesta_Longitud(Mensajes.Longitud.ToString, "columna", "4", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Longitud(Val_General.Longitud.ToString, "columna", "4", rowIndex, nombreArchivo))
         End If
         If Validaciones.Longitud_Campo(_panel, 4) Then
-            _Errores.Add(Format_Respuesta_Longitud(Mensajes.Longitud.ToString, "panel", "4", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Longitud(Val_General.Longitud.ToString, "panel", "4", rowIndex, nombreArchivo))
         End If
         If Validaciones.Longitud_Campo(_referencia_ubicacion, 40) Then
-            _Errores.Add(Format_Respuesta_Longitud(Mensajes.Longitud.ToString, "Referencia ubicación", "40", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Longitud(Val_General.Longitud.ToString, "Referencia ubicación", "40", rowIndex, nombreArchivo))
         End If
 
         '-----------------Validar campos numericos
         If Validaciones.Validarnumero(_valor_articulo) = False Then
-            _Errores.Add(Format_Respuesta_Numerico(Mensajes.SoloNumero.ToString, "Valor Artículo", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Numerico(Val_General.SoloNumero.ToString, "Valor Artículo", rowIndex, nombreArchivo))
         End If
         If Validaciones.Validarnumero(_valor_asegurado) = False Then
-            _Errores.Add(Format_Respuesta_Numerico(Mensajes.SoloNumero.ToString, "Valor Asegurado", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Numerico(Val_General.SoloNumero.ToString, "Valor Asegurado", rowIndex, nombreArchivo))
         End If
         If Validaciones.Validarnumero(_peso) = False Then
-            _Errores.Add(Format_Respuesta_Numerico(Mensajes.SoloNumero.ToString, "Peso", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Numerico(Val_General.SoloNumero.ToString, "Peso", rowIndex, nombreArchivo))
         End If
         If Validaciones.Validarnumero(_alto) = False Then
-            _Errores.Add(Format_Respuesta_Numerico(Mensajes.SoloNumero.ToString, "Alto", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Numerico(Val_General.SoloNumero.ToString, "Alto", rowIndex, nombreArchivo))
         End If
         If Validaciones.Validarnumero(_largo) = False Then
-            _Errores.Add(Format_Respuesta_Numerico(Mensajes.SoloNumero.ToString, "Largo", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Numerico(Val_General.SoloNumero.ToString, "Largo", rowIndex, nombreArchivo))
         End If
         If Validaciones.Validarnumero(_ancho) = False Then
-            _Errores.Add(Format_Respuesta_Numerico(Mensajes.SoloNumero.ToString, "Ancho", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Numerico(Val_General.SoloNumero.ToString, "Ancho", rowIndex, nombreArchivo))
         End If
         If Validaciones.Validarnumero(_coeficiente_volumetrico) = False Then
-            _Errores.Add(Format_Respuesta_Numerico(Mensajes.SoloNumero.ToString, "Coeficiente Volumétrico", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Numerico(Val_General.SoloNumero.ToString, "Coeficiente Volumétrico", rowIndex, nombreArchivo))
         End If
         If Validaciones.Validarnumero(_stock_fisico) = False Then
-            _Errores.Add(Format_Respuesta_Numerico(Mensajes.SoloNumero.ToString, "Stock Físico", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Numerico(Val_General.SoloNumero.ToString, "Stock Físico", rowIndex, nombreArchivo))
         End If
         If Validaciones.Validarnumero(_stock_minimo) = False Then
-            _Errores.Add(Format_Respuesta_Numerico(Mensajes.SoloNumero.ToString, "Stock Mínimo", rowIndex, nombreArchivo))
+            _Errores.Add(Format_Respuesta_Numerico(Val_General.SoloNumero.ToString, "Stock Mínimo", rowIndex, nombreArchivo))
         End If
 
 

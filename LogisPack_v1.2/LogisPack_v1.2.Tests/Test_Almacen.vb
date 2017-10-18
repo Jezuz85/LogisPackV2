@@ -15,7 +15,7 @@
     End Sub
 
     <TestMethod()> Public Sub Registrar_Almacen()
-        Dim miAlmacen = Getter.Almacen(_Almacen.id_almacen)
+        Dim miAlmacen = Mgr_Almacen.Consultar(_Almacen.id_almacen)
 
         Assert.AreEqual(miAlmacen.id_almacen, _Almacen.id_almacen)
         Assert.AreEqual(miAlmacen.id_cliente, _Almacen.id_cliente)
@@ -28,13 +28,13 @@
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
-        Dim _Edit = Getter.Almacen(_Almacen.id_almacen, contexto)
+        Dim _Edit = Mgr_Almacen.Consultar(_Almacen.id_almacen, contexto)
 
         _Edit.codigo = "Codv2"
         _Edit.nombre = "Nombrev2"
         _Edit.coeficiente_volumetrico = "20"
 
-        Update.Almacen(_Almacen, contexto)
+        Mgr_Almacen.Editar(_Almacen, contexto)
 
         Assert.AreEqual(_Edit.id_almacen, _Almacen.id_almacen)
         Assert.AreNotEqual(_Edit.nombre, _Almacen.nombre)
@@ -46,9 +46,9 @@
 
     <TestMethod()> Public Sub Eliminar_Almacen()
 
-        Delete.Almacen(_Almacen.id_almacen)
+        Mgr_Almacen.Eliminar(_Almacen.id_almacen)
 
-        Dim miAlmacen = Getter.Almacen(_Almacen.id_almacen)
+        Dim miAlmacen = Mgr_Almacen.Consultar(_Almacen.id_almacen)
 
         Assert.AreEqual(miAlmacen, Nothing)
 

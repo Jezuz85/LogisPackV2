@@ -4,7 +4,7 @@
 Public Class Comandos
 
     Private Key As String
-    Private _comando As String = ""
+    Private _comando As String = String.Empty
 
     Public Shared ReadOnly Arbol_Almacen_Nivel0 As Comandos = New Comandos("SELECT Count(id_almacen), CL.id_cliente ID , CL.nombre  Name FROM Almacen AL INNER JOIN cliente CL ON CL.id_cliente = AL.id_cliente Group By CL.id_cliente,CL.nombre")
     Public Shared ReadOnly Arbol_Almacen_Nivel1 As Comandos = New Comandos("Select (codigo +' '+ nombre) Name, id_almacen ID FROM Almacen WHERE id_cliente = ")

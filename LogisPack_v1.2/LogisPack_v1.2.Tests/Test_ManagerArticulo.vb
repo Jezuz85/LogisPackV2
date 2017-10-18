@@ -31,7 +31,7 @@
         LlenarTextbox()
         ValorEsperado = 0
 
-        ValorReal = Manager_Articulo.CalcularM3(txtAncho, txtAlto, txtLargo)
+        ValorReal = Mgr_Articulo.CalcularM3(txtAncho, txtAlto, txtLargo)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
@@ -39,7 +39,7 @@
 
         LlenarTextbox("100", "100", "100")
         ValorEsperado = 1
-        ValorReal = Manager_Articulo.CalcularM3(txtAncho, txtAlto, txtLargo)
+        ValorReal = Mgr_Articulo.CalcularM3(txtAncho, txtAlto, txtLargo)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
@@ -48,7 +48,7 @@
         LlenarTextbox("", "20")
 
         ValorEsperado = 0
-        ValorReal = Manager_Articulo.CalcularM3(txtAncho, txtAlto, txtLargo)
+        ValorReal = Mgr_Articulo.CalcularM3(txtAncho, txtAlto, txtLargo)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
@@ -56,7 +56,7 @@
 
         LlenarTextbox("100.1", "200.2", "300.3")
         ValorEsperado = 6.018
-        ValorReal = Manager_Articulo.CalcularM3(txtAncho, txtAlto, txtLargo)
+        ValorReal = Mgr_Articulo.CalcularM3(txtAncho, txtAlto, txtLargo)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
@@ -69,7 +69,7 @@
         LlenarTextbox()
 
         ValorEsperado = 0
-        ValorReal = Manager_Articulo.Calcular_PesoVolumetrico(txtAncho, txtAlto, txtLargo, txtCoefVol)
+        ValorReal = Mgr_Articulo.Calcular_PesoVolumetrico(txtAncho, txtAlto, txtLargo, txtCoefVol)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
@@ -77,7 +77,7 @@
 
         LlenarTextbox("", "2")
         ValorEsperado = 0
-        ValorReal = Manager_Articulo.Calcular_PesoVolumetrico(txtAncho, txtAlto, txtLargo, txtCoefVol)
+        ValorReal = Mgr_Articulo.Calcular_PesoVolumetrico(txtAncho, txtAlto, txtLargo, txtCoefVol)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
@@ -85,7 +85,7 @@
 
         LlenarTextbox("10", "20", "30", "", "", "", "40")
         ValorEsperado = 240
-        ValorReal = Manager_Articulo.Calcular_PesoVolumetrico(txtAncho, txtAlto, txtLargo, txtCoefVol)
+        ValorReal = Mgr_Articulo.Calcular_PesoVolumetrico(txtAncho, txtAlto, txtLargo, txtCoefVol)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
@@ -94,7 +94,7 @@
         LlenarTextbox("1.1", "2.2", "3.3", "", "", "", "4.4")
 
         ValorEsperado = 0.035
-        ValorReal = Manager_Articulo.Calcular_PesoVolumetrico(txtAncho, txtAlto, txtLargo, txtCoefVol)
+        ValorReal = Mgr_Articulo.Calcular_PesoVolumetrico(txtAncho, txtAlto, txtLargo, txtCoefVol)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
@@ -107,7 +107,7 @@
         LlenarTextbox()
 
         ValorEsperado = 0
-        ValorReal = Manager_Articulo.Calcular_ValoracionStock(txtStockFisico, txtValArticulo)
+        ValorReal = Mgr_Articulo.Calcular_ValoracionStock(txtStockFisico, txtValArticulo)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
@@ -116,7 +116,7 @@
         LlenarTextbox("", "", "", "", "", "1", "")
 
         ValorEsperado = 0
-        ValorReal = Manager_Articulo.Calcular_ValoracionStock(txtStockFisico, txtValArticulo)
+        ValorReal = Mgr_Articulo.Calcular_ValoracionStock(txtStockFisico, txtValArticulo)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
@@ -124,7 +124,7 @@
 
         LlenarTextbox("", "", "", "10", "", "5", "")
         ValorEsperado = 50
-        ValorReal = Manager_Articulo.Calcular_ValoracionStock(txtStockFisico, txtValArticulo)
+        ValorReal = Mgr_Articulo.Calcular_ValoracionStock(txtStockFisico, txtValArticulo)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
@@ -133,7 +133,7 @@
         LlenarTextbox("", "", "", "2.2", "", "5.5", "")
 
         ValorEsperado = 12.1
-        ValorReal = Manager_Articulo.Calcular_ValoracionStock(txtStockFisico, txtValArticulo)
+        ValorReal = Mgr_Articulo.Calcular_ValoracionStock(txtStockFisico, txtValArticulo)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
@@ -146,7 +146,7 @@
         LlenarTextbox()
 
         ValorEsperado = 0
-        ValorReal = Manager_Articulo.Calcular_ValoracionSeguro(txtStockFisico, txtValAsegurado)
+        ValorReal = Mgr_Articulo.Calcular_ValoracionSeguro(txtStockFisico, txtValAsegurado)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
@@ -155,7 +155,7 @@
         LlenarTextbox("", "", "", "", "1", "", "")
 
         ValorEsperado = 0
-        ValorReal = Manager_Articulo.Calcular_ValoracionSeguro(txtStockFisico, txtValAsegurado)
+        ValorReal = Mgr_Articulo.Calcular_ValoracionSeguro(txtStockFisico, txtValAsegurado)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
@@ -163,7 +163,7 @@
 
         LlenarTextbox("", "", "", "10", "5", "", "")
         ValorEsperado = 50
-        ValorReal = Manager_Articulo.Calcular_ValoracionSeguro(txtStockFisico, txtValAsegurado)
+        ValorReal = Mgr_Articulo.Calcular_ValoracionSeguro(txtStockFisico, txtValAsegurado)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
@@ -171,7 +171,7 @@
 
         LlenarTextbox("", "", "", "2.2", "5.5", "", "")
         ValorEsperado = 12.1
-        ValorReal = Manager_Articulo.Calcular_ValoracionSeguro(txtStockFisico, txtValAsegurado)
+        ValorReal = Mgr_Articulo.Calcular_ValoracionSeguro(txtStockFisico, txtValAsegurado)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 

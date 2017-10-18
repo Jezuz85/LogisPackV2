@@ -37,7 +37,7 @@ Public Class Crear1
     ''' </summary>
     Public Sub Get_StockArticulo(idArticulo As Integer)
 
-        Dim _Articulo = Getter.Articulo(idArticulo)
+        Dim _Articulo = Mgr_Articulo.Get_Articulo(idArticulo)
 
         lbStockFisico.Text = If(_Articulo.stock_fisico.ToString() = String.Empty, "-", _Articulo.stock_fisico.ToString())
 
@@ -50,13 +50,13 @@ Public Class Crear1
 
         If txtCantidad.Text <> String.Empty Then
 
-            Dim _Articulo = Getter.Articulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
+            Dim _Articulo = Mgr_Articulo.Get_Articulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
 
             Dim StockFisico As Double = _Articulo.stock_fisico
             Dim CantidadSolicitada As Double = Double.Parse(txtCantidad.Text, CultureInfo.InvariantCulture)
 
             If (CantidadSolicitada > StockFisico) And (ddlTipoOperacion.SelectedValue = "Sal") Then
-                Modal.MostrarMensajeAlerta(updatePanelPrinicpal, False, Mensajes.Unidades_Stock.ToString)
+                Modal.MostrarMensajeAlerta(updatePanelPrinicpal, False, Val_General.Unidades_Stock.ToString)
                 txtCantidad.Text = "0"
             Else
                 Modal.OcultarAlerta(updatePanelPrinicpal)
@@ -72,7 +72,7 @@ Public Class Crear1
     ''' </summary>
     Protected Sub txtCodArticulo_TextChanged(sender As Object, e As EventArgs) Handles txtCodArticulo.TextChanged
 
-        Dim _articulo = Getter.Articulo_Codigo(txtCodArticulo.Text)
+        Dim _articulo = Mgr_Articulo.Get_Articulo_Codigo(txtCodArticulo.Text)
 
         If _articulo IsNot Nothing Then
             If ddlListaArticulos.Items.Contains(ddlListaArticulos.Items.FindByValue(_articulo.id_articulo)) Then
@@ -94,7 +94,7 @@ Public Class Crear1
 
         If Page.IsValid Then
 
-            Dim _articulo = Getter.Articulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
+            Dim _articulo = Mgr_Articulo.Get_Articulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
             Dim Stock_Picking As Double = Double.Parse(_articulo.stock_fisico, CultureInfo.InvariantCulture)
             Dim unidadesSolicitadas As Double = Double.Parse(txtCantidad.Text, CultureInfo.InvariantCulture)
 
@@ -123,7 +123,7 @@ Public Class Crear1
 
                 If bError Then
 
-                    Dim Edit = Getter.Articulo(Convert.ToInt32(ddlListaArticulos.SelectedValue), contexto)
+                    Dim Edit = Mgr_Articulo.Get_Articulo(Convert.ToInt32(ddlListaArticulos.SelectedValue), contexto)
                     If ddlTipoOperacion.SelectedValue = "Ent" Then
                         Edit.stock_fisico = Edit.stock_fisico + unidadesSolicitadas
                     Else
@@ -131,17 +131,17 @@ Public Class Crear1
                     End If
                     bError = Update.Articulo(Edit, contexto)
 
-                    Modal.MostrarAlerta(updatePanelPrinicpal, bError, Mensajes.Registrar.ToString)
+                    Modal.MostrarAlerta(updatePanelPrinicpal, bError, Val_General.Registrar.ToString)
 
                     Get_StockArticulo(Edit.id_articulo)
 
                 Else
-                    Modal.MostrarAlerta(updatePanelPrinicpal, bError, Mensajes.Registrar.ToString)
+                    Modal.MostrarAlerta(updatePanelPrinicpal, bError, Val_General.Registrar.ToString)
                     Return
                 End If
 
             Else
-                Modal.MostrarMensajeAlerta(updatePanelPrinicpal, False, Mensajes.Unidades_Stock.ToString)
+                Modal.MostrarMensajeAlerta(updatePanelPrinicpal, False, Val_General.Unidades_Stock.ToString)
             End If
 
         End If
@@ -159,7 +159,7 @@ Public Class Crear1
         Else
             Get_StockArticulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
 
-            Dim _articulo = Getter.Articulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
+            Dim _articulo = Mgr_Articulo.Get_Articulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
             txtCodArticulo.Text = _articulo.codigo
 
         End If
@@ -193,7 +193,7 @@ Public Class Crear1
             ddlListaArticulos.Visible = False
             txtCodArticulo.Visible = False
         Else
-            Listas.Almacen(ddlAlmacen, Convert.ToInt32(ddlCliente.SelectedValue))
+            Mgr_Almacen.Llenar_Lista(ddlAlmacen, Convert.ToInt32(ddlCliente.SelectedValue))
             txtCodArticulo.Text = String.Empty
         End If
     End Sub
@@ -212,11 +212,11 @@ Public Class Crear1
         Else
             ddlListaArticulos.Visible = True
             txtCodArticulo.Visible = True
-            Listas.Articulo_Almacen(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
+            Mgr_Articulo.Llenar_Lista_Almacen(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
 
             If ddlListaArticulos.SelectedValue <> String.Empty Then
                 Get_StockArticulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
-                Dim _articulo = Getter.Articulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
+                Dim _articulo = Mgr_Articulo.Get_Articulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
                 txtCodArticulo.Text = _articulo.codigo
             End If
 

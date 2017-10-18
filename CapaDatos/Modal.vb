@@ -33,24 +33,24 @@ Public Class Modal
 
             If bError Then
 
-                If tipoOperacion = Mensajes.Registrar.ToString Then
-                    mensaje = Mensajes.AddExito.ToString
-                ElseIf tipoOperacion = Mensajes.Editar.ToString Then
-                    mensaje = Mensajes.EditExito.ToString
-                ElseIf tipoOperacion = Mensajes.Eliminar.ToString Then
-                    mensaje = Mensajes.DeleteExito.ToString
+                If tipoOperacion = Val_General.Registrar.ToString Then
+                    mensaje = Val_General.AddExito.ToString
+                ElseIf tipoOperacion = Val_General.Editar.ToString Then
+                    mensaje = Val_General.EditExito.ToString
+                ElseIf tipoOperacion = Val_General.Eliminar.ToString Then
+                    mensaje = Val_General.DeleteExito.ToString
                 End If
 
                 _PlaceHolder = CType(_UserControl.FindControl("AlertExito"), PlaceHolder)
                 _LabelExito = CType(_UserControl.FindControl("lbAlertMsjExito"), Label)
                 _LabelExito.Text = mensaje & " a las " & DateTime.Now.ToString("HH:mm:ss")
             Else
-                If tipoOperacion = Mensajes.Registrar.ToString Then
-                    mensaje = Mensajes.AddFalla.ToString
-                ElseIf tipoOperacion = Mensajes.Editar.ToString Then
-                    mensaje = Mensajes.EditFalla.ToString
-                ElseIf tipoOperacion = Mensajes.Eliminar.ToString Then
-                    mensaje = Mensajes.DeleteFalla.ToString
+                If tipoOperacion = Val_General.Registrar.ToString Then
+                    mensaje = Val_General.AddFalla.ToString
+                ElseIf tipoOperacion = Val_General.Editar.ToString Then
+                    mensaje = Val_General.EditFalla.ToString
+                ElseIf tipoOperacion = Val_General.Eliminar.ToString Then
+                    mensaje = Val_General.DeleteFalla.ToString
                 End If
 
                 _PlaceHolder = CType(_UserControl.FindControl("AlertFalla"), PlaceHolder)

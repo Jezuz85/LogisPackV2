@@ -19,7 +19,7 @@
 
     <TestMethod()> Public Sub Registrar_Articulo()
 
-        Dim miArticulo = Getter.Articulo(_Articulo.id_articulo)
+        Dim miArticulo = Mgr_Articulo.Get_Articulo(_Articulo.id_articulo)
 
         Assert.AreEqual(miArticulo.id_articulo, _Articulo.id_articulo)
         Assert.AreEqual(miArticulo.nombre, _Articulo.nombre)
@@ -31,7 +31,7 @@
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
-        Dim _Edit = Getter.Articulo(_Articulo.id_articulo, contexto)
+        Dim _Edit = Mgr_Articulo.Get_Articulo(_Articulo.id_articulo, contexto)
 
         _Edit.codigo = "_Cod1"
         _Edit.nombre = "_ArtPrueba"
@@ -47,9 +47,9 @@
 
     <TestMethod()> Public Sub Eliminar_Articulo()
 
-        Delete.Articulo(_Articulo.id_articulo)
+        Mgr_Articulo.Eliminar(_Articulo.id_articulo)
 
-        Dim miArticulo = Getter.Articulo(_Articulo.id_articulo)
+        Dim miArticulo = Mgr_Articulo.Get_Articulo(_Articulo.id_articulo)
 
         Assert.AreEqual(miArticulo, Nothing)
 

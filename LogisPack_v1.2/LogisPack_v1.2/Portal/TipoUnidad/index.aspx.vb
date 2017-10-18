@@ -29,10 +29,10 @@ Public Class index2
     Private Sub LlenarGridView()
 
         Tabla.TipoUnidad(GridView1,
-                      String.Empty & ViewState("SortExpression"),
-                      String.Empty & ViewState("GridViewSortDirection"),
-                      String.Empty & ViewState("filtroBusqueda"),
-                      String.Empty & ViewState("textoBusqueda"))
+                      String.Empty & ViewState(Val_General.SortExpression.ToString),
+                      String.Empty & ViewState(Val_General.GridViewSortDirection.ToString),
+                      String.Empty & ViewState(Val_General.filtroBusqueda.ToString),
+                      String.Empty & ViewState(Val_General.textoBusqueda.ToString))
 
     End Sub
 
@@ -44,13 +44,13 @@ Public Class index2
     End Sub
     Protected Sub GridView1_OnSorting(ByVal sender As Object, ByVal e As GridViewSortEventArgs)
 
-        Utilidades_Grid.sortGridView(GridView1, e, ViewState("SortExpression"), ViewState("GridViewSortDirection"))
+        Utilidades_Grid.sortGridView(GridView1, e, ViewState(Val_General.SortExpression.ToString), ViewState(Val_General.GridViewSortDirection.ToString))
 
         Tabla.TipoUnidad(GridView1,
-                       String.Empty & ViewState("SortExpression"),
-                       String.Empty & ViewState("GridViewSortDirection"),
-                       String.Empty & ViewState("filtroBusqueda"),
-                       String.Empty & ViewState("textoBusqueda"))
+                       String.Empty & ViewState(Val_General.SortExpression.ToString),
+                       String.Empty & ViewState(Val_General.GridViewSortDirection.ToString),
+                       String.Empty & ViewState(Val_General.filtroBusqueda.ToString),
+                       String.Empty & ViewState(Val_General.textoBusqueda.ToString))
 
     End Sub
     Protected Sub GridView1_RowCreated(sender As Object, e As GridViewRowEventArgs)
@@ -58,7 +58,7 @@ Public Class index2
     End Sub
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
-        If e.CommandName.Equals(Mensajes.Editar.ToString) Then
+        If e.CommandName.Equals(Val_General.Editar.ToString) Then
 
             hdfEdit.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Dim _TipoUnidad = Getter.Tipo_Unidad(Convert.ToInt32(hdfEdit.Value))
@@ -66,7 +66,7 @@ Public Class index2
             Modal.AbrirModal("EditModal", "EditModalScript", Me)
 
         End If
-        If e.CommandName.Equals(Mensajes.Eliminar.ToString) Then
+        If e.CommandName.Equals(Val_General.Eliminar.ToString) Then
 
             hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
@@ -90,7 +90,7 @@ Public Class index2
             bError = Create.TipoUnidad(_Nuevo)
 
             Modal.CerrarModal("AddModal", "AddModalScript", Me)
-            Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Registrar.ToString, bError, Me, updatePanelPrinicpal, up_Add)
+            Utilidades_UpdatePanel.CerrarOperacion(Val_General.Registrar.ToString, bError, Me, updatePanelPrinicpal, up_Add)
             LlenarGridView()
         End If
 
@@ -111,7 +111,7 @@ Public Class index2
             bError = Update.Tipo_Unidad(Edit, contexto)
 
             Modal.CerrarModal("EditModal", "EditModallScript", Me)
-            Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
+            Utilidades_UpdatePanel.CerrarOperacion(Val_General.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
             LlenarGridView()
         End If
     End Sub
@@ -125,7 +125,7 @@ Public Class index2
 
         Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
 
-        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
+        Utilidades_UpdatePanel.CerrarOperacion(Val_General.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
         LlenarGridView()
     End Sub
 
@@ -134,8 +134,8 @@ Public Class index2
     ''' </summary>
     Protected Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
 
-        ViewState("filtroBusqueda") = ddlBuscar.SelectedValue
-        ViewState("textoBusqueda") = txtSearch.Text
+        ViewState(Val_General.filtroBusqueda.ToString) = ddlBuscar.SelectedValue
+        ViewState(Val_General.textoBusqueda.ToString) = txtSearch.Text
         LlenarGridView()
 
     End Sub
@@ -145,8 +145,8 @@ Public Class index2
     ''' </summary>
     Protected Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
         txtSearch.Text = String.Empty
-        ViewState("filtroBusqueda") = String.Empty
-        ViewState("textoBusqueda") = String.Empty
+        ViewState(Val_General.filtroBusqueda.ToString) = String.Empty
+        ViewState(Val_General.textoBusqueda.ToString) = String.Empty
 
         LlenarGridView()
     End Sub

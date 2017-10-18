@@ -43,12 +43,12 @@ Public Class CargaMasiva
 
             Dim resultadoCarga = Manager_Excel.CargaMasiva(fuExcel, "Articulos", ddlAlmacen.SelectedValue)
 
-            If resultadoCarga(0).Equals(Mensajes.CargaExito.ToString) Then
+            If resultadoCarga(0).Equals(Val_General.CargaExito.ToString) Then
                 Modal.MostrarMensajeAlerta(_updatePpal, True, resultadoCarga(0))
             Else
                 phErrors.Visible = True
 
-                Modal.MostrarMensajeAlerta(_updatePpal, False, Mensajes.CargaFalla.ToString & "" & fuExcel.FileName)
+                Modal.MostrarMensajeAlerta(_updatePpal, False, Val_General.CargaFalla.ToString & "" & fuExcel.FileName)
                 ControlesDinamicos.CrearLiteral("<ul class='list-group'>", pListaErrores)
                 For Each itemErrores In resultadoCarga
                     ControlesDinamicos.CrearLiteral("<li class='list-group-item'>" & itemErrores & "</li>", pListaErrores)
@@ -66,10 +66,10 @@ Public Class CargaMasiva
     ''' </summary>
     Protected Sub ddlCliente_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlCliente.SelectedIndexChanged
 
-        If ddlCliente.SelectedValue = "" Then
+        If ddlCliente.SelectedValue = String.Empty Then
             ddlAlmacen.Items.Clear()
         Else
-            Listas.Almacen(ddlAlmacen, Convert.ToInt32(ddlCliente.SelectedValue))
+            Mgr_Almacen.Llenar_Lista(ddlAlmacen, Convert.ToInt32(ddlCliente.SelectedValue))
         End If
 
     End Sub

@@ -4,50 +4,6 @@ Imports System.Data.Entity
 Public Class Delete
 
     ''' <summary>
-    ''' Metodo que recibe un id del Almacen y lo elimina en Base de datos, devuelve True si fue exitoso, de lo contrario False
-    ''' </summary>
-    Public Shared Function Almacen(ByVal _id As Integer) As Boolean
-
-        Dim contexto As LogisPackEntities = New LogisPackEntities()
-
-        Try
-            Dim Eliminar As New Almacen With {
-                .id_almacen = _id
-            }
-            contexto.Almacen.Attach(Eliminar)
-            contexto.Almacen.Remove(Eliminar)
-            contexto.SaveChanges()
-        Catch ex As Exception
-            Return False
-        End Try
-
-        Return True
-
-    End Function
-
-    ''' <summary>
-    ''' Metodo que recibe un id del Articulo y lo elimina en Base de datos, devuelve True si fue exitoso, de lo contrario False
-    ''' </summary>
-    Public Shared Function Articulo(ByVal _id As Integer) As Boolean
-
-        Dim contexto As LogisPackEntities = New LogisPackEntities()
-
-        Try
-            Dim Eliminar As New Articulo With {
-                .id_articulo = _id
-            }
-            contexto.Articulo.Attach(Eliminar)
-            contexto.Articulo.Remove(Eliminar)
-            contexto.SaveChanges()
-        Catch ex As Exception
-            Return False
-        End Try
-
-        Return True
-
-    End Function
-
-    ''' <summary>
     ''' Metodo que recibe un id del Cliente y lo elimina en Base de datos, devuelve True si fue exitoso, de lo contrario False
     ''' </summary>
     Public Shared Function Cliente(ByVal _id As Integer) As Boolean
@@ -132,27 +88,6 @@ Public Class Delete
 
     End Function
 
-    ''' <summary>
-    ''' Metodo que recibe un id del Picking_Articulo y lo elimina en Base de datos, devuelve True si fue exitoso, de lo contrario False
-    ''' </summary>
-    Public Shared Function Picking_Articulo(ByVal _id As Integer) As Boolean
-
-        Dim contexto As LogisPackEntities = New LogisPackEntities()
-
-        Try
-            Dim Eliminar As New Picking_Articulo With {
-                .id_picking_articulo = _id
-            }
-            contexto.Picking_Articulo.Attach(Eliminar)
-            contexto.Picking_Articulo.Remove(Eliminar)
-            contexto.SaveChanges()
-        Catch ex As Exception
-            Return False
-        End Try
-
-        Return True
-
-    End Function
 
     ''' <summary>
     ''' Metodo que recibe un id de la Imagen y lo elimina en Base de datos, devuelve True si fue exitoso, de lo contrario False

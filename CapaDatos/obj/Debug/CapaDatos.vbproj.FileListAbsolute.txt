@@ -1,11 +1,10 @@
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Debug\CapaDatos.Resources.resources
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Debug\CapaDatos.vbproj.GenerateResource.Cache
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\bin\Debug\CapaDatos.dll.config
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\bin\Debug\CapaDatos.dll
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\bin\Debug\CapaDatos.pdb
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\bin\Debug\CapaDatos.xml
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\bin\Debug\System.Web.Razor.dll
-C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Debug\CapaDatos.vbprojResolveAssemblyReference.cache
-C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Debug\CapaDatos.Resources.resources
-C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Debug\CapaDatos.vbproj.GenerateResource.Cache
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Debug\CapaDatos.dll
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Debug\CapaDatos.xml
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Debug\CapaDatos.pdb

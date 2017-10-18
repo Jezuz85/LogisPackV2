@@ -85,7 +85,7 @@ Public Class Editar
     ''' </summary>
     Private Sub crearCamposListaUbicacion(valor As Integer)
 
-        ViewState("contadorUbi") = Convert.ToString(Manager_Articulo.crearCamposListaUbicacion(valor, pTabla))
+        ViewState("contadorUbi") = Convert.ToString(Mgr_Articulo.crearCamposListaUbicacion(valor, pTabla))
 
     End Sub
 
@@ -94,7 +94,7 @@ Public Class Editar
     ''' cargar la pagina
     ''' </summary>
     Private Sub CargarCoefVol(idAlmacen As Integer)
-        Dim _Almacen = Getter.Almacen(idAlmacen)
+        Dim _Almacen = Mgr_Almacen.Consultar(idAlmacen)
         txtCoefVol.Text = _Almacen.coeficiente_volumetrico
     End Sub
 
@@ -105,7 +105,7 @@ Public Class Editar
 
         bError = Delete.Imagen(Convert.ToInt32(hdfIDDel.Value))
 
-        Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
+        Utilidades_UpdatePanel.CerrarOperacion(Val_General.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
 
         Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
 
@@ -119,7 +119,7 @@ Public Class Editar
     Private Sub CargarArticulo()
 
         Dim _Articulo As List(Of Articulo)
-        _Articulo = Getter.Articulo_list(IdArticulo)
+        _Articulo = Mgr_Articulo.Get_Articulo_list(IdArticulo)
 
         For Each itemArticulos In _Articulo
 
@@ -141,7 +141,7 @@ Public Class Editar
 
         ddlTipoArticulo.SelectedValue = itemArticulos.tipoArticulo
         ddlCliente.SelectedValue = itemArticulos.Almacen.id_cliente
-        Listas.Almacen(ddlAlmacen, Convert.ToInt32(ddlCliente.SelectedValue))
+        Mgr_Almacen.Llenar_Lista(ddlAlmacen, Convert.ToInt32(ddlCliente.SelectedValue))
         ddlAlmacen.SelectedValue = itemArticulos.id_almacen
         txtCodigo.Text = itemArticulos.codigo
         txtNombre.Text = itemArticulos.nombre
@@ -149,8 +149,8 @@ Public Class Editar
         txtRef1.Text = itemArticulos.referencia1
         txtRef2.Text = itemArticulos.referencia2
         txtRef3.Text = itemArticulos.referencia3
-        ddlTipoUnidad.SelectedValue = If(itemArticulos.id_tipo_unidad Is Nothing, "", itemArticulos.id_tipo_unidad)
-        ddlTipoFacturacion.SelectedValue = If(itemArticulos.id_tipo_facturacion Is Nothing, "", itemArticulos.id_tipo_facturacion)
+        ddlTipoUnidad.SelectedValue = If(itemArticulos.id_tipo_unidad Is Nothing, String.Empty, itemArticulos.id_tipo_unidad)
+        ddlTipoFacturacion.SelectedValue = If(itemArticulos.id_tipo_facturacion Is Nothing, String.Empty, itemArticulos.id_tipo_facturacion)
         txtPeso.Text = itemArticulos.peso.ToString().Replace(",", ".")
         txtAlto.Text = itemArticulos.alto.ToString().Replace(",", ".")
         txtLargo.Text = itemArticulos.largo.ToString().Replace(",", ".")
@@ -178,7 +178,7 @@ Public Class Editar
             LlenarGridview(itemArticulos.id_articulo)
             Update_ViewState_Datatable()
 
-            Listas.ArticuloPickingEdit(ddlListaArticulos, GridView2, Convert.ToInt32(ddlAlmacen.SelectedValue))
+            Mgr_Articulo.ArticuloPickingEdit(ddlListaArticulos, GridView2, Convert.ToInt32(ddlAlmacen.SelectedValue))
 
 
         End If
@@ -237,7 +237,7 @@ Public Class Editar
     End Sub
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
-        If e.CommandName.Equals(Mensajes.Eliminar.ToString) Then
+        If e.CommandName.Equals(Val_General.Eliminar.ToString) Then
             hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
             Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
         End If
@@ -248,7 +248,7 @@ Public Class Editar
 
     Protected Sub GridView2_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
-        If e.CommandName.Equals(Mensajes.EliminarFila.ToString) Then
+        If e.CommandName.Equals(Val_General.EliminarFila.ToString) Then
 
             Dim RowIndex As Integer = Convert.ToInt32((e.CommandArgument))
             Dim gvrow As GridViewRow = GridView2.Rows(RowIndex)
@@ -263,7 +263,7 @@ Public Class Editar
 
             Update_ViewState_Datatable()
             btnAddArticuloRow.Visible = True
-            ddlListaArticulos.Items.Insert(0, New ListItem("" + gvrow.Cells(1).Text, "" + gvrow.Cells(0).Text))
+            ddlListaArticulos.Items.Insert(0, New ListItem("" + gvrow.Cells(1).Text, String.Empty + gvrow.Cells(0).Text))
 
         End If
 
@@ -289,7 +289,7 @@ Public Class Editar
 
     Private Sub LlenarGridview(_id_articulo As Integer)
 
-        Tabla.ArticuloPicking(GridView2, _id_articulo)
+        Mgr_Articulo.Llenar_Grid_ArticuloPicking(GridView2, _id_articulo)
 
         If GridView2.Rows.Count > 0 Then
             GridtoDataTable()
@@ -324,7 +324,7 @@ Public Class Editar
             dr = _DataTable.NewRow()
 
             For i As Integer = 0 To row.Cells.Count - 1
-                dr(i) = row.Cells(i).Text.Replace(" ", "")
+                dr(i) = row.Cells(i).Text.Replace(" ", String.Empty)
 
             Next
             _DataTable.Rows.Add(dr)
@@ -379,10 +379,10 @@ Public Class Editar
 
         '-----------------Calculos
 
-        Dim _M3 As Double = Manager_Articulo.CalcularM3(_alto, _ancho, _largo)
-        Dim _PesoVol As Double = Manager_Articulo.Calcular_PesoVolumetrico(_alto, _ancho, _largo, _coeficiente_volumetrico)
-        Dim _valoracionStock As Double = Manager_Articulo.Calcular_ValoracionStock(_stock_fisico, _valor_articulo)
-        Dim _valoracionSeguro As Double = Manager_Articulo.Calcular_ValoracionSeguro(_valor_asegurado, _stock_fisico)
+        Dim _M3 As Double = Mgr_Articulo.CalcularM3(_alto, _ancho, _largo)
+        Dim _PesoVol As Double = Mgr_Articulo.Calcular_PesoVolumetrico(_alto, _ancho, _largo, _coeficiente_volumetrico)
+        Dim _valoracionStock As Double = Mgr_Articulo.Calcular_ValoracionStock(_stock_fisico, _valor_articulo)
+        Dim _valoracionSeguro As Double = Mgr_Articulo.Calcular_ValoracionSeguro(_valor_asegurado, _stock_fisico)
 
         bError = True
 
@@ -481,33 +481,33 @@ Public Class Editar
 
                 miTextbox = CType(pTabla.FindControl("txtZona" & contadorControl), TextBox)
                 If miTextbox IsNot Nothing Then
-                    zona = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
+                    zona = If(miTextbox.Text = String.Empty, String.Empty, miTextbox.Text)
                 End If
 
                 miTextbox = CType(pTabla.FindControl("txtEstante" & contadorControl), TextBox)
                 If miTextbox IsNot Nothing Then
-                    estante = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
+                    estante = If(miTextbox.Text = String.Empty, String.Empty, miTextbox.Text)
                 End If
 
                 miTextbox = CType(pTabla.FindControl("txtFila" & contadorControl), TextBox)
                 If miTextbox IsNot Nothing Then
-                    fila = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
+                    fila = If(miTextbox.Text = String.Empty, String.Empty, miTextbox.Text)
                 End If
 
                 miTextbox = CType(pTabla.FindControl("txtColumna" & contadorControl), TextBox)
                 If miTextbox IsNot Nothing Then
                     Dim valor As String = miTextbox.Text.PadLeft(4, "0")
-                    columna = If(miTextbox.Text = String.Empty, "", miTextbox.Text.PadLeft(4, "0"))
+                    columna = If(miTextbox.Text = String.Empty, String.Empty, miTextbox.Text.PadLeft(4, "0"))
                 End If
 
                 miTextbox = CType(pTabla.FindControl("txtPanel" & contadorControl), TextBox)
                 If miTextbox IsNot Nothing Then
-                    panel = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
+                    panel = If(miTextbox.Text = String.Empty, String.Empty, miTextbox.Text)
                 End If
 
                 miTextbox = CType(pTabla.FindControl("txtRefUbi" & contadorControl), TextBox)
                 If miTextbox IsNot Nothing Then
-                    referencia_ubicacion = If(miTextbox.Text = String.Empty, "", miTextbox.Text)
+                    referencia_ubicacion = If(miTextbox.Text = String.Empty, String.Empty, miTextbox.Text)
                 End If
 
                 If referencia_ubicacion IsNot Nothing Then
@@ -558,10 +558,10 @@ Public Class Editar
 
             If Edit.Picking_Articulo1.Count > 0 Then
 
-                Dim _ListPicArt As List(Of Picking_Articulo) = Getter.Picking_Articulo_list(Edit.id_articulo)
+                Dim _ListPicArt As List(Of Picking_Articulo) = Mgr_Articulo.Get_Picking_Articulo_list(Edit.id_articulo)
 
                 For Each itemPicArt In _ListPicArt
-                    bError = Delete.Picking_Articulo(itemPicArt.id_picking_articulo)
+                    bError = Mgr_Articulo.Eliminar_Picking_Articulo(itemPicArt.id_picking_articulo)
                 Next
 
             Else
@@ -596,9 +596,9 @@ Public Class Editar
     ''' </summary>
     Protected Sub ddlAlmacen_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlAlmacen.SelectedIndexChanged
 
-        Manager_Articulo.SetCoefVolumétrico(ddlAlmacen, txtCoefVol, phListaArticulos, ddlTipoArticulo)
+        Mgr_Articulo.SetCoefVolumétrico(ddlAlmacen, txtCoefVol, phListaArticulos, ddlTipoArticulo)
 
-        Listas.ArticuloPickingEdit(ddlListaArticulos, GridView2, Convert.ToInt32(ddlAlmacen.SelectedValue))
+        Mgr_Articulo.ArticuloPickingEdit(ddlListaArticulos, GridView2, Convert.ToInt32(ddlAlmacen.SelectedValue))
 
     End Sub
 
@@ -609,7 +609,7 @@ Public Class Editar
     Protected Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
 
         If Page.IsValid Then
-            Dim Edit = Getter.Articulo(IdArticulo, contexto)
+            Dim Edit = Mgr_Articulo.Get_Articulo(IdArticulo, contexto)
 
             If EditarArticulo(Edit) Then
                 If EditarImagenes(Edit) Then
@@ -619,19 +619,19 @@ Public Class Editar
                             If ddlTipoArticulo.SelectedValue = "Picking" Then
 
                                 Utilidades_UpdatePanel.LimpiarControles(updatePanelPrinicpal)
-                                Listas.Articulo(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
+                                Mgr_Articulo.Llenar_Lista(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
                                 phListaArticulos.Visible = False
                                 txtUnidad.Text = Nothing
                             End If
-                            ddlAlmacen.SelectedValue = ""
-                            ddlCliente.SelectedValue = ""
+                            ddlAlmacen.SelectedValue = String.Empty
+                            ddlCliente.SelectedValue = String.Empty
 
                         End If
                     End If
                 End If
             End If
 
-            Utilidades_UpdatePanel.CerrarOperacion(Mensajes.Editar.ToString, bError, Me, updatePanelPrinicpal, updatePanelPrinicpal)
+            Utilidades_UpdatePanel.CerrarOperacion(Val_General.Editar.ToString, bError, Me, updatePanelPrinicpal, updatePanelPrinicpal)
 
         End If
 
@@ -660,7 +660,7 @@ Public Class Editar
     ''' Metodo que se ejecuta cuando se selecciona un cliente de la lista
     ''' </summary>
     Protected Sub ddlCliente_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlCliente.SelectedIndexChanged
-        Manager_Articulo.CambiarCliente(ddlCliente, txtCoefVol, ddlAlmacen)
+        Mgr_Articulo.CambiarCliente(ddlCliente, txtCoefVol, ddlAlmacen)
     End Sub
 
 End Class

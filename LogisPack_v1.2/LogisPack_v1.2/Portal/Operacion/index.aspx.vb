@@ -37,10 +37,10 @@ Public Class index4
     Public Sub LlenarGridView()
 
         Tabla.Historico(GridView1, idCliente,
-                      String.Empty & ViewState("SortExpression"),
-                      String.Empty & ViewState("GridViewSortDirection"),
-                      String.Empty & ViewState("filtroBusqueda"),
-                      String.Empty & ViewState("textoBusqueda"))
+                      String.Empty & ViewState(Val_General.SortExpression.ToString),
+                      String.Empty & ViewState(Val_General.GridViewSortDirection.ToString),
+                      String.Empty & ViewState(Val_General.filtroBusqueda.ToString),
+                      String.Empty & ViewState(Val_General.textoBusqueda.ToString))
     End Sub
 
     ''' <summary>
@@ -56,14 +56,14 @@ Public Class index4
     End Sub
     Protected Sub GridView1_OnSorting(ByVal sender As Object, ByVal e As GridViewSortEventArgs)
 
-        Utilidades_Grid.sortGridView(GridView1, e, ViewState("SortExpression"), ViewState("GridViewSortDirection"))
+        Utilidades_Grid.sortGridView(GridView1, e, ViewState(Val_General.SortExpression.ToString), ViewState(Val_General.GridViewSortDirection.ToString))
 
         Tabla.Historico(GridView1,
                        idCliente,
-                       String.Empty & ViewState("SortExpression"),
-                       String.Empty & ViewState("GridViewSortDirection"),
-                       String.Empty & ViewState("filtroBusqueda"),
-                       String.Empty & ViewState("textoBusqueda"))
+                       String.Empty & ViewState(Val_General.SortExpression.ToString),
+                       String.Empty & ViewState(Val_General.GridViewSortDirection.ToString),
+                       String.Empty & ViewState(Val_General.filtroBusqueda.ToString),
+                       String.Empty & ViewState(Val_General.textoBusqueda.ToString))
 
     End Sub
     Protected Sub GridView1_RowCreated(sender As Object, e As GridViewRowEventArgs)
@@ -76,8 +76,8 @@ Public Class index4
     ''' </summary>
     Protected Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
 
-        ViewState("filtroBusqueda") = ddlBuscar.SelectedValue
-        ViewState("textoBusqueda") = txtSearch.Text
+        ViewState(Val_General.filtroBusqueda.ToString) = ddlBuscar.SelectedValue
+        ViewState(Val_General.textoBusqueda.ToString) = txtSearch.Text
         LlenarGridView()
     End Sub
 
@@ -93,8 +93,8 @@ Public Class index4
     ''' </summary>
     Protected Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
 
-        ViewState("filtroBusqueda") = ddlBuscar.SelectedValue
-        ViewState("textoBusqueda") = txtSearch.Text
+        ViewState(Val_General.filtroBusqueda.ToString) = ddlBuscar.SelectedValue
+        ViewState(Val_General.textoBusqueda.ToString) = txtSearch.Text
         LlenarGridView()
 
     End Sub
@@ -104,8 +104,8 @@ Public Class index4
     ''' </summary>
     Protected Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
         txtSearch.Text = String.Empty
-        ViewState("filtroBusqueda") = String.Empty
-        ViewState("textoBusqueda") = String.Empty
+        ViewState(Val_General.filtroBusqueda.ToString) = String.Empty
+        ViewState(Val_General.textoBusqueda.ToString) = String.Empty
 
         LlenarGridView()
     End Sub
@@ -114,16 +114,16 @@ Public Class index4
     ''' Metodo que se ejecuta cuando se selecciona un cliente de la lista
     ''' </summary>
     Protected Sub ddlCliente_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlCliente.SelectedIndexChanged
-        Manager_Articulo.CambiarCliente(ddlCliente, New TextBox(), ddlAlmacen)
+        Mgr_Articulo.CambiarCliente(ddlCliente, New TextBox(), ddlAlmacen)
 
         If ddlCliente.SelectedValue <> String.Empty Then
 
-            ViewState("filtroBusqueda") = "Cliente"
-            ViewState("textoBusqueda") = Convert.ToString(ddlCliente.SelectedItem)
+            ViewState(Val_General.filtroBusqueda.ToString) = "Cliente"
+            ViewState(Val_General.textoBusqueda.ToString) = Convert.ToString(ddlCliente.SelectedItem)
         Else
             txtSearch.Text = String.Empty
-            ViewState("filtroBusqueda") = String.Empty
-            ViewState("textoBusqueda") = String.Empty
+            ViewState(Val_General.filtroBusqueda.ToString) = String.Empty
+            ViewState(Val_General.textoBusqueda.ToString) = String.Empty
         End If
 
         LlenarGridView()
@@ -137,14 +137,14 @@ Public Class index4
 
         If ddlAlmacen.SelectedValue <> String.Empty Then
 
-            ViewState("filtroBusqueda") = "Almacen"
-            ViewState("textoBusqueda") = Convert.ToString(ddlAlmacen.SelectedItem)
-            Listas.Articulo_Almacen(ddlArticulo, Convert.ToInt32(ddlAlmacen.SelectedValue))
+            ViewState(Val_General.filtroBusqueda.ToString) = "Almacen"
+            ViewState(Val_General.textoBusqueda.ToString) = Convert.ToString(ddlAlmacen.SelectedItem)
+            Mgr_Articulo.Llenar_Lista_Almacen(ddlArticulo, Convert.ToInt32(ddlAlmacen.SelectedValue))
         Else
             ddlArticulo.Items.Clear()
             txtSearch.Text = String.Empty
-            ViewState("filtroBusqueda") = String.Empty
-            ViewState("textoBusqueda") = String.Empty
+            ViewState(Val_General.filtroBusqueda.ToString) = String.Empty
+            ViewState(Val_General.textoBusqueda.ToString) = String.Empty
         End If
 
         LlenarGridView()
@@ -158,10 +158,10 @@ Public Class index4
 
         If ddlArticulo.SelectedValue <> String.Empty Then
 
-            ViewState("filtroBusqueda") = "Articulo"
-            ViewState("textoBusqueda") = Convert.ToString(ddlArticulo.SelectedItem)
+            ViewState(Val_General.filtroBusqueda.ToString) = "Articulo"
+            ViewState(Val_General.textoBusqueda.ToString) = Convert.ToString(ddlArticulo.SelectedItem)
 
-            Dim _articulo = Getter.Articulo(Convert.ToInt32(ddlArticulo.SelectedValue))
+            Dim _articulo = Mgr_Articulo.Get_Articulo(Convert.ToInt32(ddlArticulo.SelectedValue))
 
             txtTotalEntrada.Text = Getter.Operacion_TotalEntrada(Convert.ToInt32(ddlArticulo.SelectedValue))
             txtTotalSalida.Text = Getter.Operacion_TotalSalida(Convert.ToInt32(ddlArticulo.SelectedValue))
@@ -174,8 +174,8 @@ Public Class index4
             txtTotalSalida.Text = String.Empty
             txtStockFisico.Text = String.Empty
             txtStockMinimo.Text = String.Empty
-            ViewState("filtroBusqueda") = String.Empty
-            ViewState("textoBusqueda") = String.Empty
+            ViewState(Val_General.filtroBusqueda.ToString) = String.Empty
+            ViewState(Val_General.textoBusqueda.ToString) = String.Empty
         End If
 
         LlenarGridView()
