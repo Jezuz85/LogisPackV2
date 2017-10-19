@@ -11,15 +11,15 @@ Partial Public Class Register
 
         If Manager_Usuario.ValidarAutenticado(User) Then
 
-            idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
+            idCliente = Mgr_Usuario.Get_Cliente_Usuario(Manager_Usuario.GetUserId(User))
 
             If IsPostBack = False Then
-                Listas.Rol(ddlRol)
-                Listas.Cliente(ddlCliente, idCliente)
+                Mgr_Usuario.Llenar_Lista_Rol(ddlRol)
+                Mgr_Cliente.Llenar_Lista(ddlCliente, idCliente)
             End If
 
         Else
-            Response.Redirect(Paginas.Login.ToString)
+            Response.Redirect(Val_Paginas.Login.ToString)
         End If
 
 

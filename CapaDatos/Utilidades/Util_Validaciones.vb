@@ -3,7 +3,7 @@ Imports System.Globalization
 Imports System.IO
 Imports System.Web.UI.WebControls
 
-Public Class Validaciones
+Public Class Util_Validaciones
     Dim contexto As LogisPackEntities = New LogisPackEntities()
 
     Public Shared Function Validar_Campo_Vacio(_ValorAsignar As String, _ValorDefault As String) As String
@@ -20,7 +20,7 @@ Public Class Validaciones
 
     Public Shared Function Exist_Tipo_Facturacion(nombre As String) As Boolean
 
-        Dim TipoFacturacion = Getter.Tipo_Facturacion(nombre)
+        Dim TipoFacturacion = Mgr_TipoFacturacion.Get_Tipo_Facturacion(nombre)
 
         If TipoFacturacion IsNot Nothing Then
             Return True
@@ -32,7 +32,7 @@ Public Class Validaciones
 
     Public Shared Function Exist_Tipo_Unidad(nombre As String) As Boolean
 
-        Dim TipoUnidad = Getter.Tipo_Unidad(nombre)
+        Dim TipoUnidad = Mgr_TipoUnidad.Get_Tipo_Unidad(nombre)
 
         If TipoUnidad IsNot Nothing Then
             Return True

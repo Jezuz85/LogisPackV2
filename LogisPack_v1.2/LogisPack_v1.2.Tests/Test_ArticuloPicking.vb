@@ -39,7 +39,7 @@
 
         _Edit.unidades = 30
 
-        Update.Articulo(_Articulo, contexto)
+        Mgr_Articulo.Editar(_Articulo, contexto)
 
         Assert.AreEqual(_Edit.id_picking_articulo, _Picking_Articulo.id_picking_articulo)
         Assert.AreNotEqual(_Edit.unidades, _Picking_Articulo.unidades)

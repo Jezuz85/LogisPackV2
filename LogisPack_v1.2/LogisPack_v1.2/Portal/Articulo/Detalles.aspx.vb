@@ -9,10 +9,10 @@ Public Class Detalles
 
         If Manager_Usuario.ValidarAutenticado(User) Then
             Manager_Usuario.ValidarMenu(Me, Master)
-            Dim IdArticulo = Cifrar.descifrarCadena_Num(Request.QueryString("id"))
+            Dim IdArticulo = Util_Cifrar.descifrarCadena_Num(Request.QueryString("id"))
             CargarArticulo(IdArticulo)
         Else
-            Response.Redirect(Paginas.Login.ToString)
+            Response.Redirect(Val_Paginas.Login.ToString)
         End If
 
     End Sub
@@ -83,13 +83,13 @@ Public Class Detalles
         If itemArticulos.tipoArticulo = "Picking" Then
             phListaArticulos.Visible = True
 
-            ControlesDinamicos.CrearLiteral("<ul class='list-group'>", pArticulos)
+            Util_ControlesDinamicos.CrearLiteral("<ul class='list-group'>", pArticulos)
             For Each itemPickArticulos In itemArticulos.Picking_Articulo1
 
                 Dim _ArticuloPick = contexto.Articulo.Where(Function(model) model.id_articulo = itemPickArticulos.id_articulo).SingleOrDefault()
-                ControlesDinamicos.CrearLiteral("<li class='list-group-item'><strong>Articulo:</strong> " & _ArticuloPick.nombre & " <strong>Unidades:</strong> " & itemPickArticulos.unidades & "</li>", pArticulos)
+                Util_ControlesDinamicos.CrearLiteral("<li class='list-group-item'><strong>Articulo:</strong> " & _ArticuloPick.nombre & " <strong>Unidades:</strong> " & itemPickArticulos.unidades & "</li>", pArticulos)
             Next
-            ControlesDinamicos.CrearLiteral("</ul>", pArticulos)
+            Util_ControlesDinamicos.CrearLiteral("</ul>", pArticulos)
 
         End If
     End Sub
@@ -100,7 +100,7 @@ Public Class Detalles
     Private Sub CargarImagenes(itemArticulos As Articulo)
 
         If itemArticulos.Imagen.Count > 0 Then
-            ControlesDinamicos.CrearLiteral("
+            Util_ControlesDinamicos.CrearLiteral("
                 <div id='ImagenesArticulo' class='carousel slide' data-ride='carousel' style='width:50%;height:50%;'>
                     <div class='carousel-inner'>", pImagenes)
             Dim contadorImagenes As Integer = 0
@@ -109,20 +109,20 @@ Public Class Detalles
 
                 If contadorImagenes = 0 Then
 
-                    ControlesDinamicos.CrearLiteral("<div class='item active'>", pImagenes)
+                    Util_ControlesDinamicos.CrearLiteral("<div class='item active'>", pImagenes)
                 Else
 
-                    ControlesDinamicos.CrearLiteral("<div class='item'>", pImagenes)
+                    Util_ControlesDinamicos.CrearLiteral("<div class='item'>", pImagenes)
                 End If
 
 
-                ControlesDinamicos.CrearLiteral("<img src='" & itemImagen.url_imagen & "' style='width:100%;'>", pImagenes)
-                ControlesDinamicos.CrearLiteral("</div>", pImagenes)
+                Util_ControlesDinamicos.CrearLiteral("<img src='" & itemImagen.url_imagen & "' style='width:100%;'>", pImagenes)
+                Util_ControlesDinamicos.CrearLiteral("</div>", pImagenes)
 
                 contadorImagenes += 1
             Next
 
-            ControlesDinamicos.CrearLiteral("</div>
+            Util_ControlesDinamicos.CrearLiteral("</div>
                 <a class='left carousel-control' href='#ImagenesArticulo' data-slide='prev'>
                     <span class='glyphicon glyphicon-chevron-left'></span>
                     <span class='sr-only'>Previous</span>
@@ -133,7 +133,7 @@ Public Class Detalles
                 </a>
             </div>", pImagenes)
         Else
-            ControlesDinamicos.CrearLiteral("<h5>Sin imagenes registradas</h5>", pImagenes)
+            Util_ControlesDinamicos.CrearLiteral("<h5>Sin imagenes registradas</h5>", pImagenes)
         End If
 
     End Sub
@@ -145,7 +145,7 @@ Public Class Detalles
 
         If itemArticulos.Ubicacion.Count > 0 Then
 
-            ControlesDinamicos.CrearLiteral("<table class='table table-bordered table-hover'>
+            Util_ControlesDinamicos.CrearLiteral("<table class='table table-bordered table-hover'>
                     <tbody>
                         <tr class='bg-aqua color-palette'>
                             <th class='col-md-1 text-center'>Zona</th>
@@ -157,19 +157,19 @@ Public Class Detalles
                         </tr>", pTabla)
             For Each itemUbicacion In itemArticulos.Ubicacion
 
-                ControlesDinamicos.CrearLiteral("<tr'>", pTabla)
-                ControlesDinamicos.CrearLiteral("<td>" & itemUbicacion.zona & "</td>", pTabla)
-                ControlesDinamicos.CrearLiteral("<td>" & itemUbicacion.estante & "</td>", pTabla)
-                ControlesDinamicos.CrearLiteral("<td>" & itemUbicacion.fila & "</td>", pTabla)
-                ControlesDinamicos.CrearLiteral("<td>" & itemUbicacion.columna & "</td>", pTabla)
-                ControlesDinamicos.CrearLiteral("<td>" & itemUbicacion.panel & "</td>", pTabla)
-                ControlesDinamicos.CrearLiteral("<td>" & itemUbicacion.referencia_ubicacion & "</td>", pTabla)
-                ControlesDinamicos.CrearLiteral("</tr>", pTabla)
+                Util_ControlesDinamicos.CrearLiteral("<tr'>", pTabla)
+                Util_ControlesDinamicos.CrearLiteral("<td>" & itemUbicacion.zona & "</td>", pTabla)
+                Util_ControlesDinamicos.CrearLiteral("<td>" & itemUbicacion.estante & "</td>", pTabla)
+                Util_ControlesDinamicos.CrearLiteral("<td>" & itemUbicacion.fila & "</td>", pTabla)
+                Util_ControlesDinamicos.CrearLiteral("<td>" & itemUbicacion.columna & "</td>", pTabla)
+                Util_ControlesDinamicos.CrearLiteral("<td>" & itemUbicacion.panel & "</td>", pTabla)
+                Util_ControlesDinamicos.CrearLiteral("<td>" & itemUbicacion.referencia_ubicacion & "</td>", pTabla)
+                Util_ControlesDinamicos.CrearLiteral("</tr>", pTabla)
 
             Next
-            ControlesDinamicos.CrearLiteral("</tbody></table>", pTabla)
+            Util_ControlesDinamicos.CrearLiteral("</tbody></table>", pTabla)
         Else
-            ControlesDinamicos.CrearLiteral("<h5>Sin ubicaciones registradas</h5>", pTabla)
+            Util_ControlesDinamicos.CrearLiteral("<h5>Sin ubicaciones registradas</h5>", pTabla)
         End If
     End Sub
 

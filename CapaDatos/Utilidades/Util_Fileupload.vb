@@ -3,7 +3,7 @@ Imports System.Drawing.Imaging
 Imports System.Web
 Imports System.Web.UI.WebControls
 
-Public Class Utilidades_Fileupload
+Public Class Util_Fileupload
 
     ''' <summary>
     ''' Metodo donde se almacena una o varias imagenes en el servidor

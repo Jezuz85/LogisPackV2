@@ -11,15 +11,15 @@ Public Class index3
         If Manager_Usuario.ValidarAutenticado(User) Then
             Manager_Usuario.ValidarMenu(Me, Master)
 
-            idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
+            idCliente = Mgr_Usuario.Get_Cliente_Usuario(Manager_Usuario.GetUserId(User))
             If IsPostBack = False Then
                 LlenarGridView()
                 CargarListas()
-                Modal.OcultarAlerta(updatePanelPrinicpal)
+                Util_Modal.OcultarAlerta(updatePanelPrinicpal)
             End If
 
         Else
-            Response.Redirect(Paginas.Login.ToString)
+            Response.Redirect(Val_Paginas.Login.ToString)
         End If
 
     End Sub
@@ -42,7 +42,7 @@ Public Class index3
     ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
     ''' </summary>
     Private Sub CargarListas()
-        Listas.Cliente(ddlCliente, idCliente)
+        Mgr_Cliente.Llenar_Lista(ddlCliente, idCliente)
     End Sub
 
     ''' <summary>
@@ -51,8 +51,8 @@ Public Class index3
     Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
 
         bError = Mgr_Articulo.Eliminar(Convert.ToInt32(hdfIDDel.Value))
-        Modal.CerrarModal(Val_Articulo.DeleteModal.ToString, Val_Articulo.DeleteModalScript.ToString, Me)
-        Utilidades_UpdatePanel.CerrarOperacion(Val_General.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
+        Util_Modal.CerrarModal(Val_Articulo.DeleteModal.ToString, Val_Articulo.DeleteModalScript.ToString, Me)
+        Util_UpdatePanel.CerrarOperacion(Val_General.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
         LlenarGridView()
 
     End Sub
@@ -66,30 +66,30 @@ Public Class index3
 
         If e.CommandName.Equals(Val_General.Detalles.ToString) Then
 
-            Dim id As String = Utilidades_Grid.Get_IdRow(GridView1, e)
-            Response.Redirect(Val_Articulo.URL_Detalles.ToString & Cifrar.cifrarCadena(id))
+            Dim id As String = Util_Grid.Get_IdRow(GridView1, e)
+            Response.Redirect(Val_Articulo.URL_Detalles.ToString & Util_Cifrar.cifrarCadena(id))
 
         ElseIf e.CommandName.Equals(Val_General.Editar.ToString) Then
 
-            Dim id As String = Utilidades_Grid.Get_IdRow(GridView1, e)
-            Response.Redirect(Val_Articulo.URL_Editar.ToString & Cifrar.cifrarCadena(id))
+            Dim id As String = Util_Grid.Get_IdRow(GridView1, e)
+            Response.Redirect(Val_Articulo.URL_Editar.ToString & Util_Cifrar.cifrarCadena(id))
 
         ElseIf e.CommandName.Equals(Val_General.Eliminar.ToString) Then
 
-            hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e)
-            Modal.AbrirModal(Val_Articulo.DeleteModal.ToString, Val_Articulo.DeleteModalScript.ToString, Me)
+            hdfIDDel.Value = Util_Grid.Get_IdRow(GridView1, e)
+            Util_Modal.AbrirModal(Val_Articulo.DeleteModal.ToString, Val_Articulo.DeleteModalScript.ToString, Me)
 
         End If
 
     End Sub
     Protected Sub GridView1_OnSorting(ByVal sender As Object, ByVal e As GridViewSortEventArgs)
 
-        Utilidades_Grid.sortGridView(GridView1, e, ViewState(Val_General.SortExpression.ToString), ViewState(Val_General.GridViewSortDirection.ToString))
+        Util_Grid.sortGridView(GridView1, e, ViewState(Val_General.SortExpression.ToString), ViewState(Val_General.GridViewSortDirection.ToString))
         LlenarGridView()
 
     End Sub
     Protected Sub GridView1_RowCreated(sender As Object, e As GridViewRowEventArgs)
-        Utilidades_Grid.SetArrowsGrid(GridView1, e)
+        Util_Grid.SetArrowsGrid(GridView1, e)
     End Sub
 
     '--------------------------------------------------EVENTOS---------------------------------------------

@@ -1,13 +1,13 @@
 ﻿Imports System.Web.UI
 
-Public Class Utilidades_Menu
+Public Class Util_Menu
 
     ''' <summary>
     ''' Metodo para cargar menu dependiendo del rol
     ''' </summary>
     Public Shared Sub CargarMenu(_Rol As String, _Master As MasterPage)
 
-        If _Rol = Rol.Admin.ToString Then
+        If _Rol = Val_Rol.Admin.ToString Then
 
             Dim _Control As Control = _Master.FindControl("dropbtn_Cliente")
             _Control.Visible = True

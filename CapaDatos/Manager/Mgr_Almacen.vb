@@ -101,7 +101,7 @@ Public Class Mgr_Almacen
                          AL.nombre
                     ).ToList()
 
-        Listas.Set_Text_Value_List(DropDownList1, query, Val_Almacen.Id_Alm.ToString, Val_Almacen.Nom_Alm.ToString)
+        Util_ControlesDinamicos.Set_Text_Value_List(DropDownList1, query, Val_Almacen.Nom_Alm.ToString, Val_Almacen.Id_Alm.ToString)
 
         DropDownList1.Items.Insert(0, New ListItem(Val_General.Lista_Seleccione.ToString, String.Empty))
 
@@ -123,7 +123,7 @@ Public Class Mgr_Almacen
                     ).ToList()
 
 
-        Listas.Set_Text_Value_List(DropDownList1, query, Val_Almacen.Id_Alm.ToString, Val_Almacen.Nom_Alm.ToString)
+        Util_ControlesDinamicos.Set_Text_Value_List(DropDownList1, query, Val_Almacen.Nom_Alm.ToString, Val_Almacen.Id_Alm.ToString)
 
         DropDownList1.Items.Insert(0, New ListItem(Val_General.Lista_Seleccione.ToString, String.Empty))
     End Sub
@@ -226,7 +226,7 @@ Public Class Mgr_Almacen
     ''' <summary>
     ''' Metodo que devuelve una variable de tipo estructura con el cuerpo de la clase almacen
     ''' </summary>
-    Public Shared Function Get_Struct_Almacen() As struct_Almacen
+    Public Shared Function Get_Struct() As struct_Almacen
 
         Dim _mialmacen As struct_Almacen = Nothing
 

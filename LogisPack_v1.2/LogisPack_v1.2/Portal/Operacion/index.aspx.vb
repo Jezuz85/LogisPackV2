@@ -18,7 +18,7 @@ Public Class index4
         If Manager_Usuario.ValidarAutenticado(User) Then
             Manager_Usuario.ValidarMenu(Me, Master)
 
-            idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
+            idCliente = Mgr_Usuario.Get_Cliente_Usuario(Manager_Usuario.GetUserId(User))
             hdfCliente.Value = idCliente
 
             If IsPostBack = False Then
@@ -26,7 +26,7 @@ Public Class index4
                 LlenarGridView()
             End If
         Else
-            Response.Redirect(Paginas.Login.ToString)
+            Response.Redirect(Val_Paginas.Login.ToString)
         End If
 
     End Sub
@@ -36,7 +36,7 @@ Public Class index4
     ''' </summary>
     Public Sub LlenarGridView()
 
-        Tabla.Historico(GridView1, idCliente,
+        Mgr_Historico.LlenarGrid(GridView1, idCliente,
                       String.Empty & ViewState(Val_General.SortExpression.ToString),
                       String.Empty & ViewState(Val_General.GridViewSortDirection.ToString),
                       String.Empty & ViewState(Val_General.filtroBusqueda.ToString),
@@ -47,7 +47,7 @@ Public Class index4
     ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
     ''' </summary>
     Private Sub CargarListas()
-        Listas.Cliente(ddlCliente, idCliente)
+        Mgr_Cliente.Llenar_Lista(ddlCliente, idCliente)
     End Sub
     '--------------------------------------------------Metodos del Gridview---------------------------------------------
     Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
@@ -56,18 +56,13 @@ Public Class index4
     End Sub
     Protected Sub GridView1_OnSorting(ByVal sender As Object, ByVal e As GridViewSortEventArgs)
 
-        Utilidades_Grid.sortGridView(GridView1, e, ViewState(Val_General.SortExpression.ToString), ViewState(Val_General.GridViewSortDirection.ToString))
+        Util_Grid.sortGridView(GridView1, e, ViewState(Val_General.SortExpression.ToString), ViewState(Val_General.GridViewSortDirection.ToString))
 
-        Tabla.Historico(GridView1,
-                       idCliente,
-                       String.Empty & ViewState(Val_General.SortExpression.ToString),
-                       String.Empty & ViewState(Val_General.GridViewSortDirection.ToString),
-                       String.Empty & ViewState(Val_General.filtroBusqueda.ToString),
-                       String.Empty & ViewState(Val_General.textoBusqueda.ToString))
+        LlenarGridView()
 
     End Sub
     Protected Sub GridView1_RowCreated(sender As Object, e As GridViewRowEventArgs)
-        Utilidades_Grid.SetArrowsGrid(GridView1, e)
+        Util_Grid.SetArrowsGrid(GridView1, e)
     End Sub
 
     '--------------------------------------------------EVENTOS---------------------------------------------
@@ -163,8 +158,8 @@ Public Class index4
 
             Dim _articulo = Mgr_Articulo.Get_Articulo(Convert.ToInt32(ddlArticulo.SelectedValue))
 
-            txtTotalEntrada.Text = Getter.Operacion_TotalEntrada(Convert.ToInt32(ddlArticulo.SelectedValue))
-            txtTotalSalida.Text = Getter.Operacion_TotalSalida(Convert.ToInt32(ddlArticulo.SelectedValue))
+            txtTotalEntrada.Text = Mgr_Historico.Get_Operacion_TotalEntrada(Convert.ToInt32(ddlArticulo.SelectedValue))
+            txtTotalSalida.Text = Mgr_Historico.Get_Operacion_TotalSalida(Convert.ToInt32(ddlArticulo.SelectedValue))
             txtStockFisico.Text = _articulo.stock_fisico
             txtStockMinimo.Text = _articulo.stock_minimo
 

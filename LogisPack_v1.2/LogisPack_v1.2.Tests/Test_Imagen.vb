@@ -20,7 +20,7 @@
 
     <TestMethod()> Public Sub Registrar_Imagen()
 
-        Dim miImagen = Getter.Imagen(_Imagen.id_imagen)
+        Dim miImagen = Mgr_Imagen.Get_Imagen(_Imagen.id_imagen)
 
         Assert.AreEqual(miImagen.id_imagen, _Imagen.id_imagen)
         Assert.AreEqual(miImagen.nombre, _Imagen.nombre)
@@ -32,12 +32,12 @@
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
-        Dim _Edit = Getter.Imagen(_Imagen.id_imagen, contexto)
+        Dim _Edit = Mgr_Imagen.Get_Imagen(_Imagen.id_imagen, contexto)
 
         _Edit.nombre = "nombre2"
         _Edit.url_imagen = "url_imagen2"
 
-        Update.Imagen(_Edit, contexto)
+        Mgr_Imagen.Editar(_Edit, contexto)
 
         Assert.AreEqual(_Edit.id_imagen, _Imagen.id_imagen)
         Assert.AreNotEqual(_Edit.nombre, _Imagen.nombre)
@@ -48,10 +48,8 @@
 
     <TestMethod()> Public Sub Eliminar_Imagen()
 
-        Delete.Imagen(_Imagen.id_imagen)
-
-        Dim miImagen = Getter.Ubicacion(_Imagen.id_imagen)
-
+        Mgr_Imagen.Eliminar(_Imagen.id_imagen)
+        Dim miImagen = Mgr_Ubicacion.Get_Ubicacion(_Imagen.id_imagen)
         Assert.AreEqual(miImagen, Nothing)
 
     End Sub

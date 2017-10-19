@@ -9,7 +9,7 @@
         Dim ValorEsperado As String = "UAByAHUAZQBiAGEAMQAyADMANAA="
         Dim ValorReal As String = String.Empty
 
-        ValorReal = Cifrar.cifrarCadena(msjCifrar)
+        ValorReal = Util_Cifrar.cifrarCadena(msjCifrar)
 
         Assert.AreEqual(ValorEsperado, ValorReal)
 
@@ -22,7 +22,7 @@
         Dim ValorEsperado As String = "Prueba1234"
         Dim ValorReal As String = String.Empty
 
-        ValorReal = Cifrar.descifrarCadena_Text(msjdesCifrar)
+        ValorReal = Util_Cifrar.descifrarCadena_Text(msjdesCifrar)
 
         Assert.AreEqual(ValorEsperado, ValorReal)
     End Sub
@@ -34,7 +34,7 @@
         Dim ValorEsperado As Integer = 10
         Dim ValorReal As Integer = 0
 
-        ValorReal = Cifrar.descifrarCadena_Num(msjdesCifrar)
+        ValorReal = Util_Cifrar.descifrarCadena_Num(msjdesCifrar)
 
         Assert.AreEqual(ValorEsperado, ValorReal)
     End Sub

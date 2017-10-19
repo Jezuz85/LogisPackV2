@@ -2,7 +2,7 @@
 Imports System.Web.UI
 Imports System.Web.UI.WebControls
 
-Public Class Utilidades_Grid
+Public Class Util_Grid
 
     ''' <summary>
     ''' Metodo para obtener el id de la fila de un Gridview
@@ -94,7 +94,7 @@ Public Class Utilidades_Grid
     ''' Metodo que inicializa el gridview de los articulo que ocnforman el articulo picking,
     ''' en caso que el cliente quiera registrar un articulo picking
     ''' </summary>
-    Public Shared Sub InicializarGridView(ByRef _DataTable As DataTable)
+    Public Shared Sub Ini_Grid_ArtPick(ByRef _DataTable As DataTable)
         _DataTable = New DataTable()
         Dim dr As DataRow = Nothing
 
@@ -105,17 +105,9 @@ Public Class Utilidades_Grid
     End Sub
 
     ''' <summary>
-    ''' Metodo que actualiza el GridView con el DataTable actual
-    ''' </summary>
-    Public Shared Sub Update_GridView_CurrentDatatable(ByRef _DataTable As DataTable, ByRef _GridView As GridView)
-        _GridView.DataSource = _DataTable
-        _GridView.DataBind()
-    End Sub
-
-    ''' <summary>
     ''' Metodo que aagrega una fila al gridview de lista articulos picking
     ''' </summary>
-    Public Shared Sub AddRowGridview(ByRef _DataTable As DataTable, id_articulo As String, Articulo As String,
+    Public Shared Sub AddRow_Grid_ArtPick(ByRef _DataTable As DataTable, id_articulo As String, Articulo As String,
                                      Cantidad As String)
 
         Dim rowIndex As Integer = 0
@@ -128,6 +120,20 @@ Public Class Utilidades_Grid
         _DataTable.Rows.Add(drCurrentRow)
     End Sub
 
+    ''' <summary>
+    ''' Metodo que actualiza el GridView con el DataTable actual
+    ''' </summary>
+    Public Shared Sub Update_GridView_CurrentDatatable(ByRef _DataTable As DataTable, ByRef _GridView As GridView)
+        _GridView.DataSource = _DataTable
+        _GridView.DataBind()
+    End Sub
+
     '----------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
 
 End Class

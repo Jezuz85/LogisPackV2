@@ -12,18 +12,18 @@ function load_ArticuloCrear()
 {
 
     //evento de observaciones de contador
-    var txtObsGen = document.getElementById(txtObsGen),
+    var _txtObsGen = document.getElementById(txtObsGen),
         count1 = document.getElementById(txtcount1),
         aler1t = document.getElementById(txtalert1),
         maxLength = 100;
 
-    var txtObsArt = document.getElementById(txtObsArt),
+    var _txtObsArt = document.getElementById(txtObsArt),
         count2 = document.getElementById(txtcount2),
         alert2 = document.getElementById(txtalert2),
         maxLength = 300;
 
 
-    txtObsGen.addEventListener('input', function (e) {
+    _txtObsGen.addEventListener('input', function (e) {
         var value = e.target.value.replace(/\r?\n/g, '\r\n'),
             length = value.length;
 
@@ -42,7 +42,7 @@ function load_ArticuloCrear()
         count1.textContent = length;
 
     }, false);
-    txtObsArt.addEventListener('input', function (e) {
+    _txtObsArt.addEventListener('input', function (e) {
         var value = e.target.value.replace(/\r?\n/g, '\r\n'),
             length = value.length;
 
@@ -62,11 +62,11 @@ function load_ArticuloCrear()
     }, false);
 
     //Asignar evento de ceros a columna en la tabla Ubicacion
-    var Zonas = txtZonas+'0';
-    var Estantes = txtEstantes + '0';
-    var Filas = txtFilas + '0';
-    var Columnas = txtColumnas + '0';
-    var Paneles = txtPaneles + '0';
+    var Zonas = [$(txtZonas + '0')];
+    var Estantes = [$(txtEstantes + '0')];
+    var Filas = [$(txtFilas + '0')];
+    var Columnas = [$(txtColumnas + '0')];
+    var Paneles = [$(txtPaneles + '0')];
 
     for (var i = 1; i <= 50; i++) {
         Zonas.push($(txtZonas + i));

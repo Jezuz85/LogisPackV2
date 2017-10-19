@@ -1,7 +1,7 @@
 ﻿
 Imports System.Text
 
-Public Class Cifrar
+Public Class Util_Cifrar
 
     ''' <summary>
     ''' Metodo que cifra una cadena de texto a pasar por url

@@ -11,18 +11,18 @@ Public Class index1
         If Manager_Usuario.ValidarAutenticado(User) Then
             Manager_Usuario.ValidarMenu(Me, Master)
 
-            If Manager_Usuario.ValidarRol(User, Rol.Admin.ToString) Then
+            If Manager_Usuario.ValidarRol(User, Val_Rol.Admin.ToString) Then
 
                 If IsPostBack = False Then
                     LlenarGridView()
-                    Modal.OcultarAlerta(updatePanelPrinicpal)
+                    Util_Modal.OcultarAlerta(updatePanelPrinicpal)
                 End If
 
             Else
-                Response.Redirect(Paginas.Inicio.ToString)
+                Response.Redirect(Val_Paginas.Inicio.ToString)
             End If
         Else
-            Response.Redirect(Paginas.Login.ToString)
+            Response.Redirect(Val_Paginas.Login.ToString)
         End If
 
     End Sub
@@ -32,7 +32,7 @@ Public Class index1
     ''' </summary>
     Private Sub LlenarGridView()
 
-        Tabla.TipoFacturacion(GridView1,
+        Mgr_TipoFacturacion.LlenarGrid(GridView1,
                       String.Empty & ViewState(Val_General.SortExpression.ToString),
                       String.Empty & ViewState(Val_General.GridViewSortDirection.ToString),
                       String.Empty & ViewState(Val_General.filtroBusqueda.ToString),
@@ -48,32 +48,27 @@ Public Class index1
     End Sub
     Protected Sub GridView1_OnSorting(ByVal sender As Object, ByVal e As GridViewSortEventArgs)
 
-        Utilidades_Grid.sortGridView(GridView1, e, ViewState(Val_General.SortExpression.ToString), ViewState(Val_General.GridViewSortDirection.ToString))
-
-        Tabla.TipoFacturacion(GridView1,
-                       String.Empty & ViewState(Val_General.SortExpression.ToString),
-                       String.Empty & ViewState(Val_General.GridViewSortDirection.ToString),
-                       String.Empty & ViewState(Val_General.filtroBusqueda.ToString),
-                       String.Empty & ViewState(Val_General.textoBusqueda.ToString))
+        Util_Grid.sortGridView(GridView1, e, ViewState(Val_General.SortExpression.ToString), ViewState(Val_General.GridViewSortDirection.ToString))
+        LlenarGridView()
 
     End Sub
     Protected Sub GridView1_RowCreated(sender As Object, e As GridViewRowEventArgs)
-        Utilidades_Grid.SetArrowsGrid(GridView1, e)
+        Util_Grid.SetArrowsGrid(GridView1, e)
     End Sub
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
         If e.CommandName.Equals(Val_General.Editar.ToString) Then
 
-            hdfEdit.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
-            Dim _TipoFacturacion = Getter.Tipo_Facturacion(Convert.ToInt32(hdfEdit.Value))
+            hdfEdit.Value = Util_Grid.Get_IdRow(GridView1, e, "id")
+            Dim _TipoFacturacion = Mgr_TipoFacturacion.Get_Tipo_Facturacion(Convert.ToInt32(hdfEdit.Value))
             txtNombre_Edit.Text = _TipoFacturacion.nombre
-            Modal.AbrirModal("EditModal", "EditModalScript", Me)
+            Util_Modal.AbrirModal("EditModal", "EditModalScript", Me)
 
         End If
         If e.CommandName.Equals(Val_General.Eliminar.ToString) Then
 
-            hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
-            Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
+            hdfIDDel.Value = Util_Grid.Get_IdRow(GridView1, e, "id")
+            Util_Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
 
         End If
 
@@ -91,10 +86,10 @@ Public Class index1
             .nombre = txtNombre.Text
         }
 
-            bError = Create.TipoFacturacion(_Nuevo)
+            bError = Mgr_TipoFacturacion.Guardar(_Nuevo)
 
-            Modal.CerrarModal("AddModal", "AddModalScript", Me)
-            Utilidades_UpdatePanel.CerrarOperacion(Val_General.Registrar.ToString, bError, Me, updatePanelPrinicpal, up_Add)
+            Util_Modal.CerrarModal("AddModal", "AddModalScript", Me)
+            Util_UpdatePanel.CerrarOperacion(Val_General.Registrar.ToString, bError, Me, updatePanelPrinicpal, up_Add)
             LlenarGridView()
         End If
 
@@ -107,16 +102,16 @@ Public Class index1
 
         If (Page.IsValid) Then
 
-            Dim Edit = Getter.Tipo_Facturacion(Convert.ToInt32(hdfEdit.Value), contexto)
+            Dim Edit = Mgr_TipoFacturacion.Get_Tipo_Facturacion(Convert.ToInt32(hdfEdit.Value), contexto)
 
             If Edit IsNot Nothing Then
                 Edit.nombre = txtNombre_Edit.Text
             End If
 
-            bError = Update.Tipo_Facturacion(Edit, contexto)
+            bError = Mgr_TipoFacturacion.Editar(Edit, contexto)
 
-            Modal.CerrarModal("EditModal", "EditModallScript", Me)
-            Utilidades_UpdatePanel.CerrarOperacion(Val_General.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
+            Util_Modal.CerrarModal("EditModal", "EditModallScript", Me)
+            Util_UpdatePanel.CerrarOperacion(Val_General.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
             LlenarGridView()
         End If
     End Sub
@@ -126,9 +121,9 @@ Public Class index1
     ''' </summary>
     Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
 
-        bError = Delete.TipoFacturacion(Convert.ToInt32(hdfIDDel.Value))
-        Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
-        Utilidades_UpdatePanel.CerrarOperacion(Val_General.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
+        bError = Mgr_TipoFacturacion.Eliminar(Convert.ToInt32(hdfIDDel.Value))
+        Util_Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
+        Util_UpdatePanel.CerrarOperacion(Val_General.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
         LlenarGridView()
 
     End Sub

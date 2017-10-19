@@ -104,30 +104,18 @@
     <Compile Include="AspNetUsers.vb">
       <DependentUpon>ModeloLogisPack.tt</DependentUpon>
     </Compile>
-    <Compile Include="Cifrar.vb" />
     <Compile Include="Cliente.vb">
       <DependentUpon>ModeloLogisPack.tt</DependentUpon>
     </Compile>
-    <Compile Include="Comandos.vb" />
-    <Compile Include="ControlesDinamicos.vb" />
-    <Compile Include="Create.vb" />
     <Compile Include="C__MigrationHistory.vb">
       <DependentUpon>ModeloLogisPack.tt</DependentUpon>
     </Compile>
-    <Compile Include="Delete.vb" />
-    <Compile Include="Getter.vb" />
     <Compile Include="Historico.vb">
       <DependentUpon>ModeloLogisPack.tt</DependentUpon>
     </Compile>
     <Compile Include="Imagen.vb">
       <DependentUpon>ModeloLogisPack.tt</DependentUpon>
     </Compile>
-    <Compile Include="Listas.vb" />
-    <Compile Include="Manager\Mgr_Articulo.vb" />
-    <Compile Include="Manager_Excel.vb" />
-    <Compile Include="Valores\Val_Articulo.vb" />
-    <Compile Include="Valores\Val_General.vb" />
-    <Compile Include="Modal.vb" />
     <Compile Include="ModeloLogisPack.Context.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -143,6 +131,36 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModeloLogisPack.tt</DependentUpon>
     </Compile>
+    <Compile Include="Picking_Articulo.vb">
+      <DependentUpon>ModeloLogisPack.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.vb">
+      <DependentUpon>ModeloLogisPack.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tipo_Facturacion.vb">
+      <DependentUpon>ModeloLogisPack.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tipo_Unidad.vb">
+      <DependentUpon>ModeloLogisPack.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ubicacion.vb">
+      <DependentUpon>ModeloLogisPack.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Utilidades\Util_Cifrar.vb" />
+    <Compile Include="Valores\Val_Comandos.vb" />
+    <Compile Include="Utilidades\Util_ControlesDinamicos.vb" />
+    <Compile Include="Manager\Mgr_Articulo.vb" />
+    <Compile Include="Manager\Mgr_Cliente.vb" />
+    <Compile Include="Manager\Mgr_Historico.vb" />
+    <Compile Include="Manager\Mgr_Imagen.vb" />
+    <Compile Include="Manager\Mgr_TipoFacturacion.vb" />
+    <Compile Include="Manager\Mgr_TipoUnidad.vb" />
+    <Compile Include="Manager\Mgr_Ubicacion.vb" />
+    <Compile Include="Manager\Mgr_Usuario.vb" />
+    <Compile Include="Manager\Mgr_Excel.vb" />
+    <Compile Include="Valores\Val_Articulo.vb" />
+    <Compile Include="Valores\Val_General.vb" />
+    <Compile Include="Utilidades\Util_Modal.vb" />
     <Compile Include="Manager\Mgr_Almacen.vb" />
     <Compile Include="Valores\Val_Almacen.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -160,30 +178,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Paginas.vb" />
-    <Compile Include="Picking_Articulo.vb">
-      <DependentUpon>ModeloLogisPack.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Rol.vb" />
-    <Compile Include="sysdiagrams.vb">
-      <DependentUpon>ModeloLogisPack.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tabla.vb" />
-    <Compile Include="Tipo_Facturacion.vb">
-      <DependentUpon>ModeloLogisPack.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tipo_Unidad.vb">
-      <DependentUpon>ModeloLogisPack.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Ubicacion.vb">
-      <DependentUpon>ModeloLogisPack.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Update.vb" />
-    <Compile Include="Utilidades_Fileupload.vb" />
-    <Compile Include="Utilidades_Grid.vb" />
-    <Compile Include="Utilidades_Menu.vb" />
-    <Compile Include="Utilidades_UpdatePanel.vb" />
-    <Compile Include="Validaciones.vb" />
+    <Compile Include="Valores\Val_Paginas.vb" />
+    <Compile Include="Valores\Val_Rol.vb" />
+    <Compile Include="Utilidades\Util_Fileupload.vb" />
+    <Compile Include="Utilidades\Util_Grid.vb" />
+    <Compile Include="Utilidades\Util_Menu.vb" />
+    <Compile Include="Utilidades\Util_UpdatePanel.vb" />
+    <Compile Include="Utilidades\Util_Validaciones.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -218,6 +219,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="ModeloLogisPack.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

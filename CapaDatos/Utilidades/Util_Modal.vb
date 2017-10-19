@@ -1,7 +1,7 @@
 ﻿Imports System.Web.UI
 Imports System.Web.UI.WebControls
 
-Public Class Modal
+Public Class Util_Modal
 
     ''' <summary>
     ''' Metodo que recibe el nombre del modal a abrir, el nombre del script a registrar, y abre el modal

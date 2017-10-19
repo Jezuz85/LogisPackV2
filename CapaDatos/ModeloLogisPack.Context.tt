@@ -173,7 +173,7 @@ Public Class CodeStringGenerator
 
     Public Function NavigationProperty(navProp As NavigationProperty) As String
         Dim endType = _typeMapper.GetTypeName(navProp.ToEndMember.GetEntityType())
-        Dim defaultValue = String.Empty
+        Dim defaultValue = ""
         Dim propertyType = endType
 
         If(navProp.ToEndMember.RelationshipMultiplicity = RelationshipMultiplicity.Many)

@@ -14,13 +14,13 @@ Public Class Crear1
         If Manager_Usuario.ValidarAutenticado(User) Then
             Manager_Usuario.ValidarMenu(Me, Master)
 
-            idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
+            idCliente = Mgr_Usuario.Get_Cliente_Usuario(Manager_Usuario.GetUserId(User))
 
             If IsPostBack = False Then
                 CargarListas()
             End If
         Else
-            Response.Redirect(Paginas.Login.ToString)
+            Response.Redirect(Val_Paginas.Login.ToString)
         End If
 
     End Sub
@@ -29,7 +29,7 @@ Public Class Crear1
     ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
     ''' </summary>
     Private Sub CargarListas()
-        Listas.Cliente(ddlCliente, idCliente)
+        Mgr_Cliente.Llenar_Lista(ddlCliente, idCliente)
     End Sub
 
     ''' <summary>
@@ -56,10 +56,10 @@ Public Class Crear1
             Dim CantidadSolicitada As Double = Double.Parse(txtCantidad.Text, CultureInfo.InvariantCulture)
 
             If (CantidadSolicitada > StockFisico) And (ddlTipoOperacion.SelectedValue = "Sal") Then
-                Modal.MostrarMensajeAlerta(updatePanelPrinicpal, False, Val_General.Unidades_Stock.ToString)
+                Util_Modal.MostrarMensajeAlerta(updatePanelPrinicpal, False, Val_General.Unidades_Stock.ToString)
                 txtCantidad.Text = "0"
             Else
-                Modal.OcultarAlerta(updatePanelPrinicpal)
+                Util_Modal.OcultarAlerta(updatePanelPrinicpal)
             End If
         End If
 
@@ -104,7 +104,7 @@ Public Class Crear1
                 Dim urlDoc As String = String.Empty
 
                 If fuDocumento.HasFile Then
-                    urlDoc = Utilidades_Fileupload.Subir_Archivo(fuDocumento, Paginas.URL_Operacion.ToString, "Doc_" & ddlTipoOperacion.SelectedValue & "_" & _articulo.id_articulo & "_" & Convert.ToDateTime(txtFechaOperacion.Text).ToString("yyyy-MM-dd") & "_")
+                    urlDoc = Util_Fileupload.Subir_Archivo(fuDocumento, Val_Paginas.URL_Operacion.ToString, "Doc_" & ddlTipoOperacion.SelectedValue & "_" & _articulo.id_articulo & "_" & Convert.ToDateTime(txtFechaOperacion.Text).ToString("yyyy-MM-dd") & "_")
                 End If
 #End Region
 
@@ -118,7 +118,7 @@ Public Class Crear1
                     .id_articulo = Convert.ToInt32(ddlListaArticulos.SelectedValue),
                     .documento_transaccion = urlDoc
                 }
-                bError = Create.Historico(_Nuevo)
+                bError = Mgr_Historico.Guardar(_Nuevo)
 #End Region
 
                 If bError Then
@@ -129,19 +129,19 @@ Public Class Crear1
                     Else
                         Edit.stock_fisico = Edit.stock_fisico - unidadesSolicitadas
                     End If
-                    bError = Update.Articulo(Edit, contexto)
+                    bError = Mgr_Articulo.Editar(Edit, contexto)
 
-                    Modal.MostrarAlerta(updatePanelPrinicpal, bError, Val_General.Registrar.ToString)
+                    Util_Modal.MostrarAlerta(updatePanelPrinicpal, bError, Val_General.Registrar.ToString)
 
                     Get_StockArticulo(Edit.id_articulo)
 
                 Else
-                    Modal.MostrarAlerta(updatePanelPrinicpal, bError, Val_General.Registrar.ToString)
+                    Util_Modal.MostrarAlerta(updatePanelPrinicpal, bError, Val_General.Registrar.ToString)
                     Return
                 End If
 
             Else
-                Modal.MostrarMensajeAlerta(updatePanelPrinicpal, False, Val_General.Unidades_Stock.ToString)
+                Util_Modal.MostrarMensajeAlerta(updatePanelPrinicpal, False, Val_General.Unidades_Stock.ToString)
             End If
 
         End If

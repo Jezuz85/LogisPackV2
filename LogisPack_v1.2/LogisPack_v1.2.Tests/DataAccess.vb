@@ -8,11 +8,13 @@ Public Class DataAccess
             .codigo = "Codv1",
             .nombre = "Nombrev1"
         }
-        Create.Cliente(_Nuevo)
+        Mgr_Cliente.Guardar(_Nuevo)
     End Sub
 
     Public Shared Sub Finalizar_Cliente(ByRef _Nuevo As Cliente)
-        Delete.Cliente(_Nuevo.id_cliente)
+
+        Mgr_Cliente.Eliminar(_Nuevo.id_cliente)
+
     End Sub
 
     Public Shared Sub Inicializar_Almacen(ByRef _Nuevo As Almacen, ByRef _Cliente As Cliente)
@@ -33,11 +35,11 @@ Public Class DataAccess
         _Nuevo = New Tipo_Facturacion With {
             .nombre = "Nombrev1"
         }
-        Create.TipoFacturacion(_Nuevo)
+        Mgr_TipoFacturacion.Guardar(_Nuevo)
     End Sub
 
     Public Shared Sub Finalizar_TipoFacturacion(ByRef _Nuevo As Tipo_Facturacion)
-        Delete.TipoFacturacion(_Nuevo.id_tipo_facturacion)
+        Mgr_TipoFacturacion.Eliminar(_Nuevo.id_tipo_facturacion)
     End Sub
 
     Public Shared Sub Inicializar_TipoUnidad(ByRef _Nuevo As Tipo_Unidad)
@@ -45,11 +47,11 @@ Public Class DataAccess
         _Nuevo = New Tipo_Unidad With {
             .nombre = "Nombrev1"
         }
-        Create.TipoUnidad(_Nuevo)
+        Mgr_TipoUnidad.Guardar(_Nuevo)
     End Sub
 
     Public Shared Sub Finalizar_TipoUnidad(ByRef _Nuevo As Tipo_Unidad)
-        Delete.TipoUnidad(_Nuevo.id_tipo_unidad)
+        Mgr_TipoUnidad.Eliminar(_Nuevo.id_tipo_unidad)
     End Sub
 
     Public Shared Sub Inicializar_Articulo(ByRef _Articulo As Articulo, ByRef _Almacen As Almacen,
@@ -95,9 +97,10 @@ Public Class DataAccess
     Public Shared Sub Finalizar_Articulo(ByRef _Tipo_Facturacion As Tipo_Facturacion, ByRef _Tipo_Unidad As Tipo_Unidad,
             ByRef _Cliente As Cliente)
 
-        Delete.Cliente(_Cliente.id_cliente)
-        Delete.TipoFacturacion(_Tipo_Facturacion.id_tipo_facturacion)
-        Delete.TipoUnidad(_Tipo_Unidad.id_tipo_unidad)
+        Mgr_Cliente.Eliminar(_Cliente.id_cliente)
+        Mgr_TipoFacturacion.Eliminar(_Tipo_Facturacion.id_tipo_facturacion)
+        Mgr_TipoUnidad.Eliminar(_Tipo_Unidad.id_tipo_unidad)
+
     End Sub
 
     Public Shared Sub Inicializar_Ubicacion(ByRef _Articulo As Articulo, ByRef _Almacen As Almacen,
@@ -116,7 +119,8 @@ Public Class DataAccess
             .id_articulo = _Articulo.id_articulo
         }
 
-        Create.Ubicacion(_Ubicacion)
+        Mgr_Ubicacion.Guardar(_Ubicacion)
+
     End Sub
 
     Public Shared Sub Inicializar_Imagen(ByRef _Articulo As Articulo, ByRef _Almacen As Almacen,
@@ -131,7 +135,7 @@ Public Class DataAccess
             .id_articulo = _Articulo.id_articulo
         }
 
-        Create.Imagen(_Imagen)
+        Mgr_Imagen.Guardar(_Imagen)
     End Sub
 
     Public Shared Sub Inicializar_ArticuloPicking(ByRef _Articulo As Articulo, ByRef _Almacen As Almacen,
@@ -216,7 +220,7 @@ Public Class DataAccess
             .id_articulo = _ArticuloP.id_articulo,
             .id_picking = _Articulo.id_articulo
         }
-        Create.Picking_Articulo(_Picking_Articulo)
+        Mgr_Articulo.Guardar_Picking_Articulo(_Picking_Articulo)
 
     End Sub
 

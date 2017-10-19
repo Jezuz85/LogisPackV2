@@ -1,9 +1,9 @@
-﻿Public Class Rol
+﻿Public Class Val_Rol
 
     Private Key As String
 
-    Public Shared ReadOnly Admin As Rol = New Rol("Admin")
-    Public Shared ReadOnly Manager As Rol = New Rol("Manager")
+    Public Shared ReadOnly Admin As Val_Rol = New Val_Rol("Admin")
+    Public Shared ReadOnly Manager As Val_Rol = New Val_Rol("Manager")
 
     Private Sub New(key As String)
         Me.Key = key

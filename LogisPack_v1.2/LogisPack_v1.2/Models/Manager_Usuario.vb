@@ -68,10 +68,10 @@ Public Class Manager_Usuario
 
         If Manager_Usuario.ValidarAutenticado(_Page.User) Then
 
-            Utilidades_Menu.CargarMenu(Manager_Usuario.GetRol_User(_Page), _Master)
+            Util_Menu.CargarMenu(Manager_Usuario.GetRol_User(_Page), _Master)
 
         Else
-            Utilidades_Menu.OcultarMenu(_Master)
+            Util_Menu.OcultarMenu(_Master)
         End If
 
     End Sub

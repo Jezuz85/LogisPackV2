@@ -12,18 +12,18 @@ Public Class index5
         If Manager_Usuario.ValidarAutenticado(User) Then
             Manager_Usuario.ValidarMenu(Me, Master)
 
-            idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
+            idCliente = Mgr_Usuario.Get_Cliente_Usuario(Manager_Usuario.GetUserId(User))
 
-            If Manager_Usuario.ValidarRol(User, Rol.Admin.ToString) Then
+            If Manager_Usuario.ValidarRol(User, Val_Rol.Admin.ToString) Then
                 If IsPostBack = False Then
                     LlenarGridView()
-                    Modal.OcultarAlerta(updatePanelPrinicpal)
+                    Util_Modal.OcultarAlerta(updatePanelPrinicpal)
                 End If
             Else
-                Response.Redirect(Paginas.Inicio.ToString)
+                Response.Redirect(Val_Paginas.Inicio.ToString)
             End If
         Else
-            Response.Redirect(Paginas.Login.ToString)
+            Response.Redirect(Val_Paginas.Login.ToString)
         End If
 
     End Sub
@@ -33,7 +33,7 @@ Public Class index5
     ''' </summary>
     Private Sub LlenarGridView()
 
-        Tabla.Cliente(GridView1,
+        Mgr_Cliente.LlenarGrid(GridView1,
                       idCliente,
                       String.Empty & ViewState(Val_General.SortExpression.ToString),
                       String.Empty & ViewState(Val_General.GridViewSortDirection.ToString),
@@ -49,36 +49,31 @@ Public Class index5
     End Sub
     Protected Sub GridView1_OnSorting(ByVal sender As Object, ByVal e As GridViewSortEventArgs)
 
-        Utilidades_Grid.sortGridView(GridView1, e, ViewState(Val_General.SortExpression.ToString), ViewState(Val_General.GridViewSortDirection.ToString))
+        Util_Grid.sortGridView(GridView1, e, ViewState(Val_General.SortExpression.ToString), ViewState(Val_General.GridViewSortDirection.ToString))
 
-        Tabla.Cliente(GridView1,
-                      idCliente,
-                       String.Empty & ViewState(Val_General.SortExpression.ToString),
-                       String.Empty & ViewState(Val_General.GridViewSortDirection.ToString),
-                       String.Empty & ViewState(Val_General.filtroBusqueda.ToString),
-                       String.Empty & ViewState(Val_General.textoBusqueda.ToString))
+        LlenarGridView()
 
     End Sub
     Protected Sub GridView1_RowCreated(sender As Object, e As GridViewRowEventArgs)
-        Utilidades_Grid.SetArrowsGrid(GridView1, e)
+        Util_Grid.SetArrowsGrid(GridView1, e)
     End Sub
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
         If e.CommandName.Equals(Val_General.Editar.ToString) Then
 
-            hdfEdit.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
-            Dim _Cliente = Getter.Cliente(Convert.ToInt32(hdfEdit.Value))
+            hdfEdit.Value = Util_Grid.Get_IdRow(GridView1, e, "id")
+            Dim _Cliente = Mgr_Cliente.Get_Cliente(Convert.ToInt32(hdfEdit.Value))
 
             txtCodigo_Edit.Text = _Cliente.codigo
             txtNombre_Edit.Text = _Cliente.nombre
 
-            Modal.AbrirModal("EditModal", "EditModalScript", Me)
+            Util_Modal.AbrirModal("EditModal", "EditModalScript", Me)
 
         End If
         If e.CommandName.Equals(Val_General.Eliminar.ToString) Then
 
-            hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
-            Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
+            hdfIDDel.Value = Util_Grid.Get_IdRow(GridView1, e, "id")
+            Util_Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
 
         End If
 
@@ -108,10 +103,10 @@ Public Class index5
                 .nombre = txtNombre_Add.Text
             }
 
-            bError = Create.Cliente(_Nuevo)
+            bError = Mgr_Cliente.Guardar(_Nuevo)
 
-            Modal.CerrarModal("AddModal", "AddModalScript", Me)
-            Utilidades_UpdatePanel.CerrarOperacion(Val_General.Registrar.ToString, bError, Me, updatePanelPrinicpal, up_Add)
+            Util_Modal.CerrarModal("AddModal", "AddModalScript", Me)
+            Util_UpdatePanel.CerrarOperacion(Val_General.Registrar.ToString, bError, Me, updatePanelPrinicpal, up_Add)
             LlenarGridView()
         End If
 
@@ -124,17 +119,17 @@ Public Class index5
 
         If (Page.IsValid) Then
 
-            Dim Edit = Getter.Cliente(Convert.ToInt32(hdfEdit.Value), contexto)
+            Dim Edit = Mgr_Cliente.Get_Cliente(Convert.ToInt32(hdfEdit.Value), contexto)
 
             If Edit IsNot Nothing Then
                 Edit.codigo = txtCodigo_Edit.Text
                 Edit.nombre = txtNombre_Edit.Text
             End If
 
-            bError = Update.Cliente(Edit, contexto)
+            bError = Mgr_Cliente.Editar(Edit, contexto)
 
-            Modal.CerrarModal("EditModal", "EditModallScript", Me)
-            Utilidades_UpdatePanel.CerrarOperacion(Val_General.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
+            Util_Modal.CerrarModal("EditModal", "EditModallScript", Me)
+            Util_UpdatePanel.CerrarOperacion(Val_General.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
             LlenarGridView()
         End If
     End Sub
@@ -144,9 +139,9 @@ Public Class index5
     ''' </summary>
     Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
 
-        bError = Delete.Cliente(Convert.ToInt32(hdfIDDel.Value))
-        Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
-        Utilidades_UpdatePanel.CerrarOperacion(Val_General.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
+        bError = Mgr_Cliente.Eliminar(Convert.ToInt32(hdfIDDel.Value))
+        Util_Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
+        Util_UpdatePanel.CerrarOperacion(Val_General.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
         LlenarGridView()
 
     End Sub

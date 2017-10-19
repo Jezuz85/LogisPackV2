@@ -36,7 +36,7 @@
         _Edit.codigo = "_Cod1"
         _Edit.nombre = "_ArtPrueba"
 
-        Update.Articulo(_Articulo, contexto)
+        Mgr_Articulo.Editar(_Articulo, contexto)
 
         Assert.AreEqual(_Edit.id_articulo, _Articulo.id_articulo)
         Assert.AreNotEqual(_Edit.nombre, _Articulo.nombre)

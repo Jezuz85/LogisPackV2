@@ -391,3 +391,7 @@
 	</asp:UpdatePanel>
 
 </asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
+	<%: Scripts.Render("~/bundles/Articulo_Crear") %>
+</asp:Content>

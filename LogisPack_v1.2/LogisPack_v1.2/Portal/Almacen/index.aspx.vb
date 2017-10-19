@@ -1,5 +1,4 @@
 ﻿Imports System.Data.SqlClient
-Imports System.Globalization
 Imports CapaDatos
 
 Public Class index
@@ -14,7 +13,7 @@ Public Class index
         If Manager_Usuario.ValidarAutenticado(User) Then
             Manager_Usuario.ValidarMenu(Me, Master)
 
-            idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
+            idCliente = Mgr_Usuario.Get_Cliente_Usuario(Manager_Usuario.GetUserId(User))
             hdfCliente.Value = idCliente
 
             If IsPostBack = False Then
@@ -27,11 +26,11 @@ Public Class index
 
                 Dim dt As DataTable
 
-                If Manager_Usuario.ValidarRol(User, Rol.Admin.ToString) Then
-                    dt = GetData(Comandos.Arbol_Almacen_Nivel0.ToString)
+                If Manager_Usuario.ValidarRol(User, Val_Rol.Admin.ToString) Then
+                    dt = GetData(Val_Comandos.Arbol_Almacen_Nivel0.ToString)
                 Else
-                    Dim objComando As Comandos
-                    objComando = New Comandos(String.Empty, String.Empty & idCliente)
+                    Dim objComando As Val_Comandos
+                    objComando = New Val_Comandos(String.Empty, String.Empty & idCliente)
                     dt = GetData(objComando.GetComando())
                 End If
 
@@ -42,10 +41,10 @@ Public Class index
 
             End If
 
-            Modal.OcultarAlerta(updatePanelPrinicpal)
+            Util_Modal.OcultarAlerta(updatePanelPrinicpal)
 
         Else
-            Response.Redirect(Paginas.Login.ToString)
+            Response.Redirect(Val_Paginas.Login.ToString)
         End If
 
     End Sub
@@ -54,7 +53,7 @@ Public Class index
     ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
     ''' </summary>
     Private Sub CargarListas()
-        Listas.Cliente(ddlClienteAdd, idCliente)
+        Mgr_Cliente.Llenar_Lista(ddlClienteAdd, idCliente)
     End Sub
 
     ''' <summary>
@@ -83,9 +82,9 @@ Public Class index
 
         bError = Mgr_Almacen.Eliminar(Convert.ToInt32(hdfIDDel.Value))
 
-        Modal.CerrarModal(Val_Almacen.DeleteModal.ToString, Val_Almacen.DeleteModalScript.ToString, Me)
+        Util_Modal.CerrarModal(Val_Almacen.DeleteModal.ToString, Val_Almacen.DeleteModalScript.ToString, Me)
 
-        Utilidades_UpdatePanel.CerrarOperacion(Val_General.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
+        Util_UpdatePanel.CerrarOperacion(Val_General.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
 
         LlenarGridView()
 
@@ -105,11 +104,11 @@ Public Class index
 
             If parentId = 0 Then
                 MyTreeView.Nodes.Add(child)
-                Dim dtChild As DataTable = GetData(Comandos.Arbol_Almacen_Nivel1.ToString + child.Value)
+                Dim dtChild As DataTable = GetData(Val_Comandos.Arbol_Almacen_Nivel1.ToString + child.Value)
                 LlenarTreeView(dtChild, 1, child)
             ElseIf parentId = 1 Then
                 treeNode.ChildNodes.Add(child)
-                Dim dtChild As DataTable = Me.GetData(Comandos.Arbol_Almacen_Nivel2.ToString + child.Value)
+                Dim dtChild As DataTable = Me.GetData(Val_Comandos.Arbol_Almacen_Nivel2.ToString + child.Value)
                 LlenarTreeView(dtChild, 2, child)
             Else
                 treeNode.ChildNodes.Add(child)
@@ -142,7 +141,7 @@ Public Class index
 
         If e.CommandName.Equals(Val_General.Detalles.ToString) Then
 
-            hdfView.Value = Utilidades_Grid.Get_IdRow(GridView1, e)
+            hdfView.Value = Util_Grid.Get_IdRow(GridView1, e)
             Dim _Almacen = Mgr_Almacen.Consultar(Convert.ToInt32(hdfView.Value))
 
             lbViewCliente.Text = _Almacen.Cliente.nombre
@@ -150,13 +149,13 @@ Public Class index
             lbViewNombre.Text = _Almacen.nombre
             lbViewCoefVol.Text = _Almacen.coeficiente_volumetrico
 
-            Modal.AbrirModal(Val_Almacen.ViewModal.ToString, Val_Almacen.ViewModalScript.ToString, Me)
+            Util_Modal.AbrirModal(Val_Almacen.ViewModal.ToString, Val_Almacen.ViewModalScript.ToString, Me)
 
         ElseIf e.CommandName.Equals(Val_General.Editar.ToString) Then
 
-            hdfEdit.Value = Utilidades_Grid.Get_IdRow(GridView1, e)
+            hdfEdit.Value = Util_Grid.Get_IdRow(GridView1, e)
             Dim _Almacen = Mgr_Almacen.Consultar(Convert.ToInt32(hdfEdit.Value))
-            Listas.Cliente(ddlClienteEdit, idCliente)
+            Mgr_Cliente.Llenar_Lista(ddlClienteEdit, idCliente)
 
             Dim CoefVolumetrico As String = Convert.ToDouble(_Almacen.coeficiente_volumetrico).ToString("##,##0.00000").Replace(",", ".")
 
@@ -165,23 +164,23 @@ Public Class index
             txtEditNombre.Text = _Almacen.nombre
             txtEditCoefVol.Text = CoefVolumetrico
 
-            Modal.AbrirModal(Val_Almacen.EditModal.ToString, Val_Almacen.EditModallScript.ToString, Me)
+            Util_Modal.AbrirModal(Val_Almacen.EditModal.ToString, Val_Almacen.EditModallScript.ToString, Me)
 
         ElseIf e.CommandName.Equals(Val_General.Eliminar.ToString) Then
 
-            hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e)
-            Modal.AbrirModal(Val_Almacen.DeleteModal.ToString, Val_Almacen.DeleteModalScript.ToString, Me)
+            hdfIDDel.Value = Util_Grid.Get_IdRow(GridView1, e)
+            Util_Modal.AbrirModal(Val_Almacen.DeleteModal.ToString, Val_Almacen.DeleteModalScript.ToString, Me)
         End If
 
     End Sub
     Protected Sub GridView1_OnSorting(ByVal sender As Object, ByVal e As GridViewSortEventArgs)
 
-        Utilidades_Grid.sortGridView(GridView1, e, ViewState(Val_General.SortExpression.ToString), ViewState(Val_General.GridViewSortDirection.ToString))
+        Util_Grid.sortGridView(GridView1, e, ViewState(Val_General.SortExpression.ToString), ViewState(Val_General.GridViewSortDirection.ToString))
         LlenarGridView()
 
     End Sub
     Protected Sub GridView1_RowCreated(sender As Object, e As GridViewRowEventArgs)
-        Utilidades_Grid.SetArrowsGrid(GridView1, e)
+        Util_Grid.SetArrowsGrid(GridView1, e)
     End Sub
 
     '--------------------------------------------------EVENTOS---------------------------------------------
@@ -193,7 +192,7 @@ Public Class index
         If (Page.IsValid) Then
 
 #Region "creo la estructura almacen"
-            Dim _mialmacen = Mgr_Almacen.Get_Struct_Almacen()
+            Dim _mialmacen = Mgr_Almacen.Get_Struct()
             _mialmacen.nombre = txtNombre.Text
             _mialmacen.codigo = txtCodigo.Text
             _mialmacen.coeficiente_volumetrico = txtCoefVol.Text
@@ -202,9 +201,9 @@ Public Class index
 
             bError = Mgr_Almacen.Guardar(Mgr_Almacen.Crear_Objeto(_mialmacen))
 
-            Modal.CerrarModal(Val_Almacen.AddModal.ToString, Val_Almacen.AddModalScript.ToString, Me)
+            Util_Modal.CerrarModal(Val_Almacen.AddModal.ToString, Val_Almacen.AddModalScript.ToString, Me)
 
-            Utilidades_UpdatePanel.CerrarOperacion(Val_General.Registrar.ToString, bError, Me, updatePanelPrinicpal, up_Add)
+            Util_UpdatePanel.CerrarOperacion(Val_General.Registrar.ToString, bError, Me, updatePanelPrinicpal, up_Add)
             LlenarGridView()
 
         End If
@@ -223,7 +222,7 @@ Public Class index
             If Edit IsNot Nothing Then
 
 #Region "creo la estructura almacen"
-                Dim _mialmacen = Mgr_Almacen.Get_Struct_Almacen()
+                Dim _mialmacen = Mgr_Almacen.Get_Struct()
                 _mialmacen.nombre = txtEditNombre.Text
                 _mialmacen.codigo = txtEditCodigo.Text
                 _mialmacen.coeficiente_volumetrico = txtEditCoefVol.Text
@@ -231,8 +230,8 @@ Public Class index
 #End Region
 
                 bError = Mgr_Almacen.Editar(Mgr_Almacen.Crear_Objeto(_mialmacen), contexto)
-                Modal.CerrarModal(Val_Almacen.EditModal.ToString, Val_Almacen.EditModallScript.ToString, Me)
-                Utilidades_UpdatePanel.CerrarOperacion(Val_General.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
+                Util_Modal.CerrarModal(Val_Almacen.EditModal.ToString, Val_Almacen.EditModallScript.ToString, Me)
+                Util_UpdatePanel.CerrarOperacion(Val_General.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
 
             End If
 

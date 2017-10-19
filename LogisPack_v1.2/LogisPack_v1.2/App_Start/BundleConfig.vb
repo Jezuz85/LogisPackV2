@@ -53,13 +53,13 @@ Public Class BundleConfig
                     "~/Scripts/Modulos/Almacen/Almacen_Index.js"))
 
         bundles.Add(New ScriptBundle("~/bundles/Articulo_Index").Include(
-                    "~/Scripts/Modulos/Almacen/Controles_Articulo.js",
+                    "~/Scripts/Modulos/Articulo/Controles_Articulo.js",
                     "~/Scripts/Modulos/Acordeon.js",
-                    "~/Scripts/Modulos/Almacen/Articulo_Index.js"))
+                    "~/Scripts/Modulos/Articulo/Articulo_Index.js"))
 
         bundles.Add(New ScriptBundle("~/bundles/Articulo_Crear").Include(
-                    "~/Scripts/Modulos/Almacen/Controles_Articulo.js",
-                    "~/Scripts/Modulos/Almacen/Articulo_Crear.js"))
+                    "~/Scripts/Modulos/Articulo/Controles_Articulo.js",
+                    "~/Scripts/Modulos/Articulo/Articulo_Crear.js"))
 
     End Sub
 End Class

@@ -12,7 +12,7 @@ Public Class CargaMasiva
         If Manager_Usuario.ValidarAutenticado(User) Then
             Manager_Usuario.ValidarMenu(Me, Master)
 
-            idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
+            idCliente = Mgr_Usuario.Get_Cliente_Usuario(Manager_Usuario.GetUserId(User))
 
             If Not IsPostBack Then
                 CargarListas()
@@ -20,7 +20,7 @@ Public Class CargaMasiva
 
             End If
         Else
-            Response.Redirect(Paginas.Login.ToString)
+            Response.Redirect(Val_Paginas.Login.ToString)
         End If
 
     End Sub
@@ -29,7 +29,7 @@ Public Class CargaMasiva
     ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
     ''' </summary>
     Private Sub CargarListas()
-        Listas.Cliente(ddlCliente, idCliente)
+        Mgr_Cliente.Llenar_Lista(ddlCliente, idCliente)
     End Sub
 
     '--------------------------------------------------EVENTOS---------------------------------------------
@@ -41,19 +41,19 @@ Public Class CargaMasiva
 
         If Page.IsValid Then
 
-            Dim resultadoCarga = Manager_Excel.CargaMasiva(fuExcel, "Articulos", ddlAlmacen.SelectedValue)
+            Dim resultadoCarga = Mgr_Excel.CargaMasiva(fuExcel, "Articulos", ddlAlmacen.SelectedValue)
 
             If resultadoCarga(0).Equals(Val_General.CargaExito.ToString) Then
-                Modal.MostrarMensajeAlerta(_updatePpal, True, resultadoCarga(0))
+                Util_Modal.MostrarMensajeAlerta(_updatePpal, True, resultadoCarga(0))
             Else
                 phErrors.Visible = True
 
-                Modal.MostrarMensajeAlerta(_updatePpal, False, Val_General.CargaFalla.ToString & "" & fuExcel.FileName)
-                ControlesDinamicos.CrearLiteral("<ul class='list-group'>", pListaErrores)
+                Util_Modal.MostrarMensajeAlerta(_updatePpal, False, Val_General.CargaFalla.ToString & "" & fuExcel.FileName)
+                Util_ControlesDinamicos.CrearLiteral("<ul class='list-group'>", pListaErrores)
                 For Each itemErrores In resultadoCarga
-                    ControlesDinamicos.CrearLiteral("<li class='list-group-item'>" & itemErrores & "</li>", pListaErrores)
+                    Util_ControlesDinamicos.CrearLiteral("<li class='list-group-item'>" & itemErrores & "</li>", pListaErrores)
                 Next
-                ControlesDinamicos.CrearLiteral("</ul>", pListaErrores)
+                Util_ControlesDinamicos.CrearLiteral("</ul>", pListaErrores)
 
             End If
 

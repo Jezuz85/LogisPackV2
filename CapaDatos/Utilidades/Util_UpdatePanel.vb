@@ -1,7 +1,7 @@
 ﻿Imports System.Web.UI
 Imports System.Web.UI.WebControls
 
-Public Class Utilidades_UpdatePanel
+Public Class Util_UpdatePanel
 
     ''' <summary>
     ''' Metodo para limpiar todos los controles existentes en un UpdatePanel
@@ -49,7 +49,7 @@ Public Class Utilidades_UpdatePanel
             LimpiarControles(_update)
         End If
 
-        Modal.CerrarModal(_modal & "Modal", _modal & "Script", _page)
-        Modal.MostrarAlerta(_updatePpal, bError, _modal)
+        Util_Modal.CerrarModal(_modal & "Modal", _modal & "Script", _page)
+        Util_Modal.MostrarAlerta(_updatePpal, bError, _modal)
     End Sub
 End Class

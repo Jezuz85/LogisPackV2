@@ -1,5 +1,4 @@
-﻿Imports System.Globalization
-Imports CapaDatos
+﻿Imports CapaDatos
 
 Public Class Editar
     Inherits Page
@@ -16,8 +15,8 @@ Public Class Editar
         If Manager_Usuario.ValidarAutenticado(User) Then
             Manager_Usuario.ValidarMenu(Me, Master)
 
-            idCliente = Getter.Cliente_Usuario(Manager_Usuario.GetUserId(User))
-            IdArticulo = Cifrar.descifrarCadena_Num(Request.QueryString("id"))
+            idCliente = Mgr_Usuario.Get_Cliente_Usuario(Manager_Usuario.GetUserId(User))
+            IdArticulo = Util_Cifrar.descifrarCadena_Num(Request.QueryString("id"))
 
             If Not IsPostBack Then
                 ViewState("contadorUbi") = "0"
@@ -51,7 +50,7 @@ Public Class Editar
                 Next
             End If
         Else
-            Response.Redirect(Paginas.Login.ToString)
+            Response.Redirect(Val_Paginas.Login.ToString)
         End If
 
     End Sub
@@ -61,7 +60,7 @@ Public Class Editar
     ''' </summary>
     Private Sub ObtenerControl_Postback(page As Page)
 
-        Dim ctrl As Control = Utilidades_UpdatePanel.ObtenerControl_PostBack(page)
+        Dim ctrl As Control = Util_UpdatePanel.ObtenerControl_PostBack(page)
 
         If ctrl IsNot Nothing Then
             If ctrl.ClientID.Contains("ddlTipoArticulo") Or ctrl.ClientID.Contains("ddlCliente") Or ctrl.ClientID.Contains("ddlAlmacen") Then
@@ -75,9 +74,11 @@ Public Class Editar
     ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
     ''' </summary>
     Private Sub CargarListas()
-        Listas.TipoFacturacion(ddlTipoFacturacion)
-        Listas.TipoUnidad(ddlTipoUnidad)
-        Listas.Cliente(ddlCliente, idCliente)
+
+        Mgr_TipoFacturacion.LlenarLista(ddlTipoFacturacion)
+        Mgr_TipoUnidad.LlenarLista(ddlTipoUnidad)
+        Mgr_Cliente.Llenar_Lista(ddlCliente, idCliente)
+
     End Sub
 
     ''' <summary>
@@ -103,11 +104,11 @@ Public Class Editar
     ''' </summary>
     Protected Sub EliminarImagen(sender As Object, e As EventArgs)
 
-        bError = Delete.Imagen(Convert.ToInt32(hdfIDDel.Value))
+        bError = Mgr_Imagen.Eliminar(Convert.ToInt32(hdfIDDel.Value))
 
-        Utilidades_UpdatePanel.CerrarOperacion(Val_General.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
+        Util_UpdatePanel.CerrarOperacion(Val_General.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
 
-        Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
+        Util_Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
 
         CargarImagenes(IdArticulo)
     End Sub
@@ -189,7 +190,7 @@ Public Class Editar
     ''' Metodo que en donde se realiza la carga de las imagenes del articulo
     ''' </summary>
     Private Sub CargarImagenes(idArticulo As Integer)
-        Tabla.Imagen(GridView1, idArticulo)
+        Mgr_Imagen.LlenarGrid(GridView1, idArticulo)
     End Sub
 
     ''' <summary>
@@ -238,8 +239,8 @@ Public Class Editar
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
         If e.CommandName.Equals(Val_General.Eliminar.ToString) Then
-            hdfIDDel.Value = Utilidades_Grid.Get_IdRow(GridView1, e, "id")
-            Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
+            hdfIDDel.Value = Util_Grid.Get_IdRow(GridView1, e, "id")
+            Util_Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
         End If
 
     End Sub
@@ -275,13 +276,13 @@ Public Class Editar
 
     Private Sub AddRowGridview()
 
-        _DataTable = CType(ViewState("CurrentTable"), DataTable)
+        _DataTable = CType(ViewState(Val_Articulo.CurrentTable.ToString), DataTable)
 
-        Utilidades_Grid.AddRowGridview(_DataTable, ddlListaArticulos.SelectedValue, ddlListaArticulos.SelectedItem.ToString, txtUnidad.Text)
+        Util_Grid.AddRow_Grid_ArtPick(_DataTable, ddlListaArticulos.SelectedValue, ddlListaArticulos.SelectedItem.ToString, txtUnidad.Text)
 
         Update_ViewState_Datatable()
 
-        Utilidades_Grid.Update_GridView_CurrentDatatable(_DataTable, GridView2)
+        Util_Grid.Update_GridView_CurrentDatatable(_DataTable, GridView2)
 
         Update_GridView_CurrentDatatable()
 
@@ -295,7 +296,7 @@ Public Class Editar
             GridtoDataTable()
             Update_ViewState_Datatable()
         Else
-            InicializarGridView()
+            Util_Grid.Ini_Grid_ArtPick(_DataTable)
             Update_ViewState_Datatable()
             Update_GridView_CurrentDatatable()
         End If
@@ -303,10 +304,7 @@ Public Class Editar
 
     End Sub
 
-    Private Sub InicializarGridView()
-        Utilidades_Grid.InicializarGridView(_DataTable)
-        Update_ViewState_Datatable()
-    End Sub
+
 
     Private Sub GridtoDataTable()
 
@@ -336,7 +334,7 @@ Public Class Editar
 
     Private Sub Update_GridView_CurrentDatatable()
         _DataTable = CType(ViewState("CurrentTable"), DataTable)
-        Utilidades_Grid.Update_GridView_CurrentDatatable(_DataTable, GridView2)
+        Util_Grid.Update_GridView_CurrentDatatable(_DataTable, GridView2)
     End Sub
 
     Private Sub Update_ViewState_Datatable()
@@ -351,31 +349,31 @@ Public Class Editar
 
         '----------------Validar strings vacios
 
-        Dim _codigo = Validaciones.Validar_Campo_Vacio(txtCodigo.Text, String.Empty)
-        Dim _nombre = Validaciones.Validar_Campo_Vacio(txtNombre.Text, String.Empty)
+        Dim _codigo = Util_Validaciones.Validar_Campo_Vacio(txtCodigo.Text, String.Empty)
+        Dim _nombre = Util_Validaciones.Validar_Campo_Vacio(txtNombre.Text, String.Empty)
         Dim _id_almacen = Convert.ToInt32(ddlAlmacen.SelectedValue)
-        Dim _referencia1 = Validaciones.Validar_Campo_Vacio(txtRef1.Text, String.Empty)
-        Dim _referencia2 = Validaciones.Validar_Campo_Vacio(txtRef2.Text, String.Empty)
-        Dim _referencia3 = Validaciones.Validar_Campo_Vacio(txtRef3.Text, String.Empty)
-        Dim _tipoArticulo = Validaciones.Validar_Campo_Vacio(ddlTipoArticulo.SelectedValue, "0")
-        Dim _identificacion = Validaciones.Validar_Campo_Vacio(ddlIdentificacion.SelectedValue, String.Empty)
-        Dim _id_tipo_unidad = Validaciones.Validar_Campo_Vacio(ddlTipoUnidad.SelectedValue, "0")
-        Dim _referencia_picking = Validaciones.Validar_Campo_Vacio(txtRefPick.Text, String.Empty)
-        Dim _id_tipo_facturacion = Validaciones.Validar_Campo_Vacio(ddlTipoFacturacion.SelectedValue, "0")
-        Dim _observaciones_articulo = Validaciones.Validar_Campo_Vacio(txtObsArt.Text, String.Empty)
-        Dim _observaciones_generales = Validaciones.Validar_Campo_Vacio(txtObsGen.Text, String.Empty)
+        Dim _referencia1 = Util_Validaciones.Validar_Campo_Vacio(txtRef1.Text, String.Empty)
+        Dim _referencia2 = Util_Validaciones.Validar_Campo_Vacio(txtRef2.Text, String.Empty)
+        Dim _referencia3 = Util_Validaciones.Validar_Campo_Vacio(txtRef3.Text, String.Empty)
+        Dim _tipoArticulo = Util_Validaciones.Validar_Campo_Vacio(ddlTipoArticulo.SelectedValue, "0")
+        Dim _identificacion = Util_Validaciones.Validar_Campo_Vacio(ddlIdentificacion.SelectedValue, String.Empty)
+        Dim _id_tipo_unidad = Util_Validaciones.Validar_Campo_Vacio(ddlTipoUnidad.SelectedValue, "0")
+        Dim _referencia_picking = Util_Validaciones.Validar_Campo_Vacio(txtRefPick.Text, String.Empty)
+        Dim _id_tipo_facturacion = Util_Validaciones.Validar_Campo_Vacio(ddlTipoFacturacion.SelectedValue, "0")
+        Dim _observaciones_articulo = Util_Validaciones.Validar_Campo_Vacio(txtObsArt.Text, String.Empty)
+        Dim _observaciones_generales = Util_Validaciones.Validar_Campo_Vacio(txtObsGen.Text, String.Empty)
 
         '-----------------Validar campos vacios y formatear decimalesTTT
 
-        Dim _peso As Double = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtPeso.Text, "0"))
-        Dim _alto As Double = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtAlto.Text, "0"))
-        Dim _largo As Double = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtLargo.Text, "0"))
-        Dim _ancho As Double = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtAncho.Text, "0"))
-        Dim _stock_fisico As Double = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtStockFisico.Text, 0))
-        Dim _stock_minimo As Double = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtStockMinimo.Text, "0"))
-        Dim _valor_articulo As Double = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtValArticulo.Text, 0))
-        Dim _coeficiente_volumetrico As Double = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtCoefVol.Text, "0"))
-        Dim _valor_asegurado As Double = Validaciones.Formatear_Double(Validaciones.Validar_Campo_Vacio(txtValAsegurado.Text, "0"))
+        Dim _peso As Double = Util_Validaciones.Formatear_Double(Util_Validaciones.Validar_Campo_Vacio(txtPeso.Text, "0"))
+        Dim _alto As Double = Util_Validaciones.Formatear_Double(Util_Validaciones.Validar_Campo_Vacio(txtAlto.Text, "0"))
+        Dim _largo As Double = Util_Validaciones.Formatear_Double(Util_Validaciones.Validar_Campo_Vacio(txtLargo.Text, "0"))
+        Dim _ancho As Double = Util_Validaciones.Formatear_Double(Util_Validaciones.Validar_Campo_Vacio(txtAncho.Text, "0"))
+        Dim _stock_fisico As Double = Util_Validaciones.Formatear_Double(Util_Validaciones.Validar_Campo_Vacio(txtStockFisico.Text, 0))
+        Dim _stock_minimo As Double = Util_Validaciones.Formatear_Double(Util_Validaciones.Validar_Campo_Vacio(txtStockMinimo.Text, "0"))
+        Dim _valor_articulo As Double = Util_Validaciones.Formatear_Double(Util_Validaciones.Validar_Campo_Vacio(txtValArticulo.Text, 0))
+        Dim _coeficiente_volumetrico As Double = Util_Validaciones.Formatear_Double(Util_Validaciones.Validar_Campo_Vacio(txtCoefVol.Text, "0"))
+        Dim _valor_asegurado As Double = Util_Validaciones.Formatear_Double(Util_Validaciones.Validar_Campo_Vacio(txtValAsegurado.Text, "0"))
 
         '-----------------Calculos
 
@@ -417,7 +415,7 @@ Public Class Editar
 
         End If
 
-        bError = Update.Articulo(Edit, contexto)
+        bError = Mgr_Articulo.Editar(Edit, contexto)
 
         Return bError
     End Function
@@ -435,7 +433,7 @@ Public Class Editar
             contadorControl += 1
             If _imagen.ContentLength > 0 And _imagen IsNot Nothing Then
 
-                Dim urlImagen As String = Utilidades_Fileupload.Subir_Archivos(_imagen, "../../Archivos/Articulos/", "Img_" & Edit.id_articulo & "_" & contadorControl)
+                Dim urlImagen As String = Util_Fileupload.Subir_Archivos(_imagen, "../../Archivos/Articulos/", "Img_" & Edit.id_articulo & "_" & contadorControl)
 
                 Dim _imagenes As New Imagen With
                     {
@@ -443,7 +441,7 @@ Public Class Editar
                     .id_articulo = Edit.id_articulo,
                     .url_imagen = urlImagen
                 }
-                bError = Create.Imagen(_imagenes)
+                bError = Mgr_Imagen.Guardar(_imagenes)
             End If
         Next
 
@@ -468,9 +466,9 @@ Public Class Editar
 
         If Edit.Ubicacion.Count > 0 Then
 
-            Dim _ListUbicaion As List(Of Ubicacion) = Getter.Ubicacion_list(Edit.id_articulo)
+            Dim _ListUbicaion As List(Of Ubicacion) = Mgr_Ubicacion.Get_Ubicacion_list(Edit.id_articulo)
             For Each itemUbicacion In _ListUbicaion
-                bError = Delete.Ubicacion(itemUbicacion.id_ubicacion)
+                bError = Mgr_Ubicacion.Eliminar(itemUbicacion.id_ubicacion)
             Next
 
         End If
@@ -528,7 +526,7 @@ Public Class Editar
                                     .id_articulo = Edit.id_articulo
                                 }
 
-                        bError = Create.Ubicacion(_NuevoUbicaion)
+                        bError = Mgr_Ubicacion.Guardar(_NuevoUbicaion)
 
                         If bError = False Then
                             Return bError
@@ -579,7 +577,7 @@ Public Class Editar
                             .id_articulo = _id_articulo,
                             .id_picking = Edit.id_articulo
                         }
-                    bError = Create.Picking_Articulo(_NuevoPic_Art)
+                    bError = Mgr_Articulo.Guardar_Picking_Articulo(_NuevoPic_Art)
 
                 Next
             End If
@@ -618,7 +616,7 @@ Public Class Editar
 
                             If ddlTipoArticulo.SelectedValue = "Picking" Then
 
-                                Utilidades_UpdatePanel.LimpiarControles(updatePanelPrinicpal)
+                                Util_UpdatePanel.LimpiarControles(updatePanelPrinicpal)
                                 Mgr_Articulo.Llenar_Lista(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
                                 phListaArticulos.Visible = False
                                 txtUnidad.Text = Nothing
@@ -631,7 +629,7 @@ Public Class Editar
                 End If
             End If
 
-            Utilidades_UpdatePanel.CerrarOperacion(Val_General.Editar.ToString, bError, Me, updatePanelPrinicpal, updatePanelPrinicpal)
+            Util_UpdatePanel.CerrarOperacion(Val_General.Editar.ToString, bError, Me, updatePanelPrinicpal, updatePanelPrinicpal)
 
         End If
 

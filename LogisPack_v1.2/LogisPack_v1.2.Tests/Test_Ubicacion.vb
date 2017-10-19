@@ -20,7 +20,7 @@
 
     <TestMethod()> Public Sub Registrar_Ubicacion()
 
-        Dim miUbicacion = Getter.Ubicacion(_Ubicacion.id_ubicacion)
+        Dim miUbicacion = Mgr_Ubicacion.Get_Ubicacion(_Ubicacion.id_ubicacion)
 
         Assert.AreEqual(miUbicacion.id_ubicacion, _Ubicacion.id_ubicacion)
         Assert.AreEqual(miUbicacion.zona, _Ubicacion.zona)
@@ -36,7 +36,7 @@
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
-        Dim _Edit = Getter.Ubicacion(_Ubicacion.id_ubicacion, contexto)
+        Dim _Edit = Mgr_Ubicacion.Get_Ubicacion(_Ubicacion.id_ubicacion, contexto)
 
         _Edit.zona = "zo2"
         _Edit.estante = "es2"
@@ -45,7 +45,7 @@
         _Edit.panel = "pa2"
         _Edit.referencia_ubicacion = "referencia_ubicacion2"
 
-        Update.Ubicacion(_Edit, contexto)
+        Mgr_Ubicacion.Editar(_Edit, contexto)
 
         Assert.AreEqual(_Edit.id_ubicacion, _Ubicacion.id_ubicacion)
         Assert.AreNotEqual(_Edit.zona, _Ubicacion.zona)
@@ -60,10 +60,8 @@
 
     <TestMethod()> Public Sub Eliminar_Ubicacion()
 
-        Delete.Ubicacion(_Ubicacion.id_ubicacion)
-
-        Dim miUbicacion = Getter.Ubicacion(_Ubicacion.id_ubicacion)
-
+        Mgr_Ubicacion.Eliminar(_Ubicacion.id_ubicacion)
+        Dim miUbicacion = Mgr_Ubicacion.Get_Ubicacion(_Ubicacion.id_ubicacion)
         Assert.AreEqual(miUbicacion, Nothing)
 
     End Sub

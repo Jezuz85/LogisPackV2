@@ -23,10 +23,10 @@ Partial Public Class Login
 
         If Manager_Usuario.ValidarAutenticado(User) Then
 
-            Response.Redirect(Paginas.Inicio.ToString)
+            Response.Redirect(Val_Paginas.Inicio.ToString)
 
         Else
-            Utilidades_Menu.OcultarMenu(Master)
+            Util_Menu.OcultarMenu(Master)
         End If
 
     End Sub

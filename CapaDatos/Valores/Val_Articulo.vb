@@ -24,6 +24,10 @@
     Public Shared ReadOnly Id_Art As Val_Articulo = New Val_Articulo("id_articulo")
     Public Shared ReadOnly Nom_Art As Val_Articulo = New Val_Articulo("nombre")
 
+    Public Shared ReadOnly Tipo_Normal As Val_Articulo = New Val_Articulo("Normal")
+    Public Shared ReadOnly Tipo_Picking As Val_Articulo = New Val_Articulo("Picking")
+
+
     Public Shared ReadOnly contUbicacion As Val_Articulo = New Val_Articulo("contUbicacion")
     Public Shared ReadOnly CurrentTable As Val_Articulo = New Val_Articulo("CurrentTable")
 
