@@ -14,13 +14,10 @@ Public Class Val_Almacen
 
     Public Shared ReadOnly AddModal As Val_Almacen = New Val_Almacen("AddModal")
     Public Shared ReadOnly AddModalScript As Val_Almacen = New Val_Almacen("AddModalScript")
-
     Public Shared ReadOnly EditModal As Val_Almacen = New Val_Almacen("EditModal")
-    Public Shared ReadOnly EditModallScript As Val_Almacen = New Val_Almacen("EditModallScript")
-
+    Public Shared ReadOnly EditModalScript As Val_Almacen = New Val_Almacen("EditModallScript")
     Public Shared ReadOnly DeleteModal As Val_Almacen = New Val_Almacen("DeleteModal")
     Public Shared ReadOnly DeleteModalScript As Val_Almacen = New Val_Almacen("DeleteModalScript")
-
     Public Shared ReadOnly ViewModal As Val_Almacen = New Val_Almacen("ViewModal")
     Public Shared ReadOnly ViewModalScript As Val_Almacen = New Val_Almacen("ViewModalScript")
 

@@ -43,4 +43,6 @@
     Public Shared ReadOnly txtPanel As Val_Articulo = New Val_Articulo("txtPanel")
     Public Shared ReadOnly txtRefUbi As Val_Articulo = New Val_Articulo("txtRefUbi")
 
+    Public Shared ReadOnly NombreHoja As Val_Articulo = New Val_Articulo("Articulos")
+
 End Class

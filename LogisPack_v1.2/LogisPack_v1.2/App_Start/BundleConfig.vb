@@ -33,7 +33,8 @@ Public Class BundleConfig
                         "~/Scripts/jquery-3.1.1.min.js",
                         "~/Scripts/bootstrap.min.js",
                         "~/Scripts/jquery-ui-1.12.1.min.js",
-                        "~/Scripts/Modulos/Rutas_Archivos.js"))
+                        "~/Scripts/Modulos/Rutas_Archivos.js",
+                        "~/Scripts/Custom.js"))
 
         bundles.Add(New StyleBundle("~/Content/Direcline").Include(
                   "~/Content/NormalizeCss.css",
@@ -60,6 +61,14 @@ Public Class BundleConfig
         bundles.Add(New ScriptBundle("~/bundles/Articulo_Crear").Include(
                     "~/Scripts/Modulos/Articulo/Controles_Articulo.js",
                     "~/Scripts/Modulos/Articulo/Articulo_Crear.js"))
+
+        bundles.Add(New ScriptBundle("~/bundles/Articulo_Editar").Include(
+                    "~/Scripts/Modulos/Articulo/Controles_Articulo.js",
+                    "~/Scripts/Modulos/Articulo/Articulo_Editar.js"))
+
+        bundles.Add(New ScriptBundle("~/bundles/Operacion_Crear").Include(
+                    "~/Scripts/Modulos/Operacion/Controles_Operacion.js",
+                    "~/Scripts/Modulos/Operacion/Operacion_Crear.js"))
 
     End Sub
 End Class

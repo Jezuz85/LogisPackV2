@@ -1,4 +1,5 @@
 ﻿
+Imports System.Web.UI
 Imports System.Web.UI.WebControls
 
 Public Class Mgr_Ubicacion
@@ -168,6 +169,29 @@ Public Class Mgr_Ubicacion
 
 
     End Function
+
+    Public Shared Function RecorrerGrid_Guardar(pTabla As Panel, id_articulo As Integer) As Boolean
+        Dim bError As Boolean = False
+        Dim contadorControl As Integer = 0
+
+        For Each micontrol As Control In pTabla.Controls
+
+            Dim _miUbicacion = Mgr_Ubicacion.Get_Struct()
+            _miUbicacion = Mgr_Ubicacion.Get_Struct_Fila_Ubicacion(contadorControl, pTabla, id_articulo)
+
+            bError = Mgr_Ubicacion.Guardar(Mgr_Ubicacion.Crear_Objeto(_miUbicacion))
+
+            If bError = False Then
+                Return bError
+            End If
+
+            contadorControl += 1
+        Next
+
+        Return bError
+    End Function
+
+
 
     '------------------------Funciones Getter
     ''' <summary>

@@ -92,6 +92,11 @@ CapaDatos
  Metodo que devuelve una variable de tipo estructura con el cuerpo de la clase articulo
  </summary>
 </member>
+<member name="M:CapaDatos.Mgr_Articulo.Get_Struct(CapaDatos.Articulo)">
+ <summary>
+ Metodo que devuelve convierte un objeto artiulo a estructura con el cuerpo de la clase articulo
+ </summary>
+</member>
 <member name="M:CapaDatos.Mgr_Articulo.Crear_Objeto(CapaDatos.Mgr_Articulo.struct_Articulo)">
  <summary>
  Metodo que recibe un array de string y retorna un objeto articulo
@@ -310,7 +315,7 @@ CapaDatos
  Metodo que recibe un id de la Imagen y lo elimina en Base de datos, devuelve True si fue exitoso, de lo contrario False
  </summary>
 </member>
-<member name="M:CapaDatos.Mgr_Imagen.Get_Struct">
+<member name="M:CapaDatos.Mgr_Imagen.Get_Struct(System.Int32,System.String)">
  <summary>
  Metodo que devuelve una variable de tipo estructura con el cuerpo de la clase imagen
  </summary>

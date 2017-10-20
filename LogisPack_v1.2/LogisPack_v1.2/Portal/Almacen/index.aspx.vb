@@ -164,7 +164,7 @@ Public Class index
             txtEditNombre.Text = _Almacen.nombre
             txtEditCoefVol.Text = CoefVolumetrico
 
-            Util_Modal.AbrirModal(Val_Almacen.EditModal.ToString, Val_Almacen.EditModallScript.ToString, Me)
+            Util_Modal.AbrirModal(Val_Almacen.EditModal.ToString, Val_Almacen.EditModalScript.ToString, Me)
 
         ElseIf e.CommandName.Equals(Val_General.Eliminar.ToString) Then
 
@@ -230,7 +230,7 @@ Public Class index
 #End Region
 
                 bError = Mgr_Almacen.Editar(Mgr_Almacen.Crear_Objeto(_mialmacen), contexto)
-                Util_Modal.CerrarModal(Val_Almacen.EditModal.ToString, Val_Almacen.EditModallScript.ToString, Me)
+                Util_Modal.CerrarModal(Val_Almacen.EditModal.ToString, Val_Almacen.EditModalScript.ToString, Me)
                 Util_UpdatePanel.CerrarOperacion(Val_General.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
 
             End If

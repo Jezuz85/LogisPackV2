@@ -69,9 +69,13 @@ Public Class Mgr_Imagen
     ''' <summary>
     ''' Metodo que devuelve una variable de tipo estructura con el cuerpo de la clase imagen
     ''' </summary>
-    Public Shared Function Get_Struct() As struct_Imagen
+    Public Shared Function Get_Struct(id_articulo As Integer, urlImagen As String) As struct_Imagen
 
         Dim _mistruct As struct_Imagen = Nothing
+        _mistruct.nombre = "Imagen_" & DateTime.Now.ToString("(MM-dd-yy_H:mm:ss)")
+        _mistruct.id_articulo = id_articulo
+        _mistruct.url_imagen = urlImagen
+
         Return _mistruct
 
     End Function
@@ -90,6 +94,35 @@ Public Class Mgr_Imagen
 
         Return _Nuevo
 
+    End Function
+
+    Public Shared Function RecorrerGrid_Guardar(ByRef fuImagenes As FileUpload, id_articulo As Integer) As Boolean
+
+        Dim bError = False
+        Dim contadorControl As Integer = 0
+
+        For Each _imagen In fuImagenes.PostedFiles
+
+            contadorControl += 1
+
+            If _imagen.ContentLength > 0 And _imagen IsNot Nothing Then
+
+                Dim urlImagen As String = Util_Fileupload.Subir_Archivos(_imagen, Val_Paginas.URL_Articulos.ToString, "Img_" & id_articulo & "_" & contadorControl)
+
+                ' creo la estructura imagen
+                Dim _miImagen = Mgr_Imagen.Get_Struct(id_articulo, urlImagen)
+
+                bError = Mgr_Imagen.Guardar(Mgr_Imagen.Crear_Objeto(_miImagen))
+
+                If bError = False Then
+                    Return bError
+                End If
+
+            End If
+
+        Next
+
+        Return bError
     End Function
 
     '------------------------Funciones Grid

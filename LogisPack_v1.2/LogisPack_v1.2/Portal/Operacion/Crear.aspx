@@ -4,153 +4,156 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <asp:UpdatePanel ID="updatePanelPrinicpal" runat="server">
+	<asp:UpdatePanel ID="updatePanelPrinicpal" runat="server">
 
-        <ContentTemplate>
+		<ContentTemplate>
 
-            <div id="titleContainer">
-                <div class="MainContentTitle">
-                    <div class="MainContentTitleText">
-                        <ol class="breadcrumb">
-                            <li><a href="../../Default.aspx">Menu Principal</a></li>
-                            <li><a href="index.aspx">Histórico de Transacciones</a></li>
-                            <li><a href="#">Entrada-Salida de Artículos</a></li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
+			<div id="titleContainer">
+				<div class="MainContentTitle">
+					<div class="MainContentTitleText">
+						<ol class="breadcrumb">
+							<li><a href="../../Default.aspx">Menu Principal</a></li>
+							<li><a href="index.aspx">Histórico de Transacciones</a></li>
+							<li><a href="#">Entrada-Salida de Artículos</a></li>
+						</ol>
+					</div>
+				</div>
+			</div>
 
-            <div id="pageBodyContainer" class="MainContentWrapper" style="width: 96%;">
+			<div id="pageBodyContainer" class="MainContentWrapper" style="width: 96%;">
 
-                <!-- Alert -->
-                <uca:ucAlert runat="server" ID="ucAlerta" />
+				<!-- Alert -->
+				<uca:ucAlert runat="server" ID="ucAlerta" />
 
-                <div class="row">
+				<div class="row">
 
-                    <div class="col-md-3">
-                        <strong>Cliente:</strong><br />
-                        <asp:DropDownList ID="ddlCliente" runat="server" data-toggle="tooltip"
-                            data-placement="bottom" title="Seleccione el cliente" AutoPostBack="true">
-                        </asp:DropDownList>
+					<div class="col-md-3">
+						<strong>Cliente:</strong><br />
+						<asp:DropDownList ID="ddlCliente" runat="server" data-toggle="tooltip"
+							data-placement="bottom" title="Seleccione el cliente" AutoPostBack="true">
+						</asp:DropDownList>
 
-                        <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
-                            ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="ddlCliente" runat="server"
-                            ValidationGroup="ValidationAdd" />
-                    </div>
+						<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
+							ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="ddlCliente" runat="server"
+							ValidationGroup="ValidationAdd" />
+					</div>
 
-                    <div class="col-md-3">
-                        <strong>Almacén</strong><br />
-                        <asp:DropDownList ID="ddlAlmacen" runat="server" data-toggle="tooltip"
-                            data-placement="bottom" title="Seleccione el almacén" AutoPostBack="true">
-                        </asp:DropDownList>
+					<div class="col-md-3">
+						<strong>Almacén</strong><br />
+						<asp:DropDownList ID="ddlAlmacen" runat="server" data-toggle="tooltip"
+							data-placement="bottom" title="Seleccione el almacén" AutoPostBack="true">
+						</asp:DropDownList>
 
-                        <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" 
-                            Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true" 
-                            ControlToValidate="ddlAlmacen" runat="server" ValidationGroup="ValidationAdd" />
-                    </div>
+						<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" 
+							Display="Dynamic" ForeColor="#B50128" Font-Size="10" Font-Bold="true" 
+							ControlToValidate="ddlAlmacen" runat="server" ValidationGroup="ValidationAdd" />
+					</div>
 
-                    <div class="col-md-3">
-                        <strong>Tipo de Operación</strong><br />
+					<div class="col-md-3">
+						<strong>Tipo de Operación</strong><br />
 
-                        <asp:DropDownList runat="server" ID="ddlTipoOperacion" data-toggle="tooltip"
-                            data-placement="bottom" title="Seleccione el tipo de Operación" AutoPostBack="true">
-                            <asp:ListItem Text="Entrada" Value="Ent"></asp:ListItem>
-                            <asp:ListItem Text="Salida" Value="Sal"></asp:ListItem>
-                        </asp:DropDownList>
+						<asp:DropDownList runat="server" ID="ddlTipoOperacion" data-toggle="tooltip"
+							data-placement="bottom" title="Seleccione el tipo de Operación" AutoPostBack="true">
+							<asp:ListItem Text="Entrada" Value="Ent"></asp:ListItem>
+							<asp:ListItem Text="Salida" Value="Sal"></asp:ListItem>
+						</asp:DropDownList>
 
-                        <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
-                            ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="ddlTipoOperacion" runat="server"
-                            ValidationGroup="ValidationAdd" />
-                    </div>
+						<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
+							ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="ddlTipoOperacion" runat="server"
+							ValidationGroup="ValidationAdd" />
+					</div>
 
-                    <div class="col-md-3">
-                        <strong>Fecha de Transacción</strong><br />
-                        <div class="input-group">
-                            <asp:TextBox runat="server" ID="txtFechaOperacion" data-toggle="tooltip" CssClass="date-picker"
-                                data-placement="bottom" title="Ingrese la fecha de la operación"></asp:TextBox>
-                           
-                            <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
-                                ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="txtFechaOperacion" runat="server"
-                                ValidationGroup="ValidationAdd" />
-                        </div>
-                    </div>
-                </div>
+					<div class="col-md-3">
+						<strong>Fecha de Transacción</strong><br />
+						<div class="input-group">
+							<asp:TextBox runat="server" ID="txtFechaOperacion" data-toggle="tooltip" CssClass="date-picker"
+								data-placement="bottom" title="Ingrese la fecha de la operación"></asp:TextBox>
+						   
+							<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
+								ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="txtFechaOperacion" runat="server"
+								ValidationGroup="ValidationAdd" />
+						</div>
+					</div>
+				</div>
 
-                <br />
+				<br />
 
-                <div class="row">
+				<div class="row">
 
-                    <div class="col-md-3">
-                        <strong>Documento Transacción</strong>
+					<div class="col-md-3">
+						<strong>Documento Transacción</strong>
 
-                        <asp:FileUpload runat="server" ID="fuDocumento" data-toggle="tooltip" data-placement="bottom"
-                            title="Seleccione el documento de la transaccion" />
+						<asp:FileUpload runat="server" ID="fuDocumento" data-toggle="tooltip" data-placement="bottom"
+							title="Seleccione el documento de la transaccion" />
 
-                    </div>
+					</div>
 
-                    <div class="col-md-3">
-                        <strong>Código del Articulos</strong>
-                        <asp:TextBox runat="server" MaxLength="10" ID="txtCodArticulo" AutoPostBack="true" Visible="false"></asp:TextBox>
-                    </div>
+					<div class="col-md-3">
+						<strong>Código del Articulos</strong>
+						<asp:TextBox runat="server" MaxLength="10" ID="txtCodArticulo" AutoPostBack="true" Visible="false"></asp:TextBox>
+					</div>
 
-                    <div class="col-md-3">
-                        <strong>Lista de Articulos</strong>
-                        <asp:DropDownList ID="ddlListaArticulos" runat="server" AutoPostBack="true" Visible="false"></asp:DropDownList>
+					<div class="col-md-3">
+						<strong>Lista de Articulos</strong>
+						<asp:DropDownList ID="ddlListaArticulos" runat="server" AutoPostBack="true" Visible="false"></asp:DropDownList>
 
-                        <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
-                            ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="ddlListaArticulos" runat="server"
-                            ValidationGroup="ValidationAdd" />
-                    </div>
+						<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
+							ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="ddlListaArticulos" runat="server"
+							ValidationGroup="ValidationAdd" />
+					</div>
 
-                    <div class="col-md-3">
-                        <strong>Stock Fisico del Articulo</strong>
-                        <br />
-                        <asp:Label ID="lbStockFisico" runat="server" Text="-"></asp:Label>
-                    </div>
-                </div>
-                
-                <br />
+					<div class="col-md-3">
+						<strong>Stock Fisico del Articulo</strong>
+						<br />
+						<asp:Label ID="lbStockFisico" runat="server" Text="-"></asp:Label>
+					</div>
+				</div>
+				
+				<br />
 
-                <div class="row">
-                    <div class="col-md-3">
-                        <strong>Referencia</strong>
-                        <asp:TextBox runat="server" MaxLength="25" ID="txtRef" data-toggle="tooltip"
-                            data-placement="bottom" title="Ingrese la referencia de la operacion"></asp:TextBox>
+				<div class="row">
+					<div class="col-md-3">
+						<strong>Referencia</strong>
+						<asp:TextBox runat="server" MaxLength="25" ID="txtRef" data-toggle="tooltip"
+							data-placement="bottom" title="Ingrese la referencia de la operacion"></asp:TextBox>
 
-                        <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
-                            ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="txtRef" runat="server"
-                            ValidationGroup="ValidationAdd" />
-                    </div>
+						<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
+							ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="txtRef" runat="server"
+							ValidationGroup="ValidationAdd" />
+					</div>
 
-                    <div class="col-md-3">
-                        <strong>Cantidad de la Transacción</strong>
+					<div class="col-md-3">
+						<strong>Cantidad de la Transacción</strong>
 
-                        <asp:TextBox runat="server" type="number" min="0" ID="txtCantidad" data-toggle="tooltip" step="0.01"
-                            data-placement="bottom" title="Ingrese la cantidad del articulo" AutoPostBack="true"></asp:TextBox>
+						<asp:TextBox runat="server" type="number" min="0" ID="txtCantidad" data-toggle="tooltip" step="0.01"
+							data-placement="bottom" title="Ingrese la cantidad del articulo" AutoPostBack="true"></asp:TextBox>
 
-                        <asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
-                            ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="txtCantidad" runat="server"
-                            ValidationGroup="ValidationAdd" />
+						<asp:RequiredFieldValidator ErrorMessage="<p>Campo Obligatorio!</p>" SetFocusOnError="true" Display="Dynamic"
+							ForeColor="#B50128" Font-Size="10" Font-Bold="true" ControlToValidate="txtCantidad" runat="server"
+							ValidationGroup="ValidationAdd" />
 
-                    </div>
-                </div>
-                
-                <br />
+					</div>
+				</div>
+				
+				<br />
 
-                <div class="row">
-                    <div class="col-md-12" align="right">
-                        <asp:Button ID="btnGuardar" runat="server" Text="Guardar" ValidationGroup="ValidationAdd" />
-                    </div>
-                </div>
+				<div class="row">
+					<div class="col-md-12" align="right">
+						<asp:Button ID="btnGuardar" runat="server" Text="Guardar" ValidationGroup="ValidationAdd" />
+					</div>
+				</div>
 
-            </div>
+			</div>
 
-        </ContentTemplate>
+		</ContentTemplate>
 
-        <Triggers>
-            <asp:PostBackTrigger ControlID="btnGuardar" />
-        </Triggers>
+		<Triggers>
+			<asp:PostBackTrigger ControlID="btnGuardar" />
+		</Triggers>
 
-    </asp:UpdatePanel>
+	</asp:UpdatePanel>
 
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
+	<%: Scripts.Render("~/bundles/Operacion_Crear") %>
 </asp:Content>

@@ -121,7 +121,7 @@ Public Class Crear
     ''' </summary>
     Private Function GuardarArticulo() As Boolean
 
-#Region "creo la estructura almacen"
+#Region "creo la estructura articulo"
         Dim _miArticulo = Mgr_Articulo.Get_Struct()
         _miArticulo.codigo = txtCodigo.Text
         _miArticulo.nombre = txtNombre.Text
@@ -158,28 +158,8 @@ Public Class Crear
     ''' </summary>
     Private Sub GuardarImagenes(articuloView As Articulo)
 
-        Dim contadorControl As Integer = 0
+        Mgr_Imagen.RecorrerGrid_Guardar(fuImagenes, articuloView.id_articulo)
 
-        For Each _imagen In fuImagenes.PostedFiles
-
-            contadorControl += 1
-
-            If _imagen.ContentLength > 0 And _imagen IsNot Nothing Then
-
-                Dim urlImagen As String = Util_Fileupload.Subir_Archivos(_imagen, Val_Paginas.URL_Articulos.ToString, "Img_" & articuloView.id_articulo & "_" & contadorControl)
-
-#Region "creo la estructura imagen"
-                Dim _miImagen = Mgr_Imagen.Get_Struct()
-                _miImagen.nombre = "Imagen_" & DateTime.Now.ToString("(MM-dd-yy_H:mm:ss)")
-                _miImagen.id_articulo = articuloView.id_articulo
-                _miImagen.url_imagen = urlImagen
-#End Region
-
-                Mgr_Imagen.Guardar(Mgr_Imagen.Crear_Objeto(_miImagen))
-
-            End If
-
-        Next
     End Sub
 
     ''' <summary>
@@ -187,17 +167,8 @@ Public Class Crear
     ''' </summary>
     Private Sub GuardarUbicaciones(articuloView As Articulo)
 
-        Dim contadorControl As Integer = 0
+        Mgr_Ubicacion.RecorrerGrid_Guardar(pTabla, articuloView.id_articulo)
 
-        For Each micontrol As Control In pTabla.Controls
-
-            Dim _miUbicacion = Mgr_Ubicacion.Get_Struct()
-            _miUbicacion = Mgr_Ubicacion.Get_Struct_Fila_Ubicacion(contadorControl, pTabla, articuloView.id_articulo)
-
-            Mgr_Ubicacion.Guardar(Mgr_Ubicacion.Crear_Objeto(_miUbicacion))
-
-            contadorControl += 1
-        Next
     End Sub
 
     ''' <summary>
@@ -219,6 +190,9 @@ Public Class Crear
         End If
 
     End Sub
+
+
+
 
     '-----------------------------------Metodos del Gridview de articulos picking--------------------------------------------------------
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)

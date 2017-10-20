@@ -45,7 +45,6 @@ Public Class index2
     Protected Sub GridView1_OnSorting(ByVal sender As Object, ByVal e As GridViewSortEventArgs)
 
         Util_Grid.sortGridView(GridView1, e, ViewState(Val_General.SortExpression.ToString), ViewState(Val_General.GridViewSortDirection.ToString))
-
         LlenarGridView()
 
     End Sub
@@ -59,13 +58,12 @@ Public Class index2
             hdfEdit.Value = Util_Grid.Get_IdRow(GridView1, e, "id")
             Dim _TipoUnidad = Mgr_TipoUnidad.Get_Tipo_Unidad(Convert.ToInt32(hdfEdit.Value))
             txtNombre_Edit.Text = _TipoUnidad.nombre
-            Util_Modal.AbrirModal("EditModal", "EditModalScript", Me)
+            Util_Modal.AbrirModal(Val_TipoUnidad.EditModal.ToString, Val_TipoUnidad.EditModalScript.ToString, Me)
 
-        End If
-        If e.CommandName.Equals(Val_General.Eliminar.ToString) Then
+        ElseIf e.CommandName.Equals(Val_General.Eliminar.ToString) Then
 
             hdfIDDel.Value = Util_Grid.Get_IdRow(GridView1, e, "id")
-            Util_Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
+            Util_Modal.AbrirModal(Val_TipoUnidad.DeleteModal.ToString, Val_TipoUnidad.DeleteModalScript.ToString, Me)
 
         End If
 
@@ -85,7 +83,7 @@ Public Class index2
 
             bError = Mgr_TipoUnidad.Guardar(_Nuevo)
 
-            Util_Modal.CerrarModal("AddModal", "AddModalScript", Me)
+            Util_Modal.CerrarModal(Val_TipoUnidad.AddModal.ToString, Val_TipoUnidad.AddModalScript.ToString, Me)
             Util_UpdatePanel.CerrarOperacion(Val_General.Registrar.ToString, bError, Me, updatePanelPrinicpal, up_Add)
             LlenarGridView()
         End If
@@ -106,10 +104,11 @@ Public Class index2
 
             bError = Mgr_TipoUnidad.Editar(Edit, contexto)
 
-            Util_Modal.CerrarModal("EditModal", "EditModallScript", Me)
+            Util_Modal.CerrarModal(Val_TipoUnidad.EditModal.ToString, Val_TipoUnidad.EditModalScript.ToString, Me)
             Util_UpdatePanel.CerrarOperacion(Val_General.Editar.ToString, bError, Me, updatePanelPrinicpal, up_Edit)
             LlenarGridView()
         End If
+
     End Sub
 
     ''' <summary>
@@ -118,7 +117,7 @@ Public Class index2
     Protected Sub EliminarRegistro(sender As Object, e As EventArgs)
 
         bError = Mgr_TipoUnidad.Eliminar(Convert.ToInt32(hdfIDDel.Value))
-        Util_Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
+        Util_Modal.CerrarModal(Val_TipoUnidad.DeleteModal.ToString, Val_TipoUnidad.DeleteModalScript.ToString, Me)
         Util_UpdatePanel.CerrarOperacion(Val_General.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
         LlenarGridView()
 
@@ -139,10 +138,10 @@ Public Class index2
     ''' Metodo que realiza una resetea la busqueda en el grid
     ''' </summary>
     Protected Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
+
         txtSearch.Text = String.Empty
         ViewState(Val_General.filtroBusqueda.ToString) = String.Empty
         ViewState(Val_General.textoBusqueda.ToString) = String.Empty
-
         LlenarGridView()
     End Sub
 End Class

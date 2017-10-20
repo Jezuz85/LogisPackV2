@@ -1,10 +1,4 @@
-﻿Imports System.IO
-Imports System.Runtime.Serialization.Json
-Imports System.Web.Mvc
-Imports System.Web.Script.Services
-Imports System.Web.Services
-Imports CapaDatos
-Imports Newtonsoft.Json
+﻿Imports CapaDatos
 
 Public Class index4
     Inherits Page
@@ -49,6 +43,7 @@ Public Class index4
     Private Sub CargarListas()
         Mgr_Cliente.Llenar_Lista(ddlCliente, idCliente)
     End Sub
+
     '--------------------------------------------------Metodos del Gridview---------------------------------------------
     Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
         GridView1.PageIndex = e.NewPageIndex
@@ -57,7 +52,6 @@ Public Class index4
     Protected Sub GridView1_OnSorting(ByVal sender As Object, ByVal e As GridViewSortEventArgs)
 
         Util_Grid.sortGridView(GridView1, e, ViewState(Val_General.SortExpression.ToString), ViewState(Val_General.GridViewSortDirection.ToString))
-
         LlenarGridView()
 
     End Sub
@@ -74,13 +68,14 @@ Public Class index4
         ViewState(Val_General.filtroBusqueda.ToString) = ddlBuscar.SelectedValue
         ViewState(Val_General.textoBusqueda.ToString) = txtSearch.Text
         LlenarGridView()
+
     End Sub
 
     ''' <summary>
     ''' Metodo que se invoca cuando se presiona el boton "guardar" y redirecciona la pagina a "Crear"
     ''' </summary>
     Protected Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
-        Response.Redirect("Crear.aspx")
+        Response.Redirect(Val_Operacion.URL_Crear.ToString)
     End Sub
 
     ''' <summary>
@@ -98,22 +93,24 @@ Public Class index4
     ''' Metodo que realiza una resetea la busqueda en el grid
     ''' </summary>
     Protected Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
+
         txtSearch.Text = String.Empty
         ViewState(Val_General.filtroBusqueda.ToString) = String.Empty
         ViewState(Val_General.textoBusqueda.ToString) = String.Empty
-
         LlenarGridView()
+
     End Sub
 
     ''' <summary>
     ''' Metodo que se ejecuta cuando se selecciona un cliente de la lista
     ''' </summary>
     Protected Sub ddlCliente_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlCliente.SelectedIndexChanged
+
         Mgr_Articulo.CambiarCliente(ddlCliente, New TextBox(), ddlAlmacen)
 
         If ddlCliente.SelectedValue <> String.Empty Then
 
-            ViewState(Val_General.filtroBusqueda.ToString) = "Cliente"
+            ViewState(Val_General.filtroBusqueda.ToString) = Val_Operacion.Filtro_Cliente.ToString
             ViewState(Val_General.textoBusqueda.ToString) = Convert.ToString(ddlCliente.SelectedItem)
         Else
             txtSearch.Text = String.Empty
@@ -132,7 +129,7 @@ Public Class index4
 
         If ddlAlmacen.SelectedValue <> String.Empty Then
 
-            ViewState(Val_General.filtroBusqueda.ToString) = "Almacen"
+            ViewState(Val_General.filtroBusqueda.ToString) = Val_Operacion.Filtro_Almacen.ToString
             ViewState(Val_General.textoBusqueda.ToString) = Convert.ToString(ddlAlmacen.SelectedItem)
             Mgr_Articulo.Llenar_Lista_Almacen(ddlArticulo, Convert.ToInt32(ddlAlmacen.SelectedValue))
         Else
@@ -153,7 +150,7 @@ Public Class index4
 
         If ddlArticulo.SelectedValue <> String.Empty Then
 
-            ViewState(Val_General.filtroBusqueda.ToString) = "Articulo"
+            ViewState(Val_General.filtroBusqueda.ToString) = Val_Operacion.Filtro_Articulo
             ViewState(Val_General.textoBusqueda.ToString) = Convert.ToString(ddlArticulo.SelectedItem)
 
             Dim _articulo = Mgr_Articulo.Get_Articulo(Convert.ToInt32(ddlArticulo.SelectedValue))
@@ -172,8 +169,8 @@ Public Class index4
             ViewState(Val_General.filtroBusqueda.ToString) = String.Empty
             ViewState(Val_General.textoBusqueda.ToString) = String.Empty
         End If
-
         LlenarGridView()
 
     End Sub
+
 End Class

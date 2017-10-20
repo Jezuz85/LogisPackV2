@@ -112,6 +112,64 @@ Public Class Mgr_Articulo
     End Function
 
     ''' <summary>
+    ''' Metodo que devuelve convierte un objeto artiulo a estructura con el cuerpo de la clase articulo
+    ''' </summary>
+    Public Shared Function Get_Struct(_Articulo As Articulo) As struct_Articulo
+
+        Dim _miArticulo As struct_Articulo = Nothing
+
+        _miArticulo.codigo = _Articulo.codigo
+        _miArticulo.nombre = _Articulo.nombre
+        _miArticulo.tipoArticulo = _Articulo.tipoArticulo
+        _miArticulo.id_almacen = _Articulo.Almacen.nombre
+        _miArticulo.referencia_picking = _Articulo.referencia_picking
+        _miArticulo.referencia1 = _Articulo.referencia1
+        _miArticulo.referencia2 = _Articulo.referencia2
+        _miArticulo.referencia3 = _Articulo.referencia3
+        _miArticulo.observaciones_generales = _Articulo.observaciones_generales
+        _miArticulo.observaciones_articulo = _Articulo.observaciones_articulo
+        _miArticulo.stock_minimo = _Articulo.stock_minimo
+        _miArticulo.stock_fisico = _Articulo.stock_fisico
+        _miArticulo.id_tipo_facturacion = _Articulo.Tipo_Facturacion.nombre
+        _miArticulo.identificacion = _Articulo.identificacion
+        _miArticulo.alto = _Articulo.alto
+        _miArticulo.largo = _Articulo.largo
+        _miArticulo.ancho = _Articulo.ancho
+        _miArticulo.id_tipo_unidad = _Articulo.Tipo_Unidad.nombre
+
+
+        Dim PesoVolumen As Double = Convert.ToDouble(_Articulo.peso_volumen).ToString("##,##0.00000")
+        Dim CoefVolumetrico As Double = Convert.ToDouble(_Articulo.coeficiente_volumetrico).ToString("##,##0.00000")
+        Dim M3 As Double = Convert.ToDouble(_Articulo.cubicaje).ToString("##,##0.00000")
+        Dim ValorArticulo As Double = Convert.ToDouble(_Articulo.valor_articulo).ToString("##,##0.00000")
+        Dim ValorAsegurado As Double = Convert.ToDouble(_Articulo.valor_asegurado).ToString("##,##0.00000")
+        Dim ValoraciónStock As Double = Convert.ToDouble(_Articulo.valoracion_stock).ToString("##,##0.00000")
+        Dim ValoraciónSeguro As Double = Convert.ToDouble(_Articulo.valoracion_seguro).ToString("##,##0.00000")
+        Dim Peso As Double = Convert.ToDouble(_Articulo.peso).ToString("##,##0.00000")
+
+
+        _miArticulo.ancho = _Articulo.ancho
+        _miArticulo.peso = Peso & " Kgs"
+        _miArticulo.ancho = _Articulo.ancho
+        _miArticulo.coeficiente_volumetrico = CoefVolumetrico & " Kgs(m³)"
+        _miArticulo.ancho = _Articulo.ancho
+        _miArticulo.cubicaje = M3
+        _miArticulo.ancho = _Articulo.ancho
+        _miArticulo.peso_volumen = PesoVolumen & " Kgs(m³)"
+        _miArticulo.ancho = _Articulo.ancho
+        _miArticulo.valor_articulo = ValorArticulo
+        _miArticulo.ancho = _Articulo.ancho
+        _miArticulo.valor_asegurado = ValorAsegurado
+        _miArticulo.ancho = _Articulo.ancho
+        _miArticulo.valoracion_stock = ValoraciónStock
+        _miArticulo.ancho = _Articulo.ancho
+        _miArticulo.valoracion_seguro = ValoraciónSeguro
+
+        Return _miArticulo
+
+    End Function
+
+    ''' <summary>
     ''' Metodo que recibe un array de string y retorna un objeto articulo
     ''' </summary>
     Public Shared Function Crear_Objeto(_articulo As struct_Articulo) As Articulo
@@ -256,6 +314,8 @@ Public Class Mgr_Articulo
         Return _NuevoPic_Art
 
     End Function
+
+
 
     '------------------------Funciones Grid
 

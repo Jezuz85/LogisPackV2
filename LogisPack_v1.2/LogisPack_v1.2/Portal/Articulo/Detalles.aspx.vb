@@ -37,42 +37,37 @@ Public Class Detalles
     ''' </summary>
     Private Sub CargarArticulo(itemArticulos As Articulo)
 
-        Dim PesoVolumen As Double = Convert.ToDouble(itemArticulos.peso_volumen).ToString("##,##0.00000")
-        Dim CoefVolumetrico As Double = Convert.ToDouble(itemArticulos.coeficiente_volumetrico).ToString("##,##0.00000")
-        Dim M3 As Double = Convert.ToDouble(itemArticulos.cubicaje).ToString("##,##0.00000")
-        Dim ValorArticulo As Double = Convert.ToDouble(itemArticulos.valor_articulo).ToString("##,##0.00000")
-        Dim ValorAsegurado As Double = Convert.ToDouble(itemArticulos.valor_asegurado).ToString("##,##0.00000")
-        Dim ValoraciónStock As Double = Convert.ToDouble(itemArticulos.valoracion_stock).ToString("##,##0.00000")
-        Dim ValoraciónSeguro As Double = Convert.ToDouble(itemArticulos.valoracion_seguro).ToString("##,##0.00000")
-        Dim Peso As Double = Convert.ToDouble(itemArticulos.peso).ToString("##,##0.00000")
+        Dim _miArticulo = Mgr_Articulo.Get_Struct(itemArticulos)
 
+#Region "cargar valores"
+        lbTipoArticulo.Text = _miArticulo.tipoArticulo
+        lbAlmacen.Text = _miArticulo.id_almacen
+        lbCodigo.Text = _miArticulo.codigo
+        lbNombre.Text = _miArticulo.nombre
+        lbRefPick.Text = _miArticulo.referencia_picking
+        lbRef1.Text = _miArticulo.referencia1
+        lbRef2.Text = _miArticulo.referencia2
+        lbRef3.Text = _miArticulo.referencia3
+        lbTipoUnidad.Text = _miArticulo.id_tipo_unidad
+        lbPeso.Text = _miArticulo.peso
+        lbAlto.Text = _miArticulo.alto
+        lbLargo.Text = _miArticulo.largo
+        lbAncho.Text = _miArticulo.ancho
+        lbCoefVol.Text = _miArticulo.coeficiente_volumetrico
+        lbCubicaje.Text = _miArticulo.cubicaje
+        lbPesoVol.Text = _miArticulo.peso_volumen
+        lbTipoFacturacion.Text = _miArticulo.id_tipo_facturacion
+        lbIdentificacion.Text = _miArticulo.identificacion
+        lbValArticulo.Text = _miArticulo.valor_articulo
+        lbValAsegurado.Text = _miArticulo.valor_asegurado
+        lbValStock.Text = _miArticulo.valoracion_stock
+        lbValSeguro.Text = _miArticulo.valoracion_seguro
+        lbObsGen.Text = _miArticulo.observaciones_generales
+        lbObsArt.Text = _miArticulo.observaciones_articulo
+        lbStockMinimo.Text = _miArticulo.stock_minimo
+        lbStockFisico.Text = _miArticulo.stock_fisico
+#End Region
 
-        lbTipoArticulo.Text = itemArticulos.tipoArticulo
-        lbAlmacen.Text = itemArticulos.Almacen.nombre
-        lbCodigo.Text = itemArticulos.codigo
-        lbNombre.Text = itemArticulos.nombre
-        lbRefPick.Text = itemArticulos.referencia_picking
-        lbRef1.Text = itemArticulos.referencia1
-        lbRef2.Text = itemArticulos.referencia2
-        lbRef3.Text = itemArticulos.referencia3
-        lbTipoUnidad.Text = itemArticulos.Tipo_Unidad.nombre
-        lbPeso.Text = Peso & " Kgs"
-        lbAlto.Text = itemArticulos.alto
-        lbLargo.Text = itemArticulos.largo
-        lbAncho.Text = itemArticulos.ancho
-        lbCoefVol.Text = CoefVolumetrico & " Kgs(m³)"
-        lbCubicaje.Text = M3
-        lbPesoVol.Text = PesoVolumen & " Kgs(m³)"
-        lbTipoFacturacion.Text = itemArticulos.Tipo_Facturacion.nombre
-        lbIdentificacion.Text = itemArticulos.identificacion
-        lbValArticulo.Text = ValorArticulo
-        lbValAsegurado.Text = ValorAsegurado
-        lbValStock.Text = ValoraciónStock
-        lbValSeguro.Text = ValoraciónSeguro
-        lbObsGen.Text = itemArticulos.observaciones_generales
-        lbObsArt.Text = itemArticulos.observaciones_articulo
-        lbStockMinimo.Text = itemArticulos.stock_minimo
-        lbStockFisico.Text = itemArticulos.stock_fisico
     End Sub
 
     ''' <summary>
@@ -80,7 +75,7 @@ Public Class Detalles
     ''' </summary>
     Private Sub CargarArticulosPicking(itemArticulos As Articulo)
 
-        If itemArticulos.tipoArticulo = "Picking" Then
+        If itemArticulos.tipoArticulo = Val_Articulo.Tipo_Picking.ToString Then
             phListaArticulos.Visible = True
 
             Util_ControlesDinamicos.CrearLiteral("<ul class='list-group'>", pArticulos)

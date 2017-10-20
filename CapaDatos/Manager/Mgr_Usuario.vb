@@ -18,10 +18,7 @@ Public Class Mgr_Usuario
                          AL.Name
                     ).ToList()
 
-        DropDownList1.DataValueField = "Name"
-        DropDownList1.DataTextField = "Name"
-        DropDownList1.DataSource = query
-        DropDownList1.DataBind()
+        Util_ControlesDinamicos.Set_Text_Value_List(DropDownList1, query, "Name", "Name")
     End Sub
 
     '------------------------FUNCIONES GETTER

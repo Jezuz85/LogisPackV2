@@ -147,6 +147,7 @@
       <DependentUpon>ModeloLogisPack.tt</DependentUpon>
     </Compile>
     <Compile Include="Utilidades\Util_Cifrar.vb" />
+    <Compile Include="Valores\Val_Cliente.vb" />
     <Compile Include="Valores\Val_Comandos.vb" />
     <Compile Include="Utilidades\Util_ControlesDinamicos.vb" />
     <Compile Include="Manager\Mgr_Articulo.vb" />
@@ -178,6 +179,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Valores\Val_Operacion.vb" />
     <Compile Include="Valores\Val_Paginas.vb" />
     <Compile Include="Valores\Val_Rol.vb" />
     <Compile Include="Utilidades\Util_Fileupload.vb" />
@@ -185,6 +187,8 @@
     <Compile Include="Utilidades\Util_Menu.vb" />
     <Compile Include="Utilidades\Util_UpdatePanel.vb" />
     <Compile Include="Utilidades\Util_Validaciones.vb" />
+    <Compile Include="Valores\Val_TipoFacturacion.vb" />
+    <Compile Include="Valores\Val_TipoUnidad.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

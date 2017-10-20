@@ -19,7 +19,7 @@ Public Class Editar
             IdArticulo = Util_Cifrar.descifrarCadena_Num(Request.QueryString("id"))
 
             If Not IsPostBack Then
-                ViewState("contadorUbi") = "0"
+                ViewState(Val_Articulo.contUbicacion.ToString) = "0"
                 CargarListas()
                 CargarArticulo()
             Else
@@ -35,12 +35,12 @@ Public Class Editar
                         If c IsNot Nothing Then
                             If c.GetType() Is GetType(Button) Then
 
-                                If c.ClientID.Contains("btnAddFilaUbicacion") Then
-                                    crearCamposListaUbicacion(Convert.ToInt32(ViewState("contadorUbi") + 1))
-                                ElseIf c.ClientID.Contains("btnEliminarFila") Then
-                                    crearCamposListaUbicacion(Convert.ToInt32(ViewState("contadorUbi") - 1))
+                                If c.ClientID.Contains(Val_Articulo.btnAddFilaUbicacion.ToString) Then
+                                    crearCamposListaUbicacion(Convert.ToInt32(ViewState(Val_Articulo.contUbicacion.ToString) + 1))
+                                ElseIf c.ClientID.Contains(Val_Articulo.btnEliminarFila.ToString) Then
+                                    crearCamposListaUbicacion(Convert.ToInt32(ViewState(Val_Articulo.contUbicacion.ToString) - 1))
                                 Else
-                                    crearCamposListaUbicacion(Convert.ToInt32(ViewState("contadorUbi")))
+                                    crearCamposListaUbicacion(Convert.ToInt32(ViewState(Val_Articulo.contUbicacion.ToString)))
                                 End If
 
                             End If
@@ -63,8 +63,10 @@ Public Class Editar
         Dim ctrl As Control = Util_UpdatePanel.ObtenerControl_PostBack(page)
 
         If ctrl IsNot Nothing Then
-            If ctrl.ClientID.Contains("ddlTipoArticulo") Or ctrl.ClientID.Contains("ddlCliente") Or ctrl.ClientID.Contains("ddlAlmacen") Then
-                crearCamposListaUbicacion(Convert.ToInt32(ViewState("contadorUbi")))
+            If ctrl.ClientID.Contains(Val_Articulo.ddlTipoArticulo.ToString) Or
+                ctrl.ClientID.Contains(Val_Articulo.ddlCliente.ToString) Or
+                ctrl.ClientID.Contains(Val_Articulo.ddlAlmacen.ToString) Then
+                crearCamposListaUbicacion(Convert.ToInt32(ViewState(Val_Articulo.contUbicacion.ToString)))
             End If
         End If
 
@@ -86,7 +88,7 @@ Public Class Editar
     ''' </summary>
     Private Sub crearCamposListaUbicacion(valor As Integer)
 
-        ViewState("contadorUbi") = Convert.ToString(Mgr_Articulo.crearCamposListaUbicacion(valor, pTabla))
+        ViewState(Val_Articulo.contUbicacion.ToString) = Convert.ToString(Mgr_Articulo.crearCamposListaUbicacion(valor, pTabla))
 
     End Sub
 
@@ -95,8 +97,10 @@ Public Class Editar
     ''' cargar la pagina
     ''' </summary>
     Private Sub CargarCoefVol(idAlmacen As Integer)
+
         Dim _Almacen = Mgr_Almacen.Consultar(idAlmacen)
         txtCoefVol.Text = _Almacen.coeficiente_volumetrico
+
     End Sub
 
     ''' <summary>
@@ -105,12 +109,10 @@ Public Class Editar
     Protected Sub EliminarImagen(sender As Object, e As EventArgs)
 
         bError = Mgr_Imagen.Eliminar(Convert.ToInt32(hdfIDDel.Value))
-
         Util_UpdatePanel.CerrarOperacion(Val_General.Eliminar.ToString, bError, Me, updatePanelPrinicpal, Nothing)
-
-        Util_Modal.CerrarModal("DeleteModal", "DeleteModalScript", Me)
-
+        Util_Modal.CerrarModal(Val_Articulo.DeleteModal.ToString, Val_Articulo.DeleteModalScript.ToString, Me)
         CargarImagenes(IdArticulo)
+
     End Sub
 
     '-----------------------------------Cargar Datos Articulo a Editar----------------------------------------------
@@ -125,12 +127,10 @@ Public Class Editar
         For Each itemArticulos In _Articulo
 
             CargarArticulo(itemArticulos)
-
             CargarArticulosPicking(itemArticulos)
-
             CargarImagenes(IdArticulo)
-
             CargarUbicacion(itemArticulos)
+
         Next
 
     End Sub
@@ -144,12 +144,13 @@ Public Class Editar
         ddlCliente.SelectedValue = itemArticulos.Almacen.id_cliente
         Mgr_Almacen.Llenar_Lista(ddlAlmacen, Convert.ToInt32(ddlCliente.SelectedValue))
         ddlAlmacen.SelectedValue = itemArticulos.id_almacen
-        txtCodigo.Text = itemArticulos.codigo
-        txtNombre.Text = itemArticulos.nombre
-        txtRefPick.Text = itemArticulos.referencia_picking
-        txtRef1.Text = itemArticulos.referencia1
-        txtRef2.Text = itemArticulos.referencia2
-        txtRef3.Text = itemArticulos.referencia3
+
+        txtCodigo.Text = If(itemArticulos.codigo Is Nothing, String.Empty, itemArticulos.codigo)
+        txtNombre.Text = If(itemArticulos.nombre Is Nothing, String.Empty, itemArticulos.nombre)
+        txtRefPick.Text = If(itemArticulos.referencia_picking Is Nothing, String.Empty, itemArticulos.referencia_picking)
+        txtRef1.Text = If(itemArticulos.referencia1 Is Nothing, String.Empty, itemArticulos.referencia1)
+        txtRef2.Text = If(itemArticulos.referencia2 Is Nothing, String.Empty, itemArticulos.referencia2)
+        txtRef3.Text = If(itemArticulos.referencia3 Is Nothing, String.Empty, itemArticulos.referencia3)
         ddlTipoUnidad.SelectedValue = If(itemArticulos.id_tipo_unidad Is Nothing, String.Empty, itemArticulos.id_tipo_unidad)
         ddlTipoFacturacion.SelectedValue = If(itemArticulos.id_tipo_facturacion Is Nothing, String.Empty, itemArticulos.id_tipo_facturacion)
         txtPeso.Text = itemArticulos.peso.ToString().Replace(",", ".")
@@ -160,8 +161,8 @@ Public Class Editar
         ddlIdentificacion.SelectedValue = itemArticulos.identificacion
         txtValArticulo.Text = itemArticulos.valor_articulo.ToString().Replace(",", ".")
         txtValAsegurado.Text = itemArticulos.valor_asegurado.ToString().Replace(",", ".")
-        txtObsGen.Text = itemArticulos.observaciones_generales
-        txtObsArt.Text = itemArticulos.observaciones_articulo
+        txtObsGen.Text = If(itemArticulos.observaciones_generales Is Nothing, String.Empty, itemArticulos.observaciones_generales)
+        txtObsArt.Text = If(itemArticulos.observaciones_articulo Is Nothing, String.Empty, itemArticulos.observaciones_articulo)
         txtStockMinimo.Text = itemArticulos.stock_minimo.ToString().Replace(",", ".")
         txtStockFisico.Text = itemArticulos.stock_fisico.ToString().Replace(",", ".")
 
@@ -172,15 +173,12 @@ Public Class Editar
     ''' </summary>
     Private Sub CargarArticulosPicking(itemArticulos As Articulo)
 
-        If itemArticulos.tipoArticulo = "Picking" Then
+        If itemArticulos.tipoArticulo = Val_Articulo.Tipo_Picking.ToString Then
 
             phListaArticulos.Visible = True
-
             LlenarGridview(itemArticulos.id_articulo)
             Update_ViewState_Datatable()
-
             Mgr_Articulo.ArticuloPickingEdit(ddlListaArticulos, GridView2, Convert.ToInt32(ddlAlmacen.SelectedValue))
-
 
         End If
 
@@ -190,13 +188,16 @@ Public Class Editar
     ''' Metodo que en donde se realiza la carga de las imagenes del articulo
     ''' </summary>
     Private Sub CargarImagenes(idArticulo As Integer)
+
         Mgr_Imagen.LlenarGrid(GridView1, idArticulo)
+
     End Sub
 
     ''' <summary>
     ''' Metodo que en donde se realiza la carga de las ubicaciones del articulo
     ''' </summary>
     Private Sub CargarUbicacion(itemArticulos As Articulo)
+
         Dim miTextbox As TextBox
 
         If itemArticulos.Ubicacion.Count > 0 Then
@@ -204,25 +205,25 @@ Public Class Editar
         End If
 
         Dim ContFilas As Integer = 0
+
         For Each itemUbicacion In itemArticulos.Ubicacion
 
-            miTextbox = CType(pTabla.FindControl("txtZona" & ContFilas), TextBox)
+            miTextbox = CType(pTabla.FindControl(Val_Articulo.txtZona.ToString & ContFilas), TextBox)
             miTextbox.Text = itemUbicacion.zona
 
-
-            miTextbox = CType(pTabla.FindControl("txtEstante" & ContFilas), TextBox)
+            miTextbox = CType(pTabla.FindControl(Val_Articulo.txtEstante.ToString & ContFilas), TextBox)
             miTextbox.Text = itemUbicacion.estante
 
-            miTextbox = CType(pTabla.FindControl("txtFila" & ContFilas), TextBox)
+            miTextbox = CType(pTabla.FindControl(Val_Articulo.txtFila.ToString & ContFilas), TextBox)
             miTextbox.Text = itemUbicacion.fila
 
-            miTextbox = CType(pTabla.FindControl("txtColumna" & ContFilas), TextBox)
+            miTextbox = CType(pTabla.FindControl(Val_Articulo.txtColumna.ToString & ContFilas), TextBox)
             miTextbox.Text = itemUbicacion.columna
 
-            miTextbox = CType(pTabla.FindControl("txtPanel" & ContFilas), TextBox)
+            miTextbox = CType(pTabla.FindControl(Val_Articulo.txtPanel.ToString & ContFilas), TextBox)
             miTextbox.Text = itemUbicacion.panel
 
-            miTextbox = CType(pTabla.FindControl("txtRefUbi" & ContFilas), TextBox)
+            miTextbox = CType(pTabla.FindControl(Val_Articulo.txtRefUbi.ToString & ContFilas), TextBox)
             miTextbox.Text = itemUbicacion.referencia_ubicacion
 
             ContFilas += 1
@@ -240,7 +241,7 @@ Public Class Editar
 
         If e.CommandName.Equals(Val_General.Eliminar.ToString) Then
             hdfIDDel.Value = Util_Grid.Get_IdRow(GridView1, e, "id")
-            Util_Modal.AbrirModal("DeleteModal", "DeleteModalScript", Me)
+            Util_Modal.AbrirModal(Val_Articulo.DeleteModal.ToString, Val_Articulo.DeleteModalScript.ToString, Me)
         End If
 
     End Sub
@@ -254,15 +255,13 @@ Public Class Editar
             Dim RowIndex As Integer = Convert.ToInt32((e.CommandArgument))
             Dim gvrow As GridViewRow = GridView2.Rows(RowIndex)
 
-            _DataTable = CType(ViewState("CurrentTable"), DataTable)
+            _DataTable = CType(ViewState(Val_Articulo.CurrentTable.ToString), DataTable)
             _DataTable.Rows(RowIndex).Delete()
 
             Update_ViewState_Datatable()
-
             Update_GridView_CurrentDatatable()
-
-
             Update_ViewState_Datatable()
+
             btnAddArticuloRow.Visible = True
             ddlListaArticulos.Items.Insert(0, New ListItem("" + gvrow.Cells(1).Text, String.Empty + gvrow.Cells(0).Text))
 
@@ -277,13 +276,9 @@ Public Class Editar
     Private Sub AddRowGridview()
 
         _DataTable = CType(ViewState(Val_Articulo.CurrentTable.ToString), DataTable)
-
         Util_Grid.AddRow_Grid_ArtPick(_DataTable, ddlListaArticulos.SelectedValue, ddlListaArticulos.SelectedItem.ToString, txtUnidad.Text)
-
         Update_ViewState_Datatable()
-
         Util_Grid.Update_GridView_CurrentDatatable(_DataTable, GridView2)
-
         Update_GridView_CurrentDatatable()
 
     End Sub
@@ -303,8 +298,6 @@ Public Class Editar
 
 
     End Sub
-
-
 
     Private Sub GridtoDataTable()
 
@@ -333,12 +326,12 @@ Public Class Editar
     End Sub
 
     Private Sub Update_GridView_CurrentDatatable()
-        _DataTable = CType(ViewState("CurrentTable"), DataTable)
+        _DataTable = CType(ViewState(Val_Articulo.CurrentTable.ToString), DataTable)
         Util_Grid.Update_GridView_CurrentDatatable(_DataTable, GridView2)
     End Sub
 
     Private Sub Update_ViewState_Datatable()
-        ViewState("CurrentTable") = _DataTable
+        ViewState(Val_Articulo.CurrentTable.ToString) = _DataTable
     End Sub
 
     '-----------------------------------Editar----------------------------------------------------
@@ -347,77 +340,66 @@ Public Class Editar
     ''' </summary>
     Private Function EditarArticulo(Edit As Articulo) As Boolean
 
-        '----------------Validar strings vacios
+#Region "creo la estructura articulo"
+        Dim _miArticulo = Mgr_Articulo.Get_Struct()
+        _miArticulo.codigo = txtCodigo.Text
+        _miArticulo.nombre = txtNombre.Text
+        _miArticulo.id_almacen = ddlAlmacen.SelectedValue
+        _miArticulo.referencia1 = txtRef1.Text
+        _miArticulo.referencia2 = txtRef2.Text
+        _miArticulo.referencia3 = txtRef3.Text
+        _miArticulo.tipoArticulo = ddlTipoArticulo.SelectedValue
+        _miArticulo.identificacion = ddlIdentificacion.SelectedValue
+        _miArticulo.id_tipo_unidad = ddlTipoUnidad.SelectedValue
+        _miArticulo.referencia_picking = txtRefPick.Text
+        _miArticulo.id_tipo_facturacion = ddlTipoFacturacion.SelectedValue
+        _miArticulo.observaciones_articulo = txtObsArt.Text
+        _miArticulo.observaciones_generales = txtObsGen.Text
+        _miArticulo.peso = txtPeso.Text
+        _miArticulo.alto = txtAlto.Text
+        _miArticulo.largo = txtLargo.Text
+        _miArticulo.ancho = txtAncho.Text
+        _miArticulo.stock_fisico = txtStockFisico.Text
+        _miArticulo.stock_minimo = txtStockMinimo.Text
+        _miArticulo.valor_articulo = txtValArticulo.Text
+        _miArticulo.coeficiente_volumetrico = txtCoefVol.Text
+        _miArticulo.valor_asegurado = txtValAsegurado.Text
+#End Region
 
-        Dim _codigo = Util_Validaciones.Validar_Campo_Vacio(txtCodigo.Text, String.Empty)
-        Dim _nombre = Util_Validaciones.Validar_Campo_Vacio(txtNombre.Text, String.Empty)
-        Dim _id_almacen = Convert.ToInt32(ddlAlmacen.SelectedValue)
-        Dim _referencia1 = Util_Validaciones.Validar_Campo_Vacio(txtRef1.Text, String.Empty)
-        Dim _referencia2 = Util_Validaciones.Validar_Campo_Vacio(txtRef2.Text, String.Empty)
-        Dim _referencia3 = Util_Validaciones.Validar_Campo_Vacio(txtRef3.Text, String.Empty)
-        Dim _tipoArticulo = Util_Validaciones.Validar_Campo_Vacio(ddlTipoArticulo.SelectedValue, "0")
-        Dim _identificacion = Util_Validaciones.Validar_Campo_Vacio(ddlIdentificacion.SelectedValue, String.Empty)
-        Dim _id_tipo_unidad = Util_Validaciones.Validar_Campo_Vacio(ddlTipoUnidad.SelectedValue, "0")
-        Dim _referencia_picking = Util_Validaciones.Validar_Campo_Vacio(txtRefPick.Text, String.Empty)
-        Dim _id_tipo_facturacion = Util_Validaciones.Validar_Campo_Vacio(ddlTipoFacturacion.SelectedValue, "0")
-        Dim _observaciones_articulo = Util_Validaciones.Validar_Campo_Vacio(txtObsArt.Text, String.Empty)
-        Dim _observaciones_generales = Util_Validaciones.Validar_Campo_Vacio(txtObsGen.Text, String.Empty)
-
-        '-----------------Validar campos vacios y formatear decimalesTTT
-
-        Dim _peso As Double = Util_Validaciones.Formatear_Double(Util_Validaciones.Validar_Campo_Vacio(txtPeso.Text, "0"))
-        Dim _alto As Double = Util_Validaciones.Formatear_Double(Util_Validaciones.Validar_Campo_Vacio(txtAlto.Text, "0"))
-        Dim _largo As Double = Util_Validaciones.Formatear_Double(Util_Validaciones.Validar_Campo_Vacio(txtLargo.Text, "0"))
-        Dim _ancho As Double = Util_Validaciones.Formatear_Double(Util_Validaciones.Validar_Campo_Vacio(txtAncho.Text, "0"))
-        Dim _stock_fisico As Double = Util_Validaciones.Formatear_Double(Util_Validaciones.Validar_Campo_Vacio(txtStockFisico.Text, 0))
-        Dim _stock_minimo As Double = Util_Validaciones.Formatear_Double(Util_Validaciones.Validar_Campo_Vacio(txtStockMinimo.Text, "0"))
-        Dim _valor_articulo As Double = Util_Validaciones.Formatear_Double(Util_Validaciones.Validar_Campo_Vacio(txtValArticulo.Text, 0))
-        Dim _coeficiente_volumetrico As Double = Util_Validaciones.Formatear_Double(Util_Validaciones.Validar_Campo_Vacio(txtCoefVol.Text, "0"))
-        Dim _valor_asegurado As Double = Util_Validaciones.Formatear_Double(Util_Validaciones.Validar_Campo_Vacio(txtValAsegurado.Text, "0"))
-
-        '-----------------Calculos
-
-        Dim _M3 As Double = Mgr_Articulo.CalcularM3(_alto, _ancho, _largo)
-        Dim _PesoVol As Double = Mgr_Articulo.Calcular_PesoVolumetrico(_alto, _ancho, _largo, _coeficiente_volumetrico)
-        Dim _valoracionStock As Double = Mgr_Articulo.Calcular_ValoracionStock(_stock_fisico, _valor_articulo)
-        Dim _valoracionSeguro As Double = Mgr_Articulo.Calcular_ValoracionSeguro(_valor_asegurado, _stock_fisico)
-
-        bError = True
+        Dim _ArticuloEdit = Mgr_Articulo.Crear_Objeto(_miArticulo)
 
         If Edit IsNot Nothing Then
-
-            Edit.codigo = _codigo
-            Edit.nombre = _nombre
-            Edit.referencia_picking = _referencia_picking
-            Edit.referencia1 = _referencia1
-            Edit.referencia2 = _referencia2
-            Edit.referencia3 = _referencia3
-            Edit.identificacion = _identificacion
-            Edit.valor_articulo = _valor_articulo
-            Edit.valor_asegurado = _valor_asegurado
-            Edit.valoracion_stock = _valoracionStock
-            Edit.valoracion_seguro = _valoracionSeguro
-            Edit.peso = _peso
-            Edit.alto = _alto
-            Edit.largo = _largo
-            Edit.ancho = _ancho
-            Edit.coeficiente_volumetrico = _coeficiente_volumetrico
-            Edit.cubicaje = _M3
-            Edit.peso_volumen = _PesoVol
-            Edit.observaciones_articulo = _observaciones_articulo
-            Edit.observaciones_generales = _observaciones_generales
-            Edit.stock_fisico = _stock_fisico
-            Edit.stock_minimo = _stock_minimo
-            Edit.id_almacen = Convert.ToInt32(ddlAlmacen.SelectedValue)
-            Edit.id_tipo_facturacion = _id_tipo_facturacion
-            Edit.id_tipo_unidad = _id_tipo_unidad
-            Edit.tipoArticulo = _tipoArticulo
-
+            Edit.codigo = _ArticuloEdit.codigo
+            Edit.nombre = _ArticuloEdit.nombre
+            Edit.referencia_picking = _ArticuloEdit.referencia_picking
+            Edit.referencia1 = _ArticuloEdit.referencia1
+            Edit.referencia2 = _ArticuloEdit.referencia2
+            Edit.referencia3 = _ArticuloEdit.referencia3
+            Edit.identificacion = _ArticuloEdit.identificacion
+            Edit.valor_articulo = _ArticuloEdit.valor_articulo
+            Edit.valor_asegurado = _ArticuloEdit.valor_asegurado
+            Edit.valoracion_stock = _ArticuloEdit.valoracion_stock
+            Edit.valoracion_seguro = _ArticuloEdit.valoracion_seguro
+            Edit.peso = _ArticuloEdit.peso
+            Edit.alto = _ArticuloEdit.alto
+            Edit.largo = _ArticuloEdit.largo
+            Edit.ancho = _ArticuloEdit.ancho
+            Edit.coeficiente_volumetrico = _ArticuloEdit.coeficiente_volumetrico
+            Edit.cubicaje = _ArticuloEdit.cubicaje
+            Edit.peso_volumen = _ArticuloEdit.peso_volumen
+            Edit.observaciones_articulo = _ArticuloEdit.observaciones_articulo
+            Edit.observaciones_generales = _ArticuloEdit.observaciones_generales
+            Edit.stock_fisico = _ArticuloEdit.stock_fisico
+            Edit.stock_minimo = _ArticuloEdit.stock_minimo
+            Edit.id_almacen = _ArticuloEdit.id_almacen
+            Edit.id_tipo_facturacion = _ArticuloEdit.id_tipo_facturacion
+            Edit.id_tipo_unidad = _ArticuloEdit.id_tipo_unidad
+            Edit.tipoArticulo = _ArticuloEdit.tipoArticulo
         End If
 
-        bError = Mgr_Articulo.Editar(Edit, contexto)
 
-        Return bError
+        Return Mgr_Articulo.Editar(Edit, contexto)
+
     End Function
 
     ''' <summary>
@@ -425,27 +407,8 @@ Public Class Editar
     ''' </summary>
     Private Function EditarImagenes(Edit As Articulo) As Boolean
 
-        Dim contadorControl As Integer = 0
-        bError = True
+        Return Mgr_Imagen.RecorrerGrid_Guardar(fuImagenes, Edit.id_articulo)
 
-        'Guardar fotos que fueron cargadas
-        For Each _imagen In fuImagenes.PostedFiles
-            contadorControl += 1
-            If _imagen.ContentLength > 0 And _imagen IsNot Nothing Then
-
-                Dim urlImagen As String = Util_Fileupload.Subir_Archivos(_imagen, "../../Archivos/Articulos/", "Img_" & Edit.id_articulo & "_" & contadorControl)
-
-                Dim _imagenes As New Imagen With
-                    {
-                    .nombre = "Imagen_" & DateTime.Now.ToString("(MM-dd-yy_H:mm:ss)"),
-                    .id_articulo = Edit.id_articulo,
-                    .url_imagen = urlImagen
-                }
-                bError = Mgr_Imagen.Guardar(_imagenes)
-            End If
-        Next
-
-        Return bError
     End Function
 
     ''' <summary>
@@ -453,15 +416,6 @@ Public Class Editar
     ''' </summary>
     Private Function EditarUbicaciones(Edit As Articulo) As Boolean
 
-        Dim miTextbox As TextBox
-        Dim contadorControl As Integer = 0
-        Dim zona As String = Nothing
-        Dim estante As String = Nothing
-        Dim fila As String = Nothing
-        Dim columna As String = Nothing
-        Dim panel As String = Nothing
-        Dim referencia_ubicacion As String = Nothing
-        Dim _NuevoUbicaion As Ubicacion
         bError = True
 
         If Edit.Ubicacion.Count > 0 Then
@@ -473,75 +427,8 @@ Public Class Editar
 
         End If
 
-        If bError Then
-            contadorControl = 0
-            For Each micontrol As Control In pTabla.Controls
+        Return Mgr_Ubicacion.RecorrerGrid_Guardar(pTabla, Edit.id_articulo)
 
-                miTextbox = CType(pTabla.FindControl("txtZona" & contadorControl), TextBox)
-                If miTextbox IsNot Nothing Then
-                    zona = If(miTextbox.Text = String.Empty, String.Empty, miTextbox.Text)
-                End If
-
-                miTextbox = CType(pTabla.FindControl("txtEstante" & contadorControl), TextBox)
-                If miTextbox IsNot Nothing Then
-                    estante = If(miTextbox.Text = String.Empty, String.Empty, miTextbox.Text)
-                End If
-
-                miTextbox = CType(pTabla.FindControl("txtFila" & contadorControl), TextBox)
-                If miTextbox IsNot Nothing Then
-                    fila = If(miTextbox.Text = String.Empty, String.Empty, miTextbox.Text)
-                End If
-
-                miTextbox = CType(pTabla.FindControl("txtColumna" & contadorControl), TextBox)
-                If miTextbox IsNot Nothing Then
-                    Dim valor As String = miTextbox.Text.PadLeft(4, "0")
-                    columna = If(miTextbox.Text = String.Empty, String.Empty, miTextbox.Text.PadLeft(4, "0"))
-                End If
-
-                miTextbox = CType(pTabla.FindControl("txtPanel" & contadorControl), TextBox)
-                If miTextbox IsNot Nothing Then
-                    panel = If(miTextbox.Text = String.Empty, String.Empty, miTextbox.Text)
-                End If
-
-                miTextbox = CType(pTabla.FindControl("txtRefUbi" & contadorControl), TextBox)
-                If miTextbox IsNot Nothing Then
-                    referencia_ubicacion = If(miTextbox.Text = String.Empty, String.Empty, miTextbox.Text)
-                End If
-
-                If referencia_ubicacion IsNot Nothing Then
-
-                    If (zona <> String.Empty) Or
-                                (estante <> String.Empty) Or
-                                (columna <> String.Empty) Or
-                                (panel <> String.Empty) Or
-                                (referencia_ubicacion <> String.Empty) Then
-
-                        _NuevoUbicaion = New Ubicacion With {
-                                    .zona = zona,
-                                    .estante = estante,
-                                    .fila = fila,
-                                    .columna = columna,
-                                    .panel = panel,
-                                    .referencia_ubicacion = referencia_ubicacion,
-                                    .id_articulo = Edit.id_articulo
-                                }
-
-                        bError = Mgr_Ubicacion.Guardar(_NuevoUbicaion)
-
-                        If bError = False Then
-                            Return bError
-                        End If
-
-                        referencia_ubicacion = Nothing
-
-                    End If
-                End If
-
-                contadorControl += 1
-            Next
-        End If
-
-        Return bError
     End Function
 
     ''' <summary>
@@ -552,7 +439,7 @@ Public Class Editar
         Dim contadorControl As Integer = 0
         bError = True
 
-        If ddlTipoArticulo.SelectedValue = "Picking" Then
+        If ddlTipoArticulo.SelectedValue = Val_Articulo.Tipo_Picking.ToString Then
 
             If Edit.Picking_Articulo1.Count > 0 Then
 
@@ -569,15 +456,8 @@ Public Class Editar
             If bError Then
                 For Each row As GridViewRow In GridView2.Rows
 
-                    Dim _id_articulo As String = GridView2.DataKeys(row.RowIndex).Values(0).ToString
-                    Dim _unidades As String = row.Cells(2).Text
-
-                    Dim _NuevoPic_Art As New Picking_Articulo With {
-                            .unidades = _unidades,
-                            .id_articulo = _id_articulo,
-                            .id_picking = Edit.id_articulo
-                        }
-                    bError = Mgr_Articulo.Guardar_Picking_Articulo(_NuevoPic_Art)
+                    Dim structPicking = Mgr_Articulo.Get_Struct_Picking(row, GridView1, Edit.id_articulo)
+                    bError = Mgr_Articulo.Guardar_Picking_Articulo(Mgr_Articulo.Crear_Objeto(structPicking))
 
                 Next
             End If
@@ -595,7 +475,6 @@ Public Class Editar
     Protected Sub ddlAlmacen_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlAlmacen.SelectedIndexChanged
 
         Mgr_Articulo.SetCoefVolumétrico(ddlAlmacen, txtCoefVol, phListaArticulos, ddlTipoArticulo)
-
         Mgr_Articulo.ArticuloPickingEdit(ddlListaArticulos, GridView2, Convert.ToInt32(ddlAlmacen.SelectedValue))
 
     End Sub
@@ -614,7 +493,7 @@ Public Class Editar
                     If EditarUbicaciones(Edit) Then
                         If EditarPicking(Edit) Then
 
-                            If ddlTipoArticulo.SelectedValue = "Picking" Then
+                            If ddlTipoArticulo.SelectedValue = Val_Articulo.Tipo_Picking.ToString Then
 
                                 Util_UpdatePanel.LimpiarControles(updatePanelPrinicpal)
                                 Mgr_Articulo.Llenar_Lista(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
