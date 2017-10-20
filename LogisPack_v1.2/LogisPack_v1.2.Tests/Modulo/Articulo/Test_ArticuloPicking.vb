@@ -12,13 +12,18 @@
 
     <TestInitialize>
     Public Sub inicializar()
-        DataAccess.Inicializar_ArticuloPicking(_Articulo, _Almacen, _Tipo_Facturacion, _Tipo_Unidad, _Cliente,
-                                               _Picking_Articulo, _ArticuloP)
+
+        Mgr_Almacen_Test.Inicializar(_Cliente, _Almacen)
+        Mgr_TipoFacturacion_Test.Inicializar(_Tipo_Facturacion)
+        Mgr_TipoUnidad_Test.Inicializar(_Tipo_Unidad)
+        _ArticuloP = Mgr_Articulo_Test.Get_ArticuloPicking1(_Almacen, _Tipo_Facturacion, _Tipo_Unidad)
+
+        Mgr_Articulo_Test.Inicializar_ArticuloPicking(_Articulo, _Picking_Articulo, _ArticuloP)
     End Sub
 
     <TestCleanup>
     Public Sub finalizar()
-        DataAccess.Finalizar_Articulo(_Tipo_Facturacion, _Tipo_Unidad, _Cliente)
+        Mgr_Articulo_Test.Finalizar(_Tipo_Facturacion, _Tipo_Unidad, _Cliente)
     End Sub
 
     <TestMethod()> Public Sub Registrar_ArticuloPicking()

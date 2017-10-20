@@ -154,6 +154,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\PruebaInterfaz.Resources.resources" />
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -165,6 +166,12 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="obj\Debug\CoreCompileInputs.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\PruebaInterfaz.vbproj.GenerateResource.Cache" />
+    <None Include="obj\Debug\PruebaInterfaz.vbprojResolveAssemblyReference.cache" />
+    <None Include="obj\Release\CoreCompileInputs.cache" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -173,7 +180,19 @@
       <Name>CapaDatos</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="bin\Debug\PruebaInterfaz.dll" />
+    <Content Include="bin\Debug\PruebaInterfaz.pdb" />
+    <Content Include="obj\Debug\PruebaInterfaz.dll" />
+    <Content Include="obj\Debug\PruebaInterfaz.pdb" />
+    <Content Include="obj\Debug\PruebaInterfaz.vbproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\PruebaInterfaz.xml" />
+    <Content Include="obj\Debug\TempPE\My Project.Resources.Designer.vb.dll" />
+    <Content Include="obj\Release\TempPE\My Project.Resources.Designer.vb.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

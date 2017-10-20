@@ -28,35 +28,29 @@
     <TestMethod()> Public Sub CalcularM3()
 
 #Region "textbox vacios"
-        LlenarTextbox()
         ValorEsperado = 0
 
-        ValorReal = Mgr_Articulo.CalcularM3(txtAncho, txtAlto, txtLargo)
+        ValorReal = Mgr_Articulo.CalcularM3(0, 0, 0)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
 #Region "textbox con datos enteros"
 
-        LlenarTextbox("100", "100", "100")
         ValorEsperado = 1
-        ValorReal = Mgr_Articulo.CalcularM3(txtAncho, txtAlto, txtLargo)
+        ValorReal = Mgr_Articulo.CalcularM3(100, 100, 100)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
 #Region "textbox vacios y con datos"
 
-        LlenarTextbox("", "20")
-
         ValorEsperado = 0
-        ValorReal = Mgr_Articulo.CalcularM3(txtAncho, txtAlto, txtLargo)
+        ValorReal = Mgr_Articulo.CalcularM3(0, 20, 0)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
 #Region "textbox con datos flotantes"
-
-        LlenarTextbox("100.1", "200.2", "300.3")
         ValorEsperado = 6.018
-        ValorReal = Mgr_Articulo.CalcularM3(txtAncho, txtAlto, txtLargo)
+        ValorReal = Mgr_Articulo.CalcularM3(100.1, 200.2, 300.3)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
@@ -66,35 +60,27 @@
     <TestMethod()> Public Sub CalcularPesoVolumetrico()
 
 #Region "textbox vacio"
-        LlenarTextbox()
 
         ValorEsperado = 0
-        ValorReal = Mgr_Articulo.Calcular_PesoVolumetrico(txtAncho, txtAlto, txtLargo, txtCoefVol)
+        ValorReal = Mgr_Articulo.Calcular_PesoVolumetrico(0, 0, 0, 0)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
 #Region "textbox vacios y con datos"
-
-        LlenarTextbox("", "2")
         ValorEsperado = 0
-        ValorReal = Mgr_Articulo.Calcular_PesoVolumetrico(txtAncho, txtAlto, txtLargo, txtCoefVol)
+        ValorReal = Mgr_Articulo.Calcular_PesoVolumetrico(0, 2, 0, 0)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
 #Region "textbox con datos enteros"
-
-        LlenarTextbox("10", "20", "30", "", "", "", "40")
         ValorEsperado = 240
-        ValorReal = Mgr_Articulo.Calcular_PesoVolumetrico(txtAncho, txtAlto, txtLargo, txtCoefVol)
+        ValorReal = Mgr_Articulo.Calcular_PesoVolumetrico(10, 20, 30, 40)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
 #Region "textbox con datos decimales"
-
-        LlenarTextbox("1.1", "2.2", "3.3", "", "", "", "4.4")
-
         ValorEsperado = 0.035
-        ValorReal = Mgr_Articulo.Calcular_PesoVolumetrico(txtAncho, txtAlto, txtLargo, txtCoefVol)
+        ValorReal = Mgr_Articulo.Calcular_PesoVolumetrico(1.1, 2.2, 3.3, 4.4)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
@@ -104,36 +90,27 @@
 
 #Region "textbox vacios"
 
-        LlenarTextbox()
-
         ValorEsperado = 0
-        ValorReal = Mgr_Articulo.Calcular_ValoracionStock(txtStockFisico, txtValArticulo)
+        ValorReal = Mgr_Articulo.Calcular_ValoracionStock(0, 0)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
 #Region "textbox vacios y con datos"
-
-        LlenarTextbox("", "", "", "", "", "1", "")
-
         ValorEsperado = 0
-        ValorReal = Mgr_Articulo.Calcular_ValoracionStock(txtStockFisico, txtValArticulo)
+        ValorReal = Mgr_Articulo.Calcular_ValoracionStock(1, 0)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
 #Region "textbox con datos enteros"
 
-        LlenarTextbox("", "", "", "10", "", "5", "")
         ValorEsperado = 50
-        ValorReal = Mgr_Articulo.Calcular_ValoracionStock(txtStockFisico, txtValArticulo)
+        ValorReal = Mgr_Articulo.Calcular_ValoracionStock(10, 5)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
 #Region "TextBox con datos decimales"
-
-        LlenarTextbox("", "", "", "2.2", "", "5.5", "")
-
         ValorEsperado = 12.1
-        ValorReal = Mgr_Articulo.Calcular_ValoracionStock(txtStockFisico, txtValArticulo)
+        ValorReal = Mgr_Articulo.Calcular_ValoracionStock(2.2, 5.5)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
@@ -142,55 +119,32 @@
     <TestMethod()> Public Sub CalcularValoracionSeguro()
 
 #Region "textbox vacios"
-
-        LlenarTextbox()
-
         ValorEsperado = 0
-        ValorReal = Mgr_Articulo.Calcular_ValoracionSeguro(txtStockFisico, txtValAsegurado)
+        ValorReal = Mgr_Articulo.Calcular_ValoracionSeguro(0, 0)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
 #Region "textbox vacios y con datos"
-
-        LlenarTextbox("", "", "", "", "1", "", "")
-
         ValorEsperado = 0
-        ValorReal = Mgr_Articulo.Calcular_ValoracionSeguro(txtStockFisico, txtValAsegurado)
+        ValorReal = Mgr_Articulo.Calcular_ValoracionSeguro(1, 0)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
 #Region "textbox con datos enteros"
-
-        LlenarTextbox("", "", "", "10", "5", "", "")
         ValorEsperado = 50
-        ValorReal = Mgr_Articulo.Calcular_ValoracionSeguro(txtStockFisico, txtValAsegurado)
+        ValorReal = Mgr_Articulo.Calcular_ValoracionSeguro(10, 5)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
 #Region "textbox con datos decimales"
 
-        LlenarTextbox("", "", "", "2.2", "5.5", "", "")
         ValorEsperado = 12.1
-        ValorReal = Mgr_Articulo.Calcular_ValoracionSeguro(txtStockFisico, txtValAsegurado)
+        ValorReal = Mgr_Articulo.Calcular_ValoracionSeguro(2.2, 5.5)
         Assert.AreEqual(ValorEsperado, ValorReal)
 #End Region
 
     End Sub
 
-    Public Sub LlenarTextbox(
-        Optional ByRef _txtAncho As String = "", Optional ByRef _txtAlto As String = "",
-        Optional ByRef _txtLargo As String = "", Optional ByRef _txtStockFisico As String = "",
-        Optional ByRef _txtValAsegurado As String = "", Optional ByRef _txtValArticulo As String = "",
-        Optional ByRef _txtCoefVol As String = "")
 
-        txtAncho = _txtAncho
-        txtAlto = _txtAlto
-        txtLargo = _txtLargo
-        txtStockFisico = _txtStockFisico
-        txtValAsegurado = _txtValAsegurado
-        txtValArticulo = _txtValArticulo
-        txtCoefVol = _txtCoefVol
-
-    End Sub
 
 End Class
