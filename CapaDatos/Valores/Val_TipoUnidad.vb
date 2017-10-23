@@ -9,6 +9,9 @@
         Return Key
     End Function
 
+    '------------------------------------------------------------------
+    '------------------------NOMBRES DE LOS MODALES--------------------
+    '------------------------------------------------------------------
     Public Shared ReadOnly AddModal As Val_TipoUnidad = New Val_TipoUnidad("AddModal")
     Public Shared ReadOnly EditModal As Val_TipoUnidad = New Val_TipoUnidad("EditModal")
     Public Shared ReadOnly DeleteModal As Val_TipoUnidad = New Val_TipoUnidad("DeleteModal")

@@ -8,7 +8,9 @@
         Return Key
     End Function
 
-#Region "Empresa"
+    '------------------------------------------------------------------------------------------
+    '------------------------VALORES DE LOS CONTROLES DEL MODULO EMPRESA-----------------------
+    '------------------------------------------------------------------------------------------
     Public Shared ReadOnly Nom_Cliente As Valores = New Valores("Cli_Selenium")
     Public Shared ReadOnly Nom_Cliente2 As Valores = New Valores("Cli2_Selenium")
     Public Shared ReadOnly Nom_Cliente_Edit As Valores = New Valores("Cli_Selenium_1")
@@ -16,35 +18,37 @@
     Public Shared ReadOnly Cod_Cliente As Valores = New Valores("001_Sel")
     Public Shared ReadOnly Cod_Cliente2 As Valores = New Valores("002_Sel")
     Public Shared ReadOnly Cod_Cliente_Edit As Valores = New Valores("001_Sel_1")
-#End Region
 
-#Region "Tipo de facturacion"
+    '------------------------------------------------------------------------------------------
+    '------------------------VALORES DE LOS CONTROLES DEL MODULO TIPO FACTURACION--------------
+    '------------------------------------------------------------------------------------------
     Public Shared ReadOnly Nom_TipoFact As Valores = New Valores("TipoFact_Selenium")
     Public Shared ReadOnly Nom_TipoFact_Edit As Valores = New Valores("TipoFact_Selenium_1")
     Public Shared ReadOnly Nom_TipoFact_Buscar As Valores = New Valores("TipoFact_Sel")
-#End Region
 
-#Region "Tipo de Unidad"
+
+    '------------------------------------------------------------------------------------------
+    '------------------------VALORES DE LOS CONTROLES DEL MODULO TIPO UNIDAD-------------------
+    '------------------------------------------------------------------------------------------
     Public Shared ReadOnly Nom_TipoUnidad As Valores = New Valores("TipoUni_Selenium")
     Public Shared ReadOnly Nom_TipoUnidad_Edit As Valores = New Valores("TipoUni_Selenium_1")
     Public Shared ReadOnly Nom_TipoUnidad_Buscar As Valores = New Valores("TipoUni_Sel")
-#End Region
 
-#Region "Almacen"
 
+    '------------------------------------------------------------------------------------------
+    '------------------------VALORES DE LOS CONTROLES DEL MODULO ALMACEN-----------------------
+    '------------------------------------------------------------------------------------------
     Public Shared ReadOnly Nom_Almacen As Valores = New Valores("Alm_Selenium")
     Public Shared ReadOnly Nom_Almacen_Edit As Valores = New Valores("Alm_Selenium_1")
-
     Public Shared ReadOnly Cod_Almacen As Valores = New Valores("001_Sel")
     Public Shared ReadOnly Cod_Almacen_Edit As Valores = New Valores("002_Sel")
-
     Public Shared ReadOnly CoefVol_Almacen As Valores = New Valores("50")
     Public Shared ReadOnly CoefVol_Almacen_Edit As Valores = New Valores("50,5")
 
 
-#End Region
-
-#Region "Articulo"
+    '------------------------------------------------------------------------------------------
+    '------------------------VALORES DE LOS CONTROLES DEL MODULO ARTICULO----------------------
+    '------------------------------------------------------------------------------------------
 
     Public Shared ReadOnly _Art_cod As Valores = New Valores("_Art_cod")
     Public Shared ReadOnly _Art_nom As Valores = New Valores("_Art_nom")
@@ -81,9 +85,5 @@
     Public Shared ReadOnly _Art_valor_art_Edit As Valores = New Valores("80,008")
     Public Shared ReadOnly _Art_coef_vol_Edit As Valores = New Valores("90,0009")
     Public Shared ReadOnly _Art_valor_ase_Edit As Valores = New Valores("10,1")
-
-#End Region
-
-
 
 End Class

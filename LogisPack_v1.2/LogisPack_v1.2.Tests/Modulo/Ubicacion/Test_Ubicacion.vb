@@ -9,16 +9,25 @@
     Dim ClienteTest As Cliente
     Dim UbicacionTest As Ubicacion
 
+    ''' <summary>
+    ''' Método que se invoca para inicializar auitomaticamente una prueba
+    ''' </summary>
     <TestInitialize>
-    Public Sub inicializar()
+    Public Sub Inicializar()
         Mgr_Ubicacion_Test.Inicializar(ArticuloTest, AlmacenTest, Tipo_FacturacionTest, Tipo_UnidadTest, ClienteTest, UbicacionTest)
     End Sub
 
+    ''' <summary>
+    ''' Método que se invoca para finbalizar auitomaticamente una prueba
+    ''' </summary>
     <TestCleanup>
-    Public Sub finalizar()
+    Public Sub Finalizar()
         Mgr_Articulo_Test.Finalizar(Tipo_FacturacionTest, Tipo_UnidadTest, ClienteTest)
     End Sub
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para registrar un Ubicacion
+    ''' </summary>
     <TestMethod()> Public Sub Registrar_Ubicacion()
 
         Dim UbicacionBD = Mgr_Ubicacion.Get_Ubicacion(UbicacionTest.id_ubicacion)
@@ -33,6 +42,9 @@
 
     End Sub
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para editar un Ubicacion
+    ''' </summary>
     <TestMethod()> Public Sub Editar_Ubicacion()
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -59,6 +71,9 @@
 
     End Sub
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para eliminar un Ubicacion
+    ''' </summary>
     <TestMethod()> Public Sub Eliminar_Ubicacion()
 
         Mgr_Ubicacion.Eliminar(UbicacionTest.id_ubicacion)

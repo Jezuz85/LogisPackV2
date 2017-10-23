@@ -21,21 +21,21 @@
 
     Public Sub New()
 
-        Me.URL = "http://www.midemo.es/logispack/Portal/TipoUnidad/index"
-        Me.txtSearch = "MainContent_txtSearch"
-        Me.txtNombreAdd = "txtNombre"
-        Me.txtNombreEdit = "txtNombre_Edit"
-        Me.GridPrinicipal = "MainContent_GridView1"
-        Me.ddlFiltroBuscar = "MainContent_ddlBuscar"
-        Me.BotonAddModal = "MainContent_btnRegistrar"
-        Me.BotonAdd = "MainContent_btnAdd"
-        Me.BotonEditModal = "3"
-        Me.BotonEdit = "MainContent_btnEdit"
-        Me.BotonDeleteModal = "4"
-        Me.BotonReset = "MainContent_btnReset"
-        Me.BotonBuscar = "MainContent_btnBuscar"
-        Me.Filtro_Nom = "Nombre"
-        Me.BotonDelete = "MainContent_btnDelete"
+        URL = "http://www.midemo.es/logispack/Portal/TipoUnidad/index"
+        txtSearch = "MainContent_txtSearch"
+        txtNombreAdd = "txtNombre"
+        txtNombreEdit = "txtNombre_Edit"
+        GridPrinicipal = "MainContent_GridView1"
+        ddlFiltroBuscar = "MainContent_ddlBuscar"
+        BotonAddModal = "MainContent_btnRegistrar"
+        BotonAdd = "MainContent_btnAdd"
+        BotonEditModal = "3"
+        BotonEdit = "MainContent_btnEdit"
+        BotonDeleteModal = "4"
+        BotonReset = "MainContent_btnReset"
+        BotonBuscar = "MainContent_btnBuscar"
+        Filtro_Nom = "Nombre"
+        BotonDelete = "MainContent_btnDelete"
 
     End Sub
 End Class

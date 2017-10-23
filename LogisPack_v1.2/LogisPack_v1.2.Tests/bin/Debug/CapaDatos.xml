@@ -72,6 +72,16 @@ CapaDatos
  Metodo que crea dinamicamente un Hyperlink y lo añade a un panel enviado por parametro
  </summary>
 </member>
+<member name="T:CapaDatos.Mgr_Articulo.struct_Articulo">
+ <summary>
+ Estructura de la clase articulo
+ </summary>
+</member>
+<member name="T:CapaDatos.Mgr_Articulo.struct_ArticuloPicking">
+ <summary>
+ Estructura de la clase Articulo Picking
+ </summary>
+</member>
 <member name="M:CapaDatos.Mgr_Articulo.Guardar(CapaDatos.Articulo)">
  <summary>
  Metodo que recibe un objeto Articulo y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
@@ -294,9 +304,24 @@ CapaDatos
  Metodo que recibe un objeto Historico y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
  </summary>
 </member>
+<member name="M:CapaDatos.Mgr_Historico.Get_Operacion_TotalEntrada(System.String)">
+ <summary>
+ Metodo que retorna el valor total de articulos que se han registrado como 'Entrada'
+ </summary>
+</member>
+<member name="M:CapaDatos.Mgr_Historico.Get_Operacion_TotalSalida(System.String)">
+ <summary>
+ Metodo que retorna el valor total de articulos que se han registrado como 'Salida'
+ </summary>
+</member>
 <member name="M:CapaDatos.Mgr_Historico.LlenarGrid(System.Web.UI.WebControls.GridView@,System.Int32,System.String,System.String,System.String,System.String)">
  <summary>
  Metodo que recibe el gridview para llenar con los datos de el historico en la base de datos
+ </summary>
+</member>
+<member name="T:CapaDatos.Mgr_Imagen.struct_Imagen">
+ <summary>
+ Estructura de la clase imagen
  </summary>
 </member>
 <member name="M:CapaDatos.Mgr_Imagen.Guardar(CapaDatos.Imagen)">
@@ -465,6 +490,16 @@ CapaDatos
  Metodo que recibe un array de string y retorna un objeto imagen
  </summary>
 </member>
+<member name="M:CapaDatos.Mgr_Ubicacion.Get_Struct_Fila_Ubicacion(System.Int32,System.Web.UI.WebControls.Panel@,System.String)">
+ <summary>
+ Metodo que retorne la estructura de ubicacion con lso datos del grid
+ </summary>
+</member>
+<member name="M:CapaDatos.Mgr_Ubicacion.RecorrerGrid_Guardar(System.Web.UI.WebControls.Panel,System.Int32)">
+ <summary>
+ Metodo que recorre el grid de ubicaciones y los guarda en la base de datos
+ </summary>
+</member>
 <member name="M:CapaDatos.Mgr_Ubicacion.Get_Ubicacion_list(System.Int32)">
  <summary>
  Metodo que recibe un id del Artiuclo, y devuelve una lista de las ubicaciones asociadas al articulo
@@ -519,6 +554,11 @@ CapaDatos
  <summary>
  Metodo que recibe el updatepanel donde esta el Alert, el valor booleano de la operacion, 
  y el mensaje para mostrar en el alerta
+ </summary>
+</member>
+<member name="T:CapaDatos.Mgr_Almacen.struct_Almacen">
+ <summary>
+ Estructura de la clase almacen
  </summary>
 </member>
 <member name="M:CapaDatos.Mgr_Almacen.Llenar_Grid(System.Web.UI.WebControls.GridView@,System.Int32,System.String,System.String,System.String,System.String)">
@@ -646,6 +686,43 @@ CapaDatos
 <member name="M:CapaDatos.Util_UpdatePanel.CerrarOperacion(System.String,System.Boolean,System.Web.UI.Page,System.Web.UI.UpdatePanel,System.Web.UI.UpdatePanel@)">
  <summary>
  Metodo que se ejecuta al realizar una operacion, se vacia los controles y se muestra el alerta
+ </summary>
+</member>
+<member name="M:CapaDatos.Util_Validaciones.Validar_Campo_Vacio(System.String,System.String)">
+ <summary>
+ Metodo que valida si un campo es vacio retorna String.Empty sino devuelve el valor actual
+ </summary>
+</member>
+<member name="M:CapaDatos.Util_Validaciones.Formatear_Double(System.String)">
+ <summary>
+ Metodo que recibe un string de un textbox y retorna formateado a double con decimales
+ </summary>
+</member>
+<member name="M:CapaDatos.Util_Validaciones.Exist_Tipo_Facturacion(System.String)">
+ <summary>
+ Metodo que busca un tipo de facturacion por su nombre y valida si existe un registro de Tipo de Facturacion
+ en la base de datos
+ </summary>
+</member>
+<member name="M:CapaDatos.Util_Validaciones.Exist_Tipo_Unidad(System.String)">
+ <summary>
+ Metodo que busca un tipo de unidad por su nombre y valida si existe un registro de Tipo de unidad
+ en la base de datos
+ </summary>
+</member>
+<member name="M:CapaDatos.Util_Validaciones.Longitud_Campo(System.String,System.Int32)">
+ <summary>
+ Metodo que valida que un valor no supere la cantidad de caracteres pasadas por parametro
+ </summary>
+</member>
+<member name="M:CapaDatos.Util_Validaciones.Identificacion(System.String)">
+ <summary>
+ Metodo que formatea a mayusculas el valor ingresado como identificacion
+ </summary>
+</member>
+<member name="M:CapaDatos.Util_Validaciones.Validarnumero(System.String)">
+ <summary>
+ Metodo que valida que un valor pasado por parametro sea solo numerico
  </summary>
 </member>
 </members>

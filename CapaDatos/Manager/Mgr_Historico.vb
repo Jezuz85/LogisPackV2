@@ -2,8 +2,9 @@
 
 Public Class Mgr_Historico
 
-
-
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES DE LA CLASE HISTORICO-----------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe un objeto Historico y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
     ''' </summary>
@@ -23,7 +24,12 @@ Public Class Mgr_Historico
 
     End Function
 
-    '------------------------FUNCIONES GETTER
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES GETTER--------------------------
+    '------------------------------------------------------------------
+    ''' <summary>
+    ''' Metodo que retorna el valor total de articulos que se han registrado como 'Entrada'
+    ''' </summary>
     Public Shared Function Get_Operacion_TotalEntrada(_id_articulo As String) As Double
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -33,6 +39,9 @@ Public Class Mgr_Historico
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que retorna el valor total de articulos que se han registrado como 'Salida'
+    ''' </summary>
     Public Shared Function Get_Operacion_TotalSalida(_id_articulo As String) As Double
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -42,8 +51,9 @@ Public Class Mgr_Historico
 
     End Function
 
-
-    '------------------------FUNCIONES GRID
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES DEL GRID------------------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe el gridview para llenar con los datos de el historico en la base de datos
     ''' </summary>

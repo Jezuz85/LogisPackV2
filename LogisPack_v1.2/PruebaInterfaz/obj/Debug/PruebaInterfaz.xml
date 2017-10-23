@@ -22,5 +22,449 @@ PruebaInterfaz
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="M:PruebaInterfaz.Funciones.CerrarDriver(OpenQA.Selenium.Chrome.ChromeDriver@)">
+ <summary>
+ Método que recibe un objeto tipo Chromedriver y lo cierra
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Funciones.Obtener_CantidadFilasGrid(OpenQA.Selenium.Chrome.ChromeDriver@,System.String)">
+ <summary>
+ Método que recibe un id de un gridview y retorna la cantidad de filas que tiene el grid
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Funciones.Obtener_FilasGrid(OpenQA.Selenium.Chrome.ChromeDriver@,System.String,System.Collections.Generic.List{OpenQA.Selenium.IWebElement}@)">
+ <summary>
+ Método que recibe un id de un gridview y retorna un objeto tipo List con los datos de las filas que tiene el grid
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Funciones.Buscar_Valor_Grid(System.Collections.Generic.List{OpenQA.Selenium.IWebElement}@,System.String)">
+ <summary>
+ Método que recibe un objeto tipo List con los datos de las filas que tiene el grid y valida la existencia de un 
+ elemento a buscar
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Funciones.Buscar_Boton_Grid(System.Collections.Generic.List{OpenQA.Selenium.IWebElement},System.String,System.Int32)">
+ <summary>
+ Método que recibe una lista de elementos del grid, busca un valor por la columna y se busca un boton en el grid, 
+ dependiendo de la posicion pasada por parametro
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Funciones.ID_Boton_Click(OpenQA.Selenium.Chrome.ChromeDriver@,System.String)">
+ <summary>
+ Método que recibe un id de un boton y llama al evento click
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Funciones.BotonGrid_Click(System.Collections.Generic.List{OpenQA.Selenium.IWebElement},System.String,System.String)">
+ <summary>
+ Método que recibe un id de un gridview y busca un boton en la columna seleccionada y genera el evento click
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Funciones.SendText_ById(OpenQA.Selenium.Chrome.ChromeDriver@,System.String,System.String)">
+ <summary>
+ Método que recibe un id de un input e ingresa valores al input
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Funciones.Clear_SendText_ById(OpenQA.Selenium.Chrome.ChromeDriver@,System.String,System.String)">
+ <summary>
+ Método que recibe un id de un input y elimina los valores actuales que posee
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Funciones.ID_DropDownList_SelectedValue(OpenQA.Selenium.Chrome.ChromeDriver@,System.String,System.String)">
+ <summary>
+ Método que recibe un id de un Dropdownlist y selecciona un valor enviado por parametro
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Funciones.Buscar_Texto_Grid(OpenQA.Selenium.Chrome.ChromeDriver@,System.String,System.String)">
+ <summary>
+ Método que realiza la operacion de busqueda en el acordeon de 'Buscar',Se  Selecciona un filtro, ingresa el texto y 
+ presiona el boton buscar
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Funciones.ResetearGrid(OpenQA.Selenium.Chrome.ChromeDriver@)">
+ <summary>
+ Método que realiza la operacion de resetear la busqueda en el acordeon de buscar
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Funciones.CerrarPrueba(OpenQA.Selenium.Chrome.ChromeDriver@,System.String@)">
+ <summary>
+ Método que se ejecuta si se quiere dar por terminado una prueba
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Almacen.Crear_Obj_Almacen1(CapaDatos.Almacen@)">
+ <summary>
+ Método que recibe un objeto almacen y le agrega los datos especificos para la prueba
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Almacen.Crear_Obj_Almacen2(CapaDatos.Almacen@)">
+ <summary>
+ Método que recibe un objeto almacen y le agrega los datos especificos para la prueba
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Almacen.Registrar(OpenQA.Selenium.Chrome.ChromeDriver@,CapaDatos.Almacen@,CapaDatos.Cliente@)">
+ <summary>
+ Método que realiza el registro de un almacen en la aplicacion
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Almacen.Editar(OpenQA.Selenium.Chrome.ChromeDriver@,CapaDatos.Almacen@,CapaDatos.Almacen@,CapaDatos.Cliente@)">
+ <summary>
+ Método que realiza la actualizacion de un almacen en la aplicacion
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Almacen.Eliminar(OpenQA.Selenium.Chrome.ChromeDriver@,System.String)">
+ <summary>
+ Método que realiza la eliminación de un almacen en la aplicacion
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Almacen.RegistrarAlmacen(OpenQA.Selenium.Chrome.ChromeDriver@,CapaDatos.Almacen@,CapaDatos.Cliente@)">
+ <summary>
+ Método que crea un objeto almacen e invoca el metodo de registrar
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Almacen.Existencia_Valor_Grid(OpenQA.Selenium.Chrome.ChromeDriver@,System.Collections.Generic.List{OpenQA.Selenium.IWebElement}@,CapaDatos.Almacen@)">
+ <summary>
+ Método que valida la existencia de valores en la lista que contiene los elementos de un grid
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Articulo.Crear_Obj_Articulo1(CapaDatos.Articulo@)">
+ <summary>
+ Método que recibe un objeto articulo y le agrega los datos especificos para la prueba
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Articulo.Crear_Obj_Articulo2(CapaDatos.Articulo@)">
+ <summary>
+ Método que recibe un objeto articulo y le agrega los datos especificos para la prueba
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Articulo.Registrar(OpenQA.Selenium.Chrome.ChromeDriver@,CapaDatos.Cliente@,CapaDatos.Almacen@,CapaDatos.Articulo@,CapaDatos.Tipo_Facturacion@,CapaDatos.Tipo_Unidad@)">
+ <summary>
+ Método que realiza el registro de un articulo en la aplicacion
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Articulo.Editar(OpenQA.Selenium.Chrome.ChromeDriver@,CapaDatos.Cliente@,CapaDatos.Almacen@,CapaDatos.Articulo@,CapaDatos.Tipo_Facturacion@,CapaDatos.Tipo_Unidad@)">
+ <summary>
+ Método que realiza la actualizacion de un articulo en la aplicacion
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Articulo.Detalles(OpenQA.Selenium.Chrome.ChromeDriver@,CapaDatos.Cliente@,CapaDatos.Almacen@,CapaDatos.Articulo@,CapaDatos.Tipo_Facturacion@,CapaDatos.Tipo_Unidad@,System.Collections.Generic.List{OpenQA.Selenium.IWebElement})">
+ <summary>
+ Método que realiza la consulta de un articulo en la aplicacion
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Articulo.RegistrarArticulo(OpenQA.Selenium.Chrome.ChromeDriver@,CapaDatos.Cliente@,CapaDatos.Almacen@,CapaDatos.Articulo@,CapaDatos.Tipo_Facturacion@,CapaDatos.Tipo_Unidad@)">
+ <summary>
+ Método que crea un objeto articulo e invoca el metodo de registrar
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Articulo.Existencia_Valor_Grid(OpenQA.Selenium.Chrome.ChromeDriver@,System.Collections.Generic.List{OpenQA.Selenium.IWebElement}@,CapaDatos.Cliente@,CapaDatos.Almacen@,CapaDatos.Articulo@)">
+ <summary>
+ Método que valida la existencia de valores en la lista que contiene los elementos de un grid
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Pruebas.Existencia_Valor_Grid(OpenQA.Selenium.Chrome.ChromeDriver@,System.Collections.Generic.List{OpenQA.Selenium.IWebElement}@,System.String)">
+ <summary>
+ Método que realiza el assert de buscar un valor en el grid y comprobar su existencia, retorna True si se encontro el valor
+ , en caso contrario retorna false
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Pruebas.Validar_btnReset(OpenQA.Selenium.Chrome.ChromeDriver@)">
+ <summary>
+ Método que realiza el assert al presionar el boton "Reset"
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Pruebas.Existencia_Valor_Label(OpenQA.Selenium.Chrome.ChromeDriver@,System.String,System.String)">
+ <summary>
+ Método que realiza el assert en validar un valor con el texto de un label pasado por parametro
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Cliente.Crear_Obj_Cliente1(CapaDatos.Cliente@)">
+ <summary>
+ Método que recibe un objeto cliente y le agrega los datos especificos para la prueba
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Cliente.Crear_Obj_Cliente2(CapaDatos.Cliente@)">
+ <summary>
+ Método que recibe un objeto cliente y le agrega los datos especificos para la prueba
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Cliente.Registrar(OpenQA.Selenium.Chrome.ChromeDriver@,CapaDatos.Cliente@)">
+ <summary>
+ Método que realiza el registro de un cliente en la aplicacion
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Cliente.Editar(OpenQA.Selenium.Chrome.ChromeDriver@,CapaDatos.Cliente@,CapaDatos.Cliente@)">
+ <summary>
+ Método que realiza la actualizacion de un cliente en la aplicacion
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Cliente.Eliminar(OpenQA.Selenium.Chrome.ChromeDriver@,System.String)">
+ <summary>
+ Método que realiza la eliminación de un cliente en la aplicacion
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Cliente.RegistrarCliente(OpenQA.Selenium.Chrome.ChromeDriver@,CapaDatos.Cliente@)">
+ <summary>
+ Método que crea un objeto cliente e invoca el metodo de registrar
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Cliente.Existencia_Valor_Grid(OpenQA.Selenium.Chrome.ChromeDriver@,System.Collections.Generic.List{OpenQA.Selenium.IWebElement}@,CapaDatos.Cliente@)">
+ <summary>
+ Método que valida la existencia de valores en la lista que contiene los elementos de un grid
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_TipoFacturacion.Crear_Obj_TipoFact1(CapaDatos.Tipo_Facturacion@)">
+ <summary>
+ Método que recibe un objeto Tipo Facturacion y le agrega los datos especificos para la prueba
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_TipoFacturacion.Crear_Obj_TipoFact2(CapaDatos.Tipo_Facturacion@)">
+ <summary>
+ Método que recibe un objeto Tipo Facturacion y le agrega los datos especificos para la prueba
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_TipoFacturacion.Registrar(OpenQA.Selenium.Chrome.ChromeDriver@,CapaDatos.Tipo_Facturacion@)">
+ <summary>
+ Método que realiza el registro de un Tipo Facturacion en la aplicacion
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_TipoFacturacion.Editar(OpenQA.Selenium.Chrome.ChromeDriver@,CapaDatos.Tipo_Facturacion@)">
+ <summary>
+ Método que realiza la actualizacion de un Tipo Facturacion en la aplicacion
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_TipoFacturacion.Eliminar(OpenQA.Selenium.Chrome.ChromeDriver@,System.String)">
+ <summary>
+ Método que realiza la eliminación de un Tipo Facturacion en la aplicacion
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_TipoFacturacion.RegistrarTipoFacturacion(OpenQA.Selenium.Chrome.ChromeDriver@,CapaDatos.Tipo_Facturacion@)">
+ <summary>
+ Método que crea un objeto Tipo Facturacion e invoca el metodo de registrar
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_TipoFacturacion.Existencia_Valor_Grid(OpenQA.Selenium.Chrome.ChromeDriver@,System.Collections.Generic.List{OpenQA.Selenium.IWebElement}@,CapaDatos.Tipo_Facturacion@)">
+ <summary>
+ Método que valida la existencia de valores en la lista que contiene los elementos de un grid
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_Usuario.IniciarSesion(OpenQA.Selenium.Chrome.ChromeDriver@)">
+ <summary>
+ Método que realiza la operacion de iniciar sesion en el sistema
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_TipoUnidad.Crear_Obj_TipoUni1(CapaDatos.Tipo_Unidad@)">
+ <summary>
+ Método que recibe un objeto Tipo Unidad y le agrega los datos especificos para la prueba
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_TipoUnidad.Crear_Obj_TipoUni2(CapaDatos.Tipo_Unidad@)">
+ <summary>
+ Método que recibe un objeto Tipo Unidad y le agrega los datos especificos para la prueba
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_TipoUnidad.Registrar(OpenQA.Selenium.Chrome.ChromeDriver@,CapaDatos.Tipo_Unidad@)">
+ <summary>
+ Método que realiza el registro de un Tipo Unidad en la aplicacion
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_TipoUnidad.Editar(OpenQA.Selenium.Chrome.ChromeDriver@,CapaDatos.Tipo_Unidad@)">
+ <summary>
+ Método que realiza la actualizacion de un Tipo Unidad en la aplicacion
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_TipoUnidad.Eliminar(OpenQA.Selenium.Chrome.ChromeDriver@,System.String)">
+ <summary>
+ Método que realiza la eliminación de un Tipo Unidad en la aplicacion
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_TipoUnidad.RegistrarTipoUnidad(OpenQA.Selenium.Chrome.ChromeDriver@,CapaDatos.Tipo_Unidad@)">
+ <summary>
+ Método que crea un objeto Tipo Unidad e invoca el metodo de registrar
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.Modulo_TipoUnidad.Existencia_Valor_Grid(OpenQA.Selenium.Chrome.ChromeDriver@,System.Collections.Generic.List{OpenQA.Selenium.IWebElement}@,CapaDatos.Tipo_Unidad@)">
+ <summary>
+ Método que valida la existencia de valores en la lista que contiene los elementos de un grid
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Almacen.Inicializar">
+ <summary>
+ Método que se invoca para inicializar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Almacen.Finalizar">
+ <summary>
+ Método que se invoca para finbalizar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Almacen.RegistrarAlmacen">
+ <summary>
+ Prueba que se ejecuta para registrar un almacen
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Almacen.EditarAlmacen">
+ <summary>
+ Prueba que se ejecuta para editar un almacen
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Almacen.EliminarCliente">
+ <summary>
+ Prueba que se ejecuta para eliminar un almacen
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Almacen.Buscar_AlmacenByCodigo">
+ <summary>
+ Prueba que se ejecuta para buscar un  almacen dependiendo del codigo de un almacen
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Almacen.Buscar_AlmacenByCliente">
+ <summary>
+ Prueba que se ejecuta para buscar un almacen dependiendo del nombre de un cliente
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Almacen.Buscar_AlmacenByNombre">
+ <summary>
+ Prueba que se ejecuta para buscar un almacen dependiendo del nombre de un almacen
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Articulo.Inicializar">
+ <summary>
+ Método que se invoca para inicializar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Articulo.Finalizar">
+ <summary>
+ Método que se invoca para finalizar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Articulo.RegistrarArticulo">
+ <summary>
+ Método que se ejecuta para registrar un articulo
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Articulo.EditarArticulo">
+ <summary>
+ Método que se ejecuta para editar un articulo
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Articulo.EliminarArticulo">
+ <summary>
+ Método que se ejecuta para eliminar un articulo
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_TipoFacturacion.Inicializar">
+ <summary>
+ Método que se invoca para inicializar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_TipoFacturacion.Finalizar">
+ <summary>
+ Método que se invoca para finbalizar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_TipoFacturacion.Registrar_TipoFacturacion">
+ <summary>
+ Prueba que se ejecuta para registrar un TipoFacturacion
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_TipoFacturacion.EditarTipoFacturacion">
+ <summary>
+ Prueba que se ejecuta para editar un TipoFacturacion
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_TipoFacturacion.EliminarTipoFacturacion">
+ <summary>
+ Prueba que se ejecuta para eliminar un TipoFacturacion
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_TipoFacturacion.Buscar_TipoFacturacionByNombre">
+ <summary>
+ Prueba que se ejecuta para buscar un TipoFacturacion dependiendo del nombre
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_TipoFacturacion.ResetearGridTipoFacturacion">
+ <summary>
+ Prueba que se ejecuta para resetear un grid
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_TipoUnidad.Inicializar">
+ <summary>
+ Método que se invoca para inicializar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_TipoUnidad.Finalizar">
+ <summary>
+ Método que se invoca para finbalizar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_TipoUnidad.Registrar_TipoUnidad">
+ <summary>
+ Prueba que se ejecuta para registrar un TipoUnidad
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_TipoUnidad.Editar_TipoUnidad">
+ <summary>
+ Prueba que se ejecuta para editar un TipoUnidad
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_TipoUnidad.Eliminar_TipoUnidad">
+ <summary>
+ Prueba que se ejecuta para eliminar un TipoUnidad
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_TipoUnidad.Buscar_TipoUnidadByNombre">
+ <summary>
+ Prueba que se ejecuta para buscar un TipoUnidad dependiendo del nombre
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_TipoUnidad.ResetearGridTipoUnidad">
+ <summary>
+ Prueba que se ejecuta para resetear un grid
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Usuario.Loguearse">
+ <summary>
+ Prueba que se ejecuta para valdiar el inisio de sesión
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Cliente.Inicializar">
+ <summary>
+ Método que se invoca para inicializar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Cliente.Finalizar">
+ <summary>
+ Método que se invoca para finbalizar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Cliente.RegistrarCliente">
+ <summary>
+ Prueba que se ejecuta para registrar un Cliente
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Cliente.EditarCliente">
+ <summary>
+ Prueba que se ejecuta para editar un Cliente
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Cliente.EliminarCliente">
+ <summary>
+ Prueba que se ejecuta para eliminar un Cliente
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Cliente.Buscar_ClienteByCodigo">
+ <summary>
+ Prueba que se ejecuta para buscar un Cliente dependiendo del codigo
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Cliente.Buscar_ClienteByNombre">
+ <summary>
+ Prueba que se ejecuta para buscar un Cliente dependiendo del nombre
+ </summary>
+</member>
+<member name="M:PruebaInterfaz.PI_Cliente.ResetearGridCliente">
+ <summary>
+ Prueba que se ejecuta para resetear un grid
+ </summary>
+</member>
 </members>
 </doc>

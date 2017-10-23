@@ -5,18 +5,27 @@ Imports CapaDatos
 
     Dim ClienteTest
 
-
+    ''' <summary>
+    ''' Método que se invoca para inicializar auitomaticamente una prueba
+    ''' </summary>
     <TestInitialize>
-    Public Sub inicializar()
+    Public Sub Inicializar()
         ClienteTest = Mgr_Cliente_Test.Get_Cliente1()
         Mgr_Cliente_Test.Inicializar(ClienteTest)
     End Sub
 
+
+    ''' <summary>
+    ''' Método que se invoca para finbalizar auitomaticamente una prueba
+    ''' </summary>
     <TestCleanup>
-    Public Sub finalizar()
+    Public Sub Finalizar()
         Mgr_Cliente_Test.Finalizar(ClienteTest)
     End Sub
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para registrar un Cliente
+    ''' </summary>
     <TestMethod()> Public Sub RegistrarCliente()
 
         Dim ClienteBD = Mgr_Cliente.Get_Cliente(ClienteTest.id_cliente)
@@ -26,6 +35,9 @@ Imports CapaDatos
 
     End Sub
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para editar un Cliente
+    ''' </summary>
     <TestMethod()> Public Sub EditarCliente()
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -41,6 +53,9 @@ Imports CapaDatos
 
     End Sub
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para eliminar un Cliente
+    ''' </summary>
     <TestMethod()>
     Public Sub EliminarCliente()
 

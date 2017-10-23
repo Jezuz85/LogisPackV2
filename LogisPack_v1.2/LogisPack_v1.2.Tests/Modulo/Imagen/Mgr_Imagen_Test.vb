@@ -3,6 +3,9 @@ Imports CapaDatos
 
 Public Class Mgr_Imagen_Test
 
+    ''' <summary>
+    ''' Metodo que retorna un objeto de tipo imagen
+    ''' </summary>
     Public Shared Function Get_Imagen1(ByRef _Articulo As Articulo) As Imagen
 
         Dim _Imagen = New Imagen With {
@@ -14,7 +17,9 @@ Public Class Mgr_Imagen_Test
         Return _Imagen
 
     End Function
-
+    ''' <summary>
+    ''' Metodo que recibe un objeto para guardarlo en la base de datos
+    ''' </summary>
     Public Shared Sub Inicializar(ByRef _Articulo As Articulo, ByRef _Almacen As Almacen,
         ByRef _Tipo_Facturacion As Tipo_Facturacion, ByRef _Tipo_Unidad As Tipo_Unidad, ByRef _Cliente As Cliente,
         ByRef _Imagen As Imagen)
@@ -23,4 +28,5 @@ Public Class Mgr_Imagen_Test
         Mgr_Imagen.Guardar(_Imagen)
 
     End Sub
+
 End Class

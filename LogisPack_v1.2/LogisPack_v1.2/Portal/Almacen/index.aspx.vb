@@ -49,6 +49,9 @@ Public Class index
 
     End Sub
 
+    '------------------------------------------------------------------
+    '------------------------METODOS AL CARGAR LA PAGINA---------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
     ''' </summary>
@@ -132,7 +135,9 @@ Public Class index
                                 String.Empty & ViewState(Val_General.textoBusqueda.ToString))
     End Sub
 
-    '-----------------------------------Metodos del Gridview de articulos picking--------------------------------------------------------
+    '-------------------------------------------------------------------
+    '------------------------METODOS DEL GRIDVIEW-----------------------
+    '-------------------------------------------------------------------
     Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
         GridView1.PageIndex = e.NewPageIndex
         LlenarGridView()
@@ -183,7 +188,9 @@ Public Class index
         Util_Grid.SetArrowsGrid(GridView1, e)
     End Sub
 
-    '--------------------------------------------------EVENTOS---------------------------------------------
+    '-------------------------------------------------------
+    '------------------------EVENTOS------------------------
+    '-------------------------------------------------------
     ''' <summary>
     ''' Metodo que crea un objeto Almacen y lo guarda en la base de datos
     ''' </summary>

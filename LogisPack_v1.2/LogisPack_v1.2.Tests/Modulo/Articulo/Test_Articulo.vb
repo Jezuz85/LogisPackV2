@@ -8,16 +8,25 @@
     Dim _Tipo_UnidadTest As Tipo_Unidad
     Dim _ClienteTest As Cliente
 
+    ''' <summary>
+    ''' Método que se invoca para inicializar auitomaticamente una prueba
+    ''' </summary>
     <TestInitialize>
-    Public Sub inicializar()
+    Public Sub Inicializar()
         Mgr_Articulo_Test.Inicializar(_ArticuloTest, _AlmacenTest, _Tipo_FacturacionTest, _Tipo_UnidadTest, _ClienteTest)
     End Sub
 
+    ''' <summary>
+    ''' Método que se invoca para finalizar auitomaticamente una prueba
+    ''' </summary>
     <TestCleanup>
-    Public Sub finalizar()
+    Public Sub Finalizar()
         Mgr_Articulo_Test.Finalizar(_Tipo_FacturacionTest, _Tipo_UnidadTest, _ClienteTest)
     End Sub
 
+    ''' <summary>
+    ''' Método que se ejecuta para registrar un articulo
+    ''' </summary>
     <TestMethod()> Public Sub Registrar_Articulo()
 
         Dim _ArticuloBD = Mgr_Articulo.Get_Articulo(_ArticuloTest.id_articulo)
@@ -28,6 +37,9 @@
 
     End Sub
 
+    ''' <summary>
+    ''' Método que se ejecuta para editar un articulo
+    ''' </summary>
     <TestMethod()> Public Sub Editar_Articulo()
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -46,6 +58,9 @@
 
     End Sub
 
+    ''' <summary>
+    ''' Método que se ejecuta para eliminar un articulo
+    ''' </summary>
     <TestMethod()> Public Sub Eliminar_Articulo()
 
         Mgr_Articulo.Eliminar(_ArticuloTest.id_articulo)

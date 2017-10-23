@@ -2,8 +2,9 @@
 
 Public Class Mgr_TipoFacturacion
 
-    '------------------------Funciones de la clase tipo de facturacion
-
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES DE LA CLASE TIPO FACTURACION----
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe un objeto Tipo Facturacion y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
     ''' </summary>
@@ -61,8 +62,9 @@ Public Class Mgr_TipoFacturacion
 
     End Function
 
-
-    '------------------------FUNCIONES DEL GRID
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES DEL GRID------------------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe el gridview para llenar con los datos del tipo de facturacion en la base de datos
     ''' </summary>
@@ -95,7 +97,9 @@ Public Class Mgr_TipoFacturacion
         GridView1.DataBind()
     End Sub
 
-    '------------------------FUNCIONES DEL DROPDOWNLIST
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES DEL DROPDOWNLIST----------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe un objeto DropDownlist vacio  y lo devuelve con los datos de 
     ''' todos los tipo de facturacion existentes en la base de datos
@@ -117,8 +121,9 @@ Public Class Mgr_TipoFacturacion
         DropDownList1.Items.Insert(0, New ListItem(Val_General.Lista_Seleccione.ToString, String.Empty))
     End Sub
 
-
-    '------------------------FUNCIONES GETTER
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES GETTER--------------------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe un id del Tipo_Facturacion y lo consulta desde la Base de datos, 
     ''' devuelve un objeto tipo Tipo_Facturacion si fue exitoso, de lo contrario no devuelve nothing

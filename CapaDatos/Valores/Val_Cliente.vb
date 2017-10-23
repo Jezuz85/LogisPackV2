@@ -10,6 +10,9 @@ Public Class Val_Cliente
         Return Key
     End Function
 
+    '------------------------------------------------------------------
+    '------------------------NOMBRES DE LOS MODALES--------------------
+    '------------------------------------------------------------------
     Public Shared ReadOnly AddModal As Val_Cliente = New Val_Cliente("AddModal")
     Public Shared ReadOnly EditModal As Val_Cliente = New Val_Cliente("EditModal")
     Public Shared ReadOnly DeleteModal As Val_Cliente = New Val_Cliente("DeleteModal")

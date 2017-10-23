@@ -55,6 +55,9 @@ Public Class Editar
 
     End Sub
 
+    '------------------------------------------------------------------
+    '------------------------METODOS AL CARGAR LA PAGINA---------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que se ejecuta para obtener el control que realizó el postback
     ''' </summary>
@@ -115,7 +118,9 @@ Public Class Editar
 
     End Sub
 
-    '-----------------------------------Cargar Datos Articulo a Editar----------------------------------------------
+    '---------------------------------------------------------------------------------
+    '------------------------METODOS AL CARGAR DATOS DEL ARTICULO A EDITAR------------
+    '---------------------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que en donde se realiza la carga de los datos del articulo y sus atributos
     ''' </summary>
@@ -231,8 +236,9 @@ Public Class Editar
 
     End Sub
 
-
-    '-----------------------------------Metodos del Gridview de imagenes--------------------------------------------------------
+    '-------------------------------------------------------------------
+    '------------------------METODOS DEL GRIDVIEW DE IMAGENES-----------
+    '-------------------------------------------------------------------
     Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
         GridView1.PageIndex = e.NewPageIndex
         CargarImagenes(IdArticulo)
@@ -246,8 +252,9 @@ Public Class Editar
 
     End Sub
 
-    '-----------------------------------Metodos del Gridview de Articulos picking--------------------------------------------------------
-
+    '-------------------------------------------------------------------
+    '------------------------METODOS DEL GRIDVIEW DE ARTICULO PICKING---
+    '-------------------------------------------------------------------
     Protected Sub GridView2_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
         If e.CommandName.Equals(Val_General.EliminarFila.ToString) Then
@@ -273,6 +280,9 @@ Public Class Editar
         Update_GridView_CurrentDatatable()
     End Sub
 
+    ''' <summary>
+    ''' Metodos que añade una fila al gridview 
+    ''' </summary>
     Private Sub AddRowGridview()
 
         _DataTable = CType(ViewState(Val_Articulo.CurrentTable.ToString), DataTable)
@@ -283,6 +293,9 @@ Public Class Editar
 
     End Sub
 
+    ''' <summary>
+    ''' Metodos que llena el gridview con la lista de articulos picking
+    ''' </summary>
     Private Sub LlenarGridview(_id_articulo As Integer)
 
         Mgr_Articulo.Llenar_Grid_ArticuloPicking(GridView2, _id_articulo)
@@ -299,6 +312,9 @@ Public Class Editar
 
     End Sub
 
+    ''' <summary>
+    ''' Metodos que convierte los datos de un gridview a una variable DataTable
+    ''' </summary>
     Private Sub GridtoDataTable()
 
         _DataTable = New DataTable()
@@ -325,16 +341,24 @@ Public Class Editar
 
     End Sub
 
+    ''' <summary>
+    ''' Metodos que actualiza el dataTable al viewstate acutal
+    ''' </summary>
     Private Sub Update_GridView_CurrentDatatable()
         _DataTable = CType(ViewState(Val_Articulo.CurrentTable.ToString), DataTable)
         Util_Grid.Update_GridView_CurrentDatatable(_DataTable, GridView2)
     End Sub
 
+    ''' <summary>
+    ''' Metodos que actualiza el viewstate con el datatable actual
+    ''' </summary>
     Private Sub Update_ViewState_Datatable()
         ViewState(Val_Articulo.CurrentTable.ToString) = _DataTable
     End Sub
 
-    '-----------------------------------Editar----------------------------------------------------
+    '-------------------------------------------------------------------
+    '------------------------METODOS PARA EDITAR UN ARTICULO------------
+    '-------------------------------------------------------------------
     ''' <summary>
     ''' Metodos que edita el articulo y devuelve true si la operacion fue exitosa y caso contrario false
     ''' </summary>
@@ -467,7 +491,9 @@ Public Class Editar
         Return bError
     End Function
 
-    '--------------------------------------------------EVENTOS---------------------------------------------
+    '-------------------------------------------------------
+    '------------------------EVENTOS------------------------
+    '-------------------------------------------------------
     ''' <summary>
     ''' Metodo que se ejecuta cuando se selecciona un almacen, y se fija el valor del coeficiente volumetrico
     ''' al articulo dependiendo del valor que tenga el coeficiente del almacen

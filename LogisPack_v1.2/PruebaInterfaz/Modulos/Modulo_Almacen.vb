@@ -8,6 +8,9 @@ Public Class Modulo_Almacen
     Public Shared ListaTD As List(Of IWebElement)
     Public Shared viewAlmacen As ViewAlmacen = New ViewAlmacen()
 
+    ''' <summary>
+    ''' Método que recibe un objeto almacen y le agrega los datos especificos para la prueba
+    ''' </summary>
     Public Shared Sub Crear_Obj_Almacen1(ByRef _Almacen As Almacen)
 
         _Almacen = New Almacen With {
@@ -17,6 +20,10 @@ Public Class Modulo_Almacen
         }
 
     End Sub
+
+    ''' <summary>
+    ''' Método que recibe un objeto almacen y le agrega los datos especificos para la prueba
+    ''' </summary>
     Public Shared Sub Crear_Obj_Almacen2(ByRef _Almacen As Almacen)
 
         _Almacen = New Almacen With {
@@ -27,6 +34,9 @@ Public Class Modulo_Almacen
 
     End Sub
 
+    ''' <summary>
+    ''' Método que realiza el registro de un almacen en la aplicacion
+    ''' </summary>
     Public Shared Sub Registrar(ByRef driver As ChromeDriver, ByRef _Almacen As Almacen, ByRef _Cliente As Cliente)
 
         driver.Navigate().GoToUrl(viewAlmacen.URL)
@@ -46,6 +56,9 @@ Public Class Modulo_Almacen
 
     End Sub
 
+    ''' <summary>
+    ''' Método que realiza la actualizacion de un almacen en la aplicacion
+    ''' </summary>
     Public Shared Sub Editar(ByRef driver As ChromeDriver, ByRef _Almacen1 As Almacen, ByRef _Almacen2 As Almacen,
                              ByRef _Cliente As Cliente)
 
@@ -65,6 +78,9 @@ Public Class Modulo_Almacen
 
     End Sub
 
+    ''' <summary>
+    ''' Método que realiza la eliminación de un almacen en la aplicacion
+    ''' </summary>
     Public Shared Sub Eliminar(ByRef driver As ChromeDriver, valorEliminar As String)
 
         driver.Navigate().GoToUrl(viewAlmacen.URL)
@@ -81,14 +97,18 @@ Public Class Modulo_Almacen
 
     End Sub
 
-
+    ''' <summary>
+    ''' Método que crea un objeto almacen e invoca el metodo de registrar
+    ''' </summary>
     Public Shared Sub RegistrarAlmacen(ByRef driver As ChromeDriver, ByRef _Almacen As Almacen, ByRef _Cliente As Cliente)
         Crear_Obj_Almacen1(_Almacen)
         Registrar(driver, _Almacen, _Cliente)
     End Sub
 
-    Public Shared Sub Existencia_Valor_Grid(ByRef driver As ChromeDriver, ByRef _ListaTD As List(Of IWebElement),
-                                            ByRef _Almacen As Almacen)
+    ''' <summary>
+    ''' Método que valida la existencia de valores en la lista que contiene los elementos de un grid
+    ''' </summary>
+    Public Shared Sub Existencia_Valor_Grid(ByRef driver As ChromeDriver, ByRef _ListaTD As List(Of IWebElement), ByRef _Almacen As Almacen)
         '------valido que los valores existen en el grid
         Pruebas.Existencia_Valor_Grid(driver, _ListaTD, _Almacen.codigo)
         Pruebas.Existencia_Valor_Grid(driver, _ListaTD, _Almacen.nombre)

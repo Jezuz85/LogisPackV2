@@ -9,15 +9,43 @@ Public Class PI_TipoFacturacion
     Dim _TipoFact1 As Tipo_Facturacion
     Dim _TipoFact2 As Tipo_Facturacion
     Dim viewTipoFacturacion As ViewTipoFacturacion = New ViewTipoFacturacion()
+    Dim _nombreTipoFacturacion As String
 
-    <TestMethod()>
-    Public Sub Registrar_TipoFacturacion()
+    ''' <summary>
+    ''' Método que se invoca para inicializar auitomaticamente una prueba
+    ''' </summary>
+    <TestInitialize>
+    Public Sub Inicializar()
 
         '------inicio sesion
         Modulo_Usuario.IniciarSesion(driver)
 
         '------registro un tipo de facturacion
         Modulo_TipoFacturacion.RegistrarTipoFacturacion(driver, _TipoFact1)
+
+        _nombreTipoFacturacion = _TipoFact1.nombre
+
+    End Sub
+
+    ''' <summary>
+    ''' Método que se invoca para finbalizar auitomaticamente una prueba
+    ''' </summary>
+    <TestCleanup>
+    Public Sub Finalizar()
+
+        '------elimino el tipo de facturacion
+        Modulo_TipoFacturacion.Eliminar(driver, _nombreTipoFacturacion)
+
+        '------cierro el driver
+        Funciones.CerrarDriver(driver)
+
+    End Sub
+
+    ''' <summary>
+    ''' Prueba que se ejecuta para registrar un TipoFacturacion
+    ''' </summary>
+    <TestMethod()>
+    Public Sub Registrar_TipoFacturacion()
 
         '------obtengo los valores del grid
         Funciones.Obtener_FilasGrid(driver, viewTipoFacturacion.GridPrinicipal, ListaTD)
@@ -25,21 +53,13 @@ Public Class PI_TipoFacturacion
         '------valido que los valores existen en el grid
         Modulo_TipoFacturacion.Existencia_Valor_Grid(driver, ListaTD, _TipoFact1)
 
-        '------elimino el tipo de facturacion
-        Modulo_TipoFacturacion.Eliminar(driver, _TipoFact1.nombre)
-
-        '------cierro el driver
-        Funciones.CerrarDriver(driver)
     End Sub
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para editar un TipoFacturacion
+    ''' </summary>
     <TestMethod()>
     Public Sub EditarTipoFacturacion()
-
-        '------inicio sesion
-        Modulo_Usuario.IniciarSesion(driver)
-
-        '------registro un tipo de facturacion
-        Modulo_TipoFacturacion.RegistrarTipoFacturacion(driver, _TipoFact1)
 
         '------edito un tipo de facturacion
         Modulo_TipoFacturacion.Crear_Obj_TipoFact2(_TipoFact2)
@@ -51,22 +71,15 @@ Public Class PI_TipoFacturacion
         '------valido que los valores existen en el grid
         Modulo_TipoFacturacion.Existencia_Valor_Grid(driver, ListaTD, _TipoFact2)
 
-        '------elimino el tipo de facturacion
-        Modulo_TipoFacturacion.Eliminar(driver, _TipoFact2.nombre)
-
-        '------cierro el driver
-        Funciones.CerrarDriver(driver)
+        _nombreTipoFacturacion = _TipoFact2.nombre
 
     End Sub
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para eliminar un TipoFacturacion
+    ''' </summary>
     <TestMethod()>
     Public Sub EliminarTipoFacturacion()
-
-        '------inicio sesion
-        Modulo_Usuario.IniciarSesion(driver)
-
-        '------registro un tipo de facturacion
-        Modulo_TipoFacturacion.RegistrarTipoFacturacion(driver, _TipoFact1)
 
         '------obtengo los valores del grid
         Funciones.Obtener_FilasGrid(driver, viewTipoFacturacion.GridPrinicipal, ListaTD)
@@ -74,22 +87,13 @@ Public Class PI_TipoFacturacion
         '------valido que los valores existen en el grid
         Modulo_TipoFacturacion.Existencia_Valor_Grid(driver, ListaTD, _TipoFact1)
 
-        '------elimino el tipo de facturacion
-        Modulo_TipoFacturacion.Eliminar(driver, _TipoFact1.nombre)
-
-        '------cierro el driver
-        Funciones.CerrarDriver(driver)
-
     End Sub
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para buscar un TipoFacturacion dependiendo del nombre
+    ''' </summary>
     <TestMethod()>
-    Public Sub Buscar_TipoFacturacion_Nombre()
-
-        '------inicio sesion
-        Modulo_Usuario.IniciarSesion(driver)
-
-        '------registro un tipo de facturacion
-        Modulo_TipoFacturacion.RegistrarTipoFacturacion(driver, _TipoFact1)
+    Public Sub Buscar_TipoFacturacionByNombre()
 
         '-----Opcion Buscar
         Funciones.Buscar_Texto_Grid(driver, viewTipoFacturacion.Filtro_Nom, Valores.Nom_TipoFact_Buscar.ToString)
@@ -100,22 +104,13 @@ Public Class PI_TipoFacturacion
         '------valido que los valores existen en el grid
         Modulo_TipoFacturacion.Existencia_Valor_Grid(driver, ListaTD, _TipoFact1)
 
-        '------elimino el tipo de facturacion
-        Modulo_TipoFacturacion.Eliminar(driver, _TipoFact1.nombre)
-
-        '------cierro el driver
-        Funciones.CerrarDriver(driver)
-
     End Sub
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para resetear un grid
+    ''' </summary>
     <TestMethod()>
     Public Sub ResetearGridTipoFacturacion()
-
-        '------inicio sesion
-        Modulo_Usuario.IniciarSesion(driver)
-
-        '------registro un tipo de facturacion
-        Modulo_TipoFacturacion.RegistrarTipoFacturacion(driver, _TipoFact1)
 
         '-----Opcion Buscar
         Funciones.Buscar_Texto_Grid(driver, viewTipoFacturacion.Filtro_Nom, Valores.Nom_TipoFact_Buscar.ToString)
@@ -123,11 +118,6 @@ Public Class PI_TipoFacturacion
         '-----valdia que el boton reset funciona
         Pruebas.Validar_btnReset(driver)
 
-        '------elimino el tipo de facturacion
-        Modulo_TipoFacturacion.Eliminar(driver, _TipoFact1.nombre)
-
-        '------cierro el driver
-        Funciones.CerrarDriver(driver)
     End Sub
 
 End Class

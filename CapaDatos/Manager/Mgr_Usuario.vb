@@ -2,7 +2,9 @@
 
 Public Class Mgr_Usuario
 
-    '------------------------FUNCIONES DEL DROPDOWNLIST
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES DEL DROPDOWNLIST----------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe un objeto DropDownlist vacio  y lo devuelve con los datos de 
     ''' todos los roles existentes en la base de datos
@@ -21,8 +23,9 @@ Public Class Mgr_Usuario
         Util_ControlesDinamicos.Set_Text_Value_List(DropDownList1, query, "Name", "Name")
     End Sub
 
-    '------------------------FUNCIONES GETTER
-
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES GETTER--------------------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe un id del usuario y lo consulta desde la Base de datos, 
     ''' devuelve el id del cliente asociado al usuario si fue exitoso, de lo contrario no devuelve nothing

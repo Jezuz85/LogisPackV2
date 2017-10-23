@@ -17,11 +17,10 @@ Public Class Modulo_Articulo
     '    End Get
     'End Property
 
-
+    ''' <summary>
+    ''' Método que recibe un objeto articulo y le agrega los datos especificos para la prueba
+    ''' </summary>
     Public Shared Sub Crear_Obj_Articulo1(ByRef _Articulo As Articulo)
-
-
-
         '-----------------Calculos
         Dim M3 As Double = Mgr_Articulo.CalcularM3(Valores._Art_alto.ToString, Valores._Art_ancho.ToString, Valores._Art_largo.ToString)
         Dim PesoVol As Double = Mgr_Articulo.Calcular_PesoVolumetrico(Valores._Art_alto.ToString, Valores._Art_ancho.ToString, Valores._Art_largo.ToString, Valores._Art_coef_vol.ToString)
@@ -53,6 +52,10 @@ Public Class Modulo_Articulo
         }
 
     End Sub
+
+    ''' <summary>
+    ''' Método que recibe un objeto articulo y le agrega los datos especificos para la prueba
+    ''' </summary>
     Public Shared Sub Crear_Obj_Articulo2(ByRef _Articulo As Articulo)
 
         '-----------------Calculos
@@ -94,6 +97,9 @@ Public Class Modulo_Articulo
 
     End Sub
 
+    ''' <summary>
+    ''' Método que realiza el registro de un articulo en la aplicacion
+    ''' </summary>
     Public Shared Sub Registrar(ByRef driver As ChromeDriver, ByRef _Cliente As Cliente, ByRef _Almacen As Almacen,
         ByRef _Articulo As Articulo, ByRef _Tipo_Facturacion As Tipo_Facturacion, ByRef _Tipo_Unidad As Tipo_Unidad)
 
@@ -138,6 +144,9 @@ Public Class Modulo_Articulo
         driver.Navigate().GoToUrl(viewArticulo.URL)
     End Sub
 
+    ''' <summary>
+    ''' Método que realiza la actualizacion de un articulo en la aplicacion
+    ''' </summary>
     Public Shared Sub Editar(ByRef driver As ChromeDriver, ByRef _Cliente As Cliente, ByRef _Almacen As Almacen,
          ByRef _Articulo As Articulo, ByRef _Tipo_Facturacion As Tipo_Facturacion, ByRef _Tipo_Unidad As Tipo_Unidad)
 
@@ -183,6 +192,9 @@ Public Class Modulo_Articulo
         driver.Navigate().GoToUrl(viewArticulo.URL)
     End Sub
 
+    ''' <summary>
+    ''' Método que realiza la consulta de un articulo en la aplicacion
+    ''' </summary>
     Public Shared Sub Detalles(ByRef driver As ChromeDriver, ByRef _Cliente As Cliente, ByRef _Almacen As Almacen,
         ByRef _Articulo As Articulo, ByRef _Tipo_Facturacion As Tipo_Facturacion, ByRef _Tipo_Unidad As Tipo_Unidad,
         ListaTD As List(Of IWebElement))
@@ -221,6 +233,9 @@ Public Class Modulo_Articulo
 
     End Sub
 
+    ''' <summary>
+    ''' Método que crea un objeto articulo e invoca el metodo de registrar
+    ''' </summary>
     Public Shared Sub RegistrarArticulo(ByRef driver As ChromeDriver, ByRef _Cliente As Cliente, ByRef _Almacen As Almacen,
         ByRef _Articulo As Articulo, ByRef _Tipo_Facturacion As Tipo_Facturacion, ByRef _Tipo_Unidad As Tipo_Unidad)
 
@@ -229,6 +244,9 @@ Public Class Modulo_Articulo
 
     End Sub
 
+    ''' <summary>
+    ''' Método que valida la existencia de valores en la lista que contiene los elementos de un grid
+    ''' </summary>
     Public Shared Sub Existencia_Valor_Grid(ByRef driver As ChromeDriver, ByRef _ListaTD As List(Of IWebElement),
             ByRef _Cliente As Cliente, ByRef _Almacen As Almacen, ByRef _Articulo As Articulo)
 
@@ -238,7 +256,5 @@ Public Class Modulo_Articulo
         Pruebas.Existencia_Valor_Grid(driver, _ListaTD, _Articulo.codigo)
         Pruebas.Existencia_Valor_Grid(driver, _ListaTD, _Articulo.nombre)
     End Sub
-
-
 
 End Class

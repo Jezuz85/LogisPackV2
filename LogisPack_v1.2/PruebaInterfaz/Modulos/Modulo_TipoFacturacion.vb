@@ -8,6 +8,9 @@ Public Class Modulo_TipoFacturacion
     Public Shared ListaTD As List(Of IWebElement)
     Public Shared viewTipoFacturacion As ViewTipoFacturacion = New ViewTipoFacturacion()
 
+    ''' <summary>
+    ''' Método que recibe un objeto Tipo Facturacion y le agrega los datos especificos para la prueba
+    ''' </summary>
     Public Shared Sub Crear_Obj_TipoFact1(ByRef _Tipo_Facturacion As Tipo_Facturacion)
 
         _Tipo_Facturacion = New Tipo_Facturacion With {
@@ -15,6 +18,10 @@ Public Class Modulo_TipoFacturacion
         }
 
     End Sub
+
+    ''' <summary>
+    ''' Método que recibe un objeto Tipo Facturacion y le agrega los datos especificos para la prueba
+    ''' </summary>
     Public Shared Sub Crear_Obj_TipoFact2(ByRef _Tipo_Facturacion As Tipo_Facturacion)
 
         _Tipo_Facturacion = New Tipo_Facturacion With {
@@ -23,6 +30,9 @@ Public Class Modulo_TipoFacturacion
 
     End Sub
 
+    ''' <summary>
+    ''' Método que realiza el registro de un Tipo Facturacion en la aplicacion
+    ''' </summary>
     Public Shared Sub Registrar(ByRef driver As ChromeDriver, ByRef _Tipo_Facturacion As Tipo_Facturacion)
 
         driver.Navigate().GoToUrl(viewTipoFacturacion.URL)
@@ -39,6 +49,9 @@ Public Class Modulo_TipoFacturacion
 
     End Sub
 
+    ''' <summary>
+    ''' Método que realiza la actualizacion de un Tipo Facturacion en la aplicacion
+    ''' </summary>
     Public Shared Sub Editar(ByRef driver As ChromeDriver, ByRef _Tipo_Facturacion As Tipo_Facturacion)
 
         Funciones.Obtener_FilasGrid(driver, viewTipoFacturacion.GridPrinicipal, ListaTD)
@@ -55,6 +68,9 @@ Public Class Modulo_TipoFacturacion
 
     End Sub
 
+    ''' <summary>
+    ''' Método que realiza la eliminación de un Tipo Facturacion en la aplicacion
+    ''' </summary>
     Public Shared Sub Eliminar(ByRef driver As ChromeDriver, valorEliminar As String)
 
         driver.Navigate().GoToUrl(viewTipoFacturacion.URL)
@@ -71,11 +87,17 @@ Public Class Modulo_TipoFacturacion
 
     End Sub
 
+    ''' <summary>
+    ''' Método que crea un objeto Tipo Facturacion e invoca el metodo de registrar
+    ''' </summary>
     Public Shared Sub RegistrarTipoFacturacion(ByRef driver As ChromeDriver, ByRef _Tipo_Facturacion As Tipo_Facturacion)
         Crear_Obj_TipoFact1(_Tipo_Facturacion)
         Registrar(driver, _Tipo_Facturacion)
     End Sub
 
+    ''' <summary>
+    ''' Método que valida la existencia de valores en la lista que contiene los elementos de un grid
+    ''' </summary>
     Public Shared Sub Existencia_Valor_Grid(ByRef driver As ChromeDriver, ByRef _ListaTD As List(Of IWebElement),
                                             ByRef _Tipo_Facturacion As Tipo_Facturacion)
         '------valido que los valores existen en el grid

@@ -2,7 +2,9 @@
 
 Public Class Mgr_TipoUnidad
 
-    '------------------------Funciones de la clase tipo unidad
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES DE LA CLASE TIPO UNIDAD---------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe un objeto Tipo Unidad y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
     ''' </summary>
@@ -38,7 +40,6 @@ Public Class Mgr_TipoUnidad
 
     End Function
 
-
     ''' <summary>
     ''' Metodo que recibe un id del Tipo de Unidad y lo elimina en Base de datos, devuelve True si fue exitoso, de lo contrario False
     ''' </summary>
@@ -60,8 +61,9 @@ Public Class Mgr_TipoUnidad
 
     End Function
 
-
-    '------------------------Funciones GETTER
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES GETTER--------------------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe un id del Tipo_Unidad y lo consulta desde la Base de datos, 
     ''' devuelve un objeto tipo Tipo_Unidad si fue exitoso, de lo contrario no devuelve nothing
@@ -97,8 +99,9 @@ Public Class Mgr_TipoUnidad
 
     End Function
 
-
-    '------------------------FUNCIONES DEL DROPDOWNLIST
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES DEL DROPDOWNLIST----------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe un objeto DropDownlist vacio  y lo devuelve con los datos de 
     ''' todos los tipo de unidad existentes en la base de datos
@@ -120,8 +123,9 @@ Public Class Mgr_TipoUnidad
         DropDownList1.Items.Insert(0, New ListItem(Val_General.Lista_Seleccione.ToString, String.Empty))
     End Sub
 
-
-    '------------------------Funciones Grid
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES DEL GRID------------------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe el gridview para llenar con los datos del tipo de unidad en la base de datos
     ''' </summary>
@@ -153,6 +157,5 @@ Public Class Mgr_TipoUnidad
         GridView1.DataSource = query
         GridView1.DataBind()
     End Sub
-
 
 End Class

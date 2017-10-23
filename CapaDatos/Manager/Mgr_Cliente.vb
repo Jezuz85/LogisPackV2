@@ -3,8 +3,9 @@ Imports System.Web.UI.WebControls
 
 Public Class Mgr_Cliente
 
-
-    '------------------------FUNCIONES DEL GRID
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES DEL GRID------------------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe el gridview para llenar con los datos del cliente en la base de datos
     ''' </summary>
@@ -54,9 +55,9 @@ Public Class Mgr_Cliente
         GridView1.DataBind()
     End Sub
 
-
-    '------------------------FUNCIONES DEL DROPDOWNLIST
-
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES DEL DROPDOWNLIST----------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe un objeto DropDownlist vacio  y lo devuelve con los datos de 
     ''' todos los clientes existentes en la base de datos
@@ -80,8 +81,9 @@ Public Class Mgr_Cliente
         DropDownList1.Items.Insert(0, New ListItem(Val_General.Lista_Seleccione.ToString, String.Empty))
     End Sub
 
-
-    '------------------------Funciones de la clase cliente
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES DE LA CLASE CLIENTE------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe un objeto Cliente y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
     ''' </summary>
@@ -139,8 +141,9 @@ Public Class Mgr_Cliente
 
     End Function
 
-    '------------------------GETTER
-
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES GETTER--------------------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe un id del Cliente y lo consulta desde la Base de datos, 
     ''' devuelve un objeto tipo Cliente si fue exitoso, de lo contrario no devuelve nothing

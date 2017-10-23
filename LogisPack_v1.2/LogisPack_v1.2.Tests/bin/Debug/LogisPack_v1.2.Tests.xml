@@ -22,5 +22,335 @@ LogisPack_v1.2.Tests
   búsquedas de recursos usando esta clase de recursos fuertemente tipados.
 </summary>
 </member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_Almacen_Test.Get_Almacen1(CapaDatos.Cliente@)">
+ <summary>
+ Metodo que recibe un objeto de tipo cliente y retorna un objeto de tipo Almacen asociado al cliente recibido
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_Almacen_Test.Inicializar(CapaDatos.Cliente@,CapaDatos.Almacen@)">
+ <summary>
+ Metodo que recibe un objeto de tipo cliente y un objeto de tipo Almacen y los guarda en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_Articulo_Test.Get_Articulo1(CapaDatos.Articulo@,CapaDatos.Almacen@,CapaDatos.Tipo_Facturacion@,CapaDatos.Tipo_Unidad@)">
+ <summary>
+ Metodo que retorna un objeto de tipo articulo
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_Articulo_Test.Inicializar(CapaDatos.Articulo@,CapaDatos.Almacen@,CapaDatos.Tipo_Facturacion@,CapaDatos.Tipo_Unidad@,CapaDatos.Cliente@)">
+ <summary>
+ Metodo que recibe un objeto de tipo Articulo,cliente ,Almacen, tipo de unidad y tipo de facturacion y los guarda en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_Articulo_Test.Finalizar(CapaDatos.Tipo_Facturacion@,CapaDatos.Tipo_Unidad@,CapaDatos.Cliente@)">
+ <summary>
+ Metodo que recibe un objeto de tipo cliente, tipo de unidad y tipo de facturacion y los elimina en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_Articulo_Test.Get_ArticuloPicking1(CapaDatos.Almacen@,CapaDatos.Tipo_Facturacion@,CapaDatos.Tipo_Unidad@)">
+ <summary>
+ Metodo que retorna un objeto de tipo articulo picking
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_Articulo_Test.Inicializar_ArticuloPicking(CapaDatos.Articulo@,CapaDatos.Picking_Articulo@,CapaDatos.Articulo@)">
+ <summary>
+ Metodo que recibe un objeto de tipo Articulo,cliente ,Almacen, tipo de unidad y tipo de facturacion y los guarda en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_Articulo_Test.Inicializar_Picking_Articulo(CapaDatos.Picking_Articulo@,CapaDatos.Articulo@,CapaDatos.Articulo@)">
+ <summary>
+ Metodo que recibe un objeto de tipo Picking_Articulo,cliente ,Almacen, tipo de unidad y tipo de facturacion y los guarda en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_Cliente_Test.Get_Cliente1">
+ <summary>
+ Metodo que retorna un objeto de tipo cliente
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_Cliente_Test.Inicializar(CapaDatos.Cliente@)">
+ <summary>
+ Metodo que recibe un objeto para guardarlo en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_Cliente_Test.Finalizar(CapaDatos.Cliente@)">
+ <summary>
+ Metodo que recibe un objeto  y lo elimina en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_Imagen_Test.Get_Imagen1(CapaDatos.Articulo@)">
+ <summary>
+ Metodo que retorna un objeto de tipo imagen
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_Imagen_Test.Inicializar(CapaDatos.Articulo@,CapaDatos.Almacen@,CapaDatos.Tipo_Facturacion@,CapaDatos.Tipo_Unidad@,CapaDatos.Cliente@,CapaDatos.Imagen@)">
+ <summary>
+ Metodo que recibe un objeto para guardarlo en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_TipoFacturacion_Test.Get_TipoFacturacion1">
+ <summary>
+ Metodo que retorna un objeto de tipo TipoFacturacion
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_TipoFacturacion_Test.Inicializar(CapaDatos.Tipo_Facturacion@)">
+ <summary>
+ Metodo que recibe un objeto para guardarlo en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_TipoFacturacion_Test.Finalizar(CapaDatos.Tipo_Facturacion@)">
+ <summary>
+ Metodo que recibe un objeto  y lo elimina en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_TipoUnidad_Test.Get_Tipo_Unidad1">
+ <summary>
+ Metodo que retorna un objeto de tipo TipoUnidad
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_TipoUnidad_Test.Inicializar(CapaDatos.Tipo_Unidad@)">
+ <summary>
+ Metodo que recibe un objeto para guardarlo en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_TipoUnidad_Test.Finalizar(CapaDatos.Tipo_Unidad@)">
+ <summary>
+ Metodo que recibe un objeto  y lo elimina en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_Ubicacion_Test.Get_Ubicacion1(CapaDatos.Articulo@)">
+ <summary>
+ Metodo que retorna un objeto de tipo ubicacion
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_Ubicacion_Test.Inicializar(CapaDatos.Articulo@,CapaDatos.Almacen@,CapaDatos.Tipo_Facturacion@,CapaDatos.Tipo_Unidad@,CapaDatos.Cliente@,CapaDatos.Ubicacion@)">
+ <summary>
+ Metodo que recibe un objeto para guardarlo en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Almacen.Inicializar">
+ <summary>
+ Método que se invoca para inicializar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Almacen.Finalizar">
+ <summary>
+ Método que se invoca para finalizar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Almacen.Registrar_Almacen">
+ <summary>
+ Prueba que se ejecuta para registrar un almacen
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Almacen.Editar_Almacen">
+ <summary>
+ Prueba que se ejecuta para editar un almacen
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Almacen.Eliminar_Almacen">
+ <summary>
+ Prueba que se ejecuta para eliminar un almacen
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Articulo.Inicializar">
+ <summary>
+ Método que se invoca para inicializar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Articulo.Finalizar">
+ <summary>
+ Método que se invoca para finalizar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Articulo.Registrar_Articulo">
+ <summary>
+ Método que se ejecuta para registrar un articulo
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Articulo.Editar_Articulo">
+ <summary>
+ Método que se ejecuta para editar un articulo
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Articulo.Eliminar_Articulo">
+ <summary>
+ Método que se ejecuta para eliminar un articulo
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_ArticuloPicking.Inicializar">
+ <summary>
+ Método que se invoca para inicializar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_ArticuloPicking.Finalizar">
+ <summary>
+ Método que se invoca para finalizar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_ArticuloPicking.Registrar_ArticuloPicking">
+ <summary>
+ Método que se ejecuta para registrar un articulo de tipo picking
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_ArticuloPicking.Editar_ArticuloPicking">
+ <summary>
+ Método que se ejecuta para editar un articulo de tipo picking
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_ArticuloPicking.Eliminar_ArticuloPicking">
+ <summary>
+ Método que se ejecuta para eliminar un articulo de tipo picking
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Cliente.Inicializar">
+ <summary>
+ Método que se invoca para inicializar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Cliente.Finalizar">
+ <summary>
+ Método que se invoca para finbalizar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Cliente.RegistrarCliente">
+ <summary>
+ Prueba que se ejecuta para registrar un Cliente
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Cliente.EditarCliente">
+ <summary>
+ Prueba que se ejecuta para editar un Cliente
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Cliente.EliminarCliente">
+ <summary>
+ Prueba que se ejecuta para eliminar un Cliente
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Imagen.Inicializar">
+ <summary>
+ Método que se invoca para inicializar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Imagen.Finalizar">
+ <summary>
+ Método que se invoca para finbalizar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Imagen.Registrar_Imagen">
+ <summary>
+ Prueba que se ejecuta para registrar un Imagen
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Imagen.Editar_Imagen">
+ <summary>
+ Prueba que se ejecuta para editar un Imagen
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Imagen.Eliminar_Imagen">
+ <summary>
+ Prueba que se ejecuta para eliminar un Imagen
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_ManagerArticulo.Inicializar">
+ <summary>
+ Método que se invoca para inicializar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_ManagerArticulo.CalcularM3">
+ <summary>
+ Prueba que se ejecuta para validar el calculo de cubicaje
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_ManagerArticulo.CalcularPesoVolumetrico">
+ <summary>
+ Prueba que se ejecuta para validar el calculo de peso volumetrico
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_ManagerArticulo.CalcularValoracionStock">
+ <summary>
+ Prueba que se ejecuta para validar el calculo de valoracion stock
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_ManagerArticulo.CalcularValoracionSeguro">
+ <summary>
+ Prueba que se ejecuta para validar el calculo de valoracion seguro
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_TipoFacturacion.Inicializar">
+ <summary>
+ Método que se invoca para inicializar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_TipoFacturacion.Finalizar">
+ <summary>
+ Método que se invoca para finbalizar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_TipoFacturacion.Registrar_Tipo_Facturacion">
+ <summary>
+ Prueba que se ejecuta para registrar un TipoFacturacion
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_TipoFacturacion.Editar_Tipo_Facturacion">
+ <summary>
+ Prueba que se ejecuta para editar un TipoFacturacion
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_TipoFacturacion.Eliminar_Tipo_Facturacion">
+ <summary>
+ Prueba que se ejecuta para eliminar un TipoFacturacion
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_TipoUnidad.Inicializar">
+ <summary>
+ Método que se invoca para inicializar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_TipoUnidad.Finalizar">
+ <summary>
+ Método que se invoca para finbalizar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_TipoUnidad.Registrar_Tipo_Unidad">
+ <summary>
+ Prueba que se ejecuta para registrar un TipoUnidad
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_TipoUnidad.Editar_Tipo_Unidad">
+ <summary>
+ Prueba que se ejecuta para editar un TipoUnidad
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_TipoUnidad.Eliminar_Tipo_Unidad">
+ <summary>
+ Prueba que se ejecuta para eliminar un TipoUnidad
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Ubicacion.Inicializar">
+ <summary>
+ Método que se invoca para inicializar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Ubicacion.Finalizar">
+ <summary>
+ Método que se invoca para finbalizar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Ubicacion.Registrar_Ubicacion">
+ <summary>
+ Prueba que se ejecuta para registrar un Ubicacion
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Ubicacion.Editar_Ubicacion">
+ <summary>
+ Prueba que se ejecuta para editar un Ubicacion
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Ubicacion.Eliminar_Ubicacion">
+ <summary>
+ Prueba que se ejecuta para eliminar un Ubicacion
+ </summary>
+</member>
 </members>
 </doc>

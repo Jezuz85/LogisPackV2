@@ -1,6 +1,5 @@
 ﻿Imports System.Globalization
 Imports CapaDatos
-Imports Microsoft.AspNet.Identity
 
 Public Class Crear
     Inherits Page
@@ -58,6 +57,9 @@ Public Class Crear
 
     End Sub
 
+    '------------------------------------------------------------------
+    '------------------------METODOS AL CARGAR LA PAGINA---------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo para obtener que lista hace el postback si Tipo de Articulo o Cliente y asi pintar las ubicaciones
     ''' </summary>
@@ -114,8 +116,10 @@ Public Class Crear
 
     End Sub
 
-    '--------------------------------------------GUARDAR------------------------------------------------------------
 
+    '------------------------------------------------------------------
+    '------------------------METODOS AL GUARDAR UN ARTICULO------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que se ejecuta para crear el articulo y registrarlo en la base de datos
     ''' </summary>
@@ -191,10 +195,9 @@ Public Class Crear
 
     End Sub
 
-
-
-
-    '-----------------------------------Metodos del Gridview de articulos picking--------------------------------------------------------
+    '-------------------------------------------------------------------
+    '------------------------METODOS DEL GRIDVIEW DE ARTICULO PICKING---
+    '-------------------------------------------------------------------
     Protected Sub GridView1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
 
         If e.CommandName.Equals(Val_General.EliminarFila.ToString) Then
@@ -225,7 +228,9 @@ Public Class Crear
         CargarGridView()
     End Sub
 
-    '-----------------------------------Metodos del Gridview de lista articulos picking-----------------------------
+    '------------------------------------------------------------------------------------------
+    '------------------------METODOS DEL GRIDVIEW DE LISTA ARTICULO PICKING--------------------
+    '------------------------------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que inicializa el gridview de los articulo que ocnforman el articulo picking,
     ''' en caso que el cliente quiera registrar un articulo picking
@@ -270,7 +275,9 @@ Public Class Crear
 
     End Sub
 
-    '--------------------------------------------------EVENTOS---------------------------------------------
+    '-------------------------------------------------------
+    '------------------------EVENTOS------------------------
+    '-------------------------------------------------------
     ''' <summary>
     ''' Metodo que se ejecuta cuando se oprime el boton de añadir articulo al artiulo picking
     ''' </summary>

@@ -3,7 +3,9 @@ Imports CapaDatos
 
 Public Class Mgr_Almacen_Test
 
-
+    ''' <summary>
+    ''' Metodo que recibe un objeto de tipo cliente y retorna un objeto de tipo Almacen asociado al cliente recibido
+    ''' </summary>
     Public Shared Function Get_Almacen1(ByRef _Cliente As Cliente) As Almacen
 
         Dim Almacen1 = New Almacen With {
@@ -17,13 +19,14 @@ Public Class Mgr_Almacen_Test
 
     End Function
 
-
+    ''' <summary>
+    ''' Metodo que recibe un objeto de tipo cliente y un objeto de tipo Almacen y los guarda en la base de datos
+    ''' </summary>
     Public Shared Sub Inicializar(ByRef _Cliente As Cliente, ByRef _Almacen As Almacen)
 
         Mgr_Cliente_Test.Inicializar(_Cliente)
         Mgr_Almacen.Guardar(_Almacen)
 
     End Sub
-
 
 End Class

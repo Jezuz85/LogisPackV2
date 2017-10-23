@@ -24,6 +24,9 @@ Public Class index3
 
     End Sub
 
+    '------------------------------------------------------------------
+    '------------------------METODOS AL CARGAR LA PAGINA---------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que llena El Gridview con datos de la Base de Datos
     ''' </summary>
@@ -57,7 +60,9 @@ Public Class index3
 
     End Sub
 
-    '--------------------------------------------------Metodos del gridview-----------------------------------------
+    '-------------------------------------------------------------------
+    '------------------------METODOS DEL GRIDVIEW-----------------------
+    '-------------------------------------------------------------------
     Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
         GridView1.PageIndex = e.NewPageIndex
         LlenarGridView()
@@ -92,7 +97,9 @@ Public Class index3
         Util_Grid.SetArrowsGrid(GridView1, e)
     End Sub
 
-    '--------------------------------------------------EVENTOS---------------------------------------------
+    '-------------------------------------------------------
+    '------------------------EVENTOS------------------------
+    '-------------------------------------------------------
     ''' <summary>
     ''' Metodo que realiza una resetea la busqueda en el grid
     ''' </summary>

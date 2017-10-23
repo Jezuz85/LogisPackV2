@@ -5,8 +5,11 @@
     Dim _Cliente1
     Dim AlmacenTest
 
+    ''' <summary>
+    ''' Método que se invoca para inicializar auitomaticamente una prueba
+    ''' </summary>
     <TestInitialize>
-    Public Sub inicializar()
+    Public Sub Inicializar()
 
         _Cliente1 = Mgr_Cliente_Test.Get_Cliente1()
         AlmacenTest = Mgr_Almacen_Test.Get_Almacen1(_Cliente1)
@@ -14,11 +17,17 @@
         Mgr_Almacen_Test.Inicializar(_Cliente1, AlmacenTest)
     End Sub
 
+    ''' <summary>
+    ''' Método que se invoca para finalizar auitomaticamente una prueba
+    ''' </summary>
     <TestCleanup>
-    Public Sub finalizar()
+    Public Sub Finalizar()
         Mgr_Cliente_Test.Finalizar(_Cliente1)
     End Sub
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para registrar un almacen
+    ''' </summary>
     <TestMethod()> Public Sub Registrar_Almacen()
 
         Dim AlmacenBd = Mgr_Almacen.Consultar(AlmacenTest.id_almacen)
@@ -31,6 +40,9 @@
 
     End Sub
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para editar un almacen
+    ''' </summary>
     <TestMethod()> Public Sub Editar_Almacen()
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -51,6 +63,9 @@
 
     End Sub
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para eliminar un almacen
+    ''' </summary>
     <TestMethod()> Public Sub Eliminar_Almacen()
 
         Mgr_Almacen.Eliminar(AlmacenTest.id_almacen)

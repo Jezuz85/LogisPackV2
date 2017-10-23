@@ -3,6 +3,9 @@ Imports CapaDatos
 
 Public Class Mgr_Ubicacion_Test
 
+    ''' <summary>
+    ''' Metodo que retorna un objeto de tipo ubicacion
+    ''' </summary>
     Public Shared Function Get_Ubicacion1(ByRef _Articulo As Articulo) As Ubicacion
 
         Dim _Nuevo = New Ubicacion With {
@@ -18,6 +21,9 @@ Public Class Mgr_Ubicacion_Test
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que recibe un objeto para guardarlo en la base de datos
+    ''' </summary>
     Public Shared Sub Inicializar(ByRef _Articulo As Articulo, ByRef _Almacen As Almacen,
         ByRef _Tipo_Facturacion As Tipo_Facturacion, ByRef _Tipo_Unidad As Tipo_Unidad, ByRef _Cliente As Cliente,
         ByRef _Ubicacion As Ubicacion)

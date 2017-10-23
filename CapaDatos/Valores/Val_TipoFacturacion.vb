@@ -9,6 +9,9 @@
         Return Key
     End Function
 
+    '------------------------------------------------------------------
+    '------------------------NOMBRES DE LOS MODALES--------------------
+    '------------------------------------------------------------------
     Public Shared ReadOnly AddModal As Val_TipoFacturacion = New Val_TipoFacturacion("AddModal")
     Public Shared ReadOnly EditModal As Val_TipoFacturacion = New Val_TipoFacturacion("EditModal")
     Public Shared ReadOnly DeleteModal As Val_TipoFacturacion = New Val_TipoFacturacion("DeleteModal")

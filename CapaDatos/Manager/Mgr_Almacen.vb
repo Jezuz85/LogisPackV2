@@ -3,6 +3,12 @@ Imports System.Web.UI.WebControls
 
 Public Class Mgr_Almacen
 
+    '------------------------------------------------------------------
+    '------------------------ESTRUCTURA DE LA CLASE ALMACEN------------
+    '------------------------------------------------------------------
+    ''' <summary>
+    ''' Estructura de la clase almacen
+    ''' </summary>
     Structure struct_Almacen
         Public nombre As String
         Public codigo As String
@@ -10,7 +16,9 @@ Public Class Mgr_Almacen
         Public id_cliente As String
     End Structure
 
-    '------------------------FUNCIONES DEL GRID
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES DEL GRID------------------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe el gridview para llenar con los datos del almacen en la base de datos
     ''' </summary>
@@ -86,7 +94,9 @@ Public Class Mgr_Almacen
         GridView1.DataBind()
     End Sub
 
-    '------------------------FUNCIONES DEL DROPDOWNLIST
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES DEL DROPDOWNLIST----------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe un objeto DropDownlist vacio y lo devuelve con los datos de todos los alamcenes
     ''' existentes en la base de datos
@@ -128,8 +138,9 @@ Public Class Mgr_Almacen
         DropDownList1.Items.Insert(0, New ListItem(Val_General.Lista_Seleccione.ToString, String.Empty))
     End Sub
 
-
-    '------------------------FUNCIONES DE LA CLASE ALMACEN
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES DE LA CLASE ALMACEN-------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe un objeto Almacen y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
     ''' </summary>

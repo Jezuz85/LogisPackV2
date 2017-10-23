@@ -89,7 +89,10 @@ Public Class Util_Grid
 
     End Sub
 
-    '--------------------------------------------ARTICULO PICKING---------------------------------------------
+
+    '---------------------------------------------------------------------------------------
+    '------------------------FUNCIONES DEL GRID DEL ARTICULO PICKING------------------------
+    '---------------------------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que inicializa el gridview de los articulo que ocnforman el articulo picking,
     ''' en caso que el cliente quiera registrar un articulo picking
@@ -127,13 +130,5 @@ Public Class Util_Grid
         _GridView.DataSource = _DataTable
         _GridView.DataBind()
     End Sub
-
-    '----------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
 
 End Class

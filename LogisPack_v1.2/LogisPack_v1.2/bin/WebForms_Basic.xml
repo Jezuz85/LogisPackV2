@@ -2262,6 +2262,31 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
  Metodo que en donde se realiza la carga de las ubicaciones del articulo
  </summary>
 </member>
+<member name="M:LogisPack_v1._2.Editar.AddRowGridview">
+ <summary>
+ Metodos que añade una fila al gridview 
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Editar.LlenarGridview(System.Int32)">
+ <summary>
+ Metodos que llena el gridview con la lista de articulos picking
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Editar.GridtoDataTable">
+ <summary>
+ Metodos que convierte los datos de un gridview a una variable DataTable
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Editar.Update_GridView_CurrentDatatable">
+ <summary>
+ Metodos que actualiza el dataTable al viewstate acutal
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Editar.Update_ViewState_Datatable">
+ <summary>
+ Metodos que actualiza el viewstate con el datatable actual
+ </summary>
+</member>
 <member name="M:LogisPack_v1._2.Editar.EditarArticulo(CapaDatos.Articulo)">
  <summary>
  Metodos que edita el articulo y devuelve true si la operacion fue exitosa y caso contrario false
@@ -3427,6 +3452,11 @@ Control btnDelete.
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
+</member>
+<member name="M:LogisPack_v1._2.index2.LlenarGridView">
+ <summary>
+ Metodo que llena El Gridview con datos de la Base de Datos
+ </summary>
 </member>
 <member name="M:LogisPack_v1._2.index2.btnAdd_Click(System.Object,System.EventArgs)">
  <summary>

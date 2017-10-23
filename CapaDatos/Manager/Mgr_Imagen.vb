@@ -2,13 +2,21 @@
 
 Public Class Mgr_Imagen
 
+    '------------------------------------------------------------------
+    '------------------------ESTRUCTURA DE LA CLASE IMAGEN-------------
+    '------------------------------------------------------------------
+    ''' <summary>
+    ''' Estructura de la clase imagen
+    ''' </summary>
     Structure struct_Imagen
         Public nombre As String
         Public id_articulo As String
         Public url_imagen As String
     End Structure
 
-    '------------------------Funciones de la clase imagen
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES DE LA CLASE IMAGEN--------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe un objeto Imagen y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
     ''' </summary>
@@ -125,7 +133,9 @@ Public Class Mgr_Imagen
         Return bError
     End Function
 
-    '------------------------Funciones Grid
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES DEL GRID------------------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe el gridview para llenar con los datos de la imagen en la base de datos
     ''' </summary>
@@ -145,8 +155,9 @@ Public Class Mgr_Imagen
         GridView1.DataBind()
     End Sub
 
-    '------------------------Funciones Getter
-
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES GETTER--------------------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe un id del Artiuclo, y devuelve una lista de las imagenes asociadas al articulo
     ''' </summary>

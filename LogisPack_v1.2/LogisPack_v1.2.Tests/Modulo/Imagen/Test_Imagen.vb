@@ -8,16 +8,25 @@
     Dim ClienteTest As Cliente
     Dim ImagenTest As Imagen
 
+    ''' <summary>
+    ''' Método que se invoca para inicializar auitomaticamente una prueba
+    ''' </summary>
     <TestInitialize>
-    Public Sub inicializar()
+    Public Sub Inicializar()
         Mgr_Imagen_Test.Inicializar(ArticuloTest, AlmacenTest, Tipo_FacturacionTest, Tipo_UnidadTest, ClienteTest, ImagenTest)
     End Sub
 
+    ''' <summary>
+    ''' Método que se invoca para finbalizar auitomaticamente una prueba
+    ''' </summary>
     <TestCleanup>
-    Public Sub finalizar()
+    Public Sub Finalizar()
         Mgr_Articulo_Test.Finalizar(Tipo_FacturacionTest, Tipo_UnidadTest, ClienteTest)
     End Sub
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para registrar un Imagen
+    ''' </summary>
     <TestMethod()> Public Sub Registrar_Imagen()
 
         Dim ImagenBD = Mgr_Imagen.Get_Imagen(ImagenTest.id_imagen)
@@ -28,6 +37,9 @@
 
     End Sub
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para editar un Imagen
+    ''' </summary>
     <TestMethod()> Public Sub Editar_Imagen()
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
@@ -46,6 +58,9 @@
 
     End Sub
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para eliminar un Imagen
+    ''' </summary>
     <TestMethod()> Public Sub Eliminar_Imagen()
 
         Mgr_Imagen.Eliminar(ImagenTest.id_imagen)

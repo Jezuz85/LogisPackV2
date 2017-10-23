@@ -28,6 +28,9 @@ Public Class index5
 
     End Sub
 
+    '------------------------------------------------------------------
+    '------------------------METODOS AL CARGAR LA PAGINA---------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
     ''' </summary>
@@ -42,7 +45,9 @@ Public Class index5
 
     End Sub
 
-    '--------------------------------------------------Metodos del Gridview---------------------------------------------
+    '-------------------------------------------------------------------
+    '------------------------METODOS DEL GRIDVIEW-----------------------
+    '-------------------------------------------------------------------
     Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
         GridView1.PageIndex = e.NewPageIndex
         LlenarGridView()
@@ -77,7 +82,9 @@ Public Class index5
 
     End Sub
 
-    '--------------------------------------------------EVENTOS---------------------------------------------
+    '-------------------------------------------------------
+    '------------------------EVENTOS------------------------
+    '-------------------------------------------------------
     ''' <summary>
     ''' Metodo que realiza una resetea la busqueda en el grid
     ''' </summary>

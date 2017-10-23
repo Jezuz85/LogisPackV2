@@ -4,6 +4,9 @@ Imports System.Web.UI.WebControls
 
 Public Class Mgr_Ubicacion
 
+    '------------------------------------------------------------------
+    '------------------------ESTRUCTURA DE LA CLASE UBICACION----------
+    '------------------------------------------------------------------
     Structure struct_Ubicacion
         Public nombre As String
         Public zona As String
@@ -15,7 +18,9 @@ Public Class Mgr_Ubicacion
         Public referencia_ubicacion As String
     End Structure
 
-    '------------------------Funciones de la clase Ubicacion
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES DE LA CLASE ARTICULO------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe un objeto Ubicacion y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
     ''' </summary>
@@ -102,6 +107,9 @@ Public Class Mgr_Ubicacion
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que retorne la estructura de ubicacion con lso datos del grid
+    ''' </summary>
     Public Shared Function Get_Struct_Fila_Ubicacion(contadorControl As Integer, ByRef pTabla As Panel, id_articulo As String) As struct_Ubicacion
 
         Dim miTextbox As TextBox
@@ -170,6 +178,9 @@ Public Class Mgr_Ubicacion
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que recorre el grid de ubicaciones y los guarda en la base de datos
+    ''' </summary>
     Public Shared Function RecorrerGrid_Guardar(pTabla As Panel, id_articulo As Integer) As Boolean
         Dim bError As Boolean = False
         Dim contadorControl As Integer = 0
@@ -191,9 +202,9 @@ Public Class Mgr_Ubicacion
         Return bError
     End Function
 
-
-
-    '------------------------Funciones Getter
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES GETTER--------------------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe un id del Artiuclo, y devuelve una lista de las ubicaciones asociadas al articulo
     ''' </summary>
@@ -220,6 +231,5 @@ Public Class Mgr_Ubicacion
         Return contexto.Ubicacion.Where(Function(model) model.id_ubicacion = id).SingleOrDefault()
 
     End Function
-
 
 End Class

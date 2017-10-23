@@ -12,8 +12,11 @@
     Private txtValArticulo As String
     Private txtCoefVol As String
 
+    ''' <summary>
+    ''' Método que se invoca para inicializar auitomaticamente una prueba
+    ''' </summary>
     <TestInitialize>
-    Public Sub inicializar()
+    Public Sub Inicializar()
         ValorEsperado = 0
         ValorReal = 0
         txtAncho = String.Empty
@@ -25,6 +28,9 @@
         txtCoefVol = String.Empty
     End Sub
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para validar el calculo de cubicaje
+    ''' </summary>
     <TestMethod()> Public Sub CalcularM3()
 
 #Region "textbox vacios"
@@ -57,6 +63,9 @@
 
     End Sub
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para validar el calculo de peso volumetrico
+    ''' </summary>
     <TestMethod()> Public Sub CalcularPesoVolumetrico()
 
 #Region "textbox vacio"
@@ -86,6 +95,9 @@
 
     End Sub
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para validar el calculo de valoracion stock
+    ''' </summary>
     <TestMethod()> Public Sub CalcularValoracionStock()
 
 #Region "textbox vacios"
@@ -116,6 +128,9 @@
 
     End Sub
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para validar el calculo de valoracion seguro
+    ''' </summary>
     <TestMethod()> Public Sub CalcularValoracionSeguro()
 
 #Region "textbox vacios"

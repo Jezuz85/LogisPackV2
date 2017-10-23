@@ -26,6 +26,12 @@ Public Class index2
 
     End Sub
 
+    '------------------------------------------------------------------
+    '------------------------METODOS AL CARGAR LA PAGINA---------------
+    '------------------------------------------------------------------
+    ''' <summary>
+    ''' Metodo que llena El Gridview con datos de la Base de Datos
+    ''' </summary>
     Private Sub LlenarGridView()
 
         Mgr_TipoUnidad.LlenarGrid(GridView1,
@@ -36,7 +42,9 @@ Public Class index2
 
     End Sub
 
-    '-----------------------------------Metodos del Gridview-----------------------------------
+    '-------------------------------------------------------------------
+    '------------------------METODOS DEL GRIDVIEW-----------------------
+    '-------------------------------------------------------------------
     Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
         GridView1.PageIndex = e.NewPageIndex
         LlenarGridView()
@@ -69,7 +77,9 @@ Public Class index2
 
     End Sub
 
-    '--------------------------------------------------EVENTOS---------------------------------------------
+    '-------------------------------------------------------
+    '------------------------EVENTOS------------------------
+    '-------------------------------------------------------
     ''' <summary>
     ''' Metodo que registra un tipo de unidad en la base de datos
     ''' </summary>

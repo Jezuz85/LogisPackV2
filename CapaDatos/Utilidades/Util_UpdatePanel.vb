@@ -52,4 +52,5 @@ Public Class Util_UpdatePanel
         Util_Modal.CerrarModal(_modal & "Modal", _modal & "Script", _page)
         Util_Modal.MostrarAlerta(_updatePpal, bError, _modal)
     End Sub
+
 End Class

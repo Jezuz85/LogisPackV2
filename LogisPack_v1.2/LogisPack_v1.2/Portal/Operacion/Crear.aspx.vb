@@ -25,6 +25,9 @@ Public Class Crear1
 
     End Sub
 
+    '------------------------------------------------------------------
+    '------------------------METODOS AL CARGAR LA PAGINA---------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
     ''' </summary>
@@ -65,8 +68,9 @@ Public Class Crear1
 
     End Sub
 
-    '--------------------------------------------------EVENTOS---------------------------------------------
-
+    '-------------------------------------------------------
+    '------------------------EVENTOS------------------------
+    '-------------------------------------------------------
     ''' <summary>
     ''' Evento que se lanza al ingresar un codigo y valida que exista en la lista de articulos disponibles
     ''' </summary>

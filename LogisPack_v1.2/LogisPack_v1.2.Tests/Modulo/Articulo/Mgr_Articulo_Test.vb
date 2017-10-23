@@ -4,6 +4,9 @@ Imports CapaDatos
 Public Class Mgr_Articulo_Test
 
 
+    ''' <summary>
+    ''' Metodo que retorna un objeto de tipo articulo
+    ''' </summary>
     Public Shared Function Get_Articulo1(ByRef _Articulo As Articulo, ByRef _Almacen As Almacen,
             ByRef _Tipo_Facturacion As Tipo_Facturacion, ByRef _Tipo_Unidad As Tipo_Unidad) As Articulo
 
@@ -41,6 +44,9 @@ Public Class Mgr_Articulo_Test
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que recibe un objeto de tipo Articulo,cliente ,Almacen, tipo de unidad y tipo de facturacion y los guarda en la base de datos
+    ''' </summary>
     Public Shared Sub Inicializar(ByRef _Articulo As Articulo, ByRef _Almacen As Almacen,
         ByRef _Tipo_Facturacion As Tipo_Facturacion, ByRef _Tipo_Unidad As Tipo_Unidad, ByRef _Cliente As Cliente)
 
@@ -51,6 +57,9 @@ Public Class Mgr_Articulo_Test
 
     End Sub
 
+    ''' <summary>
+    ''' Metodo que recibe un objeto de tipo cliente, tipo de unidad y tipo de facturacion y los elimina en la base de datos
+    ''' </summary>
     Public Shared Sub Finalizar(ByRef _Tipo_Facturacion As Tipo_Facturacion, ByRef _Tipo_Unidad As Tipo_Unidad,
             ByRef _Cliente As Cliente)
 
@@ -60,9 +69,10 @@ Public Class Mgr_Articulo_Test
 
     End Sub
 
-    Public Shared Function Get_ArticuloPicking1(ByRef _Almacen As Almacen,
-                                                ByRef _Tipo_Facturacion As Tipo_Facturacion,
-                                                ByRef _Tipo_Unidad As Tipo_Unidad) As Articulo
+    ''' <summary>
+    ''' Metodo que retorna un objeto de tipo articulo picking
+    ''' </summary>
+    Public Shared Function Get_ArticuloPicking1(ByRef _Almacen As Almacen, ByRef _Tipo_Facturacion As Tipo_Facturacion, ByRef _Tipo_Unidad As Tipo_Unidad) As Articulo
 
         Dim ArticuloPicking1 = New Articulo With
             {
@@ -98,7 +108,9 @@ Public Class Mgr_Articulo_Test
 
     End Function
 
-
+    ''' <summary>
+    ''' Metodo que recibe un objeto de tipo Articulo,cliente ,Almacen, tipo de unidad y tipo de facturacion y los guarda en la base de datos
+    ''' </summary>
     Public Shared Sub Inicializar_ArticuloPicking(ByRef _Articulo As Articulo,
                                                   ByRef _Picking_Articulo As Picking_Articulo,
                                                   ByRef _ArticuloP As Articulo)
@@ -110,6 +122,9 @@ Public Class Mgr_Articulo_Test
 
     End Sub
 
+    ''' <summary>
+    ''' Metodo que recibe un objeto de tipo Picking_Articulo,cliente ,Almacen, tipo de unidad y tipo de facturacion y los guarda en la base de datos
+    ''' </summary>
     Public Shared Sub Inicializar_Picking_Articulo(ByRef _Picking_Articulo As Picking_Articulo,
                                                    ByRef _Articulo As Articulo,
                                                    ByRef _ArticuloP As Articulo)

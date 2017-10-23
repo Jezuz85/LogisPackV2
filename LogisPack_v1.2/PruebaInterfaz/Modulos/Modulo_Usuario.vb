@@ -4,6 +4,9 @@ Imports OpenQA.Selenium.Chrome
 
 Public Class Modulo_Usuario
 
+    ''' <summary>
+    ''' Método que realiza la operacion de iniciar sesion en el sistema
+    ''' </summary>
     Public Shared Sub IniciarSesion(ByRef driver As ChromeDriver)
 
         driver = New ChromeDriver()

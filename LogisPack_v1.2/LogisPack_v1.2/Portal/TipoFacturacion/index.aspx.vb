@@ -27,6 +27,9 @@ Public Class index1
 
     End Sub
 
+    '------------------------------------------------------------------
+    '------------------------METODOS AL CARGAR LA PAGINA---------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodos para llenar el Gridview con los tipos de facturacion de la base de datos
     ''' </summary>
@@ -40,7 +43,9 @@ Public Class index1
 
     End Sub
 
-    '-----------------------------------Metodos del Gridview-----------------------------------
+    '-------------------------------------------------------------------
+    '------------------------METODOS DEL GRIDVIEW-----------------------
+    '-------------------------------------------------------------------
     Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
         GridView1.PageIndex = e.NewPageIndex
         LlenarGridView()
@@ -73,7 +78,9 @@ Public Class index1
 
     End Sub
 
-    '--------------------------------------------------EVENTOS---------------------------------------------
+    '-------------------------------------------------------
+    '------------------------EVENTOS------------------------
+    '-------------------------------------------------------
     ''' <summary>
     ''' Metodo que registra un tipo de facturacion en la base de datos
     ''' </summary>

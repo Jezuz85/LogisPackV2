@@ -5,6 +5,9 @@ Public Class PI_Usuario
 
     Dim driver As IWebDriver
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para valdiar el inisio de sesión
+    ''' </summary>
     <TestMethod()>
     Public Sub Loguearse()
 

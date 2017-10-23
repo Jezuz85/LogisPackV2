@@ -2,6 +2,12 @@
 
 Public Class Mgr_Articulo
 
+    '------------------------------------------------------------------
+    '------------------------ESTRUCTURA DE LA CLASE ARTICULO-----------
+    '------------------------------------------------------------------
+    ''' <summary>
+    ''' Estructura de la clase articulo
+    ''' </summary>
     Structure struct_Articulo
         Public codigo As String
         Public nombre As String
@@ -31,13 +37,18 @@ Public Class Mgr_Articulo
         Public coeficiente_volumetrico As String
     End Structure
 
+    ''' <summary>
+    ''' Estructura de la clase Articulo Picking
+    ''' </summary>
     Structure struct_ArticuloPicking
         Public unidades As String
         Public id_articulo As String
         Public id_picking As String
     End Structure
-    '------------------------Funciones de la clase articulo
 
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES DE LA CLASE ARTICULO------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe un objeto Articulo y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
     ''' </summary>
@@ -280,7 +291,6 @@ Public Class Mgr_Articulo
 
     End Function
 
-
     ''' <summary>
     ''' Metodo que devuelve una variable de tipo estructura con el cuerpo de la clase articulo picking
     ''' </summary>
@@ -315,10 +325,9 @@ Public Class Mgr_Articulo
 
     End Function
 
-
-
-    '------------------------Funciones Grid
-
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES DEL GRID------------------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe el gridview para llenar con los datos del articulo en la base de datos
     ''' </summary>
@@ -405,8 +414,9 @@ Public Class Mgr_Articulo
         GridView1.DataBind()
     End Sub
 
-    '------------------------GET Articulo
-
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES GETTER--------------------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
     ''' devuelve un objeto tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
@@ -496,7 +506,9 @@ Public Class Mgr_Articulo
         Return contexto.Picking_Articulo.Where(Function(model) model.id_picking_articulo = id).SingleOrDefault()
     End Function
 
-    '------------------------FUNCIONES DEL DROPDOWNLIST
+    '------------------------------------------------------------------
+    '------------------------FUNCIONES DEL DROPDOWNLIST----------------
+    '------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que recibe un objeto DropDownlist vacio y un id del Almacén , y lo devuelve con los datos de 
     ''' todos los articulos de tipo "Normal" de ese Almacén
@@ -567,7 +579,9 @@ Public Class Mgr_Articulo
 
     End Sub
 
-    '------------------------Eventos al crear un articulo
+    '------------------------------------------------------------------------------------
+    '------------------------METODOS QUE SE INVOCAN AL CREAR O EDITAR UN ARTICULO--------
+    '------------------------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que consulta el Coeficiente Volumetrico del almacen y lo asigna al articulo a crear al 
     ''' cargar la pagina
@@ -670,7 +684,9 @@ Public Class Mgr_Articulo
         Return valor.PadLeft(4, "0"c)
     End Function
 
-    '------------------------CALCULOS
+    '--------------------------------------------------------------------------------
+    '------------------------CALCULOS AL CREAR O EDITAR UN ARTICULO------------------
+    '--------------------------------------------------------------------------------
     ''' <summary>
     ''' Metodo que calcula Valoracion Stock 
     ''' </summary>
