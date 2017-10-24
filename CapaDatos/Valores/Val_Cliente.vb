@@ -20,4 +20,10 @@ Public Class Val_Cliente
     Public Shared ReadOnly EditModalScript As Val_Cliente = New Val_Cliente("EditModallScript")
     Public Shared ReadOnly DeleteModalScript As Val_Cliente = New Val_Cliente("DeleteModalScript")
 
+    '------------------------------------------------------------------
+    '------------------------FILTROS DE LA LISTA DEL CAMPO BUSCAR------
+    '------------------------------------------------------------------
+    Public Shared ReadOnly Filtro_Codigo As Val_Cliente = New Val_Cliente("Código")
+    Public Shared ReadOnly Filtro_Nombre As Val_Cliente = New Val_Cliente("Nombre")
+
 End Class

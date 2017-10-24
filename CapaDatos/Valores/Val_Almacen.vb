@@ -26,7 +26,7 @@ Public Class Val_Almacen
     '------------------------------------------------------------------
     '------------------------FILTROS DE LA LISTA DEL CAMPO BUSCAR------
     '------------------------------------------------------------------
-    Public Shared ReadOnly Filtro_Codigo As Val_Almacen = New Val_Almacen("Codigo")
+    Public Shared ReadOnly Filtro_Codigo As Val_Almacen = New Val_Almacen("Código")
     Public Shared ReadOnly Filtro_Nombre As Val_Almacen = New Val_Almacen("Nombre")
     Public Shared ReadOnly Filtro_Cliente As Val_Almacen = New Val_Almacen("Cliente")
     Public Shared ReadOnly Filtro_Coeficiente As Val_Almacen = New Val_Almacen("Coeficiente")

@@ -131,15 +131,6 @@ Partial Public Class index
     Protected WithEvents txtSearch As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control AutoCompleteExtender1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents AutoCompleteExtender1 As Global.AjaxControlToolkit.AutoCompleteExtender
-    
-    '''<summary>
     '''Control btnBuscar.
     '''</summary>
     '''<remarks>

@@ -37,14 +37,19 @@ CapaDatos
  Metodo que descifra una cadena de texto pasada por url y devuelve un entero
  </summary>
 </member>
+<member name="M:CapaDatos.Util_DropDownList.Set_Text_Value_List(System.Web.UI.WebControls.DropDownList@,System.Object,System.String,System.String)">
+ <summary>
+ Metodo que setea los valors de value y text a un dropdownlist
+ </summary>
+</member>
+<member name="M:CapaDatos.Util_DropDownList.Llenar_FiltroBusqueda(System.Web.UI.WebControls.DropDownList@,System.String)">
+ <summary>
+ Metodo que llena los dropdownlist del filtro de busqeuda
+ </summary>
+</member>
 <member name="T:CapaDatos.Val_Comandos">
  <summary>
  clase que se usa para enviar comandos sql para llenar el treeview
- </summary>
-</member>
-<member name="M:CapaDatos.Util_ControlesDinamicos.Set_Text_Value_List(System.Web.UI.WebControls.DropDownList@,System.Object,System.String,System.String)">
- <summary>
- Metodo que setea los valors de value y text a un dropdownlist
  </summary>
 </member>
 <member name="M:CapaDatos.Util_ControlesDinamicos.CrearLiteral(System.String,System.Web.UI.WebControls.Panel)">

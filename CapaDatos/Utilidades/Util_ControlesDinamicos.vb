@@ -4,18 +4,6 @@ Imports System.Web.UI.WebControls
 Public Class Util_ControlesDinamicos
 
     ''' <summary>
-    ''' Metodo que setea los valors de value y text a un dropdownlist
-    ''' </summary>
-    Public Shared Sub Set_Text_Value_List(ByRef _DropDownList As DropDownList, _query As Object, _text As String, _value As String)
-
-        _DropDownList.DataValueField = _value
-        _DropDownList.DataTextField = _text
-        _DropDownList.DataSource = _query
-        _DropDownList.DataBind()
-
-    End Sub
-
-    ''' <summary>
     ''' Metodo que crea dinamicamente un literal y lo añade a un panel enviado por parametro
     ''' </summary>
     Public Shared Sub CrearLiteral(etiqueta As String, _panel As Panel)

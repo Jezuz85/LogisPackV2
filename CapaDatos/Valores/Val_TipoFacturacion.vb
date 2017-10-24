@@ -19,4 +19,9 @@
     Public Shared ReadOnly EditModalScript As Val_TipoFacturacion = New Val_TipoFacturacion("EditModallScript")
     Public Shared ReadOnly DeleteModalScript As Val_TipoFacturacion = New Val_TipoFacturacion("DeleteModalScript")
 
+    '------------------------------------------------------------------
+    '------------------------FILTROS DE LA LISTA DEL CAMPO BUSCAR------
+    '------------------------------------------------------------------
+    Public Shared ReadOnly Filtro_Nombre As Val_TipoFacturacion = New Val_TipoFacturacion("Nombre")
+
 End Class

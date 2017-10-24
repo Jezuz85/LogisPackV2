@@ -44,7 +44,11 @@ Public Class index4
     ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
     ''' </summary>
     Private Sub CargarListas()
+
         Mgr_Cliente.Llenar_Lista(ddlCliente, idCliente)
+        Util_DropDownList.Llenar_FiltroBusqueda(ddlBuscar, Val_Paginas.Operacion_Index.ToString)
+        hdfFiltro.Value = ddlBuscar.SelectedValue
+
     End Sub
 
     '-------------------------------------------------------------------
@@ -67,17 +71,6 @@ Public Class index4
     '-------------------------------------------------------
     '------------------------EVENTOS------------------------
     '-------------------------------------------------------
-    ''' <summary>
-    ''' Metodo que realiza una busqueda en el grid al darle enter al campo de busqueda
-    ''' </summary>
-    Protected Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
-
-        ViewState(Val_General.filtroBusqueda.ToString) = ddlBuscar.SelectedValue
-        ViewState(Val_General.textoBusqueda.ToString) = txtSearch.Text
-        LlenarGridView()
-
-    End Sub
-
     ''' <summary>
     ''' Metodo que se invoca cuando se presiona el boton "guardar" y redirecciona la pagina a "Crear"
     ''' </summary>
@@ -157,7 +150,7 @@ Public Class index4
 
         If ddlArticulo.SelectedValue <> String.Empty Then
 
-            ViewState(Val_General.filtroBusqueda.ToString) = Val_Operacion.Filtro_Articulo
+            ViewState(Val_General.filtroBusqueda.ToString) = Val_Operacion.Filtro_Articulo.ToString
             ViewState(Val_General.textoBusqueda.ToString) = Convert.ToString(ddlArticulo.SelectedItem)
 
             Dim _articulo = Mgr_Articulo.Get_Articulo(Convert.ToInt32(ddlArticulo.SelectedValue))
@@ -177,6 +170,26 @@ Public Class index4
             ViewState(Val_General.textoBusqueda.ToString) = String.Empty
         End If
         LlenarGridView()
+
+    End Sub
+
+    ''' <summary>
+    ''' Evento que filtra el gridview dependiendo del texto enviado
+    ''' </summary>
+    Protected Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
+
+        ViewState(Val_General.filtroBusqueda.ToString) = ddlBuscar.SelectedValue
+        ViewState(Val_General.textoBusqueda.ToString) = txtSearch.Text
+        LlenarGridView()
+    End Sub
+
+    ''' <summary>
+    ''' Evento que agrega al campo oculto filtro el campo a buscar dependiendo de la lista desplegable, para asi
+    ''' poder filtrar el autocomplete
+    ''' </summary>
+    Protected Sub ddlBuscar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlBuscar.SelectedIndexChanged
+
+        hdfFiltro.Value = ddlBuscar.SelectedValue
 
     End Sub
 

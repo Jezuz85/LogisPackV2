@@ -11,13 +11,14 @@ function pageLoad(sender, args) {
     {
         load_Almacen();
         SetstateAcordeonArbol();
-        SetstateAcordeon(); 
+        SetstateAcordeon();
     }
 }
 
 function load_Almacen()
 {
     load_Acordeon();
+    Autocomplete();
 
     $(btn_acordeon_Arbol).click(function () {
 

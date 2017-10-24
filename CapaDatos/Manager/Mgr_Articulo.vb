@@ -343,7 +343,8 @@ Public Class Mgr_Articulo
                          AL.nombre,
                          AL.codigo,
                          Cliente = AL.Almacen.Cliente.nombre,
-                         Almacen = AL.Almacen.nombre
+                         Almacen = AL.Almacen.nombre,
+                         TipoArticulo = AL.tipoArticulo
                     ).ToList()
 
         If idCliente <> 1 Then
@@ -373,6 +374,12 @@ Public Class Mgr_Articulo
                 query = query.OrderBy(Function(x) x.Cliente).ToList()
             Else
                 query = query.OrderByDescending(Function(x) x.Cliente).ToList()
+            End If
+        ElseIf columna = Val_Articulo.Filtro_TipoArticulo.ToString Then
+            If tipoOrdenacion = "1" Then
+                query = query.OrderBy(Function(x) x.TipoArticulo).ToList()
+            Else
+                query = query.OrderByDescending(Function(x) x.TipoArticulo).ToList()
             End If
         End If
 
@@ -525,7 +532,7 @@ Public Class Mgr_Articulo
                          AL.nombre
                     ).ToList()
 
-        Util_ControlesDinamicos.Set_Text_Value_List(DropDownList1, query, Val_Articulo.Nom_Art.ToString, Val_Articulo.Id_Art.ToString)
+        Util_DropDownList.Set_Text_Value_List(DropDownList1, query, Val_Articulo.Nom_Art.ToString, Val_Articulo.Id_Art.ToString)
 
 
     End Sub
@@ -545,7 +552,7 @@ Public Class Mgr_Articulo
                          AL.nombre
                     ).ToList()
 
-        Util_ControlesDinamicos.Set_Text_Value_List(DropDownList1, query, Val_Articulo.Nom_Art.ToString, Val_Articulo.Id_Art.ToString)
+        Util_DropDownList.Set_Text_Value_List(DropDownList1, query, Val_Articulo.Nom_Art.ToString, Val_Articulo.Id_Art.ToString)
 
         DropDownList1.Items.Insert(0, New ListItem(Val_General.Lista_Seleccione.ToString, String.Empty))
     End Sub
@@ -575,7 +582,7 @@ Public Class Mgr_Articulo
             query = query.Where(Function(x) x.id_articulo <> IdArticulo).ToList()
         Next
 
-        Util_ControlesDinamicos.Set_Text_Value_List(DropDownList1, query, Val_Articulo.Id_Art.ToString, Val_Articulo.Nom_Art.ToString)
+        Util_DropDownList.Set_Text_Value_List(DropDownList1, query, Val_Articulo.Id_Art.ToString, Val_Articulo.Nom_Art.ToString)
 
     End Sub
 

@@ -11,9 +11,12 @@ Public Class index1
         If Manager_Usuario.ValidarAutenticado(User) Then
             Manager_Usuario.ValidarMenu(Me, Master)
 
+            hdfCliente.Value = Mgr_Usuario.Get_Cliente_Usuario(Manager_Usuario.GetUserId(User))
+
             If Manager_Usuario.ValidarRol(User, Val_Rol.Admin.ToString) Then
 
                 If IsPostBack = False Then
+                    CargarListas()
                     LlenarGridView()
                     Util_Modal.OcultarAlerta(updatePanelPrinicpal)
                 End If
@@ -41,6 +44,14 @@ Public Class index1
                       String.Empty & ViewState(Val_General.filtroBusqueda.ToString),
                       String.Empty & ViewState(Val_General.textoBusqueda.ToString))
 
+    End Sub
+
+    ''' <summary>
+    ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
+    ''' </summary>
+    Private Sub CargarListas()
+        Util_DropDownList.Llenar_FiltroBusqueda(ddlBuscar, Val_Paginas.TipoFacturacion_Index.ToString)
+        hdfFiltro.Value = ddlBuscar.SelectedValue
     End Sub
 
     '-------------------------------------------------------------------
@@ -155,6 +166,26 @@ Public Class index1
         ViewState(Val_General.filtroBusqueda.ToString) = String.Empty
         ViewState(Val_General.textoBusqueda.ToString) = String.Empty
         LlenarGridView()
+    End Sub
+
+    ''' <summary>
+    ''' Evento que filtra el gridview dependiendo del texto enviado
+    ''' </summary>
+    Protected Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
+
+        ViewState(Val_General.filtroBusqueda.ToString) = ddlBuscar.SelectedValue
+        ViewState(Val_General.textoBusqueda.ToString) = txtSearch.Text
+        LlenarGridView()
+    End Sub
+
+    ''' <summary>
+    ''' Evento que agrega al campo oculto filtro el campo a buscar dependiendo de la lista desplegable, para asi
+    ''' poder filtrar el autocomplete
+    ''' </summary>
+    Protected Sub ddlBuscar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlBuscar.SelectedIndexChanged
+
+        hdfFiltro.Value = ddlBuscar.SelectedValue
+
     End Sub
 
 End Class

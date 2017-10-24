@@ -51,7 +51,7 @@ Public Class Crear1
     ''' </summary>
     Private Sub ValidarStock()
 
-        If txtCantidad.Text <> String.Empty Then
+        If txtCantidad.Text <> String.Empty And ddlListaArticulos.SelectedValue <> String.Empty Then
 
             Dim _Articulo = Mgr_Articulo.Get_Articulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))
 

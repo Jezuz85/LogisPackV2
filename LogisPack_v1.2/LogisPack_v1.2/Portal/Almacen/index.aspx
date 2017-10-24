@@ -4,35 +4,15 @@
 
 <%@ Register Src="~/Portal/WebUserControl/Alert.ascx" TagPrefix="uca" TagName="ucAlert" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     
-    <script>
-        $(document).ready(function () {
-            $find('<%=AutoCompleteExtender1.ClientID%>')
-                .set_contextKey($get("<%=hdfCliente.ClientID %>")
-                    .value + "|" + $get("<%=hdfFiltro.ClientID %>").value);
-        });
-
-        var prm = Sys.WebForms.PageRequestManager.getInstance();
-        if (prm != null) {
-            prm.add_endRequest(function (sender, e) {
-                if (sender._postBackSettings.panelsToUpdate != null) {
-                    $(document).ready(function () {
-                        $find('<%=AutoCompleteExtender1.ClientID%>')
-                            .set_contextKey($get("<%=hdfCliente.ClientID %>")
-                                .value + "|" + $get("<%=hdfFiltro.ClientID %>").value);
-                    });
-                }
-            });
-        };
-    </script>
-
     <asp:UpdatePanel ID="updatePanelPrinicpal" runat="server">
         <ContentTemplate>
+            
             <asp:HiddenField ID="hfaccordion" runat="server" />
             <asp:HiddenField ID="hfaccordion2" runat="server" />
+            <asp:HiddenField ID="hdfCliente" runat="server" />
+            <asp:HiddenField ID="hdfFiltro" runat="server" />
 
             <div id="titleContainer">
                 <div class="MainContentTitle">
@@ -44,9 +24,6 @@
                     </div>
                 </div>
             </div>
-
-            <asp:HiddenField ID="hdfCliente" runat="server" />
-            <asp:HiddenField ID="hdfFiltro" runat="server" />
 
             <div id="pageBodyContainer" class="MainContentWrapper" style="width: 96%;">
 
@@ -123,25 +100,13 @@
                                 </div>
 
                                 <div class="col-md-2">
-                                    <asp:DropDownList runat="server" ID="ddlBuscar" AutoPostBack="true">
-                                        <asp:ListItem Text="Código" Value="Codigo"></asp:ListItem>
-                                        <asp:ListItem Text="Cliente" Value="Cliente"></asp:ListItem>
-                                        <asp:ListItem Text="Nombre" Value="Nombre"></asp:ListItem>
-                                    </asp:DropDownList>
+                                    <asp:DropDownList runat="server" ID="ddlBuscar" AutoPostBack="true"></asp:DropDownList>
                                 </div>
 
                                 <div class="col-md-7">
-                                    <asp:TextBox ID="txtSearch" runat="server" placeholder="Ingrese el texto a buscar"
-                                        MaxLength="200" autocomplete="off" OnTextChanged="txtSearch_TextChanged" AutoPostBack="true"></asp:TextBox>
-
-                                    <cc1:AutoCompleteExtender ServiceMethod="AutocompleteAlmacen" MinimumPrefixLength="1"
-                                        CompletionInterval="100" EnableCaching="false" CompletionSetCount="10"
-                                        TargetControlID="txtSearch" ID="AutoCompleteExtender1" runat="server"
-                                        FirstRowSelected="false" CompletionListCssClass="completionList"
-                                        ServicePath="~/Service/WebService1.asmx" UseContextKey="true"
-                                        CompletionListItemCssClass="listItem" CompletionListHighlightedItemCssClass="itemHighlighted">
-                                    </cc1:AutoCompleteExtender>
-
+                                    <asp:TextBox ID="txtSearch" runat="server" 
+                                        placeholder="Ingrese el texto a buscar"
+                                        MaxLength="200" AutoPostBack="true"></asp:TextBox>
                                 </div>
 
                                 <div class="col-md-2">

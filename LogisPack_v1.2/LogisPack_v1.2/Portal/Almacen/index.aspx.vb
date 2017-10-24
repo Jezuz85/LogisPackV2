@@ -18,7 +18,6 @@ Public Class index
 
             If IsPostBack = False Then
 
-                hdfFiltro.Value = ddlBuscar.SelectedValue
                 ViewState(Val_General.filtroBusqueda.ToString) = String.Empty
                 ViewState(Val_General.textoBusqueda.ToString) = String.Empty
 
@@ -37,6 +36,7 @@ Public Class index
                 LlenarTreeView(dt, 0, Nothing)
                 LlenarGridView()
                 CargarListas()
+
             Else
 
             End If
@@ -57,6 +57,10 @@ Public Class index
     ''' </summary>
     Private Sub CargarListas()
         Mgr_Cliente.Llenar_Lista(ddlClienteAdd, idCliente)
+
+        Util_DropDownList.Llenar_FiltroBusqueda(ddlBuscar, Val_Paginas.Almacen_Index.ToString)
+        hdfFiltro.Value = ddlBuscar.SelectedValue
+
     End Sub
 
     ''' <summary>

@@ -8,12 +8,18 @@
     }
 }
 
-function load_OperacionCrear() {
+function load_OperacionCrear()
+{
+    //Funciones para fecha en input
+    $(function () {
+        $(".date-picker").datepicker({
+            dateFormat: 'dd/mm/yy'
+        });
 
-    
-    $('#btn').click(function () {
-        $(txtFechaOperacion).focus();
     });
 
-
+    $('#btn').click(function ()
+    {
+        $(txtFechaOperacion).focus();
+    });
 }

@@ -46,6 +46,7 @@ Public Class index3
     ''' </summary>
     Private Sub CargarListas()
         Mgr_Cliente.Llenar_Lista(ddlCliente, idCliente)
+        Util_DropDownList.Llenar_FiltroBusqueda(ddlBuscar, Val_Paginas.Articulo_Index.ToString)
     End Sub
 
     ''' <summary>

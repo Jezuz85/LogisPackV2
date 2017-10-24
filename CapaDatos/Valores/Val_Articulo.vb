@@ -26,9 +26,10 @@
     '------------------------FILTROS DE LA LISTA DEL CAMPO BUSCAR------
     '------------------------------------------------------------------
     Public Shared ReadOnly Filtro_Cliente As Val_Articulo = New Val_Articulo("Cliente")
-    Public Shared ReadOnly Filtro_Almacen As Val_Articulo = New Val_Articulo("Almacen")
-    Public Shared ReadOnly Filtro_Codigo As Val_Articulo = New Val_Articulo("Codigo")
+    Public Shared ReadOnly Filtro_Almacen As Val_Articulo = New Val_Articulo("Almacén")
+    Public Shared ReadOnly Filtro_Codigo As Val_Articulo = New Val_Articulo("Código")
     Public Shared ReadOnly Filtro_Nombre As Val_Articulo = New Val_Articulo("Nombre")
+    Public Shared ReadOnly Filtro_TipoArticulo As Val_Articulo = New Val_Articulo("TipoArticulo")
 
     '------------------------------------------------------------------
     '------------------------VALORES PARA PASAR AL DROPDOWNLIST--------

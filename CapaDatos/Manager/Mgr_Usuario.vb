@@ -20,7 +20,7 @@ Public Class Mgr_Usuario
                          AL.Name
                     ).ToList()
 
-        Util_ControlesDinamicos.Set_Text_Value_List(DropDownList1, query, "Name", "Name")
+        Util_DropDownList.Set_Text_Value_List(DropDownList1, query, "Name", "Name")
     End Sub
 
     '------------------------------------------------------------------

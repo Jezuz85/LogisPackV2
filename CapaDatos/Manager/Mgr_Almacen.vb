@@ -111,7 +111,7 @@ Public Class Mgr_Almacen
                          AL.nombre
                     ).ToList()
 
-        Util_ControlesDinamicos.Set_Text_Value_List(DropDownList1, query, Val_Almacen.Nom_Alm.ToString, Val_Almacen.Id_Alm.ToString)
+        Util_DropDownList.Set_Text_Value_List(DropDownList1, query, Val_Almacen.Nom_Alm.ToString, Val_Almacen.Id_Alm.ToString)
 
         DropDownList1.Items.Insert(0, New ListItem(Val_General.Lista_Seleccione.ToString, String.Empty))
 
@@ -133,7 +133,7 @@ Public Class Mgr_Almacen
                     ).ToList()
 
 
-        Util_ControlesDinamicos.Set_Text_Value_List(DropDownList1, query, Val_Almacen.Nom_Alm.ToString, Val_Almacen.Id_Alm.ToString)
+        Util_DropDownList.Set_Text_Value_List(DropDownList1, query, Val_Almacen.Nom_Alm.ToString, Val_Almacen.Id_Alm.ToString)
 
         DropDownList1.Items.Insert(0, New ListItem(Val_General.Lista_Seleccione.ToString, String.Empty))
     End Sub

@@ -7,6 +7,8 @@
 	<asp:UpdatePanel ID="updatePanelPrinicpal" runat="server">
 		<ContentTemplate>
 			<asp:HiddenField ID="hfaccordion" runat="server" />
+			<asp:HiddenField ID="hdfFiltro" runat="server" />
+			<asp:HiddenField ID="hdfCliente" runat="server" />
 
 			<div id="titleContainer">
 				<div class="MainContentTitle">
@@ -42,15 +44,13 @@
 								</div>
 
 								<div class="col-md-2">
-									<asp:DropDownList runat="server" ID="ddlBuscar">
-										<asp:ListItem Text="Nombre" Value="Nombre"></asp:ListItem>
-									</asp:DropDownList>
+									<asp:DropDownList runat="server" ID="ddlBuscar" AutoPostBack="true"></asp:DropDownList>
 								</div>
 
 								<div class="col-md-7">
-
-									<asp:TextBox ID="txtSearch" runat="server" placeholder="Ingrese el texto a buscar"
-										MaxLength="200" autocomplete="off"></asp:TextBox>
+									<asp:TextBox ID="txtSearch" runat="server" 
+										placeholder="Ingrese el texto a buscar"
+										MaxLength="200" AutoPostBack="true"></asp:TextBox>
 								</div>
 
 								<div class="col-md-2">
@@ -257,4 +257,8 @@
 		</div>
 	</div>
 
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
+	<%: Scripts.Render("~/bundles/TipoUnidad_Index") %>
 </asp:Content>

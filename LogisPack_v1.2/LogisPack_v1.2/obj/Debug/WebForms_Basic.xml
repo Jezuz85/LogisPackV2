@@ -655,15 +655,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:LogisPack_v1._2.index._AutoCompleteExtender1">
-<summary>
-Control AutoCompleteExtender1.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:LogisPack_v1._2.index._btnBuscar">
 <summary>
 Control btnBuscar.
@@ -2513,6 +2504,24 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:LogisPack_v1._2.index5._hdfCliente">
+<summary>
+Control hdfCliente.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.index5._hdfFiltro">
+<summary>
+Control hdfFiltro.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:LogisPack_v1._2.index5._ddlBuscar">
 <summary>
 Control ddlBuscar.
@@ -2684,6 +2693,11 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="M:LogisPack_v1._2.index5.CargarListas">
+ <summary>
+ Metodo que llena los Dropdownlits con datos de la Base de Datos
+ </summary>
+</member>
 <member name="M:LogisPack_v1._2.index5.LlenarGridView">
  <summary>
  Metodo que llena los Dropdownlits con datos de la Base de Datos
@@ -2712,6 +2726,17 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="M:LogisPack_v1._2.index5.btnBuscar_Click(System.Object,System.EventArgs)">
  <summary>
  Metodo que realiza una busqueda en el grid
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index5.txtSearch_TextChanged(System.Object,System.EventArgs)">
+ <summary>
+ Evento que filtra el gridview dependiendo del texto enviado
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index5.ddlBuscar_SelectedIndexChanged(System.Object,System.EventArgs)">
+ <summary>
+ Evento que agrega al campo oculto filtro el campo a buscar dependiendo de la lista desplegable, para asi
+ poder filtrar el autocomplete
  </summary>
 </member>
 <member name="F:LogisPack_v1._2.Crear1._updatePanelPrinicpal">
@@ -2883,6 +2908,33 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
  al articulo dependiendo del valor que tenga el coeficiente del almacen
  </summary>
 </member>
+<member name="F:LogisPack_v1._2.Fabricar._updatePanelPrinicpal">
+<summary>
+Control updatePanelPrinicpal.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.Fabricar._ucAlerta">
+<summary>
+Control ucAlerta.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.Fabricar._btnGuardar">
+<summary>
+Control btnGuardar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:LogisPack_v1._2.index4._updatePanelPrinicpal">
 <summary>
 Control updatePanelPrinicpal.
@@ -2895,6 +2947,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:LogisPack_v1._2.index4._hfaccordion">
 <summary>
 Control hfaccordion.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.index4._hdfFiltro">
+<summary>
+Control hdfFiltro.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -2949,15 +3010,6 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:LogisPack_v1._2.index4._txtSearch">
 <summary>
 Control txtSearch.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:LogisPack_v1._2.index4._AutoCompleteExtender1">
-<summary>
-Control AutoCompleteExtender1.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -3046,11 +3098,6 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
  Metodo que llena los Dropdownlits con datos de la Base de Datos
  </summary>
 </member>
-<member name="M:LogisPack_v1._2.index4.txtSearch_TextChanged(System.Object,System.EventArgs)">
- <summary>
- Metodo que realiza una busqueda en el grid al darle enter al campo de busqueda
- </summary>
-</member>
 <member name="M:LogisPack_v1._2.index4.btnGuardar_Click(System.Object,System.EventArgs)">
  <summary>
  Metodo que se invoca cuando se presiona el boton "guardar" y redirecciona la pagina a "Crear"
@@ -3081,6 +3128,17 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
  Metodo que se ejecuta cuando se selecciona un almacen de la lista
  </summary>
 </member>
+<member name="M:LogisPack_v1._2.index4.txtSearch_TextChanged(System.Object,System.EventArgs)">
+ <summary>
+ Evento que filtra el gridview dependiendo del texto enviado
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index4.ddlBuscar_SelectedIndexChanged(System.Object,System.EventArgs)">
+ <summary>
+ Evento que agrega al campo oculto filtro el campo a buscar dependiendo de la lista desplegable, para asi
+ poder filtrar el autocomplete
+ </summary>
+</member>
 <member name="F:LogisPack_v1._2.index1._updatePanelPrinicpal">
 <summary>
 Control updatePanelPrinicpal.
@@ -3093,6 +3151,24 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:LogisPack_v1._2.index1._hfaccordion">
 <summary>
 Control hfaccordion.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.index1._hdfFiltro">
+<summary>
+Control hdfFiltro.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.index1._hdfCliente">
+<summary>
+Control hdfCliente.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -3257,6 +3333,11 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
  Metodos para llenar el Gridview con los tipos de facturacion de la base de datos
  </summary>
 </member>
+<member name="M:LogisPack_v1._2.index1.CargarListas">
+ <summary>
+ Metodo que llena los Dropdownlits con datos de la Base de Datos
+ </summary>
+</member>
 <member name="M:LogisPack_v1._2.index1.btnAdd_Click(System.Object,System.EventArgs)">
  <summary>
  Metodo que registra un tipo de facturacion en la base de datos
@@ -3282,6 +3363,17 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
  Metodo que realiza una resetea la busqueda en el grid
  </summary>
 </member>
+<member name="M:LogisPack_v1._2.index1.txtSearch_TextChanged(System.Object,System.EventArgs)">
+ <summary>
+ Evento que filtra el gridview dependiendo del texto enviado
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index1.ddlBuscar_SelectedIndexChanged(System.Object,System.EventArgs)">
+ <summary>
+ Evento que agrega al campo oculto filtro el campo a buscar dependiendo de la lista desplegable, para asi
+ poder filtrar el autocomplete
+ </summary>
+</member>
 <member name="F:LogisPack_v1._2.index2._updatePanelPrinicpal">
 <summary>
 Control updatePanelPrinicpal.
@@ -3294,6 +3386,24 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:LogisPack_v1._2.index2._hfaccordion">
 <summary>
 Control hfaccordion.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.index2._hdfFiltro">
+<summary>
+Control hdfFiltro.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.index2._hdfCliente">
+<summary>
+Control hdfCliente.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -3458,6 +3568,11 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
  Metodo que llena El Gridview con datos de la Base de Datos
  </summary>
 </member>
+<member name="M:LogisPack_v1._2.index2.CargarListas">
+ <summary>
+ Metodo que llena los Dropdownlits con datos de la Base de Datos
+ </summary>
+</member>
 <member name="M:LogisPack_v1._2.index2.btnAdd_Click(System.Object,System.EventArgs)">
  <summary>
  Metodo que registra un tipo de unidad en la base de datos
@@ -3481,6 +3596,17 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="M:LogisPack_v1._2.index2.btnReset_Click(System.Object,System.EventArgs)">
  <summary>
  Metodo que realiza una resetea la busqueda en el grid
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index2.txtSearch_TextChanged(System.Object,System.EventArgs)">
+ <summary>
+ Evento que filtra el gridview dependiendo del texto enviado
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index2.ddlBuscar_SelectedIndexChanged(System.Object,System.EventArgs)">
+ <summary>
+ Evento que agrega al campo oculto filtro el campo a buscar dependiendo de la lista desplegable, para asi
+ poder filtrar el autocomplete
  </summary>
 </member>
 <member name="F:LogisPack_v1._2.LogisPack.Alert._AlertExito">

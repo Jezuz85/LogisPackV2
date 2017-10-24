@@ -19,4 +19,9 @@
     Public Shared ReadOnly EditModalScript As Val_TipoUnidad = New Val_TipoUnidad("EditModallScript")
     Public Shared ReadOnly DeleteModalScript As Val_TipoUnidad = New Val_TipoUnidad("DeleteModalScript")
 
+    '------------------------------------------------------------------
+    '------------------------FILTROS DE LA LISTA DEL CAMPO BUSCAR------
+    '------------------------------------------------------------------
+    Public Shared ReadOnly Filtro_Nombre As Val_TipoUnidad = New Val_TipoUnidad("Nombre")
+
 End Class

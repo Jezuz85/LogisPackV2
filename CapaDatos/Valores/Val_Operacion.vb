@@ -18,8 +18,8 @@
     '------------------------FILTROS DE LA LISTA DEL CAMPO BUSCAR------
     '------------------------------------------------------------------
     Public Shared ReadOnly Filtro_Cliente As Val_Operacion = New Val_Operacion("Cliente")
-    Public Shared ReadOnly Filtro_Almacen As Val_Operacion = New Val_Operacion("Almacen")
-    Public Shared ReadOnly Filtro_Articulo As Val_Operacion = New Val_Operacion("Articulo")
+    Public Shared ReadOnly Filtro_Almacen As Val_Operacion = New Val_Operacion("Almacén")
+    Public Shared ReadOnly Filtro_Articulo As Val_Operacion = New Val_Operacion("Artículo")
 
     '------------------------------------------------------------------
     '---NOMBRES DE LAS COLUMANS DEL GRIDVIEW DEL MODULO OPERACION------

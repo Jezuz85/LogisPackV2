@@ -25,7 +25,7 @@ Public Class Mgr_Cliente
             query = query.Where(Function(x) x.id_cliente = idCliente).ToList()
         End If
 
-        If columna = "nombre" Then
+        If columna = Val_Cliente.Filtro_Nombre.ToString Then
 
             If tipoOrdenacion = "1" Then
                 query = query.OrderBy(Function(x) x.nombre).ToList()
@@ -33,7 +33,7 @@ Public Class Mgr_Cliente
                 query = query.OrderByDescending(Function(x) x.nombre).ToList()
             End If
 
-        ElseIf columna = "codigo" Then
+        ElseIf columna = Val_Cliente.Filtro_Codigo.ToString Then
 
             If tipoOrdenacion = "1" Then
                 query = query.OrderBy(Function(x) x.codigo).ToList()
@@ -44,9 +44,9 @@ Public Class Mgr_Cliente
         End If
 
         If textoBusqueda <> String.Empty Then
-            If filtroBusqueda = "Nombre" Then
+            If filtroBusqueda = Val_Cliente.Filtro_Nombre.ToString Then
                 query = query.Where(Function(x) x.nombre.ToLower.Contains(textoBusqueda.ToLower)).ToList()
-            ElseIf filtroBusqueda = "Codigo" Then
+            ElseIf filtroBusqueda = Val_Cliente.Filtro_Codigo.ToString Then
                 query = query.Where(Function(x) x.codigo.ToLower.Contains(textoBusqueda.ToLower)).ToList()
             End If
         End If

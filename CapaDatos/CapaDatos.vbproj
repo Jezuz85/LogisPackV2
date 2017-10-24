@@ -147,6 +147,7 @@
       <DependentUpon>ModeloLogisPack.tt</DependentUpon>
     </Compile>
     <Compile Include="Utilidades\Util_Cifrar.vb" />
+    <Compile Include="Utilidades\Util_DropDownList.vb" />
     <Compile Include="Valores\Val_Cliente.vb" />
     <Compile Include="Valores\Val_Comandos.vb" />
     <Compile Include="Utilidades\Util_ControlesDinamicos.vb" />

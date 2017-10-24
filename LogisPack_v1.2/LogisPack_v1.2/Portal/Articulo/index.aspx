@@ -24,14 +24,14 @@
 				<div class="row">
 					<div class="col-md-2">
 						<strong>Cliente</strong>
-						<asp:DropDownList runat="server" ID="ddlCliente"  AutoPostBack="true"/>
+						<asp:DropDownList runat="server" ID="ddlCliente" AutoPostBack="true" />
 					</div>
 					<div class="col-md-2">
 						<strong>Almacén</strong>
-						<asp:DropDownList runat="server" ID="ddlAlmacen"  AutoPostBack="true"/>
+						<asp:DropDownList runat="server" ID="ddlAlmacen" AutoPostBack="true" />
 					</div>
 				</div>
-				
+
 				<br />
 
 				<div class="section">
@@ -55,12 +55,7 @@
 								</div>
 
 								<div class="col-md-2">
-									<asp:DropDownList runat="server" ID="ddlBuscar">
-										<asp:ListItem Text="Codigo" Value="Codigo"></asp:ListItem>
-										<asp:ListItem Text="Nombre" Value="Nombre"></asp:ListItem>
-										<asp:ListItem Text="Almacén" Value="Almacen"></asp:ListItem>
-										<asp:ListItem Text="Cliente" Value="Cliente"></asp:ListItem>
-									</asp:DropDownList>
+									<asp:DropDownList runat="server" ID="ddlBuscar"></asp:DropDownList>
 								</div>
 
 								<div class="col-md-7">
@@ -103,14 +98,16 @@
 											<asp:Label ID="id" runat="server" Text='<%# Eval("id_articulo") %>' />
 										</ItemTemplate>
 									</asp:TemplateField>
-									
-									<asp:BoundField DataField="Almacen" HeaderText="Almacén" SortExpression="Almacen"></asp:BoundField>
-									
-									<asp:BoundField DataField="Cliente" HeaderText="Cliente" SortExpression="Cliente"></asp:BoundField>
 
-									<asp:BoundField DataField="Codigo" HeaderText="Código" SortExpression="Codigo"></asp:BoundField>
+									<asp:BoundField HeaderText="Almacén" DataField="Almacen" SortExpression="Almacen"></asp:BoundField>
 
-									<asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre"></asp:BoundField>
+									<asp:BoundField HeaderText="Cliente" DataField="Cliente" SortExpression="Cliente"></asp:BoundField>
+
+									<asp:BoundField HeaderText="Código" DataField="Codigo" SortExpression="Codigo"></asp:BoundField>
+
+									<asp:BoundField HeaderText="Nombre" DataField="Nombre" SortExpression="Nombre"></asp:BoundField>
+
+									<asp:BoundField HeaderText="Tipo Artículo" DataField="TipoArticulo" SortExpression="TipoArticulo"></asp:BoundField>
 
 									<asp:ButtonField HeaderText="Editar" CommandName="Editar"
 										ButtonType="Image" ImageUrl="~/Content/images/edit.png"
@@ -135,7 +132,7 @@
 
 				<div class="row">
 					<div class="col-md-12" align="right">
-						<asp:Button ID="btnGuardar" runat="server"  Text="Nuevo" />
+						<asp:Button ID="btnGuardar" runat="server" Text="Nuevo" />
 					</div>
 				</div>
 			</div>
@@ -150,7 +147,8 @@
 			<div class="modal-content">
 
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><img alt="X" src="../../Content/images/baja.png" /></button>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						<img alt="X" src="../../Content/images/baja.png" /></button>
 					<h3><strong>Eliminar Registro</strong></h3>
 				</div>
 

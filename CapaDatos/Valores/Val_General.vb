@@ -45,12 +45,13 @@
     Public Shared ReadOnly SoloNumero As Val_General = New Val_General("Error! Solo es permitidos valores numericos para el campo ")
 
     '--------------------------------------------------------------------------------------
-    '------------------------VALORES GENERALES PARA TODA LA APLICAICION--------------------
+    '------------------------VALORES GENERALES PARA TODA LA APLICACION---------------------
     '--------------------------------------------------------------------------------------
     Public Shared ReadOnly filtroBusqueda As Val_General = New Val_General("filtroBusqueda")
     Public Shared ReadOnly textoBusqueda As Val_General = New Val_General("textoBusqueda")
     Public Shared ReadOnly SortExpression As Val_General = New Val_General("SortExpression")
     Public Shared ReadOnly GridViewSortDirection As Val_General = New Val_General("GridViewSortDirection")
     Public Shared ReadOnly Lista_Seleccione As Val_General = New Val_General("Seleccione...")
+
 
 End Class
