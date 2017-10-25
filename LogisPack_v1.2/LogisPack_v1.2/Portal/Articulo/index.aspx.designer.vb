@@ -32,6 +32,24 @@ Partial Public Class index3
     Protected WithEvents hfaccordion As Global.System.Web.UI.WebControls.HiddenField
     
     '''<summary>
+    '''Control hdfCliente.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents hdfCliente As Global.System.Web.UI.WebControls.HiddenField
+    
+    '''<summary>
+    '''Control hdfFiltro.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents hdfFiltro As Global.System.Web.UI.WebControls.HiddenField
+    
+    '''<summary>
     '''Control ddlCliente.
     '''</summary>
     '''<remarks>

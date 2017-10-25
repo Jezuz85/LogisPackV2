@@ -538,6 +538,12 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
  devuelve el nombre del cliente asociado al usuario si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
+<member name="M:LogisPack_v1._2.Manager_Usuario.GetEmailCliente(System.String)">
+ <summary>
+ Metodo que recibe un id del usuario y lo consulta desde la Base de datos, 
+ devuelve el email del cliente asociado al usuario si fue exitoso, de lo contrario no devuelve nothing
+ </summary>
+</member>
 <member name="F:LogisPack_v1._2.index._updatePanelPrinicpal">
 <summary>
 Control updatePanelPrinicpal.
@@ -2338,6 +2344,24 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:LogisPack_v1._2.index3._hdfCliente">
+<summary>
+Control hdfCliente.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:LogisPack_v1._2.index3._hdfFiltro">
+<summary>
+Control hdfFiltro.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:LogisPack_v1._2.index3._ddlCliente">
 <summary>
 Control ddlCliente.
@@ -2484,6 +2508,17 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="M:LogisPack_v1._2.index3.ddlAlmacen_SelectedIndexChanged(System.Object,System.EventArgs)">
  <summary>
  Metodo que se ejecuta cuando se selecciona un almacen de la lista
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index3.txtSearch_TextChanged(System.Object,System.EventArgs)">
+ <summary>
+ Evento que filtra el gridview dependiendo del texto enviado
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.index3.ddlBuscar_SelectedIndexChanged(System.Object,System.EventArgs)">
+ <summary>
+ Evento que agrega al campo oculto filtro el campo a buscar dependiendo de la lista desplegable, para asi
+ poder filtrar el autocomplete
  </summary>
 </member>
 <member name="F:LogisPack_v1._2.index5._updatePanelPrinicpal">

@@ -55,6 +55,20 @@ Public Class Manager_Usuario
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que recibe un id del usuario y lo consulta desde la Base de datos, 
+    ''' devuelve el email del cliente asociado al usuario si fue exitoso, de lo contrario no devuelve nothing
+    ''' </summary>
+    Public Shared Function GetEmailCliente(_id As String) As String
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Dim _usuario = contexto.AspNetUsers.Where(Function(model) model.Id = _id).SingleOrDefault()
+
+        Return _usuario.Email
+
+    End Function
+
     Public Shared Function GetRol_User(_Page As Page) As String
 
         Dim contexto As ApplicationDbContext = New ApplicationDbContext()

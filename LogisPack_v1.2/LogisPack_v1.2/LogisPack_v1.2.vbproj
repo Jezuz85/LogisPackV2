@@ -408,6 +408,7 @@
     <Content Include="obj\Debug\CoreCompileInputs.cache" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="Portal\Articulo\CargaMasiva.aspx" />
+    <Content Include="Portal\Error\Error_LogisPack.aspx" />
     <Content Include="Portal\Operacion\Crear.aspx" />
     <Content Include="Portal\Operacion\Fabricar.aspx" />
     <Content Include="Portal\web.config">
@@ -686,6 +687,13 @@
     <Compile Include="Portal\Cliente\index.aspx.vb">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\Error\Error_LogisPack.aspx.designer.vb">
+      <DependentUpon>Error_LogisPack.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\Error\Error_LogisPack.aspx.vb">
+      <DependentUpon>Error_LogisPack.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Portal\Operacion\Crear.aspx.designer.vb">
       <DependentUpon>Crear.aspx</DependentUpon>

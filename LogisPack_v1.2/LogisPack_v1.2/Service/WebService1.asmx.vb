@@ -229,6 +229,68 @@ Public Class WebService1
 
     End Function
 
+    <WebMethod()>
+    Public Function AutocompleteArticulo(prefixText As String, ByVal Filtro As String, ByVal Cliente As String) As List(Of String)
+
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Dim listArticulos As List(Of String) = New List(Of String)()
+        listArticulos.Clear()
+
+        Dim Consulta = contexto.Articulo.Where(Function(model) model.nombre.ToLower.Contains(prefixText.ToLower)).ToList()
+
+        If Filtro = Val_Articulo.Filtro_Codigo.ToString Then
+            Consulta = contexto.Articulo.Where(Function(model) model.codigo.ToLower.Contains(prefixText.ToLower)).ToList()
+
+        ElseIf Filtro = Val_Articulo.Filtro_Almacen.ToString Then
+
+            Dim ConsultaAlm = contexto.Almacen.Where(Function(model) model.nombre.ToLower.Contains(prefixText.ToLower)).ToList()
+
+            If Cliente <> 1 Then
+                ConsultaAlm = ConsultaAlm.Where(Function(x) x.id_cliente = Cliente).ToList()
+            End If
+
+            For Each item In ConsultaAlm
+                listArticulos.Add(item.nombre)
+            Next
+            Return listArticulos
+
+        ElseIf Filtro = Val_Articulo.Filtro_Cliente.ToString Then
+
+            Dim ConsultaCli = contexto.Cliente.Where(Function(model) model.nombre.ToLower.Contains(prefixText.ToLower)).ToList()
+            Dim query = ConsultaCli.GroupBy(Function(model) New With {Key model.nombre}).ToList()
+
+            If Cliente <> 1 Then
+                ConsultaCli = ConsultaCli.Where(Function(x) x.id_cliente = Cliente).ToList()
+            End If
+
+            For Each item In ConsultaCli
+                listArticulos.Add(item.nombre)
+            Next
+            Return listArticulos
+
+        End If
+
+        If Cliente <> 1 Then
+            Consulta = Consulta.Where(Function(x) x.Almacen.id_cliente = Cliente).ToList()
+        End If
+
+        For Each item In Consulta
+
+            If Filtro = Val_Articulo.Filtro_Codigo.ToString Then
+                listArticulos.Add(item.codigo)
+            ElseIf Filtro = Val_Articulo.Filtro_Nombre.ToString Then
+                listArticulos.Add(item.nombre)
+            End If
+
+        Next
+
+
+        Return listArticulos
+
+    End Function
+
 
 
 

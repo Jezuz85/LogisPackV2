@@ -137,6 +137,8 @@ Public Class Crear1
 
                     Util_Modal.MostrarAlerta(updatePanelPrinicpal, bError, Val_General.Registrar.ToString)
 
+                    Util_UpdatePanel.CerrarOperacion(Val_General.Registrar.ToString, bError, Me, updatePanelPrinicpal, updatePanelPrinicpal)
+
                     Get_StockArticulo(Edit.id_articulo)
 
                 Else

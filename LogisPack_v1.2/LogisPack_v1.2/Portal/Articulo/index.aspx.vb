@@ -12,6 +12,8 @@ Public Class index3
             Manager_Usuario.ValidarMenu(Me, Master)
 
             idCliente = Mgr_Usuario.Get_Cliente_Usuario(Manager_Usuario.GetUserId(User))
+            hdfCliente.Value = idCliente
+
             If IsPostBack = False Then
                 LlenarGridView()
                 CargarListas()
@@ -47,6 +49,7 @@ Public Class index3
     Private Sub CargarListas()
         Mgr_Cliente.Llenar_Lista(ddlCliente, idCliente)
         Util_DropDownList.Llenar_FiltroBusqueda(ddlBuscar, Val_Paginas.Articulo_Index.ToString)
+        hdfFiltro.Value = ddlBuscar.SelectedValue
     End Sub
 
     ''' <summary>
@@ -167,6 +170,26 @@ Public Class index3
         End If
 
         LlenarGridView()
+
+    End Sub
+
+    ''' <summary>
+    ''' Evento que filtra el gridview dependiendo del texto enviado
+    ''' </summary>
+    Protected Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
+
+        ViewState(Val_General.filtroBusqueda.ToString) = ddlBuscar.SelectedValue
+        ViewState(Val_General.textoBusqueda.ToString) = txtSearch.Text
+        LlenarGridView()
+    End Sub
+
+    ''' <summary>
+    ''' Evento que agrega al campo oculto filtro el campo a buscar dependiendo de la lista desplegable, para asi
+    ''' poder filtrar el autocomplete
+    ''' </summary>
+    Protected Sub ddlBuscar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlBuscar.SelectedIndexChanged
+
+        hdfFiltro.Value = ddlBuscar.SelectedValue
 
     End Sub
 

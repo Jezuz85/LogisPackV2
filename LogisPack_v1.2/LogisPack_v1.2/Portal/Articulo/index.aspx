@@ -7,6 +7,8 @@
 	<asp:UpdatePanel ID="updatePanelPrinicpal" runat="server">
 		<ContentTemplate>
 			<asp:HiddenField ID="hfaccordion" runat="server" />
+			<asp:HiddenField ID="hdfCliente" runat="server" />
+			<asp:HiddenField ID="hdfFiltro" runat="server" />
 
 			<div id="titleContainer">
 				<div class="MainContentTitle">
@@ -55,13 +57,13 @@
 								</div>
 
 								<div class="col-md-2">
-									<asp:DropDownList runat="server" ID="ddlBuscar"></asp:DropDownList>
+									<asp:DropDownList runat="server" ID="ddlBuscar" AutoPostBack="true"></asp:DropDownList>
 								</div>
 
 								<div class="col-md-7">
-
-									<asp:TextBox ID="txtSearch" runat="server" placeholder="Ingrese el texto a buscar"
-										MaxLength="200" autocomplete="off"></asp:TextBox>
+									<asp:TextBox ID="txtSearch" runat="server" 
+										placeholder="Ingrese el texto a buscar"
+										MaxLength="200" AutoPostBack="true"></asp:TextBox>
 								</div>
 
 								<div class="col-md-2">
@@ -99,11 +101,11 @@
 										</ItemTemplate>
 									</asp:TemplateField>
 
-									<asp:BoundField HeaderText="Almacén" DataField="Almacen" SortExpression="Almacen"></asp:BoundField>
+									<asp:BoundField HeaderText="Almacén" DataField="Almacén" SortExpression="Almacén"></asp:BoundField>
 
 									<asp:BoundField HeaderText="Cliente" DataField="Cliente" SortExpression="Cliente"></asp:BoundField>
 
-									<asp:BoundField HeaderText="Código" DataField="Codigo" SortExpression="Codigo"></asp:BoundField>
+									<asp:BoundField HeaderText="Código" DataField="Código" SortExpression="Código"></asp:BoundField>
 
 									<asp:BoundField HeaderText="Nombre" DataField="Nombre" SortExpression="Nombre"></asp:BoundField>
 
@@ -180,4 +182,8 @@
 		</div>
 	</div>
 
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
+	<%: Scripts.Render("~/bundles/Articulo_Index") %>
 </asp:Content>

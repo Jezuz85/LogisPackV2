@@ -341,9 +341,9 @@ Public Class Mgr_Articulo
                          AL.id_articulo,
                          AL.Almacen.id_cliente,
                          AL.nombre,
-                         AL.codigo,
+                         Código = AL.codigo,
                          Cliente = AL.Almacen.Cliente.nombre,
-                         Almacen = AL.Almacen.nombre,
+                         Almacén = AL.Almacen.nombre,
                          TipoArticulo = AL.tipoArticulo
                     ).ToList()
 
@@ -359,15 +359,15 @@ Public Class Mgr_Articulo
             End If
         ElseIf columna = Val_Articulo.Filtro_Codigo.ToString Then
             If tipoOrdenacion = "1" Then
-                query = query.OrderBy(Function(x) x.codigo).ToList()
+                query = query.OrderBy(Function(x) x.Código).ToList()
             Else
-                query = query.OrderByDescending(Function(x) x.codigo).ToList()
+                query = query.OrderByDescending(Function(x) x.Código).ToList()
             End If
         ElseIf columna = Val_Articulo.Filtro_Almacen.ToString Then
             If tipoOrdenacion = "1" Then
-                query = query.OrderBy(Function(x) x.Almacen).ToList()
+                query = query.OrderBy(Function(x) x.Almacén).ToList()
             Else
-                query = query.OrderByDescending(Function(x) x.Almacen).ToList()
+                query = query.OrderByDescending(Function(x) x.Almacén).ToList()
             End If
         ElseIf columna = Val_Articulo.Filtro_Cliente.ToString Then
             If tipoOrdenacion = "1" Then
@@ -387,9 +387,9 @@ Public Class Mgr_Articulo
             If filtroBusqueda = Val_Articulo.Filtro_Nombre.ToString Then
                 query = query.Where(Function(x) x.nombre.ToLower.Contains(textoBusqueda.ToLower)).ToList()
             ElseIf filtroBusqueda = Val_Articulo.Filtro_Codigo.ToString Then
-                query = query.Where(Function(x) x.codigo.ToLower.Contains(textoBusqueda.ToLower)).ToList()
+                query = query.Where(Function(x) x.Código.ToLower.Contains(textoBusqueda.ToLower)).ToList()
             ElseIf filtroBusqueda = Val_Articulo.Filtro_Almacen.ToString Then
-                query = query.Where(Function(x) x.Almacen.ToLower.Contains(textoBusqueda.ToLower)).ToList()
+                query = query.Where(Function(x) x.Almacén.ToLower.Contains(textoBusqueda.ToLower)).ToList()
             ElseIf filtroBusqueda = Val_Articulo.Filtro_Cliente.ToString Then
                 query = query.Where(Function(x) x.Cliente.ToLower.Contains(textoBusqueda.ToLower)).ToList()
             End If
