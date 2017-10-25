@@ -1,5 +1,4 @@
 ﻿
-
 Imports CapaDatos
 
 Public Class Mgr_Cliente_Test
@@ -13,6 +12,7 @@ Public Class Mgr_Cliente_Test
             .codigo = "Codv1",
             .nombre = "Nombrev1"
         }
+
 
         Return Cliente1
 

@@ -304,6 +304,12 @@ CapaDatos
  devuelve un objeto tipo Cliente si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
+<member name="M:CapaDatos.Mgr_Cliente.Get_ClienteByNombre(System.String)">
+ <summary>
+ Metodo que recibe un nombre del Cliente y lo consulta desde la Base de datos, 
+ devuelve un objeto tipo Cliente si fue exitoso, de lo contrario no devuelve nothing
+ </summary>
+</member>
 <member name="M:CapaDatos.Mgr_Historico.Guardar(CapaDatos.Historico)">
  <summary>
  Metodo que recibe un objeto Historico y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
@@ -583,7 +589,7 @@ CapaDatos
  todos los alamcenes de ese cliente
  </summary>
 </member>
-<member name="M:CapaDatos.Mgr_Almacen.Guardar(CapaDatos.Almacen)">
+<member name="M:CapaDatos.Mgr_Almacen.Guardar(CapaDatos.Almacen@)">
  <summary>
  Metodo que recibe un objeto Almacen y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
  </summary>

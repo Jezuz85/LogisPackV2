@@ -152,6 +152,26 @@ LogisPack_v1.2.Tests
  Prueba que se ejecuta para eliminar un almacen
  </summary>
 </member>
+<member name="M:LogisPack_v1._2.Tests.Test_Almacen.Autocomplete_AlmacenByCodigo">
+ <summary>
+ Prueba que se ejecuta para valdiar el webservice autocomplete en almacen, con filtro de Codigo
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Almacen.Autocomplete_AlmacenByNombre">
+ <summary>
+ Prueba que se ejecuta para valdiar el webservice autocomplete en almacen, con filtro de nombre
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Almacen.Autocomplete_AlmacenByCoeficienteVolumetrico">
+ <summary>
+ Prueba que se ejecuta para valdiar el webservice autocomplete en almacen, con filtro de coeficiente
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Almacen.Autocomplete_AlmacenByCliente">
+ <summary>
+ Prueba que se ejecuta para valdiar el webservice autocomplete en almacen, con filtro de cliente
+ </summary>
+</member>
 <member name="M:LogisPack_v1._2.Tests.Test_Articulo.Inicializar">
  <summary>
  Método que se invoca para inicializar auitomaticamente una prueba
@@ -175,6 +195,26 @@ LogisPack_v1.2.Tests
 <member name="M:LogisPack_v1._2.Tests.Test_Articulo.Eliminar_Articulo">
  <summary>
  Método que se ejecuta para eliminar un articulo
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Articulo.Autocomplete_ArticuloByNombre">
+ <summary>
+ Prueba que se ejecuta para valdiar el webservice autocomplete en Articulo normal, con filtro de nombre
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Articulo.Autocomplete_ArticuloByCodigo">
+ <summary>
+ Prueba que se ejecuta para valdiar el webservice autocomplete en Articulo normal, con filtro de codigo
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Articulo.Autocomplete_ArticuloByAlmacen">
+ <summary>
+ Prueba que se ejecuta para valdiar el webservice autocomplete en Articulo normal, con filtro de almacen
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Articulo.Autocomplete_ArticuloByCliente">
+ <summary>
+ Prueba que se ejecuta para valdiar el webservice autocomplete en Articulo normal, con filtro de Cliente
  </summary>
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_ArticuloPicking.Inicializar">
@@ -225,6 +265,16 @@ LogisPack_v1.2.Tests
 <member name="M:LogisPack_v1._2.Tests.Test_Cliente.EliminarCliente">
  <summary>
  Prueba que se ejecuta para eliminar un Cliente
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Cliente.Autocomplete_ClienteByCodigo">
+ <summary>
+ Prueba que se ejecuta para valdiar el webservice autocomplete en cliente, con filtro de Codigo
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Cliente.Autocomplete_ClienteByNombre">
+ <summary>
+ Prueba que se ejecuta para valdiar el webservice autocomplete en cliente, con filtro de nombre
  </summary>
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_Imagen.Inicializar">
@@ -302,6 +352,11 @@ LogisPack_v1.2.Tests
  Prueba que se ejecuta para eliminar un TipoFacturacion
  </summary>
 </member>
+<member name="M:LogisPack_v1._2.Tests.Test_TipoFacturacion.Autocomplete_TipoFacturacionByNombre">
+ <summary>
+ Prueba que se ejecuta para valdiar el webservice autocomplete en Tipo de Facturacion, con filtro de Codigo
+ </summary>
+</member>
 <member name="M:LogisPack_v1._2.Tests.Test_TipoUnidad.Inicializar">
  <summary>
  Método que se invoca para inicializar auitomaticamente una prueba
@@ -325,6 +380,11 @@ LogisPack_v1.2.Tests
 <member name="M:LogisPack_v1._2.Tests.Test_TipoUnidad.Eliminar_Tipo_Unidad">
  <summary>
  Prueba que se ejecuta para eliminar un TipoUnidad
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_TipoUnidad.Autocomplete_TipoUnidadByNombre">
+ <summary>
+ Prueba que se ejecuta para valdiar el webservice autocomplete en Tipo de Unidad, con filtro de Codigo
  </summary>
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_Ubicacion.Inicializar">

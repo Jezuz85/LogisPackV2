@@ -167,4 +167,16 @@ Public Class Mgr_Cliente
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que recibe un nombre del Cliente y lo consulta desde la Base de datos, 
+    ''' devuelve un objeto tipo Cliente si fue exitoso, de lo contrario no devuelve nothing
+    ''' </summary>
+    Public Shared Function Get_ClienteByNombre(nombre As String) As Cliente
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Return contexto.Cliente.Where(Function(model) model.nombre.Equals(nombre)).SingleOrDefault()
+
+    End Function
+
 End Class

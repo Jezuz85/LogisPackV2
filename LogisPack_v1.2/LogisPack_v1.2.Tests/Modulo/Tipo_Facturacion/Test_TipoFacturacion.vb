@@ -65,4 +65,17 @@ Imports CapaDatos
 
     End Sub
 
+    ''' <summary>
+    ''' Prueba que se ejecuta para valdiar el webservice autocomplete en Tipo de Facturacion, con filtro de Codigo
+    ''' </summary>
+    <TestMethod()> Public Sub Autocomplete_TipoFacturacionByNombre()
+
+        Dim _miServicio As WebService1 = New WebService1()
+
+        Dim _ListaItems As List(Of String) = _miServicio.AutocompleteTipoFacturacion("Nombrev", Val_TipoFacturacion.Filtro_Nombre.ToString(), 1)
+
+        Assert.AreEqual(1, _ListaItems.Count())
+
+    End Sub
+
 End Class

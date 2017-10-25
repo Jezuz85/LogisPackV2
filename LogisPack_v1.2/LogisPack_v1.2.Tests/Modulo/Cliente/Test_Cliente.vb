@@ -14,7 +14,6 @@ Imports CapaDatos
         Mgr_Cliente_Test.Inicializar(ClienteTest)
     End Sub
 
-
     ''' <summary>
     ''' Método que se invoca para finbalizar auitomaticamente una prueba
     ''' </summary>
@@ -63,5 +62,30 @@ Imports CapaDatos
         Assert.AreEqual(Mgr_Cliente.Get_Cliente(ClienteTest.id_cliente), Nothing)
 
     End Sub
+
+    ''' <summary>
+    ''' Prueba que se ejecuta para valdiar el webservice autocomplete en cliente, con filtro de Codigo
+    ''' </summary>
+    <TestMethod()> Public Sub Autocomplete_ClienteByCodigo()
+
+        Dim _miServicio As WebService1 = New WebService1()
+
+        Dim _ListaItems As List(Of String) = _miServicio.AutocompleteCliente("Codv", Val_Cliente.Filtro_Codigo.ToString(), 1)
+
+        Assert.AreEqual(1, _ListaItems.Count())
+    End Sub
+
+    ''' <summary>
+    ''' Prueba que se ejecuta para valdiar el webservice autocomplete en cliente, con filtro de nombre
+    ''' </summary>
+    <TestMethod()> Public Sub Autocomplete_ClienteByNombre()
+
+        Dim _miServicio As WebService1 = New WebService1()
+
+        Dim _ListaItems As List(Of String) = _miServicio.AutocompleteCliente("Nombrev", Val_Cliente.Filtro_Nombre.ToString(), 1)
+
+        Assert.AreEqual(1, _ListaItems.Count())
+    End Sub
+
 
 End Class

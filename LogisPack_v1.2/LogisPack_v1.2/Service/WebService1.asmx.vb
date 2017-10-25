@@ -72,7 +72,6 @@ Public Class WebService1
     <WebMethod()>
     Public Function AutocompleteAlmacen(prefixText As String, ByVal Filtro As String, ByVal Cliente As String) As List(Of String)
 
-
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
         Dim listArticulos As List(Of String) = New List(Of String)()
@@ -116,6 +115,8 @@ Public Class WebService1
             ElseIf Filtro = Val_Almacen.Filtro_Cliente.ToString Then
                 listArticulos.Add(item.Cliente.nombre)
             ElseIf Filtro = Val_Almacen.Filtro_Coeficiente.ToString Then
+                listArticulos.Add(item.coeficiente_volumetrico)
+            ElseIf Filtro = Val_Almacen.Filtro_Nombre.ToString Then
                 listArticulos.Add(item.nombre)
             End If
 

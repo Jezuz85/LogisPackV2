@@ -144,7 +144,7 @@ Public Class Mgr_Almacen
     ''' <summary>
     ''' Metodo que recibe un objeto Almacen y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
     ''' </summary>
-    Public Shared Function Guardar(ByVal _nuevo As Almacen) As Boolean
+    Public Shared Function Guardar(ByRef _nuevo As Almacen) As Boolean
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
         Dim bError As Boolean = True

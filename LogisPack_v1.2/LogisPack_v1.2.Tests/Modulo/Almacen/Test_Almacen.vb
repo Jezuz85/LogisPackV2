@@ -12,9 +12,8 @@
     Public Sub Inicializar()
 
         _Cliente1 = Mgr_Cliente_Test.Get_Cliente1()
-        AlmacenTest = Mgr_Almacen_Test.Get_Almacen1(_Cliente1)
-
         Mgr_Almacen_Test.Inicializar(_Cliente1, AlmacenTest)
+
     End Sub
 
     ''' <summary>
@@ -72,6 +71,55 @@
         Dim AlmacenBD = Mgr_Almacen.Consultar(AlmacenTest.id_almacen)
 
         Assert.AreEqual(AlmacenBD, Nothing)
+
+    End Sub
+
+    ''' <summary>
+    ''' Prueba que se ejecuta para valdiar el webservice autocomplete en almacen, con filtro de Codigo
+    ''' </summary>
+    <TestMethod()> Public Sub Autocomplete_AlmacenByCodigo()
+
+        Dim _miServicio As WebService1 = New WebService1()
+
+        Dim _ListaItems As List(Of String) = _miServicio.AutocompleteAlmacen("Codv", Val_Almacen.Filtro_Codigo.ToString(), 1)
+
+        Assert.AreEqual(1, _ListaItems.Count())
+    End Sub
+
+    ''' <summary>
+    ''' Prueba que se ejecuta para valdiar el webservice autocomplete en almacen, con filtro de nombre
+    ''' </summary>
+    <TestMethod()> Public Sub Autocomplete_AlmacenByNombre()
+
+        Dim _miServicio As WebService1 = New WebService1()
+
+        Dim _ListaItems As List(Of String) = _miServicio.AutocompleteAlmacen("Nombrev", Val_Almacen.Filtro_Nombre.ToString(), 1)
+
+        Assert.AreEqual(1, _ListaItems.Count())
+    End Sub
+
+    ''' <summary>
+    ''' Prueba que se ejecuta para valdiar el webservice autocomplete en almacen, con filtro de coeficiente
+    ''' </summary>
+    <TestMethod()> Public Sub Autocomplete_AlmacenByCoeficienteVolumetrico()
+
+        Dim _miServicio As WebService1 = New WebService1()
+
+        Dim _ListaItems As List(Of String) = _miServicio.AutocompleteAlmacen("123", Val_Almacen.Filtro_Coeficiente.ToString(), 1)
+
+        Assert.AreEqual(1, _ListaItems.Count())
+    End Sub
+
+    ''' <summary>
+    ''' Prueba que se ejecuta para valdiar el webservice autocomplete en almacen, con filtro de cliente
+    ''' </summary>
+    <TestMethod()> Public Sub Autocomplete_AlmacenByCliente()
+
+        Dim _miServicio As WebService1 = New WebService1()
+
+        Dim _ListaItems As List(Of String) = _miServicio.AutocompleteAlmacen("Nombrev", Val_Almacen.Filtro_Cliente.ToString(), 1)
+
+        Assert.AreEqual(1, _ListaItems.Count())
 
     End Sub
 

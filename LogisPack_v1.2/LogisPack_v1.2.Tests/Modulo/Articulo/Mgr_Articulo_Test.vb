@@ -3,7 +3,6 @@ Imports CapaDatos
 
 Public Class Mgr_Articulo_Test
 
-
     ''' <summary>
     ''' Metodo que retorna un objeto de tipo articulo
     ''' </summary>
@@ -12,7 +11,7 @@ Public Class Mgr_Articulo_Test
 
         Dim Articulo1 = New Articulo With
             {
-            .codigo = "Cod1",
+            .codigo = "CodArt1",
             .nombre = "ArtPrueba",
             .referencia_picking = "RefPick",
             .referencia1 = "ref1",
@@ -47,12 +46,18 @@ Public Class Mgr_Articulo_Test
     ''' <summary>
     ''' Metodo que recibe un objeto de tipo Articulo,cliente ,Almacen, tipo de unidad y tipo de facturacion y los guarda en la base de datos
     ''' </summary>
-    Public Shared Sub Inicializar(ByRef _Articulo As Articulo, ByRef _Almacen As Almacen,
-        ByRef _Tipo_Facturacion As Tipo_Facturacion, ByRef _Tipo_Unidad As Tipo_Unidad, ByRef _Cliente As Cliente)
+    Public Shared Sub Inicializar(ByRef _Articulo As Articulo,
+                                  ByRef _Almacen As Almacen,
+                                  ByRef _Tipo_Facturacion As Tipo_Facturacion,
+                                  ByRef _Tipo_Unidad As Tipo_Unidad,
+                                  ByRef _Cliente As Cliente)
+
 
         Mgr_Almacen_Test.Inicializar(_Cliente, _Almacen)
         Mgr_TipoFacturacion_Test.Inicializar(_Tipo_Facturacion)
         Mgr_TipoUnidad_Test.Inicializar(_Tipo_Unidad)
+
+        _Articulo = Get_Articulo1(_Articulo, _Almacen, _Tipo_Facturacion, _Tipo_Unidad)
         Mgr_Articulo.Guardar(_Articulo)
 
     End Sub
@@ -68,6 +73,7 @@ Public Class Mgr_Articulo_Test
         Mgr_TipoUnidad.Eliminar(_Tipo_Unidad.id_tipo_unidad)
 
     End Sub
+
 
     ''' <summary>
     ''' Metodo que retorna un objeto de tipo articulo picking
@@ -138,6 +144,5 @@ Public Class Mgr_Articulo_Test
         Mgr_Articulo.Guardar_Picking_Articulo(_Picking_Articulo)
 
     End Sub
-
 
 End Class

@@ -59,4 +59,17 @@
 
     End Sub
 
+
+    ''' <summary>
+    ''' Prueba que se ejecuta para valdiar el webservice autocomplete en Tipo de Unidad, con filtro de Codigo
+    ''' </summary>
+    <TestMethod()> Public Sub Autocomplete_TipoUnidadByNombre()
+
+        Dim _miServicio As WebService1 = New WebService1()
+
+        Dim _ListaItems As List(Of String) = _miServicio.AutocompleteTipoUnidad("Nombrev", Val_TipoUnidad.Filtro_Nombre.ToString(), 1)
+
+        Assert.AreEqual(1, _ListaItems.Count())
+
+    End Sub
 End Class
