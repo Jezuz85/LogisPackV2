@@ -75,7 +75,7 @@ Public Class index2
         If e.CommandName.Equals(Val_General.Editar.ToString) Then
 
             hdfEdit.Value = Util_Grid.Get_IdRow(GridView1, e, "id")
-            Dim _TipoUnidad = Mgr_TipoUnidad.Get_Tipo_Unidad(Convert.ToInt32(hdfEdit.Value))
+            Dim _TipoUnidad = Mgr_TipoUnidad.Get_Tipo_UnidadById(Convert.ToInt32(hdfEdit.Value))
             txtNombre_Edit.Text = _TipoUnidad.nombre
             Util_Modal.AbrirModal(Val_TipoUnidad.EditModal.ToString, Val_TipoUnidad.EditModalScript.ToString, Me)
 

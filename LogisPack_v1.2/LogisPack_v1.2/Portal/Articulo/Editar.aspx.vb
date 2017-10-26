@@ -82,7 +82,7 @@ Public Class Editar
 
         Mgr_TipoFacturacion.LlenarLista(ddlTipoFacturacion)
         Mgr_TipoUnidad.LlenarLista(ddlTipoUnidad)
-        Mgr_Cliente.Llenar_Lista(ddlCliente, idCliente)
+        Mgr_Cliente.Llenar_ListaByCliente(ddlCliente, idCliente)
 
     End Sub
 
@@ -127,7 +127,7 @@ Public Class Editar
     Private Sub CargarArticulo()
 
         Dim _Articulo As List(Of Articulo)
-        _Articulo = Mgr_Articulo.Get_Articulo_list(IdArticulo)
+        _Articulo = Mgr_Articulo.Get_Articulo_List(IdArticulo)
 
         For Each itemArticulos In _Articulo
 
@@ -147,7 +147,7 @@ Public Class Editar
 
         ddlTipoArticulo.SelectedValue = itemArticulos.tipoArticulo
         ddlCliente.SelectedValue = itemArticulos.Almacen.id_cliente
-        Mgr_Almacen.Llenar_Lista(ddlAlmacen, Convert.ToInt32(ddlCliente.SelectedValue))
+        Mgr_Almacen.Llenar_ListaByCliente(ddlAlmacen, Convert.ToInt32(ddlCliente.SelectedValue))
         ddlAlmacen.SelectedValue = itemArticulos.id_almacen
 
         txtCodigo.Text = If(itemArticulos.codigo Is Nothing, String.Empty, itemArticulos.codigo)
@@ -467,7 +467,7 @@ Public Class Editar
 
             If Edit.Picking_Articulo1.Count > 0 Then
 
-                Dim _ListPicArt As List(Of Picking_Articulo) = Mgr_Articulo.Get_Picking_Articulo_list(Edit.id_articulo)
+                Dim _ListPicArt As List(Of Picking_Articulo) = Mgr_Articulo.Get_Picking_Articulo_List(Edit.id_articulo)
 
                 For Each itemPicArt In _ListPicArt
                     bError = Mgr_Articulo.Eliminar_Picking_Articulo(itemPicArt.id_picking_articulo)
@@ -522,7 +522,7 @@ Public Class Editar
                             If ddlTipoArticulo.SelectedValue = Val_Articulo.Tipo_Picking.ToString Then
 
                                 Util_UpdatePanel.LimpiarControles(updatePanelPrinicpal)
-                                Mgr_Articulo.Llenar_Lista(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
+                                Mgr_Articulo.Llenar_ListaByAlmacen_ArticuloNormal(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
                                 phListaArticulos.Visible = False
                                 txtUnidad.Text = Nothing
                             End If

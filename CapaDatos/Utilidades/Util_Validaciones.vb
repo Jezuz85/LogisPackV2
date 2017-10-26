@@ -28,7 +28,7 @@ Public Class Util_Validaciones
     ''' </summary>
     Public Shared Function Exist_Tipo_Facturacion(nombre As String) As Boolean
 
-        Dim TipoFacturacion = Mgr_TipoFacturacion.Get_Tipo_Facturacion(nombre)
+        Dim TipoFacturacion = Mgr_TipoFacturacion.Get_Tipo_FacturacionByNombre(nombre)
 
         If TipoFacturacion IsNot Nothing Then
             Return True
@@ -44,7 +44,7 @@ Public Class Util_Validaciones
     ''' </summary>
     Public Shared Function Exist_Tipo_Unidad(nombre As String) As Boolean
 
-        Dim TipoUnidad = Mgr_TipoUnidad.Get_Tipo_Unidad(nombre)
+        Dim TipoUnidad = Mgr_TipoUnidad.Get_Tipo_UnidadByNombre(nombre)
 
         If TipoUnidad IsNot Nothing Then
             Return True

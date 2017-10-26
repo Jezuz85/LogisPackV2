@@ -68,7 +68,7 @@ Public Class Mgr_TipoUnidad
     ''' Metodo que recibe un id del Tipo_Unidad y lo consulta desde la Base de datos, 
     ''' devuelve un objeto tipo Tipo_Unidad si fue exitoso, de lo contrario no devuelve nothing
     ''' </summary>
-    Public Shared Function Get_Tipo_Unidad(id As Integer) As Tipo_Unidad
+    Public Shared Function Get_Tipo_UnidadById(id As Integer) As Tipo_Unidad
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
@@ -80,7 +80,7 @@ Public Class Mgr_TipoUnidad
     ''' Metodo que recibe un nombre del Tipo_Unidad y lo consulta desde la Base de datos, 
     ''' devuelve un objeto tipo Tipo_Unidad si fue exitoso, de lo contrario no devuelve nothing
     ''' </summary>
-    Public Shared Function Get_Tipo_Unidad(_nombre As String) As Tipo_Unidad
+    Public Shared Function Get_Tipo_UnidadByNombre(_nombre As String) As Tipo_Unidad
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 

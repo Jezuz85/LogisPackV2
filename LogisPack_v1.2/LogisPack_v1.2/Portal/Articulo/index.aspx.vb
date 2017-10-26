@@ -47,7 +47,7 @@ Public Class index3
     ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
     ''' </summary>
     Private Sub CargarListas()
-        Mgr_Cliente.Llenar_Lista(ddlCliente, idCliente)
+        Mgr_Cliente.Llenar_ListaByCliente(ddlCliente, idCliente)
         Util_DropDownList.Llenar_FiltroBusqueda(ddlBuscar, Val_Paginas.Articulo_Index.ToString)
         hdfFiltro.Value = ddlBuscar.SelectedValue
     End Sub

@@ -56,7 +56,7 @@ Public Class index
     ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
     ''' </summary>
     Private Sub CargarListas()
-        Mgr_Cliente.Llenar_Lista(ddlClienteAdd, idCliente)
+        Mgr_Cliente.Llenar_ListaByCliente(ddlClienteAdd, idCliente)
 
         Util_DropDownList.Llenar_FiltroBusqueda(ddlBuscar, Val_Paginas.Almacen_Index.ToString)
         hdfFiltro.Value = ddlBuscar.SelectedValue
@@ -164,7 +164,7 @@ Public Class index
 
             hdfEdit.Value = Util_Grid.Get_IdRow(GridView1, e)
             Dim _Almacen = Mgr_Almacen.Consultar(Convert.ToInt32(hdfEdit.Value))
-            Mgr_Cliente.Llenar_Lista(ddlClienteEdit, idCliente)
+            Mgr_Cliente.Llenar_ListaByCliente(ddlClienteEdit, idCliente)
 
             Dim CoefVolumetrico As String = Convert.ToDouble(_Almacen.coeficiente_volumetrico).ToString("##,##0.00000").Replace(",", ".")
 

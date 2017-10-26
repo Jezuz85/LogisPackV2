@@ -92,6 +92,7 @@ Public Class Mgr_Almacen
 
         GridView1.DataSource = query
         GridView1.DataBind()
+
     End Sub
 
     '------------------------------------------------------------------
@@ -121,7 +122,7 @@ Public Class Mgr_Almacen
     ''' Metodo que recibe un objeto DropDownlist vacio y un id del cliente , y lo devuelve con los datos de 
     ''' todos los alamcenes de ese cliente
     ''' </summary>
-    Public Shared Sub Llenar_Lista(ByRef DropDownList1 As DropDownList, idCliente As Integer)
+    Public Shared Sub Llenar_ListaByCliente(ByRef DropDownList1 As DropDownList, idCliente As Integer)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
@@ -240,8 +241,8 @@ Public Class Mgr_Almacen
     Public Shared Function Get_Struct() As struct_Almacen
 
         Dim _mialmacen As struct_Almacen = Nothing
-
         Return _mialmacen
+
     End Function
 
 End Class

@@ -76,7 +76,7 @@ Public Class index1
         If e.CommandName.Equals(Val_General.Editar.ToString) Then
 
             hdfEdit.Value = Util_Grid.Get_IdRow(GridView1, e, "id")
-            Dim _TipoFacturacion = Mgr_TipoFacturacion.Get_Tipo_Facturacion(Convert.ToInt32(hdfEdit.Value))
+            Dim _TipoFacturacion = Mgr_TipoFacturacion.Get_Tipo_FacturacionById(Convert.ToInt32(hdfEdit.Value))
             txtNombre_Edit.Text = _TipoFacturacion.nombre
             Util_Modal.AbrirModal(Val_TipoFacturacion.EditModal.ToString, Val_TipoFacturacion.EditModalScript.ToString, Me)
 

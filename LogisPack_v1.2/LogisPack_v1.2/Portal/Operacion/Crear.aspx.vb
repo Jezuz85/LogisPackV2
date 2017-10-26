@@ -32,7 +32,7 @@ Public Class Crear1
     ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
     ''' </summary>
     Private Sub CargarListas()
-        Mgr_Cliente.Llenar_Lista(ddlCliente, idCliente)
+        Mgr_Cliente.Llenar_ListaByCliente(ddlCliente, idCliente)
     End Sub
 
     ''' <summary>
@@ -76,7 +76,7 @@ Public Class Crear1
     ''' </summary>
     Protected Sub txtCodArticulo_TextChanged(sender As Object, e As EventArgs) Handles txtCodArticulo.TextChanged
 
-        Dim _articulo = Mgr_Articulo.Get_Articulo_Codigo(txtCodArticulo.Text)
+        Dim _articulo = Mgr_Articulo.Get_ArticuloByCodigo(txtCodArticulo.Text)
 
         If _articulo IsNot Nothing Then
             If ddlListaArticulos.Items.Contains(ddlListaArticulos.Items.FindByValue(_articulo.id_articulo)) Then
@@ -199,7 +199,7 @@ Public Class Crear1
             ddlListaArticulos.Visible = False
             txtCodArticulo.Visible = False
         Else
-            Mgr_Almacen.Llenar_Lista(ddlAlmacen, Convert.ToInt32(ddlCliente.SelectedValue))
+            Mgr_Almacen.Llenar_ListaByCliente(ddlAlmacen, Convert.ToInt32(ddlCliente.SelectedValue))
             txtCodArticulo.Text = String.Empty
         End If
     End Sub
@@ -218,7 +218,7 @@ Public Class Crear1
         Else
             ddlListaArticulos.Visible = True
             txtCodArticulo.Visible = True
-            Mgr_Articulo.Llenar_Lista_Almacen(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
+            Mgr_Articulo.Llenar_ListaByAlmacen(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
 
             If ddlListaArticulos.SelectedValue <> String.Empty Then
                 Get_StockArticulo(Convert.ToInt32(ddlListaArticulos.SelectedValue))

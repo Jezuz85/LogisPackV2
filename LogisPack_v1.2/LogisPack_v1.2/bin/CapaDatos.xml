@@ -159,13 +159,13 @@ CapaDatos
  Metodo que devuelve el ultimo Articulo registrado en la base de datos
  </summary>
 </member>
-<member name="M:CapaDatos.Mgr_Articulo.Get_Articulo_Codigo(System.String)">
+<member name="M:CapaDatos.Mgr_Articulo.Get_ArticuloByCodigo(System.String)">
  <summary>
  Metodo que recibe un codigo del Articulo y lo consulta desde la Base de datos, 
  devuelve una objeto de tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
-<member name="M:CapaDatos.Mgr_Articulo.Get_Articulo_list(System.Int32)">
+<member name="M:CapaDatos.Mgr_Articulo.Get_Articulo_List(System.Int32)">
  <summary>
  Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
  devuelve una lista de objetos de tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
@@ -178,7 +178,7 @@ CapaDatos
  devuelve un objeto tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
-<member name="M:CapaDatos.Mgr_Articulo.Get_Picking_Articulo_list(System.Int32)">
+<member name="M:CapaDatos.Mgr_Articulo.Get_Picking_Articulo_List(System.Int32)">
  <summary>
  Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
  devuelve una lista de objetos de tipo Articulo que estan asociados a un articulo picking 
@@ -199,13 +199,13 @@ CapaDatos
  devuelve un objeto tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
-<member name="M:CapaDatos.Mgr_Articulo.Llenar_Lista(System.Web.UI.WebControls.DropDownList@,System.Int32)">
+<member name="M:CapaDatos.Mgr_Articulo.Llenar_ListaByAlmacen_ArticuloNormal(System.Web.UI.WebControls.DropDownList@,System.Int32)">
  <summary>
  Metodo que recibe un objeto DropDownlist vacio y un id del Almacén , y lo devuelve con los datos de 
  todos los articulos de tipo "Normal" de ese Almacén
  </summary>
 </member>
-<member name="M:CapaDatos.Mgr_Articulo.Llenar_Lista_Almacen(System.Web.UI.WebControls.DropDownList@,System.Int32)">
+<member name="M:CapaDatos.Mgr_Articulo.Llenar_ListaByAlmacen(System.Web.UI.WebControls.DropDownList@,System.Int32)">
  <summary>
  Metodo que recibe un objeto DropDownlist vacio y un id del Almacén , y lo devuelve con los datos de 
  todos los articulos de ese Almacén
@@ -269,7 +269,7 @@ CapaDatos
  Metodo que recibe el gridview para llenar con los datos del cliente en la base de datos
  </summary>
 </member>
-<member name="M:CapaDatos.Mgr_Cliente.Llenar_Lista(System.Web.UI.WebControls.DropDownList@,System.Int32)">
+<member name="M:CapaDatos.Mgr_Cliente.Llenar_ListaByCliente(System.Web.UI.WebControls.DropDownList@,System.Int32)">
  <summary>
  Metodo que recibe un objeto DropDownlist vacio  y lo devuelve con los datos de 
  todos los clientes existentes en la base de datos
@@ -427,7 +427,7 @@ CapaDatos
  devuelve un objeto tipo Tipo_Facturacion si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
-<member name="M:CapaDatos.Mgr_TipoFacturacion.Get_Tipo_Facturacion(System.String)">
+<member name="M:CapaDatos.Mgr_TipoFacturacion.Get_Tipo_FacturacionByNombre(System.String)">
  <summary>
  Metodo que recibe un nombre del Tipo_Facturacion y lo consulta desde la Base de datos, 
  devuelve un objeto tipo Tipo_Facturacion si fue exitoso, de lo contrario no devuelve nothing
@@ -594,7 +594,7 @@ CapaDatos
  existentes en la base de datos
  </summary>
 </member>
-<member name="M:CapaDatos.Mgr_Almacen.Llenar_Lista(System.Web.UI.WebControls.DropDownList@,System.Int32)">
+<member name="M:CapaDatos.Mgr_Almacen.Llenar_ListaByCliente(System.Web.UI.WebControls.DropDownList@,System.Int32)">
  <summary>
  Metodo que recibe un objeto DropDownlist vacio y un id del cliente , y lo devuelve con los datos de 
  todos los alamcenes de ese cliente

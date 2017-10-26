@@ -147,6 +147,7 @@
       <DependentUpon>ModeloLogisPack.tt</DependentUpon>
     </Compile>
     <Compile Include="Utilidades\Util_Cifrar.vb" />
+    <Compile Include="Utilidades\Util_Correo.vb" />
     <Compile Include="Utilidades\Util_DropDownList.vb" />
     <Compile Include="Valores\Val_Cliente.vb" />
     <Compile Include="Valores\Val_Comandos.vb" />
@@ -161,6 +162,7 @@
     <Compile Include="Manager\Mgr_Usuario.vb" />
     <Compile Include="Manager\Mgr_Excel.vb" />
     <Compile Include="Valores\Val_Articulo.vb" />
+    <Compile Include="Valores\Val_Correo.vb" />
     <Compile Include="Valores\Val_General.vb" />
     <Compile Include="Utilidades\Util_Modal.vb" />
     <Compile Include="Manager\Mgr_Almacen.vb" />

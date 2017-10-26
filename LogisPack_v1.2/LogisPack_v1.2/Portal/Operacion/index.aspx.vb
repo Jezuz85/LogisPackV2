@@ -45,7 +45,7 @@ Public Class index4
     ''' </summary>
     Private Sub CargarListas()
 
-        Mgr_Cliente.Llenar_Lista(ddlCliente, idCliente)
+        Mgr_Cliente.Llenar_ListaByCliente(ddlCliente, idCliente)
         Util_DropDownList.Llenar_FiltroBusqueda(ddlBuscar, Val_Paginas.Operacion_Index.ToString)
         hdfFiltro.Value = ddlBuscar.SelectedValue
 
@@ -131,7 +131,7 @@ Public Class index4
 
             ViewState(Val_General.filtroBusqueda.ToString) = Val_Operacion.Filtro_Almacen.ToString
             ViewState(Val_General.textoBusqueda.ToString) = Convert.ToString(ddlAlmacen.SelectedItem)
-            Mgr_Articulo.Llenar_Lista_Almacen(ddlArticulo, Convert.ToInt32(ddlAlmacen.SelectedValue))
+            Mgr_Articulo.Llenar_ListaByAlmacen(ddlArticulo, Convert.ToInt32(ddlAlmacen.SelectedValue))
         Else
             ddlArticulo.Items.Clear()
             txtSearch.Text = String.Empty

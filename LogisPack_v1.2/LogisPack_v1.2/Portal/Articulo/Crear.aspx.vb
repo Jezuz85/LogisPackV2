@@ -86,7 +86,7 @@ Public Class Crear
             If ddlTipoArticulo.SelectedValue = Val_Articulo.Tipo_Picking.ToString Then
 
                 Util_UpdatePanel.LimpiarControles(upAdd_Articulo)
-                Mgr_Articulo.Llenar_Lista(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
+                Mgr_Articulo.Llenar_ListaByAlmacen_ArticuloNormal(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
                 phListaArticulos.Visible = False
                 txtUnidad.Text = Nothing
             End If
@@ -103,7 +103,7 @@ Public Class Crear
 
         Mgr_TipoFacturacion.LlenarLista(ddlTipoFacturacion)
         Mgr_TipoUnidad.LlenarLista(ddlTipoUnidad)
-        Mgr_Cliente.Llenar_Lista(ddlCliente, idCliente)
+        Mgr_Cliente.Llenar_ListaByCliente(ddlCliente, idCliente)
 
     End Sub
 
@@ -336,7 +336,7 @@ Public Class Crear
     Protected Sub ddlTipoArticulo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlTipoArticulo.SelectedIndexChanged
 
         If ddlTipoArticulo.SelectedValue = Val_Articulo.Tipo_Picking.ToString And ddlAlmacen.SelectedValue <> String.Empty Then
-            Mgr_Articulo.Llenar_Lista(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
+            Mgr_Articulo.Llenar_ListaByAlmacen_ArticuloNormal(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
             phListaArticulos.Visible = True
         Else
             phListaArticulos.Visible = False
@@ -351,7 +351,7 @@ Public Class Crear
     Protected Sub ddlAlmacen_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlAlmacen.SelectedIndexChanged
 
         Mgr_Articulo.SetCoefVolumétrico(ddlAlmacen, txtCoefVol, phListaArticulos, ddlTipoArticulo)
-        Mgr_Articulo.Llenar_Lista(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
+        Mgr_Articulo.Llenar_ListaByAlmacen_ArticuloNormal(ddlListaArticulos, Convert.ToInt32(ddlAlmacen.SelectedValue))
 
     End Sub
 

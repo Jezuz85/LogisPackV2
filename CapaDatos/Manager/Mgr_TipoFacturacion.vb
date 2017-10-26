@@ -128,7 +128,7 @@ Public Class Mgr_TipoFacturacion
     ''' Metodo que recibe un id del Tipo_Facturacion y lo consulta desde la Base de datos, 
     ''' devuelve un objeto tipo Tipo_Facturacion si fue exitoso, de lo contrario no devuelve nothing
     ''' </summary>
-    Public Shared Function Get_Tipo_Facturacion(id As Integer) As Tipo_Facturacion
+    Public Shared Function Get_Tipo_FacturacionById(id As Integer) As Tipo_Facturacion
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
@@ -140,7 +140,7 @@ Public Class Mgr_TipoFacturacion
     ''' Metodo que recibe un nombre del Tipo_Facturacion y lo consulta desde la Base de datos, 
     ''' devuelve un objeto tipo Tipo_Facturacion si fue exitoso, de lo contrario no devuelve nothing
     ''' </summary>
-    Public Shared Function Get_Tipo_Facturacion(_nombre As String) As Tipo_Facturacion
+    Public Shared Function Get_Tipo_FacturacionByNombre(_nombre As String) As Tipo_Facturacion
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 

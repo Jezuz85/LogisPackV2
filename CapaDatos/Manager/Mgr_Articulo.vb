@@ -451,7 +451,7 @@ Public Class Mgr_Articulo
     ''' Metodo que recibe un codigo del Articulo y lo consulta desde la Base de datos, 
     ''' devuelve una objeto de tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
     ''' </summary>
-    Public Shared Function Get_Articulo_Codigo(_codigo As String) As Articulo
+    Public Shared Function Get_ArticuloByCodigo(_codigo As String) As Articulo
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
         Return contexto.Articulo.Where(Function(model) model.codigo = _codigo).SingleOrDefault()
@@ -462,7 +462,7 @@ Public Class Mgr_Articulo
     ''' Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
     ''' devuelve una lista de objetos de tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
     ''' </summary>
-    Public Shared Function Get_Articulo_list(id As Integer) As List(Of Articulo)
+    Public Shared Function Get_Articulo_List(id As Integer) As List(Of Articulo)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
@@ -484,7 +484,7 @@ Public Class Mgr_Articulo
     ''' devuelve una lista de objetos de tipo Articulo que estan asociados a un articulo picking 
     ''' si fue exitoso, de lo contrario no devuelve nothing
     ''' </summary>
-    Public Shared Function Get_Picking_Articulo_list(id As Integer) As List(Of Picking_Articulo)
+    Public Shared Function Get_Picking_Articulo_List(id As Integer) As List(Of Picking_Articulo)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
@@ -520,7 +520,7 @@ Public Class Mgr_Articulo
     ''' Metodo que recibe un objeto DropDownlist vacio y un id del Almacén , y lo devuelve con los datos de 
     ''' todos los articulos de tipo "Normal" de ese Almacén
     ''' </summary>
-    Public Shared Sub Llenar_Lista(ByRef DropDownList1 As DropDownList, idAlmacen As Integer)
+    Public Shared Sub Llenar_ListaByAlmacen_ArticuloNormal(ByRef DropDownList1 As DropDownList, idAlmacen As Integer)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
@@ -541,7 +541,7 @@ Public Class Mgr_Articulo
     ''' Metodo que recibe un objeto DropDownlist vacio y un id del Almacén , y lo devuelve con los datos de 
     ''' todos los articulos de ese Almacén
     ''' </summary>
-    Public Shared Sub Llenar_Lista_Almacen(ByRef DropDownList1 As DropDownList, idAlmacen As Integer)
+    Public Shared Sub Llenar_ListaByAlmacen(ByRef DropDownList1 As DropDownList, idAlmacen As Integer)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
@@ -607,7 +607,7 @@ Public Class Mgr_Articulo
             txt1.Text = String.Empty
             ddl2.Items.Clear()
         Else
-            Mgr_Almacen.Llenar_Lista(ddl2, Convert.ToInt32(ddl1.SelectedValue))
+            Mgr_Almacen.Llenar_ListaByCliente(ddl2, Convert.ToInt32(ddl1.SelectedValue))
         End If
 
     End Sub

@@ -84,10 +84,10 @@ Public Class Mgr_Excel
 
                             CargarFila(range, rowIndex)
 
-                            Dim TipoFacturacion = Mgr_TipoFacturacion.Get_Tipo_Facturacion(_id_tipo_facturacion)
+                            Dim TipoFacturacion = Mgr_TipoFacturacion.Get_Tipo_FacturacionByNombre(_id_tipo_facturacion)
                             _id_tipo_facturacion = TipoFacturacion.id_tipo_facturacion
 
-                            Dim TipoUnidad = Mgr_TipoUnidad.Get_Tipo_Unidad(_id_tipo_unidad)
+                            Dim TipoUnidad = Mgr_TipoUnidad.Get_Tipo_UnidadByNombre(_id_tipo_unidad)
                             _id_tipo_unidad = TipoUnidad.id_tipo_unidad
 
                             '-----------------Calculos------------------------------------
@@ -338,7 +338,9 @@ Public Class Mgr_Excel
 
     End Sub
 
-    '-------------------validar respuestas
+    '------------------------------------------------------------------
+    '------------------------VALIDAR RESPUESTAS------------------------
+    '------------------------------------------------------------------
 
     Private Shared Function Format_Respuesta_NoExiste(mensaje As String, fila As Integer, nombreArchivo As String) As String
         Return mensaje & fila & " del Archivo Excel: <strong>" & nombreArchivo & "</strong>"

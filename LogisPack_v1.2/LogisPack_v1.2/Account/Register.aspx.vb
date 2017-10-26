@@ -15,7 +15,7 @@ Partial Public Class Register
 
             If IsPostBack = False Then
                 Mgr_Usuario.Llenar_Lista_Rol(ddlRol)
-                Mgr_Cliente.Llenar_Lista(ddlCliente, idCliente)
+                Mgr_Cliente.Llenar_ListaByCliente(ddlCliente, idCliente)
             End If
 
         Else

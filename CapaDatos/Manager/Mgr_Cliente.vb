@@ -62,7 +62,7 @@ Public Class Mgr_Cliente
     ''' Metodo que recibe un objeto DropDownlist vacio  y lo devuelve con los datos de 
     ''' todos los clientes existentes en la base de datos
     ''' </summary>
-    Public Shared Sub Llenar_Lista(ByRef DropDownList1 As DropDownList, idCliente As Integer)
+    Public Shared Sub Llenar_ListaByCliente(ByRef DropDownList1 As DropDownList, idCliente As Integer)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 

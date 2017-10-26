@@ -26,7 +26,7 @@
     ''' </summary>
     <TestMethod()> Public Sub Registrar_Tipo_Unidad()
 
-        Dim Tipo_UnidadBD = Mgr_TipoUnidad.Get_Tipo_Unidad(Tipo_UnidadTest.id_tipo_unidad)
+        Dim Tipo_UnidadBD = Mgr_TipoUnidad.Get_Tipo_UnidadById(Tipo_UnidadTest.id_tipo_unidad)
 
         Assert.AreEqual(Tipo_UnidadBD.id_tipo_unidad, Tipo_UnidadTest.id_tipo_unidad)
         Assert.AreEqual(Tipo_UnidadBD.nombre, Tipo_UnidadTest.nombre)
@@ -54,7 +54,7 @@
     <TestMethod()> Public Sub Eliminar_Tipo_Unidad()
 
         Mgr_TipoUnidad.Eliminar(Tipo_UnidadTest.id_tipo_unidad)
-        Dim Tipo_UnidadBD = Mgr_TipoUnidad.Get_Tipo_Unidad(Tipo_UnidadTest.id_tipo_unidad)
+        Dim Tipo_UnidadBD = Mgr_TipoUnidad.Get_Tipo_UnidadById(Tipo_UnidadTest.id_tipo_unidad)
         Assert.AreEqual(Tipo_UnidadBD, Nothing)
 
     End Sub

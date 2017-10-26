@@ -1,8 +1,4 @@
-﻿Imports System.Net
-Imports System.Net.Mail
-Imports System.Net.Security
-Imports System.Security.Cryptography.X509Certificates
-Imports CapaDatos
+﻿Imports CapaDatos
 
 Public Class Error_LogisPack
     Inherits Page
@@ -76,39 +72,13 @@ Public Class Error_LogisPack
 
             ViewState.Add("LastError", lastError.ToString())
 
-            Try
+            Dim cuerpoEmail As StringBuilder = New StringBuilder()
+            cuerpoEmail.AppendLine("Ha ocurrido un error Inesperado")
+            cuerpoEmail.AppendLine()
+            cuerpoEmail.AppendLine(ViewState("LastError").ToString())
 
-                Dim mensaje As MailMessage = New MailMessage("jesuse.garcia@direcline.com", "jesuse.garcia@direcline.com")
-                mensaje.Subject = "Error Logis Pack"
-                mensaje.IsBodyHtml = True
-
-
-                Dim cuerpoEmail As StringBuilder = New StringBuilder()
-                cuerpoEmail.AppendLine("Ha ocurrido un error Inesperado")
-                cuerpoEmail.AppendLine()
-                cuerpoEmail.AppendLine(ViewState("LastError").ToString())
-                mensaje.Body = cuerpoEmail.ToString()
-
-
-                Dim _smtp As SmtpClient = New SmtpClient()
-                Dim _smtpUserInfo As NetworkCredential = New NetworkCredential()
-
-                _smtp.Host = "smtp.direcline.com"
-                _smtp.UseDefaultCredentials = True
-                _smtp.Port = 587
-                _smtp.Credentials = New NetworkCredential("jesuse.garcia@direcline.com", "Jgardir1")
-                _smtp.EnableSsl = True
-
-                ServicePointManager.ServerCertificateValidationCallback = Function(s As Object, certificate As X509Certificate, chain As X509Chain, sslPolicyErrors As SslPolicyErrors) True
-
-                _smtp.Send(mensaje)
-                mensaje.Dispose()
-
-            Catch ex As Exception
-                Console.WriteLine("" & ex.ToString())
-            End Try
-
-
+            Util_Correo.EnviarCorreo(cuerpoEmail, "Error Logis Pack", Val_Correo.EmailFrom.ToString, Val_Correo.Contraseña.ToString,
+                Val_Correo.EmailTo.ToString, Val_Correo.Host.ToString, Convert.ToInt32(Val_Correo.Puerto.ToString))
         End If
 
     End Sub

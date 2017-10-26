@@ -29,7 +29,7 @@ Public Class CargaMasiva
     ''' Metodo que llena los Dropdownlits con datos de la Base de Datos
     ''' </summary>
     Private Sub CargarListas()
-        Mgr_Cliente.Llenar_Lista(ddlCliente, idCliente)
+        Mgr_Cliente.Llenar_ListaByCliente(ddlCliente, idCliente)
     End Sub
 
     '--------------------------------------------------EVENTOS---------------------------------------------
@@ -69,7 +69,7 @@ Public Class CargaMasiva
         If ddlCliente.SelectedValue = String.Empty Then
             ddlAlmacen.Items.Clear()
         Else
-            Mgr_Almacen.Llenar_Lista(ddlAlmacen, Convert.ToInt32(ddlCliente.SelectedValue))
+            Mgr_Almacen.Llenar_ListaByCliente(ddlAlmacen, Convert.ToInt32(ddlCliente.SelectedValue))
         End If
 
     End Sub

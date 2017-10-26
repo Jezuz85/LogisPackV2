@@ -31,7 +31,7 @@ Imports CapaDatos
     ''' </summary>
     <TestMethod()> Public Sub Registrar_Tipo_Facturacion()
 
-        Dim _TipoFacturacionBD = Mgr_TipoFacturacion.Get_Tipo_Facturacion(_TipoFacturacionTest.id_tipo_facturacion)
+        Dim _TipoFacturacionBD = Mgr_TipoFacturacion.Get_Tipo_FacturacionById(_TipoFacturacionTest.id_tipo_facturacion)
 
         Assert.AreEqual(_TipoFacturacionBD.id_tipo_facturacion, _TipoFacturacionTest.id_tipo_facturacion)
         Assert.AreEqual(_TipoFacturacionBD.nombre, _TipoFacturacionTest.nombre)
@@ -59,7 +59,7 @@ Imports CapaDatos
     <TestMethod()> Public Sub Eliminar_Tipo_Facturacion()
 
         Mgr_TipoFacturacion.Eliminar(_TipoFacturacionTest.id_tipo_facturacion)
-        Dim _TipoFacturacion = Mgr_TipoFacturacion.Get_Tipo_Facturacion(_TipoFacturacionTest.id_tipo_facturacion)
+        Dim _TipoFacturacion = Mgr_TipoFacturacion.Get_Tipo_FacturacionById(_TipoFacturacionTest.id_tipo_facturacion)
 
         Assert.AreEqual(_TipoFacturacion, Nothing)
 

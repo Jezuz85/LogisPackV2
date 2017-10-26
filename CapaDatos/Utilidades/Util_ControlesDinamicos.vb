@@ -35,6 +35,7 @@ Public Class Util_ControlesDinamicos
     ''' Metodo que crea dinamicamente un TextBox y lo añade a un panel enviado por parametro
     ''' </summary>
     Public Shared Sub CrearTextbox(ByVal id As String, _panel As Panel, _TextBoxMode As TextBoxMode, Optional ByVal _TextType As String = "text")
+
         Dim miTextBox As TextBox
         miTextBox = New TextBox()
         miTextBox.ID = id
