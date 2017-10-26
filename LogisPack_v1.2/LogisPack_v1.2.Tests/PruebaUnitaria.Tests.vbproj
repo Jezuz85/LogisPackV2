@@ -137,6 +137,8 @@
     <Compile Include="Modulo\Articulo\Mgr_Articulo_Test.vb" />
     <Compile Include="Modulo\Cliente\Mgr_Cliente_Test.vb" />
     <Compile Include="Modulo\Imagen\Mgr_Imagen_Test.vb" />
+    <Compile Include="Modulo\Operacion\Mgr_Operacion_Test.vb" />
+    <Compile Include="Modulo\Operacion\Test_Operacion.vb" />
     <Compile Include="Modulo\Tipo_Facturacion\Mgr_TipoFacturacion_Test.vb" />
     <Compile Include="Modulo\Tipo_Unidad\Mgr_TipoUnidad_Test.vb" />
     <Compile Include="Modulo\Ubicacion\Mgr_Ubicacion_Test.vb" />

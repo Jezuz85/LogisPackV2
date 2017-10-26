@@ -66,7 +66,7 @@ Imports CapaDatos
     End Sub
 
     ''' <summary>
-    ''' Prueba que se ejecuta para valdiar el webservice autocomplete en Tipo de Facturacion, con filtro de Codigo
+    ''' Prueba que se ejecuta para validar el webservice autocomplete en Tipo de Facturacion, con filtro de Codigo
     ''' </summary>
     <TestMethod()> Public Sub Autocomplete_TipoFacturacionByNombre()
 

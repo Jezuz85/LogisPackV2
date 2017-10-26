@@ -24,6 +24,28 @@ Public Class Mgr_Historico
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que recibe un id de la operacion y lo elimina en Base de datos, devuelve True si fue exitoso, de lo contrario False
+    ''' </summary>
+    Public Shared Function Eliminar(ByVal _id As Integer) As Boolean
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Try
+            Dim _Eliminar As New Historico With {
+                .id_historico = _id
+            }
+            contexto.Historico.Attach(_Eliminar)
+            contexto.Historico.Remove(_Eliminar)
+            contexto.SaveChanges()
+        Catch ex As Exception
+            Return False
+        End Try
+
+        Return True
+
+    End Function
+
     '------------------------------------------------------------------
     '------------------------FUNCIONES GETTER--------------------------
     '------------------------------------------------------------------
@@ -48,6 +70,18 @@ Public Class Mgr_Historico
         Dim _usuario = contexto.Historico.Where(Function(model) model.id_articulo = _id_articulo And model.tipo_transaccion = "Sal").ToList()
 
         Return _usuario.Sum(Function(model) model.cantidad_transaccion)
+
+    End Function
+
+    ''' <summary>
+    ''' Metodo que recibe un id de la operacion y lo consulta desde la Base de datos, 
+    ''' devuelve un objeto tipo historico si fue exitoso, de lo contrario no devuelve nothing
+    ''' </summary>
+    Public Shared Function Get_Operacion(id As Integer) As Historico
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Return contexto.Historico.Where(Function(model) model.id_historico = id).SingleOrDefault()
 
     End Function
 

@@ -75,7 +75,7 @@
     End Sub
 
     ''' <summary>
-    ''' Prueba que se ejecuta para valdiar el webservice autocomplete en almacen, con filtro de Codigo
+    ''' Prueba que se ejecuta para validar el webservice autocomplete en almacen, con filtro de Codigo
     ''' </summary>
     <TestMethod()> Public Sub Autocomplete_AlmacenByCodigo()
 
@@ -87,7 +87,7 @@
     End Sub
 
     ''' <summary>
-    ''' Prueba que se ejecuta para valdiar el webservice autocomplete en almacen, con filtro de nombre
+    ''' Prueba que se ejecuta para validar el webservice autocomplete en almacen, con filtro de nombre
     ''' </summary>
     <TestMethod()> Public Sub Autocomplete_AlmacenByNombre()
 
@@ -99,7 +99,7 @@
     End Sub
 
     ''' <summary>
-    ''' Prueba que se ejecuta para valdiar el webservice autocomplete en almacen, con filtro de coeficiente
+    ''' Prueba que se ejecuta para validar el webservice autocomplete en almacen, con filtro de coeficiente
     ''' </summary>
     <TestMethod()> Public Sub Autocomplete_AlmacenByCoeficienteVolumetrico()
 
@@ -111,7 +111,7 @@
     End Sub
 
     ''' <summary>
-    ''' Prueba que se ejecuta para valdiar el webservice autocomplete en almacen, con filtro de cliente
+    ''' Prueba que se ejecuta para validar el webservice autocomplete en almacen, con filtro de cliente
     ''' </summary>
     <TestMethod()> Public Sub Autocomplete_AlmacenByCliente()
 

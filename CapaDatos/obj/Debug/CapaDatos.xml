@@ -315,6 +315,11 @@ CapaDatos
  Metodo que recibe un objeto Historico y lo registra en Base de datos, devuelve True si fue exitoso, de lo contrario False
  </summary>
 </member>
+<member name="M:CapaDatos.Mgr_Historico.Eliminar(System.Int32)">
+ <summary>
+ Metodo que recibe un id de la operacion y lo elimina en Base de datos, devuelve True si fue exitoso, de lo contrario False
+ </summary>
+</member>
 <member name="M:CapaDatos.Mgr_Historico.Get_Operacion_TotalEntrada(System.String)">
  <summary>
  Metodo que retorna el valor total de articulos que se han registrado como 'Entrada'
@@ -323,6 +328,12 @@ CapaDatos
 <member name="M:CapaDatos.Mgr_Historico.Get_Operacion_TotalSalida(System.String)">
  <summary>
  Metodo que retorna el valor total de articulos que se han registrado como 'Salida'
+ </summary>
+</member>
+<member name="M:CapaDatos.Mgr_Historico.Get_Operacion(System.Int32)">
+ <summary>
+ Metodo que recibe un id de la operacion y lo consulta desde la Base de datos, 
+ devuelve un objeto tipo historico si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
 <member name="M:CapaDatos.Mgr_Historico.LlenarGrid(System.Web.UI.WebControls.GridView@,System.Int32,System.String,System.String,System.String,System.String)">

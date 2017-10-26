@@ -61,7 +61,7 @@
 
 
     ''' <summary>
-    ''' Prueba que se ejecuta para valdiar el webservice autocomplete en Tipo de Unidad, con filtro de Codigo
+    ''' Prueba que se ejecuta para validar el webservice autocomplete en Tipo de Unidad, con filtro de Codigo
     ''' </summary>
     <TestMethod()> Public Sub Autocomplete_TipoUnidadByNombre()
 

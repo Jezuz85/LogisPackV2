@@ -29,4 +29,10 @@
     Public Shared ReadOnly Col_Tipo_Transaccion As Val_Operacion = New Val_Operacion("tipo_transaccion")
     Public Shared ReadOnly Col_Cantidad_Transaccion As Val_Operacion = New Val_Operacion("cantidad_transaccion")
 
+    '------------------------------------------------------------------
+    '------------------------TiIPO DE OPERACION------------------------
+    '------------------------------------------------------------------
+    Public Shared ReadOnly Entrada As Val_Operacion = New Val_Operacion("Ent")
+    Public Shared ReadOnly Salida As Val_Operacion = New Val_Operacion("Sal")
+
 End Class

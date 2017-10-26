@@ -87,6 +87,56 @@ LogisPack_v1.2.Tests
  Metodo que recibe un objeto para guardarlo en la base de datos
  </summary>
 </member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_Operacion_Test.Get_Operacion(CapaDatos.Articulo@,System.String)">
+ <summary>
+ Metodo que retorna un objeto de tipo operacion de entrada
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_Operacion_Test.Inicializar(CapaDatos.Articulo@,CapaDatos.Historico@,System.String)">
+ <summary>
+ Metodo que recibe un objeto de tipo Articulo, Historico y tipo de operacion y los guarda en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Mgr_Operacion_Test.Finalizar(CapaDatos.Tipo_Facturacion@,CapaDatos.Tipo_Unidad@,CapaDatos.Cliente@,CapaDatos.Historico@)">
+ <summary>
+ Metodo que recibe un objeto de tipo cliente, tipo de unidad y tipo de facturacion y los elimina en la base de datos
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Operacion.Inicializar">
+ <summary>
+ Método que se invoca para inicializar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Operacion.Finalizar">
+ <summary>
+ Método que se invoca para finalizar auitomaticamente una prueba
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Operacion.Registrar_Operacion_Entrada">
+ <summary>
+ Método que se ejecuta para registrar una operacion de entrada
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Operacion.Registrar_Operacion_Salida">
+ <summary>
+ Método que se ejecuta para registrar una operacion de salida
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Operacion.Autocomplete_OperacionByAlmacen">
+ <summary>
+ Prueba que se ejecuta para validar el webservice autocomplete en operacion, con filtro de almacen
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Operacion.Autocomplete_OperacionByCliente">
+ <summary>
+ Prueba que se ejecuta para validar el webservice autocomplete en operacion, con filtro de cliente
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Operacion.Autocomplete_OperacionByArticulo">
+ <summary>
+ Prueba que se ejecuta para validar el webservice autocomplete en operacion, con filtro de articulo
+ </summary>
+</member>
 <member name="M:LogisPack_v1._2.Tests.Mgr_TipoFacturacion_Test.Get_TipoFacturacion1">
  <summary>
  Metodo que retorna un objeto de tipo TipoFacturacion
@@ -154,22 +204,22 @@ LogisPack_v1.2.Tests
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_Almacen.Autocomplete_AlmacenByCodigo">
  <summary>
- Prueba que se ejecuta para valdiar el webservice autocomplete en almacen, con filtro de Codigo
+ Prueba que se ejecuta para validar el webservice autocomplete en almacen, con filtro de Codigo
  </summary>
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_Almacen.Autocomplete_AlmacenByNombre">
  <summary>
- Prueba que se ejecuta para valdiar el webservice autocomplete en almacen, con filtro de nombre
+ Prueba que se ejecuta para validar el webservice autocomplete en almacen, con filtro de nombre
  </summary>
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_Almacen.Autocomplete_AlmacenByCoeficienteVolumetrico">
  <summary>
- Prueba que se ejecuta para valdiar el webservice autocomplete en almacen, con filtro de coeficiente
+ Prueba que se ejecuta para validar el webservice autocomplete en almacen, con filtro de coeficiente
  </summary>
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_Almacen.Autocomplete_AlmacenByCliente">
  <summary>
- Prueba que se ejecuta para valdiar el webservice autocomplete en almacen, con filtro de cliente
+ Prueba que se ejecuta para validar el webservice autocomplete en almacen, con filtro de cliente
  </summary>
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_Articulo.Inicializar">
@@ -199,22 +249,22 @@ LogisPack_v1.2.Tests
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_Articulo.Autocomplete_ArticuloByNombre">
  <summary>
- Prueba que se ejecuta para valdiar el webservice autocomplete en Articulo normal, con filtro de nombre
+ Prueba que se ejecuta para validar el webservice autocomplete en Articulo normal, con filtro de nombre
  </summary>
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_Articulo.Autocomplete_ArticuloByCodigo">
  <summary>
- Prueba que se ejecuta para valdiar el webservice autocomplete en Articulo normal, con filtro de codigo
+ Prueba que se ejecuta para validar el webservice autocomplete en Articulo normal, con filtro de codigo
  </summary>
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_Articulo.Autocomplete_ArticuloByAlmacen">
  <summary>
- Prueba que se ejecuta para valdiar el webservice autocomplete en Articulo normal, con filtro de almacen
+ Prueba que se ejecuta para validar el webservice autocomplete en Articulo normal, con filtro de almacen
  </summary>
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_Articulo.Autocomplete_ArticuloByCliente">
  <summary>
- Prueba que se ejecuta para valdiar el webservice autocomplete en Articulo normal, con filtro de Cliente
+ Prueba que se ejecuta para validar el webservice autocomplete en Articulo normal, con filtro de Cliente
  </summary>
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_ArticuloPicking.Inicializar">
@@ -269,12 +319,12 @@ LogisPack_v1.2.Tests
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_Cliente.Autocomplete_ClienteByCodigo">
  <summary>
- Prueba que se ejecuta para valdiar el webservice autocomplete en cliente, con filtro de Codigo
+ Prueba que se ejecuta para validar el webservice autocomplete en cliente, con filtro de Codigo
  </summary>
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_Cliente.Autocomplete_ClienteByNombre">
  <summary>
- Prueba que se ejecuta para valdiar el webservice autocomplete en cliente, con filtro de nombre
+ Prueba que se ejecuta para validar el webservice autocomplete en cliente, con filtro de nombre
  </summary>
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_Imagen.Inicializar">
@@ -354,7 +404,7 @@ LogisPack_v1.2.Tests
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_TipoFacturacion.Autocomplete_TipoFacturacionByNombre">
  <summary>
- Prueba que se ejecuta para valdiar el webservice autocomplete en Tipo de Facturacion, con filtro de Codigo
+ Prueba que se ejecuta para validar el webservice autocomplete en Tipo de Facturacion, con filtro de Codigo
  </summary>
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_TipoUnidad.Inicializar">
@@ -384,7 +434,7 @@ LogisPack_v1.2.Tests
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_TipoUnidad.Autocomplete_TipoUnidadByNombre">
  <summary>
- Prueba que se ejecuta para valdiar el webservice autocomplete en Tipo de Unidad, con filtro de Codigo
+ Prueba que se ejecuta para validar el webservice autocomplete en Tipo de Unidad, con filtro de Codigo
  </summary>
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_Ubicacion.Inicializar">

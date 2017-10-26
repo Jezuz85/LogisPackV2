@@ -77,7 +77,7 @@
     End Sub
 
     ''' <summary>
-    ''' Prueba que se ejecuta para valdiar el webservice autocomplete en Articulo normal, con filtro de nombre
+    ''' Prueba que se ejecuta para validar el webservice autocomplete en Articulo normal, con filtro de nombre
     ''' </summary>
     <TestMethod()> Public Sub Autocomplete_ArticuloByNombre()
 
@@ -89,7 +89,7 @@
     End Sub
 
     ''' <summary>
-    ''' Prueba que se ejecuta para valdiar el webservice autocomplete en Articulo normal, con filtro de codigo
+    ''' Prueba que se ejecuta para validar el webservice autocomplete en Articulo normal, con filtro de codigo
     ''' </summary>
     <TestMethod()> Public Sub Autocomplete_ArticuloByCodigo()
 
@@ -101,7 +101,7 @@
     End Sub
 
     ''' <summary>
-    ''' Prueba que se ejecuta para valdiar el webservice autocomplete en Articulo normal, con filtro de almacen
+    ''' Prueba que se ejecuta para validar el webservice autocomplete en Articulo normal, con filtro de almacen
     ''' </summary>
     <TestMethod()> Public Sub Autocomplete_ArticuloByAlmacen()
 
@@ -113,7 +113,7 @@
     End Sub
 
     ''' <summary>
-    ''' Prueba que se ejecuta para valdiar el webservice autocomplete en Articulo normal, con filtro de Cliente
+    ''' Prueba que se ejecuta para validar el webservice autocomplete en Articulo normal, con filtro de Cliente
     ''' </summary>
     <TestMethod()> Public Sub Autocomplete_ArticuloByCliente()
 

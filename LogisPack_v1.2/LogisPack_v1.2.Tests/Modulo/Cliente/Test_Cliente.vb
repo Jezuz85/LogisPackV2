@@ -64,7 +64,7 @@ Imports CapaDatos
     End Sub
 
     ''' <summary>
-    ''' Prueba que se ejecuta para valdiar el webservice autocomplete en cliente, con filtro de Codigo
+    ''' Prueba que se ejecuta para validar el webservice autocomplete en cliente, con filtro de Codigo
     ''' </summary>
     <TestMethod()> Public Sub Autocomplete_ClienteByCodigo()
 
@@ -76,7 +76,7 @@ Imports CapaDatos
     End Sub
 
     ''' <summary>
-    ''' Prueba que se ejecuta para valdiar el webservice autocomplete en cliente, con filtro de nombre
+    ''' Prueba que se ejecuta para validar el webservice autocomplete en cliente, con filtro de nombre
     ''' </summary>
     <TestMethod()> Public Sub Autocomplete_ClienteByNombre()
 
