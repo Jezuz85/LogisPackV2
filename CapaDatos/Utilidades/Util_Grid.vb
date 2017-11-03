@@ -111,7 +111,7 @@ Public Class Util_Grid
     ''' Metodo que aagrega una fila al gridview de lista articulos picking
     ''' </summary>
     Public Shared Sub AddRow_Grid_ArtPick(ByRef _DataTable As DataTable, id_articulo As String, Articulo As String,
-                                     Cantidad As String)
+        Cantidad As String)
 
         Dim rowIndex As Integer = 0
         Dim drCurrentRow As DataRow = Nothing

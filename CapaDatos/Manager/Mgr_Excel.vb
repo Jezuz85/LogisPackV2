@@ -38,182 +38,132 @@ Public Class Mgr_Excel
     Public Shared _referencia_ubicacion As String
     Public Shared _Errores As List(Of String)
 
-
-    Public Shared Function CargaMasiva(ByRef fuExcel As FileUpload, ByVal SheetName As String, _id_almacen As String) As List(Of String)
+    Public Shared Function CargarExcel(ByRef fuExcel As FileUpload, ByVal SheetName As String, _id_almacen As String) As List(Of String)
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
         Dim idAlmacen = Convert.ToInt32(_id_almacen)
         _Errores = New List(Of String)()
 
         If fuExcel.HasFile Then
-
-#Region "variables"
             Dim urlDoc As String = Util_Fileupload.Subir_Archivo(fuExcel, Val_Paginas.URL_Temp.ToString, "ExcelTemp_" & DateTime.Now.ToString("yyyy-MM-dd") & "")
+            urlDoc = Util_Fileupload.DevolverRutaImagen(fuExcel, Val_Paginas.URL_Temp.ToString, "ExcelTemp_" & DateTime.Now.ToString("yyyy-MM-dd") & "")
 
-            Dim Proceed As Boolean = False
-            Dim xlApp As Excel.Application = Nothing
-            Dim xlWorkBooks As Excel.Workbooks = Nothing
-            Dim xlWorkBook As Excel.Workbook = Nothing
-            Dim xlWorkSheet As Excel.Worksheet = Nothing
-            Dim xlWorkSheets As Excel.Sheets = Nothing
-            Dim xlCells As Excel.Range = Nothing
+            Dim dt As DataTable = DLOffice.ControladorOffice.RellenarDTExcel(urlDoc, "SELECT * FROM " & SheetName, "")
 
-            xlApp = New Excel.Application
-            xlApp.DisplayAlerts = False
-            xlWorkBooks = xlApp.Workbooks
-            xlWorkBook = xlWorkBooks.Open(HttpContext.Current.Server.MapPath(urlDoc))
-            xlApp.Visible = True
-            xlWorkSheets = xlWorkBook.Sheets
-#End Region
-            For x As Integer = 1 To xlWorkSheets.Count
+            Dim numeroFila = 1
 
-                xlWorkSheet = CType(xlWorkSheets(x), Excel.Worksheet)
+            For Each row As DataRow In dt.Rows
 
-                If xlWorkSheet.Name = SheetName Then
+                CargarFilas(row)
+                Validarfila(numeroFila, fuExcel.FileName)
+                numeroFila += 1
 
-                    Dim range = xlWorkSheet.UsedRange
-
-                    For rowIndex = 2 To range.Rows.Count
-                        idAlmacen = Convert.ToInt32(_id_almacen)
-                        CargarFila(range, rowIndex)
-                        Validarfila(rowIndex, fuExcel.FileName)
-                    Next
-
-                    If _Errores.Count = 0 Then
-                        For rowIndex = 2 To range.Rows.Count
-
-                            CargarFila(range, rowIndex)
-
-                            Dim TipoFacturacion = Mgr_TipoFacturacion.Get_Tipo_FacturacionByNombre(_id_tipo_facturacion)
-                            _id_tipo_facturacion = TipoFacturacion.id_tipo_facturacion
-
-                            Dim TipoUnidad = Mgr_TipoUnidad.Get_Tipo_UnidadByNombre(_id_tipo_unidad)
-                            _id_tipo_unidad = TipoUnidad.id_tipo_unidad
-
-                            '-----------------Calculos------------------------------------
-                            Dim _M3 As Double = Mgr_Articulo.CalcularM3(_alto, _ancho, _largo)
-                            Dim _peso_volumen As Double = Mgr_Articulo.Calcular_PesoVolumetrico(_alto, _ancho, _largo, _coeficiente_volumetrico)
-                            Dim _valoracion_stock As Double = Mgr_Articulo.Calcular_ValoracionStock(_stock_fisico, _valor_articulo)
-                            Dim _valoracion_seguro As Double = Mgr_Articulo.Calcular_ValoracionSeguro(_valor_asegurado, _stock_fisico)
-
-                            Dim _Nuevo As New Articulo With {
-                            .codigo = _codigo,
-                            .nombre = _nombre,
-                            .referencia_picking = _referencia_picking,
-                            .referencia1 = _referencia1,
-                            .referencia2 = _referencia3,
-                            .referencia3 = _referencia1,
-                            .identificacion = _identificacion,
-                            .valor_articulo = _valor_articulo,
-                            .valoracion_stock = _valoracion_stock,
-                            .valoracion_seguro = _valoracion_seguro,
-                            .valor_asegurado = _valor_asegurado,
-                            .peso = _peso,
-                            .alto = _alto,
-                            .largo = _largo,
-                            .ancho = _ancho,
-                            .coeficiente_volumetrico = _coeficiente_volumetrico,
-                            .cubicaje = _M3,
-                            .peso_volumen = _peso_volumen,
-                            .observaciones_articulo = _observaciones_articulo,
-                            .observaciones_generales = _observaciones_generales,
-                            .stock_fisico = _stock_fisico,
-                            .stock_minimo = _stock_minimo,
-                            .id_almacen = idAlmacen,
-                            .id_tipo_facturacion = _id_tipo_facturacion,
-                            .id_tipo_unidad = _id_tipo_unidad,
-                            .tipoArticulo = "Normal"
-                        }
-
-                            Dim _Ubicacion As New Ubicacion With {
-                                .id_articulo = _Nuevo.id_articulo,
-                                .zona = Mgr_Articulo.LlenarCeros(_zona),
-                                .estante = Mgr_Articulo.LlenarCeros(_estante),
-                                .fila = Mgr_Articulo.LlenarCeros(_fila),
-                                .columna = Mgr_Articulo.LlenarCeros(_columna),
-                                .panel = Mgr_Articulo.LlenarCeros(_panel),
-                                .referencia_ubicacion = _referencia_ubicacion
-                                }
-
-
-                            contexto.Articulo.Add(_Nuevo)
-                            contexto.Ubicacion.Add(_Ubicacion)
-
-                        Next
-                    Else
-                        cerrarExcel(xlApp, xlWorkBooks, xlWorkBook, xlWorkSheet, xlWorkSheets, xlCells, urlDoc)
-                        Return _Errores
-                    End If
-
-                    Try
-                        contexto.SaveChanges()
-                    Catch ex As Exception
-                        Console.WriteLine(ex)
-                    End Try
-
-                    Proceed = True
-                    Exit For
-                End If
-
-                Runtime.InteropServices.Marshal.FinalReleaseComObject(xlWorkSheet)
-                xlWorkSheet = Nothing
             Next
 
-            If Proceed Then
-                xlWorkSheet.Activate()
+            If _Errores.Count = 0 Then
+
+                For Each row As DataRow In dt.Rows
+
+                    CargarFilas(row)
+
+                    Dim TipoFacturacion = Mgr_TipoFacturacion.Get_Tipo_FacturacionByNombre(_id_tipo_facturacion)
+                    _id_tipo_facturacion = TipoFacturacion.id_tipo_facturacion
+
+                    Dim TipoUnidad = Mgr_TipoUnidad.Get_Tipo_UnidadByNombre(_id_tipo_unidad)
+                    _id_tipo_unidad = TipoUnidad.id_tipo_unidad
+
+                    '-----------------Calculos------------------------------------
+                    Dim _M3 As Double = Mgr_Articulo.CalcularM3(_alto, _ancho, _largo)
+                    Dim _peso_volumen As Double = Mgr_Articulo.Calcular_PesoVolumetrico(_alto, _ancho, _largo, _coeficiente_volumetrico)
+                    Dim _valoracion_stock As Double = Mgr_Articulo.Calcular_ValoracionStock(_stock_fisico, _valor_articulo)
+                    Dim _valoracion_seguro As Double = Mgr_Articulo.Calcular_ValoracionSeguro(_valor_asegurado, _stock_fisico)
+
+                    Dim _Nuevo As New Articulo With {
+                    .codigo = _codigo,
+                    .nombre = _nombre,
+                    .referencia_picking = _referencia_picking,
+                    .referencia1 = _referencia1,
+                    .referencia2 = _referencia3,
+                    .referencia3 = _referencia1,
+                    .identificacion = _identificacion,
+                    .valor_articulo = _valor_articulo,
+                    .valoracion_stock = _valoracion_stock,
+                    .valoracion_seguro = _valoracion_seguro,
+                    .valor_asegurado = _valor_asegurado,
+                    .peso = _peso,
+                    .alto = _alto,
+                    .largo = _largo,
+                    .ancho = _ancho,
+                    .coeficiente_volumetrico = _coeficiente_volumetrico,
+                    .cubicaje = _M3,
+                    .peso_volumen = _peso_volumen,
+                    .observaciones_articulo = _observaciones_articulo,
+                    .observaciones_generales = _observaciones_generales,
+                    .stock_fisico = _stock_fisico,
+                    .stock_minimo = _stock_minimo,
+                    .id_almacen = idAlmacen,
+                    .id_tipo_facturacion = _id_tipo_facturacion,
+                    .id_tipo_unidad = _id_tipo_unidad,
+                    .tipoArticulo = "Normal"
+                }
+
+                    Dim _Ubicacion As New Ubicacion With {
+                        .id_articulo = _Nuevo.id_articulo,
+                        .zona = Mgr_Articulo.LlenarCeros(_zona),
+                        .estante = Mgr_Articulo.LlenarCeros(_estante),
+                        .fila = Mgr_Articulo.LlenarCeros(_fila),
+                        .columna = Mgr_Articulo.LlenarCeros(_columna),
+                        .panel = Mgr_Articulo.LlenarCeros(_panel),
+                        .referencia_ubicacion = _referencia_ubicacion
+                        }
+
+
+                    contexto.Articulo.Add(_Nuevo)
+                    contexto.Ubicacion.Add(_Ubicacion)
+
+
+                Next
+
             Else
-                cerrarExcel(xlApp, xlWorkBooks, xlWorkBook, xlWorkSheet, xlWorkSheets, xlCells, urlDoc)
-                _Errores.Add(SheetName & " not found.")
                 Return _Errores
             End If
 
-            xlWorkBook.Close()
-            xlApp.UserControl = True
-            xlApp.Quit()
-            ReleaseComObject(xlCells)
-            ReleaseComObject(xlWorkSheets)
-            ReleaseComObject(xlWorkSheet)
-            ReleaseComObject(xlWorkBook)
-            ReleaseComObject(xlWorkBooks)
-            ReleaseComObject(xlApp)
+            _Errores.Add(Val_General.CargaExito.ToString)
+            Return _Errores
 
-            My.Computer.FileSystem.DeleteFile(HttpContext.Current.Server.MapPath(urlDoc))
-        Else
-            'MessageBox.Show("'" & FileName & "' not located. Try one of the write examples first.")
         End If
-
-        _Errores.Add(Val_General.CargaExito.ToString)
-        Return _Errores
 
     End Function
 
-    Private Shared Sub ReleaseComObject(ByVal obj As Object)
-        Try
-            System.Runtime.InteropServices.Marshal.ReleaseComObject(obj)
-            obj = Nothing
-        Catch ex As Exception
-            obj = Nothing
-        End Try
-    End Sub
+    Private Shared Sub CargarFilas(row As DataRow)
 
-    Private Shared Sub cerrarExcel(ByRef xlApp As Excel.Application, ByRef xlWorkBooks As Excel.Workbooks,
-                            ByRef xlWorkBook As Excel.Workbook, ByRef xlWorkSheet As Excel.Worksheet,
-                            ByRef xlWorkSheets As Excel.Sheets, ByRef xlCells As Excel.Range, urlDoc As String)
+        _codigo = Util_Validaciones.Validar_Campo_Vacio(CStr(row("codigo")), String.Empty)
+        _nombre = Util_Validaciones.Validar_Campo_Vacio(CStr(row("nombre")), String.Empty)
+        _referencia_picking = Util_Validaciones.Validar_Campo_Vacio(CStr(row("referencia_picking")), String.Empty)
+        _referencia1 = Util_Validaciones.Validar_Campo_Vacio(CStr(row("referencia1")), String.Empty)
+        _referencia2 = Util_Validaciones.Validar_Campo_Vacio(CStr(row("referencia2")), String.Empty)
+        _referencia3 = Util_Validaciones.Validar_Campo_Vacio(CStr(row("referencia3")), String.Empty)
+        _identificacion = Util_Validaciones.Validar_Campo_Vacio(CStr(row("identificacion")), String.Empty)
+        _valor_articulo = Util_Validaciones.Validar_Campo_Vacio(CStr(row("valor_articulo")), "0")
+        _valor_asegurado = Util_Validaciones.Validar_Campo_Vacio(CStr(row("valor_asegurado")), "0")
+        _peso = Util_Validaciones.Validar_Campo_Vacio(CStr(row("peso")), "0")
+        _alto = Util_Validaciones.Validar_Campo_Vacio(CStr(row("alto")), "0")
+        _largo = Util_Validaciones.Validar_Campo_Vacio(CStr(row("largo")), "0")
+        _ancho = Util_Validaciones.Validar_Campo_Vacio(CStr(row("ancho")), "0")
+        _coeficiente_volumetrico = Util_Validaciones.Validar_Campo_Vacio(CStr(row("coeficiente_volumetrico")), "0")
+        _observaciones_articulo = Util_Validaciones.Validar_Campo_Vacio(CStr(row("observaciones_articulo")), String.Empty)
+        _observaciones_generales = Util_Validaciones.Validar_Campo_Vacio(CStr(row("observaciones_generales")), String.Empty)
+        _stock_fisico = Util_Validaciones.Validar_Campo_Vacio(CStr(row("stock_fisico")), "0")
+        _stock_minimo = Util_Validaciones.Validar_Campo_Vacio(CStr(row("stock_minimo")), "0")
+        _id_tipo_facturacion = Util_Validaciones.Validar_Campo_Vacio(CStr(row("tipo_facturacion")), "0")
+        _id_tipo_unidad = Util_Validaciones.Validar_Campo_Vacio(CStr(row("tipo_unidad")), "0")
+        _zona = Util_Validaciones.Validar_Campo_Vacio(CStr(row("zona")), String.Empty)
+        _estante = Util_Validaciones.Validar_Campo_Vacio(CStr(row("estante")), String.Empty)
+        _fila = Util_Validaciones.Validar_Campo_Vacio(CStr(row("fila")), String.Empty)
+        _columna = Util_Validaciones.Validar_Campo_Vacio(CStr(row("columna")), String.Empty)
+        _panel = Util_Validaciones.Validar_Campo_Vacio(CStr(row("panel")), String.Empty)
+        _referencia_ubicacion = Util_Validaciones.Validar_Campo_Vacio(CStr(row("referencia_ubicacion")), String.Empty)
 
-        Runtime.InteropServices.Marshal.FinalReleaseComObject(xlWorkSheet)
-        xlWorkSheet = Nothing
-
-        xlWorkBook.Close()
-        xlApp.UserControl = True
-        xlApp.Quit()
-        ReleaseComObject(xlCells)
-        ReleaseComObject(xlWorkSheets)
-        ReleaseComObject(xlWorkSheet)
-        ReleaseComObject(xlWorkBook)
-        ReleaseComObject(xlWorkBooks)
-        ReleaseComObject(xlApp)
-
-        My.Computer.FileSystem.DeleteFile(HttpContext.Current.Server.MapPath(urlDoc))
     End Sub
 
     Private Shared Sub Validarfila(rowIndex As Integer, nombreArchivo As String)
@@ -307,41 +257,12 @@ Public Class Mgr_Excel
 
     End Sub
 
-    Private Shared Sub CargarFila(range As Excel.Range, rowIndex As Integer)
 
-        _codigo = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 1).value, String.Empty)
-        _nombre = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 2).value, String.Empty)
-        _referencia_picking = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 3).value, String.Empty)
-        _referencia1 = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 4).value, String.Empty)
-        _referencia2 = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 5).value, String.Empty)
-        _referencia3 = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 6).value, String.Empty)
-        _identificacion = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 7).value, String.Empty)
-        _valor_articulo = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 8).value, "0")
-        _valor_asegurado = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 9).value, "0")
-        _peso = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 10).value, "0")
-        _alto = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 11).value, "0")
-        _largo = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 12).value, "0")
-        _ancho = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 13).value, "0")
-        _coeficiente_volumetrico = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 14).value, "0")
-        _observaciones_articulo = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 15).value, String.Empty)
-        _observaciones_generales = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 16).value, String.Empty)
-        _stock_fisico = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 17).value, "0")
-        _stock_minimo = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 18).value, "0")
-        _id_tipo_facturacion = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 19).value, "0")
-        _id_tipo_unidad = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 20).value, "0")
-        _zona = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 21).value, String.Empty)
-        _estante = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 22).value, String.Empty)
-        _fila = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 23).value, String.Empty)
-        _columna = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 24).value, String.Empty)
-        _panel = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 25).value, String.Empty)
-        _referencia_ubicacion = Util_Validaciones.Validar_Campo_Vacio(range.Cells(rowIndex, 26).value, String.Empty)
 
-    End Sub
 
     '------------------------------------------------------------------
     '------------------------VALIDAR RESPUESTAS------------------------
     '------------------------------------------------------------------
-
     Private Shared Function Format_Respuesta_NoExiste(mensaje As String, fila As Integer, nombreArchivo As String) As String
         Return mensaje & fila & " del Archivo Excel: <strong>" & nombreArchivo & "</strong>"
     End Function

@@ -9,3 +9,6 @@ C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Debug\CapaDatos.dll
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Debug\CapaDatos.xml
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Debug\CapaDatos.pdb
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\obj\Debug\CapaDatos.vbprojResolveAssemblyReference.cache
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\bin\Debug\DLOffice.pdb
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\bin\Debug\DLOffice.xml
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\CapaDatos\bin\Debug\DLOffice.dll

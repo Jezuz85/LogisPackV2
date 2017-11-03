@@ -421,7 +421,7 @@ CapaDatos
  todos los tipo de facturacion existentes en la base de datos
  </summary>
 </member>
-<member name="M:CapaDatos.Mgr_TipoFacturacion.Get_Tipo_Facturacion(System.Int32)">
+<member name="M:CapaDatos.Mgr_TipoFacturacion.Get_Tipo_FacturacionById(System.Int32)">
  <summary>
  Metodo que recibe un id del Tipo_Facturacion y lo consulta desde la Base de datos, 
  devuelve un objeto tipo Tipo_Facturacion si fue exitoso, de lo contrario no devuelve nothing
@@ -456,13 +456,13 @@ CapaDatos
  Metodo que recibe un id del Tipo de Unidad y lo elimina en Base de datos, devuelve True si fue exitoso, de lo contrario False
  </summary>
 </member>
-<member name="M:CapaDatos.Mgr_TipoUnidad.Get_Tipo_Unidad(System.Int32)">
+<member name="M:CapaDatos.Mgr_TipoUnidad.Get_Tipo_UnidadById(System.Int32)">
  <summary>
  Metodo que recibe un id del Tipo_Unidad y lo consulta desde la Base de datos, 
  devuelve un objeto tipo Tipo_Unidad si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
-<member name="M:CapaDatos.Mgr_TipoUnidad.Get_Tipo_Unidad(System.String)">
+<member name="M:CapaDatos.Mgr_TipoUnidad.Get_Tipo_UnidadByNombre(System.String)">
  <summary>
  Metodo que recibe un nombre del Tipo_Unidad y lo consulta desde la Base de datos, 
  devuelve un objeto tipo Tipo_Unidad si fue exitoso, de lo contrario no devuelve nothing

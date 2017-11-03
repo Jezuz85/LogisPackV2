@@ -41,7 +41,7 @@ Public Class CargaMasiva
 
         If Page.IsValid Then
 
-            Dim resultadoCarga = Mgr_Excel.CargaMasiva(fuExcel, Val_Articulo.NombreHoja.ToString, ddlAlmacen.SelectedValue)
+            Dim resultadoCarga = Mgr_Excel.CargarExcel(fuExcel, Val_Articulo.NombreHoja.ToString, ddlAlmacen.SelectedValue)
 
             If resultadoCarga(0).Equals(Val_General.CargaExito.ToString) Then
                 Util_Modal.MostrarMensajeAlerta(_updatePpal, True, resultadoCarga(0))

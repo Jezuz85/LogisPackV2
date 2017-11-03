@@ -35,3 +35,6 @@ C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\PruebaInterfaz\obj\
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\PruebaInterfaz\obj\Debug\PruebaInterfaz.dll
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\PruebaInterfaz\obj\Debug\PruebaInterfaz.xml
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\PruebaInterfaz\obj\Debug\PruebaInterfaz.pdb
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\PruebaInterfaz\bin\Debug\DLOffice.dll
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\PruebaInterfaz\bin\Debug\DLOffice.pdb
+C:\Users\Jezuz\Desktop\Repository\LogisPackV2\LogisPack_v1.2\PruebaInterfaz\bin\Debug\DLOffice.xml

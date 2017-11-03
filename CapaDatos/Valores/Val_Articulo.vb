@@ -67,6 +67,6 @@
     '------------------------------------------------------------------
     '------------------------NOMBRE DE LA HOJA EN EXCEL A CARGAR-------
     '------------------------------------------------------------------
-    Public Shared ReadOnly NombreHoja As Val_Articulo = New Val_Articulo("Articulos")
+    Public Shared ReadOnly NombreHoja As Val_Articulo = New Val_Articulo("Articulos$")
 
 End Class

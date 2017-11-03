@@ -1,0 +1,138 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+DLOffice
+</name>
+</assembly>
+<members>
+<member name="T:DLOffice.My.Resources.Resources">
+<summary>
+  Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
+</summary>
+</member>
+<member name="P:DLOffice.My.Resources.Resources.ResourceManager">
+<summary>
+  Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
+</summary>
+</member>
+<member name="P:DLOffice.My.Resources.Resources.Culture">
+<summary>
+  Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
+  búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
+</summary>
+</member>
+<member name="P:DLOffice.My.Resources.Resources.MSG_Imposible_abrir_Excel">
+<summary>
+  Busca una cadena traducida similar a Imposible abrir el fichero de Excel.
+</summary>
+</member>
+<member name="P:DLOffice.My.Resources.Resources.MSG_Imposible_Abrir_Excel_Solo_Titulo">
+<summary>
+  Busca una cadena traducida similar a Imposible abrir el fichero de Excel.
+</summary>
+</member>
+<member name="T:DLOffice.ControladorOffice.EnTipoFormatoIntegra">
+ <summary>
+ Enumeración sobre el tipo de formato de las integraciones
+ </summary>
+</member>
+<member name="M:DLOffice.ControladorOffice.ObtenerNombreHojasExcelOTablasAccess(System.String,DLOffice.ControladorOffice.EnTipoFormatoIntegra)">
+ <summary>
+ Devuelve una lista de los nombres de las hojas excel o tablas access del archivo. En el de Excel contienen "$" al final
+ </summary>
+ <param name="Fichero">Path hacia el fichero a comprobar</param>
+ <param name="Cual">Enumeracion sobre el Tipo de formato del fichero a integrar. Puede ser Excel o Access</param>
+ <returns>Lista de los nombres de las tablas que contiene el fichero Fichero</returns>
+</member>
+<member name="F:DLOffice.ControladorOffice._PlantillaCriterioExcel">
+ <summary>
+ Plantilla para crear los criterios al obtener datos de un archivo excel. El nombre de la hoja ha de terminar con "$"
+ </summary>
+</member>
+<member name="M:DLOffice.ControladorOffice.RellenarDTExcel(System.String,System.String)">
+ <summary>
+ Rellena un DataTable a partir de la primera hoja de un Excel. Devuelve: Un DataTable con el contenido de la primera hoja o Nothing si la hoja no tiene filas de datos
+ </summary>
+ <param name="RutaExcel">Ruta del archivo excel a procesar</param>
+ <param name="NombreTabla">Nombre del DataTable resultante o "" para usar el nombre de la hoja</param> 
+ <returns>Un DataTable con el contenido de la primera hoja o Nothing si la hoja no tiene filas de datos</returns>
+</member>
+<member name="M:DLOffice.ControladorOffice.RellenarDTExcel(System.String,System.String,System.String)">
+ <summary>
+ Rellena un DataTable a partir de la hoja Excel que aparece en el Criterio. Devuelve: Un DataTable que contiene las filas de la hoja Excel o Nothing si la hoja no tiene filas de datos
+ </summary>
+ <param name="RutaExcel">Ruta del archivo Excel</param>
+ <param name="Criterio">Criterio de seleccion de filas y hoja (ej: "SELECT * FROM [hoja1$]")</param>
+ <param name="NombreTabla">Nombre que se dara al DataTable resultante en el DataSet</param>
+ <returns>Un DataTable que contiene las filas de la hoja Excel o Nothing si la hoja no tiene filas de datos</returns>
+</member>
+<member name="M:DLOffice.ControladorOffice.RellenarDSExcel(System.String)">
+ <summary>
+ Rellena un DataSet a partir de todas las hojas de un fichero Excel. Devuelve: Un DataSet con las filas del archivo Excel o Nothing si las hojas no tienen filas de datos
+ </summary>
+ <param name="RutaExcel">Ruta del archivo Excel</param>
+ <returns>Un DataSet con las filas del archivo Excel o Nothing si las hojas no tienen filas de datos</returns>
+</member>
+<member name="M:DLOffice.ControladorOffice.RellenarDSExcel(System.String,System.String,System.String)">
+ <summary>
+ Rellena un DataSet a partir de la hoja Excel que aparece en el Criterio. Devuelve: Un DataSet que contiene las filas de la hoja Excel o Nothing si la hoja no tiene filas de datos
+ </summary>
+ <param name="RutaExcel">Ruta del archivo Excel</param>
+ <param name="Criterio">Criterio de seleccion de filas y hoja (ej: "SELECT * FROM [hoja1$]")</param>
+ <param name="NombreTabla">Nombre que se dara al DataTable resultante en el DataSet</param>
+ <returns>Un DataSet que contiene las filas de la hoja Excel o Nothing si la hoja no tiene filas de datos</returns>
+ <remarks>NOTA: Asume que la funcion "Carga_CadenaConexionExcel" usa el parametro "HDR" con valor "NO".</remarks>
+</member>
+<member name="M:DLOffice.ControladorOffice.Carga_CadenaConexionExcel(System.String)">
+ <summary>
+ Devuelve la cadena de conexion mas apropiada para abrir el fichero excel introducido
+ </summary>
+ <param name="Fichero">Ruta del archivo Excel</param>
+ <returns>Devuelve la cadena de conexion mas apropiada para abrir el fichero excel introducido</returns>
+ <remarks>Las extensiones de fichero excel soportadas son: xls, xlsx, xlsb, xlsm</remarks>
+</member>
+<member name="M:DLOffice.ControladorOffice.RellenarDTExcel(System.Data.OleDb.OleDbConnection@,System.String,System.String)">
+ <summary>
+ Rellena un DataTable a partir de la hoja Excel que aparece en el Criterio. Devuelve: Un DataSet que contiene las filas de la hoja Excel o Nothing si la hoja no tiene filas de datos
+ </summary>
+ <param name="Cn">Conexion activa con la hoja excel</param>
+ <param name="Criterio">Criterio de seleccion de filas y hoja (ej: "SELECT * FROM [hoja1$]")</param>
+ <param name="NombreTabla">Nombre que se dara al DataTable resultante en el DataSet</param>
+ <returns>Un DataTable que contiene las filas de la hoja Excel o Nothing si la hoja no tiene filas de datos</returns>
+ <remarks>NOTA: Asume que la funcion "Carga_CadenaConexionExcel" usa el parametro "HDR" con valor "NO".</remarks>
+</member>
+<member name="M:DLOffice.ControladorOffice.ParsearCriterioExcel(System.String,System.Collections.Generic.List{System.String}@)">
+ <summary>
+ Parsea el Criterio para que podamos usarlo al abrir un Excel al que se le indica que no contiene cabeceras ("HDR=NO"), aunque realmente las tendremos en la primera fila.
+ Siempre incluye todos los campo "*", esto es porque al indicarle que no tiene cabeceras el Adaptador no entiende como lo ha de hacer si se especifican campos concretos y da
+ un error.
+ Le suma 1 al numero del TOP (si lo tiene) dado que la primera fila de datos contendra las cabeceras. Si hiceramos un TOP 1 sin sumarle uno solo obtendriamos las cabeceras
+ lo que resularia en un DataTable vacio.
+ Compatible con los siguientes criterios: SELECT [Campo 1], [Campo N] FROM [NombreTabla] y SELECT TOP [Campo 1], [Campo N] FROM [NombreTabla].
+ Admite "*" en vez de los campos y nombres de campo con espacios.
+ </summary>
+ <param name="Criterio">Criterio a parsear</param>
+ <param name="LstNombreCampoOut">Lista de salida que contendra los nombres campos EN MAYUSCULAS (lo demos usar para eliminar las columnas de un DataTable que no es esten en esta lista)</param>
+ <returns>Cadena con el Criteio parseado EN MAYUSCULAS</returns>
+ <remarks>NOTA: Asume que la funcion "Carga_CadenaConexionExcel" usa el parametro "HDR" con valor "NO".</remarks>
+</member>
+<member name="M:DLOffice.ControladorOffice.ExtraerCamposDeCriterioExcel(System.String)">
+ <summary>
+ Extrae los campos de un Criterio excel. Tiene en cuenta que los nombres de campo puedan contener espacios. 
+ Compatible con los siguientes criterios: SELECT [Campo 1], [Campo N] FROM [NombreTabla] y SELECT TOP [Campo 1], [Campo N] FROM [NombreTabla].
+ Admite "*" en vez de los campos y nombres de campo con espacios.
+ </summary>
+ <param name="Criterio">Criterio a analizar</param>
+ <returns>Un lista con los nombres de los campos EN MAYUSCULAS</returns>
+</member>
+<member name="M:DLOffice.ControladorOffice.EsHojaVaciaExcel(System.Data.DataTable)">
+ <summary>
+ Indica si un DataTable que representa una hoja esta vacio.
+ </summary>
+ <param name="Dt">DataTable a procesar</param>
+ <returns>TRUE si la hoja esta vacia</returns>
+ <remarks>NOTA: Asume que la funcion "Carga_CadenaConexionExcel" usa el parametro "HDR" con valor "NO".</remarks>
+</member>
+</members>
+</doc>

@@ -34,6 +34,14 @@ Public Class Util_Fileupload
 
     End Function
 
+    Public Shared Function DevolverRutaImagen(ByRef _archivo As FileUpload, ruta As String, nombre As String) As String
+
+        Dim fileExtension As String = "." + _archivo.FileName.Substring(_archivo.FileName.LastIndexOf(".") + 1).ToLower()
+        Dim rutaImagen As String = HttpContext.Current.Server.MapPath(ruta) & nombre & DateTime.Now.ToString("(MM-dd-yy_H-mm-ss)") & fileExtension
+        Return rutaImagen
+
+    End Function
+
     ''' <summary>
     ''' Metodo para redimensionar las imagenes a 800 x 600 pxs
     ''' </summary>
