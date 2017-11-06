@@ -23,7 +23,9 @@ Public Class Mgr_Cliente_Test
     ''' </summary>
     Public Shared Sub Inicializar(ByRef _Cliente As Cliente)
 
-        Mgr_Cliente.Guardar(_Cliente)
+        If Mgr_Cliente.Guardar(_Cliente) Then
+            _Cliente = Mgr_Cliente.Get_Cliente_Ultimo()
+        End If
 
     End Sub
 

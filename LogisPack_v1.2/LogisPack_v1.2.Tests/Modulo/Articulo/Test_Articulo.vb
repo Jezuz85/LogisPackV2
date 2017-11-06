@@ -1,4 +1,5 @@
-﻿Imports CapaDatos
+﻿Imports System.Web.UI.WebControls
+Imports CapaDatos
 
 <TestClass()> Public Class Test_Articulo
 
@@ -7,6 +8,8 @@
     Dim _Tipo_FacturacionTest As Tipo_Facturacion
     Dim _Tipo_UnidadTest As Tipo_Unidad
     Dim _ClienteTest As Cliente
+    Dim _DropDownlistTest As DropDownList
+    Dim _TextBox As TextBox
 
     ''' <summary>
     ''' Método que se invoca para inicializar auitomaticamente una prueba
@@ -122,6 +125,99 @@
         Dim _ListaItems As List(Of String) = _miServicio.AutocompleteArticulo("Nombrev", Val_Articulo.Filtro_Cliente.ToString(), 1)
 
         Assert.AreEqual(1, _ListaItems.Count())
+    End Sub
+
+    ''' <summary>
+    ''' Método que se ejecuta para consulta de un articulo
+    ''' </summary>
+    <TestMethod()> Public Sub Get_Articulo()
+
+        Dim _ArticuloBD = Mgr_Articulo.Get_Articulo(_ArticuloTest.id_articulo)
+
+        Assert.AreEqual(_ArticuloBD.id_articulo, _ArticuloTest.id_articulo)
+        Assert.AreEqual(_ArticuloBD.nombre, _ArticuloTest.nombre)
+        Assert.AreEqual(_ArticuloBD.codigo, _ArticuloTest.codigo)
+
+    End Sub
+
+    ''' <summary>
+    ''' Método que se ejecuta para consulta del ultimo articulo
+    ''' </summary>
+    <TestMethod()> Public Sub Get_Articulo_Ultimo()
+
+        Dim _ArticuloBD = Mgr_Articulo.Get_Articulo_Ultimo()
+
+        Assert.AreEqual(_ArticuloBD.id_articulo, _ArticuloTest.id_articulo)
+        Assert.AreEqual(_ArticuloBD.nombre, _ArticuloTest.nombre)
+        Assert.AreEqual(_ArticuloBD.codigo, _ArticuloTest.codigo)
+
+    End Sub
+
+    ''' <summary>
+    ''' Método que se ejecuta para consulta de un articulo por el codigo
+    ''' </summary>
+    <TestMethod()> Public Sub Get_ArticuloByCodigo()
+
+        Dim _ArticuloBD = Mgr_Articulo.Get_ArticuloByCodigo(_ArticuloTest.codigo)
+
+        Assert.AreEqual(_ArticuloBD.id_articulo, _ArticuloTest.id_articulo)
+        Assert.AreEqual(_ArticuloBD.nombre, _ArticuloTest.nombre)
+        Assert.AreEqual(_ArticuloBD.codigo, _ArticuloTest.codigo)
+
+    End Sub
+
+    ''' <summary>
+    ''' Método que se ejecuta para consultar la lista de Articulos de tipo normal y dependiendo del id almacen 
+    ''' </summary>
+    <TestMethod()> Public Sub Llenar_ListaByAlmacen_ArticuloNormal()
+
+        _DropDownlistTest = New DropDownList()
+        Mgr_Articulo.Llenar_ListaByAlmacen_ArticuloNormal(_DropDownlistTest, _AlmacenTest.id_almacen)
+
+        Assert.AreNotEqual(_DropDownlistTest.Items.Count(), 0)
+
+    End Sub
+
+    ''' <summary>
+    ''' Método que se ejecuta para consultar la lista de Articulos dependiendo del id almacen 
+    ''' </summary>
+    <TestMethod()> Public Sub Llenar_ListaByAlmacen()
+
+        _DropDownlistTest = New DropDownList()
+        Mgr_Articulo.Llenar_ListaByAlmacen(_DropDownlistTest, _AlmacenTest.id_almacen)
+
+        Assert.AreNotEqual(_DropDownlistTest.Items.Count(), 0)
+
+    End Sub
+
+    ''' <summary>
+    ''' Método que se ejecuta para consultar el coeficiente volumetrico de un articulo y agregarlo a un textbox 
+    ''' </summary>
+    <TestMethod()> Public Sub CargarCoefVol()
+
+        _TextBox = New TextBox()
+        Mgr_Articulo.CargarCoefVol(_AlmacenTest.id_almacen, _TextBox)
+
+        Assert.AreEqual(_TextBox.Text, _AlmacenTest.coeficiente_volumetrico.ToString().Replace(",", "."))
+
+    End Sub
+
+    ''' <summary>
+    ''' Método que se ejecuta para validar el llenado de ceros en los campos de ubicacion
+    ''' </summary>
+    <TestMethod()> Public Sub LlenarCeros()
+
+        Dim ValorActual = Mgr_Articulo.LlenarCeros("a")
+        Assert.AreEqual("000a", ValorActual)
+
+        ValorActual = Mgr_Articulo.LlenarCeros("aa")
+        Assert.AreEqual("00aa", ValorActual)
+
+        ValorActual = Mgr_Articulo.LlenarCeros("aaa")
+        Assert.AreEqual("0aaa", ValorActual)
+
+        ValorActual = Mgr_Articulo.LlenarCeros("aaaa")
+        Assert.AreEqual("aaaa", ValorActual)
     End Sub
 
 End Class

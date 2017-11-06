@@ -203,10 +203,9 @@ Public Class Mgr_Almacen
     ''' Metodo que recibe un id del Almacen y lo consulta desde la Base de datos, 
     ''' devuelve un objeto tipo Almacen si fue exitoso, de lo contrario no devuelve nothing
     ''' </summary>
-    Public Shared Function Consultar(id As Integer) As Almacen
+    Public Shared Function Get_Almacen(id As Integer) As Almacen
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
-
         Return contexto.Almacen.Where(Function(model) model.id_almacen = id).SingleOrDefault()
 
     End Function
@@ -216,7 +215,7 @@ Public Class Mgr_Almacen
     ''' para devolver el Almacen a editar con su respectivo contexto usado
     ''' devuelve un objeto tipo Almacen si fue exitoso, de lo contrario no devuelve nothing
     ''' </summary>
-    Public Shared Function Consultar(id As Integer, ByRef contexto As LogisPackEntities) As Almacen
+    Public Shared Function Get_Almacen(id As Integer, ByRef contexto As LogisPackEntities) As Almacen
         Return contexto.Almacen.Where(Function(model) model.id_almacen = id).SingleOrDefault()
     End Function
 
@@ -242,6 +241,17 @@ Public Class Mgr_Almacen
 
         Dim _mialmacen As struct_Almacen = Nothing
         Return _mialmacen
+
+    End Function
+
+    ''' <summary>
+    ''' Metodo que devuelve el ultimo almacen registrado en la base de datos
+    ''' </summary>
+    Public Shared Function Get_Almacen_Ultimo() As Almacen
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Return contexto.Almacen.ToList().LastOrDefault()
 
     End Function
 

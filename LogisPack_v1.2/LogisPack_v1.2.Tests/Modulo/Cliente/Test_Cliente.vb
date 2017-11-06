@@ -1,9 +1,12 @@
 ﻿
+Imports System.Web.UI.WebControls
 Imports CapaDatos
 
 <TestClass()> Public Class Test_Cliente
 
-    Dim ClienteTest
+    Dim ClienteTest As Cliente
+    Dim _DropDownlistTest As DropDownList
+    Dim _GridViewTest As GridView
 
     ''' <summary>
     ''' Método que se invoca para inicializar auitomaticamente una prueba
@@ -86,6 +89,53 @@ Imports CapaDatos
 
         Assert.AreEqual(1, _ListaItems.Count())
     End Sub
+
+    ''' <summary>
+    ''' Prueba que se ejecuta para llenar el grid de un cliente
+    ''' </summary>
+    <TestMethod()> Public Sub LlenarGrid()
+
+        _GridViewTest = New GridView()
+        Mgr_Cliente.LlenarGrid(_GridViewTest, ClienteTest.id_cliente, String.Empty, String.Empty, String.Empty, String.Empty)
+        Assert.AreNotEqual(0, _GridViewTest.Rows.Count())
+
+    End Sub
+
+    ''' <summary>
+    ''' Prueba que se ejecuta para llenar la lista de un cliente por el id
+    ''' </summary>
+    <TestMethod()> Public Sub Llenar_ListaByCliente()
+
+        _DropDownlistTest = New DropDownList()
+        Mgr_Cliente.Llenar_ListaByCliente(_DropDownlistTest, ClienteTest.id_cliente)
+        Assert.AreNotEqual(0, _DropDownlistTest.Items.Count())
+
+    End Sub
+
+    ''' <summary>
+    ''' Prueba que se ejecuta para consultar un Cliente
+    ''' </summary>
+    <TestMethod()> Public Sub Get_Cliente()
+
+        Dim ClienteBD = Mgr_Cliente.Get_Cliente(ClienteTest.id_cliente)
+        Assert.AreEqual(ClienteBD.id_cliente, ClienteTest.id_cliente)
+        Assert.AreEqual(ClienteBD.nombre, ClienteTest.nombre)
+        Assert.AreEqual(ClienteBD.codigo, ClienteTest.codigo)
+
+    End Sub
+
+    ''' <summary>
+    ''' Prueba que se ejecuta para consultar un Cliente por el nombre
+    ''' </summary>
+    <TestMethod()> Public Sub Get_ClienteByNombre()
+
+        Dim ClienteBD = Mgr_Cliente.Get_ClienteByNombre(ClienteTest.nombre)
+        Assert.AreEqual(ClienteBD.id_cliente, ClienteTest.id_cliente)
+        Assert.AreEqual(ClienteBD.nombre, ClienteTest.nombre)
+        Assert.AreEqual(ClienteBD.codigo, ClienteTest.codigo)
+
+    End Sub
+
 
 
 End Class

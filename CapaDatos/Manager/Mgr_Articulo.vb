@@ -431,7 +431,6 @@ Public Class Mgr_Articulo
     Public Shared Function Get_Articulo(id As Integer) As Articulo
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
-
         Return contexto.Articulo.Where(Function(model) model.id_articulo = id).SingleOrDefault()
 
     End Function
@@ -455,18 +454,6 @@ Public Class Mgr_Articulo
 
         Dim contexto As LogisPackEntities = New LogisPackEntities()
         Return contexto.Articulo.Where(Function(model) model.codigo = _codigo).SingleOrDefault()
-
-    End Function
-
-    ''' <summary>
-    ''' Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
-    ''' devuelve una lista de objetos de tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
-    ''' </summary>
-    Public Shared Function Get_Articulo_List(id As Integer) As List(Of Articulo)
-
-        Dim contexto As LogisPackEntities = New LogisPackEntities()
-
-        Return contexto.Articulo.Where(Function(model) model.id_articulo = id).ToList()
 
     End Function
 
@@ -594,8 +581,10 @@ Public Class Mgr_Articulo
     ''' cargar la pagina
     ''' </summary>
     Public Shared Sub CargarCoefVol(idAlmacen As Integer, ByRef txt1 As TextBox)
-        Dim _Almacen = Mgr_Almacen.Consultar(idAlmacen)
+
+        Dim _Almacen = Mgr_Almacen.Get_Almacen(idAlmacen)
         txt1.Text = _Almacen.coeficiente_volumetrico.ToString().Replace(",", ".")
+
     End Sub
 
     ''' <summary>

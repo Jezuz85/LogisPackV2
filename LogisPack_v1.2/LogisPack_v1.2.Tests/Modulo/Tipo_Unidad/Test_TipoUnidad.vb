@@ -1,8 +1,11 @@
-﻿Imports CapaDatos
+﻿Imports System.Web.UI.WebControls
+Imports CapaDatos
 
 <TestClass()> Public Class Test_TipoUnidad
 
     Dim Tipo_UnidadTest As Tipo_Unidad
+    Dim _DropDownlistTest As DropDownList
+    Dim _GridViewTest As GridView
 
     ''' <summary>
     ''' Método que se invoca para inicializar auitomaticamente una prueba
@@ -72,4 +75,50 @@
         Assert.AreEqual(1, _ListaItems.Count())
 
     End Sub
+
+    ''' <summary>
+    ''' Prueba que se ejecuta para lledar el gridview de Tipo Unidad
+    ''' </summary>
+    <TestMethod()> Public Sub LlenarGrid()
+
+        _GridViewTest = New GridView()
+        Mgr_TipoUnidad.LlenarGrid(_GridViewTest, String.Empty, String.Empty, String.Empty, String.Empty)
+        Assert.AreNotEqual(0, _GridViewTest.Rows.Count())
+
+    End Sub
+
+    ''' <summary>
+    ''' Prueba que se ejecuta para lledar la lista de Tipo Unidad
+    ''' </summary>
+    <TestMethod()> Public Sub LlenarLista()
+
+        _DropDownlistTest = New DropDownList()
+        Mgr_TipoUnidad.LlenarLista(_DropDownlistTest)
+        Assert.AreNotEqual(0, _DropDownlistTest.Items.Count())
+
+    End Sub
+
+    ''' <summary>
+    ''' Prueba que se ejecuta para consultar un Tipo Unidad por su id
+    ''' </summary>
+    <TestMethod()> Public Sub Get_Tipo_UnidadById()
+
+        Dim _TipoUnidadBD = Mgr_TipoUnidad.Get_Tipo_UnidadById(Tipo_UnidadTest.id_tipo_unidad)
+        Assert.AreEqual(_TipoUnidadBD.id_tipo_unidad, Tipo_UnidadTest.id_tipo_unidad)
+        Assert.AreEqual(_TipoUnidadBD.nombre, Tipo_UnidadTest.nombre)
+
+    End Sub
+
+    ''' <summary>
+    ''' Prueba que se ejecuta para consultar un Tipo Unidad por su nombre
+    ''' </summary>
+    <TestMethod()> Public Sub Get_Tipo_FacturacionByNombre()
+
+        Dim _TipoUnidadBD = Mgr_TipoUnidad.Get_Tipo_UnidadByNombre(Tipo_UnidadTest.nombre)
+        Assert.AreEqual(_TipoUnidadBD.id_tipo_unidad, Tipo_UnidadTest.id_tipo_unidad)
+        Assert.AreEqual(_TipoUnidadBD.nombre, Tipo_UnidadTest.nombre)
+
+    End Sub
+
+
 End Class

@@ -102,6 +102,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -182,10 +183,6 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="bin\Debug\ApplicationInsights.config" />
-    <None Include="bin\Debug\CapaDatos.dll.config" />
-    <None Include="bin\Debug\LogisPack_v1.2.dll.config" />
-    <None Include="bin\Debug\LogisPack_v1.2.Tests.dll.config" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -218,39 +215,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Debug\AjaxControlToolkit.dll" />
-    <Content Include="bin\Debug\CapaDatos.dll" />
-    <Content Include="bin\Debug\CapaDatos.pdb" />
-    <Content Include="bin\Debug\CapaDatos.xml" />
     <Content Include="bin\Debug\EntityFramework.dll" />
     <Content Include="bin\Debug\es\Microsoft.AspNet.Identity.Core.resources.dll" />
     <Content Include="bin\Debug\es\Microsoft.AspNet.Identity.EntityFramework.resources.dll" />
     <Content Include="bin\Debug\es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll" />
-    <Content Include="bin\Debug\LogisPack_v1.2.dll" />
-    <Content Include="bin\Debug\LogisPack_v1.2.pdb" />
-    <Content Include="bin\Debug\LogisPack_v1.2.Tests.dll" />
-    <Content Include="bin\Debug\LogisPack_v1.2.Tests.pdb" />
     <Content Include="bin\Debug\LogisPack_v1.2.Tests.xml" />
-    <Content Include="bin\Debug\Microsoft.AspNet.FriendlyUrls.dll" />
     <Content Include="bin\Debug\Microsoft.AspNet.Identity.Core.dll" />
     <Content Include="bin\Debug\Microsoft.AspNet.Identity.Core.xml" />
     <Content Include="bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll" />
     <Content Include="bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml" />
     <Content Include="bin\Debug\Microsoft.AspNet.Identity.Owin.dll" />
     <Content Include="bin\Debug\Microsoft.Owin.dll" />
-    <Content Include="bin\Debug\Microsoft.Owin.Host.SystemWeb.dll" />
     <Content Include="bin\Debug\Microsoft.Owin.Security.Cookies.dll" />
     <Content Include="bin\Debug\Microsoft.Owin.Security.dll" />
     <Content Include="bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll" />
-    <Content Include="bin\Debug\Microsoft.Web.Infrastructure.dll" />
     <Content Include="bin\Debug\NMemory.dll" />
     <Content Include="bin\Debug\NMemory.xml" />
     <Content Include="bin\Debug\Owin.dll" />
-    <Content Include="bin\Debug\System.Web.Mvc.dll" />
-    <Content Include="bin\Debug\System.Web.Optimization.dll" />
-    <Content Include="bin\Debug\System.Web.Razor.dll" />
-    <Content Include="bin\Debug\System.Web.WebPages.Deployment.dll" />
-    <Content Include="bin\Debug\System.Web.WebPages.dll" />
-    <Content Include="bin\Debug\System.Web.WebPages.Razor.dll" />
     <Content Include="obj\Debug\LogisPack_v1.2.Tests.dll" />
     <Content Include="obj\Debug\LogisPack_v1.2.Tests.pdb" />
     <Content Include="obj\Debug\LogisPack_v1.2.Tests.vbproj.FileListAbsolute.txt" />

@@ -165,12 +165,6 @@ CapaDatos
  devuelve una objeto de tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
-<member name="M:CapaDatos.Mgr_Articulo.Get_Articulo_List(System.Int32)">
- <summary>
- Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
- devuelve una lista de objetos de tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
- </summary>
-</member>
 <member name="M:CapaDatos.Mgr_Articulo.Get_Articulo(System.Int32,CapaDatos.LogisPackEntities@)">
  <summary>
  Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, recibe un objeto contexto

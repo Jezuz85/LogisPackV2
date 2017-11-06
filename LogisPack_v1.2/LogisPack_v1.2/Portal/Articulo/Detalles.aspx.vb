@@ -24,15 +24,13 @@ Public Class Detalles
     ''' Metodo que se ejecuta para cargar los datos del articulo a consultar
     ''' </summary>
     Private Sub CargarArticulo(IdArticulo As Integer)
-        Dim _Articulo As List(Of Articulo) = Mgr_Articulo.Get_Articulo_List(IdArticulo)
+        Dim _Articulo = Mgr_Articulo.Get_Articulo(IdArticulo)
 
-        For Each itemArticulos In _Articulo
+        CargarArticulo(_Articulo)
+        CargarArticulosPicking(_Articulo)
+        CargarUbicacion(_Articulo)
+        CargarImagenes(_Articulo)
 
-            CargarArticulo(itemArticulos)
-            CargarArticulosPicking(itemArticulos)
-            CargarUbicacion(itemArticulos)
-            CargarImagenes(itemArticulos)
-        Next
     End Sub
 
     ''' <summary>

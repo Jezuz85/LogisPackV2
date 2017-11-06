@@ -27,10 +27,12 @@ Public Class Mgr_Almacen_Test
         Dim contexto As LogisPackEntities = New LogisPackEntities()
 
         Mgr_Cliente_Test.Inicializar(_Cliente)
-        _Cliente = Mgr_Cliente.Get_ClienteByNombre(_Cliente.nombre)
 
         _Almacen = Get_Almacen1(_Cliente)
-        Mgr_Almacen.Guardar(_Almacen)
+
+        If Mgr_Almacen.Guardar(_Almacen) Then
+            _Almacen = Mgr_Almacen.Get_Almacen_Ultimo()
+        End If
 
     End Sub
 

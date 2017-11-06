@@ -1,9 +1,12 @@
 ﻿
+Imports System.Web.UI.WebControls
 Imports CapaDatos
 
 <TestClass()> Public Class Test_TipoFacturacion
 
     Dim _TipoFacturacionTest As Tipo_Facturacion
+    Dim _DropDownlistTest As DropDownList
+    Dim _GridViewTest As GridView
 
     ''' <summary>
     ''' Método que se invoca para inicializar auitomaticamente una prueba
@@ -75,6 +78,52 @@ Imports CapaDatos
         Dim _ListaItems As List(Of String) = _miServicio.AutocompleteTipoFacturacion("Nombrev", Val_TipoFacturacion.Filtro_Nombre.ToString(), 1)
 
         Assert.AreEqual(1, _ListaItems.Count())
+
+    End Sub
+
+    ''' <summary>
+    ''' Prueba que se ejecuta para lledar el gridview de TipoFacturacion
+    ''' </summary>
+    <TestMethod()> Public Sub LlenarGrid()
+
+        _GridViewTest = New GridView()
+        Mgr_TipoFacturacion.LlenarGrid(_GridViewTest, String.Empty, String.Empty, String.Empty, String.Empty)
+        Assert.AreNotEqual(0, _GridViewTest.Rows.Count())
+
+    End Sub
+
+    ''' <summary>
+    ''' Prueba que se ejecuta para lledar la lista de TipoFacturacion
+    ''' </summary>
+    <TestMethod()> Public Sub LlenarLista()
+
+        _DropDownlistTest = New DropDownList()
+        Mgr_TipoFacturacion.LlenarLista(_DropDownlistTest)
+        Assert.AreNotEqual(0, _DropDownlistTest.Items.Count())
+
+    End Sub
+
+    ''' <summary>
+    ''' Prueba que se ejecuta para consultar un TipoFacturacion por su id
+    ''' </summary>
+    <TestMethod()> Public Sub Get_Tipo_FacturacionById()
+
+        Dim _TipoFacturacionBD = Mgr_TipoFacturacion.Get_Tipo_FacturacionById(_TipoFacturacionTest.id_tipo_facturacion)
+
+        Assert.AreEqual(_TipoFacturacionBD.id_tipo_facturacion, _TipoFacturacionTest.id_tipo_facturacion)
+        Assert.AreEqual(_TipoFacturacionBD.nombre, _TipoFacturacionTest.nombre)
+
+    End Sub
+
+    ''' <summary>
+    ''' Prueba que se ejecuta para consultar un TipoFacturacion por su nombre
+    ''' </summary>
+    <TestMethod()> Public Sub Get_Tipo_FacturacionByNombre()
+
+        Dim _TipoFacturacionBD = Mgr_TipoFacturacion.Get_Tipo_FacturacionByNombre(_TipoFacturacionTest.nombre)
+
+        Assert.AreEqual(_TipoFacturacionBD.id_tipo_facturacion, _TipoFacturacionTest.id_tipo_facturacion)
+        Assert.AreEqual(_TipoFacturacionBD.nombre, _TipoFacturacionTest.nombre)
 
     End Sub
 

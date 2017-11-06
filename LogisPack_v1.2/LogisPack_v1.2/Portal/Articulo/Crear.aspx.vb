@@ -162,7 +162,7 @@ Public Class Crear
     ''' </summary>
     Private Sub GuardarImagenes(articuloView As Articulo)
 
-        Mgr_Imagen.RecorrerGrid_Guardar(fuImagenes, articuloView.id_articulo)
+        Mgr_Imagen.RecorrerFileupload_Guardar(fuImagenes, articuloView.id_articulo)
 
     End Sub
 

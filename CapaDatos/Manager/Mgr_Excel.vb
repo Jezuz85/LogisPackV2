@@ -121,6 +121,12 @@ Public Class Mgr_Excel
                     contexto.Articulo.Add(_Nuevo)
                     contexto.Ubicacion.Add(_Ubicacion)
 
+                    Try
+                        contexto.SaveChanges()
+                    Catch ex As Exception
+                        _Errores.Add(ex.ToString)
+                        Return _Errores
+                    End Try
 
                 Next
 

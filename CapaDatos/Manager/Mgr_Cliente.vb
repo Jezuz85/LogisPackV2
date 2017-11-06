@@ -179,4 +179,15 @@ Public Class Mgr_Cliente
 
     End Function
 
+    ''' <summary>
+    ''' Metodo que devuelve el ultimo cliente registrado en la base de datos
+    ''' </summary>
+    Public Shared Function Get_Cliente_Ultimo() As Cliente
+
+        Dim contexto As LogisPackEntities = New LogisPackEntities()
+
+        Return contexto.Cliente.ToList().LastOrDefault()
+
+    End Function
+
 End Class

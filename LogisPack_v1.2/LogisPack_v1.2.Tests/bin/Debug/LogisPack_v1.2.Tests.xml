@@ -222,6 +222,26 @@ LogisPack_v1.2.Tests
  Prueba que se ejecuta para validar el webservice autocomplete en almacen, con filtro de cliente
  </summary>
 </member>
+<member name="M:LogisPack_v1._2.Tests.Test_Almacen.Llenar_Grid">
+ <summary>
+ Prueba que se ejecuta para devolver el grid de almacenes
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Almacen.Llenar_Lista">
+ <summary>
+ Prueba que se ejecuta para devolver la lista de almacenes en la bd
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Almacen.Llenar_ListaByCliente">
+ <summary>
+ Prueba que se ejecuta para devolver la lista de almacenes dependiendo del cliente
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Almacen.Get_Almacen">
+ <summary>
+ Prueba que se ejecuta para consultar un almacen
+ </summary>
+</member>
 <member name="M:LogisPack_v1._2.Tests.Test_Articulo.Inicializar">
  <summary>
  Método que se invoca para inicializar auitomaticamente una prueba
@@ -267,6 +287,41 @@ LogisPack_v1.2.Tests
  Prueba que se ejecuta para validar el webservice autocomplete en Articulo normal, con filtro de Cliente
  </summary>
 </member>
+<member name="M:LogisPack_v1._2.Tests.Test_Articulo.Get_Articulo">
+ <summary>
+ Método que se ejecuta para consulta de un articulo
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Articulo.Get_Articulo_Ultimo">
+ <summary>
+ Método que se ejecuta para consulta del ultimo articulo
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Articulo.Get_ArticuloByCodigo">
+ <summary>
+ Método que se ejecuta para consulta de un articulo por el codigo
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Articulo.Llenar_ListaByAlmacen_ArticuloNormal">
+ <summary>
+ Método que se ejecuta para consultar la lista de Articulos de tipo normal y dependiendo del id almacen 
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Articulo.Llenar_ListaByAlmacen">
+ <summary>
+ Método que se ejecuta para consultar la lista de Articulos dependiendo del id almacen 
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Articulo.CargarCoefVol">
+ <summary>
+ Método que se ejecuta para consultar el coeficiente volumetrico de un articulo y agregarlo a un textbox 
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Articulo.LlenarCeros">
+ <summary>
+ Método que se ejecuta para validar el llenado de ceros en los campos de ubicacion
+ </summary>
+</member>
 <member name="M:LogisPack_v1._2.Tests.Test_ArticuloPicking.Inicializar">
  <summary>
  Método que se invoca para inicializar auitomaticamente una prueba
@@ -290,6 +345,26 @@ LogisPack_v1.2.Tests
 <member name="M:LogisPack_v1._2.Tests.Test_ArticuloPicking.Eliminar_ArticuloPicking">
  <summary>
  Método que se ejecuta para eliminar un articulo de tipo picking
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_ArticuloPicking.Get_Picking_Articulo_List">
+ <summary>
+ Método que se ejecuta para consultar un articulo de tipo picking y devolver una lista
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_ArticuloPicking.Get_Picking_Articulo">
+ <summary>
+ Método que se ejecuta para consultar un articulo de tipo picking
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_ArticuloPicking.Llenar_Grid">
+ <summary>
+ Método que se ejecuta para consultar la tabla con los articulos picking en la bd
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_ArticuloPicking.Llenar_Grid_ArtPicking">
+ <summary>
+ Método que se ejecuta para consultar la tabla con los articulos de tipo normal de un articulo picking
  </summary>
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_Cliente.Inicializar">
@@ -327,6 +402,26 @@ LogisPack_v1.2.Tests
  Prueba que se ejecuta para validar el webservice autocomplete en cliente, con filtro de nombre
  </summary>
 </member>
+<member name="M:LogisPack_v1._2.Tests.Test_Cliente.LlenarGrid">
+ <summary>
+ Prueba que se ejecuta para llenar el grid de un cliente
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Cliente.Llenar_ListaByCliente">
+ <summary>
+ Prueba que se ejecuta para llenar la lista de un cliente por el id
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Cliente.Get_Cliente">
+ <summary>
+ Prueba que se ejecuta para consultar un Cliente
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Cliente.Get_ClienteByNombre">
+ <summary>
+ Prueba que se ejecuta para consultar un Cliente por el nombre
+ </summary>
+</member>
 <member name="M:LogisPack_v1._2.Tests.Test_Imagen.Inicializar">
  <summary>
  Método que se invoca para inicializar auitomaticamente una prueba
@@ -350,6 +445,21 @@ LogisPack_v1.2.Tests
 <member name="M:LogisPack_v1._2.Tests.Test_Imagen.Eliminar_Imagen">
  <summary>
  Prueba que se ejecuta para eliminar un Imagen
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Imagen.Get_Imagen">
+ <summary>
+ Prueba que se ejecuta para consultar un Imagen
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Imagen.Get_Imagen_list">
+ <summary>
+ Prueba que se ejecuta para consultar una lista de Imagenes
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_Imagen.LlenarGrid">
+ <summary>
+ Prueba que se ejecuta para llenar el grid de imagenes de un articulo
  </summary>
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_ManagerArticulo.Inicializar">
@@ -407,6 +517,26 @@ LogisPack_v1.2.Tests
  Prueba que se ejecuta para validar el webservice autocomplete en Tipo de Facturacion, con filtro de Codigo
  </summary>
 </member>
+<member name="M:LogisPack_v1._2.Tests.Test_TipoFacturacion.LlenarGrid">
+ <summary>
+ Prueba que se ejecuta para lledar el gridview de TipoFacturacion
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_TipoFacturacion.LlenarLista">
+ <summary>
+ Prueba que se ejecuta para lledar la lista de TipoFacturacion
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_TipoFacturacion.Get_Tipo_FacturacionById">
+ <summary>
+ Prueba que se ejecuta para consultar un TipoFacturacion por su id
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_TipoFacturacion.Get_Tipo_FacturacionByNombre">
+ <summary>
+ Prueba que se ejecuta para consultar un TipoFacturacion por su nombre
+ </summary>
+</member>
 <member name="M:LogisPack_v1._2.Tests.Test_TipoUnidad.Inicializar">
  <summary>
  Método que se invoca para inicializar auitomaticamente una prueba
@@ -435,6 +565,26 @@ LogisPack_v1.2.Tests
 <member name="M:LogisPack_v1._2.Tests.Test_TipoUnidad.Autocomplete_TipoUnidadByNombre">
  <summary>
  Prueba que se ejecuta para validar el webservice autocomplete en Tipo de Unidad, con filtro de Codigo
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_TipoUnidad.LlenarGrid">
+ <summary>
+ Prueba que se ejecuta para lledar el gridview de Tipo Unidad
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_TipoUnidad.LlenarLista">
+ <summary>
+ Prueba que se ejecuta para lledar la lista de Tipo Unidad
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_TipoUnidad.Get_Tipo_UnidadById">
+ <summary>
+ Prueba que se ejecuta para consultar un Tipo Unidad por su id
+ </summary>
+</member>
+<member name="M:LogisPack_v1._2.Tests.Test_TipoUnidad.Get_Tipo_FacturacionByNombre">
+ <summary>
+ Prueba que se ejecuta para consultar un Tipo Unidad por su nombre
  </summary>
 </member>
 <member name="M:LogisPack_v1._2.Tests.Test_Ubicacion.Inicializar">

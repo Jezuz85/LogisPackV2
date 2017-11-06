@@ -151,7 +151,7 @@ Public Class index
         If e.CommandName.Equals(Val_General.Detalles.ToString) Then
 
             hdfView.Value = Util_Grid.Get_IdRow(GridView1, e)
-            Dim _Almacen = Mgr_Almacen.Consultar(Convert.ToInt32(hdfView.Value))
+            Dim _Almacen = Mgr_Almacen.Get_Almacen(Convert.ToInt32(hdfView.Value))
 
             lbViewCliente.Text = _Almacen.Cliente.nombre
             lbViewCodigo.Text = _Almacen.codigo
@@ -163,7 +163,7 @@ Public Class index
         ElseIf e.CommandName.Equals(Val_General.Editar.ToString) Then
 
             hdfEdit.Value = Util_Grid.Get_IdRow(GridView1, e)
-            Dim _Almacen = Mgr_Almacen.Consultar(Convert.ToInt32(hdfEdit.Value))
+            Dim _Almacen = Mgr_Almacen.Get_Almacen(Convert.ToInt32(hdfEdit.Value))
             Mgr_Cliente.Llenar_ListaByCliente(ddlClienteEdit, idCliente)
 
             Dim CoefVolumetrico As String = Convert.ToDouble(_Almacen.coeficiente_volumetrico).ToString("##,##0.00000").Replace(",", ".")
@@ -228,7 +228,7 @@ Public Class index
 
         If (Page.IsValid) Then
 
-            Dim Edit = Mgr_Almacen.Consultar(Convert.ToInt32(hdfEdit.Value), contexto)
+            Dim Edit = Mgr_Almacen.Get_Almacen(Convert.ToInt32(hdfEdit.Value), contexto)
 
             If Edit IsNot Nothing Then
 

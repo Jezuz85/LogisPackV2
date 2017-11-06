@@ -117,29 +117,34 @@ Public Class Mgr_Articulo_Test
     ''' <summary>
     ''' Metodo que recibe un objeto de tipo Articulo,cliente ,Almacen, tipo de unidad y tipo de facturacion y los guarda en la base de datos
     ''' </summary>
-    Public Shared Sub Inicializar_ArticuloPicking(ByRef _Articulo As Articulo,
-                                                  ByRef _Picking_Articulo As Picking_Articulo,
-                                                  ByRef _ArticuloP As Articulo)
+    Public Shared Sub Inicializar_ArticuloPicking(ByRef _Articulo_TipoNormalTest As Articulo, ByRef _Picking_Articulo As Picking_Articulo,
+        ByRef _Articulo_TipoPickingTest As Articulo)
 
-        Mgr_Articulo.Guardar(_Articulo)
-        Mgr_Articulo.Guardar(_ArticuloP)
+        If Mgr_Articulo.Guardar(_Articulo_TipoNormalTest) Then
 
-        Inicializar_Picking_Articulo(_Picking_Articulo, _Articulo, _ArticuloP)
+            _Articulo_TipoNormalTest = Mgr_Articulo.Get_Articulo_Ultimo()
+
+            If Mgr_Articulo.Guardar(_Articulo_TipoPickingTest) Then
+                _Articulo_TipoPickingTest = Mgr_Articulo.Get_Articulo_Ultimo()
+            End If
+
+        End If
+
+        Inicializar_Picking_Articulo(_Picking_Articulo, _Articulo_TipoNormalTest, _Articulo_TipoPickingTest)
 
     End Sub
 
     ''' <summary>
     ''' Metodo que recibe un objeto de tipo Picking_Articulo,cliente ,Almacen, tipo de unidad y tipo de facturacion y los guarda en la base de datos
     ''' </summary>
-    Public Shared Sub Inicializar_Picking_Articulo(ByRef _Picking_Articulo As Picking_Articulo,
-                                                   ByRef _Articulo As Articulo,
-                                                   ByRef _ArticuloP As Articulo)
+    Public Shared Sub Inicializar_Picking_Articulo(ByRef _Picking_Articulo As Picking_Articulo, ByRef _Articulo_TipoNormalTest As Articulo,
+        ByRef _Articulo_TipoPickingTest As Articulo)
 
         _Picking_Articulo = New Picking_Articulo With
             {
             .unidades = 2,
-            .id_articulo = _ArticuloP.id_articulo,
-            .id_picking = _Articulo.id_articulo
+            .id_articulo = _Articulo_TipoNormalTest.id_articulo,
+            .id_picking = _Articulo_TipoPickingTest.id_articulo
         }
         Mgr_Articulo.Guardar_Picking_Articulo(_Picking_Articulo)
 

@@ -101,7 +101,7 @@ Public Class Editar
     ''' </summary>
     Private Sub CargarCoefVol(idAlmacen As Integer)
 
-        Dim _Almacen = Mgr_Almacen.Consultar(idAlmacen)
+        Dim _Almacen = Mgr_Almacen.Get_Almacen(idAlmacen)
         txtCoefVol.Text = _Almacen.coeficiente_volumetrico
 
     End Sub
@@ -126,17 +126,11 @@ Public Class Editar
     ''' </summary>
     Private Sub CargarArticulo()
 
-        Dim _Articulo As List(Of Articulo)
-        _Articulo = Mgr_Articulo.Get_Articulo_List(IdArticulo)
-
-        For Each itemArticulos In _Articulo
-
-            CargarArticulo(itemArticulos)
-            CargarArticulosPicking(itemArticulos)
-            CargarImagenes(IdArticulo)
-            CargarUbicacion(itemArticulos)
-
-        Next
+        Dim _Articulo = Mgr_Articulo.Get_Articulo(IdArticulo)
+        CargarArticulo(_Articulo)
+        CargarArticulosPicking(_Articulo)
+        CargarImagenes(IdArticulo)
+        CargarUbicacion(_Articulo)
 
     End Sub
 
@@ -431,7 +425,7 @@ Public Class Editar
     ''' </summary>
     Private Function EditarImagenes(Edit As Articulo) As Boolean
 
-        Return Mgr_Imagen.RecorrerGrid_Guardar(fuImagenes, Edit.id_articulo)
+        Return Mgr_Imagen.RecorrerFileupload_Guardar(fuImagenes, Edit.id_articulo)
 
     End Function
 
@@ -512,8 +506,8 @@ Public Class Editar
     Protected Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
 
         If Page.IsValid Then
-            Dim Edit = Mgr_Articulo.Get_Articulo(IdArticulo, contexto)
 
+            Dim Edit = Mgr_Articulo.Get_Articulo(IdArticulo, contexto)
             If EditarArticulo(Edit) Then
                 If EditarImagenes(Edit) Then
                     If EditarUbicaciones(Edit) Then
@@ -533,7 +527,6 @@ Public Class Editar
                     End If
                 End If
             End If
-
             Util_UpdatePanel.CerrarOperacion(Val_General.Editar.ToString, bError, Me, updatePanelPrinicpal, updatePanelPrinicpal)
 
         End If

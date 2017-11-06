@@ -104,7 +104,10 @@ Public Class Mgr_Imagen
 
     End Function
 
-    Public Shared Function RecorrerGrid_Guardar(ByRef fuImagenes As FileUpload, id_articulo As Integer) As Boolean
+    ''' <summary>
+    ''' Metodo que recibe un objeto Fileupload y guarda las imagenes que tiene seleccionada
+    ''' </summary>
+    Public Shared Function RecorrerFileupload_Guardar(ByRef fuImagenes As FileUpload, id_articulo As Integer) As Boolean
 
         Dim bError = False
         Dim contadorControl As Integer = 0

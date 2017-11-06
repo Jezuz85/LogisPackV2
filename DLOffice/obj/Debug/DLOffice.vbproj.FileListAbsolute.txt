@@ -18,7 +18,6 @@ C:\Users\Jezuz\Desktop\PruebaEXCEL\PruebaEXCEL\DLOffice\obj\Debug\DLOffice.pdb
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\DLOffice\bin\Debug\DLOffice.dll
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\DLOffice\bin\Debug\DLOffice.pdb
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\DLOffice\bin\Debug\DLOffice.xml
-C:\Users\Jezuz\Desktop\Repository\LogisPackV2\DLOffice\obj\Debug\DLOffice.vbprojResolveAssemblyReference.cache
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\DLOffice\obj\Debug\DLOffice.Resources.resources
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\DLOffice\obj\Debug\DLOffice.vbproj.GenerateResource.Cache
 C:\Users\Jezuz\Desktop\Repository\LogisPackV2\DLOffice\obj\Debug\DLOffice.dll

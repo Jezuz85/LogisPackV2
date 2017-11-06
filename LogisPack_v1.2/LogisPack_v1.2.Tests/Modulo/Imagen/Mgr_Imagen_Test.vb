@@ -17,6 +17,7 @@ Public Class Mgr_Imagen_Test
         Return _Imagen
 
     End Function
+
     ''' <summary>
     ''' Metodo que recibe un objeto para guardarlo en la base de datos
     ''' </summary>

@@ -165,12 +165,6 @@ CapaDatos
  devuelve una objeto de tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
-<member name="M:CapaDatos.Mgr_Articulo.Get_Articulo_List(System.Int32)">
- <summary>
- Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, 
- devuelve una lista de objetos de tipo Articulo si fue exitoso, de lo contrario no devuelve nothing
- </summary>
-</member>
 <member name="M:CapaDatos.Mgr_Articulo.Get_Articulo(System.Int32,CapaDatos.LogisPackEntities@)">
  <summary>
  Metodo que recibe un id del Articulo y lo consulta desde la Base de datos, recibe un objeto contexto
@@ -308,6 +302,11 @@ CapaDatos
  <summary>
  Metodo que recibe un nombre del Cliente y lo consulta desde la Base de datos, 
  devuelve un objeto tipo Cliente si fue exitoso, de lo contrario no devuelve nothing
+ </summary>
+</member>
+<member name="M:CapaDatos.Mgr_Cliente.Get_Cliente_Ultimo">
+ <summary>
+ Metodo que devuelve el ultimo cliente registrado en la base de datos
  </summary>
 </member>
 <member name="M:CapaDatos.Mgr_Historico.Guardar(CapaDatos.Historico)">
@@ -616,13 +615,13 @@ CapaDatos
  Metodo que recibe un id del Almacen y lo elimina en Base de datos, devuelve True si fue exitoso, de lo contrario False
  </summary>
 </member>
-<member name="M:CapaDatos.Mgr_Almacen.Consultar(System.Int32)">
+<member name="M:CapaDatos.Mgr_Almacen.Get_Almacen(System.Int32)">
  <summary>
  Metodo que recibe un id del Almacen y lo consulta desde la Base de datos, 
  devuelve un objeto tipo Almacen si fue exitoso, de lo contrario no devuelve nothing
  </summary>
 </member>
-<member name="M:CapaDatos.Mgr_Almacen.Consultar(System.Int32,CapaDatos.LogisPackEntities@)">
+<member name="M:CapaDatos.Mgr_Almacen.Get_Almacen(System.Int32,CapaDatos.LogisPackEntities@)">
  <summary>
  Metodo que recibe un id del Almacen y lo consulta desde la Base de datos, recibe un objeto contexto
  para devolver el Almacen a editar con su respectivo contexto usado
@@ -637,6 +636,11 @@ CapaDatos
 <member name="M:CapaDatos.Mgr_Almacen.Get_Struct">
  <summary>
  Metodo que devuelve una variable de tipo estructura con el cuerpo de la clase almacen
+ </summary>
+</member>
+<member name="M:CapaDatos.Mgr_Almacen.Get_Almacen_Ultimo">
+ <summary>
+ Metodo que devuelve el ultimo almacen registrado en la base de datos
  </summary>
 </member>
 <member name="M:CapaDatos.Util_Fileupload.Subir_Archivos(System.Web.HttpPostedFile@,System.String,System.String)">
